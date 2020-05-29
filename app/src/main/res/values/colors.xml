@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#549cf8</color>
+    <color name="colorAccent">#EF5362</color>
+
+
+    <!-- Grapefruit -->
+    <!-- Bittersweet -->
+    <!-- Sunflower -->
+    <!-- Grass -->
+    <!-- Mint -->
+    <!-- Aqua -->
+    <!-- Blue Jeans -->
+    <!-- Lavender -->
+    <!-- Pink Rose -->
+
+
+    <!-- title 半透明背景颜色 -->
+    <!-- 默认背景色 -->
+
+    <!-- white -->
+    <color name="color_white">#FFFFFF</color>
+
+    <color name="color_black">#000000</color>
+
+    <!-- item 标题颜色 -->
+
+    <color name="color_translucent">#00000000</color>
+
+    <color name="commonTextColor">#444153</color>
+    <color name="color_yellow">#F0BC33</color>
+    <color name="text_color_edit_hint">#576c97</color>
+    <color name="part_line_color">#293559</color>
+    <color name="redF4">#FF6254</color>
+    <color name="dilaog_btn_color">#9A66FF</color>
+    <color name="blue">#5390FF</color>
+    <color name="hintTextColor">#98999A</color>
+    <color name="home_text">#333333</color>
+    <color name="default_color">#F2F6FF</color>
+
+</resources>

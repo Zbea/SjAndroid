@@ -1,0 +1,12 @@
+<resources>
+
+
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="_14_text_size">14sp</dimen>
+    <dimen name="margin_12">12dp</dimen>
+    <dimen name="margin_14">14dp</dimen>
+    <dimen name="_16_text_size">16sp</dimen>
+    <dimen name="dialog_wid">260dp</dimen>
+</resources>

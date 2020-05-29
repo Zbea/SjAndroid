@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_solid_5dp_coner"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="开启矿机"
+            android:textColor="@color/color_black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_hot" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="9dp"
+        android:background="#F2F6FF" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@mipmap/pic_wk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:singleLine="true"
+            android:text="合约周期：5年"
+            android:textColor="@color/hintTextColor"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@+id/iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/tv_suanli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+
+            android:text="矿机算力：1G"
+            android:textColor="@color/hintTextColor"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toRightOf="@+id/iv"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+        <TextView
+            android:id="@+id/tv_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"
+            android:singleLine="true"
+            android:text="0 USDT"
+            android:textColor="@color/redF4"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@+id/iv"
+            app:layout_constraintTop_toBottomOf="@+id/tv_suanli" />
+
+        <TextView
+            android:id="@+id/tv_zu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_red_solid_20dp_coner"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="立即租用"
+            android:textColor="@color/color_white"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toRightOf="@+id/iv"
+            app:layout_constraintTop_toBottomOf="@+id/tv_amount" />
+
+
+        <TextView
+            android:id="@+id/chakan"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="查看详情"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_zu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

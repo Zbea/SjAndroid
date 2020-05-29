@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="67dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_white_solid_5dp_coner"
+    >
+
+    <ImageView
+        android:id="@+id/mImage_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@mipmap/mine_icon_more"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginRight="@dimen/margin_14"
+        />
+
+    <TextView
+        android:id="@+id/mTvNoticeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mImgIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin_14"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="@dimen/margin_14"
+        android:textSize="@dimen/_14_text_size"
+        android:textColor="@color/commonTextColor"
+        android:singleLine="true"
+        android:ellipsize="end"
+        />
+
+    <TextView
+        android:id="@+id/mTvTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/mTvNoticeTitle"
+        app:layout_constraintRight_toRightOf="@id/mTvNoticeTitle"
+        app:layout_constraintTop_toBottomOf="@id/mTvNoticeTitle"
+        android:layout_marginTop="3dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="10sp"
+        android:textColor="@color/hintTextColor"
+        />
+
+    <ImageView
+        android:id="@+id/mImgIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/mImage_more"
+        android:src="@drawable/mine_message_icon"
+        android:visibility="invisible"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

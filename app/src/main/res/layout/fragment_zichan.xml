@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F6FF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_top02">
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="31dp"
+
+            android:textColor="@color/color_white"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_title"
+            android:layout_margin="15dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tv_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawableRight="@mipmap/copy"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="0000000"
+                android:textColor="@color/color_white"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/mine_login_box_bg"
+                android:padding="15dp">
+
+                <RelativeLayout
+                    android:id="@+id/rl_touzi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="投资（USDT）"
+                        android:textColor="@color/home_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_touzi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv2"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:textColor="@color/home_text"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/mine_icon_more" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_shouyi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tv3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="收益（USDT/FIL）"
+                        android:textColor="@color/home_text"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tv_shouyi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv3"
+                        android:layout_marginTop="4dp"
+                        android:text="0"
+                        android:textColor="@color/home_text"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/mine_icon_more" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/rl_charge"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white_solid_5dp_coner"
+            android:drawableLeft="@mipmap/zichan_chongzhi"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:paddingRight="30dp"
+            android:text="充值"
+            android:textColor="@color/home_text"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_tibi"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white_solid_5dp_coner"
+            android:drawableLeft="@mipmap/zichan_tibi"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:paddingRight="30dp"
+            android:text="@string/tibi"
+            android:textColor="@color/home_text"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="15dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

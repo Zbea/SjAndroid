@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/mToolBar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:text="矿机名称"
+            android:textColor="@color/color_black"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp">
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="0USDT"
+                android:textColor="@color/redF4"
+                android:textSize="14sp" />
+
+
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="0年"
+                android:textColor="@color/color_black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="矿机总价值"
+                android:gravity="center"
+                android:textColor="@color/hintTextColor"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="合同周期"
+                android:textColor="@color/color_black"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="#F2F6FF" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="投入金额"
+                    android:textColor="@color/color_black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_yuji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:singleLine="true"
+                    android:text="预计每日收益:0FIL"
+                    android:textColor="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginTop="10dp"
+                android:background="#F2F6FF" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginTop="14dp">
+
+                <EditText
+                    android:id="@+id/et_num"
+                    android:paddingLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_grey_stroke_5dp_coner"
+                    android:hint="请输入数量（最低100USDT）"
+                    android:singleLine="true"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/color_black"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_marginRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:singleLine="true"
+                    android:text="USDT"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp">
+
+                <TextView
+                    android:id="@+id/tv_yue"
+                    android:paddingLeft="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="账号余额：0.00"
+                    android:singleLine="true"
+                    android:textColor="@color/color_black"
+                    android:textColorHint="@color/hintTextColor"
+                    android:textSize="14sp" />
+
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="个人信息填写"
+                android:textColor="@color/color_black"
+                android:textSize="14sp" />
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#F2F6FF"
+                />
+            <TextView
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="租用成功公司会快递一份租用合同，请务必填写真实信息信息填写"
+                android:textColor="@color/redF4"
+                android:textSize="12sp" />
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_marginTop="9dp"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/bg_grey_stroke_5dp_coner"
+                android:hint="真实姓名"
+                android:singleLine="true"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/et_phone"
+                android:layout_marginTop="14dp"
+                android:paddingLeft="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:background="@drawable/bg_grey_stroke_5dp_coner"
+                android:hint="手机号码"
+                android:singleLine="true"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_marginTop="14dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/bg_grey_stroke_5dp_coner"
+                android:hint="收货地址"
+                android:gravity="top"
+                android:singleLine="true"
+                android:textColor="@color/color_black"
+                android:textColorHint="@color/hintTextColor"
+                android:textSize="14sp" />
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我已阅读同意"
+                    android:textColor="@color/color_black"
+                    android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/tv_xieyi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="《矿机租赁服务协议》"
+                    android:textColor="@color/blue"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/mTvLogin"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_marginLeft="@dimen/margin_20"
+                android:layout_marginRight="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_16"
+                android:textSize="16sp"
+                android:textColor="@color/color_white"
+                android:gravity="center"
+                android:text="立即租用"
+                android:background="@drawable/mine_login_btn_ripple"
+                />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</LinearLayout>
