@@ -3,7 +3,7 @@ package com.hazz.kuangji.ui.activity
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Msg
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.adapter.MsgAdapter
@@ -11,7 +11,7 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.kuangji_desc.*
 
 
-class KuangjiDescActivity : BaseActivity(), LoginContract.MsgView {
+class KuangjiDescActivity : BaseActivity(), IContractView.MsgView {
 
 
     override fun getMsg(msg: List<Msg>) {

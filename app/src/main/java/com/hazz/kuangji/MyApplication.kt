@@ -5,12 +5,14 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.squareup.leakcanary.RefWatcher
 import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
 import kotlin.properties.Delegates
 
 
@@ -42,7 +44,10 @@ class MyApplication : Application(){
         SPUtil.init(this)
         SToast.initToast(this)
         //腾讯bugly
-        Bugly.init(getApplicationContext(), "9e1bc2b87d", false);
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
+        Beta.autoCheckUpgrade = true
+        Bugly.init(getApplicationContext(), "9e1bc2b87d", false)
     }
 
 

@@ -106,21 +106,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginBottom="50dp"
                     android:background="@drawable/mine_login_box_bg"
                     android:orientation="vertical"
-                    android:paddingBottom="20dp"
                     tools:ignore="MissingConstraints">
 
                     <RelativeLayout
                         android:id="@+id/layout_team"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="15dp"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:layout_marginTop="7dp"
+                        android:background="@drawable/bg_ripple_selector"
                         tools:ignore="DuplicateIds">
 
                         <TextView
@@ -142,14 +143,15 @@
                             android:drawableRight="@mipmap/mine_icon_more"
                             android:drawablePadding="12dp" />
                     </RelativeLayout>
-
                     <RelativeLayout
                         android:id="@+id/layout_invite"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp">
+                        android:background="@drawable/bg_ripple_selector"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -170,15 +172,15 @@
                             android:drawableRight="@mipmap/mine_icon_more"
                             android:drawablePadding="12dp" />
                     </RelativeLayout>
-
-
                     <RelativeLayout
                         android:id="@+id/layout_jiedian"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:background="@drawable/bg_ripple_selector"
                         tools:ignore="DuplicateIds">
 
                         <TextView
@@ -204,9 +206,11 @@
                         android:id="@+id/layout_contact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bg_ripple_selector"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
                         tools:ignore="DuplicateIds">
 
                         <ImageView
@@ -237,9 +241,11 @@
                         android:id="@+id/layout_about"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bg_ripple_selector"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
                         tools:ignore="DuplicateIds">
 
                         <ImageView
@@ -266,16 +272,17 @@
                             android:drawableRight="@mipmap/mine_icon_more"
                             android:drawablePadding="12dp" />
                     </RelativeLayout>
-
-
                     <RelativeLayout
                         android:id="@+id/layout_setting"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:background="@drawable/bg_ripple_selector"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:layout_marginBottom="7dp"
                         tools:ignore="DuplicateIds">
 
                         <TextView
@@ -311,13 +318,15 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="175dp" />
 
-            <ImageView
+            <com.hazz.kuangji.view.RoundImageView
+                android:id="@+id/iv_header"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="102dp"
                 android:src="@mipmap/user_default"
-
+                app:border_inside_color="@color/color_white"
+                app:border_thickness="1dp"
                 />
 
         </RelativeLayout>

@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_contact.*
 import kotlinx.android.synthetic.main.rule.*
 import kotlinx.android.synthetic.main.rule.mToolBar
 
-class ContactMyActivity : BaseActivity()
+class MineContactActivity : BaseActivity()
 {
 
     private var mCodeBitmap:Bitmap?=null;

@@ -11,7 +11,7 @@ import com.hazz.kuangji.net.BaseView
  * Date：2019/4/9-14:03
  * Author: cwh
  */
-interface LoginContract {
+interface IContractView {
 
     interface LoginView: BaseView {
 
@@ -78,5 +78,28 @@ interface LoginContract {
 
         fun xieyi(msg:Xieyi)
         fun getSignRecord(msg:SignRecord)
+    }
+
+    //一键买入
+    interface IExchangeBuyView: BaseView {
+
+    }
+    //一键买入订单详情
+    interface IExchangeOrderBuyView: BaseView {
+
+
+
+    }
+
+    //交易记录
+    interface IExchangeRecordView: BaseView {
+        fun setListView(data:ExchangeRecordBean)
+    }
+
+    //币币兑换
+    interface IExchangeCoinView: BaseView {
+
+
+
     }
 }

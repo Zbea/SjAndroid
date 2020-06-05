@@ -1,14 +1,14 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Touzi
 import com.hazz.kuangji.net.*
 import android.util.Pair
 import com.hazz.kuangji.mvp.model.bean.TouziRecord
 import com.hazz.kuangji.utils.Utils
 
-class TouziPresenter(view: LoginContract.TouziView) : BasePresenter<LoginContract.TouziView>(view) {
+class TouziPresenter(view: IContractView.TouziView) : BasePresenter<IContractView.TouziView>(view) {
 
     fun touxiList() {
 

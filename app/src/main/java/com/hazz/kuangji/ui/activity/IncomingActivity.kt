@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.InComing
 import com.hazz.kuangji.mvp.presenter.ShouyiPresenter
 import com.hazz.kuangji.ui.adapter.IncomingAdapter
@@ -17,7 +17,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_incoming.*
 
 
-class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, LoginContract.ShouyiView {
+class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContractView.ShouyiView {
 
 
     override fun inComing(msg: InComing) {

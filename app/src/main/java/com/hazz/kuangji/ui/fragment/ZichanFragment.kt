@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
-import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.events.Index
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.MyAsset
 import com.hazz.kuangji.mvp.presenter.ZichanPresenter
 import com.hazz.kuangji.ui.activity.ChargeActivity
@@ -26,7 +24,7 @@ import kotlinx.android.synthetic.main.fragment_zichan.*
 import kotlinx.android.synthetic.main.fragment_zichan.recycle_view
 
 
-class ZichanFragment : BaseFragment(), LoginContract.ZichanView {
+class ZichanFragment : BaseFragment(), IContractView.ZichanView {
 
 
     @SuppressLint("SetTextI18n")

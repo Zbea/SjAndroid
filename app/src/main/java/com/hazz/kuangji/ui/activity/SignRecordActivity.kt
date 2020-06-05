@@ -4,14 +4,10 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Xieyi
-import com.hazz.kuangji.mvp.model.bean.Charge
-import com.hazz.kuangji.mvp.model.bean.ChargeRecord
 import com.hazz.kuangji.mvp.model.bean.SignRecord
-import com.hazz.kuangji.mvp.presenter.ChargePresenter
 import com.hazz.kuangji.mvp.presenter.XieyiPresenter
-import com.hazz.kuangji.ui.adapter.ChargeRecordAdapter
 import com.hazz.kuangji.ui.adapter.SignRecordAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -19,7 +15,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.invitefriends_record.*
 
 
-class SignRecordActivity : BaseActivity(), LoginContract.XieyiView {
+class SignRecordActivity : BaseActivity(), IContractView.XieyiView {
     override fun xieyi(msg: Xieyi) {
 
     }

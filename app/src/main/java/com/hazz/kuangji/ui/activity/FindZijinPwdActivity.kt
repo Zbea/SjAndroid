@@ -6,14 +6,14 @@ import android.text.TextUtils
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.activity_find_zijin.*
 
 
-class FindZijinPwdActivity : BaseActivity(), LoginContract.LoginView {
+class FindZijinPwdActivity : BaseActivity(), IContractView.LoginView {
     override fun loginSuccess(msg: UserInfo) {
 
     }

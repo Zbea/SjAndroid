@@ -27,9 +27,7 @@ object RetrofitManager{
     val serviceSms: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getSms().create(AiPickService::class.java)
     }
-    val serviceTest: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
-        getTest().create(AiPickService::class.java)
-    }
+
 
     private var token:String = SPUtil.getString("token")
 
@@ -66,20 +64,7 @@ object RetrofitManager{
         }
     }
 
-    /**
-     * 设置头
-     */
-    private fun addHeaderInterceptorTest(): Interceptor {
-        return Interceptor { chain ->
-            val originalRequest = chain.request()
-            val requestBuilder = originalRequest.newBuilder()
-                    // Provide your custom header here
-                    .header("token","aaf4c2afbc1311d78e4d2a42330f701f")
-                    .method(originalRequest.method(), originalRequest.body())
-            val request = requestBuilder.build()
-            chain.proceed(request)
-        }
-    }
+
 
     /**
      * 设置缓存
@@ -135,7 +120,7 @@ object RetrofitManager{
     private fun getSms(): Retrofit {
         // 获取retrofit的实例
         return Retrofit.Builder()
-                .baseUrl("http://sjyminer.com:8000/accounts/v0/sendsms/123456/")  //自己配置
+                .baseUrl(UrlPaths.URL_INVITE)  //自己配置
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -143,16 +128,7 @@ object RetrofitManager{
 
     }
 
-    private fun getTest(): Retrofit {
-        // 获取retrofit的实例
-        return Retrofit.Builder()
-                .baseUrl(UrlPaths.URL_TEST_BASE)  //自己配置
-                .client(getOkHttpClientTest())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
 
-    }
 
     private fun getOkHttpClient(): OkHttpClient {
         //添加一个log拦截器,打印所有的log
@@ -176,27 +152,7 @@ object RetrofitManager{
                 .build()
     }
 
-    private fun getOkHttpClientTest(): OkHttpClient {
-        //添加一个log拦截器,打印所有的log
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        //可以设置请求过滤的水平,body,basic,headers
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
-        //设置 请求的缓存的大小跟位置
-        val cacheFile = File(MyApplication.context.cacheDir, "cache")
-        val cache = Cache(cacheFile, 1024 * 1024 * 50) //50Mb 缓存的大小
-
-        return OkHttpClient.Builder()
-                .addInterceptor(addQueryParameterInterceptor())  //参数添加
-                .addInterceptor(addHeaderInterceptorTest()) // token过滤
-//              .addInterceptor(addCacheInterceptor())
-                .addInterceptor(httpLoggingInterceptor) //日志,所有的请求响应度看到
-                .cache(cache)  //添加缓存
-                .connectTimeout(60L, TimeUnit.SECONDS)
-                .readTimeout(60L, TimeUnit.SECONDS)
-                .writeTimeout(60L, TimeUnit.SECONDS)
-                .build()
-    }
 
 
 }

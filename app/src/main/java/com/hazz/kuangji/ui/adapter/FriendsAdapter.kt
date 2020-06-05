@@ -16,11 +16,5 @@ class FriendsAdapter(layoutResId: Int, data: List<Friends.InviteUsersBean>?) : B
 
         helper.setText(R.id.user_name, item.username)
         helper.setText(R.id.invite_time, "于"+item.create_at+"注册")
-
-//
-//        helper.itemView.setOnClickListener {
-//
-//            mContext.startActivity(Intent(mContext, MsgDescActivity::class.java).putExtra("message", item))
-//        }
     }
 }

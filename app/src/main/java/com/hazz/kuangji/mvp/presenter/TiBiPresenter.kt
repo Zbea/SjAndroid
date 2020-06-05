@@ -2,13 +2,13 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import android.util.Pair
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.TibiRecord
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 
 
-class TiBiPresenter(view: LoginContract.TibiView) : BasePresenter<LoginContract.TibiView>(view) {
+class TiBiPresenter(view: IContractView.TibiView) : BasePresenter<IContractView.TibiView>(view) {
 
     fun tibi(amount: String, coin: String, trade_password: String, external_wallet_address: String
     ) {

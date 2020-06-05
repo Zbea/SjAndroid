@@ -3,16 +3,26 @@ package com.hazz.kuangji.ui.fragment
 import android.content.Intent
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Node
 import com.hazz.kuangji.mvp.model.bean.Shenfen
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
+import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.widget.PhotoDialog
+import com.luck.picture.lib.PictureSelector
+import com.luck.picture.lib.config.PictureConfig
+import com.luck.picture.lib.config.PictureMimeType
 import kotlinx.android.synthetic.main.fragment_mine.*
 
-class MineFragment : BaseFragment(), LoginContract.NodeView {
+class MineFragment : BaseFragment(), IContractView.NodeView {
+
+
+    private var mNodePresenter: NodePresenter = NodePresenter(this)
+    private var userInfo: UserInfo? = null
+    private var mPhotoDialog :PhotoDialog?=null;
 
     override fun getShenfen(msg: Shenfen) {
 
@@ -38,8 +48,6 @@ class MineFragment : BaseFragment(), LoginContract.NodeView {
         return R.layout.fragment_mine
     }
 
-    private var mNodePresenter: NodePresenter = NodePresenter(this)
-    private var userInfo: UserInfo? = null
     override fun initView() {
 
 
@@ -56,7 +64,9 @@ class MineFragment : BaseFragment(), LoginContract.NodeView {
             mTvUserName.text = userName
         }
 
-
+        iv_header.setOnClickListener {
+            showPhotoDialog()
+        }
 
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
@@ -74,7 +84,7 @@ class MineFragment : BaseFragment(), LoginContract.NodeView {
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
         layout_contact.setOnClickListener {
-            startActivity(Intent(activity,ContactMyActivity::class.java))
+            startActivity(Intent(activity,MineContactActivity::class.java))
         }
         layout_about.setOnClickListener {
             startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type",1))
@@ -86,6 +96,42 @@ class MineFragment : BaseFragment(), LoginContract.NodeView {
         mNodePresenter.getShenfen()
     }
 
+    fun showPhotoDialog()
+    {
+        mPhotoDialog= PhotoDialog(activity)
+        mPhotoDialog?.run {
+            setDialogClickListener(object : PhotoDialog.DialogClickListener
+            {
+                override fun takePhoto() {
+                    PictureSelector.create(activity)
+                            .openCamera(PictureMimeType.ofImage())
+                            .forResult(PictureConfig.CHOOSE_REQUEST)
+                }
+                override fun pickPhoto() {
+                    PictureSelector.create(activity)
+                            .openGallery(PictureMimeType.ofImage()) //全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
+                            .loadImageEngine(GlideEngine.createGlideEngine())
+                            .imageSpanCount(3)// 每行显示个数 int
+                            .selectionMode(PictureConfig.SINGLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
+                            .isCamera(false)
+                            .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
+                }
+            })
+            builder()
+            show()
+        }
+    }
+
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PictureConfig.CHOOSE_REQUEST) {
+            var selectList = PictureSelector.obtainMultipleResult(data)
+            var path=selectList?.get(0)?.path
+        }
+
+    }
 
 
 }

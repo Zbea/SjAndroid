@@ -3,7 +3,7 @@ package com.hazz.kuangji.ui.fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Kuangji
 import com.hazz.kuangji.mvp.model.bean.Mingxi
 import com.hazz.kuangji.mvp.presenter.KuangjiPresenter
@@ -12,7 +12,7 @@ import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.fragment_hangqing.*
 
-class HangqingFragment : BaseFragment(), LoginContract.kuangjiView {
+class HangqingFragment : BaseFragment(), IContractView.kuangjiView {
     override fun getMingxi(msg: Mingxi) {
 
     }
@@ -66,7 +66,7 @@ class HangqingFragment : BaseFragment(), LoginContract.kuangjiView {
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if(!hidden){
-            mKuangjiPresenter.kuangji()
+//            mKuangjiPresenter.kuangji()
         }
     }
 }

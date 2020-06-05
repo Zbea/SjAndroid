@@ -9,18 +9,17 @@ import android.graphics.Bitmap
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Coin
 import com.hazz.kuangji.mvp.model.bean.Friends
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
-import com.hazz.kuangji.net.UrlPaths.URL_BASE
 import com.hazz.kuangji.net.UrlPaths.URL_INVITE
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.invitefriends.*
 
 
-class InviteActivity : BaseActivity(), LoginContract.CoinView {
+class InviteActivity : BaseActivity(), IContractView.CoinView {
     override fun getCoin(msg: List<Coin>) {
 
     }

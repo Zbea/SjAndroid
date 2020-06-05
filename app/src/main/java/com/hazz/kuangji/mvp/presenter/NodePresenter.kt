@@ -1,13 +1,13 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Node
 import com.hazz.kuangji.mvp.model.bean.Shenfen
 import com.hazz.kuangji.net.*
 
 
-class NodePresenter(view: LoginContract.NodeView) : BasePresenter<LoginContract.NodeView>(view) {
+class NodePresenter(view: IContractView.NodeView) : BasePresenter<IContractView.NodeView>(view) {
 
 
     fun getNode() {

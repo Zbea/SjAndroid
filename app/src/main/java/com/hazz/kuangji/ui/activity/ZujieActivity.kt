@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.bean.MyAsset
 import com.hazz.kuangji.mvp.presenter.HomePresenter
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.charge.mToolBar
 import kotlinx.android.synthetic.main.zujie_activity.*
 
 
-class ZujieActivity : BaseActivity(), LoginContract.HomeView, TextWatcher, LoginContract.ZichanView {
+class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView {
 
     override fun myAsset(msg: MyAsset) {
 

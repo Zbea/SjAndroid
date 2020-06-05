@@ -1,12 +1,12 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Msg
 import com.hazz.kuangji.net.*
 
 
-class MsgPresenter(view: LoginContract.MsgView) : BasePresenter<LoginContract.MsgView>(view) {
+class MsgPresenter(view: IContractView.MsgView) : BasePresenter<IContractView.MsgView>(view) {
 
 
     fun getMsg() {

@@ -9,7 +9,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.SToast
@@ -17,7 +17,7 @@ import com.hazz.kuangji.utils.ToastUtils
 import kotlinx.android.synthetic.main.mine_activity_register.*
 
 
-class RegisterActivity : BaseActivity(), LoginContract.LoginView, TextWatcher {
+class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
 
     override fun afterTextChanged(s: Editable?) {
         if(s.toString().contains(" ")){

@@ -6,7 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Node
 import com.hazz.kuangji.mvp.model.bean.Shenfen
 import com.hazz.kuangji.mvp.presenter.NodePresenter
@@ -17,7 +17,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_node.*
 
 
-class NodeActivity : BaseActivity(), LoginContract.NodeView {
+class NodeActivity : BaseActivity(), IContractView.NodeView {
     override fun getShenfen(msg: Shenfen) {
 
     }

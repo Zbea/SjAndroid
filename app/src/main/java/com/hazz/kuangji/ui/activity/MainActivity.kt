@@ -1,6 +1,8 @@
 package com.hazz.kuangji.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.RadioGroup
@@ -39,7 +41,6 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         // mPresenter= AppNewVersionPresenter(this)
         initFragment()
         mRG.setOnCheckedChangeListener(this)
-        Bugly.init(this, "0b699b951b", false)
         RxBus.get().observerOnMain(this,Index::class.java) {
             checkFragment(1)
             mRbMining.isChecked = true
@@ -137,5 +138,17 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
         }
     }
 
-
+    /**
+     * 解决Fragment中的onActivityResult()方法无响应问题。
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        /**
+         * 1.使用getSupportFragmentManager().getFragments()获取到当前Activity中添加的Fragment集合
+         * 2.遍历Fragment集合，手动调用在当前Activity中的Fragment中的onActivityResult()方法。
+         */
+        for (mFragment in supportFragmentManager.fragments) {
+            mFragment.onActivityResult(requestCode, resultCode, data)
+        }
+    }
 }

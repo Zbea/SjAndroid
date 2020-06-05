@@ -9,7 +9,7 @@ import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Charge
 import com.hazz.kuangji.mvp.model.bean.ChargeRecord
 import com.hazz.kuangji.mvp.model.bean.UserInfo
@@ -17,10 +17,9 @@ import com.hazz.kuangji.mvp.presenter.ChargePresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.charge.*
 import kotlinx.android.synthetic.main.charge.mToolBar
-import kotlinx.android.synthetic.main.invitefriends.*
 
 
-class ChargeActivity : BaseActivity(), LoginContract.ChargeView {
+class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
     var isType: Boolean=true;
 

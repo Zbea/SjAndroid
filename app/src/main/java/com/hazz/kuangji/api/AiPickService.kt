@@ -6,6 +6,7 @@ import com.hazz.kuangji.mvp.model.Xieyi
 import com.hazz.kuangji.mvp.model.bean.*
 import com.hazz.kuangji.net.BaseResult
 import io.reactivex.Observable
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*
 
@@ -14,8 +15,12 @@ import retrofit2.http.*
 interface AiPickService{
 
 
-    @GET("accounts/v0/getinfo/")
-    fun getCheck(): Observable<BaseResult<String>>
+    /**
+     * 上传文件
+     */
+    @Multipart
+    @POST("login")
+    fun upLoadFile(@Body file: MultipartBody.Part): Observable<BaseResult<UploadModel>>
 
     /**
      * 登陆
@@ -26,8 +31,8 @@ interface AiPickService{
     /**
      * 获取验证码
      */
-    @GET("{mobile}")
-    fun sendCode(@Path("mobile" )mobile:String): Observable<Sms>
+    @GET("api/captcha/sms")
+    fun sendCode(@Query("mobile" )mobile:String): Observable<Sms>
 
     /**
      *设置资金密码

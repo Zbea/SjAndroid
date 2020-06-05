@@ -1,13 +1,13 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Coin
 import com.hazz.kuangji.mvp.model.bean.Friends
 import com.hazz.kuangji.net.*
 
 
-class CoinPresenter(view: LoginContract.CoinView) : BasePresenter<LoginContract.CoinView>(view) {
+class CoinPresenter(view: IContractView.CoinView) : BasePresenter<IContractView.CoinView>(view) {
 
 
     fun getCoin() {

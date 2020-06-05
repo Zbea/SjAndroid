@@ -1,13 +1,13 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Charge
 import com.hazz.kuangji.mvp.model.bean.ChargeRecord
 import com.hazz.kuangji.net.*
 
 
-class ChargePresenter(view: LoginContract.ChargeView) : BasePresenter<LoginContract.ChargeView>(view) {
+class ChargePresenter(view: IContractView.ChargeView) : BasePresenter<IContractView.ChargeView>(view) {
 
     fun charge(coin: String) {
 

@@ -3,7 +3,6 @@ package com.hazz.kuangji.base
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -12,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
@@ -77,6 +77,9 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
      * 开始请求
      */
     abstract fun start()
+
+
+
 
 
     /**

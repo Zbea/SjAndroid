@@ -4,7 +4,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Charge
 import com.hazz.kuangji.mvp.model.bean.ChargeRecord
 import com.hazz.kuangji.mvp.presenter.ChargePresenter
@@ -15,7 +15,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.invitefriends_record.*
 
 
-class ChargeRecordActivity : BaseActivity(), LoginContract.ChargeView {
+class ChargeRecordActivity : BaseActivity(), IContractView.ChargeView {
     override fun getAddress(msg: Charge) {
 
     }

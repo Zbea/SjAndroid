@@ -2,7 +2,7 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import android.util.Pair
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Sms
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.net.*
@@ -11,7 +11,7 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
 
-class LoginPresenter(view: LoginContract.LoginView) : BasePresenter<LoginContract.LoginView>(view) {
+class LoginPresenter(view: IContractView.LoginView) : BasePresenter<IContractView.LoginView>(view) {
 
     fun login(credential: String, password: String
     ) {
@@ -23,6 +23,7 @@ class LoginPresenter(view: LoginContract.LoginView) : BasePresenter<LoginContrac
                 Pair.create<Any, Any>("password", Utils.encryptMD5(password))
 
         )
+
 
         val login = RetrofitManager.service.login(body)
 

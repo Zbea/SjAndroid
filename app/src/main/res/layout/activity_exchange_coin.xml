@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/default_color">
+
+    <include
+        android:id="@+id/mToolBar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space_dimen"
+        android:layout_marginTop="@dimen/space_dimen"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_u_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_16"
+            android:text="USDT 转 FIL"
+            />
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_count_usdt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="@dimen/margin_20"
+            android:padding="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_edit_blue">
+
+            <EditText
+                android:id="@+id/et_count_usdt"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_666666"
+                android:hint="请输入数量（最低100）"
+                android:inputType="number"
+                android:textColorHint="@color/color_hint"
+                android:layout_height="wrap_content"
+                android:background="@color/color_translucent"/>
+
+            <TextView
+                android:id="@+id/tv_usdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/sp_16"
+                android:text="USDT"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_price_usdt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_12"
+                android:text="USDT单价："
+                />
+
+            <TextView
+                android:id="@+id/tv_price_usdt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/sp_12"
+                android:text="￥100"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_count_usdt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/space_dimen"
+                    android:textColor="@color/color_999999"
+                    android:text="USDT余量："
+                    android:textSize="@dimen/sp_12"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_count_usdt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_666666"
+                    android:text="100"
+                    android:textSize="@dimen/sp_12"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_transition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dp_10"
+            android:gravity="center_vertical|right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_exchange_transition"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:layout_marginLeft="5dp"
+                android:text="转换"
+                android:textSize="@dimen/sp_14"
+                />
+
+
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="@dimen/dp_10"
+            android:padding="@dimen/dp_10"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_edit">
+
+            <TextView
+                android:id="@+id/tv_num_fil"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_666666"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tv_fil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_16"
+                android:text="FIL"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_price_fil_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_12"
+                android:text="FIL单价："
+                />
+
+            <TextView
+                android:id="@+id/tv_price_fil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/sp_12"
+                android:text="￥200"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tv_count_fil_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_999999"
+                    android:layout_marginLeft="@dimen/space_dimen"
+                    android:text="FIL余量："
+                    android:textSize="@dimen/sp_12"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_count_fil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_12"
+                    android:text="200"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_commit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_dimen"
+        android:text="提交"
+        android:gravity="center"
+        android:textSize="@dimen/sp_16"
+        android:background="@drawable/bg_blue_solid_5dp_coner"
+        android:textColor="@color/color_white"
+        android:layout_margin="@dimen/space_dimen"/>
+
+
+
+</LinearLayout>

@@ -72,7 +72,11 @@
     <string name="safe_check">资金密码</string>
     <string name="input_deal_password">请输入资金密码</string>
     <string name="intro_charge">1、此地址只接收相对应地址，发送其他币种到此地址将不可找回。\n2、充值到账需要2个网络确认，请耐心等待。\n3、100 起充。</string>
+    <string name="exchange_pay_introduce">1、付款后我们将进行人工审核，请耐心等待。\n2、请仔细审核您的转账金额及账户信息。\n3、如有疑问，请联系客服。</string>
+    <string name="exchange_payee_introduce">1、请正确填写本人正常使用的收款信息，如填写错误请及时联系客服。\n2、卖出后我们将人工确认并向你转账，请耐心等候。\n3、如有疑问，请联系客服。</string>
     <string name="zuyong">租用</string>
     <string name="tibi_choose">提币币种</string>
+
+
 
 </resources>

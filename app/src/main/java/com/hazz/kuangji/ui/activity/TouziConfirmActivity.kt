@@ -5,7 +5,7 @@ import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.MyAsset
 import com.hazz.kuangji.mvp.model.bean.Touzi
 import com.hazz.kuangji.mvp.model.bean.Touzi.ProductsBean
@@ -19,7 +19,7 @@ import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.invitefriends_touzi_confirm.*
 
 
-class TouziConfirmActivity : BaseActivity(), LoginContract.TouziView, LoginContract.ZichanView {
+class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractView.ZichanView {
     override fun touziRecord(msg: TouziRecord) {
 
     }

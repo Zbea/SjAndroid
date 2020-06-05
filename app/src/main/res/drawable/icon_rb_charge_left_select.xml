@@ -3,4 +3,6 @@
     <item android:drawable="@drawable/icon_rb_charge_left_nor" android:state_checked="false"/>
     <item android:drawable="@drawable/icon_rb_charge_left_press" android:state_checked="true"/>
     <item android:drawable="@drawable/icon_rb_charge_left_press" android:state_selected="true"/>
+
+
 </selector>

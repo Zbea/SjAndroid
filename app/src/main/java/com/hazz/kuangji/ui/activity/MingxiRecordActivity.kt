@@ -8,7 +8,7 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Kuangji
 import com.hazz.kuangji.mvp.model.bean.Mingxi
 import com.hazz.kuangji.mvp.presenter.KuangjiPresenter
@@ -21,7 +21,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MingxiRecordActivity : BaseActivity(), LoginContract.kuangjiView {
+class MingxiRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
     override fun getKuangji(msg: Kuangji) {
 

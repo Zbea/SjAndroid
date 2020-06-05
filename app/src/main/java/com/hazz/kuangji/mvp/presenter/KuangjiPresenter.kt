@@ -1,7 +1,7 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Kuangji
 import com.hazz.kuangji.mvp.model.bean.Mingxi
 import com.hazz.kuangji.net.BasePresenter
@@ -10,7 +10,7 @@ import com.hazz.kuangji.net.Callback
 import com.hazz.kuangji.net.RetrofitManager
 
 
-class KuangjiPresenter(view: LoginContract.kuangjiView) : BasePresenter<LoginContract.kuangjiView>(view) {
+class KuangjiPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractView.kuangjiView>(view) {
 
     fun kuangji() {
 

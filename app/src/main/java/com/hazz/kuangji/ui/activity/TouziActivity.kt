@@ -5,7 +5,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Touzi
 import com.hazz.kuangji.mvp.model.bean.TouziRecord
 import com.hazz.kuangji.mvp.presenter.TouziPresenter
@@ -17,7 +17,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.touzi.*
 
 
-class TouziActivity : BaseActivity(), LoginContract.TouziView {
+class TouziActivity : BaseActivity(), IContractView.TouziView {
     override fun touziRecord(msg: TouziRecord) {
 
     }

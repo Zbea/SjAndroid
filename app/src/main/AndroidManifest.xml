@@ -46,7 +46,7 @@
         <activity android:name="com.hazz.kuangji.ui.activity.MainActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.LoginActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.ForgetPwdActivity" />
-        <activity android:name=".ui.activity.ContactMyActivity" />
+        <activity android:name=".ui.activity.MineContactActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.RegisterActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.CountryActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.InviteActivity"/>
@@ -75,6 +75,13 @@
         <activity android:name="com.hazz.kuangji.ui.activity.KuangjiDescActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.KuangjiDesc2Activity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.SignRecordActivity"/>
+        <activity android:name=".ui.activity.ExchangeBuyActivity"/>
+        <activity android:name=".ui.activity.ExchangeOrderBuyDetailsActivity"/>
+        <activity android:name=".ui.activity.ExchangeCoinActivity"/>
+        <activity android:name=".ui.activity.ExchangeOrderSaleDetailsActivity"/>
+        <activity android:name=".ui.activity.ExchangeSaleActivity"/>
+        <activity android:name=".ui.activity.ExchangeRecordActivity"/>
+        <activity android:name=".ui.activity.ExchangeCoinRecordActivity"/>
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

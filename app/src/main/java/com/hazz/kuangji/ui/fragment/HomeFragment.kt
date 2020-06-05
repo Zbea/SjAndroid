@@ -1,6 +1,7 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.mvp.contract.LoginContract
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.bean.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
-import com.hazz.kuangji.mvp.presenter.TestPresenter
-import com.hazz.kuangji.ui.activity.MsgDescActivity
-import com.hazz.kuangji.ui.activity.SignRecordActivity
+import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DisplayManager
 import com.hazz.kuangji.utils.DpUtils
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.widget.GlideImageLoader
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.hazz.kuangji.widget.TipsDialog
@@ -28,7 +28,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_new_home.*
 
-class HomeFragment : BaseFragment(), LoginContract.HomeView, LoginContract.MsgView {
+class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView {
 
     override fun getMsg(rows: List<Msg>) {
 
@@ -124,7 +124,6 @@ class HomeFragment : BaseFragment(), LoginContract.HomeView, LoginContract.MsgVi
     private var list: MutableList<Home.ProductsBean>? = mutableListOf()
     private var mAdapter: HomeAdapter? = null
     private var mHomePresenter: HomePresenter = HomePresenter(this)
-    private var  mCheckPresenter: TestPresenter = TestPresenter(this)
     private var tipsDialog: TipsDialog? = null
     private var viewsList: MutableList<View>? = mutableListOf()
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
@@ -147,7 +146,7 @@ class HomeFragment : BaseFragment(), LoginContract.HomeView, LoginContract.MsgVi
                 )
         )
 
-
+        Log.i("sj", SPUtil.getString("token"))
 
         tv_qiandao.setOnClickListener {
             mHomePresenter.sign()
@@ -173,12 +172,23 @@ class HomeFragment : BaseFragment(), LoginContract.HomeView, LoginContract.MsgVi
             tipsDialog!!.show()
         }
 
+        ll_charge.setOnClickListener {
+            startActivity(Intent(activity,ExchangeBuyActivity::class.java))
+        }
+
+        ll_sale.setOnClickListener {
+            startActivity(Intent(activity,ExchangeSaleActivity::class.java))
+        }
+
+        ll_exchange.setOnClickListener {
+            startActivity(Intent(activity,ExchangeCoinActivity::class.java))
+        }
+
     }
 
     override fun lazyLoad() {
         mCoinPresenter.getMsg()
         mHomePresenter.getHome()
-//        mCheckPresenter.getTest()
     }
 
     private fun initBanner(list: List<String>) {
@@ -224,8 +234,8 @@ class HomeFragment : BaseFragment(), LoginContract.HomeView, LoginContract.MsgVi
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if(!hidden){
-            mCoinPresenter.getMsg()
-            mHomePresenter.getHome()
+//            mCoinPresenter.getMsg()
+//            mHomePresenter.getHome()
         }
     }
 }
