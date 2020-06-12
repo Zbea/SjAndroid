@@ -101,7 +101,7 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="￥600"
-                android:textColor="@color/color_999999"/>
+                android:textColor="@color/redF4"/>
         </LinearLayout>
     </LinearLayout>
 

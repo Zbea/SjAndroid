@@ -1,16 +1,17 @@
 package com.hazz.kuangji.ui.fragment
 
 
+import android.view.KeyEvent
 import android.widget.LinearLayout
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.utils.DensityUtils
-import kotlinx.android.synthetic.main.fragment_coin.*
+import kotlinx.android.synthetic.main.fragment_coin_market.*
 
-class CoinFragment : BaseFragment() {
+class CoinMarketFragment : BaseFragment() {
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_coin
+        return R.layout.fragment_coin_market
     }
 
     override fun initView() {
@@ -18,12 +19,21 @@ class CoinFragment : BaseFragment() {
         var layoutParams: LinearLayout.LayoutParams= web_view.layoutParams as LinearLayout.LayoutParams
         layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
         web_view.layoutParams=layoutParams
+        web_view.setOnKeyListener { v, keyCode, event ->
+
+                           if ((keyCode == KeyEvent.KEYCODE_BACK) && web_view.canGoBack()) {
+                                web_view.goBack()
+                               return@setOnKeyListener true;
+                           }
+                          return@setOnKeyListener false;
+        }
 
     }
 
     override fun lazyLoad() {
 
     }
+
 
 
 

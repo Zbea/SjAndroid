@@ -15,13 +15,20 @@ import retrofit2.http.*
 interface AiPickService{
 
 
+    @GET("accounts/v0/buycoin/")
+    fun getTest(): Observable<BaseResult<Any>>
     /**
-     * 上传文件
+     * 文件上传
      */
     @Multipart
-    @POST("login")
-    fun upLoadFile(@Body file: MultipartBody.Part): Observable<BaseResult<UploadModel>>
-
+    @POST("/api/uploader_img")
+    fun upLoadImage(@Part file: MultipartBody.Part): Observable<BaseResult<UploadModel>>
+    /**
+     * 头像上传
+     */
+    @Multipart
+    @POST("/api/modify_header")
+    fun upHeaderImage(@Part file: MultipartBody.Part): Observable<BaseResult<UploadModel>>
     /**
      * 登陆
      */
@@ -182,4 +189,79 @@ interface AiPickService{
      */
     @GET("trade/sign_records")
     fun signRecord(): Observable<BaseResult<SignRecord>>
+
+
+    /**
+     * 获取我的币种信息
+     */
+    @GET("accounts/v0/buycoin/")
+    fun getExchange(): Observable<BaseResult<Exchange>>
+
+    /**
+     * 提交订单
+     */
+    @GET("accounts/v0/addorder/{typeCoin}/{num}/{typePay}/{price}")
+    fun commitOrder(@Path("typeCoin" ) typeCoin:String, @Path("num" ) num:String, @Path("typePay" ) typePay:String, @Path("price" ) price:String): Observable<BaseResult<ExchangeOrder>>
+    /**
+     * 订单详情
+     */
+    @GET("accounts/v0/orderdetails/{orderCode}")
+    fun getOrder(@Path("orderCode")code:String): Observable<BaseResult<ExchangeOrder>>
+
+    /**
+     * 取消订单
+     */
+    @GET("accounts/v0/cancelorder/{orderCode}")
+    fun cancelOrder(@Path("orderCode")code:String): Observable<BaseResult<Any>>
+
+
+    /**
+     * 我已经付款
+     */
+    @GET("accounts/v0/confirmorder/{orderCode}")
+    fun commitPay(@Path("orderCode")code:String): Observable<BaseResult<Any>>
+
+    /**
+     * 获取订单明细 0全部1买入2卖出
+     */
+    @GET("accounts/v0/allorders/{type}")
+    fun getOrderBuyList(@Path("type" ) type:String): Observable<BaseResult<List<ExchangeRecord>>>
+
+//    /**
+//     * 提交卖币订单
+//     */
+//    @POST("user_selling")
+//    fun commitOrderSale(@Body request: MultipartBody.Builder): Observable<BaseResult<ExchangeOrder>>
+
+//    /**
+//     * 提交卖币订单
+//     */
+//    @POST("user_selling")
+//    fun commitOrderSale(@Part file: List<MultipartBody.Part>): Observable<BaseResult<ExchangeOrder>>
+
+    /**
+     * 提交卖币订单
+     */
+    @Multipart
+    @POST("user_selling")
+    fun commitOrderSale(@Query("price" )price:String,@Query("num" )num:String,@Query("typePay" )typePay:String,@Query("typeCoin" )typeCoin:String,@Part file: MultipartBody.Part): Observable<BaseResult<ExchangeOrder>>
+
+    /**
+     * 提交卖币订单
+     */
+    @POST("user_selling")
+    fun commitOrderSale(@Query("price" )price:String,@Query("num" )num:String,@Query("typePay" )typePay:String,@Query("typeCoin" )typeCoin:String,
+                        @Query("bankCode" )bankCode:String,@Query("bankName" )bankName:String,@Query("bankType" )bankType:String): Observable<BaseResult<ExchangeOrder>>
+
+    /**
+     * 币币兑换
+     */
+    @GET("accounts/v0/trans/{type}/{amount1}/{amount2}")
+    fun commitExchange(@Path("type" ) type:String, @Path("amount1" ) amount1:String, @Path("amount2" ) amount2:String): Observable<BaseResult<Any>>
+
+    /**
+     * 兑换明细
+     */
+    @GET("accounts/v0/translist/")
+    fun getExchangeList(): Observable<BaseResult<List<ExchangeRecord>>>
 }

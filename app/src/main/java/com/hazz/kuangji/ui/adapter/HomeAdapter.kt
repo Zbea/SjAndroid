@@ -8,9 +8,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.ui.activity.KuangjiDesc2Activity
-import com.hazz.kuangji.ui.activity.KuangjiDescActivity
-import com.hazz.kuangji.ui.activity.ZujieActivity
+import com.hazz.kuangji.ui.activity.HomeKuangjiDescActivity
+import com.hazz.kuangji.ui.activity.HomeRentActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickAdapter<Home.ProductsBean, BaseViewHolder>(layoutResId, data) {
@@ -26,11 +25,11 @@ class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickA
             setText(R.id.tv_suanli, "矿机算力:"+item.power)
             setText(R.id.tv_amount, BigDecimalUtil.mul(item.price,"1",4)+"USDT")
             getView<TextView>(R.id.tv_zu).setOnClickListener {
-                mContext.startActivity(Intent(mContext, ZujieActivity::class.java).putExtra("produce",item))
+                mContext.startActivity(Intent(mContext, HomeRentActivity::class.java).putExtra("produce",item))
 
             }
             getView<TextView>(R.id.chakan).setOnClickListener {
-                mContext.startActivity(Intent(mContext, KuangjiDescActivity::class.java).putExtra("name",item.name).putExtra("desc",item.desc))
+                mContext.startActivity(Intent(mContext, HomeKuangjiDescActivity::class.java).putExtra("name",item.name).putExtra("desc",item.desc))
 
             }
         }

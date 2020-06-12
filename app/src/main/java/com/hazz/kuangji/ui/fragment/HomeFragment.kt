@@ -134,7 +134,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         recycle_view.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(recycle_view)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
+        val leftRightOffset = DensityUtil.dp2px(15f)
 
         recycle_view.addItemDecoration(
                 RewardItemDeco(

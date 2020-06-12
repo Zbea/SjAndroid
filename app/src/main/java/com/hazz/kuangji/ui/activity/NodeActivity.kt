@@ -9,6 +9,7 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Node
 import com.hazz.kuangji.mvp.model.bean.Shenfen
+import com.hazz.kuangji.mvp.model.bean.UploadModel
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.adapter.NodeAdapter
 import com.hazz.kuangji.utils.ToolBarCustom
@@ -19,6 +20,10 @@ import kotlinx.android.synthetic.main.activity_node.*
 
 class NodeActivity : BaseActivity(), IContractView.NodeView {
     override fun getShenfen(msg: Shenfen) {
+
+    }
+
+    override fun setHeader(msg: UploadModel) {
 
     }
 

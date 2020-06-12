@@ -16,7 +16,9 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.bumptech.glide.request.target.ImageViewTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory;
+import com.bumptech.glide.request.transition.Transition;
 import com.hazz.kuangji.R;
 import com.luck.picture.lib.engine.ImageEngine;
 import com.luck.picture.lib.listener.OnImageCompleteCallback;
@@ -31,6 +33,7 @@ import com.luck.picture.lib.widget.longimage.SubsamplingScaleImageView;
  * @describe：Glide加载引擎
  */
 public class GlideEngine implements ImageEngine {
+
 
     /**
      * 加载图片

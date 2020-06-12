@@ -67,13 +67,12 @@
         <activity android:name="com.hazz.kuangji.ui.activity.IncomingActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.TouziRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.ScanCoinAddressActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.ZujieActivity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.HomeRentActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.MingxiRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.RuleActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.NodeSecondActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.RegistRuleActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.KuangjiDescActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.KuangjiDesc2Activity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.HomeKuangjiDescActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.SignRecordActivity"/>
         <activity android:name=".ui.activity.ExchangeBuyActivity"/>
         <activity android:name=".ui.activity.ExchangeOrderBuyDetailsActivity"/>

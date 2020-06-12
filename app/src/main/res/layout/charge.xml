@@ -36,25 +36,27 @@
                 android:orientation="horizontal">
                 <RadioButton
                     android:id="@+id/rb_left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
                     android:button="@null"
                     android:text="Erc20—USDT"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:checked="true"
-                    android:textColor="@color/color_white"
-                    android:background="@drawable/icon_rb_charge_left_select"/>
+                    android:textColor="@color/selector_black_blue_color"
+                    android:background="@drawable/icon_rb_line_selector"/>
                 <RadioButton
                     android:id="@+id/rb_right"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
                     android:button="@null"
                     android:text="OMNI—USDT"
                     android:gravity="center"
                     android:textSize="16sp"
-                    android:textColor="@color/color_white"
-                    android:background="@drawable/icon_rb_charge_right_select"/>
+                    android:textColor="@color/selector_black_blue_color"
+                    android:background="@drawable/icon_rb_line_selector"/>
             </RadioGroup>
 
             <TextView

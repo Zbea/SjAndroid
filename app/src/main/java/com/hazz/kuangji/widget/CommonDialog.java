@@ -112,7 +112,7 @@ public class CommonDialog {
         dialog.show();
     }
     public void cancel() {
-        dialog.cancel();
+        dialog.dismiss();
     }
     public DialogClickListener dialogClickListener;
     public interface DialogClickListener{

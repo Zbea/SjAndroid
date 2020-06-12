@@ -57,7 +57,6 @@ class SettingActivity : BaseActivity() {
                         outLogin()
                     }
                     override fun cancel() {
-                        commonDialog !!.cancel()
                     }
                 })
                 builder()

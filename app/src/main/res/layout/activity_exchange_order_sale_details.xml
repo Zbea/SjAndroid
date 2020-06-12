@@ -88,7 +88,7 @@
                         android:textColor="@color/color_333333"/>
 
                     <TextView
-                        android:id="@+id/tv_price_total"
+                        android:id="@+id/tv_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/sp_16"
@@ -162,8 +162,9 @@
                     <ImageView
                         android:id="@+id/iv_qrcode"
                         android:layout_width="160dp"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/icon_gz_qrcode"/>
+                        android:layout_height="200dp"
+                        android:src="@drawable/picture_image_placeholder"
+                        />
 
 
 
@@ -186,6 +187,18 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:hint="输入收款银行卡号"
+                    android:inputType="number"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/color_333333"
+                    android:textColorHint="@color/color_999999"
+                    android:background="@drawable/bg_edit"/>
+                <EditText
+                    android:id="@+id/et_bank_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_marginTop="@dimen/space_dimen"
+                    android:hint="输入收款银行开户行"
                     android:inputType="number"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_333333"
@@ -237,21 +250,9 @@
         android:background="@color/color_white"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <TextView
-            android:id="@+id/tv_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_margin="@dimen/space_dimen"
-            android:layout_weight="1"
-            android:background="@drawable/bg_grey_stroke_5dp_coner"
-            android:gravity="center"
-            android:text="取消订单"
-            android:visibility="gone"
-            android:textColor="@color/color_999999"
-            android:textSize="16sp"
-            />
-        <TextView
-            android:id="@+id/tv_commit"
+            android:id="@+id/tv_commit1"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_margin="@dimen/space_dimen"

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -14,7 +15,6 @@ import com.hazz.kuangji.mvp.model.bean.Coin
 import com.hazz.kuangji.mvp.model.bean.Friends
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
-import com.hazz.kuangji.net.UrlPaths.URL_INVITE
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.invitefriends.*
 
@@ -64,12 +64,12 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
            tipsText.text="邀请码:   "+userInfo!!.invitation_code
 
            createQRCode =
-                   QRCodeUtils.createQRCode(URL_INVITE+"#/home?code="+userInfo!!.invitation_code, dip2px, dip2px, null)
+                   QRCodeUtils.createQRCode(Constants.URL_INVITE+"#/home?code="+userInfo!!.invitation_code, dip2px, dip2px, null)
            qrCodeView.setImageBitmap(createQRCode)
        }else{
            tipsText.text= "邀请码:   $invitation_code"
            createQRCode =
-                   QRCodeUtils.createQRCode("$URL_INVITE#/home?code=$invitation_code", dip2px, dip2px, null)
+                   QRCodeUtils.createQRCode(Constants.URL_INVITE+"#/home?code=$invitation_code", dip2px, dip2px, null)
            qrCodeView.setImageBitmap(createQRCode)
        }
 
@@ -81,10 +81,10 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
         copy_invitation_btn.setOnClickListener {
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
             if(userInfo!=null){
-                val clipData = ClipData.newPlainText("invitation_code_url",URL_INVITE+"#/home?code="+userInfo!!.invitation_code)
+                val clipData = ClipData.newPlainText("invitation_code_url",Constants.URL_INVITE+"#/home?code="+userInfo!!.invitation_code)
                 cm.primaryClip = clipData
             }else{
-                val clipData = ClipData.newPlainText("invitation_code_url", "$URL_INVITE#/home?code=$invitation_code")
+                val clipData = ClipData.newPlainText("invitation_code_url", Constants.URL_INVITE+"URL_INVITE#/home?code=$invitation_code")
                 cm.primaryClip = clipData
             }
 

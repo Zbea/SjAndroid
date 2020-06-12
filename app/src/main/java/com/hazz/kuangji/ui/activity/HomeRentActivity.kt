@@ -15,10 +15,10 @@ import com.hazz.kuangji.mvp.presenter.ZichanPresenter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.charge.mToolBar
-import kotlinx.android.synthetic.main.zujie_activity.*
+import kotlinx.android.synthetic.main.activity_home_rent.*
 
 
-class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView {
+class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView {
 
     override fun myAsset(msg: MyAsset) {
 
@@ -33,14 +33,7 @@ class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, ICont
     }
 
     override fun afterTextChanged(s: Editable?) {
-
-
-        val mul = BigDecimalUtil.mul(price, rate, 4)
-        val div = BigDecimalUtil.div(s.toString(), price, 4)
-        val mul1 = BigDecimalUtil.mul(mul, div, 4)
-        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(mul1, "0.7", 4) + "FIL"
-
-
+        setEarningsView(s.toString())
     }
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -67,9 +60,10 @@ class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, ICont
     private var coin = "USDT"
     private var id = ""
     private var price = ""
+    private var amount:String="0"
     private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
     override fun layoutId(): Int {
-        return R.layout.zujie_activity
+        return R.layout.activity_home_rent
     }
 
     override fun initData() {
@@ -79,29 +73,43 @@ class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, ICont
     // private var mChargePresenter: ChargePresenter = ChargePresenter(this)
 
     override fun initView() {
+
+        produce = intent.getSerializableExtra("produce") as Home.ProductsBean?
+
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
-                .setTitle(getString(R.string.zuyong))
+                .setTitle(produce!!.name)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                //  .setRightText("租用规则")
                 .setToolBarBgRescource(R.drawable.bg_hangqing)
-                // .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { view -> finish() }
-//                .setOnRightClickListener {
-//                    startActivity(Intent(this, RuleActivity::class.java))
-//
-//                }
-        produce = intent.getSerializableExtra("produce") as Home.ProductsBean?
+
         coin = produce!!.coin
         id = produce!!.id
         price = produce!!.price
-        tv_name.text = produce!!.name
+        amount=BigDecimalUtil.mul(produce!!.price, "1", 4)
         tv_amount.text = BigDecimalUtil.mul(produce!!.price, "1", 4) + "USDT"
         //tv_suanli.text = produce!!.power
         tv_time.text = produce!!.round + "天"
         rate = produce!!.rate
 
+        if (produce!!.rent_type.equals("1"))
+        {
+            et_num.setText(amount)
+            setEarningsView(amount)
+            et_num.background=resources.getDrawable(R.drawable.bg_edit_solid_gray)
+            et_num.isFocusable=false
+            et_num.isFocusableInTouchMode=false
+        }
 
+
+    }
+
+    private fun setEarningsView(s:String)
+    {
+        val mul = BigDecimalUtil.mul(price, rate, 4)
+        val div = BigDecimalUtil.div(s, price, 4)
+        val mul1 = BigDecimalUtil.mul(mul, div, 4)
+        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(mul1, "0.7", 4) + "FIL"
     }
 
     private var mPasswordDialog: SafeCheckDialog? = null
@@ -120,11 +128,21 @@ class ZujieActivity : BaseActivity(), IContractView.HomeView, TextWatcher, ICont
                     SToast.showText("请输入数量")
                     return@setOnClickListener
                 }
-               if (et_num.text.toString().toDouble()<100)
-               {
-                   SToast.showText("最低充值100USDT")
-                   return@setOnClickListener
-               }
+
+                if (produce!!.rent_type.equals("0"))
+                {
+                    if (et_num.text.toString().toDouble()<100)
+                    {
+                        SToast.showText("最低充值100USDT")
+                        return@setOnClickListener
+                    }
+                    if (et_num.text.toString().toDouble()>amount.toDouble())
+                    {
+                        SToast.showText("充值不能超过$amount USDT")
+                        return@setOnClickListener
+                    }
+                }
+
 
                 if (TextUtils.isEmpty(et_name.text.toString())) {
                     SToast.showText("请输入真实姓名")

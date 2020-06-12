@@ -41,6 +41,7 @@ public class Home implements Serializable {
             public String power;
             public String status;
             public String outcome_coin;
+            public String rent_type;
             public String rate;
             public String created_at;
             public String updated_at;

@@ -15,11 +15,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/safe"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/mToolBar"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
         android:background="#ffffff">
 
         <TextView
@@ -27,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text="@string/safe_center"
-            android:textColor="#333333"
-            android:textSize="17sp"
+            android:textColor="@color/color_666666"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,11 +45,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rl_version"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/safe"
-        android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
         android:background="#ffffff">
 
         <TextView
@@ -59,8 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text="@string/version_code"
-            android:textColor="#333333"
-            android:textSize="17sp"
+            android:textColor="@color/color_666666"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -83,17 +79,16 @@
     <TextView
         android:id="@+id/tv_logout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:gravity="center"
         android:text="退出登录"
-
         android:background="@drawable/bg_red_solid_5dp_coner"
         android:textColor="@color/color_white"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="160dp"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
 
 </RelativeLayout>

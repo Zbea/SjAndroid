@@ -7,7 +7,6 @@ import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.res.Configuration
 import android.util.DisplayMetrics
-import com.hazz.kuangji.ui.fragment.CoinFragment
 
 /**
  * 通过修改系统参数来适配android设备 ,屏幕适配方案

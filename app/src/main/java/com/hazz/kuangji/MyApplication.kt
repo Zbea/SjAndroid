@@ -43,11 +43,7 @@ class MyApplication : Application(){
 
         SPUtil.init(this)
         SToast.initToast(this)
-        //腾讯bugly
-        Beta.canShowUpgradeActs.add(MainActivity::class.java)
-        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
-        Beta.autoCheckUpgrade = true
-        Bugly.init(getApplicationContext(), "9e1bc2b87d", false)
+
     }
 
 

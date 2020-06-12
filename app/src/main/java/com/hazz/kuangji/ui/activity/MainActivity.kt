@@ -2,7 +2,6 @@ package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.RadioGroup
@@ -10,15 +9,22 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.hazz.kuangji.R
+import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.events.Index
+import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.presenter.MainPresenter
+import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.fragment.*
 import com.hazz.kuangji.utils.RxBus
 import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
 
 
-class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
+class MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
 
+    private var mainPresenter=MainPresenter(this)
 
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
@@ -34,11 +40,14 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        setContentView(R.layout.activity_main_ruoyu_new)
-        // mPresenter= AppNewVersionPresenter(this)
+    override fun layoutId(): Int {
+        return R.layout.activity_main_ruoyu_new
+    }
+
+    override fun initData() {
+    }
+
+    override fun initView() {
         initFragment()
         mRG.setOnCheckedChangeListener(this)
         RxBus.get().observerOnMain(this,Index::class.java) {
@@ -46,20 +55,24 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             mRbMining.isChecked = true
         }
 
+        //腾讯bugly
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
+        Beta.autoCheckUpgrade = true
+        Bugly.init(this, "9e1bc2b87d", false)
     }
 
-    override fun onResume() {
-        super.onResume()
-        // mPresenter.getAppVersion(SPUtils.getLanguage(this),"android")
+    override fun start() {
+//        mainPresenter.getTest()
     }
 
 
     private fun initFragment() {
         mFragments = ArrayList()
         mFragments.add(HomeFragment())
-        mFragments.add(HangqingFragment())
+        mFragments.add(MillFragment())
         mFragments.add(ZichanFragment())
-        mFragments.add(CoinFragment())
+        mFragments.add(CoinMarketFragment())
         mFragments.add(MineFragment())
         supportFragmentManager.beginTransaction()
             .replace(R.id.mFrame, mFragments[0], mFragments[0]::class.java.simpleName)
@@ -151,4 +164,6 @@ class MainActivity : AppCompatActivity(), RadioGroup.OnCheckedChangeListener {
             mFragment.onActivityResult(requestCode, resultCode, data)
         }
     }
+
+
 }

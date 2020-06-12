@@ -1,11 +1,13 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Node
 import com.hazz.kuangji.mvp.model.bean.Shenfen
+import com.hazz.kuangji.mvp.model.bean.UploadModel
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
@@ -25,7 +27,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mPhotoDialog :PhotoDialog?=null;
 
     override fun getShenfen(msg: Shenfen) {
-
+        activity?.let { GlideEngine.createGlideEngine().loadImage(it,Constants.URL_INVITE+msg.profile_img,iv_header) }
         when (msg.level) {
             "总裁" -> iv_type.setImageResource(R.mipmap.zongcai)
             "初级矿商" -> iv_type.setImageResource(R.mipmap.chuji)
@@ -37,6 +39,10 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
         }
 
+    }
+
+    override fun setHeader(msg: UploadModel) {
+        activity?.let { GlideEngine.createGlideEngine().loadImage(it,Constants.URL_INVITE+msg.path,iv_header) }
     }
 
 
@@ -96,7 +102,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         mNodePresenter.getShenfen()
     }
 
-    fun showPhotoDialog()
+    private fun showPhotoDialog()
     {
         mPhotoDialog= PhotoDialog(activity)
         mPhotoDialog?.run {
@@ -129,6 +135,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         if (requestCode == PictureConfig.CHOOSE_REQUEST) {
             var selectList = PictureSelector.obtainMultipleResult(data)
             var path=selectList?.get(0)?.path
+            if (path != null) {
+                mNodePresenter.upImage(path)
+            }
         }
 
     }

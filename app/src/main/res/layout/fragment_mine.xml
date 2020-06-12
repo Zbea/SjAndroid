@@ -318,15 +318,13 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="175dp" />
 
-            <com.hazz.kuangji.view.RoundImageView
+            <ImageView
                 android:id="@+id/iv_header"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="102dp"
                 android:src="@mipmap/user_default"
-                app:border_inside_color="@color/color_white"
-                app:border_thickness="1dp"
                 />
 
         </RelativeLayout>

@@ -1,5 +1,7 @@
 package com.hazz.kuangji.net
 
+import android.util.Log
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.MyApplication
 import com.hazz.kuangji.api.AiPickService
 import com.hazz.kuangji.utils.AppUtils
@@ -27,7 +29,9 @@ object RetrofitManager{
     val serviceSms: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getSms().create(AiPickService::class.java)
     }
-
+    val serviceTest: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
+        getRetrofitTest().create(AiPickService::class.java)
+    }
 
     private var token:String = SPUtil.getString("token")
 
@@ -55,8 +59,6 @@ object RetrofitManager{
         return Interceptor { chain ->
             val originalRequest = chain.request()
             val requestBuilder = originalRequest.newBuilder()
-                    // Provide your custom header here
-//                    .header("token","aaf4c2afbc1311d78e4d2a42330f701f")
                     .header("token",SPUtil.getString("token"))
                     .method(originalRequest.method(), originalRequest.body())
             val request = requestBuilder.build()
@@ -100,7 +102,7 @@ object RetrofitManager{
     private fun getRetrofit(): Retrofit {
         // 获取retrofit的实例
         return Retrofit.Builder()
-                .baseUrl(UrlPaths.URL_BASE)  //自己配置
+                .baseUrl(Constants.URL_BASE)  //自己配置
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -110,17 +112,29 @@ object RetrofitManager{
     private fun getRetrofitNew(): Retrofit {
         // 获取retrofit的实例
         return Retrofit.Builder()
-                .baseUrl(UrlPaths.URL_NEW_BASE)  //自己配置
+                .baseUrl(Constants.URL_NEW_BASE)  //自己配置
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
     }
+
+    private fun getRetrofitTest(): Retrofit {
+        // 获取retrofit的实例
+        return Retrofit.Builder()
+                .baseUrl(Constants.URL_TEST)  //自己配置
+                .client(getOkHttpClient())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+    }
+
     private fun getSms(): Retrofit {
         // 获取retrofit的实例
         return Retrofit.Builder()
-                .baseUrl(UrlPaths.URL_INVITE)  //自己配置
+                .baseUrl(Constants.URL_INVITE)  //自己配置
                 .client(getOkHttpClient())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
@@ -132,9 +146,10 @@ object RetrofitManager{
 
     private fun getOkHttpClient(): OkHttpClient {
         //添加一个log拦截器,打印所有的log
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger { message -> Log.i("response", message+"\n\n") })
         //可以设置请求过滤的水平,body,basic,headers
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
 
         //设置 请求的缓存的大小跟位置
         val cacheFile = File(MyApplication.context.cacheDir, "cache")

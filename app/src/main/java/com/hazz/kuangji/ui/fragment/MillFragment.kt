@@ -10,9 +10,9 @@ import com.hazz.kuangji.mvp.presenter.KuangjiPresenter
 import com.hazz.kuangji.ui.adapter.CoinAdapter
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
-import kotlinx.android.synthetic.main.fragment_hangqing.*
+import kotlinx.android.synthetic.main.fragment_mill.*
 
-class HangqingFragment : BaseFragment(), IContractView.kuangjiView {
+class MillFragment : BaseFragment(), IContractView.kuangjiView {
     override fun getMingxi(msg: Mingxi) {
 
     }
@@ -33,12 +33,12 @@ class HangqingFragment : BaseFragment(), IContractView.kuangjiView {
     private var mAdapter: CoinAdapter?=null
     private var list: MutableList<String>? = mutableListOf()
     override fun getLayoutId(): Int {
-        return R.layout.fragment_hangqing
+        return R.layout.fragment_mill
     }
 
     override fun initView() {
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
-        mAdapter = CoinAdapter(R.layout.item_kuangji, null)
+        mAdapter = CoinAdapter(R.layout.item_mill, null)
         recycle_view.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(recycle_view)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)

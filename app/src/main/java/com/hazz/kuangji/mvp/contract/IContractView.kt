@@ -13,6 +13,10 @@ import com.hazz.kuangji.net.BaseView
  */
 interface IContractView {
 
+    interface MainView: BaseView {
+
+    }
+
     interface LoginView: BaseView {
 
         fun loginSuccess(msg:UserInfo)
@@ -35,6 +39,7 @@ interface IContractView {
 
         fun getNode(msg:Node)
         fun getShenfen(msg:Shenfen)
+        fun setHeader(msg:UploadModel)
     }
 
     interface TibiView: BaseView {
@@ -82,24 +87,30 @@ interface IContractView {
 
     //一键买入
     interface IExchangeBuyView: BaseView {
-
+        fun getExchange(data: Exchange)
+        fun commitOrder(data: ExchangeOrder)
     }
     //一键买入订单详情
     interface IExchangeOrderBuyView: BaseView {
-
-
-
+        fun getOrder(data: ExchangeOrder)
+        fun cancelOrder()
+        fun commitPay()
     }
 
     //交易记录
     interface IExchangeRecordView: BaseView {
-        fun setListView(data:ExchangeRecordBean)
+        fun setListView(data:List<ExchangeRecord>)
+    }
+
+    //一键买入
+    interface IExchangeSaleView: BaseView {
+        fun getExchange(data: Exchange)
+        fun commit(data: ExchangeOrder)
     }
 
     //币币兑换
     interface IExchangeCoinView: BaseView {
-
-
-
+        fun getExchange(data: Exchange)
+        fun commitCoin()
     }
 }
