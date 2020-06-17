@@ -16,6 +16,19 @@ import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_exchange_buy.*
+import kotlinx.android.synthetic.main.activity_exchange_buy.et_num
+import kotlinx.android.synthetic.main.activity_exchange_buy.iv_bank_cb
+import kotlinx.android.synthetic.main.activity_exchange_buy.iv_wx_cb
+import kotlinx.android.synthetic.main.activity_exchange_buy.iv_zfb_cb
+import kotlinx.android.synthetic.main.activity_exchange_buy.ll_bank
+import kotlinx.android.synthetic.main.activity_exchange_buy.ll_wx
+import kotlinx.android.synthetic.main.activity_exchange_buy.ll_zfb
+import kotlinx.android.synthetic.main.activity_exchange_buy.rg_buy
+import kotlinx.android.synthetic.main.activity_exchange_buy.tv_commit
+import kotlinx.android.synthetic.main.activity_exchange_buy.tv_edit_title
+import kotlinx.android.synthetic.main.activity_exchange_buy.tv_price
+import kotlinx.android.synthetic.main.activity_exchange_buy.tv_price_total
+import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.rule.mToolBar
 
 class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
@@ -33,6 +46,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
         currentPrice=data.usdtPrice
         amount=data.usdtNum
         tv_price.text="￥"+currentPrice
+        tv_amount.text=amount
     }
 
     override fun commit(data: ExchangeOrder) {
@@ -70,7 +84,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 }
 
         rg_buy.setOnCheckedChangeListener { group, checkedId ->
-
+            clearView()
             if (checkedId==R.id.rb_left)
             {
                 tv_edit_title.text="USDT"
@@ -78,6 +92,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 amount=data.usdtNum
                 currentPrice=data.usdtPrice
                 tv_price.text="￥"+currentPrice
+                tv_amount.text=amount
             }
             if (checkedId==R.id.rb_right)
             {
@@ -86,6 +101,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 amount=data.filNum
                 currentPrice=data.filPrice
                 tv_price.text="￥"+currentPrice
+                tv_amount.text=amount
             }
 
         }
@@ -120,13 +136,14 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 SToast.showText("卖出数量不能超过自己拥有的数量")
                 return@setOnClickListener
             }
-            val intent=Intent(this,ExchangeOrderSaleDetailsActivity::class.java)
+            val intent=Intent(this,ExchangeOrderSaleCommitActivity::class.java)
             intent.putExtra("price",currentPrice)
             intent.putExtra("amount",et_num.text.toString())
             intent.putExtra("money",money)
             intent.putExtra("typePay",typePay)
             intent.putExtra("typeCoin",typeCoin)
             startActivity(intent)
+            clearView()
         }
 
     }
@@ -136,6 +153,15 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
     override fun start() {
         mMineExchangePresenter.getExchange()
     }
+
+
+    //清空输入的内容
+    fun clearView()
+    {
+        tv_price_total.text=""
+        et_num.setText("")
+    }
+
 
     fun setCbView(cbView : ImageView)
     {

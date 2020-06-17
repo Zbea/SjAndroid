@@ -1,5 +1,7 @@
 package com.hazz.kuangji
 
+import android.os.Environment
+
 //  ┏┓　　　┏┓
 //┏┛┻━━━┛┻┓
 //┃　　　　　　　┃
@@ -25,7 +27,7 @@ class Constants private constructor() {
 
     companion object {
 
-        val BUNDLE_VIDEO_DATA = "video_data"
+        val BUNDLE_IMAGE_DATA = "/image_data/"
         val BUNDLE_CATEGORY_DATA = "category_data"
 
         //腾讯 Bugly APP id
@@ -38,12 +40,13 @@ class Constants private constructor() {
         val FILE_COLLECTION_NAME = "collection_file"    //收藏视屏缓存的文件名
 
         const val URL_TEST = "http://192.168.1.13:5000/"
-        const val URL_NEW_BASE = "http://192.168.1.116:5000/"
-        const val URL_BASE = "http://192.168.1.116/api/"
-        const val URL_INVITE = "http://192.168.1.116/"
-//  const val URL_BASE = "http://app.sjyminer.com/api/"
-//    const val URL_NEW_BASE = "http://app.sjyminer.com:5000/"
-// const val URL_INVITE = "http://app.sjyminer.com/"
+
+//        const val URL_NEW_BASE = "http://192.168.1.116:5000/"
+//        const val URL_BASE = "http://192.168.1.116/api/"
+//        const val URL_INVITE = "http://192.168.1.116/"
+        const val URL_BASE = "http://app.sjyminer.com/api/"
+        const val URL_NEW_BASE = "http://app.sjyminer.com:5000/"
+        const val URL_INVITE = "http://app.sjyminer.com/"
 
     }
 
@@ -56,10 +59,12 @@ enum class LanguageType(var value: String) {
      * 中文 简体
      */
     LG_SIMPLIFIED_CHINESE("zh_CN"),
+
     /**
      * 中文 繁体
      */
     LG_TRADITIONAL_CHINESE("zh_TW"),
+
     /**
      * 英语
      */

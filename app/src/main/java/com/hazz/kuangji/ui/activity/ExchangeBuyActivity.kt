@@ -34,6 +34,8 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
     }
 
     override fun commitOrder(data: ExchangeOrder) {
+        tv_price_total.text=""
+        et_num.setText("")
         var intent=Intent(this,ExchangeOrderBuyDetailsActivity::class.java)
         intent.putExtra("code",data.order_code)
         startActivity(intent)
@@ -42,7 +44,7 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
     var textWatcher=object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 money=BigDecimalUtil.mul(s.toString(),currentPrice)
-                tv_price_total.text=money
+                tv_price_total.text="￥"+money
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -72,7 +74,8 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
                 }
 
         rg_buy.setOnCheckedChangeListener { group, checkedId ->
-
+            tv_price_total.text=""
+            et_num.setText("")
             if (checkedId==R.id.rb_left)
             {
                 tv_edit_title.text="USDT"
@@ -130,7 +133,6 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
         iv_bank_cb.setImageResource(R.mipmap.icon_cb_nor)
         cbView.setImageResource(R.mipmap.icon_cb_select)
     }
-
 
 
 }

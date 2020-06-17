@@ -25,10 +25,11 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
     private lateinit var amount:String
     private lateinit var amountRate:String
     private lateinit var rate:String
+    private lateinit var max:String
 
     override fun getExchange(data: Exchange) {
         mData=data
-
+        max=mData.usdtNum
         rate=mData.usdtrate
 
         tv_u_f.text="$uStr  转  $fStr"
@@ -48,6 +49,8 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
 
     override fun commitCoin() {
         SToast.showText("兑换成功")
+        et_count_usdt.setText("")
+        tv_num_fil.text=""
     }
 
     override fun layoutId(): Int {
@@ -72,12 +75,14 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
             override fun afterTextChanged(s: Editable?) {
                 var max=if (type=="UTOF")mData.usdtNum else mData.filNum
 
-                amount = if (BigDecimalUtil.compare(s.toString(),max)==1) {
-                    max
-                } else{
-                    s.toString()
-                }
-                amountRate=BigDecimalUtil.mul(s.toString(),rate)
+//                amount = if (BigDecimalUtil.compare(s.toString(),max)==1) {
+//                    SToast.showText("不能超过自己的库存")
+//                    return
+//                } else{
+//                    s.toString()
+//                }
+                amount=s.toString()
+                amountRate=BigDecimalUtil.mul(amount,rate)
                 tv_num_fil.text=amountRate
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -92,8 +97,11 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
             tv_num_fil.text=""
             if (type=="UTOF")
             {
+//                et_count_usdt.setFilters(arrayOf<InputFilter>(InputFilterMinMax("1", mData.filNum)))
                 type="FTOU"
                 rate=mData.filrate
+                max=mData.filNum
+
                 tv_u_f.text="$fStr  转  $uStr"
                 tv_usdt.text="$fStr"
                 tv_price_usdt_title.text="$fStr 单价："
@@ -109,8 +117,10 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
             }
             else
             {
+//                et_count_usdt.setFilters(arrayOf<InputFilter>(InputFilterMinMax("1", mData.usdtNum)))
                 type="UTOF"
                 rate=mData.usdtrate
+                max=mData.usdtNum
 
                 tv_u_f.text="$uStr  转  $fStr"
                 tv_usdt.text="$uStr"
@@ -128,6 +138,16 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
         }
 
         tv_commit.setOnClickListener {
+            if (BigDecimalUtil.compare(amount,max)==1)
+            {
+                SToast.showText("卖出不能超过自己的库存")
+                return@setOnClickListener
+            }
+            if (amount.toInt()<=0)
+            {
+                SToast.showText("卖出必须大于0")
+                return@setOnClickListener
+            }
             mMineExchangeCoinPresenter.commitExchangeCoin(type,amount,amountRate)
         }
 

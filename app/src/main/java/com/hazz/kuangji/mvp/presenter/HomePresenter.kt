@@ -24,7 +24,7 @@ class HomePresenter(view: IContractView.HomeView) : BasePresenter<IContractView.
             }
 
             override fun success(tBaseResult: BaseResult<Home>) {
-                view.getHome(tBaseResult.data!!)
+                tBaseResult.data?.let { view.getHome(it) }
                 Log.i("sj",Gson().toJson(tBaseResult))
             }
 

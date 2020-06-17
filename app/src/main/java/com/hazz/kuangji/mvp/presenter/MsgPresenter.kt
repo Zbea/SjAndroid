@@ -21,7 +21,7 @@ class MsgPresenter(view: IContractView.MsgView) : BasePresenter<IContractView.Ms
             }
 
             override fun success(tBaseResult: BaseResult<List<Msg>>) {
-                view.getMsg(tBaseResult.data!!)
+                tBaseResult.data?.let { view.getMsg(it) }
             }
 
         }, true)

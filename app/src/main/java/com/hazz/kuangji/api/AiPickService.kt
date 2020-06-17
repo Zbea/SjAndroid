@@ -258,7 +258,17 @@ interface AiPickService{
      */
     @GET("accounts/v0/trans/{type}/{amount1}/{amount2}")
     fun commitExchange(@Path("type" ) type:String, @Path("amount1" ) amount1:String, @Path("amount2" ) amount2:String): Observable<BaseResult<Any>>
+    /**
+     * 获取卖币订单
+     */
+    @POST("get_order_detail")
+    fun getOrderSale(@Query("order_code" ) type:String): Observable<BaseResult<ExchangeOrder>>
 
+    /**
+     * 取消卖币订单
+     */
+    @POST("cancel_order")
+    fun cancelOrderSale(@Query("order_code" ) type:String): Observable<BaseResult<Any>>
     /**
      * 兑换明细
      */

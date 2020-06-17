@@ -44,8 +44,8 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
         StatusBarUtil.darkMode(this)
         mDialog = ProgressDialog(this)
         initView()
-        start()
         initData()
+        start()
         initListener()
 
         permissionsnew = RxPermissions(this)

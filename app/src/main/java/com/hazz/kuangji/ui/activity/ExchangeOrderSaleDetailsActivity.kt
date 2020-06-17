@@ -1,47 +1,78 @@
 package com.hazz.kuangji.ui.activity
 
-import android.content.Intent
-import android.net.Uri
-import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
 import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
-import com.hazz.kuangji.mvp.presenter.ExchangeSalePresenter
+import com.hazz.kuangji.mvp.presenter.ExchangeOrderSaleDetailsPresenter
+import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
-import com.hazz.kuangji.widget.PhotoDialog
-import com.luck.picture.lib.PictureSelector
-import com.luck.picture.lib.config.PictureConfig
-import com.luck.picture.lib.config.PictureMimeType
+import com.hazz.kuangji.widget.CommonDialog
 import kotlinx.android.synthetic.main.activity_exchange_order_sale_details.*
-import kotlinx.android.synthetic.main.activity_exchange_sale.tv_price
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.iv_qrcode
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.ll_pay
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.ll_pay_bank
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_num
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_payee_type
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_details.tv_commit
 import kotlinx.android.synthetic.main.rule.mToolBar
-import java.io.File
 
-class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchangeSaleView, View.OnClickListener {
+class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchangeSaleDetailsView{
 
-    private lateinit var price: String
-    private lateinit var amount: String
-    private lateinit var money: String
-    private lateinit var typePay: String
-    private lateinit var typeCoin: String
-    private lateinit var path: String
-    private var mExchangeSalePresenter = ExchangeSalePresenter(this)
-    private var mPhotoDialog: PhotoDialog? = null;
+    private lateinit var code: String
+    private var mExchangeSalePresenter = ExchangeOrderSaleDetailsPresenter(this)
 
-    override fun getExchange(data: Exchange) {
+    override fun getOrder(data: ExchangeOrder) {
+        tv_order_number.text = data.order_code
+        tv_date.text = data.create_at
+        tv_num.text = data.num+data.type.toUpperCase()
+        tv_total.text = "￥" + BigDecimalUtil.mul(data.num,data.price)
 
+        when (data.status) {
+            0 -> {
+                data.state = "处理中"
+            }
+            else -> {
+                data.state = "已完成"
+                ll_bottom.visibility = View.GONE
+            }
+        }
+        tv_order_state.text = data.state
+
+        when (data.typePay) {
+            "wx" -> {
+                ll_pay.visibility = View.VISIBLE
+                ll_pay_bank.visibility = View.GONE
+                tv_payee_type.text="微信收款"
+                GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+data.wx_url, iv_qrcode)
+            }
+            "zfb" -> {
+                ll_pay.visibility = View.VISIBLE
+                ll_pay_bank.visibility = View.GONE
+                tv_payee_type.text="支付宝收款"
+                GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+data.zfb_url, iv_qrcode)
+            }
+            "bank" -> {
+                ll_pay.visibility = View.GONE
+                ll_pay_bank.visibility = View.VISIBLE
+                tv_payee_type.text="银行转账"
+                tv_bank_card.text = data.bank_code
+                tv_bank_name.text = data.payee
+                tv_bank_type.text = data.bank_name
+            }
+        }
     }
 
-    override fun commit(data: ExchangeOrder) {
-        SToast.showText("提交订单成功")
-        finish()
+    override fun cancelOrder() {
+        ll_bottom.visibility = View.GONE
+        SToast.showText("取消订单成功")
     }
+
 
     override fun layoutId(): Int {
         return R.layout.activity_exchange_order_sale_details
@@ -50,111 +81,38 @@ class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchange
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
-                .setTitle("卖币信息详情")
+                .setTitle("卖币订单详情")
                 .setToolBarBgRescource(R.drawable.bg_hangqing)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { finish() }
 
-        tv_upload.setOnClickListener(this)
-        tv_commit1.setOnClickListener(this)
+        tv_commit.setOnClickListener{
+            var commonDialog = CommonDialog(this)
+            commonDialog?.run {
+                setContent("确定取消订单?")
+                setDialogClickListener(object : CommonDialog.DialogClickListener {
+                    override fun ok() {
+                        mExchangeSalePresenter.cancelOrder(code)
+                    }
+                    override fun cancel() {
+                    }
+                })
+                builder()
+                show()
+            }
+        }
     }
 
     override fun initData() {
-        price = intent.getStringExtra("price")
-        money = intent.getStringExtra("money")
-        amount = intent.getStringExtra("amount")
-        typePay = intent.getStringExtra("typePay")
-        typeCoin = intent.getStringExtra("typeCoin")
-
-        tv_price.text = "￥" + price
-        tv_num.text = amount
-        tv_total.text = "￥" + money
-
-        when (typePay) {
-            "wx" -> {
-                tv_payee_type.text = "微信收款"
-                ll_pay.visibility = View.VISIBLE
-                ll_pay_bank.visibility = View.GONE
-            }
-            "zfb" -> {
-                tv_payee_type.text = "支付宝收款"
-                ll_pay.visibility = View.VISIBLE
-                ll_pay_bank.visibility = View.GONE
-            }
-            else -> {
-                tv_payee_type.text = "银行转账"
-                ll_pay.visibility = View.GONE
-                ll_pay_bank.visibility = View.VISIBLE
-            }
-        }
+        code = intent.getStringExtra("code")
     }
 
     override fun start() {
+        mExchangeSalePresenter.getOrder(code)
     }
 
-    override fun onClick(v: View?) {
-        when (v) {
-            tv_upload -> {
-                showPhotoDialog()
-            }
-            tv_commit1 -> {
-                if (typePay == "bank") {
-                    if (TextUtils.isEmpty(et_bank_card.text.toString())) {
-                        SToast.showText("银行卡号不能为空")
-                        return
-                    }
-                    if (TextUtils.isEmpty(et_bank_type.text.toString())) {
-                        SToast.showText("开户行不能为空")
-                        return
-                    }
-                    if (TextUtils.isEmpty(et_bank_name.text.toString())) {
-                        SToast.showText("开户姓名不能为空")
-                        return
-                    }
-                    mExchangeSalePresenter.commitOrder(price, amount,  typePay,typeCoin, et_bank_card.text.toString(), et_bank_name.text.toString(), et_bank_type.text.toString())
-                } else {
-                    mExchangeSalePresenter.commitOrder(path, typeCoin, amount, price, typePay)
-                }
 
-            }
-        }
 
-    }
-
-    private fun showPhotoDialog() {
-        mPhotoDialog = PhotoDialog(this)
-        mPhotoDialog?.run {
-            setDialogClickListener(object : PhotoDialog.DialogClickListener {
-                override fun takePhoto() {
-                    PictureSelector.create(this@ExchangeOrderSaleDetailsActivity)
-                            .openCamera(PictureMimeType.ofImage())
-                            .forResult(PictureConfig.CHOOSE_REQUEST)
-                }
-
-                override fun pickPhoto() {
-                    PictureSelector.create(this@ExchangeOrderSaleDetailsActivity)
-                            .openGallery(PictureMimeType.ofImage()) //全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
-                            .loadImageEngine(GlideEngine.createGlideEngine())
-                            .imageSpanCount(3)// 每行显示个数 int
-                            .selectionMode(PictureConfig.SINGLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
-                            .isCamera(false)
-                            .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
-                }
-            })
-            builder()
-            show()
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PictureConfig.CHOOSE_REQUEST) {
-            var selectList = PictureSelector.obtainMultipleResult(data)
-            path = selectList?.get(0)?.path.toString()
-            iv_qrcode.setImageURI(Uri.fromFile(File(path)))
-        }
-
-    }
 
 
 }

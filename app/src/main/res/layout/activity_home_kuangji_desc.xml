@@ -35,13 +35,11 @@
                 android:textColor="#333333"
                 />
 
-            <TextView
+            <WebView
                 android:id="@+id/tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:lineSpacingExtra="5dp"
-                android:textColor="@color/color_white"
+                android:background="@color/color_translucent"
                 />
             <ImageView
                 android:layout_marginTop="16dp"

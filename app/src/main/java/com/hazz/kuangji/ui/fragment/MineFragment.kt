@@ -1,6 +1,10 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
+import android.os.Environment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -27,7 +31,13 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mPhotoDialog :PhotoDialog?=null;
 
     override fun getShenfen(msg: Shenfen) {
-        activity?.let { GlideEngine.createGlideEngine().loadImage(it,Constants.URL_INVITE+msg.profile_img,iv_header) }
+
+        activity?.let {
+            Glide.with(it).load(Constants.URL_INVITE+msg.profile_img)
+                .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                .into(iv_header)
+        }
+
         when (msg.level) {
             "总裁" -> iv_type.setImageResource(R.mipmap.zongcai)
             "初级矿商" -> iv_type.setImageResource(R.mipmap.chuji)
@@ -42,7 +52,11 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun setHeader(msg: UploadModel) {
-        activity?.let { GlideEngine.createGlideEngine().loadImage(it,Constants.URL_INVITE+msg.path,iv_header) }
+        activity?.let {
+            Glide.with(it).load(Constants.URL_INVITE+msg.path)
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .into(iv_header)
+        }
     }
 
 
@@ -134,9 +148,12 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PictureConfig.CHOOSE_REQUEST) {
             var selectList = PictureSelector.obtainMultipleResult(data)
-            var path=selectList?.get(0)?.path
-            if (path != null) {
-                mNodePresenter.upImage(path)
+            if (selectList.size>0)
+            {
+                var path=selectList?.get(0)?.path
+                if (path != null) {
+                    mNodePresenter.upImage(path)
+                }
             }
         }
 
@@ -144,3 +161,5 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
 
 }
+
+

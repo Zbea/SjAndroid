@@ -59,8 +59,17 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
                 )
         )
         mAdapter?.setOnItemClickListener { adapter, view, position ->
+            if (mDate[position].is_del==1)
+            {
+                return@setOnItemClickListener
+            }
             if (type == 1) {
                 var intent = Intent(this, ExchangeOrderBuyDetailsActivity::class.java)
+                intent.putExtra("code", mDate[position].order_code)
+                startActivity(intent)
+            }
+            if (type == 2) {
+                var intent = Intent(this, ExchangeOrderSaleDetailsActivity::class.java)
                 intent.putExtra("code", mDate[position].order_code)
                 startActivity(intent)
             }

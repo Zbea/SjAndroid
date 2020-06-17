@@ -20,6 +20,7 @@ import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DisplayManager
 import com.hazz.kuangji.utils.DpUtils
 import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.widget.CommonDialog
 import com.hazz.kuangji.widget.GlideImageLoader
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.hazz.kuangji.widget.TipsDialog
@@ -66,6 +67,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         tv_qiandao.setBackgroundResource(R.drawable.bg_gray_solid_5dp_coner)
         tv_qiandao.text = "今日已签到"
         tv_qiandao.isClickable = false
+
         tipsDialog = TipsDialog(activity)
                 .setTitle("提示")
                 .setContent("签到成功,所有矿机开始运行")
@@ -125,6 +127,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     private var mAdapter: HomeAdapter? = null
     private var mHomePresenter: HomePresenter = HomePresenter(this)
     private var tipsDialog: TipsDialog? = null
+    private var commonDialog: CommonDialog? = null
     private var viewsList: MutableList<View>? = mutableListOf()
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
 
@@ -160,16 +163,16 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
         tv_rule.setOnClickListener {
 
+            commonDialog = CommonDialog(activity)
+            commonDialog?.run {
+                setTitle("提示")
+                setContent("5年收益周期内，每日签到都可获得当日的收益。如期间出现漏签、断签等情况，" +
+                        "收益周期会相对应的向后顺延，即保证每位用户都可获得5年的总收益回报。")
+                builder()
+                show()
+            }
 
-            tipsDialog = TipsDialog(activity)
-                    .setTitle("提示")
-                    .setContent("5年收益周期内，每日签到都可获得当日的收益。如期间出现漏签、断签等情况，" +
-                            "收益周期会相对应的向后顺延，即保证每位用户都可获得5年的总收益回报。")
 
-                    .rule()
-
-
-            tipsDialog!!.show()
         }
 
         ll_charge.setOnClickListener {

@@ -49,7 +49,7 @@ class NodePresenter(view: IContractView.NodeView) : BasePresenter<IContractView.
             }
 
             override fun success(tBaseResult: BaseResult<Shenfen>) {
-                view.getShenfen(tBaseResult.data!!)
+                tBaseResult.data?.let { view.getShenfen(it) }
             }
 
         }, true)

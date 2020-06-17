@@ -25,7 +25,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         if(msg.yesterday!=null){
             tv_shouyi.text=msg.yesterday
         }
-        mAdapter!!.setNewData(msg.machine_list.list)
+        mAdapter?.setNewData(msg.machine_list.list)
     }
 
 

@@ -24,7 +24,7 @@ public class PicUtil {
 
         BitmapFactory.Options options = new BitmapFactory.Options();
 
-//      by setting this field as true, the actual bitmap pixels are not loaded in the memory. Just the bounds are loaded. If
+//      by icon_mine_setting this field as true, the actual bitmap pixels are not loaded in the memory. Just the bounds are loaded. If
 //      you try the use the bitmap here, you will get null.
         options.inJustDecodeBounds = true;
         Bitmap bmp = BitmapFactory.decodeFile(filePath, options);
@@ -57,7 +57,7 @@ public class PicUtil {
             }
         }
 
-//      setting inSampleSize value allows to load bb scaled down version of the original image
+//      icon_mine_setting inSampleSize value allows to load bb scaled down version of the original image
 
         options.inSampleSize = calculateInSampleSize(options, actualWidth, actualHeight);
 

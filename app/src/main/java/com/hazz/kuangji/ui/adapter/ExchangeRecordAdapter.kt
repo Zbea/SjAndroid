@@ -16,29 +16,39 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
         helper.run {
             setText(R.id.tv_order_number, item.order_code)
             setText(R.id.tv_order_date, item.create_at)
-            setText(R.id.tv_order_number_name, if (item.transaction_type=="1")"买入数量：" else "卖出数量：")
-            setText(R.id.tv_order_number_num, item.num)
-            setText(R.id.tv_order_money, "￥"+item.money)
+            setText(R.id.tv_order_number_name, if (item.transaction_type == "1") "买入数量：" else "卖出数量：")
+            setText(R.id.tv_order_number_num, item.num+item.typcoin)
+            setText(R.id.tv_order_money, "￥" + item.money)
 
-            when(item.status)
+            if (item.is_del==1)
             {
-                 "0"->
-                {
-                    setText(R.id.tv_state, "待付款")
-                    setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4) )
-                }
+                setText(R.id.tv_state, "已取消")
+                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_666666))
+            }
+            else
+            {
+                when (item.status) {
+                    "0" -> {
+                        if (item.transaction_type == "2") {
+                            setText(R.id.tv_state, "处理中")
+                            setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+                        } else {
+                            if (item.is_pay == "0") {
+                                setText(R.id.tv_state, "待付款")
+                                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
+                            } else {
+                                setText(R.id.tv_state, "处理中")
+                                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+                            }
+                        }
 
-                "1" ->
-                {
-                    setText(R.id.tv_state, "处理中")
-                    setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow) )
-                }
-                else ->                 {
-                    setText(R.id.tv_state, "已完成")
-                    setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue) )
+                    }
+                    else -> {
+                        setText(R.id.tv_state, "已完成")
+                        setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                    }
                 }
             }
-
         }
     }
 

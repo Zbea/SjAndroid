@@ -24,7 +24,7 @@ class ZichanPresenter(view: IContractView.ZichanView) : BasePresenter<IContractV
             }
 
             override fun success(tBaseResult: BaseResult<MyAsset>) {
-                view.myAsset(tBaseResult.data!!)
+                tBaseResult.data?.let { view.myAsset(it) }
             }
 
         }, true)

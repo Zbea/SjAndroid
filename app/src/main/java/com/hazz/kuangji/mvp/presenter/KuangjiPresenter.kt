@@ -25,7 +25,7 @@ class KuangjiPresenter(view: IContractView.kuangjiView) : BasePresenter<IContrac
             }
 
             override fun success(tBaseResult: BaseResult<Kuangji>) {
-                view.getKuangji(tBaseResult.data!!)
+                tBaseResult.data?.let { view.getKuangji(it) }
             }
 
         }, false)

@@ -102,10 +102,16 @@ interface IContractView {
         fun setListView(data:List<ExchangeRecord>)
     }
 
-    //一键买入
+    //一键卖出
     interface IExchangeSaleView: BaseView {
         fun getExchange(data: Exchange)
         fun commit(data: ExchangeOrder)
+    }
+
+    //一键卖出
+    interface IExchangeSaleDetailsView: BaseView {
+        fun getOrder(data: ExchangeOrder)
+        fun cancelOrder()
     }
 
     //币币兑换

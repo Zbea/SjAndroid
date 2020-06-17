@@ -131,7 +131,7 @@ class ExchangeSalePresenter(view:IContractView.IExchangeSaleView) : BasePresente
             }
 
             override fun success(tBaseResult: BaseResult<ExchangeOrder>) {
-
+                tBaseResult.data?.let { view.commit(it) }
             }
 
         }, true)

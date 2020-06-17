@@ -7,6 +7,8 @@ import android.graphics.Bitmap
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.hazz.kuangji.R
@@ -34,16 +36,23 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
         tv_order_number.text = mData.order_code
         tv_order_date.text = mData.create_at
         tv_price.text = "￥" + mData.price
-        tv_num.text = mData.num
+        tv_num.text = mData.num+mData.typcoin
         tv_price_total.text = "￥" + mData.money
 
         tv_commit.visibility = if (mData.is_pay == 0) View.VISIBLE else View.GONE
 
         when (mData.status) {
-            0 -> mData.state = "待付款"
-            1 -> {
-                mData.state = "处理中"
-                ll_bottom.visibility = View.GONE
+            0 -> {
+                if (mData.is_pay==0)
+                {
+                    mData.state = "待付款"
+                    ll_bottom.visibility = View.VISIBLE
+                }
+                else
+                {
+                    mData.state = "处理中"
+                    ll_bottom.visibility = View.GONE
+                }
             }
             else -> {
                 mData.state = "已完成"
@@ -52,31 +61,34 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
         }
         tv_order_state.text = mData.state
 
+        var requestOptions=RequestOptions()
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+        requestOptions.skipMemoryCache(true)
+
         when (mData.pay_type) {
             "wx" -> {
                 ll_pay.visibility = View.VISIBLE
                 ll_pay_bank.visibility = View.GONE
                 tv_pay_title.text = "微信付款二维码"
-                Glide.with(this).asBitmap().load(mData.wx).into(object : SimpleTarget<Bitmap?>() {
+
+                Glide.with(this).asBitmap().load(mData.wx).apply(requestOptions).into(object : SimpleTarget<Bitmap?>() {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
                         bitmap=resource
                         iv_qrcode.setImageBitmap(resource)
                     }
                 })
-//                GlideEngine.createGlideEngine().loadImage(this, mData.wx, iv_qrcode)
             }
             "zfb" -> {
                 ll_pay.visibility = View.VISIBLE
                 ll_pay_bank.visibility = View.GONE
                 tv_pay_title.text = "支付宝付款二维码"
 
-                Glide.with(this).asBitmap().load(mData.zfb).into(object : SimpleTarget<Bitmap?>() {
+                Glide.with(this).asBitmap().load(mData.zfb).apply(requestOptions).into(object : SimpleTarget<Bitmap?>() {
                     override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
                         bitmap=resource
                         iv_qrcode.setImageBitmap(resource)
                     }
                 })
-//                GlideEngine.createGlideEngine().loadImage(this, mData.zfb, iv_qrcode)
             }
             "bank" -> {
                 ll_pay.visibility = View.GONE
@@ -92,7 +104,7 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
 
     override fun cancelOrder() {
         SToast.showText("取消订单成功")
-        finish()
+        ll_bottom.visibility=View.GONE
     }
 
     override fun commitPay() {

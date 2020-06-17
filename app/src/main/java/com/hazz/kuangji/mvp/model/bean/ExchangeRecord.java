@@ -27,7 +27,7 @@ public class ExchangeRecord {
     public String usdt_num;
     public String money;
     public String typcoin;
-
+    public int is_del;
 
     /**
      * amount2 : 14.0

@@ -128,7 +128,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:drawableLeft="@mipmap/shouyi"
+                            android:drawableLeft="@mipmap/icon_mine_shouyi"
                             android:drawablePadding="15dp"
                             android:gravity="center"
                             android:text="我的收益"
@@ -157,7 +157,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:drawableLeft="@mipmap/yaoqing"
+                            android:drawableLeft="@mipmap/icon_mine_yaoqing"
                             android:drawablePadding="15dp"
                             android:gravity="center"
                             android:text="我的邀请"
@@ -187,7 +187,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:drawableLeft="@mipmap/jiedian"
+                            android:drawableLeft="@mipmap/icon_mine_jiedian"
                             android:drawablePadding="15dp"
                             android:gravity="center"
                             android:text="我的团队"
@@ -252,7 +252,7 @@
                             android:id="@+id/iv"
                             android:layout_width="27dp"
                             android:layout_height="27dp"
-                            android:src="@mipmap/us" />
+                            android:src="@mipmap/icon_mine_us" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -289,7 +289,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:drawableLeft="@mipmap/setting"
+                            android:drawableLeft="@mipmap/icon_mine_setting"
                             android:drawablePadding="15dp"
                             android:gravity="center"
                             android:text="账号设置"
