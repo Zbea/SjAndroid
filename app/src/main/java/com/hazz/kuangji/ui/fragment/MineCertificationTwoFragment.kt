@@ -111,6 +111,7 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                 mCertification.front=frontPath
                 mCertification.opposite=oppositePath
 
+
                 fragmentManager?.beginTransaction()
                         ?.replace(R.id.fl_content, MineCertificationThreeFragment().newInstance(mCertification))
                         ?.addToBackStack(null)
