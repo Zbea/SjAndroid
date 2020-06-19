@@ -9,7 +9,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
-class ExchangeSalePresenter(view:IContractView.IExchangeSaleView) : BasePresenter<IContractView.IExchangeSaleView>(view) {
+class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresenter<IContractView.IExchangeSaleView>(view) {
 
     fun getExchange() {
 
@@ -32,15 +32,19 @@ class ExchangeSalePresenter(view:IContractView.IExchangeSaleView) : BasePresente
     }
 
 
-    fun commitOrder(file:String,typeCoin:String,num:String,price:String,typePay:String) {
+    fun commitOrder(file: String, typeCoin: String, num: String, price: String, typePay: String) {
 
 
         var fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), File(file));
+        var requestBody = MultipartBody.Part.createFormData("file", "image.png", fileBody)
 
-        var requestBody = MultipartBody.Part.createFormData("file",  "image.png", fileBody)
+        var map = HashMap<String, String>()
+        map["typeCoin"] = typeCoin
+        map["num"] = num
+        map["price"] = price
+        map["typePay"] = typePay
 
-
-        val exchange = RetrofitManager.service.commitOrderSale(price,num,typePay,typeCoin,requestBody)
+        val exchange = RetrofitManager.service.commitOrderSale(map, requestBody)
 
         doRequest(exchange, object : Callback<ExchangeOrder>(view) {
 
@@ -59,68 +63,18 @@ class ExchangeSalePresenter(view:IContractView.IExchangeSaleView) : BasePresente
     }
 
 
-//    fun commitOrder(file:String,typeCoin:String,num:String,price:String,typePay:String) {
-//
-//        var fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), File(file));
-//        var requestBody = MultipartBody.Part.createFormData("file",  "image.png", fileBody)
-//
-//        var parts: List<MultipartBody.Part> = ArrayList()
-//        parts.toMutableList()
-//        parts
-//
-//        val body = RequestUtils.getBody(
-//
-//                Pair.create<Any, Any>("typeCoin", typeCoin),
-//                Pair.create<Any, Any>("num", num),
-//                Pair.create<Any, Any>("price", price),
-//                Pair.create<Any, Any>("typePay", typePay)
-//
-//        )
-//
-////        var fileBody = RequestBody.create(MediaType.parse("image/*"), File(file));
-////        var requestBody = MultipartBody.Builder()
-////                .setType(MultipartBody.FORM)
-////                .addFormDataPart("typeCoin", typeCoin)
-////                .addFormDataPart("num", num)
-////                .addFormDataPart("price", price)
-////                .addFormDataPart("typePay", typePay)
-////                .addFormDataPart("file", if (typePay=="wx") "微信收款二维码.png" else "支付宝收款二维码.png", fileBody)
-//
-//
-//        val exchange = RetrofitManager.service.commitOrderSale(body,requestBody)
-//
-//        doRequest(exchange, object : Callback<ExchangeOrder>(view) {
-//
-//
-//            override fun failed(tBaseResult: BaseResult<ExchangeOrder>): Boolean {
-//
-//                return false
-//            }
-//
-//            override fun success(tBaseResult: BaseResult<ExchangeOrder>) {
-//
-//            }
-//
-//        }, true)
-//
-//    }
+    fun commitOrder(price: String, num: String, typePay: String, typeCoin: String, bankCode: String, bankName: String, bankType: String) {
 
-    fun commitOrder(price:String,num:String,typePay:String,typeCoin:String,bankCode:String,bankName:String,bankType:String) {
+        var map = HashMap<String, String>()
+        map["typeCoin"] = typeCoin
+        map["num"] = num
+        map["price"] = price
+        map["typePay"] = typePay
+        map["bankCode"] = bankCode
+        map["bankName"] = bankName
+        map["bankType"] = bankType
 
-
-
-        var requestBody = MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-
-                .addFormDataPart("typeCoin", typeCoin)
-                .addFormDataPart("num", num)
-                .addFormDataPart("price", price)
-                .addFormDataPart("typePay", typePay)
-                .addFormDataPart("bankCode", bankCode)
-                .addFormDataPart("bankName", bankName)
-                .addFormDataPart("bankType", bankType)
-
-        val exchange = RetrofitManager.service.commitOrderSale(price, num, typePay, typeCoin, bankCode, bankName, bankType)
+        val exchange = RetrofitManager.service.commitOrderSale(map)
 
         doRequest(exchange, object : Callback<ExchangeOrder>(view) {
 

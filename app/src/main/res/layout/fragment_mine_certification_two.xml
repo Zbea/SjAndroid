@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_white"
+            android:orientation="vertical"
+            android:padding="15dp"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_mine_certification_two"/>
+
+            <ImageView
+                android:id="@+id/iv_id_front"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/icon_certification_id_opposite"/>
+
+            <ImageView
+                android:id="@+id/iv_id_opposite"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/icon_certification_id_front"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="姓        名："
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ddddd"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号："
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+                <EditText
+                    android:id="@+id/et_id_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ddddd"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="现居住地："
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+                <EditText
+                    android:id="@+id/et_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ddddd"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮        箱："
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+                <EditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="xiaofeng9212@126.com"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/_14_text_size"/>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_dimen"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="下一步"
+                android:textSize="@dimen/_16_text_size"
+                android:textColor="@color/color_white"
+                android:background="@drawable/bg_blue_solid_5dp_coner"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

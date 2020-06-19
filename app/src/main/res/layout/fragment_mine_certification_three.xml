@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:padding="@dimen/space_dimen"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_mine_certification_three"/>
+
+        <ImageView
+            android:id="@+id/iv_id_hand"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/icon_certification_id_hand"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="@dimen/sp_12"
+            android:textColor="@color/color_999999"
+            android:text="1. 面部无遮挡，证件信息完整清晰;\n2. 需确保完整，文字、图片、证件号码清晰可辨，不得缺角;\n3. 请拍摄身份证正面部分，反面无效；"></TextView>
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="提交"
+            android:textSize="@dimen/_16_text_size"
+            android:textColor="@color/color_white"
+            android:background="@drawable/bg_blue_solid_5dp_coner"/>
+
+    </LinearLayout>
+
+</LinearLayout>

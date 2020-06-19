@@ -60,12 +60,12 @@ public class BigDecimalUtil {
      * @param v2 减数
      * @return 两个参数的差
      */
-    public static BigDecimal subDecimal(String v1, String v2) {
-        if (verifyNPE(v1, v2)) return new BigDecimal("0");
+    public static String subDecimal(String v1, String v2) {
+        if (verifyNPE(v1, v2)) return "0";
 
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
-        return b1.subtract(b2);
+        return b1.subtract(b2).toPlainString();
     }
 
     /**
@@ -150,11 +150,19 @@ public class BigDecimalUtil {
 
     //   {@code 1} if {@code this > val}, {@code -1} if {@code this < val},
 //            *         {@code 0} if {@code this == val}.
-    public static int compare(String v1, String v2) {
-        if (verifyNPE(v1, v2)) return -2;
+    public static Boolean compare(String v1, String v2) {
+        if (verifyNPE(v1, v2)) return false;
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
-        return b1.compareTo(b2);
+
+        if (b1.compareTo(b2)==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

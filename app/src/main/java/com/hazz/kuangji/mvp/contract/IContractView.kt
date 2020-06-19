@@ -119,4 +119,11 @@ interface IContractView {
         fun getExchange(data: Exchange)
         fun commitCoin()
     }
+
+    //认证
+    interface ICertificationView: BaseView {
+        fun sendSms(msg:String)
+        fun commit()
+    }
+
 }

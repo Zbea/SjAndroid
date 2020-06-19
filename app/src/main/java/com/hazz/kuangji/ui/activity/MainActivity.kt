@@ -2,6 +2,7 @@ package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.RadioGroup
@@ -15,11 +16,16 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.presenter.MainPresenter
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.fragment.*
+import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.RxBus
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 class MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
@@ -164,6 +170,7 @@ class MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContra
             mFragment.onActivityResult(requestCode, resultCode, data)
         }
     }
+
 
 
 }

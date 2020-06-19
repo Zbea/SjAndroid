@@ -33,8 +33,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
      */
 
 
-
-    private var mDialog: ProgressDialog? = null
+    var mDialog: ProgressDialog? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(getLayoutId(), null)

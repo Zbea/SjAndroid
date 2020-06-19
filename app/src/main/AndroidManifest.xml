@@ -82,6 +82,8 @@
         <activity android:name=".ui.activity.ExchangeSaleActivity"/>
         <activity android:name=".ui.activity.ExchangeRecordActivity"/>
         <activity android:name=".ui.activity.ExchangeCoinRecordActivity"/>
+        <activity android:name=".ui.activity.MineCertificatedActivity"/>
+        <activity android:name=".ui.activity.MineCertificationActivity"/>
 
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

@@ -109,6 +109,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         layout_about.setOnClickListener {
             startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type",1))
         }
+        layout_certification.setOnClickListener {
+            startActivity(Intent(activity, MineCertificationActivity::class.java))
+        }
 
     }
 

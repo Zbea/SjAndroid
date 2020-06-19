@@ -21,6 +21,7 @@ import com.luck.picture.lib.config.PictureMimeType
 import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.*
 import kotlinx.android.synthetic.main.activity_exchange_sale.tv_price
 import kotlinx.android.synthetic.main.rule.mToolBar
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeSaleView, View.OnClickListener {
@@ -39,11 +40,12 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     }
 
     override fun commit(data: ExchangeOrder) {
-        SToast.showText("提交订单成功")
-        finish()
+        EventBus.getDefault().post(10001)
         var intent=Intent(this,ExchangeOrderSaleDetailsActivity::class.java)
         intent.putExtra("code",data.order_code)
         startActivity(intent)
+
+        finish()
     }
 
     override fun layoutId(): Int {

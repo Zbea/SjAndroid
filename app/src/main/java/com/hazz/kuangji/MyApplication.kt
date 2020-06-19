@@ -8,6 +8,7 @@ import android.util.Log
 import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.BuildConfig
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.squareup.leakcanary.RefWatcher

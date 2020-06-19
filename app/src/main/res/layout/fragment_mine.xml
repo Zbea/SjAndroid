@@ -203,6 +203,41 @@
                             android:drawablePadding="12dp" />
                     </RelativeLayout>
                     <RelativeLayout
+                        android:id="@+id/layout_certification"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_ripple_selector"
+                        android:paddingLeft="@dimen/space_dimen"
+                        android:paddingRight="@dimen/space_dimen"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        tools:ignore="DuplicateIds">
+
+                        <ImageView
+                            android:id="@+id/iv"
+                            android:layout_width="27dp"
+                            android:layout_height="27dp"
+                            android:src="@mipmap/icon_mine_contact" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv"
+                            android:layout_marginLeft="17dp"
+                            android:text="实名认证"
+                            android:textColor="#666666"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:drawableRight="@mipmap/mine_icon_more"
+                            android:drawablePadding="12dp" />
+                    </RelativeLayout>
+                    <RelativeLayout
                         android:id="@+id/layout_contact"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -22,13 +22,14 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="wx"//1为微信2为支付宝3为银行卡
-    private lateinit var data:Exchange
+    private lateinit var mData:Exchange
     private var currentPrice="0"
     private var money="0"
+    private lateinit var amount:String
     private var mExchangePresenter=ExchangePresenter(this)
 
     override fun getExchange(data: Exchange) {
-        this.data =data
+        mData =data
         currentPrice=data.usdtPrice
         tv_price.text="￥"+currentPrice
     }
@@ -43,7 +44,8 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     var textWatcher=object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                money=BigDecimalUtil.mul(s.toString(),currentPrice)
+                amount=s.toString()
+                money=BigDecimalUtil.mul(amount,currentPrice)
                 tv_price_total.text="￥"+money
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -80,14 +82,14 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
             {
                 tv_edit_title.text="USDT"
                 typeCoin="usdt"
-                currentPrice=data.usdtPrice
+                currentPrice=mData.usdtPrice
                 tv_price.text="￥"+currentPrice
             }
             if (checkedId==R.id.rb_right)
             {
                 tv_edit_title.text="FIL"
                 typeCoin="fil"
-                currentPrice=data.filPrice
+                currentPrice=mData.filPrice
                 tv_price.text="￥"+currentPrice
             }
         }
@@ -108,15 +110,15 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
         }
 
         tv_commit.setOnClickListener {
-            if(TextUtils.isEmpty(et_num.text.toString())){
+            if(TextUtils.isEmpty(amount)){
                 SToast.showText("请输入买入数量")
                 return@setOnClickListener
             }
-            if(et_num.text.toString().toInt()<100){
+            if(amount.toInt()<100){
                 SToast.showText("最少购买100")
                 return@setOnClickListener
             }
-            mExchangePresenter.commitOrder(typeCoin,et_num.text.toString(),typePay,currentPrice)
+            mExchangePresenter.commitOrder(typeCoin,amount,typePay,currentPrice)
         }
     }
 

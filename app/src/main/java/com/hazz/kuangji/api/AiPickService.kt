@@ -196,7 +196,6 @@ interface AiPickService{
      */
     @GET("accounts/v0/buycoin/")
     fun getExchange(): Observable<BaseResult<Exchange>>
-
     /**
      * 提交订单
      */
@@ -207,51 +206,34 @@ interface AiPickService{
      */
     @GET("accounts/v0/orderdetails/{orderCode}")
     fun getOrder(@Path("orderCode")code:String): Observable<BaseResult<ExchangeOrder>>
-
     /**
      * 取消订单
      */
     @GET("accounts/v0/cancelorder/{orderCode}")
     fun cancelOrder(@Path("orderCode")code:String): Observable<BaseResult<Any>>
 
-
     /**
      * 我已经付款
      */
     @GET("accounts/v0/confirmorder/{orderCode}")
     fun commitPay(@Path("orderCode")code:String): Observable<BaseResult<Any>>
-
     /**
      * 获取订单明细 0全部1买入2卖出
      */
     @GET("accounts/v0/allorders/{type}")
     fun getOrderBuyList(@Path("type" ) type:String): Observable<BaseResult<List<ExchangeRecord>>>
-
-//    /**
-//     * 提交卖币订单
-//     */
-//    @POST("user_selling")
-//    fun commitOrderSale(@Body request: MultipartBody.Builder): Observable<BaseResult<ExchangeOrder>>
-
-//    /**
-//     * 提交卖币订单
-//     */
-//    @POST("user_selling")
-//    fun commitOrderSale(@Part file: List<MultipartBody.Part>): Observable<BaseResult<ExchangeOrder>>
-
     /**
      * 提交卖币订单
      */
     @Multipart
     @POST("user_selling")
-    fun commitOrderSale(@Query("price" )price:String,@Query("num" )num:String,@Query("typePay" )typePay:String,@Query("typeCoin" )typeCoin:String,@Part file: MultipartBody.Part): Observable<BaseResult<ExchangeOrder>>
+    fun commitOrderSale(@QueryMap map:HashMap<String,String>,@Part file: MultipartBody.Part): Observable<BaseResult<ExchangeOrder>>
 
     /**
      * 提交卖币订单
      */
     @POST("user_selling")
-    fun commitOrderSale(@Query("price" )price:String,@Query("num" )num:String,@Query("typePay" )typePay:String,@Query("typeCoin" )typeCoin:String,
-                        @Query("bankCode" )bankCode:String,@Query("bankName" )bankName:String,@Query("bankType" )bankType:String): Observable<BaseResult<ExchangeOrder>>
+    fun commitOrderSale(@QueryMap map:HashMap<String,String>): Observable<BaseResult<ExchangeOrder>>
 
     /**
      * 币币兑换
