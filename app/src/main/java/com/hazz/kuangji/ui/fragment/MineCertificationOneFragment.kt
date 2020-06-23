@@ -71,9 +71,9 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
             }
             btn_next->{
                 fragmentManager?.beginTransaction()
-                        ?.replace(R.id.fl_content, MineCertificationTwoFragment().newInstance())
+                        ?.replace(R.id.fl_content, MineCertificationTwoFragment().newInstance(et_code.text.toString()))
                         ?.addToBackStack(null)
-                        ?.commitAllowingStateLoss()
+                        ?.commit()
             }
         }
     }

@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
             android:singleLine="true"
             android:text="FIL币种算力矿机"
-            android:textColor="@color/color_black"
+            android:textColor="@color/color_333333"
             android:textSize="16sp" />
 
 
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="0FIL"
-            android:textColor="@color/hintTextColor"
+            android:textColor="@color/color_666666"
             android:textSize="14sp" />
 
         <TextView
@@ -91,7 +91,7 @@
             android:singleLine="true"
             android:text="0FIL"
             android:textColor="@color/redF4"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_marginTop="3dp"
@@ -125,7 +125,7 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:text="0FIL"
-            android:textColor="@color/hintTextColor"
+            android:textColor="@color/color_666666"
             android:textSize="14sp" />
 
         <TextView

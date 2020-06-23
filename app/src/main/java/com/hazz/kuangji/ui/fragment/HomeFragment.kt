@@ -32,7 +32,7 @@ import kotlinx.android.synthetic.main.fragment_new_home.*
 class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView {
 
     override fun getMsg(rows: List<Msg>) {
-
+        if (activity==null) return
         if (!rows.isNullOrEmpty()) {
             viewsList!!.clear()//记得加这句话，不然可能会产生重影现象
             for (i in rows.indices) {
@@ -195,41 +195,43 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     }
 
     private fun initBanner(list: List<String>) {
-
-        banner.setImageLoader(GlideImageLoader())
-        var layoutParams: ViewGroup.LayoutParams = banner.getLayoutParams()
-        layoutParams.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
-        banner.layoutParams=layoutParams;
-        banner.setImages(list)
-        //设置banner动画效果
-        banner.setBannerAnimation(Transformer.DepthPage)
-        //设置自动轮播，默认为true
-        banner.isAutoPlay(true)
-        //设置轮播时间
-        banner.setDelayTime(3000)
-        //设置指示器位置（当banner模式中有指示器时）
-        banner.setIndicatorGravity(BannerConfig.CENTER)
-        //banner设置方法全部调用完毕时最后调用
-        banner.start()
+        banner?.run {
+            setImageLoader(GlideImageLoader())
+            var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
+            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
+            layoutParams=layoutParams1;
+            setImages(list)
+            //设置banner动画效果
+            setBannerAnimation(Transformer.DepthPage)
+            //设置自动轮播，默认为true
+            isAutoPlay(true)
+            //设置轮播时间
+            setDelayTime(3000)
+            //设置指示器位置（当banner模式中有指示器时）
+            setIndicatorGravity(BannerConfig.CENTER)
+            //banner设置方法全部调用完毕时最后调用
+            start()
+        }
     }
+
     private fun initBannerDefault(list: List<Int>) {
-
-        banner.setImageLoader(GlideImageLoader())
-        var layoutParams: ViewGroup.LayoutParams = banner.getLayoutParams()
-        layoutParams.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
-        banner.layoutParams=layoutParams;
-        banner.setImages(list)
-
-        //设置banner动画效果
-        banner.setBannerAnimation(Transformer.DepthPage)
-        //设置自动轮播，默认为true
-        banner.isAutoPlay(true)
-        //设置轮播时间
-        banner.setDelayTime(3000)
-        //设置指示器位置（当banner模式中有指示器时）
-        banner.setIndicatorGravity(BannerConfig.CENTER)
-        //banner设置方法全部调用完毕时最后调用
-        banner.start()
+        banner?.run {
+            setImageLoader(GlideImageLoader())
+            var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
+            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
+            layoutParams=layoutParams1;
+            setImages(list)
+            //设置banner动画效果
+            setBannerAnimation(Transformer.DepthPage)
+            //设置自动轮播，默认为true
+            isAutoPlay(true)
+            //设置轮播时间
+            setDelayTime(3000)
+            //设置指示器位置（当banner模式中有指示器时）
+            setIndicatorGravity(BannerConfig.CENTER)
+            //banner设置方法全部调用完毕时最后调用
+            start()
+        }
     }
 
 

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.text.TextUtils
 import android.view.View
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -19,6 +20,14 @@ import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.*
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.iv_qrcode
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.ll_pay
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.ll_pay_bank
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_num
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_payee_type
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_total
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_upload
+import kotlinx.android.synthetic.main.activity_exchange_order_sale_details.*
 import kotlinx.android.synthetic.main.activity_exchange_sale.tv_price
 import kotlinx.android.synthetic.main.rule.mToolBar
 import org.greenrobot.eventbus.EventBus
@@ -31,6 +40,8 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     private lateinit var money: String
     private lateinit var typePay: String
     private lateinit var typeCoin: String
+    private lateinit var data: Exchange
+    private var oldPath: String=""
     private var path: String=""
     private var mExchangeSalePresenter = ExchangeSalePresenter(this)
     private var mPhotoDialog: PhotoDialog? = null;
@@ -40,11 +51,10 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     }
 
     override fun commit(data: ExchangeOrder) {
-        EventBus.getDefault().post(10001)
+        EventBus.getDefault().post("10001")
         var intent=Intent(this,ExchangeOrderSaleDetailsActivity::class.java)
         intent.putExtra("code",data.order_code)
         startActivity(intent)
-
         finish()
     }
 
@@ -70,6 +80,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
         amount = intent.getStringExtra("amount")
         typePay = intent.getStringExtra("typePay")
         typeCoin = intent.getStringExtra("typeCoin")
+        data= intent.getSerializableExtra("exchange") as Exchange
 
         tv_price.text = "￥" + price
         tv_num.text = amount
@@ -80,16 +91,32 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                 tv_payee_type.text = "微信收款"
                 ll_pay.visibility = View.VISIBLE
                 ll_pay_bank.visibility = View.GONE
+                if (!TextUtils.isEmpty(data.wxUrl))
+                {
+                    oldPath=data.wxUrl
+                    GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+data.wxUrl, iv_qrcode)
+                }
             }
             "zfb" -> {
                 tv_payee_type.text = "支付宝收款"
                 ll_pay.visibility = View.VISIBLE
                 ll_pay_bank.visibility = View.GONE
+                if (!TextUtils.isEmpty(data.zfbUrl))
+                {
+                    oldPath=data.zfbUrl
+                    GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+data.zfbUrl, iv_qrcode)
+                }
             }
             else -> {
                 tv_payee_type.text = "银行转账"
                 ll_pay.visibility = View.GONE
                 ll_pay_bank.visibility = View.VISIBLE
+                if (TextUtils.isEmpty(data.bankCode))
+                {
+                    et_bank_card.setText(data.bankCode)
+                    et_bank_name.setText(data.payee)
+                    et_bank_type.setText(data.bankName)
+                }
             }
         }
     }
@@ -116,13 +143,24 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                         SToast.showText("开户姓名不能为空")
                         return
                     }
-                    mExchangeSalePresenter.commitOrder(price, amount,  typePay,typeCoin, et_bank_card.text.toString(), et_bank_name.text.toString(), et_bank_type.text.toString())
+                    mExchangeSalePresenter.commitOrder(price, amount, typePay,typeCoin, et_bank_card.text.toString(), et_bank_name.text.toString(), et_bank_type.text.toString())
                 } else {
                     if (TextUtils.isEmpty(path)) {
+                        if (TextUtils.isEmpty(oldPath))
+                        {
+                            SToast.showText("请上传二维码")
+                        }
+                        else
+                        {
+                            mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay)
+                        }
                         SToast.showText("请上传二维码")
-                        return
                     }
-                    mExchangeSalePresenter.commitOrder(path, typeCoin, amount, price, typePay)
+                    else
+                    {
+                        mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay)
+                    }
+
                 }
 
             }

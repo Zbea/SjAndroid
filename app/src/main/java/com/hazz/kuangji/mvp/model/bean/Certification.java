@@ -11,5 +11,7 @@ public class Certification implements Serializable {
     public String front;
     public String opposite;
     public String hand;
-
+    public int status;
+    public String reason;
+    public String code;
 }

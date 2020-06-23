@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -114,8 +115,8 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
                 SToast.showText("请输入买入数量")
                 return@setOnClickListener
             }
-            if(amount.toInt()<100){
-                SToast.showText("最少购买100")
+            if(amount.toInt()<Constants.BUY_MIN){
+                SToast.showText("最少购买${Constants.BUY_MIN}")
                 return@setOnClickListener
             }
             mExchangePresenter.commitOrder(typeCoin,amount,typePay,currentPrice)
@@ -128,7 +129,7 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
         mExchangePresenter.getExchange()
     }
 
-    fun setCbView(cbView : ImageView)
+    private fun setCbView(cbView : ImageView)
     {
         iv_wx_cb.setImageResource(R.mipmap.icon_cb_nor)
         iv_zfb_cb.setImageResource(R.mipmap.icon_cb_nor)

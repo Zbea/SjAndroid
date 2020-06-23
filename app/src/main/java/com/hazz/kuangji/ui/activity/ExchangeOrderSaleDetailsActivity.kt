@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_num
 import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.tv_payee_type
 import kotlinx.android.synthetic.main.activity_exchange_order_sale_details.tv_commit
 import kotlinx.android.synthetic.main.rule.mToolBar
+import org.greenrobot.eventbus.EventBus
 
 class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchangeSaleDetailsView{
 
@@ -69,6 +70,8 @@ class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchange
     }
 
     override fun cancelOrder() {
+        EventBus.getDefault().post("10002")
+        tv_order_state.text = "已取消"
         ll_bottom.visibility = View.GONE
         SToast.showText("取消订单成功")
     }

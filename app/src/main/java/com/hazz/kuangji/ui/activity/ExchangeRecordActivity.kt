@@ -9,11 +9,16 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.ExchangeRecord
 import com.hazz.kuangji.mvp.presenter.ExchangeRecordPresenter
 import com.hazz.kuangji.ui.adapter.ExchangeRecordAdapter
+import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
+import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.rule.mToolBar
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView {
 
@@ -78,11 +83,24 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
     }
 
     override fun initData() {
+        EventBus.getDefault().register(this)
     }
 
     override fun start() {
         mExchangeRecordPresenter.getList(type.toString())
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: String) {
+        if (event=="10002")
+        {
+            mExchangeRecordPresenter.getList(type.toString())
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
 
 }

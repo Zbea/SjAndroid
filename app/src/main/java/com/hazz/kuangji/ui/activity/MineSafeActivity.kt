@@ -5,17 +5,17 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.utils.ToolBarCustom
-import kotlinx.android.synthetic.main.activity_safe.*
+import kotlinx.android.synthetic.main.activity_mine_safe.*
 import kotlinx.android.synthetic.main.activity_set.mToolBar
 
 
-class SafeActivity : BaseActivity() {
+class MineSafeActivity : BaseActivity() {
 
 
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_safe
+        return R.layout.activity_mine_safe
     }
 
     override fun initData() {
@@ -36,12 +36,12 @@ class SafeActivity : BaseActivity() {
     }
     override fun start() {
         tv_login.setOnClickListener {
-            startActivity(Intent(this,ModifyPwdActivity::class.java))
+            startActivity(Intent(this,MineLoginPwdActivity::class.java))
 
         }
 
         tv_zijin.setOnClickListener {
-            startActivity(Intent(this,FindZijinPwdActivity::class.java))
+            startActivity(Intent(this,MineExchangePwdActivity::class.java))
 
         }
 

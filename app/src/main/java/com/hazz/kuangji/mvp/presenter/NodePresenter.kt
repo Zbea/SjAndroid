@@ -2,10 +2,7 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
-import com.hazz.kuangji.mvp.model.bean.Node
-import com.hazz.kuangji.mvp.model.bean.Shenfen
-import com.hazz.kuangji.mvp.model.bean.UploadModel
+import com.hazz.kuangji.mvp.model.bean.*
 import com.hazz.kuangji.net.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -35,21 +32,38 @@ class NodePresenter(view: IContractView.NodeView) : BasePresenter<IContractView.
 
     }
 
+    fun getCertification() {
 
 
-    fun getShenfen() {
+        val login = RetrofitManager.service.getCertification()
 
-
-        val login = RetrofitManager.service.getShenfen()
-
-        doRequest(login, object : Callback<Shenfen>(view) {
-            override fun failed(tBaseResult: BaseResult<Shenfen>): Boolean {
+        doRequest(login, object : Callback<Certification>(view) {
+            override fun failed(tBaseResult: BaseResult<Certification>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<Shenfen>) {
-                tBaseResult.data?.let { view.getShenfen(it) }
+            override fun success(tBaseResult: BaseResult<Certification>) {
+                tBaseResult.data?.let { view.getCertification(it) }
+            }
+
+        }, true)
+
+    }
+
+    fun getAccount() {
+
+
+        val login = RetrofitManager.service.getAccount()
+
+        doRequest(login, object : Callback<Account>(view) {
+            override fun failed(tBaseResult: BaseResult<Account>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<Account>) {
+                tBaseResult.data?.let { view.getAccount(it) }
             }
 
         }, true)

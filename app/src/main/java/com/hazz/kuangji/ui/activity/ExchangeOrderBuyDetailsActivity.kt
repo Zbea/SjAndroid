@@ -23,6 +23,7 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.CommonDialog
 import kotlinx.android.synthetic.main.activity_exchange_order_details.*
 import kotlinx.android.synthetic.main.rule.mToolBar
+import org.greenrobot.eventbus.EventBus
 
 class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeOrderBuyView, View.OnClickListener {
 
@@ -103,15 +104,20 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
     }
 
     override fun cancelOrder() {
+        EventBus.getDefault().post("10002")
         SToast.showText("取消订单成功")
+        mData.state = "已取消"
+        tv_order_state.text = mData.state
         ll_bottom.visibility=View.GONE
     }
 
     override fun commitPay() {
+        EventBus.getDefault().post("10002")
         ll_bottom.visibility = View.GONE
         mData.state = "处理中"
         mData.status = 1
         mData.is_pay = 1
+        tv_order_state.text = mData.state
         SToast.showText("付款成功,请耐心等待后台审核")
     }
 

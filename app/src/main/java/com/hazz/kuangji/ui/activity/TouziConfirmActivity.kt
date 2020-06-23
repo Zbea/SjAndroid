@@ -67,7 +67,7 @@ class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractV
                 mPasswordDialog = SafeCheckDialog(this)
                         .setCancelListener { }
                         .setForgetListener {
-                          startActivity(Intent(this,FindZijinPwdActivity::class.java))
+                          startActivity(Intent(this,MineExchangePwdActivity::class.java))
 
                         }
 

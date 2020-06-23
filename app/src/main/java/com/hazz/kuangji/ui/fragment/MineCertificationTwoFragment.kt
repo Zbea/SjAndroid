@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -28,23 +29,24 @@ import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
 import java.io.File
 
 class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
-
+    private var PHONE:String="phone"
+    private var mPhone:String=""
     private var mPhotoDialog: PhotoDialog? = null;
     private var frontPath: String = ""
     private var oppositePath: String = ""
     private var isFront: Boolean = true
 
-    public fun newInstance(): MineCertificationTwoFragment {
-//        var bundle = Bundle()
-//        bundle.putString(PHONE, phone);
+    public fun newInstance(phone:String): MineCertificationTwoFragment {
+        var bundle = Bundle()
+        bundle.putString(PHONE, phone);
         var mineCertificationOneFragment = MineCertificationTwoFragment();
-//        mineCertificationOneFragment.arguments = bundle;
+        mineCertificationOneFragment.arguments = bundle;
         return mineCertificationOneFragment
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        mPhone= arguments?.getString(PHONE).toString()
+        mPhone= arguments?.getString(PHONE).toString()
     }
 
     override fun getLayoutId(): Int {
@@ -110,12 +112,11 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                 mCertification.email=email
                 mCertification.front=frontPath
                 mCertification.opposite=oppositePath
-
-
+                mCertification.code=mPhone
                 fragmentManager?.beginTransaction()
                         ?.replace(R.id.fl_content, MineCertificationThreeFragment().newInstance(mCertification))
                         ?.addToBackStack(null)
-                        ?.commitAllowingStateLoss()
+                        ?.commit()
             }
         }
     }
@@ -166,5 +167,18 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden)
+        {
+            Log.i("sj","aaaaaaaaaaaaaa")
+            if (!TextUtils.isEmpty(frontPath))iv_id_front.setImageURI(Uri.fromFile(File(frontPath)))
+            if (!TextUtils.isEmpty(oppositePath))iv_id_opposite.setImageURI(Uri.fromFile(File(oppositePath)))
+        }
+        else
+        {
+            Log.i("sj","dddddddddddd")
+        }
+    }
 
 }

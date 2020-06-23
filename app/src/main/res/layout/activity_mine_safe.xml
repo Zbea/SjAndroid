@@ -15,20 +15,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tv_login"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
+        android:layout_height="@dimen/btn_dimen"
         android:layout_below="@+id/mToolBar"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:background="#ffffff">
+        android:layout_marginTop="@dimen/space_dimen"
+        android:background="@drawable/bg_ripple_selector">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text="@string/login_pwd"
-            android:textColor="#333333"
-            android:textSize="17sp"
+            android:textColor="@color/color_666666"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,20 +45,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tv_zijin"
         android:layout_width="match_parent"
-        android:layout_height="49dp"
-
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:background="#ffffff">
+        android:layout_height="@dimen/btn_dimen"
+        android:layout_marginTop="@dimen/space_dimen"
+        android:background="@drawable/bg_ripple_selector">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:text="@string/zijin_pwd"
-            android:textColor="#333333"
-            android:textSize="17sp"
+            android:textColor="@color/color_666666"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -1,8 +1,6 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
-import android.os.Handler
-import android.os.Message
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -45,7 +43,7 @@ class SettingActivity : BaseActivity() {
 
     override fun start() {
         safe.setOnClickListener {
-            startActivity(Intent(this,SafeActivity::class.java))
+            startActivity(Intent(this,MineSafeActivity::class.java))
         }
         tv_logout.setOnClickListener {
             commonDialog=CommonDialog(this)

@@ -81,18 +81,18 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                 .setTitle(produce!!.name)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setToolBarBgRescource(R.drawable.bg_hangqing)
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
         coin = produce!!.coin
         id = produce!!.id
         price = produce!!.price
         amount=BigDecimalUtil.mul(produce!!.price, "1", 4)
-        tv_amount.text = BigDecimalUtil.mul(produce!!.price, "1", 4) + "USDT"
+        tv_amount.text = BigDecimalUtil.mul(produce?.price, "1", 4) + "USDT"
         //tv_suanli.text = produce!!.power
         tv_time.text = produce!!.round + "天"
         rate = produce!!.rate
 
-        if (produce!!.rent_type.equals("1"))
+        if (produce?.rent_type == "1")
         {
             et_num.setText(amount)
             setEarningsView(amount)
@@ -106,10 +106,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
     private fun setEarningsView(s:String)
     {
-        val mul = BigDecimalUtil.mul(price, rate, 4)
-        val div = BigDecimalUtil.div(s, price, 4)
-        val mul1 = BigDecimalUtil.mul(mul, div, 4)
-        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(mul1, "0.7", 4) + "FIL"
+        val div = BigDecimalUtil.mul(s, rate, 4)
+        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 4) + "FIL"
     }
 
     private var mPasswordDialog: SafeCheckDialog? = null
@@ -161,7 +159,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                     mPasswordDialog = SafeCheckDialog(this)
                             .setCancelListener { }
                             .setForgetListener {
-                                startActivity(Intent(this, FindZijinPwdActivity::class.java))
+                                startActivity(Intent(this, MineExchangePwdActivity::class.java))
 
                             }
 

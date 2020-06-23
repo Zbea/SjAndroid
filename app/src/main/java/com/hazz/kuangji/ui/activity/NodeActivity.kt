@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.mvp.model.bean.Node
-import com.hazz.kuangji.mvp.model.bean.Shenfen
+import com.hazz.kuangji.mvp.model.bean.Account
 import com.hazz.kuangji.mvp.model.bean.UploadModel
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.adapter.NodeAdapter
@@ -19,11 +20,15 @@ import kotlinx.android.synthetic.main.activity_node.*
 
 
 class NodeActivity : BaseActivity(), IContractView.NodeView {
-    override fun getShenfen(msg: Shenfen) {
+    override fun getAccount(msg: Account) {
 
     }
 
     override fun setHeader(msg: UploadModel) {
+
+    }
+
+    override fun getCertification(data: Certification) {
 
     }
 

@@ -38,8 +38,9 @@ interface IContractView {
     interface NodeView: BaseView {
 
         fun getNode(msg:Node)
-        fun getShenfen(msg:Shenfen)
+        fun getAccount(msg: Account)
         fun setHeader(msg:UploadModel)
+        fun getCertification(data:Certification)
     }
 
     interface TibiView: BaseView {

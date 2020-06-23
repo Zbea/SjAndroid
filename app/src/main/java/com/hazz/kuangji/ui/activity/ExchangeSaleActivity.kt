@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -43,7 +44,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
     private var currentPrice="0"
     private var money="0"
     private lateinit var max:String
-    private lateinit var amount:String
+    private var amount:String=""
     private var mMineExchangePresenter=ExchangeSalePresenter(this)
 
     override fun getExchange(data: Exchange) {
@@ -134,8 +135,8 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 return@setOnClickListener
             }
 
-            if(!BigDecimalUtil.compare(amount,"1")){
-                SToast.showText("最少卖2")
+            if(amount.toInt()<Constants.SALE_MIN){
+                SToast.showText("最少卖${Constants.SALE_MIN}")
                 return@setOnClickListener
             }
             if(BigDecimalUtil.compare(amount,max)){
@@ -149,6 +150,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
             intent.putExtra("money",money)
             intent.putExtra("typePay",typePay)
             intent.putExtra("typeCoin",typeCoin)
+            intent.putExtra("exchange",data)
             startActivity(intent)
 
         }

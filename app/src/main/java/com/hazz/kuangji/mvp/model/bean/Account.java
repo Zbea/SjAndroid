@@ -1,6 +1,6 @@
 package com.hazz.kuangji.mvp.model.bean;
 
-public class Shenfen {
+public class Account {
 
 
         /**

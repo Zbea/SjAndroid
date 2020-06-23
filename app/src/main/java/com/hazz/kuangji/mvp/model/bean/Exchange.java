@@ -1,6 +1,8 @@
 package com.hazz.kuangji.mvp.model.bean;
 
-public class Exchange {
+import java.io.Serializable;
+
+public class Exchange implements Serializable {
 
     public String usdtPrice;
     public String usdtNum;
@@ -13,5 +15,5 @@ public class Exchange {
     public String zfbUrl;//我的支付宝收款二维码地址
     public String bankCode;//银行账户
     public String bankName ;//银行开户人
-
+    public String payee ;//
 }

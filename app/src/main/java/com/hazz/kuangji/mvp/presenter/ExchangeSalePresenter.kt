@@ -1,5 +1,6 @@
 package com.hazz.kuangji.mvp.presenter
 
+import android.text.TextUtils
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Exchange
 import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
@@ -8,6 +9,8 @@ import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import java.util.*
+import kotlin.collections.HashMap
 
 class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresenter<IContractView.IExchangeSaleView>(view) {
 
@@ -32,8 +35,7 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
     }
 
 
-    fun commitOrder(file: String, typeCoin: String, num: String, price: String, typePay: String) {
-
+    fun commitOrder(file: String,path: String, typeCoin: String, num: String, price: String, typePay: String) {
 
         var fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), File(file));
         var requestBody = MultipartBody.Part.createFormData("file", "image.png", fileBody)
@@ -43,10 +45,8 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
         map["num"] = num
         map["price"] = price
         map["typePay"] = typePay
-
-        val exchange = RetrofitManager.service.commitOrderSale(map, requestBody)
-
-        doRequest(exchange, object : Callback<ExchangeOrder>(view) {
+        map["path"] = path
+        doRequest(if (!TextUtils.isEmpty(file)) RetrofitManager.service.commitOrderSale(map, requestBody) else RetrofitManager.service.commitOrderSale(map), object : Callback<ExchangeOrder>(view) {
 
 
             override fun failed(tBaseResult: BaseResult<ExchangeOrder>): Boolean {

@@ -13,7 +13,6 @@
         android:ellipsize="end"
         android:singleLine="true"
         android:textColor="#98999A"
-        android:text="asfasfsaffsf"
         android:textSize="13sp" />
 
 </RelativeLayout>

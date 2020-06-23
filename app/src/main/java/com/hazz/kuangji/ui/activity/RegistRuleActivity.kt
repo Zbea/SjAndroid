@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.activity
 
+import android.text.Html
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -18,7 +19,7 @@ class RegistRuleActivity : BaseActivity(), IContractView.XieyiView {
 
     override fun xieyi(msg: Xieyi) {
         var desc=msg.desc?.replace("关于我们：","      ")
-        tv_rule.text=desc
+        tv_rule.text=Html.fromHtml(desc)
     }
 
     override fun initData() {

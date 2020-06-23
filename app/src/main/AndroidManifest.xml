@@ -52,7 +52,7 @@
         <activity android:name="com.hazz.kuangji.ui.activity.InviteActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.InviteRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.SettingActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.SafeActivity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.MineSafeActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.NodeActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.TibiActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.TibiRecordActivity"/>
@@ -60,8 +60,8 @@
         <activity android:name="com.hazz.kuangji.ui.activity.ChargeRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.TouziActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.TouziConfirmActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.FindZijinPwdActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.ModifyPwdActivity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.MineExchangePwdActivity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.MineLoginPwdActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.MsgListActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.MsgDescActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.IncomingActivity"/>

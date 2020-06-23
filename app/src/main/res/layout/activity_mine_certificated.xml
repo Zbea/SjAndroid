@@ -27,9 +27,10 @@
             android:textSize="@dimen/_16_text_size"/>
 
         <ImageView
+            android:id="@+id/iv_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/icon_mine_certificated"/>
+            />
 
     </LinearLayout>
 
@@ -61,7 +62,6 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="zfeng"
                 android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
@@ -86,7 +86,6 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="朱烽"
                 android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
@@ -111,7 +110,6 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:textSize="@dimen/sp_14"
-                android:text="xiaofeng9212@126.com"
                 android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
@@ -137,7 +135,6 @@
                 android:layout_marginLeft="@dimen/space_dimen"
                 android:gravity="right"
                 android:textSize="@dimen/sp_14"
-                android:text="湖南省常德市澧县九院"
                 android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
@@ -164,7 +161,6 @@
                 android:layout_marginLeft="@dimen/space_dimen"
                 android:gravity="right"
                 android:textSize="@dimen/sp_14"
-                android:text="430723199212062611"
                 android:textColor="@color/color_666666"/>
         </LinearLayout>
     </LinearLayout>

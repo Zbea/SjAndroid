@@ -174,7 +174,7 @@ interface AiPickService{
      * 矿机
      */
     @GET("profile")
-    fun getShenfen(): Observable<BaseResult<Shenfen>>
+    fun getAccount(): Observable<BaseResult<Account>>
 
 
     /**
@@ -228,7 +228,6 @@ interface AiPickService{
     @Multipart
     @POST("user_selling")
     fun commitOrderSale(@QueryMap map:HashMap<String,String>,@Part file: MultipartBody.Part): Observable<BaseResult<ExchangeOrder>>
-
     /**
      * 提交卖币订单
      */
@@ -256,4 +255,16 @@ interface AiPickService{
      */
     @GET("accounts/v0/translist/")
     fun getExchangeList(): Observable<BaseResult<List<ExchangeRecord>>>
+
+    /**
+     * 实名认证
+     */
+    @Multipart
+    @POST("users/upload_identify")
+    fun commitCertification(@QueryMap map:HashMap<String,String>,@Part files:List<MultipartBody.Part>): Observable<BaseResult<Any>>
+    /**
+     * 获取实名认证
+     */
+    @POST("users/get_identity")
+    fun getCertification(): Observable<BaseResult<Certification>>
 }

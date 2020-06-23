@@ -155,14 +155,9 @@ public class BigDecimalUtil {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
 
-        if (b1.compareTo(b2)==1)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        if (b1.compareTo(b2)==1)return true;
+        else if (b1.compareTo(b2)==0) return true;
+        else return false;
     }
 
 

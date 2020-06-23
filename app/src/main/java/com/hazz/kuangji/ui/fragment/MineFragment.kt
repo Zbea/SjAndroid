@@ -1,7 +1,6 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
-import android.os.Environment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
@@ -9,14 +8,12 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Node
-import com.hazz.kuangji.mvp.model.bean.Shenfen
-import com.hazz.kuangji.mvp.model.bean.UploadModel
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.bean.*
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.widget.PhotoDialog
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
@@ -28,14 +25,16 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     private var mNodePresenter: NodePresenter = NodePresenter(this)
     private var userInfo: UserInfo? = null
-    private var mPhotoDialog :PhotoDialog?=null;
+    private var mPhotoDialog: PhotoDialog? = null
+    private var status: Int = 3
+    private var mData: Certification? = null
 
-    override fun getShenfen(msg: Shenfen) {
+    override fun getAccount(msg: Account) {
 
         activity?.let {
-            Glide.with(it).load(Constants.URL_INVITE+msg.profile_img)
-                .apply(RequestOptions.bitmapTransform(CircleCrop()))
-                .into(iv_header)
+            Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .into(iv_header)
         }
 
         when (msg.level) {
@@ -53,9 +52,32 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     override fun setHeader(msg: UploadModel) {
         activity?.let {
-            Glide.with(it).load(Constants.URL_INVITE+msg.path)
+            Glide.with(it).load(Constants.URL_INVITE + msg.path)
                     .apply(RequestOptions.bitmapTransform(CircleCrop()))
                     .into(iv_header)
+        }
+    }
+
+    override fun getCertification(data: Certification) {
+        mData = data
+        status = data.status
+        when (data.status) {
+            0 -> {
+                iv_certification.setImageResource(R.mipmap.icon_mine_certification)
+            }
+            1 -> {
+                iv_certification.setImageResource(R.mipmap.icon_mine_certificated)
+            }
+            2 -> {
+                iv_certification.setImageResource(R.mipmap.icon_mine_certification)
+                SToast.showText(data.reason+"请重新实名认证")
+                startActivity(Intent(activity, MineCertificationActivity::class.java))
+            }
+            3 -> {
+                iv_certification.setImageResource(R.mipmap.icon_mine_certification)
+                SToast.showText("尚未实名认证，请立即实名认证")
+                startActivity(Intent(activity, MineCertificationActivity::class.java))
+            }
         }
     }
 
@@ -76,11 +98,11 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         if (userInfo != null) {
 
             mTvUserName.text = userInfo!!.username
-            mTvMobile.text =userInfo!!.mobile
+            mTvMobile.text = userInfo!!.mobile
         } else {
             val userName = SPUtil.getString("username")
             val mobile = SPUtil.getString("mobile")
-            mTvMobile.text =mobile
+            mTvMobile.text = mobile
             mTvUserName.text = userName
         }
 
@@ -104,32 +126,42 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
         layout_contact.setOnClickListener {
-            startActivity(Intent(activity,MineContactActivity::class.java))
+            startActivity(Intent(activity, MineContactActivity::class.java))
         }
         layout_about.setOnClickListener {
-            startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type",1))
+            startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type", 1))
         }
         layout_certification.setOnClickListener {
-            startActivity(Intent(activity, MineCertificationActivity::class.java))
+            when (status) {
+                0,1 -> {
+                    var intent = Intent(activity, MineCertificatedActivity::class.java)
+                    intent.putExtra("certification", mData)
+                    startActivity(intent)
+                }
+                2,3 -> {
+                    startActivity(Intent(activity, MineCertificationActivity::class.java))
+                }
+            }
+
         }
 
     }
 
     override fun lazyLoad() {
-        mNodePresenter.getShenfen()
+        mNodePresenter.getAccount()
+        mNodePresenter.getCertification()
     }
 
-    private fun showPhotoDialog()
-    {
-        mPhotoDialog= PhotoDialog(activity)
+    private fun showPhotoDialog() {
+        mPhotoDialog = PhotoDialog(activity)
         mPhotoDialog?.run {
-            setDialogClickListener(object : PhotoDialog.DialogClickListener
-            {
+            setDialogClickListener(object : PhotoDialog.DialogClickListener {
                 override fun takePhoto() {
                     PictureSelector.create(activity)
                             .openCamera(PictureMimeType.ofImage())
                             .forResult(PictureConfig.CHOOSE_REQUEST)
                 }
+
                 override fun pickPhoto() {
                     PictureSelector.create(activity)
                             .openGallery(PictureMimeType.ofImage()) //全部.PictureMimeType.ofAll()、图片.ofImage()、视频.ofVideo()、音频.ofAudio()
@@ -146,14 +178,12 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PictureConfig.CHOOSE_REQUEST) {
             var selectList = PictureSelector.obtainMultipleResult(data)
-            if (selectList.size>0)
-            {
-                var path=selectList?.get(0)?.path
+            if (selectList.size > 0) {
+                var path = selectList?.get(0)?.path
                 if (path != null) {
                     mNodePresenter.upImage(path)
                 }

@@ -10,10 +10,10 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.*
-import kotlinx.android.synthetic.main.activity_find_zijin.*
+import kotlinx.android.synthetic.main.activity_mine_exchange_pwd.*
 
 
-class FindZijinPwdActivity : BaseActivity(), IContractView.LoginView {
+class MineExchangePwdActivity : BaseActivity(), IContractView.LoginView {
     override fun loginSuccess(msg: UserInfo) {
 
     }
@@ -50,7 +50,7 @@ class FindZijinPwdActivity : BaseActivity(), IContractView.LoginView {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_find_zijin
+        return R.layout.activity_mine_exchange_pwd
     }
 
     override fun initData() {

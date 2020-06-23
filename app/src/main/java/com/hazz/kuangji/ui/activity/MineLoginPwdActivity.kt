@@ -7,10 +7,10 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.*
-import kotlinx.android.synthetic.main.activity_modify_pwd.*
+import kotlinx.android.synthetic.main.activity_mine_login_pwd.*
 
 
-class ModifyPwdActivity : BaseActivity(), IContractView.LoginView {
+class MineLoginPwdActivity : BaseActivity(), IContractView.LoginView {
     override fun loginSuccess(msg: UserInfo) {
 
     }
@@ -28,7 +28,7 @@ class ModifyPwdActivity : BaseActivity(), IContractView.LoginView {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_modify_pwd
+        return R.layout.activity_mine_login_pwd
     }
 
     override fun initData() {
