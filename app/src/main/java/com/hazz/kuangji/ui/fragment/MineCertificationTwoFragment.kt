@@ -1,42 +1,35 @@
 package com.hazz.kuangji.ui.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.CountDownTimer
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.UserInfo
-import com.hazz.kuangji.mvp.presenter.CertificationPresenter
+import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
-import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.widget.PhotoDialog
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
-import kotlinx.android.synthetic.main.activity_exchange_order_sale_commit.*
-import kotlinx.android.synthetic.main.fragment_mine_certification_one.*
 import kotlinx.android.synthetic.main.fragment_mine_certification_one.btn_next
-import kotlinx.android.synthetic.main.fragment_mine_certification_one.tv_get_code
 import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
 import java.io.File
 
 class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
-    private var PHONE:String="phone"
-    private var mPhone:String=""
+    private var PHONE: String = "phone"
+    private var mPhone: String = ""
     private var mPhotoDialog: PhotoDialog? = null;
     private var frontPath: String = ""
     private var oppositePath: String = ""
     private var isFront: Boolean = true
 
-    public fun newInstance(phone:String): MineCertificationTwoFragment {
+    public fun newInstance(phone: String): MineCertificationTwoFragment {
         var bundle = Bundle()
         bundle.putString(PHONE, phone);
         var mineCertificationOneFragment = MineCertificationTwoFragment();
@@ -46,7 +39,7 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mPhone= arguments?.getString(PHONE).toString()
+        mPhone = arguments?.getString(PHONE).toString()
     }
 
     override fun getLayoutId(): Int {
@@ -105,16 +98,16 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                     return
                 }
 
-                var mCertification=Certification()
-                mCertification.name=name
-                mCertification.idNumber=idNumber
-                mCertification.address=address
-                mCertification.email=email
-                mCertification.front=frontPath
-                mCertification.opposite=oppositePath
-                mCertification.code=mPhone
+                var mCertification = Certification()
+                mCertification.name = name
+                mCertification.idNumber = idNumber
+                mCertification.address = address
+                mCertification.email = email
+                mCertification.front = frontPath
+                mCertification.opposite = oppositePath
+                mCertification.code = mPhone
                 fragmentManager?.beginTransaction()
-                        ?.replace(R.id.fl_content, MineCertificationThreeFragment().newInstance(mCertification))
+                        ?.add(R.id.fl_content, MineCertificationThreeFragment().newInstance(mCertification))
                         ?.addToBackStack(null)
                         ?.commit()
             }
@@ -128,6 +121,13 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                 override fun takePhoto() {
                     PictureSelector.create(activity)
                             .openCamera(PictureMimeType.ofImage())
+                            .isCompress(true)
+                            .isEnableCrop(true)
+                            .withAspectRatio(16, 10)
+                            .isDragFrame(true)
+                            .scaleEnabled(true)
+                            .minimumCompressSize(100)
+                            .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
                             .forResult(PictureConfig.CHOOSE_REQUEST)
                 }
 
@@ -138,6 +138,13 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                             .imageSpanCount(3)// 每行显示个数 int
                             .selectionMode(PictureConfig.SINGLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
                             .isCamera(false)
+                            .isCompress(true)
+                            .isEnableCrop(true)
+                            .isDragFrame(true)
+                            .scaleEnabled(true)
+                            .minimumCompressSize(100)
+                            .withAspectRatio(16, 10)
+                            .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
                             .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
                 }
             })
@@ -151,8 +158,18 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PictureConfig.CHOOSE_REQUEST) {
             var selectList = PictureSelector.obtainMultipleResult(data)
+            var path = ""
             if (selectList.size > 0) {
-                var path = selectList?.get(0)?.path
+                var media = selectList?.get(0)
+                if (media != null) {
+                    path = if (media.isCompressed) {
+                        media.compressPath
+                    } else {
+                        media.path
+                    }
+                }
+                path= FileUtils.uri2String(Uri.parse(path),activity!!).toString()
+
                 if (path != null) {
                     if (isFront) {
                         frontPath = path
@@ -167,18 +184,5 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden)
-        {
-            Log.i("sj","aaaaaaaaaaaaaa")
-            if (!TextUtils.isEmpty(frontPath))iv_id_front.setImageURI(Uri.fromFile(File(frontPath)))
-            if (!TextUtils.isEmpty(oppositePath))iv_id_opposite.setImageURI(Uri.fromFile(File(oppositePath)))
-        }
-        else
-        {
-            Log.i("sj","dddddddddddd")
-        }
-    }
 
 }

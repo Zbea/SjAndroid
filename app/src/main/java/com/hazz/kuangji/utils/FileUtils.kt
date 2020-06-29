@@ -73,7 +73,61 @@ object FileUtils {
         }
         return null
     }
+    /**
+     * uri to string
+     */
+    fun uri2String(uri: Uri, context: Context): String? {
+        var path: String? = null
+        if ("file" == uri.scheme) {
+            path = uri.encodedPath
+            if (path != null) {
+                path = Uri.decode(path)
+                val cr = context.contentResolver
+                val buff = StringBuffer()
+                buff.append("(").append(MediaStore.Images.ImageColumns.DATA).append("=").append("'$path'").append(")")
+                val cur = cr.query(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        arrayOf(MediaStore.Images.ImageColumns._ID, MediaStore.Images.ImageColumns.DATA),
+                        buff.toString(),
+                        null,
+                        null
+                )
+                var index = 0
+                var dataIdx = 0
+                cur!!.moveToFirst()
+                while (!cur.isAfterLast) {
+                    index = cur.getColumnIndex(MediaStore.Images.ImageColumns._ID)
+                    index = cur.getInt(index)
+                    dataIdx = cur.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+                    path = cur.getString(dataIdx)
+                    cur.moveToNext()
+                }
+                cur.close()
+                if (index == 0) {
+                } else {
+                    val u = Uri.parse("content://media/external/images/media/$index")
+                    println("temp uri is :$u")
+                }
+            }
+            if (path != null) {
+                return path
+            }
+        } else if ("content" == uri.scheme) {
+            // 4.2.2以后
+            val proj = arrayOf(MediaStore.Images.Media.DATA)
+            val cursor = context.contentResolver.query(uri, proj, null, null, null)
+            if (cursor!!.moveToFirst()) {
+                val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                path = cursor.getString(columnIndex)
+            }
+            cursor.close()
 
+            return path
+        } else {
+            return uri.toString()
+        }
+        return null
+    }
 
     /**
      * 图片转换为JPG
@@ -144,8 +198,7 @@ object FileUtils {
     fun base64ToPicture(imgBase64: String): Bitmap {
 
         val decode = Base64.decode(imgBase64, Base64.DEFAULT)
-        val bitmap = BitmapFactory.decodeByteArray(decode, 0, decode.size)
-        return bitmap
+        return BitmapFactory.decodeByteArray(decode, 0, decode.size)
     }
 
     fun saveBmp2Gallery(context: Context, bmp: Bitmap, picName: String) {
@@ -190,8 +243,7 @@ object FileUtils {
 
     }
     fun getMusic():String{
-        val path = "file:///android_asset/splash.mp4"
-        return path
+        return "file:///android_asset/splash.mp4"
     }
 
 }

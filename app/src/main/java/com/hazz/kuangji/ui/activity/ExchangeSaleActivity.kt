@@ -1,20 +1,26 @@
-package com.hazz.kuangji.ui.activity
+package com.hazz .kuangji. ui.activity
 
 import android.content.Intent
+import android.os.Handler
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.ImageView
+import android.widget.ShareActionProvider
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.mvp.model.bean.Exchange
 import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.ExchangeSalePresenter
 import com.hazz.kuangji.utils.BigDecimalUtil
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_exchange_buy.et_num
@@ -36,16 +42,19 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
+class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,IContractView.ICertificationInfoView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="wx"//1为微信2为支付宝3为银行卡
-    private lateinit var data:Exchange
+    private var data:Exchange?=null
     private var currentPrice="0"
     private var money="0"
-    private lateinit var max:String
-    private var amount:String=""
-    private var mMineExchangePresenter=ExchangeSalePresenter(this)
+    private var max="0"
+    private var amount=""
+    private val mMineExchangePresenter=ExchangeSalePresenter(this)
+    private val mCertificationInfoPresenter=CertificationInfoPresenter(this)
+    private var mCertification:Certification?=null
+
 
     override fun getExchange(data: Exchange) {
         this.data =data
@@ -53,6 +62,15 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
         max=data.usdtNum
         tv_price.text="￥"+currentPrice
         tv_amount.text=max
+    }
+
+    //判断用户是否实名认证
+    override fun getCertification(certification :Certification) {
+        mCertification=certification
+        if (certification.status==1)
+        {
+            SPUtil.putObj("certification",certification)
+        }
     }
 
     override fun commit(data: ExchangeOrder) {
@@ -96,17 +114,19 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
             {
                 tv_edit_title.text="USDT"
                 typeCoin="usdt"
-                max=data.usdtNum
-                currentPrice=data.usdtPrice
+                max= data?.usdtNum.toString()
+                currentPrice= data?.usdtPrice.toString()
                 tv_price.text="￥"+currentPrice
+                et_num.hint="输入卖出数量(最低"+Constants.BUY_MIN+")"
                 tv_amount.text=max
             }
             if (checkedId==R.id.rb_right)
             {
                 tv_edit_title.text="FIL"
                 typeCoin="fil"
-                max=data.filNum
-                currentPrice=data.filPrice
+                max= data?.filNum.toString()
+                currentPrice = data?.filPrice.toString()
+                et_num.hint="输入卖出数量(最低"+Constants.SALE_MIN+")"
                 tv_price.text="￥"+currentPrice
                 tv_amount.text=max
             }
@@ -127,32 +147,53 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
         }
 
         et_num.addTextChangedListener(textWatcher)
-
+        et_num.hint="输入卖出数量(最低"+Constants.BUY_MIN+")"
 
         tv_commit.setOnClickListener {
+            if (data==null)
+            {
+                SToast.showText("数据加载失败")
+                return@setOnClickListener
+            }
             if(TextUtils.isEmpty(amount)){
                 SToast.showText("请输入卖出数量")
                 return@setOnClickListener
             }
 
-            if(amount.toInt()<Constants.SALE_MIN){
-                SToast.showText("最少卖${Constants.SALE_MIN}")
+            if(amount.toInt()<if (typeCoin=="usdt")Constants.BUY_MIN else Constants.SALE_MIN){
+                SToast.showText("最少卖${if (typeCoin=="usdt")Constants.BUY_MIN else Constants.SALE_MIN}")
                 return@setOnClickListener
             }
-            if(BigDecimalUtil.compare(amount,max)){
+            if(!BigDecimalUtil.compare(max,amount)){
                 SToast.showText("卖出数量不能超过自己拥有的数量")
                 return@setOnClickListener
             }
 
-            val intent=Intent(this,ExchangeOrderSaleCommitActivity::class.java)
-            intent.putExtra("price",currentPrice)
-            intent.putExtra("amount",amount)
-            intent.putExtra("money",money)
-            intent.putExtra("typePay",typePay)
-            intent.putExtra("typeCoin",typeCoin)
-            intent.putExtra("exchange",data)
-            startActivity(intent)
-
+            when(mCertification?.status){
+                0->{
+                    SToast.showText("实名认证审核中，请稍等")
+                }
+                1->{
+                    if (data!=null)
+                    {
+                        val intent=Intent(this,ExchangeOrderSaleCommitActivity::class.java)
+                        intent.putExtra("price",currentPrice)
+                        intent.putExtra("amount",amount)
+                        intent.putExtra("money",money)
+                        intent.putExtra("typePay",typePay)
+                        intent.putExtra("typeCoin",typeCoin)
+                        intent.putExtra("exchange",data)
+                        startActivity(intent)
+                    }
+                }
+                else ->{
+                    SToast.showText("尚未实名认证，请前往实名认证")
+                    Handler().postDelayed(Runnable {
+                        val intent=Intent(this,MineCertificationActivity::class.java)
+                        startActivity(intent)
+                    },500)
+                }
+            }
         }
 
     }
@@ -162,6 +203,11 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
     }
     override fun start() {
         mMineExchangePresenter.getExchange()
+        mCertification=SPUtil.getObj("certification", Certification::class.java)
+        if (mCertification==null)
+        {
+            mCertificationInfoPresenter.getCertification()
+        }
     }
 
 
@@ -182,18 +228,22 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: String) {
-        if (event=="10001")
+        if (event==Constants.CODE_EXCHANGE_SALE)
         {
             if (typeCoin=="usdt")
             {
-                max=BigDecimalUtil.subDecimal(data.usdtNum,amount)
-                data.usdtNum=max
+                max=BigDecimalUtil.subDecimal(data?.usdtNum,amount)
+                data?.usdtNum =max
             }else{
-                max=BigDecimalUtil.subDecimal(data.filNum,amount)
-                data.filNum=max
+                max=BigDecimalUtil.subDecimal(data?.filNum,amount)
+                data?.filNum=max
             }
             tv_amount.text=max
             clearView()
+        }
+        if (event==Constants.CODE_CERTIFICATION_BROAD)
+        {
+            mCertificationInfoPresenter.getCertification()
         }
     }
 
@@ -201,6 +251,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
         super.onDestroy()
         EventBus.getDefault().unregister(this)
     }
+
 
 
 }

@@ -3,7 +3,6 @@ package com.hazz.kuangji.widget;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,12 +23,7 @@ import com.hazz.kuangji.R;
 public class CommonDialog {
     private Context context;
     private AlertDialog dialog;
-    private Display display;
 
-    private CardView cardView;
-    private TextView titleTv;
-    private TextView contentTv;
-    private TextView cancleTv;
     private TextView okTv;
 
 
@@ -37,7 +31,7 @@ public class CommonDialog {
         this.context = context;
         WindowManager windowManager = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
-        display = windowManager.getDefaultDisplay();
+        Display display = windowManager.getDefaultDisplay();
     }
     private String title="";
     private boolean is;
@@ -65,20 +59,20 @@ public class CommonDialog {
         View view = LayoutInflater.from(context).inflate(
                 R.layout.dialog_com, null);
 
-        cardView=view.findViewById(R.id.cardView);
-        titleTv=view.findViewById(R.id.tv_dialog_title);
-        contentTv=view.findViewById(R.id.tv_dialog_content);
-        cancleTv=view.findViewById(R.id.tv_cancle);
+        CardView cardView = view.findViewById(R.id.cardView);
+        TextView titleTv = view.findViewById(R.id.tv_dialog_title);
+        TextView contentTv = view.findViewById(R.id.tv_dialog_content);
+        TextView cancleTv = view.findViewById(R.id.tv_cancle);
         okTv=view.findViewById(R.id.tv_ok);
 
-        if(!TextUtils.isEmpty(title))titleTv.setText(title);
+        if(!TextUtils.isEmpty(title)) titleTv.setText(title);
         if (!is)
         {
             titleTv.setVisibility(View.GONE);
             contentTv.setMinHeight(200);
         }
-        if(!TextUtils.isEmpty(content))contentTv.setText(content);
-        if(!TextUtils.isEmpty(cancle))cancleTv.setText(cancle);
+        if(!TextUtils.isEmpty(content)) contentTv.setText(content);
+        if(!TextUtils.isEmpty(cancle)) cancleTv.setText(cancle);
         if(!TextUtils.isEmpty(ok))okTv.setText(ok);
 
         cancleTv.setOnClickListener(new View.OnClickListener() {

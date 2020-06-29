@@ -23,10 +23,10 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="wx"//1为微信2为支付宝3为银行卡
-    private lateinit var mData:Exchange
+    private var mData:Exchange?=null
     private var currentPrice="0"
     private var money="0"
-    private lateinit var amount:String
+    private var amount="0"
     private var mExchangePresenter=ExchangePresenter(this)
 
     override fun getExchange(data: Exchange) {
@@ -83,14 +83,14 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
             {
                 tv_edit_title.text="USDT"
                 typeCoin="usdt"
-                currentPrice=mData.usdtPrice
+                currentPrice= mData?.usdtPrice.toString()
                 tv_price.text="￥"+currentPrice
             }
             if (checkedId==R.id.rb_right)
             {
                 tv_edit_title.text="FIL"
                 typeCoin="fil"
-                currentPrice=mData.filPrice
+                currentPrice=mData?.filPrice.toString()
                 tv_price.text="￥"+currentPrice
             }
         }
@@ -111,15 +111,21 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
         }
 
         tv_commit.setOnClickListener {
+            if (mData==null)
+            {
+                SToast.showText("数据加载失败")
+                return@setOnClickListener
+            }
             if(TextUtils.isEmpty(amount)){
                 SToast.showText("请输入买入数量")
                 return@setOnClickListener
             }
-            if(amount.toInt()<Constants.BUY_MIN){
-                SToast.showText("最少购买${Constants.BUY_MIN}")
+            if(amount.toInt()<1){
+                SToast.showText("最少购买1个")
                 return@setOnClickListener
             }
             mExchangePresenter.commitOrder(typeCoin,amount,typePay,currentPrice)
+
         }
     }
 

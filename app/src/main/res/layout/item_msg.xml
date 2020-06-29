@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@id/mImage_more"
-        android:src="@drawable/mine_message_icon"
+        android:src="@drawable/shape_red_solid_dot"
         android:visibility="invisible"
         />
 

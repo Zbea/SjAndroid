@@ -54,8 +54,6 @@ public class CountryActivity extends AppCompatActivity {
 
     private SideBar sideBar;
 
-    private TextView dialog;
-
     private Toolbar mToolBar;
 
     private CountryComparator pinyinComparator;
@@ -104,11 +102,11 @@ public class CountryActivity extends AppCompatActivity {
         country_lv_countryList = (ListView) findViewById(R.id.country_lv_list);
         country_iv_clearText = (ImageView) findViewById(R.id.country_iv_cleartext);
 
-        dialog = (TextView) findViewById(R.id.country_dialog);
+        TextView dialog = (TextView) findViewById(R.id.country_dialog);
         sideBar = (SideBar) findViewById(R.id.country_sidebar);
         sideBar.setTextView(dialog);
 
-        mAllCountryList = new ArrayList<CountrySortModel>();
+        mAllCountryList = new ArrayList<>();
         pinyinComparator = new CountryComparator();
         countryChangeUtil = new GetCountryNameSort();
         characterParserUtil = new CharacterParserUtil();
@@ -223,8 +221,8 @@ public class CountryActivity extends AppCompatActivity {
         } else {
             countryList = getResources().getStringArray(R.array.mine_country_code_list_en);
         }
-        for (int i = 0, length = countryList.length; i < length; i++) {
-            String[] country = countryList[i].split("\\*");
+        for (String s : countryList) {
+            String[] country = s.split("\\*");
 
             String countryName = country[0];
             String countryNumber = country[1];

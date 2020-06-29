@@ -27,20 +27,12 @@ class Constants private constructor() {
 
     companion object {
 
-        val SALE_MIN=10 //最少卖多少个
-        val BUY_MIN=100 //最少买多少个
+        const val SALE_MIN=10 //最少卖多少个
+        const val BUY_MIN=100 //最少买多少个
 
-        val BUNDLE_IMAGE_DATA = "/image_data/"
-        val BUNDLE_CATEGORY_DATA = "category_data"
+        const val CODE_EXCHANGE_SALE="10001"
+        const val CODE_CERTIFICATION_BROAD="10003"
 
-        //腾讯 Bugly APP id
-        val BUGLY_APPID = "176aad0d9e"
-
-
-        //sp 存储的文件名
-        val FILE_WATCH_HISTORY_NAME = "watch_history_file"   //观看记录
-
-        val FILE_COLLECTION_NAME = "collection_file"    //收藏视屏缓存的文件名
 
         const val URL_TEST = "http://192.168.1.13:5000/"
 

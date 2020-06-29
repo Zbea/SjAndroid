@@ -2,7 +2,9 @@ package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
 import android.net.Uri
+import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
@@ -12,6 +14,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Exchange
 import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
 import com.hazz.kuangji.mvp.presenter.ExchangeSalePresenter
+import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
@@ -35,14 +38,14 @@ import java.io.File
 
 class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeSaleView, View.OnClickListener {
 
-    private lateinit var price: String
-    private lateinit var amount: String
-    private lateinit var money: String
-    private lateinit var typePay: String
-    private lateinit var typeCoin: String
+    private var price="0"
+    private var amount="0"
+    private var money="0"
+    private var typePay="wx"
+    private var typeCoin="usdt"
     private lateinit var data: Exchange
-    private var oldPath: String=""
-    private var path: String=""
+    private var oldPath=""
+    private var path=""
     private var mExchangeSalePresenter = ExchangeSalePresenter(this)
     private var mPhotoDialog: PhotoDialog? = null;
 
@@ -51,7 +54,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     }
 
     override fun commit(data: ExchangeOrder) {
-        EventBus.getDefault().post("10001")
+        EventBus.getDefault().post(Constants.CODE_EXCHANGE_SALE)
         var intent=Intent(this,ExchangeOrderSaleDetailsActivity::class.java)
         intent.putExtra("code",data.order_code)
         startActivity(intent)
@@ -111,7 +114,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                 tv_payee_type.text = "银行转账"
                 ll_pay.visibility = View.GONE
                 ll_pay_bank.visibility = View.VISIBLE
-                if (TextUtils.isEmpty(data.bankCode))
+                if (!TextUtils.isEmpty(data.bankCode))
                 {
                     et_bank_card.setText(data.bankCode)
                     et_bank_name.setText(data.payee)
@@ -130,6 +133,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                 showPhotoDialog()
             }
             tv_commit1 -> {
+                var password=et_password.text.toString()
                 if (typePay == "bank") {
                     if (TextUtils.isEmpty(et_bank_card.text.toString())) {
                         SToast.showText("银行卡号不能为空")
@@ -143,7 +147,12 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                         SToast.showText("开户姓名不能为空")
                         return
                     }
-                    mExchangeSalePresenter.commitOrder(price, amount, typePay,typeCoin, et_bank_card.text.toString(), et_bank_name.text.toString(), et_bank_type.text.toString())
+                    if (TextUtils.isEmpty(password))
+                    {
+                        SToast.showText("资金密码不能为空")
+                        return
+                    }
+                    mExchangeSalePresenter.commitOrder(price, amount, typePay,typeCoin, et_bank_card.text.toString(), et_bank_name.text.toString(), et_bank_type.text.toString(),password)
                 } else {
                     if (TextUtils.isEmpty(path)) {
                         if (TextUtils.isEmpty(oldPath))
@@ -152,13 +161,23 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                         }
                         else
                         {
-                            mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay)
+                            if (TextUtils.isEmpty(password))
+                            {
+                                SToast.showText("资金密码不能为空")
+                                return
+                            }
+                            mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay,password)
                         }
-                        SToast.showText("请上传二维码")
                     }
                     else
                     {
-                        mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay)
+                        if (TextUtils.isEmpty(password))
+                        {
+                            SToast.showText("资金密码不能为空")
+                            return
+                        }
+                        oldPath=""
+                        mExchangeSalePresenter.commitOrder(path,oldPath,typeCoin, amount, price, typePay,password)
                     }
 
                 }
@@ -175,6 +194,9 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                 override fun takePhoto() {
                     PictureSelector.create(this@ExchangeOrderSaleCommitActivity)
                             .openCamera(PictureMimeType.ofImage())
+                            .isCompress(true)
+                            .minimumCompressSize(100)
+                            .compressQuality(45)
                             .forResult(PictureConfig.CHOOSE_REQUEST)
                 }
 
@@ -185,6 +207,9 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                             .imageSpanCount(3)// 每行显示个数 int
                             .selectionMode(PictureConfig.SINGLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
                             .isCamera(false)
+                            .isCompress(true)
+                            .minimumCompressSize(100)
+                            .compressQuality(45)
                             .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
                 }
             })
@@ -199,12 +224,19 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
             var selectList = PictureSelector.obtainMultipleResult(data)
             if (selectList.size>0)
             {
-                path = selectList?.get(0)?.path.toString()
+                var media = selectList?.get(0)
+                if (media != null) {
+                    path = if (media.isCompressed) {
+                        media.compressPath
+                    } else {
+                        media.path
+                    }
+                }
+                path= FileUtils.uri2String(Uri.parse(path),this).toString()
                 iv_qrcode.setImageURI(Uri.fromFile(File(path)))
             }
         }
 
     }
-
 
 }

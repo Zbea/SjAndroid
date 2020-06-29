@@ -67,11 +67,11 @@
                 android:layout_marginRight="@dimen/dp_10"
                 android:layout_weight="1"
                 android:background="@color/color_translucent"
-                android:hint="输入买入数量（最低100）"
+                android:hint="输入买入数量"
                 android:inputType="number"
                 android:lines="1"
                 android:textColor="@color/color_666666"
-                android:textColorHint="@color/color_999999"
+                android:textColorHint="@color/color_hint"
                 android:textSize="14sp" />
 
             <TextView
@@ -129,6 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/redF4"
+                    android:text="￥0"
                     />
             </LinearLayout>
         </LinearLayout>

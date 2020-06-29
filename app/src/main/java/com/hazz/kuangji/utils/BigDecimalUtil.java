@@ -80,9 +80,8 @@ public class BigDecimalUtil {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         BigDecimal obj = b1.multiply(b2).setScale(DEF_DIV_SCALE, RoundingMode.DOWN);
-        String s1 = obj.toPlainString();
-//        String s = String.valueOf(obj);
-        return s1;
+        //        String s = String.valueOf(obj);
+        return obj.toPlainString();
     }
 
 
@@ -91,9 +90,8 @@ public class BigDecimalUtil {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         BigDecimal obj = b1.multiply(b2).setScale(2, RoundingMode.DOWN).stripTrailingZeros();
-        String s1 = obj.toPlainString();
-//        String s = String.valueOf(obj);
-        return s1;
+        //        String s = String.valueOf(obj);
+        return obj.toPlainString();
     }
 
     public static String muls(String v1, String v2, int scale) {
@@ -101,23 +99,16 @@ public class BigDecimalUtil {
         BigDecimal b1 = new BigDecimal(v1);
         BigDecimal b2 = new BigDecimal(v2);
         BigDecimal obj = b1.multiply(b2).setScale(scale, RoundingMode.DOWN);
-        String s1 = obj.toPlainString();
-//        String s = String.valueOf(obj);
-        return s1;
+        //        String s = String.valueOf(obj);
+        return obj.toPlainString();
     }
 
     private static boolean verifyNPE(String v1, String v2) {
-        if (isEmpty(v1) || isEmpty(v2) || ".".equals(v1) || ".".equals(v2)) {
-            return true;
-        }
-        return false;
+        return isEmpty(v1) || isEmpty(v2) || ".".equals(v1) || ".".equals(v2);
     }
 
     public static boolean isEmpty(@Nullable CharSequence str) {
-        if (str == null || str.length() == 0)
-            return true;
-        else
-            return false;
+        return str == null || str.length() == 0;
     }
 
     public static BigDecimal mulByDecimal(String v1, String v2) {
@@ -156,18 +147,14 @@ public class BigDecimalUtil {
         BigDecimal b2 = new BigDecimal(v2);
 
         if (b1.compareTo(b2)==1)return true;
-        else if (b1.compareTo(b2)==0) return true;
-        else return false;
+        else return b1.compareTo(b2) == 0;
     }
 
 
     public static boolean isEqualsZero(String v1) {
         BigDecimal b1 = new BigDecimal(v1);
         int i = b1.compareTo(new BigDecimal(0));
-        if (i == 0) {
-            return true;
-        }
-        return false;
+        return i == 0;
     }
 
 

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -29,13 +30,11 @@ public class Utils {
 		String encryptText = null;
 		try {
 			MessageDigest m = MessageDigest.getInstance("md5");
-			m.update(inputText.getBytes("UTF-8"));
+			m.update(inputText.getBytes(StandardCharsets.UTF_8));
 			byte s[] = m.digest();
 			// m.digest(inputText.getBytes("UTF8"));
 			return hex(s);
 		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return encryptText;
@@ -53,9 +52,9 @@ public class Utils {
 
 	// 返回十六进制字符�?
 	private static String hex(byte[] arr) {
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < arr.length; ++i) {
-			sb.append(Integer.toHexString((arr[i] & 0xFF) | 0x100).substring(1,
+		StringBuilder sb = new StringBuilder();
+		for (byte b : arr) {
+			sb.append(Integer.toHexString((b & 0xFF) | 0x100).substring(1,
 					3));
 		}
 		return sb.toString();
@@ -104,7 +103,7 @@ public class Utils {
 	}
 
 	public interface PositiveListener {
-		public void OnPositiveClick();
+		void OnPositiveClick();
 	}
 
 
@@ -187,7 +186,7 @@ public class Utils {
 			String versionName = context.getApplicationContext()
 					.getPackageManager().getPackageInfo(pkName, 0).versionName;
 			return versionName;
-		} catch (Exception e) {
+		} catch (Exception ignored) {
 		}
 		return null;
 	}

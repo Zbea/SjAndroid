@@ -9,9 +9,8 @@
 
     <ImageView
         android:id="@+id/mImgMallIcon"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
-
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
         android:src="@mipmap/logo_round" />
@@ -23,7 +22,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="24dp"
         android:layout_marginRight="@dimen/margin_14"
-        android:background="@drawable/default_ripple"
         android:padding="6dp"
         android:text="@string/mine_login"
         android:textColor="@color/color_white"
@@ -94,7 +92,6 @@
                     android:hint="请输入用户名"
                     android:inputType="text"
                     android:singleLine="true"
-
                     android:textColorHint="@color/hintTextColor"
                     android:textSize="@dimen/_14_text_size" />
 
@@ -276,11 +273,11 @@
             <TextView
                 android:id="@+id/mTvForget"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginLeft="@dimen/margin_20"
                 android:layout_marginTop="34dp"
                 android:layout_marginRight="@dimen/margin_20"
-                android:background="@drawable/mine_login_btn_ripple"
+                android:background="@drawable/bg_blue_solid_5dp_coner"
                 android:gravity="center"
                 android:text="找回密码"
                 android:textColor="@color/color_white"

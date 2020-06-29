@@ -90,8 +90,6 @@ public class CharacterParserUtil {
             "zhuan", "zhuang", "zhui", "zhun", "zhuo", "zi", "zong", "zou", "zu", "zuan", "zui",
             "zun", "zuo"};
 
-    private StringBuilder buffer;
-
     private String resource;
 
     private static CharacterParserUtil characterParser = new CharacterParserUtil();
@@ -165,7 +163,7 @@ public class CharacterParserUtil {
      */
     public String getSelling(String chs) {
         String key, value;
-        buffer = new StringBuilder();
+        StringBuilder buffer = new StringBuilder();
         for (int i = 0; i < chs.length(); i++) {
             key = chs.substring(i, i + 1);
             if (key.getBytes().length >= 2) {

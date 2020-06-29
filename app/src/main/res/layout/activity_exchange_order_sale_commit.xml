@@ -177,6 +177,7 @@
                 android:layout_marginTop="@dimen/space_dimen"
                 android:orientation="vertical"
                 android:padding="@dimen/space_dimen"
+                android:visibility="gone"
                 android:background="@color/color_white">
 
                 <EditText
@@ -188,7 +189,7 @@
                     android:inputType="number"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_333333"
-                    android:textColorHint="@color/color_999999"
+                    android:textColorHint="@color/color_hint"
                     android:background="@drawable/bg_edit"/>
                 <EditText
                     android:id="@+id/et_bank_type"
@@ -199,7 +200,7 @@
                     android:hint="输入收款银行开户行"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_333333"
-                    android:textColorHint="@color/color_999999"
+                    android:textColorHint="@color/color_hint"
                     android:background="@drawable/bg_edit"/>
 
                 <EditText
@@ -211,10 +212,31 @@
                     android:textSize="@dimen/sp_14"
                     android:layout_marginTop="@dimen/space_dimen"
                     android:textColor="@color/color_333333"
-                    android:textColorHint="@color/color_999999"
+                    android:textColorHint="@color/color_hint"
                     android:background="@drawable/bg_edit"/>
 
             </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_dimen"
+            android:orientation="vertical"
+            android:padding="@dimen/space_dimen"
+            android:background="@color/color_white">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:hint="输入资金密码"
+                android:inputType="textPassword"
+                android:textSize="@dimen/sp_14"
+                android:textColor="@color/color_333333"
+                android:textColorHint="@color/color_hint"
+                android:background="@drawable/bg_edit"/>
+        </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

@@ -86,7 +86,7 @@ public class GetCountryNameSort
      */
     public List<CountrySortModel> search(String str, List<CountrySortModel> list)
     {
-        List<CountrySortModel> filterList = new ArrayList<CountrySortModel>();// 过滤后的list
+        List<CountrySortModel> filterList = new ArrayList<>();// 过滤后的list
         // if (str.matches("^([0-9]|[/+])*$")) {// 正则表达式 匹配号码
         if (str.matches("^([0-9]|[/+]).*"))
         {// 正则表达式 匹配以数字或者加号开头的字符串(包括了带空格及-分割的号码)

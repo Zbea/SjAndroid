@@ -30,10 +30,10 @@ class ExchangeCoinPresenter(view:IContractView.IExchangeCoinView) : BasePresente
     }
 
 
-    fun commitExchangeCoin(type:String,amount1:String,amount2:String) {
+    fun commitExchangeCoin(type:String,amount1:String,amount2:String,password:String) {
 
 
-        val order = RetrofitManager.serviceNew.commitExchange(type,amount1,amount2)
+        val order = RetrofitManager.serviceNew.commitExchange(type,amount1,amount2,password)
 
         doRequest(order, object : Callback<Any>(view) {
 

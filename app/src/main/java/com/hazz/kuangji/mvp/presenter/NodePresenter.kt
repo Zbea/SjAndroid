@@ -47,7 +47,7 @@ class NodePresenter(view: IContractView.NodeView) : BasePresenter<IContractView.
                 tBaseResult.data?.let { view.getCertification(it) }
             }
 
-        }, true)
+        }, false)
 
     }
 

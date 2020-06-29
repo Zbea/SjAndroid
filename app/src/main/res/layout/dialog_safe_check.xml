@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="260dp"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_white_solid_5dp_coner"
     android:orientation="vertical">
 
@@ -14,28 +13,21 @@
         android:layout_marginTop="18sp"
         android:text="@string/safe_check"
         android:textSize="15sp"
+        android:visibility="gone"
         android:textColor="@color/commonTextColor"
         />
 
 
 
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="@dimen/check_input_hig"-->
-    <!--android:layout_marginLeft="@dimen/margin_14"-->
-    <!--android:layout_marginRight="@dimen/margin_14"-->
-    <!--android:layout_marginTop="@dimen/margin_14"-->
-    <!--android:background="@drawable/check_input_bg"-->
-    <!--&gt;-->
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/mEtCheck"
-        android:layout_marginTop="@dimen/margin_14"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="33dp"
+        android:layout_height="40dp"
         android:background="@drawable/bg_gray_solid_5dp_coner"
         android:hint="@string/input_deal_password"
-        android:textColorHint="#B3BED9"
-        android:textSize="12sp"
+        android:textColorHint="@color/color_hint"
+        android:textSize="14sp"
         android:paddingLeft="@dimen/margin_14"
         android:layout_marginLeft="@dimen/margin_14"
         android:layout_marginRight="@dimen/margin_14"
@@ -60,12 +52,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/part_line_color"
-        android:layout_marginTop="@dimen/margin_14"
+        android:background="@color/color_line"
+        android:layout_marginTop="@dimen/dp_10"
         />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="42dp"
+        android:layout_height="40dp"
         android:orientation="horizontal"
         android:weightSum="2"
         >
@@ -76,14 +68,13 @@
             android:layout_weight="1"
             android:text="@string/cancel"
             android:gravity="center"
-            android:textSize="15sp"
-            android:textColor="#9A66FF"
-            android:background="@drawable/default_ripple"
+            android:textSize="14sp"
+            android:textColor="@color/color_999999"
             />
         <View
             android:layout_width="0.5dp"
             android:layout_height="match_parent"
-            android:background="@color/part_line_color"
+            android:background="@color/color_line"
             />
         <TextView
             android:id="@+id/mTvCheckConfirm"
@@ -92,9 +83,8 @@
             android:layout_weight="1"
             android:text="@string/confirm"
             android:gravity="center"
-            android:textSize="15sp"
-            android:textColor="#9A66FF"
-            android:background="@drawable/default_ripple"
+            android:textSize="14sp"
+            android:textColor="@color/blue"
             />
 
 

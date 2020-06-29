@@ -19,10 +19,5 @@ class MIngxiRecordAdapter(layoutResId: Int, data: List<Mingxi.ListBean>?) : Base
         helper.setText(R.id.tv_time, item.create_at)
         helper.setText(R.id.tv_amount, "+"+BigDecimalUtil.mul(item.amount,"1",2)+" FIL")
 
-//
-//        helper.itemView.setOnClickListener {
-//
-//            mContext.startActivity(Intent(mContext, MsgDescActivity::class.java).putExtra("message", item))
-//        }
     }
 }

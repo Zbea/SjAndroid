@@ -46,7 +46,7 @@
                 android:layout_weight="1"
                 android:textSize="@dimen/sp_14"
                 android:textColor="@color/color_666666"
-                android:hint="请输入数量（最低100）"
+                android:hint="请输入数量"
                 android:inputType="number"
                 android:textColorHint="@color/color_hint"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_12"
-                android:text="￥100"
+                android:text="￥0"
                 />
 
             <LinearLayout
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_666666"
-                    android:text="100"
+                    android:text="0"
                     android:textSize="@dimen/sp_12"
                     />
             </LinearLayout>
@@ -197,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_12"
-                android:text="￥200"
+                android:text="￥0"
                 />
 
             <LinearLayout
@@ -222,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_666666"
                     android:textSize="@dimen/sp_12"
-                    android:text="200"
+                    android:text="0"
                     />
             </LinearLayout>
         </LinearLayout>

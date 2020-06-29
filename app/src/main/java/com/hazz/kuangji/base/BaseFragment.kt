@@ -1,5 +1,6 @@
 package com.hazz.kuangji.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,9 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
+import com.hazz.kuangji.ui.activity.LoginActivity
+import com.hazz.kuangji.utils.ActivityManager
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToastUtils
 import com.hazz.kuangji.widget.ProgressDialog
 import io.reactivex.annotations.NonNull
@@ -142,6 +146,9 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun login() {
+        SToast.showText("token已失效,请重新登陆")
+        startActivity(Intent(activity, LoginActivity::class.java))
+        ActivityManager.getInstance().finishOthers(LoginActivity::class.java)
     }
 
     override fun hideLoading() {

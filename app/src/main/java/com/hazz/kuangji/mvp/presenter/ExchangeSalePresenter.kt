@@ -5,6 +5,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Exchange
 import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
 import com.hazz.kuangji.net.*
+import com.hazz.kuangji.utils.Utils
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -35,7 +36,7 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
     }
 
 
-    fun commitOrder(file: String,path: String, typeCoin: String, num: String, price: String, typePay: String) {
+    fun commitOrder(file: String,path: String, typeCoin: String, num: String, price: String, typePay: String, password: String) {
 
         var fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), File(file));
         var requestBody = MultipartBody.Part.createFormData("file", "image.png", fileBody)
@@ -46,6 +47,7 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
         map["price"] = price
         map["typePay"] = typePay
         map["path"] = path
+        map["password"] = Utils.encryptMD5(password)
         doRequest(if (!TextUtils.isEmpty(file)) RetrofitManager.service.commitOrderSale(map, requestBody) else RetrofitManager.service.commitOrderSale(map), object : Callback<ExchangeOrder>(view) {
 
 
@@ -63,7 +65,7 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
     }
 
 
-    fun commitOrder(price: String, num: String, typePay: String, typeCoin: String, bankCode: String, bankName: String, bankType: String) {
+    fun commitOrder(price: String, num: String, typePay: String, typeCoin: String, bankCode: String, bankName: String, bankType: String,password: String) {
 
         var map = HashMap<String, String>()
         map["typeCoin"] = typeCoin
@@ -73,6 +75,7 @@ class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresent
         map["bankCode"] = bankCode
         map["bankName"] = bankName
         map["bankType"] = bankType
+        map["password"] = Utils.encryptMD5(password)
 
         val exchange = RetrofitManager.service.commitOrderSale(map)
 

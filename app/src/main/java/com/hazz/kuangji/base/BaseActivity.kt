@@ -16,6 +16,7 @@ import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
 import com.hazz.kuangji.utils.ActivityManager
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.utils.ToastUtils
 import com.hazz.kuangji.widget.ProgressDialog
@@ -184,7 +185,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     override fun login() {
 
-        ToastUtils.showToast(this, "token已失效,请重新登陆")
+        SToast.showText("token已失效,请重新登陆")
 
         startActivity(Intent(this, LoginActivity::class.java))
         ActivityManager.getInstance().finishOthers(LoginActivity::class.java)
@@ -199,7 +200,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     }
 
     override fun fail(msg: String) {
-        ToastUtils.showToast(this, msg)
+        SToast.showTextLong(msg)
     }
 
     override fun onStartRequest() {

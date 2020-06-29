@@ -237,8 +237,8 @@ interface AiPickService{
     /**
      * 币币兑换
      */
-    @GET("accounts/v0/trans/{type}/{amount1}/{amount2}")
-    fun commitExchange(@Path("type" ) type:String, @Path("amount1" ) amount1:String, @Path("amount2" ) amount2:String): Observable<BaseResult<Any>>
+    @GET("accounts/v0/trans/{type}/{amount1}/{amount2}/{password}")
+    fun commitExchange(@Path("type" ) type:String, @Path("amount1" ) amount1:String, @Path("amount2" ) amount2:String, @Path("password" ) password:String): Observable<BaseResult<Any>>
     /**
      * 获取卖币订单
      */

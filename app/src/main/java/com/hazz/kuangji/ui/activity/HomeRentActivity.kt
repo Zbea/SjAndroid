@@ -9,7 +9,9 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
+import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.mvp.model.bean.MyAsset
+import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.ZichanPresenter
 import com.hazz.kuangji.utils.*
@@ -18,7 +20,26 @@ import kotlinx.android.synthetic.main.charge.mToolBar
 import kotlinx.android.synthetic.main.activity_home_rent.*
 
 
-class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView {
+class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView ,IContractView.ICertificationInfoView {
+
+    private var mHomePresenter: HomePresenter = HomePresenter(this)
+    private var rate = "0.1"
+    private var coin = "USDT"
+    private var id = ""
+    private var price = ""
+    private var amount:String="0"
+    private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
+    private var mCertificationInfoPresenter: CertificationInfoPresenter = CertificationInfoPresenter(this)
+
+    override fun getCertification(certification: Certification) {
+        if (certification.status==1)
+        {
+            et_name.setText(certification.name)
+            et_phone.setText(SPUtil.getString("mobile"))
+            et_address.setText(certification.address)
+        }
+    }
+
 
     override fun myAsset(msg: MyAsset) {
 
@@ -55,19 +76,14 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
     private var produce: Home.ProductsBean? = null
 
-    private var mHomePresenter: HomePresenter = HomePresenter(this)
-    private var rate = "0.1"
-    private var coin = "USDT"
-    private var id = ""
-    private var price = ""
-    private var amount:String="0"
-    private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
+
     override fun layoutId(): Int {
         return R.layout.activity_home_rent
     }
 
     override fun initData() {
         mZichanPresenter.myAsset()
+        mCertificationInfoPresenter.getCertification()
     }
 
     // private var mChargePresenter: ChargePresenter = ChargePresenter(this)
@@ -171,7 +187,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
                             }
                 }
-                mPasswordDialog!!.show()
+                mPasswordDialog?.show()
 
             } else {
                 SToast.showText("请阅读租用服务协议")
@@ -179,6 +195,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
         }
     }
+
 
 
 }

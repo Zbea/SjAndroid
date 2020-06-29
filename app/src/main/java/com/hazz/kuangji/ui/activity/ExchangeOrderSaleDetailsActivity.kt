@@ -91,12 +91,13 @@ class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchange
 
         tv_commit.setOnClickListener{
             var commonDialog = CommonDialog(this)
-            commonDialog?.run {
+            commonDialog.run {
                 setContent("确定取消订单?")
                 setDialogClickListener(object : CommonDialog.DialogClickListener {
                     override fun ok() {
                         mExchangeSalePresenter.cancelOrder(code)
                     }
+
                     override fun cancel() {
                     }
                 })

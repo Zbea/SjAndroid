@@ -1,34 +1,23 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.events.Index
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.presenter.MainPresenter
-import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.fragment.*
-import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.RxBus
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
-import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 
-class MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
+class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
 
     private var mainPresenter=MainPresenter(this)
 
@@ -77,7 +66,7 @@ class MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContra
         mFragments = ArrayList()
         mFragments.add(HomeFragment())
         mFragments.add(MillFragment())
-        mFragments.add(ZichanFragment())
+        mFragments.add(AssetFragment())
         mFragments.add(CoinMarketFragment())
         mFragments.add(MineFragment())
         supportFragmentManager.beginTransaction()

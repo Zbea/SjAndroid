@@ -155,7 +155,7 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
             tv_commit -> mExchangeOrderBuyPresenter.commitPay(code)
             tv_cancel -> {
                 var commonDialog = CommonDialog(this)
-                commonDialog?.run {
+                commonDialog.run {
                     setContent("确定取消订单?")
                     setDialogClickListener(object : CommonDialog.DialogClickListener {
                         override fun ok() {

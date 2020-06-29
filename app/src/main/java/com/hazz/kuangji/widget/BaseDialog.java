@@ -14,7 +14,6 @@ import com.hazz.kuangji.R;
 
 public class BaseDialog extends Dialog {
 
-    private Context context;
     private int itemLayoutId;
 
     /**
@@ -51,7 +50,6 @@ public class BaseDialog extends Dialog {
 
     public BaseDialog(Context context, int theme, int itemLayoutId) {
         super(context, theme);
-        this.context = context;
         this.itemLayoutId = itemLayoutId;
     }
 

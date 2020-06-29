@@ -367,11 +367,7 @@ public class NinePointLockView extends FrameLayout {
             resSize = size;
         } else { //未具体指定大小
             if (mode == MeasureSpec.AT_MOST) {    //wrap_content
-                if (isWidth) {      //因为为正方形，该控件中可以不进行判断
-                    resSize = 790;
-                } else {
-                    resSize = 790;
-                }
+                resSize = 790;
             }
         }
         return resSize;

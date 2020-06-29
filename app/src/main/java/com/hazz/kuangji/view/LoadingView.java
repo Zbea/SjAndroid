@@ -131,14 +131,14 @@ public class LoadingView extends View {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(measureSize(widthMeasureSpec, 140), measureSize(heightMeasureSpec, 140));
+        setMeasuredDimension(measureSize(widthMeasureSpec), measureSize(heightMeasureSpec));
     }
 
-    private int measureSize(int measureSpec, int defaultSize) {
+    private int measureSize(int measureSpec) {
         int specMode = MeasureSpec.getMode(measureSpec);
         int specSize = MeasureSpec.getSize(measureSpec);
 
-        int resultSize = defaultSize;
+        int resultSize = 140;
         switch (specMode) {
             case MeasureSpec.EXACTLY:
                 resultSize = specSize;
@@ -197,10 +197,8 @@ public class LoadingView extends View {
         @Override
         public void handleMessage(Message msg) {
             if (mLoadingViewWeakReference.get() != null) {
-                switch (msg.what) {
-                    case REFRESH_VIEW:
-                        mLoadingViewWeakReference.get().postInvalidate();
-                        break;
+                if (msg.what == REFRESH_VIEW) {
+                    mLoadingViewWeakReference.get().postInvalidate();
                 }
             }
         }

@@ -99,7 +99,7 @@ public class DpUtils {
                 Field field = decorViewClazz.getDeclaredField("mSemiTransparentStatusBarColor");
                 field.setAccessible(true);
                 field.setInt(activity.getWindow().getDecorView(), Color.TRANSPARENT);  //设置透明
-            } catch (Exception e) {
+            } catch (Exception ignored) {
             }
         }
     }

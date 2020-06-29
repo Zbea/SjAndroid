@@ -4,28 +4,33 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.events.Index
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.mvp.model.bean.MyAsset
 import com.hazz.kuangji.mvp.presenter.ZichanPresenter
 import com.hazz.kuangji.ui.activity.ChargeActivity
 import com.hazz.kuangji.ui.activity.IncomingActivity
+import com.hazz.kuangji.ui.activity.MineCertificationActivity
 import com.hazz.kuangji.ui.activity.TibiActivity
 import com.hazz.kuangji.ui.adapter.ZichanAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.RxBus
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
-import kotlinx.android.synthetic.main.fragment_zichan.*
-import kotlinx.android.synthetic.main.fragment_zichan.recycle_view
+import kotlinx.android.synthetic.main.fragment_asset.*
+import kotlinx.android.synthetic.main.fragment_asset.recycle_view
 
 
-class ZichanFragment : BaseFragment(), IContractView.ZichanView {
+class AssetFragment : BaseFragment(), IContractView.ZichanView {
 
+    private var mCertification:Certification?=null
 
     @SuppressLint("SetTextI18n")
     override fun myAsset(msg: MyAsset) {
@@ -58,7 +63,7 @@ class ZichanFragment : BaseFragment(), IContractView.ZichanView {
     }
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_zichan
+        return R.layout.fragment_asset
     }
 
 
@@ -69,9 +74,23 @@ class ZichanFragment : BaseFragment(), IContractView.ZichanView {
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
     @SuppressLint("SetTextI18n")
     override fun initView() {
+
+        mCertification= SPUtil.getObj("certification", Certification::class.java)
+
         tv_tibi.setOnClickListener {
             if(myAsset!=null){
-                startActivity(Intent(activity,TibiActivity::class.java).putExtra("amount",myAsset))
+                if (mCertification!=null)
+                {
+                    startActivity(Intent(activity,TibiActivity::class.java).putExtra("amount",myAsset))
+                }
+                else
+                {
+                    SToast.showText("尚未实名认证，请前往实名认证")
+                    Handler().postDelayed(Runnable {
+                        val intent=Intent(activity, MineCertificationActivity::class.java)
+                        startActivity(intent)
+                    },500)
+                }
             }
 
 
@@ -101,15 +120,7 @@ class ZichanFragment : BaseFragment(), IContractView.ZichanView {
         mAdapter!!.bindToRecyclerView(recycle_view)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(10f)
-
-        recycle_view.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
+        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0)
         )
 
 

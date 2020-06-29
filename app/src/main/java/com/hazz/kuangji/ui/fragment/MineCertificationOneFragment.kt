@@ -3,6 +3,7 @@ package com.hazz.kuangji.ui.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.TextUtils
 import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -18,7 +19,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
 
     private val PHONE:String="PHONE"
     private var mCertificationPresenter=CertificationPresenter(this)
-    private lateinit var mPhone:String
+    private var mPhone=""
     private var countDownTimer: CountDownTimer? = null
 
     override fun sendSms(msg: String) {
@@ -53,8 +54,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
 
     override fun initView() {
         var userInfo = SPUtil.getObj("user", UserInfo::class.java)
-        mPhone= userInfo?.mobile.toString()
-        tv_phone.setText("+86  "+mPhone)
+        tv_phone.text =userInfo?.mobile.toString()
 
         btn_next.setOnClickListener(this)
         tv_get_code.setOnClickListener(this)
@@ -67,11 +67,17 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
         when(v)
         {
             tv_get_code->{
-                mCertificationPresenter.sendSMs(mPhone)
+                mCertificationPresenter.sendSMs(tv_phone.text.toString())
             }
             btn_next->{
+                mPhone=et_code.text.toString()
+                if (TextUtils.isEmpty(mPhone))
+                {
+                    SToast.showText("请输入验证码")
+                    return
+                }
                 fragmentManager?.beginTransaction()
-                        ?.replace(R.id.fl_content, MineCertificationTwoFragment().newInstance(et_code.text.toString()))
+                        ?.add(R.id.fl_content, MineCertificationTwoFragment().newInstance(mPhone))
                         ?.addToBackStack(null)
                         ?.commit()
             }
@@ -90,7 +96,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
 
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                tv_get_code.text = "${millisUntilFinished / 1000}s"
+                tv_get_code?.text = "${millisUntilFinished / 1000}s"
             }
         }.start()
 

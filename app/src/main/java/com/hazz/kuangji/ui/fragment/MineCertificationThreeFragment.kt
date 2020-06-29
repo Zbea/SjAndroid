@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
 import android.view.View
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.CertificationPresenter
+import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
@@ -24,6 +26,7 @@ import kotlinx.android.synthetic.main.fragment_mine_certification_one.*
 import kotlinx.android.synthetic.main.fragment_mine_certification_one.tv_get_code
 import kotlinx.android.synthetic.main.fragment_mine_certification_three.*
 import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
 class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,IContractView.ICertificationView{
@@ -40,6 +43,7 @@ class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,ICo
     override fun commit() {
         SToast.showText("提交成功，待审核")
         activity?.finish()
+        EventBus.getDefault().post(Constants.CODE_CERTIFICATION_BROAD)
     }
 
     public fun newInstance(certification: Certification ):MineCertificationThreeFragment
@@ -97,7 +101,9 @@ class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,ICo
                 override fun takePhoto() {
                     PictureSelector.create(activity)
                             .openCamera(PictureMimeType.ofImage())
-                            .forResult(PictureConfig.CHOOSE_REQUEST)
+                            .isCompress(true)
+                            .minimumCompressSize(200)
+                            .forResult(155)
                 }
 
                 override fun pickPhoto() {
@@ -107,7 +113,9 @@ class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,ICo
                             .imageSpanCount(3)// 每行显示个数 int
                             .selectionMode(PictureConfig.SINGLE)// 多选 or 单选 PictureConfig.MULTIPLE or PictureConfig.SINGLE
                             .isCamera(false)
-                            .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
+                            .isCompress(true)
+                            .minimumCompressSize(200)
+                            .forResult(155) //结果回调onActivityResult code
                 }
             })
             builder()
@@ -118,10 +126,18 @@ class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,ICo
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PictureConfig.CHOOSE_REQUEST) {
+        if (requestCode ==155) {
             var selectList = PictureSelector.obtainMultipleResult(data)
             if (selectList.size > 0) {
-                path = selectList?.get(0)?.path.toString()
+                var media = selectList?.get(0)
+                if (media != null) {
+                    path = if (media.isCompressed) {
+                        media.compressPath
+                    } else {
+                        media.path
+                    }
+                }
+                path= FileUtils.uri2String(Uri.parse(path),activity!!).toString()
                 if (path != null) {
                     iv_id_hand.setImageURI(Uri.fromFile(File(path)))
                 }

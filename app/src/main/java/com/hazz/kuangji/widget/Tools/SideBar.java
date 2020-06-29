@@ -106,32 +106,27 @@ public class SideBar extends View {
         // 点击y坐标所占总高度的比例*b数组的长度就等于点击b中的个数.
         final int c = (int) (touch_y / getHeight() * b.length);
 
-        switch (action) {
-            case MotionEvent.ACTION_UP:
-                setBackgroundColor(Color.WHITE);
-                choose = -1;
-                invalidate();
-                if (mTextDialog != null) {
-                    mTextDialog.setVisibility(View.INVISIBLE);
-                }
-                break;
-
-            default:
-//                setBackgroundResource(R.drawable.sidebar_background);
-                if (oldChoose != c) {
-                    if (c >= 0 && c < b.length) {
-                        if (listener != null) {
-                            listener.onTouchingLetterChanged(b[c]);
-                        }
-                        if (mTextDialog != null) {
-                            mTextDialog.setText(b[c]);
-                            mTextDialog.setVisibility(View.VISIBLE);
-                        }
-                        choose = c;
-                        invalidate();
+        if (action == MotionEvent.ACTION_UP) {
+            setBackgroundColor(Color.WHITE);
+            choose = -1;
+            invalidate();
+            if (mTextDialog != null) {
+                mTextDialog.setVisibility(View.INVISIBLE);
+            }
+        } else {//                setBackgroundResource(R.drawable.sidebar_background);
+            if (oldChoose != c) {
+                if (c >= 0 && c < b.length) {
+                    if (listener != null) {
+                        listener.onTouchingLetterChanged(b[c]);
                     }
+                    if (mTextDialog != null) {
+                        mTextDialog.setText(b[c]);
+                        mTextDialog.setVisibility(View.VISIBLE);
+                    }
+                    choose = c;
+                    invalidate();
                 }
-                break;
+            }
         }
 
         return true;
@@ -153,7 +148,7 @@ public class SideBar extends View {
      * @author coder
      */
     public interface OnTouchingLetterChangedListener {
-        public void onTouchingLetterChanged(String s);
+        void onTouchingLetterChanged(String s);
     }
 
 }

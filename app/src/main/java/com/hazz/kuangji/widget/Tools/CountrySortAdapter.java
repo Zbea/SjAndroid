@@ -51,7 +51,7 @@ public class CountrySortAdapter extends BaseAdapter implements SectionIndexer
         this.mContext = mContext;
         if (list == null)
         {
-            this.mList = new ArrayList<CountrySortModel>();
+            this.mList = new ArrayList<>();
         }
         else
         {
@@ -161,7 +161,7 @@ public class CountrySortAdapter extends BaseAdapter implements SectionIndexer
     {
         if (list == null)
         {
-            this.mList = new ArrayList<CountrySortModel>();
+            this.mList = new ArrayList<>();
         }
         else
         {

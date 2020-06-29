@@ -127,4 +127,11 @@ interface IContractView {
         fun commit()
     }
 
+    //
+    interface ICertificationInfoView: BaseView {
+
+        fun getCertification(certification :Certification)
+
+    }
+
 }

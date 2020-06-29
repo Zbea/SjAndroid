@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.hazz.kuangji.R
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToastUtils
 
 
@@ -129,13 +130,14 @@ class SafeCheckDialog(var context: Context) {
     }
 
     fun setConfirmListener(confirmListener: (View,String) -> Unit): SafeCheckDialog {
-        mTvConfirm?.let {
+        mTvConfirm?.let { it ->
             it.setOnClickListener {
                 val text=mEt!!.text?.toString()?:""
-                if(text.isNullOrEmpty()){
-                    ToastUtils.showToast(context, context.getString(R.string.input_deal_password))
+                if(text.isEmpty()){
+                    SToast.showText(context.getString(R.string.input_deal_password))
                     return@setOnClickListener
                 }
+                dismiss()
                 confirmListener(it, text)
             }
         }

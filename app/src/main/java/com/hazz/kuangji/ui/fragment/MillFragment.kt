@@ -20,10 +20,10 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
     override fun getKuangji(msg: Kuangji) {
 
         if(msg.total!=null){
-            tv_touzi.text=msg.total
+            tv_touzi?.text=msg.total
         }
         if(msg.yesterday!=null){
-            tv_shouyi.text=msg.yesterday
+            tv_shouyi?.text=msg.yesterday
         }
         mAdapter?.setNewData(msg.machine_list.list)
     }

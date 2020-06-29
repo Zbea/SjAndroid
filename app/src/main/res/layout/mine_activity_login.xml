@@ -13,8 +13,8 @@
     <ImageView
         android:id="@+id/iv_logo"
         android:layout_marginTop="65dp"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="24dp"
         android:layout_marginRight="@dimen/margin_14"
-        android:background="@drawable/default_ripple"
+        android:background="@color/color_translucent"
         />
 
 
@@ -190,7 +190,7 @@
             <TextView
                 android:id="@+id/mTvLogin"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginLeft="@dimen/margin_20"
                 android:layout_marginRight="@dimen/margin_20"
                 android:layout_marginTop="@dimen/margin_16"
@@ -198,7 +198,7 @@
                 android:textColor="@color/color_white"
                 android:gravity="center"
                 android:text="@string/mine_login"
-                android:background="@drawable/mine_login_btn_ripple"
+                android:background="@drawable/bg_blue_solid_5dp_coner"
                 />
 
             <RelativeLayout
@@ -216,7 +216,7 @@
                     android:text="@string/mine_register"
                     android:textColor="#5390FF"
                     android:paddingTop="16dp"
-                    android:background="@drawable/default_ripple"
+                    android:background="@drawable/bg_ripple_selector"
                     />
                 <TextView
                     android:id="@+id/mTvUseForgetPassword"
@@ -230,7 +230,7 @@
                     android:maxWidth="120dp"
                     android:paddingTop="6dp"
                     android:padding="10dp"
-                    android:background="@drawable/default_ripple"
+                    android:background="@drawable/bg_ripple_selector"
 
                     />
             </RelativeLayout>

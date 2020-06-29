@@ -9,9 +9,6 @@ import android.util.DisplayMetrics
  */
 
 object DisplayManager {
-    init {
-
-    }
 
     private var displayMetrics: DisplayMetrics? = null
 

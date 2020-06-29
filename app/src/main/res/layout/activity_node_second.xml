@@ -29,9 +29,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-
-                android:background="@drawable/default_ripple">
+                android:layout_marginTop="30dp">
 
                 <ImageView
                     android:id="@+id/iv_back"
