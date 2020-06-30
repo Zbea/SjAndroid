@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.bean.Touzi
-import com.hazz.kuangji.ui.activity.TouziConfirmActivity
+import com.hazz.kuangji.ui.activity.asset.TouziConfirmActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class TouziAdapter(layoutResId: Int, data: List<Touzi.ProductsBean>?) : BaseQuickAdapter<Touzi.ProductsBean, BaseViewHolder>(layoutResId, data) {
@@ -25,7 +25,7 @@ class TouziAdapter(layoutResId: Int, data: List<Touzi.ProductsBean>?) : BaseQuic
 
     helper.itemView.setOnClickListener {
 
-        mContext.startActivity(Intent(mContext,TouziConfirmActivity::class.java).putExtra("touzi",item))
+        mContext.startActivity(Intent(mContext, TouziConfirmActivity::class.java).putExtra("touzi",item))
     }
 }
 }

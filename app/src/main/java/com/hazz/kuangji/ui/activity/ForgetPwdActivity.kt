@@ -9,7 +9,6 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.SToast
-import com.hazz.kuangji.utils.ToastUtils
 import kotlinx.android.synthetic.main.mine_activity_forget.*
 
 
@@ -20,7 +19,7 @@ class ForgetPwdActivity : BaseActivity(), IContractView.LoginView {
 
     override fun sendSms(msg: String) {
         mDialog!!.dismiss()
-        ToastUtils.showToast(this, getString(R.string.mine_send_success))
+        SToast.showText( getString(R.string.mine_send_success))
         showCountDownView()
     }
 

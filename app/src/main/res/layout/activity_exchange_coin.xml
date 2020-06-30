@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_dimen"
                     android:textColor="@color/color_999999"
-                    android:text="USDT余量："
+                    android:text="USDT数量："
                     android:textSize="@dimen/sp_12"
                     />
 
@@ -212,7 +212,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_999999"
                     android:layout_marginLeft="@dimen/space_dimen"
-                    android:text="FIL余量："
+                    android:text="FIL数量："
                     android:textSize="@dimen/sp_12"
                     />
 

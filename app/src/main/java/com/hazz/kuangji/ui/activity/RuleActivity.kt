@@ -4,7 +4,7 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.utils.ToolBarCustom
-import kotlinx.android.synthetic.main.rule.*
+import kotlinx.android.synthetic.main.activity_rule.*
 
 
 class RuleActivity : BaseActivity() {
@@ -14,7 +14,7 @@ class RuleActivity : BaseActivity() {
     }
 
     override fun layoutId(): Int {
-        return R.layout.rule
+        return R.layout.activity_rule
     }
 
 

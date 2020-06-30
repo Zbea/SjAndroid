@@ -13,8 +13,6 @@ class ZichanPresenter(view: IContractView.ZichanView) : BasePresenter<IContractV
 
     fun myAsset() {
 
-
-
         val login = RetrofitManager.service.myAsset()
 
         doRequest(login, object : Callback<MyAsset>(view) {
@@ -27,7 +25,7 @@ class ZichanPresenter(view: IContractView.ZichanView) : BasePresenter<IContractV
                 tBaseResult.data?.let { view.myAsset(it) }
             }
 
-        }, true)
+        }, false)
 
     }
 

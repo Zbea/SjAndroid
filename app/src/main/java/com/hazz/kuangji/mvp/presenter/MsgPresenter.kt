@@ -24,7 +24,7 @@ class MsgPresenter(view: IContractView.MsgView) : BasePresenter<IContractView.Ms
                 tBaseResult.data?.let { view.getMsg(it) }
             }
 
-        }, true)
+        }, false)
 
     }
 

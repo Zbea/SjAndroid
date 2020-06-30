@@ -8,8 +8,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.ui.activity.HomeKuangjiDescActivity
-import com.hazz.kuangji.ui.activity.HomeRentActivity
+import com.hazz.kuangji.ui.activity.home.HomeMillDescActivity
+import com.hazz.kuangji.ui.activity.home.HomeRentActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickAdapter<Home.ProductsBean, BaseViewHolder>(layoutResId, data) {
@@ -29,7 +29,7 @@ class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickA
 
             }
             getView<TextView>(R.id.chakan).setOnClickListener {
-                mContext.startActivity(Intent(mContext, HomeKuangjiDescActivity::class.java).putExtra("name",item.name).putExtra("desc",item.desc))
+                mContext.startActivity(Intent(mContext, HomeMillDescActivity::class.java).putExtra("name",item.name).putExtra("desc",item.desc))
 
             }
         }

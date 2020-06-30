@@ -6,7 +6,7 @@ import android.util.ArrayMap
 import com.google.gson.Gson
 import com.hazz.kuangji.LanguageType
 import io.reactivex.schedulers.Schedulers
-import java.io.File
+import java.io.*
 
 /**
  * 数据存储类　
@@ -109,12 +109,12 @@ object SPUtil {
         return result as T
     }
 
-    fun removeObj(key: String): Any {
+    fun removeObj(key: String): Any? {
         val file = File(rootFile, key)
         if (file.exists()) {
             file.delete()
         }
-        return map.remove(key)!!
+        return map.remove(key)
     }
 
     fun saveLanguage(context: Context, language: LanguageType) {
@@ -131,6 +131,53 @@ object SPUtil {
     fun getLanguage(context: Context): String? {
         val sharedPreferences = context.getSharedPreferences(APP_CONFIG, Context.MODE_PRIVATE)
         return sharedPreferences.getString("lang", LanguageType.LG_SIMPLIFIED_CHINESE.value)
+    }
+
+    /**
+     * 序列化对象
+
+     * @param person
+     * *
+     * @return
+     * *
+     * @throws IOException
+     */
+    @Throws(IOException::class)
+    private fun <A> serialize(obj: A): String {
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        val objectOutputStream = ObjectOutputStream(
+                byteArrayOutputStream)
+        objectOutputStream.writeObject(obj)
+        var serStr = byteArrayOutputStream.toString("ISO-8859-1")
+        serStr = java.net.URLEncoder.encode(serStr, "UTF-8")
+        objectOutputStream.close()
+        byteArrayOutputStream.close()
+        return serStr
+    }
+
+    /**
+     * 反序列化对象
+
+     * @param str
+     * *
+     * @return
+     * *
+     * @throws IOException
+     * *
+     * @throws ClassNotFoundException
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IOException::class, ClassNotFoundException::class)
+    private fun <A> deSerialization(str: String): A {
+        val redStr = java.net.URLDecoder.decode(str, "UTF-8")
+        val byteArrayInputStream = ByteArrayInputStream(
+                redStr.toByteArray(charset("ISO-8859-1")))
+        val objectInputStream = ObjectInputStream(
+                byteArrayInputStream)
+        val obj = objectInputStream.readObject() as A
+        objectInputStream.close()
+        byteArrayInputStream.close()
+        return obj
     }
 
 }

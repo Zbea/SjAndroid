@@ -80,6 +80,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:inputType="number"
+                    android:digits="0123456789xyzXYZ"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
                     android:textSize="@dimen/_14_text_size"/>
@@ -130,6 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:inputType="textEmailAddress"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
                     android:textSize="@dimen/_14_text_size"/>

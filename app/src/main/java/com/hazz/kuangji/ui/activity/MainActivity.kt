@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.events.Index
@@ -12,6 +13,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.presenter.MainPresenter
 import com.hazz.kuangji.ui.fragment.*
 import com.hazz.kuangji.utils.RxBus
+import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
@@ -40,6 +42,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun initData() {
+        StatusBarUtil.darkMode(this,false)
     }
 
     override fun initView() {
@@ -54,7 +57,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         Beta.canShowUpgradeActs.add(MainActivity::class.java)
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.autoCheckUpgrade = true
-        Bugly.init(this, "9e1bc2b87d", false)
+        Bugly.init(this, Constants.BUGLY_ID, false)
     }
 
     override fun start() {

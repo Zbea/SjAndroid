@@ -8,6 +8,9 @@ import android.widget.Toast;
 import androidx.annotation.IntRange;
 import androidx.annotation.StringRes;
 
+import com.hazz.kuangji.R;
+import com.hazz.kuangji.net.ExceptionHandle;
+
 
 /**
  * emmmm .........
@@ -82,4 +85,20 @@ public class SToast {
             toast.cancel();
         }
     }
+
+    public static void showToast(ExceptionHandle.ResponeThrowable responseThrowable) {
+        int code = responseThrowable.code;
+        if (code == ExceptionHandle.ERROR.UNKONW_HOST_EXCEPTION) {
+            showText(ctx.getString(R.string.net_work_error));
+        }else if(code == ExceptionHandle.ERROR.NETWORD_ERROR ||code==ExceptionHandle.ERROR.SERVER_ADDRESS_ERROR){
+            showText(ctx.getString(R.string.connect_server_timeout));
+        } else if(code ==ExceptionHandle.ERROR.PARSE_ERROR){
+            showText(ctx.getString(R.string.parse_data_error));
+        }else if(code==ExceptionHandle.ERROR.HTTP_ERROR){
+            showText(ctx.getString(R.string.connect_error));
+        }else {
+            showText(ctx.getString(R.string.on_server_error));
+        }
+    }
+
 }

@@ -10,15 +10,25 @@ import com.hazz.kuangji.mvp.presenter.KuangjiPresenter
 import com.hazz.kuangji.ui.adapter.CoinAdapter
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
+import kotlinx.android.synthetic.main.fragment_asset.*
 import kotlinx.android.synthetic.main.fragment_mill.*
+import kotlinx.android.synthetic.main.fragment_mill.recycle_view
+import kotlinx.android.synthetic.main.fragment_mill.sl_refresh
+import kotlinx.android.synthetic.main.fragment_mill.tv_shouyi
+import kotlinx.android.synthetic.main.fragment_mill.tv_touzi
 
 class MillFragment : BaseFragment(), IContractView.kuangjiView {
+
+    private var mKuangjiPresenter:KuangjiPresenter= KuangjiPresenter(this)
+    private var mAdapter: CoinAdapter?=null
+    private var list: MutableList<String>? = mutableListOf()
+
     override fun getMingxi(msg: Mingxi) {
 
     }
 
     override fun getKuangji(msg: Kuangji) {
-
+        sl_refresh.isRefreshing=false
         if(msg.total!=null){
             tv_touzi?.text=msg.total
         }
@@ -28,15 +38,18 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         mAdapter?.setNewData(msg.machine_list.list)
     }
 
-
-    private var mKuangjiPresenter:KuangjiPresenter= KuangjiPresenter(this)
-    private var mAdapter: CoinAdapter?=null
-    private var list: MutableList<String>? = mutableListOf()
     override fun getLayoutId(): Int {
         return R.layout.fragment_mill
     }
 
     override fun initView() {
+
+        sl_refresh.isRefreshing=true
+        sl_refresh.setColorSchemeResources(R.color.blue)
+        sl_refresh.setOnRefreshListener {
+            lazyLoad()
+        }
+
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
         mAdapter = CoinAdapter(R.layout.item_mill, null)
         recycle_view.adapter = mAdapter
@@ -61,12 +74,10 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         mKuangjiPresenter.kuangji()
     }
 
-
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if(!hidden){
-//            mKuangjiPresenter.kuangji()
-        }
+    override fun fail(msg: String) {
+        super.fail(msg)
+        sl_refresh.isRefreshing=false
     }
+
+
 }

@@ -211,9 +211,8 @@
         <Button
             android:id="@+id/tv_bt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/btn_dimen"
             android:layout_margin="30dp"
-
             android:background="@drawable/bg_blue_solid_5dp_coner"
             android:text="@string/confirm_touzi"
             android:textColor="@color/color_white"

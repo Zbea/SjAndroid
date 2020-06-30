@@ -2,7 +2,6 @@ package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
@@ -13,13 +12,16 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.bean.*
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
+import com.hazz.kuangji.ui.activity.asset.IncomingActivity
+import com.hazz.kuangji.ui.activity.home.MsgListActivity
+import com.hazz.kuangji.ui.activity.mine.*
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.PhotoDialog
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
-import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.fragment_mine.*
+import kotlinx.android.synthetic.main.fragment_mine.sl_refresh
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -34,6 +36,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mData: Certification? = null
 
     override fun getAccount(msg: Account) {
+
+        sl_refresh.isRefreshing=false
+
         if (iv_header != null) {
             activity?.let {
                 Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
@@ -102,6 +107,12 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         mTvMobile.text = mobile
         mTvUserName.text = userName
 
+        sl_refresh.isRefreshing=true
+        sl_refresh.setColorSchemeResources(R.color.blue)
+        sl_refresh.setOnRefreshListener {
+            lazyLoad()
+        }
+
         iv_header.setOnClickListener {
             showPhotoDialog()
         }
@@ -144,9 +155,8 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun lazyLoad() {
-        Log.i("sj","11111111111")
-        mNodePresenter.getAccount()
         mNodePresenter.getCertification()
+        mNodePresenter.getAccount()
     }
 
     private fun showPhotoDialog() {
@@ -212,6 +222,10 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         EventBus.getDefault().unregister(this)
     }
 
+    override fun fail(msg: String) {
+        super.fail(msg)
+        sl_refresh.isRefreshing=false
+    }
 
 }
 

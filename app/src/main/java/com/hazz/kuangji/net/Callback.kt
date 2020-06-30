@@ -4,7 +4,7 @@ package com.hazz.kuangji.net
 import android.util.Log
 import com.google.gson.Gson
 import com.hazz.kuangji.MyApplication
-import com.hazz.kuangji.utils.ToastUtils
+import com.hazz.kuangji.utils.SToast
 import io.reactivex.Observer
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
@@ -50,7 +50,7 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
 
     override fun onError(@NonNull e: Throwable) {
         e.printStackTrace()
-        ToastUtils.showToast(MyApplication.context, ExceptionHandle.handleException(e))
+        SToast.showToast(ExceptionHandle.handleException(e))
         baseView.hideLoading()
 
     }

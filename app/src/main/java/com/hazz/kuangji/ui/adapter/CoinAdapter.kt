@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.bean.Kuangji
-import com.hazz.kuangji.ui.activity.MingxiRecordActivity
+import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class CoinAdapter(layoutResId: Int, data: List<Kuangji.MachineListBean.ListBean>?) : BaseQuickAdapter<Kuangji.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
@@ -41,7 +41,7 @@ class CoinAdapter(layoutResId: Int, data: List<Kuangji.MachineListBean.ListBean>
             }
         }
         helper.getView<TextView>(R.id.tv_mingxi).setOnClickListener {
-            mContext.startActivity(Intent(mContext, MingxiRecordActivity::class.java))
+            mContext.startActivity(Intent(mContext, MillRecordActivity::class.java))
         }
     }
 }

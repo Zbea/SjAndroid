@@ -66,7 +66,7 @@ class NodePresenter(view: IContractView.NodeView) : BasePresenter<IContractView.
                 tBaseResult.data?.let { view.getAccount(it) }
             }
 
-        }, true)
+        }, false)
 
     }
 

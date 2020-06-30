@@ -5,20 +5,21 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.provider.Settings
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
 import com.hazz.kuangji.utils.ActivityManager
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.StatusBarUtil
-import com.hazz.kuangji.utils.ToastUtils
+import com.hazz.kuangji.utils.StatusBarUtil.Companion.darkMode
 import com.hazz.kuangji.widget.ProgressDialog
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.annotations.NonNull
@@ -33,7 +34,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
      */
 
     var permissionsnew: RxPermissions? = null
-    public var mDialog: ProgressDialog? = null
+    var mDialog: ProgressDialog? = null
 
     override fun moveTaskToBack(nonRoot: Boolean): Boolean {
         return super.moveTaskToBack(true)
@@ -41,8 +42,9 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(layoutId())
-        StatusBarUtil.darkMode(this)
+        darkMode(this)
         mDialog = ProgressDialog(this)
         initView()
         initData()
@@ -186,9 +188,14 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     override fun login() {
 
         SToast.showText("token已失效,请重新登陆")
+        SPUtil.putString("token", "")
+        SPUtil.removeObj("certification")
 
-        startActivity(Intent(this, LoginActivity::class.java))
-        ActivityManager.getInstance().finishOthers(LoginActivity::class.java)
+        Handler().postDelayed(Runnable {
+            startActivity(Intent(this, LoginActivity::class.java))
+            ActivityManager.getInstance().finishOthers(LoginActivity::class.java)
+        }, 500)
+
 
     }
 

@@ -4,16 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.R
 import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.utils.StatusBarUtil
 
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.launcher.*
+import kotlinx.android.synthetic.main.activity_launcher.*
 import pl.droidsonroids.gif.GifDrawable
 
 import java.util.concurrent.TimeUnit
@@ -33,7 +30,8 @@ class LauncherActivity : AppCompatActivity() {
                 return
             }
         }
-        setContentView(R.layout.launcher)
+        setContentView(R.layout.activity_launcher)
+        StatusBarUtil.darkMode(this,false)
         val gifDrawable = GifDrawable(resources, R.drawable.eye)
         gifDrawable.loopCount=1
         gif.setImageDrawable(gifDrawable)

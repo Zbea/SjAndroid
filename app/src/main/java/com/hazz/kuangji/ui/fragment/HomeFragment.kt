@@ -1,7 +1,6 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,37 +14,45 @@ import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.bean.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
-import com.hazz.kuangji.ui.activity.*
+import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
+import com.hazz.kuangji.ui.activity.home.ExchangeCoinActivity
+import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
+import com.hazz.kuangji.ui.activity.home.MsgDescActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DisplayManager
 import com.hazz.kuangji.utils.DpUtils
-import com.hazz.kuangji.utils.SPUtil
-import com.hazz.kuangji.widget.CommonDialog
 import com.hazz.kuangji.widget.GlideImageLoader
 import com.hazz.kuangji.widget.RewardItemDeco
-import com.hazz.kuangji.widget.TipsDialog
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_new_home.*
+import kotlinx.android.synthetic.main.fragment_new_home.sl_refresh
 
 class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView {
 
+    private var adList: MutableList<String>? = mutableListOf()
+    private var adListDefault: MutableList<Int>? = mutableListOf()
+    private var mAdapter: HomeAdapter? = null
+    private var mHomePresenter: HomePresenter = HomePresenter(this)
+    private var viewsList: MutableList<View>? = mutableListOf()
+    private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
+
+
     override fun getMsg(rows: List<Msg>) {
-        if (activity==null) return
+        if (activity == null) return
         if (!rows.isNullOrEmpty()) {
             viewsList!!.clear()//记得加这句话，不然可能会产生重影现象
-            for (i in rows.indices) {
-//设置滚动的单个布局
+            for (i in rows.indices) { //设置滚动的单个布局
                 val moreView = LayoutInflater.from(activity).inflate(R.layout.item_view_single, null) as RelativeLayout
                 //初始化布局的控件
                 val tv1 = moreView.findViewById<View>(R.id.tv_title) as TextView
                 /**
                  * 设置监听
                  */
-                tv1.setOnClickListener { view ->
-                    if (rows != null && !rows.isEmpty()) {
-                        val articalBean = rows.get(i)
+                tv1.setOnClickListener {
+                    if (rows != null && rows.isNotEmpty()) {
+                        val articalBean = rows[i]
                         val intent = Intent(activity, MsgDescActivity::class.java)
                         intent.putExtra("message", articalBean)
                         startActivity(intent)
@@ -53,66 +60,36 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
                 }
 
                 //进行对控件赋值
-                tv1.setText(rows[i].title)
+                tv1.text = rows[i].title
                 //添加到循环滚动数组里面去
                 viewsList!!.add(moreView)
             }
             marqueeview.setViews(viewsList)
+            marqueeview.setFlipInterval(3000)
             marqueeview.startFlipping()
         }
-
     }
-
-    override fun zuyongSucceed(msg: String) {
-        tv_qiandao.setBackgroundResource(R.drawable.bg_gray_solid_5dp_coner)
-        tv_qiandao.text = "今日已签到"
-        tv_qiandao.isClickable = false
-
-        tipsDialog = TipsDialog(activity)
-                .setTitle("提示")
-                .setContent("签到成功,所有矿机开始运行")
-                .sign()
-                .setCancleListener { }
-                .setConfirmListener {
-                    tv_qiandao.setBackgroundResource(R.drawable.bg_gray_solid_5dp_coner)
-                    tv_qiandao.text = "今日已签到"
-                    tv_qiandao.setTextColor(activity!!.resources.getColor(R.color.hintTextColor))
-                    tv_qiandao.isClickable = false
-                    tipsDialog!!.dismiss()
-
-                }
-
-        tipsDialog!!.show()
-    }
-
 
     override fun getHome(msg: Home) {
-        val signed = msg.signed
+
+        sl_refresh.isRefreshing=false
+
         val carousel = msg.carousel
         if (!carousel.isNullOrEmpty()) {
             adList!!.clear()
             for (a in carousel) {
                 adList!!.add(a.url)
             }
-
             initBanner(adList!!)
-        }else{
+        } else {
             adListDefault!!.clear()
             adListDefault!!.add(R.mipmap.banner1)
             initBannerDefault(adListDefault!!)
         }
-
-
-
-        if (signed == 1) {//已签到
-            tv_qiandao.setBackgroundResource(R.drawable.bg_gray_solid_5dp_coner)
-            tv_qiandao.text = "今日已签到"
-            tv_qiandao.setTextColor(activity!!.resources.getColor(R.color.hintTextColor))
-            tv_qiandao.isClickable = false
-        }
-
         mAdapter!!.setNewData(msg.products)
+    }
 
+    override fun zuyongSucceed(msg: String) {
     }
 
 
@@ -121,17 +98,14 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     }
 
 
-    private var adList: MutableList<String>? = mutableListOf()
-    private var adListDefault: MutableList<Int>? = mutableListOf()
-    private var list: MutableList<Home.ProductsBean>? = mutableListOf()
-    private var mAdapter: HomeAdapter? = null
-    private var mHomePresenter: HomePresenter = HomePresenter(this)
-    private var tipsDialog: TipsDialog? = null
-    private var commonDialog: CommonDialog? = null
-    private var viewsList: MutableList<View>? = mutableListOf()
-    private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
-
     override fun initView() {
+
+        sl_refresh.isRefreshing=true
+        sl_refresh.setColorSchemeResources(R.color.blue)
+        sl_refresh.setOnRefreshListener {
+            lazyLoad()
+        }
+
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
         mAdapter = HomeAdapter(R.layout.item_home, null)
         recycle_view.adapter = mAdapter
@@ -149,42 +123,18 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
                 )
         )
 
-        Log.i("sj", SPUtil.getString("token"))
 
-        tv_qiandao.setOnClickListener {
-            mHomePresenter.sign()
-
-        }
-
-        tv_sign_record.setOnClickListener {
-            startActivity(Intent(activity, SignRecordActivity::class.java))
-
-        }
-
-        tv_rule.setOnClickListener {
-
-            commonDialog = CommonDialog(activity)
-            commonDialog?.run {
-                setTitle("提示")
-                setContent("5年收益周期内，每日签到都可获得当日的收益。如期间出现漏签、断签等情况，" +
-                        "收益周期会相对应的向后顺延，即保证每位用户都可获得5年的总收益回报。")
-                builder()
-                show()
-            }
-
-
-        }
 
         ll_charge.setOnClickListener {
-            startActivity(Intent(activity,ExchangeBuyActivity::class.java))
+            startActivity(Intent(activity, ExchangeBuyActivity::class.java))
         }
 
         ll_sale.setOnClickListener {
-            startActivity(Intent(activity,ExchangeSaleActivity::class.java))
+            startActivity(Intent(activity, ExchangeSaleActivity::class.java))
         }
 
         ll_exchange.setOnClickListener {
-            startActivity(Intent(activity,ExchangeCoinActivity::class.java))
+            startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
 
     }
@@ -198,8 +148,8 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         banner?.run {
             setImageLoader(GlideImageLoader())
             var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
-            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
-            layoutParams=layoutParams1;
+            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity, 20f)))?.times(232))?.div(500)!!
+            layoutParams = layoutParams1;
             setImages(list)
             //设置banner动画效果
             setBannerAnimation(Transformer.DepthPage)
@@ -218,8 +168,8 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         banner?.run {
             setImageLoader(GlideImageLoader())
             var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
-            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity,20f)))?.times(232))?.div(500)!!
-            layoutParams=layoutParams1;
+            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity, 20f)))?.times(232))?.div(500)!!
+            layoutParams = layoutParams1;
             setImages(list)
             //设置banner动画效果
             setBannerAnimation(Transformer.DepthPage)
@@ -234,13 +184,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
-
-
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if(!hidden){
-//            mCoinPresenter.getMsg()
-//            mHomePresenter.getHome()
-        }
+    override fun fail(msg: String) {
+        super.fail(msg)
+        sl_refresh.isRefreshing=false
     }
+
 }

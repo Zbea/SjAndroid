@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.hazz.kuangji.R
 import com.hazz.kuangji.utils.SToast
-import com.hazz.kuangji.utils.ToastUtils
 
 
 /**
