@@ -157,6 +157,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
                     intent.putExtra("certification", mData)
                     startActivity(intent)
                 }
+
                 2, 3 -> {   
                     startActivity(Intent(activity, MineCertificationActivity::class.java))
                 }
