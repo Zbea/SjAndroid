@@ -124,7 +124,7 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("我的团队")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
 

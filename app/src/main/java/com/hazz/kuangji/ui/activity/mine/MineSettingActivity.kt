@@ -11,7 +11,6 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.utils.Utils
 import com.hazz.kuangji.widget.CommonDialog
 import com.tencent.bugly.beta.Beta
-import kotlinx.android.synthetic.main.activity_mine_safe.*
 import kotlinx.android.synthetic.main.activity_set.*
 import kotlinx.android.synthetic.main.activity_set.tv_login
 import kotlinx.android.synthetic.main.activity_set.tv_zijin
@@ -36,7 +35,7 @@ class SettingActivity : BaseActivity() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.setting))
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
 

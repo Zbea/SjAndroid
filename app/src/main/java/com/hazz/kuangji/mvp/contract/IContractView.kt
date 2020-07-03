@@ -74,7 +74,7 @@ interface IContractView {
         fun touziRecord(msg: TouziRecord)
     }
 
-    interface ZichanView: BaseView {
+    interface AssetView: BaseView {
 
         fun myAsset(msg: MyAsset)
     }

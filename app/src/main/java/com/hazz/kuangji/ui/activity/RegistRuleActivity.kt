@@ -36,7 +36,7 @@ class RegistRuleActivity : BaseActivity(), IContractView.XieyiView {
         val onLeftIconClickListener = ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
 
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
          type= intent.getIntExtra("type",0)

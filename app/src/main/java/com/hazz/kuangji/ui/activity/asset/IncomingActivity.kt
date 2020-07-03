@@ -24,14 +24,14 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
         incoming = msg
         if (msg.fcoin_revenue != null&&msg.usdt_revenue != null) {
-            tv_total.text =BigDecimalUtil.mul( msg.usdt_revenue,"1",2)+"/"+ BigDecimalUtil.mul( msg.fcoin_revenue,"1",2)
+            tv_total.text =BigDecimalUtil.mul( msg.usdt_revenue,"1",8)+"/"+ BigDecimalUtil.mul( msg.fcoin_revenue,"1",8)
         }
         if (msg.fcoin_revenue != null&&msg.usdt_revenue == null) {
-            tv_total.text ="0.00/"+BigDecimalUtil.mul( msg.fcoin_revenue,"1",2)
+            tv_total.text ="0.00/"+BigDecimalUtil.mul( msg.fcoin_revenue,"1",8)
         }
 
         if (msg.fcoin_revenue == null&&msg.usdt_revenue != null) {
-            tv_total.text = BigDecimalUtil.mul( msg.usdt_revenue,"1",2)+"/0.00"
+            tv_total.text = BigDecimalUtil.mul( msg.usdt_revenue,"1",8)+"/0.00"
 
         }
 
@@ -105,9 +105,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
 
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
-
         adapter = IncomingAdapter(R.layout.item_incoming, null)
-
         recycle_view.adapter = adapter
         adapter!!.bindToRecyclerView(recycle_view)
         adapter!!.setEmptyView(R.layout.fragment_empty)

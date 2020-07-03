@@ -13,7 +13,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
-import com.hazz.kuangji.mvp.presenter.ZichanPresenter
+import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
@@ -34,17 +34,17 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class AssetFragment : BaseFragment(), IContractView.ZichanView, IContractView.ICertificationInfoView {
+class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView {
 
     private var mCertification: Certification? = null
-    private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
+    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var myAsset: MyAsset? = null
-    private var isShow = true
     private var mAdapter: AssetAdapter? = null
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
 
     override fun getCertification(certification: Certification) {
+        sl_refresh?.isRefreshing = false
         mCertification = certification
         if (certification.status == 1) {
             SPUtil.putObj("certification", certification)
@@ -52,7 +52,7 @@ class AssetFragment : BaseFragment(), IContractView.ZichanView, IContractView.IC
     }
 
     override fun myAsset(msg: MyAsset) {
-        sl_refresh?.isRefreshing = false
+        if (mView==null)return
         myAsset = msg
         tv_copy.text = msg.wallet_address
         if (msg.investment != null) {
@@ -70,13 +70,14 @@ class AssetFragment : BaseFragment(), IContractView.ZichanView, IContractView.IC
         }
 
         val assets = msg.assets
-        list!!.clear()
+        list?.clear()
         for (coin in assets) {
             if (coin.coin != "BTC" && coin.coin != "ETH") {
-                list!!.add(coin)
+                list?.add(coin)
             }
         }
         mAdapter?.setNewData(list)
+
     }
 
     override fun getLayoutId(): Int {
@@ -162,7 +163,7 @@ class AssetFragment : BaseFragment(), IContractView.ZichanView, IContractView.IC
     }
 
     override fun lazyLoad() {
-        mZichanPresenter.myAsset()
+        mAssetPresenter.myAsset()
         mCertificationInfoPresenter.getCertification()
     }
 

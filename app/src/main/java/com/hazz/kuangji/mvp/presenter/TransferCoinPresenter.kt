@@ -32,10 +32,10 @@ class TransferCoinPresenter(view: IContractView.ITransferCoinView) : BasePresent
 
     }
 
-    fun getTransList() {
+    fun getTransList(type: Int) {
 
 
-        val list = RetrofitManager.serviceNew.getTransAccountList()
+        val list = RetrofitManager.serviceNew.getTransAccountList(type)
 
         doRequest(list, object : Callback<List<TransferCoin>>(view) {
             override fun failed(tBaseResult: BaseResult<List<TransferCoin>>): Boolean {

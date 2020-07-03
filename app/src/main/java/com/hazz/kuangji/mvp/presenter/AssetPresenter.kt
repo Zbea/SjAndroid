@@ -9,7 +9,7 @@ import com.hazz.kuangji.net.Callback
 import com.hazz.kuangji.net.RetrofitManager
 
 
-class ZichanPresenter(view: IContractView.ZichanView) : BasePresenter<IContractView.ZichanView>(view) {
+class AssetPresenter(view: IContractView.AssetView) : BasePresenter<IContractView.AssetView>(view) {
 
     fun myAsset() {
 

@@ -13,6 +13,6 @@ public class TransferCoin {
     public String name;
     public String create_at;
     public String coin;
-
+    public int type=1;
 
 }

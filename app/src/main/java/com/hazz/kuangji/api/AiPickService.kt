@@ -277,5 +277,5 @@ interface AiPickService{
      * 转账给其他用户列表
      */
     @GET("accounts/v0/trans_accounts_list")
-    fun getTransAccountList(): Observable<BaseResult<List<TransferCoin>>>
+    fun getTransAccountList(@Query("type") type: Int): Observable<BaseResult<List<TransferCoin>>>
 }

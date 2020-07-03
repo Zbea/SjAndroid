@@ -38,14 +38,15 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     /**
      * 多种状态的 View 的切换
      */
+    var mView:View?=null
 
 
     var mDialog: ProgressDialog? = null
-    public var sl_refresh: SwipeRefreshLayout?=null
+    var sl_refresh: SwipeRefreshLayout?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        return inflater.inflate(getLayoutId(), null)
+        mView=inflater.inflate(getLayoutId(), null)
+        return mView
     }
 
 

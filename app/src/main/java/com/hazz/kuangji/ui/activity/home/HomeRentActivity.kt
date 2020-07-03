@@ -13,7 +13,7 @@ import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
-import com.hazz.kuangji.mvp.presenter.ZichanPresenter
+import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.ui.activity.RuleActivity
 import com.hazz.kuangji.utils.*
@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_charge.mToolBar
 import kotlinx.android.synthetic.main.activity_home_rent.*
 
 
-class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.ZichanView ,IContractView.ICertificationInfoView {
+class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.AssetView ,IContractView.ICertificationInfoView {
 
     private var mHomePresenter: HomePresenter = HomePresenter(this)
     private var rate = "0.1"
@@ -30,7 +30,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     private var id = ""
     private var price = ""
     private var amount:String="0"
-    private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
+    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var mCertificationInfoPresenter: CertificationInfoPresenter = CertificationInfoPresenter(this)
 
     override fun getCertification(certification: Certification) {
@@ -84,7 +84,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun initData() {
-        mZichanPresenter.myAsset()
+        mAssetPresenter.myAsset()
         mCertificationInfoPresenter.getCertification()
     }
 
@@ -98,7 +98,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(produce!!.name)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setOnLeftIconClickListener { finish() }
 
         coin = produce!!.coin

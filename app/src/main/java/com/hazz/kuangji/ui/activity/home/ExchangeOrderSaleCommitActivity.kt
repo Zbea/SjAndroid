@@ -66,7 +66,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("卖币信息确认")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { finish() }
 

@@ -23,7 +23,8 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
     private var countDownTimer: CountDownTimer? = null
 
     override fun sendSms(msg: String) {
-        mDialog!!.dismiss()
+        if (mView==null)return
+        mDialog?.dismiss()
         SToast.showText(msg)
         showCountDownView()
     }
@@ -97,9 +98,9 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
         tv_get_code.isClickable = false
         countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
             override fun onFinish() {
-                tv_get_code.isEnabled = true
-                tv_get_code.isClickable = true
-                tv_get_code.text = getString(R.string.mine_get_check_code)
+                tv_get_code?.isEnabled = true
+                tv_get_code?.isClickable = true
+                tv_get_code?.text = getString(R.string.mine_get_check_code)
             }
 
             @SuppressLint("SetTextI18n")

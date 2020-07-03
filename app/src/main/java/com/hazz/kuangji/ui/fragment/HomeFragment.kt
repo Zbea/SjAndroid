@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun getMsg(rows: List<Msg>) {
-        if (activity == null) return
+        if (mView==null)return
         if (!rows.isNullOrEmpty()) {
             viewsList!!.clear()//记得加这句话，不然可能会产生重影现象
             for (i in rows.indices) { //设置滚动的单个布局
@@ -68,7 +68,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     }
 
     override fun getHome(msg: Home) {
-
+        if (mView==null)return
         sl_refresh?.isRefreshing=false
 
         val carousel = msg.carousel

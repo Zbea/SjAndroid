@@ -23,6 +23,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
     }
 
     override fun getKuangji(msg: Mill) {
+        if (mView==null)return
         sl_refresh?.isRefreshing=false
         if(msg.total!=null){
             tv_touzi?.text=msg.total

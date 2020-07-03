@@ -37,9 +37,8 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mData: Certification? = null
 
     override fun getAccount(msg: Account) {
-
+        if (mView==null)return
         sl_refresh?.isRefreshing=false
-
         if (iv_header != null) {
             activity?.let {
                 Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
@@ -61,6 +60,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun setHeader(msg: UploadModel) {
+        if (mView==null)return
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + msg.path)
                     .apply(RequestOptions.bitmapTransform(CircleCrop()))
@@ -69,6 +69,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun getCertification(data: Certification) {
+        if (mView==null)return
         mData = data
         status = data.status
         when (status) {

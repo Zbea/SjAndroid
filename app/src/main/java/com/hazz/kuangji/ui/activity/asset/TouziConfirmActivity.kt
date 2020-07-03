@@ -11,7 +11,7 @@ import com.hazz.kuangji.mvp.model.Touzi
 import com.hazz.kuangji.mvp.model.Touzi.ProductsBean
 import com.hazz.kuangji.mvp.model.TouziRecord
 import com.hazz.kuangji.mvp.presenter.TouziPresenter
-import com.hazz.kuangji.mvp.presenter.ZichanPresenter
+import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.SToast
@@ -20,7 +20,7 @@ import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.invitefriends_touzi_confirm.*
 
 
-class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractView.ZichanView {
+class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractView.AssetView {
     override fun touziRecord(msg: TouziRecord) {
 
     }
@@ -44,18 +44,18 @@ class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractV
     }
 
     override fun initData() {
-        mZichanPresenter.myAsset()
+        mAssetPresenter.myAsset()
     }
 
     private var mPasswordDialog: SafeCheckDialog? = null
     private var mTouziPresenter: TouziPresenter = TouziPresenter(this)
-    private var mZichanPresenter: ZichanPresenter = ZichanPresenter(this)
+    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var productsBean:ProductsBean?=null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.touzi))
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
 

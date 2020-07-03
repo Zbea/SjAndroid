@@ -10,53 +10,23 @@
         android:id="@+id/tv_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_16"
-        android:textColor="@color/color_333333"/>
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/color_666666"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/color_999999"/>
+    <TextView
+        android:id="@+id/tv_order_date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_10"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="转出数量："
-            android:textSize="@dimen/sp_14"
-            android:textColor="@color/color_999999"/>
-        <TextView
-            android:id="@+id/tv_amount1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/sp_14"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:textColor="@color/color_666666"/>
-
-
-
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_10"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="转出时间："
-            android:textSize="@dimen/sp_14"
-            android:textColor="@color/color_999999"/>
-
-        <TextView
-            android:id="@+id/tv_order_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/sp_14"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:textColor="@color/color_999999"/>
-    </LinearLayout>
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/color_999999"/>
 
 
 

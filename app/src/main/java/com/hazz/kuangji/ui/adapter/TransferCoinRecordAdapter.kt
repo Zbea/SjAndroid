@@ -1,6 +1,5 @@
 package com.hazz.kuangji.ui.adapter
 
-
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -14,9 +13,18 @@ class TransferCoinRecordAdapter(layoutResId: Int, data: List<TransferCoin>?) : B
 
     override fun convert(helper: BaseViewHolder, item: TransferCoin) {
         helper.run {
-            setText(R.id.tv_username, "转入到："+item.name)
-            setText(R.id.tv_amount1, item.amount+item.coin)
-            setText(R.id.tv_order_date, item.create_at)
+            if (item.type==1)
+            {
+                setText(R.id.tv_username, "来自<—"+item.name)
+                setText(R.id.tv_amount, "转入数量："+item.amount+item.coin)
+                setText(R.id.tv_order_date, "转入时间："+item.create_at)
+            }
+            else
+            {
+                setText(R.id.tv_username, "转出—>"+item.name)
+                setText(R.id.tv_amount, "转出数量："+item.amount+item.coin)
+                setText(R.id.tv_order_date, "转出时间："+item.create_at)
+            }
         }
     }
 

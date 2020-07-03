@@ -10,7 +10,6 @@ import com.hazz.kuangji.utils.ImageUtlis
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_contact.*
-import kotlinx.android.synthetic.main.activity_rule.*
 import kotlinx.android.synthetic.main.activity_rule.mToolBar
 
 class MineContactActivity : BaseActivity()
@@ -34,7 +33,7 @@ class MineContactActivity : BaseActivity()
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(if (type==0)"联系我们" else "下载地址")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { finish() }
 

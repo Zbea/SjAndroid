@@ -73,7 +73,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
                 .setTitle(getString(R.string.tibi))
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightText("提币记录")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { view -> finish() }
                 .setOnRightClickListener {

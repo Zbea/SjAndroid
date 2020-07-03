@@ -54,7 +54,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("收益明细")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightOneIcon(R.mipmap.bt_pick_time)
                 .setRightOneIconIsShow(true)

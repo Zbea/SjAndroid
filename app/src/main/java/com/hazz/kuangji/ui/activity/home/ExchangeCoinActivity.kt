@@ -83,7 +83,7 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("币币兑换")
-                .setToolBarBgRescource(R.drawable.bg_hangqing)
+                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { finish() }
                 .setRightText("兑换明细")

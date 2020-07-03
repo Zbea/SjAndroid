@@ -7,6 +7,8 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Mingxi
 import com.hazz.kuangji.utils.BigDecimalUtil
+import java.math.BigDecimal
+import java.text.NumberFormat
 
 class MillRecordAdapter(layoutResId: Int, data: List<Mingxi.ListBean>?) : BaseQuickAdapter<Mingxi.ListBean, BaseViewHolder>(layoutResId, data) {
 
@@ -17,7 +19,7 @@ class MillRecordAdapter(layoutResId: Int, data: List<Mingxi.ListBean>?) : BaseQu
 
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_time, item.create_at)
-        helper.setText(R.id.tv_amount, "+"+BigDecimalUtil.mul(item.amount,"1",8)+" FIL")
+        helper.setText(R.id.tv_amount, "+"+BigDecimal(BigDecimalUtil.mul(item.amount,"1",8))+" FIL")
 
     }
 }
