@@ -2,6 +2,8 @@ package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
+import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
@@ -9,7 +11,7 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.*
+import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
@@ -21,7 +23,6 @@ import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import kotlinx.android.synthetic.main.fragment_mine.*
-import kotlinx.android.synthetic.main.fragment_mine.sl_refresh
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -37,7 +38,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     override fun getAccount(msg: Account) {
 
-        sl_refresh.isRefreshing=false
+        sl_refresh?.isRefreshing=false
 
         if (iv_header != null) {
             activity?.let {
@@ -46,15 +47,16 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
                         .into(iv_header)
             }
         }
-
+        iv_type.visibility=View.VISIBLE
         when (msg.level) {
-            "总裁" -> iv_type.setImageResource(R.mipmap.zongcai)
-            "初级矿商" -> iv_type.setImageResource(R.mipmap.chuji)
-            "中级矿商" -> iv_type.setImageResource(R.mipmap.zhongji)
-            "高级矿商" -> iv_type.setImageResource(R.mipmap.gaoji)
-            "超级矿商" -> iv_type.setImageResource(R.mipmap.chaoji)
-            "节点合伙人" -> iv_type.setImageResource(R.mipmap.jiedianhehuo)
-            "联创合伙人" -> iv_type.setImageResource(R.mipmap.lianchuang)
+            "总裁" -> iv_type.setImageResource(R.mipmap.icon_mine_zongcai)
+            "初级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chuji)
+            "中级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_zhongji)
+            "高级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_gaoji)
+            "超级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chaoji)
+            "节点合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_jiedianhehuo)
+            "联创合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_lianchuang)
+            else ->iv_type.visibility=View.GONE
         }
     }
 
@@ -71,17 +73,21 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         status = data.status
         when (status) {
             0 -> {
+                tv_dot.visibility= View.GONE
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
             }
             1 -> {
+                tv_dot.visibility= View.GONE
                 iv_certification.setImageResource(R.mipmap.icon_mine_certificated)
                 SPUtil.putObj("certification", mData!!)
             }
             2 -> {
+                tv_dot.visibility= View.VISIBLE
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
                 SToast.showTextLong(data.reason + "请重新实名认证")
             }
             3 -> {
+                tv_dot.visibility= View.VISIBLE
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
                 SToast.showTextLong("尚未实名认证，请立即实名认证")
             }
@@ -98,6 +104,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun initView() {
+
         EventBus.getDefault().register(this)
         userInfo = SPUtil.getObj("user", UserInfo::class.java)
         mData=SPUtil.getObj("certification", Certification::class.java)
@@ -107,9 +114,10 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         mTvMobile.text = mobile
         mTvUserName.text = userName
 
-        sl_refresh.isRefreshing=true
-        sl_refresh.setColorSchemeResources(R.color.blue)
-        sl_refresh.setOnRefreshListener {
+        sl_refresh=activity?.findViewById(R.id.sl_refresh_mine)
+        sl_refresh?.isRefreshing=true
+        sl_refresh?.setColorSchemeResources(R.color.blue)
+        sl_refresh?.setOnRefreshListener {
             lazyLoad()
         }
 
@@ -133,7 +141,10 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
         layout_contact.setOnClickListener {
-            startActivity(Intent(activity, MineContactActivity::class.java))
+            startActivity(Intent(activity, MineContactActivity::class.java).setFlags(0))
+        }
+        layout_download.setOnClickListener {
+            startActivity(Intent(activity, MineContactActivity::class.java).setFlags(1))
         }
         layout_about.setOnClickListener {
             startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type", 1))
@@ -222,10 +233,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         EventBus.getDefault().unregister(this)
     }
 
-    override fun fail(msg: String) {
-        super.fail(msg)
-        sl_refresh.isRefreshing=false
-    }
 
 }
 

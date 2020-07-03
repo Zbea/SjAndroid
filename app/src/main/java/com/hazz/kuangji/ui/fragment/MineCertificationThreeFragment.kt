@@ -1,31 +1,24 @@
 package com.hazz.kuangji.ui.fragment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.TextUtils
 import android.view.View
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.presenter.CertificationPresenter
 import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
-import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.widget.PhotoDialog
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
-import kotlinx.android.synthetic.main.fragment_mine_certification_one.*
-import kotlinx.android.synthetic.main.fragment_mine_certification_one.tv_get_code
 import kotlinx.android.synthetic.main.fragment_mine_certification_three.*
-import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
 import org.greenrobot.eventbus.EventBus
 import java.io.File
 
@@ -46,7 +39,7 @@ class MineCertificationThreeFragment : BaseFragment()  ,View.OnClickListener,ICo
         EventBus.getDefault().post(Constants.CODE_CERTIFICATION_BROAD)
     }
 
-    public fun newInstance(certification: Certification ):MineCertificationThreeFragment
+    public fun newInstance(certification: Certification):MineCertificationThreeFragment
     {
         var bundle = Bundle()
         bundle.putSerializable(Certification, certification);

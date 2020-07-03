@@ -3,19 +3,17 @@ package com.hazz.kuangji.ui.activity.mine
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.model.bean.Certification
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_mine_certificated.*
 import kotlinx.android.synthetic.main.activity_mine_certificated.tv_name
-import kotlinx.android.synthetic.main.activity_charge.*
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
 import kotlinx.android.synthetic.main.activity_charge.tv_address
-import kotlinx.android.synthetic.main.item_node.*
 
 class MineCertificatedActivity : BaseActivity() {
 
-    private lateinit var mData:Certification
+    private lateinit var mData: Certification
 
     override fun layoutId(): Int {
         return R.layout.activity_mine_certificated

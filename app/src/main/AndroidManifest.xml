@@ -83,7 +83,8 @@
         <activity android:name=".ui.activity.home.ExchangeCoinRecordActivity"/>
         <activity android:name=".ui.activity.mine.MineCertificatedActivity"/>
         <activity android:name=".ui.activity.mine.MineCertificationActivity"/>
-
+        <activity android:name=".ui.activity.asset.TransferCoinActivity"/>
+        <activity android:name=".ui.activity.asset.TransferCoinRecordActivity"/>
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

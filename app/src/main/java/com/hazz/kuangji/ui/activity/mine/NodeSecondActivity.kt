@@ -3,7 +3,7 @@ package com.hazz.kuangji.ui.activity.mine
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.model.bean.Node
+import com.hazz.kuangji.mvp.model.Node
 import com.hazz.kuangji.ui.adapter.NodeSecondAdapter
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil

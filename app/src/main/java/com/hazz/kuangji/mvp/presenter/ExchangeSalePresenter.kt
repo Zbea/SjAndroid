@@ -2,15 +2,14 @@ package com.hazz.kuangji.mvp.presenter
 
 import android.text.TextUtils
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.util.*
 import kotlin.collections.HashMap
 
 class ExchangeSalePresenter(view: IContractView.IExchangeSaleView) : BasePresenter<IContractView.IExchangeSaleView>(view) {

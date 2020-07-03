@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.hazz.kuangji.R
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
@@ -40,6 +41,8 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
 
 
     var mDialog: ProgressDialog? = null
+    public var sl_refresh: SwipeRefreshLayout?=null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(getLayoutId(), null)
@@ -148,7 +151,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun login() {
-        SToast.showText("token已失效,请重新登陆")
+        SToast.showText("连接超时,请重新登陆")
         SPUtil.putString("token", "")
         SPUtil.removeObj("certification")
         Handler().postDelayed(Runnable {
@@ -159,6 +162,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
 
     override fun hideLoading() {
         mDialog?.dismiss()
+        sl_refresh?.isRefreshing=false
     }
 
     override fun Loading() {
@@ -166,6 +170,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
 
     override fun fail(msg: String) {
         SToast.showText( msg)
+        sl_refresh?.isRefreshing=false
     }
 
     override fun onStartRequest() {
@@ -173,9 +178,10 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun onFailer(responeThrowable: ExceptionHandle.ResponeThrowable?) {
-
+        sl_refresh?.isRefreshing=false
     }
 
     override fun onComplete() {
+        sl_refresh?.isRefreshing=false
     }
 }

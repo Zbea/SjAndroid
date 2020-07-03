@@ -6,9 +6,10 @@ import android.text.TextUtils
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.SToast
+import com.hazz.kuangji.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.mine_activity_forget.*
 
 
@@ -51,6 +52,7 @@ class ForgetPwdActivity : BaseActivity(), IContractView.LoginView {
     }
 
     override fun initData() {
+        StatusBarUtil.darkMode(this,false)
     }
 
 

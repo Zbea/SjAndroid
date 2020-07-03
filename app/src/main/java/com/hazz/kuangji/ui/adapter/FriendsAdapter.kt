@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.Friends
+import com.hazz.kuangji.mvp.model.Friends
 
 class FriendsAdapter(layoutResId: Int, data: List<Friends.InviteUsersBean>?) : BaseQuickAdapter<Friends.InviteUsersBean, BaseViewHolder>(layoutResId, data) {
 

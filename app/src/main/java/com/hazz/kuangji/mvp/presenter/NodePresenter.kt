@@ -2,7 +2,10 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.*
+import com.hazz.kuangji.mvp.model.Account
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Node
+import com.hazz.kuangji.mvp.model.UploadModel
 import com.hazz.kuangji.net.*
 import okhttp3.MediaType
 import okhttp3.MultipartBody

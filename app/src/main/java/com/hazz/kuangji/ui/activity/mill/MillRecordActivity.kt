@@ -9,15 +9,14 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Kuangji
-import com.hazz.kuangji.mvp.model.bean.Mingxi
-import com.hazz.kuangji.mvp.presenter.KuangjiPresenter
+import com.hazz.kuangji.mvp.model.Mill
+import com.hazz.kuangji.mvp.model.Mingxi
+import com.hazz.kuangji.mvp.presenter.MillPresenter
 import com.hazz.kuangji.ui.adapter.MillRecordAdapter
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.invitefriends_record.*
 import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
 import java.text.SimpleDateFormat
 import java.util.*
@@ -25,7 +24,7 @@ import java.util.*
 
 class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
-    override fun getKuangji(msg: Kuangji) {
+    override fun getKuangji(msg: Mill) {
 
     }
 
@@ -49,7 +48,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
     private var month=0
     private var day=0
 
-    private var mKuangjiPresenter: KuangjiPresenter = KuangjiPresenter(this)
+    private var mMillPresenter: MillPresenter = MillPresenter(this)
     private var pvTime: TimePickerView? = null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
@@ -87,7 +86,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
         month = calendar.get(Calendar.MONTH)+1
         day = calendar.get(Calendar.DAY_OF_MONTH)
         var time= "$year-$month-$day"
-        mKuangjiPresenter.mingxi(time,time)
+        mMillPresenter.mingxi(time,time)
     }
 
     private fun showTime() {
@@ -100,7 +99,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
         pvTime = TimePickerBuilder(this, OnTimeSelectListener { start, end ->
 
-            mKuangjiPresenter.mingxi(start,end)
+            mMillPresenter.mingxi(start,end)
 
         }).setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字

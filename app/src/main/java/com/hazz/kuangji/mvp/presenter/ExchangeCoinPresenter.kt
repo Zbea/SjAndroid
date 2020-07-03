@@ -1,11 +1,9 @@
 package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.net.BasePresenter
-import com.hazz.kuangji.net.BaseResult
-import com.hazz.kuangji.net.Callback
-import com.hazz.kuangji.net.RetrofitManager
+import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.net.*
+import com.hazz.kuangji.utils.Utils
 
 class ExchangeCoinPresenter(view:IContractView.IExchangeCoinView) : BasePresenter<IContractView.IExchangeCoinView>(view) {
 
@@ -32,8 +30,13 @@ class ExchangeCoinPresenter(view:IContractView.IExchangeCoinView) : BasePresente
 
     fun commitExchangeCoin(type:String,amount1:String,amount2:String,password:String) {
 
+        var map=HashMap<String,String>()
+        map["type"]=type
+        map["amount1"]=amount1
+        map["amount2"]=amount2
+        map["pwd"]= Utils.encryptMD5(password)
 
-        val order = RetrofitManager.serviceNew.commitExchange(type,amount1,amount2,password)
+        val order = RetrofitManager.serviceNew.commitExchange(map)
 
         doRequest(order, object : Callback<Any>(view) {
 

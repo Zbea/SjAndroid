@@ -7,7 +7,7 @@ import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.TibiRecord
+import com.hazz.kuangji.mvp.model.TibiRecord
 
 class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>?) : BaseQuickAdapter<TibiRecord.ListBean, BaseViewHolder>(layoutResId, data) {
 

@@ -22,14 +22,14 @@
 
 #Glide的混淆规则
 -keep public class * implements com.bumptech.glide.module.GlideModule
--keep public class * extends com.bumptech.glide.AppGlideModule
+#-keep public class * extends com.bumptech.glide.AppGlideModule
 -keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
     **[] $VALUES;
     public *;
 }
 
 -dontwarn retrofit2.**
--keep class retrofit2.** { *; }
+#-keep class retrofit2.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
 
@@ -44,14 +44,14 @@
 -dontwarn org.xmlpull.v1.**
 
 -dontwarn okhttp3.**
--keep class okhttp3.** { *; }
+#-keep class okhttp3.** { *; }
 -dontwarn okio.**
 
 -dontwarn javax.annotation.Nullable
 -dontwarn javax.annotation.ParametersAreNonnullByDefault
 
 -dontwarn com.tencent.bugly.**
--keep public class com.tencent.bugly.**{*;}
+#-keep public class com.tencent.bugly.**{*;}
 
 -keepattributes *Annotation*
 -keepclassmembers class * {

@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.Node
-import com.hazz.kuangji.mvp.model.bean.Account
-import com.hazz.kuangji.mvp.model.bean.UploadModel
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Node
+import com.hazz.kuangji.mvp.model.Account
+import com.hazz.kuangji.mvp.model.UploadModel
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.adapter.NodeAdapter
 import com.hazz.kuangji.utils.ToolBarCustom

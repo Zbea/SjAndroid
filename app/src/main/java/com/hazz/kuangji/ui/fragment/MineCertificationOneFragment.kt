@@ -8,7 +8,7 @@ import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.CertificationPresenter
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
@@ -53,9 +53,11 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
     }
 
     override fun initView() {
-        var userInfo = SPUtil.getObj("user", UserInfo::class.java)
-        tv_phone.text =userInfo?.mobile.toString()
-
+        var mobile = SPUtil.getString("mobile")
+        if (!mobile.isNullOrEmpty() && mobile!="null")
+        {
+            tv_phone.setText(mobile)
+        }
         btn_next.setOnClickListener(this)
         tv_get_code.setOnClickListener(this)
     }
@@ -67,11 +69,17 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
         when(v)
         {
             tv_get_code->{
-                mCertificationPresenter.sendSMs(tv_phone.text.toString())
+                val mobile=tv_phone.text.toString()
+                if (mobile.isNullOrEmpty())
+                {
+                    SToast.showText("请输入手机号")
+                    return
+                }
+                mCertificationPresenter.sendSMs(mobile)
             }
             btn_next->{
                 mPhone=et_code.text.toString()
-                if (TextUtils.isEmpty(mPhone))
+                if (mPhone.isNullOrEmpty())
                 {
                     SToast.showText("请输入验证码")
                     return

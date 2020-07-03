@@ -16,7 +16,8 @@ import kotlinx.android.synthetic.main.activity_rule.mToolBar
 class MineContactActivity : BaseActivity()
 {
 
-    private var mCodeBitmap:Bitmap?=null;
+    private var mCodeBitmap:Bitmap?=null
+    private var type=0
 
     override fun layoutId(): Int {
         return R.layout.activity_contact
@@ -27,16 +28,22 @@ class MineContactActivity : BaseActivity()
     }
 
     override fun initView() {
+
+        type=intent.flags
+
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
-                .setTitle("联系我们")
+                .setTitle(if (type==0)"联系我们" else "下载地址")
                 .setToolBarBgRescource(R.drawable.bg_hangqing)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
+
+        qrCodeView.setImageResource(if (type==0)R.mipmap.icon_gz_qrcode else R.mipmap.icon_mine_download_qrcode)
+
     }
 
     override fun start() {
-        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_gz_qrcode)
+        mCodeBitmap=BitmapFactory.decodeResource(resources,if (type==0)R.mipmap.icon_gz_qrcode else R.mipmap.icon_mine_download_qrcode)
         tv_down.setOnClickListener {
             permissionsnew!!.request(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE

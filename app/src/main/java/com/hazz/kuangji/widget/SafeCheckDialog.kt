@@ -53,7 +53,6 @@ class SafeCheckDialog(var context: Context) {
         val layoutParams = window.attributes
         layoutParams.width = context.resources.getDimensionPixelOffset(R.dimen.dialog_wid)
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        //layoutParams.y = DensityUtils.dip2px(context, 20);
         layoutParams.gravity = Gravity.CENTER
         window.attributes = layoutParams
     }

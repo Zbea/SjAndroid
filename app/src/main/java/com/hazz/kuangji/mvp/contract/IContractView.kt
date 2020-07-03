@@ -1,8 +1,6 @@
 package com.hazz.kuangji.mvp.contract
 
-import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.Xieyi
-import com.hazz.kuangji.mvp.model.bean.*
+import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.net.BaseView
 
 
@@ -19,7 +17,7 @@ interface IContractView {
 
     interface LoginView: BaseView {
 
-        fun loginSuccess(msg:UserInfo)
+        fun loginSuccess(msg: UserInfo)
         fun sendSms(msg:String)
         fun registerSucceed(msg:String)
     }
@@ -27,7 +25,7 @@ interface IContractView {
     interface CoinView: BaseView {
 
         fun getCoin(msg:List<Coin>)
-        fun getFriends(msg:Friends)
+        fun getFriends(msg: Friends)
     }
 
     interface MsgView: BaseView {
@@ -37,26 +35,26 @@ interface IContractView {
     }
     interface NodeView: BaseView {
 
-        fun getNode(msg:Node)
+        fun getNode(msg: Node)
         fun getAccount(msg: Account)
-        fun setHeader(msg:UploadModel)
-        fun getCertification(data:Certification)
+        fun setHeader(msg: UploadModel)
+        fun getCertification(data: Certification)
     }
 
     interface TibiView: BaseView {
 
         fun tibiSucceed(msg:String)
-        fun tibiRecord(msg:TibiRecord)
+        fun tibiRecord(msg: TibiRecord)
     }
 
     interface ShouyiView: BaseView {
 
-        fun inComing(msg:InComing)
+        fun inComing(msg: InComing)
     }
     interface kuangjiView: BaseView {
 
-        fun getKuangji(msg:Kuangji)
-        fun getMingxi(msg:Mingxi)
+        fun getKuangji(msg: Mill)
+        fun getMingxi(msg: Mingxi)
     }
     interface HomeView: BaseView {
 
@@ -65,25 +63,25 @@ interface IContractView {
     }
     interface ChargeView: BaseView {
 
-        fun getAddress(msg:Charge)
+        fun getAddress(msg: Charge)
 
-        fun chargeRecord(msg:ChargeRecord)
+        fun chargeRecord(msg: ChargeRecord)
     }
     interface TouziView: BaseView {
 
-        fun touziList(msg:Touzi)
+        fun touziList(msg: Touzi)
         fun touziConfirm(msg:String)
-        fun touziRecord(msg:TouziRecord)
+        fun touziRecord(msg: TouziRecord)
     }
 
     interface ZichanView: BaseView {
 
-        fun myAsset(msg:MyAsset)
+        fun myAsset(msg: MyAsset)
     }
     interface XieyiView: BaseView {
 
         fun xieyi(msg:Xieyi)
-        fun getSignRecord(msg:SignRecord)
+        fun getSignRecord(msg: SignRecord)
     }
 
     //一键买入
@@ -130,7 +128,15 @@ interface IContractView {
     //
     interface ICertificationInfoView: BaseView {
 
-        fun getCertification(certification :Certification)
+        fun getCertification(certification : Certification)
+
+    }
+
+    //转账
+    interface ITransferCoinView: BaseView {
+
+        fun commit()
+        fun getTransferCoin(data:List<TransferCoin>)
 
     }
 

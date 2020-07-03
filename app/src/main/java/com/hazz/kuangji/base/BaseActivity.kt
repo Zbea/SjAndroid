@@ -187,7 +187,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     override fun login() {
 
-        SToast.showText("token已失效,请重新登陆")
+        SToast.showText("连接超时,请重新登陆")
         SPUtil.putString("token", "")
         SPUtil.removeObj("certification")
 
@@ -200,7 +200,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     }
 
     override fun hideLoading() {
-        mDialog!!.dismiss()
+        mDialog?.dismiss()
     }
 
     override fun Loading() {

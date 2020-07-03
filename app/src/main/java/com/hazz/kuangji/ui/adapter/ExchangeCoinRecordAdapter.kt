@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.ExchangeRecord
+import com.hazz.kuangji.mvp.model.ExchangeRecord
 
 class ExchangeCoinRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : BaseQuickAdapter<ExchangeRecord, BaseViewHolder>(layoutResId, data) {
 

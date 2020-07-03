@@ -15,8 +15,8 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.MyAsset
-import com.hazz.kuangji.mvp.model.bean.TibiRecord
+import com.hazz.kuangji.mvp.model.MyAsset
+import com.hazz.kuangji.mvp.model.TibiRecord
 import com.hazz.kuangji.mvp.presenter.TiBiPresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.coin_choose.view.*

@@ -1,16 +1,16 @@
 package com.hazz.kuangji.ui.activity.asset
 
-import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.InComing
+import com.hazz.kuangji.mvp.model.InComing
 import com.hazz.kuangji.mvp.presenter.ShouyiPresenter
 import com.hazz.kuangji.ui.adapter.IncomingAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
+import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
@@ -86,7 +86,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
     }
 
     override fun initData() {
-
+        StatusBarUtil.darkMode(this,false)
     }
 
 

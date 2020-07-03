@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_10"
-        android:maxWidth="180dp"
         android:text="RVC"
         android:textColor="@color/home_text"
         android:textSize="@dimen/_14_text_size" />

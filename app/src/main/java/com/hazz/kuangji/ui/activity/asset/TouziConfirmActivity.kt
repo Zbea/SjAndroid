@@ -6,10 +6,10 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.MyAsset
-import com.hazz.kuangji.mvp.model.bean.Touzi
-import com.hazz.kuangji.mvp.model.bean.Touzi.ProductsBean
-import com.hazz.kuangji.mvp.model.bean.TouziRecord
+import com.hazz.kuangji.mvp.model.MyAsset
+import com.hazz.kuangji.mvp.model.Touzi
+import com.hazz.kuangji.mvp.model.Touzi.ProductsBean
+import com.hazz.kuangji.mvp.model.TouziRecord
 import com.hazz.kuangji.mvp.presenter.TouziPresenter
 import com.hazz.kuangji.mvp.presenter.ZichanPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity

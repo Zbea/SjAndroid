@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.InComing
+import com.hazz.kuangji.mvp.model.InComing
 
 class IncomingAdapter(layoutResId: Int, data: List<InComing.StaticListBean>?) : BaseQuickAdapter<InComing.StaticListBean, BaseViewHolder>(layoutResId, data) {
 

@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="172dp"
+        android:layout_height="wrap_content"
         android:background="@mipmap/bg_top02"
         android:orientation="vertical">
 
@@ -20,8 +20,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="15dp"
             android:orientation="vertical">
 
 
@@ -29,7 +29,6 @@
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_toRightOf="@+id/iv_head"
                 android:text="总收益(USDT/FIL)"
                 android:textColor="@color/color_white"
@@ -41,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/color_white"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -64,11 +63,10 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_margin="@dimen/margin_15"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -103,8 +101,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_margin="@dimen/margin_15"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -145,8 +143,8 @@
 
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_margin="@dimen/margin_15"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -181,8 +179,8 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
+                android:layout_margin="@dimen/margin_15"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -217,7 +215,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         app:tabIndicatorColor="@color/blue"
-        app:tabTextColor="@color/home_text"
+        app:tabTextColor="@color/color_666666"
         app:tabSelectedTextColor="@color/blue"
         app:tabMode="fixed"
         android:layout_below="@+id/ll"/>

@@ -1,7 +1,7 @@
 package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.ExchangeRecord
+import com.hazz.kuangji.mvp.model.ExchangeRecord
 import com.hazz.kuangji.net.BasePresenter
 import com.hazz.kuangji.net.BaseResult
 import com.hazz.kuangji.net.Callback

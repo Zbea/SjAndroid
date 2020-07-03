@@ -4,7 +4,7 @@ package com.hazz.kuangji.mvp.presenter
 import android.util.Pair
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Sms
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 import io.reactivex.Observer

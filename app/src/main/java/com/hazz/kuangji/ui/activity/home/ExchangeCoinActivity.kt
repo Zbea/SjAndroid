@@ -9,8 +9,8 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.Exchange
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Exchange
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.ExchangeCoinPresenter
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
@@ -170,7 +170,7 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
                                     startActivity(Intent(this, MineExchangePwdActivity::class.java))
                                 }
                                 .setConfirmListener { _, password ->
-                                    mMineExchangeCoinPresenter.commitExchangeCoin(type, amount, amountRate, Utils.encryptMD5(password))
+                                    mMineExchangeCoinPresenter.commitExchangeCoin(type, amount, amountRate, password)
 
                                 }.setCancelListener {
 

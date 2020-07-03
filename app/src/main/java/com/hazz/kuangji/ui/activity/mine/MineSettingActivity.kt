@@ -11,7 +11,10 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.utils.Utils
 import com.hazz.kuangji.widget.CommonDialog
 import com.tencent.bugly.beta.Beta
+import kotlinx.android.synthetic.main.activity_mine_safe.*
 import kotlinx.android.synthetic.main.activity_set.*
+import kotlinx.android.synthetic.main.activity_set.tv_login
+import kotlinx.android.synthetic.main.activity_set.tv_zijin
 import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
 
 
@@ -43,8 +46,11 @@ class SettingActivity : BaseActivity() {
 
 
     override fun start() {
-        safe.setOnClickListener {
-            startActivity(Intent(this, MineSafeActivity::class.java))
+        tv_login.setOnClickListener {
+            startActivity(Intent(this, MineLoginPwdActivity::class.java))
+        }
+        tv_zijin.setOnClickListener {
+            startActivity(Intent(this, MineExchangePwdActivity::class.java))
         }
         tv_logout.setOnClickListener {
             commonDialog=CommonDialog(this)
@@ -62,7 +68,6 @@ class SettingActivity : BaseActivity() {
                 show()
             }
         }
-
         rl_version.setOnClickListener {
             Beta.checkAppUpgrade()
         }

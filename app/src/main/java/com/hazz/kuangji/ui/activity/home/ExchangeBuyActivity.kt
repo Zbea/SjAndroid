@@ -9,8 +9,8 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.mvp.presenter.ExchangePresenter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.SToast
@@ -22,7 +22,7 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="wx"//1为微信2为支付宝3为银行卡
-    private var mData:Exchange?=null
+    private var mData: Exchange?=null
     private var currentPrice="0"
     private var money="0"
     private var amount="0"

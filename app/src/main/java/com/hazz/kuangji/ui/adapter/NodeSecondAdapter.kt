@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.Node
+import com.hazz.kuangji.mvp.model.Node
 
 class NodeSecondAdapter(layoutResId: Int, data: List<Node.InviteUsersBean.ChildrenBean>?) : BaseQuickAdapter<Node.InviteUsersBean.ChildrenBean, BaseViewHolder>(layoutResId, data) {
 

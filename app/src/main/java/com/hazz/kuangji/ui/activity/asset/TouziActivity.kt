@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Touzi
-import com.hazz.kuangji.mvp.model.bean.TouziRecord
+import com.hazz.kuangji.mvp.model.Touzi
+import com.hazz.kuangji.mvp.model.TouziRecord
 import com.hazz.kuangji.mvp.presenter.TouziPresenter
 import com.hazz.kuangji.ui.adapter.TouziAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil

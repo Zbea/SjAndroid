@@ -23,15 +23,13 @@
             android:id="@+id/ll_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
             android:orientation="vertical">
 
             <RadioGroup
                 android:id="@+id/rg_charge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_15"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <RadioButton
@@ -63,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="@dimen/margin_15"
                 android:text="收款地址二维码"
                 android:textColor="@color/home_text"
                 android:textSize="14sp" />
@@ -78,7 +76,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:text="充值地址"
                 android:textColor="@color/hintTextColor"
@@ -87,7 +85,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="@dimen/space_dimen"
                 android:gravity="center_vertical"
                 android:padding="5dp"
                 android:background="@drawable/bg_charge_copy"
@@ -115,9 +113,9 @@
             <Button
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="@dimen/margin_15"
                 android:background="@drawable/bg_blue_solid_5dp_coner"
                 android:text="保存二维码"
                 android:visibility="gone"
@@ -125,7 +123,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ll_code" />
 
             <TextView
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/margin_15"
                 android:layout_marginTop="14dp"
                 android:textSize="12sp"
                 android:text="档次说明:"
@@ -135,7 +133,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/margin_15"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -161,7 +159,7 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/margin_15"
                 android:textSize="10sp"
                 android:layout_marginTop="8dp"
                 android:text="2、充值到账需要2个网络确认，请耐心等待。"
@@ -171,7 +169,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">

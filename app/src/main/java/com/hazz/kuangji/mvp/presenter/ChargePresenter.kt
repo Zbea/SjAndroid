@@ -2,8 +2,8 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Charge
-import com.hazz.kuangji.mvp.model.bean.ChargeRecord
+import com.hazz.kuangji.mvp.model.Charge
+import com.hazz.kuangji.mvp.model.ChargeRecord
 import com.hazz.kuangji.net.*
 
 

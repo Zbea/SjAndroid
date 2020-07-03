@@ -1,12 +1,9 @@
 package com.hazz.kuangji.mvp.presenter
 
 
-import android.util.Log
 import android.util.Pair
-import com.google.gson.Gson
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.bean.Certification
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 

@@ -1,9 +1,6 @@
 package com.hazz.kuangji.api
 
-import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.Sms
-import com.hazz.kuangji.mvp.model.Xieyi
-import com.hazz.kuangji.mvp.model.bean.*
+import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.net.BaseResult
 import io.reactivex.Observable
 import okhttp3.MultipartBody
@@ -162,7 +159,7 @@ interface AiPickService{
      * 矿机
      */
     @GET("trade/investment")
-    fun kuangji(): Observable<BaseResult<Kuangji>>
+    fun kuangji(): Observable<BaseResult<Mill>>
 
     /**
      * 矿机明细
@@ -237,8 +234,9 @@ interface AiPickService{
     /**
      * 币币兑换
      */
-    @GET("accounts/v0/trans/{type}/{amount1}/{amount2}/{password}")
-    fun commitExchange(@Path("type" ) type:String, @Path("amount1" ) amount1:String, @Path("amount2" ) amount2:String, @Path("password" ) password:String): Observable<BaseResult<Any>>
+    @FormUrlEncoded
+    @POST("accounts/v0/trans/")
+    fun commitExchange(@FieldMap map: HashMap<String, String>): Observable<BaseResult<Any>>
     /**
      * 获取卖币订单
      */
@@ -267,4 +265,17 @@ interface AiPickService{
      */
     @POST("users/get_identity")
     fun getCertification(): Observable<BaseResult<Certification>>
+
+    /**
+     * 转账给其他用户
+     */
+    @FormUrlEncoded
+    @POST("accounts/v0/trans_accounts/")
+    fun transAccount(@FieldMap map: HashMap<String, String>): Observable<BaseResult<Any>>
+
+    /**
+     * 转账给其他用户列表
+     */
+    @GET("accounts/v0/trans_accounts_list")
+    fun getTransAccountList(): Observable<BaseResult<List<TransferCoin>>>
 }

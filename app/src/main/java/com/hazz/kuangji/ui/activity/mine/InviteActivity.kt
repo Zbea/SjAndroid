@@ -11,9 +11,9 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Coin
-import com.hazz.kuangji.mvp.model.bean.Friends
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.Coin
+import com.hazz.kuangji.mvp.model.Friends
+import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.invitefriends.*
@@ -31,7 +31,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
 
     private var createQRCode: Bitmap? = null
     private var mCoinPresenter: CoinPresenter = CoinPresenter(this)
-    private  var userInfo:UserInfo?=null
+    private  var userInfo: UserInfo?=null
     private  var invitation_code=""
     private  var invitation_code_url=""
 

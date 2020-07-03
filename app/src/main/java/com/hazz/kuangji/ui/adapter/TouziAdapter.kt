@@ -6,7 +6,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.Touzi
+import com.hazz.kuangji.mvp.model.Touzi
 import com.hazz.kuangji.ui.activity.asset.TouziConfirmActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 

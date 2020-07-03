@@ -6,7 +6,7 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.mvp.presenter.ExchangeOrderSaleDetailsPresenter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.GlideEngine

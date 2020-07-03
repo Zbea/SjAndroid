@@ -11,13 +11,10 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.bean.Msg
+import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
-import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
-import com.hazz.kuangji.ui.activity.home.ExchangeCoinActivity
-import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
-import com.hazz.kuangji.ui.activity.home.MsgDescActivity
+import com.hazz.kuangji.ui.activity.home.*
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DisplayManager
 import com.hazz.kuangji.utils.DpUtils
@@ -72,7 +69,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
     override fun getHome(msg: Home) {
 
-        sl_refresh.isRefreshing=false
+        sl_refresh?.isRefreshing=false
 
         val carousel = msg.carousel
         if (!carousel.isNullOrEmpty()) {
@@ -86,7 +83,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             adListDefault!!.add(R.mipmap.banner1)
             initBannerDefault(adListDefault!!)
         }
-        mAdapter!!.setNewData(msg.products)
+        mAdapter?.setNewData(msg.products)
     }
 
     override fun zuyongSucceed(msg: String) {
@@ -99,10 +96,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun initView() {
-
-        sl_refresh.isRefreshing=true
-        sl_refresh.setColorSchemeResources(R.color.blue)
-        sl_refresh.setOnRefreshListener {
+        sl_refresh=activity?.findViewById(R.id.sl_refresh)
+        sl_refresh?.isRefreshing=true
+        sl_refresh?.setColorSchemeResources(R.color.blue)
+        sl_refresh?.setOnRefreshListener {
             lazyLoad()
         }
 
@@ -113,17 +110,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
 
-        recycle_view.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
-
-
+        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
         ll_charge.setOnClickListener {
             startActivity(Intent(activity, ExchangeBuyActivity::class.java))
@@ -135,6 +122,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
         ll_exchange.setOnClickListener {
             startActivity(Intent(activity, ExchangeCoinActivity::class.java))
+        }
+
+        tv_more.setOnClickListener {
+            startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
     }
@@ -182,11 +173,6 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             //banner设置方法全部调用完毕时最后调用
             start()
         }
-    }
-
-    override fun fail(msg: String) {
-        super.fail(msg)
-        sl_refresh.isRefreshing=false
     }
 
 }

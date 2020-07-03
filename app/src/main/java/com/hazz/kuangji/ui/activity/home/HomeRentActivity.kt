@@ -9,8 +9,8 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.MyAsset
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.ZichanPresenter

@@ -5,14 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Msg
+import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.adapter.MsgAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.msg_record.*
 import kotlinx.android.synthetic.main.msg_record.mToolBar
 
 

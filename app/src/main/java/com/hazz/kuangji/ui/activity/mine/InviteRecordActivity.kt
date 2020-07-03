@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Coin
-import com.hazz.kuangji.mvp.model.bean.Friends
+import com.hazz.kuangji.mvp.model.Coin
+import com.hazz.kuangji.mvp.model.Friends
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
 import com.hazz.kuangji.ui.adapter.FriendsAdapter
 import com.hazz.kuangji.utils.*

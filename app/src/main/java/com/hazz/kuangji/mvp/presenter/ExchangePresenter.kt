@@ -1,8 +1,8 @@
 package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.net.*
 
 class ExchangePresenter(buyView:IContractView.IExchangeBuyView) : BasePresenter<IContractView.IExchangeBuyView>(buyView) {

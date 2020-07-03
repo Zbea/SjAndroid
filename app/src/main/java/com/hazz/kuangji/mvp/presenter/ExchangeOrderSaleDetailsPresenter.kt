@@ -1,13 +1,8 @@
 package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.net.*
-import okhttp3.MediaType
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
 
 class ExchangeOrderSaleDetailsPresenter(view:IContractView.IExchangeSaleDetailsView) : BasePresenter<IContractView.IExchangeSaleDetailsView>(view) {
 

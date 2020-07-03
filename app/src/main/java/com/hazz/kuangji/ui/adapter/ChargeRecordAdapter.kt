@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.ChargeRecord
+import com.hazz.kuangji.mvp.model.ChargeRecord
 
 class ChargeRecordAdapter(layoutResId: Int, data: List<ChargeRecord.ListBean>?) : BaseQuickAdapter<ChargeRecord.ListBean, BaseViewHolder>(layoutResId, data) {
 

@@ -11,9 +11,9 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Certification
-import com.hazz.kuangji.mvp.model.bean.Exchange
-import com.hazz.kuangji.mvp.model.bean.ExchangeOrder
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.ExchangeSalePresenter
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
@@ -44,14 +44,14 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="wx"//1为微信2为支付宝3为银行卡
-    private var data:Exchange?=null
+    private var data: Exchange?=null
     private var currentPrice="0"
     private var money="0"
     private var max="0"
     private var amount=""
     private val mMineExchangePresenter=ExchangeSalePresenter(this)
     private val mCertificationInfoPresenter=CertificationInfoPresenter(this)
-    private var mCertification:Certification?=null
+    private var mCertification: Certification?=null
 
 
     override fun getExchange(data: Exchange) {
@@ -63,7 +63,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
     }
 
     //判断用户是否实名认证
-    override fun getCertification(certification :Certification) {
+    override fun getCertification(certification : Certification) {
         mCertification=certification
         if (certification.status==1)
         {

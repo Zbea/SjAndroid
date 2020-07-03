@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.model.bean.UserInfo
+import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.ui.fragment.MineCertificationOneFragment
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.ToolBarCustom

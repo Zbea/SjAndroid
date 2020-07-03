@@ -3,7 +3,7 @@ package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Xieyi
-import com.hazz.kuangji.mvp.model.bean.SignRecord
+import com.hazz.kuangji.mvp.model.SignRecord
 import com.hazz.kuangji.net.BasePresenter
 import com.hazz.kuangji.net.BaseResult
 import com.hazz.kuangji.net.Callback

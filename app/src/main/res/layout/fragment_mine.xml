@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sl_refresh"
+    android:id="@+id/sl_refresh_mine"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_color">
@@ -114,47 +114,13 @@
                         android:orientation="vertical"
                         tools:ignore="MissingConstraints">
 
-                        <RelativeLayout
-                            android:id="@+id/layout_certification"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="7dp"
-                            android:background="@drawable/bg_ripple_selector"
-                            android:paddingLeft="@dimen/space_dimen"
-                            android:paddingTop="7dp"
-                            android:paddingRight="@dimen/space_dimen"
-                            android:paddingBottom="7dp"
-                            tools:ignore="DuplicateIds">
 
-                            <ImageView
-                                android:id="@+id/iv"
-                                android:layout_width="27dp"
-                                android:layout_height="27dp"
-                                android:src="@mipmap/icon_mine_certification_logo" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginLeft="17dp"
-                                android:layout_toRightOf="@+id/iv"
-                                android:text="实名认证"
-                                android:textColor="#666666"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:drawableRight="@mipmap/mine_icon_more"
-                                android:drawablePadding="12dp" />
-                        </RelativeLayout>
 
                         <RelativeLayout
                             android:id="@+id/layout_team"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="7dp"
                             android:background="@drawable/bg_ripple_selector"
                             android:paddingLeft="@dimen/space_dimen"
                             android:paddingTop="7dp"
@@ -243,7 +209,51 @@
                                 android:drawablePadding="12dp" />
                         </RelativeLayout>
 
+                        <RelativeLayout
+                            android:id="@+id/layout_certification"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_ripple_selector"
+                            android:paddingLeft="@dimen/space_dimen"
+                            android:paddingTop="7dp"
+                            android:paddingRight="@dimen/space_dimen"
+                            android:paddingBottom="7dp"
+                            tools:ignore="DuplicateIds">
 
+                            <ImageView
+                                android:id="@+id/iv"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:src="@mipmap/icon_mine_certification_logo" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="17dp"
+                                android:layout_toRightOf="@+id/iv"
+                                android:text="实名认证"
+                                android:textColor="#666666"
+                                android:textSize="16sp" />
+
+                            <View
+                                android:id="@+id/tv_dot"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:visibility="gone"
+                                android:background="@drawable/shape_red_solid_dot"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@mipmap/mine_icon_more"
+                                android:drawablePadding="12dp" />
+                        </RelativeLayout>
 
                         <RelativeLayout
                             android:id="@+id/layout_contact"
@@ -316,12 +326,10 @@
                                 android:drawableRight="@mipmap/mine_icon_more"
                                 android:drawablePadding="12dp" />
                         </RelativeLayout>
-
                         <RelativeLayout
-                            android:id="@+id/layout_setting"
+                            android:id="@+id/layout_download"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="7dp"
                             android:background="@drawable/bg_ripple_selector"
                             android:clickable="true"
                             android:paddingLeft="@dimen/space_dimen"
@@ -330,14 +338,19 @@
                             android:paddingBottom="7dp"
                             tools:ignore="DuplicateIds">
 
+                            <ImageView
+                                android:id="@+id/iv"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:src="@mipmap/icon_mine_download" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
-                                android:drawableLeft="@mipmap/icon_mine_setting"
-                                android:drawablePadding="15dp"
-                                android:gravity="center"
-                                android:text="账号设置"
+                                android:layout_marginLeft="17dp"
+                                android:layout_toRightOf="@+id/iv"
+                                android:text="下载地址"
                                 android:textColor="#666666"
                                 android:textSize="16sp" />
 
@@ -349,6 +362,45 @@
                                 android:drawableRight="@mipmap/mine_icon_more"
                                 android:drawablePadding="12dp" />
                         </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/layout_setting"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_ripple_selector"
+                            android:clickable="true"
+                            android:paddingLeft="@dimen/space_dimen"
+                            android:paddingTop="7dp"
+                            android:paddingRight="@dimen/space_dimen"
+                            android:paddingBottom="7dp"
+                            android:layout_marginBottom="7dp"
+                            tools:ignore="DuplicateIds">
+
+                            <ImageView
+                                android:id="@+id/iv"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:src="@mipmap/icon_mine_setting" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="17dp"
+                                android:layout_toRightOf="@+id/iv"
+                                android:text="账号设置"
+                                android:textColor="#666666"
+                                android:textSize="16sp" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@mipmap/mine_icon_more"
+                                android:drawablePadding="12dp" />
+                        </RelativeLayout>
+
 
 
                     </LinearLayout>
@@ -367,15 +419,13 @@
                         android:id="@+id/iv_type"
                         android:layout_width="40dp"
                         android:layout_height="20dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@mipmap/chuji"
+                        android:visibility="gone"
                         />
                     <ImageView
                         android:id="@+id/iv_certification"
                         android:layout_width="40dp"
                         android:layout_height="20dp"
                         android:layout_marginLeft="@dimen/dp_10"
-                        android:layout_centerHorizontal="true"
                         android:src="@mipmap/icon_mine_certification"
                         />
                 </LinearLayout>

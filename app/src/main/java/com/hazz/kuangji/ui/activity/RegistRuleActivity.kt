@@ -6,7 +6,7 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Xieyi
-import com.hazz.kuangji.mvp.model.bean.SignRecord
+import com.hazz.kuangji.mvp.model.SignRecord
 import com.hazz.kuangji.mvp.presenter.XieyiPresenter
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_rule.*

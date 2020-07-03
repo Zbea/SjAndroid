@@ -38,7 +38,7 @@
             <RelativeLayout
                 android:id="@+id/rl_choose"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
                 android:paddingLeft="10dp"
@@ -77,7 +77,7 @@
             <RelativeLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
                 android:paddingLeft="10dp"
@@ -121,7 +121,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
                 android:paddingLeft="10dp"
@@ -166,7 +166,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
                 android:paddingLeft="10dp">
@@ -205,7 +205,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
                 android:paddingLeft="10dp">
@@ -245,7 +245,7 @@
             <EditText
                 android:id="@+id/et_pwd"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_white_solid_5dp_coner"
@@ -260,7 +260,7 @@
             <Button
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_blue_solid_5dp_coner"

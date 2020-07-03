@@ -33,13 +33,13 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:layout_marginTop="9dp"
-        android:background="#F2F6FF" />
+        android:background="@color/color_line" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="15dp"
-        android:paddingBottom="15dp">
+        >
 
         <ImageView
             android:id="@+id/iv"
@@ -84,7 +84,7 @@
             android:singleLine="true"
             android:text="0 USDT"
             android:textColor="@color/redF4"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintLeft_toRightOf="@+id/iv"
             app:layout_constraintTop_toBottomOf="@+id/tv_suanli" />
 

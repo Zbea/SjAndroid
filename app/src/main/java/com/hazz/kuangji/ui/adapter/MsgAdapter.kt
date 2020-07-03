@@ -6,7 +6,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.Msg
+import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.ui.activity.home.MsgDescActivity
 
 class MsgAdapter(layoutResId: Int, data: List<Msg>?) : BaseQuickAdapter<Msg, BaseViewHolder>(layoutResId, data) {

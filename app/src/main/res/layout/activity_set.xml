@@ -13,18 +13,18 @@
         layout="@layout/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/safe"
+        android:id="@+id/tv_login"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/btn_dimen"
         android:layout_below="@+id/mToolBar"
-        android:layout_marginTop="15dp"
-        android:background="#ffffff">
+        android:layout_marginTop="@dimen/space_dimen"
+        android:background="@drawable/bg_ripple_selector">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="@string/safe_center"
+            android:text="@string/login_pwd"
             android:textColor="@color/color_666666"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,10 +43,41 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tv_zijin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_dimen"
+        android:layout_below="@+id/tv_login"
+        android:layout_marginTop="@dimen/space_dimen"
+        android:background="@drawable/bg_ripple_selector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/zijin_pwd"
+            android:textColor="@color/color_666666"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:src="@mipmap/mine_icon_more"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rl_version"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_below="@+id/safe"
+        android:layout_below="@+id/tv_zijin"
         android:layout_marginTop="15dp"
         android:background="#ffffff">
 

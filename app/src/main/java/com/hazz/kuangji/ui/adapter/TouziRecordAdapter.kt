@@ -6,7 +6,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.TouziRecord
+import com.hazz.kuangji.mvp.model.TouziRecord
 
 class TouziRecordAdapter(layoutResId: Int, data: List<TouziRecord.ListBean>?) : BaseQuickAdapter<TouziRecord.ListBean, BaseViewHolder>(layoutResId, data) {
 

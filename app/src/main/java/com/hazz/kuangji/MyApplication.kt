@@ -21,7 +21,6 @@ import kotlin.properties.Delegates
 
 class MyApplication : Application(){
 
-    private var refWatcher: RefWatcher? = null
 
     companion object {
 
@@ -36,7 +35,6 @@ class MyApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-//        refWatcher = setupLeakCanary()
         initConfig()
         DisplayManager.init(this)
         DensityUtils.setDensity(this)

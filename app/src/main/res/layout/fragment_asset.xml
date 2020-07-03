@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/sl_refresh"
+        android:id="@+id/sl_refresh_asset"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -21,109 +21,105 @@
                 android:layout_height="wrap_content"
                 android:background="@mipmap/bg_top02">
 
+
                 <TextView
-                    android:id="@+id/tv_title"
+                    android:id="@+id/tv_copy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="31dp"
+                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginTop="60dp"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:layout_marginBottom="10dp"
+                    android:drawableRight="@mipmap/icon_copy"
+                    android:drawablePadding="10dp"
+                    android:gravity="center"
                     android:textColor="@color/color_white"
-                    android:textSize="16sp" />
+                    android:textSize="13sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_title"
+                    android:layout_below="@+id/tv_copy"
                     android:layout_margin="15dp"
-                    android:orientation="vertical">
+                    android:background="@drawable/mine_login_box_bg"
+                    android:paddingTop="@dimen/margin_15"
+                    android:paddingBottom="@dimen/margin_15"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp">
 
-
-                    <TextView
-                        android:id="@+id/tv_copy"
-                        android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:id="@+id/rl_touzi"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:drawableRight="@mipmap/icon_copy"
-                        android:drawablePadding="10dp"
-                        android:gravity="center"
-                        android:textColor="@color/color_white"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_ripple_selector">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="4dp"
+                            android:text="投资（USDT）"
+                            android:textColor="@color/home_text"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_touzi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tv2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="4dp"
+                            android:text="0"
+                            android:textColor="@color/color_999999"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/mine_icon_more" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_shouyi"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:background="@drawable/mine_login_box_bg"
-                        android:padding="15dp">
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_ripple_selector">
 
-                        <RelativeLayout
-                            android:id="@+id/rl_touzi"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1">
+                            android:layout_marginTop="4dp"
+                            android:text="收益（USDT/FIL）"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/home_text"
+                            android:textSize="14sp" />
 
-                            <TextView
-                                android:id="@+id/tv2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="投资（USDT）"
-                                android:textColor="@color/home_text"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:id="@+id/tv_touzi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv2"
-                                android:layout_marginTop="4dp"
-                                android:text="0"
-                                android:textColor="@color/home_text"
-                                android:textSize="12sp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:src="@mipmap/mine_icon_more" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/rl_shouyi"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tv_shouyi"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="20dp"
-                            android:layout_weight="1">
+                            android:layout_below="@+id/tv3"
+                            android:layout_marginTop="4dp"
+                            android:layout_centerHorizontal="true"
+                            android:text="0"
+                            android:textColor="@color/color_999999"
+                            android:textSize="11sp" />
 
-                            <TextView
-                                android:id="@+id/tv3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:text="收益（USDT/FIL）"
-                                android:textColor="@color/home_text"
-                                android:textSize="12sp" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:src="@mipmap/mine_icon_more" />
+                    </RelativeLayout>
 
-                            <TextView
-                                android:id="@+id/tv_shouyi"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/tv3"
-                                android:layout_marginTop="4dp"
-                                android:text="0"
-                                android:textColor="@color/home_text"
-                                android:textSize="12sp" />
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:src="@mipmap/mine_icon_more" />
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -131,14 +127,12 @@
             </RelativeLayout>
 
             <LinearLayout
-
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="28dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                >
 
                 <TextView
                     android:id="@+id/rl_charge"
@@ -149,10 +143,9 @@
                     android:background="@drawable/bg_white_solid_5dp_coner"
                     android:drawableLeft="@mipmap/zichan_chongzhi"
                     android:gravity="center"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="30dp"
+                    android:padding="15dp"
                     android:text="充值"
-                    android:textColor="@color/home_text"
+                    android:textColor="@color/color_333333"
                     android:textSize="16sp" />
 
                 <TextView
@@ -160,15 +153,29 @@
                     android:layout_width="0dp"
                     android:layout_height="54dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_weight="1"
                     android:background="@drawable/bg_white_solid_5dp_coner"
                     android:drawableLeft="@mipmap/zichan_tibi"
                     android:gravity="center"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="30dp"
+                    android:padding="15dp"
                     android:text="@string/tibi"
-                    android:textColor="@color/home_text"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_transfer"
+                    android:layout_width="0dp"
+                    android:layout_height="54dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_white_solid_5dp_coner"
+                    android:drawableLeft="@mipmap/icon_asset_transfer_coin"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="转账"
+                    android:textColor="@color/color_333333"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -176,9 +183,7 @@
                 android:id="@+id/recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="15dp">
+                android:layout_margin="@dimen/margin_15">
 
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>

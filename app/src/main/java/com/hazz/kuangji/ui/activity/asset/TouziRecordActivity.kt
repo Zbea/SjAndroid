@@ -5,15 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.bean.Touzi
-import com.hazz.kuangji.mvp.model.bean.TouziRecord
+import com.hazz.kuangji.mvp.model.Touzi
+import com.hazz.kuangji.mvp.model.TouziRecord
 import com.hazz.kuangji.mvp.presenter.TouziPresenter
 import com.hazz.kuangji.ui.adapter.TouziRecordAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.invitefriends_record.*
 import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
 
 

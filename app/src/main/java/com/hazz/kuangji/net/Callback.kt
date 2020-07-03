@@ -24,11 +24,15 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
     }
 
     override fun onNext(@NonNull tBaseResult: BaseResult<T>) {
-        Log.i("sj",Gson().toJson(tBaseResult))
-        if (tBaseResult.code == 200 || tBaseResult.msg.equals("ok")) {
+        if (!tBaseResult.error.isNullOrEmpty())
+        {
+            baseView.fail(tBaseResult.error)
+            return
+        }
+
+        if (tBaseResult.code == 200) {
             success(tBaseResult)
         } else {
-
             when {
                 tBaseResult.code==401 -> {
                     baseView.login()
@@ -44,7 +48,6 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
     }
 
     override fun onComplete() {
-
         baseView.hideLoading()
     }
 
@@ -52,7 +55,6 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
         e.printStackTrace()
         SToast.showToast(ExceptionHandle.handleException(e))
         baseView.hideLoading()
-
     }
 
     abstract fun failed(tBaseResult: BaseResult<T>): Boolean

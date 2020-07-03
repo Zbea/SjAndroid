@@ -5,7 +5,7 @@ import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.bean.MyAsset
+import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class AssetAdapter(layoutResId: Int, data: List<MyAsset.AssetsBean>?) : BaseQuickAdapter<MyAsset.AssetsBean, BaseViewHolder>(layoutResId, data) {
@@ -19,7 +19,7 @@ class AssetAdapter(layoutResId: Int, data: List<MyAsset.AssetsBean>?) : BaseQuic
         if(item.coin=="FCOIN"){
             helper.setText(R.id.tv_coin, "FIL")
         }
-        helper.setText(R.id.tv1, BigDecimalUtil.mul(item.balance, "1", 5))
+        helper.setText(R.id.tv1, BigDecimalUtil.mul(item.balance, "1", 8))
         helper.setText(R.id.tv2, item.frozen)
 
 

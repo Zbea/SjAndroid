@@ -3,13 +3,11 @@ package com.hazz.kuangji.ui.fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.mvp.model.bean.Certification
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SToast
@@ -162,13 +160,15 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
             if (selectList.size > 0) {
                 var media = selectList?.get(0)
                 if (media != null) {
-                    path = if (media.isCompressed) {
-                        media.compressPath
-                    } else {
-                        media.path
+                    path = media.path
+                    if (media.isCut) {
+                        path = media.cutPath
+                    }
+                    if (media.isCompressed) {
+                        path = media.compressPath
                     }
                 }
-                path= FileUtils.uri2String(Uri.parse(path),activity!!).toString()
+                path = FileUtils.uri2String(Uri.parse(path), activity!!).toString()
 
                 if (path != null) {
                     if (isFront) {
