@@ -66,6 +66,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
     override fun lazyLoad() {
     }
 
+
     override fun onClick(v: View?) {
         when(v)
         {
