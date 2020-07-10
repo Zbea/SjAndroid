@@ -101,7 +101,6 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
             }
             R.id.mRbOtc -> {
                 checkFragment(4)
-
             }
 
 
