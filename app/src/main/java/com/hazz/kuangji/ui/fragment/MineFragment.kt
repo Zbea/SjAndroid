@@ -33,18 +33,16 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mNodePresenter: NodePresenter = NodePresenter(this)
     private var userInfo: UserInfo? = null
     private var mPhotoDialog: PhotoDialog? = null
-    private var status: Int = 3
+    private var status= 3
     private var mData: Certification? = null
 
     override fun getAccount(msg: Account) {
-        if (mView==null)return
+        if (mView==null||iv_header==null||iv_type==null)return
         sl_refresh?.isRefreshing=false
-        if (iv_header != null) {
-            activity?.let {
-                Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
-                        .apply(RequestOptions.bitmapTransform(CircleCrop()))
-                        .into(iv_header)
-            }
+        activity?.let {
+            Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .into(iv_header)
         }
         iv_type.visibility=View.VISIBLE
         when (msg.level) {
@@ -69,7 +67,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun getCertification(data: Certification) {
-        if (mView==null)return
+        if (mView==null||tv_dot==null||iv_certification==null)return
         mData = data
         status = data.status
         when (status) {

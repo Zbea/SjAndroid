@@ -14,13 +14,9 @@ import kotlinx.android.synthetic.main.activity_msg_desc.tv_content
 import kotlinx.android.synthetic.main.activity_msg_desc.tv_title
 
 
-class MsgDescActivity : BaseActivity(), IContractView.MsgView {
+class MsgDescActivity : BaseActivity(){
 
     val css="<style>* {font-size:14px;line-height:20px;color:#fff;} p {color:#fff;font-size:14px;} a {color:#fff;font-size:13px;} img {max-width:310px;}pre {font-size:9pt;line-height:12pt;font-family:Courier New,Arial;border:1px solid #ddd;border-left:5px solid #6CE26C;background:#f6f6f6;padding:5px;}</style>"
-
-    override fun getMsg(msg: List<Msg>) {
-    }
-
 
     override fun layoutId(): Int {
         return R.layout.activity_msg_desc

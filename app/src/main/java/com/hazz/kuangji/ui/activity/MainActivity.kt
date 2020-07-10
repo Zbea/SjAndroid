@@ -1,6 +1,7 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
@@ -22,20 +23,8 @@ import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
 class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
 
     private var mainPresenter=MainPresenter(this)
-
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
-    /**
-     * 想要去到的页面，由于需要登录，无法直接显示
-     */
-    private var mWantSelectIndex = -1
-    private var mTags: String? = null
-    private var mLastClickTime: Long = 0
-
-    private var builder: AlertDialog.Builder? = null
-    private var dialog: AlertDialog? = null
-
-
 
     override fun layoutId(): Int {
         return R.layout.activity_main_ruoyu_new
@@ -67,11 +56,22 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
 
     private fun initFragment() {
         mFragments = ArrayList()
-        mFragments.add(HomeFragment())
-        mFragments.add(MillFragment())
-        mFragments.add(AssetFragment())
-        mFragments.add(CoinMarketFragment())
-        mFragments.add(MineFragment())
+        if (mSaveState==null)
+        {
+            mFragments.add(HomeFragment())
+            mFragments.add(MillFragment())
+            mFragments.add(AssetFragment())
+            mFragments.add(CoinMarketFragment())
+            mFragments.add(MineFragment())
+        }
+        else
+        {
+            supportFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)?.let { mFragments.add(it) }
+            supportFragmentManager.findFragmentByTag(MillFragment::class.java.simpleName)?.let { mFragments.add(it) }
+            supportFragmentManager.findFragmentByTag(AssetFragment::class.java.simpleName)?.let { mFragments.add(it) }
+            supportFragmentManager.findFragmentByTag(CoinMarketFragment::class.java.simpleName)?.let { mFragments.add(it) }
+            supportFragmentManager.findFragmentByTag(MineFragment::class.java.simpleName)?.let { mFragments.add(it) }
+        }
         supportFragmentManager.beginTransaction()
             .replace(R.id.mFrame, mFragments[0], mFragments[0]::class.java.simpleName)
             .commitAllowingStateLoss()
@@ -81,18 +81,6 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
 
     }
 
-    /**
-     * 设置状态栏字体颜色是否为亮色
-     */
-    private fun setStatusBarTextColor(isLight: Boolean) {
-        if (isLight) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR or
-                    (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-        } else {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE or
-                    (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
-        }
-    }
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         when (checkedId) {
@@ -137,27 +125,8 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
 
     }
 
-    fun setSelectRb(index: Int) {
-        when (index) {
-
-            0 -> mRbMall.isChecked = true
-            1 -> mRbMining.isChecked = true
-            2 -> mRbHangqing.isChecked = true
-            3 -> mRbShopCar.isChecked = true
-            4 -> mRbOtc.isChecked = true
-
-        }
-    }
-
-    /**
-     * 解决Fragment中的onActivityResult()方法无响应问题。
-     */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        /**
-         * 1.使用getSupportFragmentManager().getFragments()获取到当前Activity中添加的Fragment集合
-         * 2.遍历Fragment集合，手动调用在当前Activity中的Fragment中的onActivityResult()方法。
-         */
         for (mFragment in supportFragmentManager.fragments) {
             mFragment.onActivityResult(requestCode, resultCode, data)
         }

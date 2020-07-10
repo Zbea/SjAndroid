@@ -45,7 +45,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     var sl_refresh: SwipeRefreshLayout?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mView=inflater.inflate(getLayoutId(), null)
+        mView=inflater.inflate(getLayoutId(), container,false)
         return mView
     }
 

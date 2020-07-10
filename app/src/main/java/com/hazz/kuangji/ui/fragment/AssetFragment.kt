@@ -54,19 +54,19 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     override fun myAsset(msg: MyAsset) {
         if (mView==null)return
         myAsset = msg
-        tv_copy.text = msg.wallet_address
+        tv_copy?.text = msg.wallet_address
         if (msg.investment != null) {
-            tv_touzi.text = BigDecimalUtil.mul(msg.investment.toString(), "1", 8)
+            tv_touzi?.text = BigDecimalUtil.mul(msg.investment.toString(), "1", 8)
         }
 
         if (msg.usdt_revenue != null && msg.fcoin_revenue != null) {
-            tv_shouyi.text = BigDecimalUtil.mul(msg.usdt_revenue, "1", 8) + "/" + BigDecimalUtil.mul(msg.fcoin_revenue, "1", 8)
+            tv_shouyi?.text = BigDecimalUtil.mul(msg.usdt_revenue, "1", 8) + "/" + BigDecimalUtil.mul(msg.fcoin_revenue, "1", 8)
         }
         if (msg.usdt_revenue != null && msg.fcoin_revenue == null) {
-            tv_shouyi.text = BigDecimalUtil.mul(msg.usdt_revenue, "1", 8) + "/0.00"
+            tv_shouyi?.text = BigDecimalUtil.mul(msg.usdt_revenue, "1", 8) + "/0.00"
         }
         if (msg.usdt_revenue == null && msg.fcoin_revenue != null) {
-            tv_shouyi.text = "0.00/" + BigDecimalUtil.mul(msg.fcoin_revenue, "1", 8)
+            tv_shouyi?.text = "0.00/" + BigDecimalUtil.mul(msg.fcoin_revenue, "1", 8)
         }
 
         val assets = msg.assets

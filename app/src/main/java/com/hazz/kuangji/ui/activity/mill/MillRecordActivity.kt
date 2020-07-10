@@ -23,13 +23,18 @@ import java.util.*
 
 
 class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
+    private var number=""
 
     override fun getKuangji(msg: Mill) {
 
     }
 
     override fun getMingxi(msg: Mingxi) {
-        mAdapter!!.setNewData(msg.list)
+        for (item in msg.list)
+        {
+            item.miner_number=number
+        }
+        mAdapter?.setNewData(msg.list)
 
     }
 
@@ -58,11 +63,12 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightOneIcon(R.mipmap.bt_pick_time)
                 .setRightOneIconIsShow(true)
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener {finish() }
                 .setOnRightIconClickListener {
                     showTime()
                 }
 
+        number=intent.getStringExtra("number")
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = MillRecordAdapter(R.layout.item_mingxi, null)

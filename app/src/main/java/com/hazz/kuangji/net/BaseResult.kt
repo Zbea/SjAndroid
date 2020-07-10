@@ -1,7 +1,9 @@
 package com.hazz.kuangji.net
 
+import java.io.Serializable
 
-class BaseResult<T>{
+
+class BaseResult<T> : Serializable {
     var msg: String=""
     var error: String=""
     var code = 0

@@ -42,7 +42,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             }
         }
         helper.getView<TextView>(R.id.tv_mingxi).setOnClickListener {
-            mContext.startActivity(Intent(mContext, MillRecordActivity::class.java))
+            mContext.startActivity(Intent(mContext, MillRecordActivity::class.java).putExtra("number",item.miner_number))
         }
     }
 }

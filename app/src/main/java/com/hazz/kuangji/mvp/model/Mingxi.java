@@ -40,6 +40,7 @@ public class Mingxi {
             public String order_id;
             public String create_at_index;
             public String product;
+            public String miner_number;
         }
 
 }

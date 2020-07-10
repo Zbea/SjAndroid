@@ -24,7 +24,7 @@ class RuleActivity : BaseActivity() {
                 .setTitle("矿机租赁服务协议")
                 .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
 
 

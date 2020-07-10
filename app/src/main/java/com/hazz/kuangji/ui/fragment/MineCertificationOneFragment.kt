@@ -60,7 +60,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
             tv_phone.setText(mobile)
         }
         btn_next.setOnClickListener(this)
-        tv_get_code.setOnClickListener(this)
+        tv_get_code.setOnClickListener(this) 
     }
 
     override fun lazyLoad() {
@@ -86,6 +86,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
                     SToast.showText("请输入验证码")
                     return
                 }
+
                 fragmentManager?.beginTransaction()
                         ?.add(R.id.fl_content, MineCertificationTwoFragment().newInstance(mPhone))
                         ?.addToBackStack(null)
@@ -95,6 +96,7 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
     }
 
     private fun showCountDownView() {
+        if (tv_get_code==null)return
         tv_get_code.isEnabled = false
         tv_get_code.isClickable = false
         countDownTimer = object : CountDownTimer(60 * 1000, 1000) {
@@ -104,7 +106,6 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
                 tv_get_code?.text = getString(R.string.mine_get_check_code)
             }
 
-            @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
                 tv_get_code?.text = "${millisUntilFinished / 1000}s"
             }

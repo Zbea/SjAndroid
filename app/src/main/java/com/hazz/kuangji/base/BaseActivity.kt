@@ -35,6 +35,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     var permissionsnew: RxPermissions? = null
     var mDialog: ProgressDialog? = null
+    var mSaveState:Bundle?=null
 
     override fun moveTaskToBack(nonRoot: Boolean): Boolean {
         return super.moveTaskToBack(true)
@@ -42,7 +43,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mSaveState=savedInstanceState
         setContentView(layoutId())
         darkMode(this)
         mDialog = ProgressDialog(this)
