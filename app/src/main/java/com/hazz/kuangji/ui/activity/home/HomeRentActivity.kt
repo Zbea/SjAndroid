@@ -128,6 +128,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
     }
 
+
     private var mPasswordDialog: SafeCheckDialog? = null
     override fun start() {
         tv_xieyi.setOnClickListener {
