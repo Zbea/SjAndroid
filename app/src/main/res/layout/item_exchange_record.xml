@@ -39,7 +39,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -56,12 +56,12 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="2020-6-4 10:47"
-                android:textColor="@color/color_999999"/>
+                android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -79,12 +79,12 @@
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="10"
-                android:textColor="@color/color_999999"/>
+                android:textColor="@color/color_666666"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
@@ -102,6 +102,30 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="￥600"
                 android:textColor="@color/redF4"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_reason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="原因        ："
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_14" />
+
+            <TextView
+                android:id="@+id/tv_reason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp_14"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text=""
+                android:textColor="@color/color_666666"/>
         </LinearLayout>
     </LinearLayout>
 

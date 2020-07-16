@@ -104,8 +104,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         coin = produce!!.coin
         id = produce!!.id
         price = produce!!.price
-        amount=BigDecimalUtil.mul(produce!!.price, "1", 4)
-        tv_amount.text = BigDecimalUtil.mul(produce?.price, "1", 4) + "USDT"
+        amount=BigDecimalUtil.mul(produce!!.price, "1", 8)
+        tv_amount.text = BigDecimalUtil.mul(produce?.price, "1", 8) + "USDT"
         //tv_suanli.text = produce!!.power
         tv_time.text = produce!!.round + "天"
         rate = produce!!.rate
@@ -124,8 +124,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
     private fun setEarningsView(s:String)
     {
-        val div = BigDecimalUtil.mul(s, rate, 4)
-        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 4) + "FIL"
+        val div = BigDecimalUtil.mul(s, rate, 8)
+        tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
     }
 
     private var mPasswordDialog: SafeCheckDialog? = null

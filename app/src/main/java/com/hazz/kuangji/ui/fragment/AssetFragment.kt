@@ -52,7 +52,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
 
     override fun myAsset(msg: MyAsset) {
-        if (mView==null)return
+        if (mView==null || tv_copy==null||tv_shouyi==null)return
         myAsset = msg
         tv_copy?.text = msg.wallet_address
         if (msg.investment != null) {

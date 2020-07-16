@@ -43,7 +43,7 @@ import org.greenrobot.eventbus.ThreadMode
 class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,IContractView.ICertificationInfoView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
-    private var typePay:String="wx"//1为微信2为支付宝3为银行卡
+    private var typePay:String="zfb"//1为微信2为支付宝3为银行卡
     private var data: Exchange?=null
     private var currentPrice="0"
     private var money="0"

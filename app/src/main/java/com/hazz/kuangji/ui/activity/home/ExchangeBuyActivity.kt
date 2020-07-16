@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_rule.mToolBar
 class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
-    private var typePay:String="wx"//1为微信2为支付宝3为银行卡
+    private var typePay:String="zfb"//1为微信2为支付宝3为银行卡
     private var mData: Exchange?=null
     private var currentPrice="0"
     private var money="0"

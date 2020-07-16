@@ -179,6 +179,7 @@
             android:layout_marginLeft="@dimen/space_dimen"
             android:layout_marginRight="@dimen/space_dimen"
             android:gravity="center_vertical"
+            android:visibility="gone"
             android:orientation="horizontal">
 
             <ImageView
@@ -206,6 +207,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="@dimen/space_dimen"
+            android:visibility="gone"
             android:background="@color/color_line"/>
         <LinearLayout
             android:id="@+id/ll_zfb"
@@ -233,7 +235,7 @@
                 android:id="@+id/iv_zfb_cb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_cb_nor"
+                android:src="@mipmap/icon_cb_select"
                 ></ImageView>
 
         </LinearLayout>
