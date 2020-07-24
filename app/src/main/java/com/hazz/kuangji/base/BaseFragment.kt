@@ -152,6 +152,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun login() {
+        if (mView==null||activity==null)return
         SToast.showText("连接超时,请重新登陆")
         SPUtil.putString("token", "")
         SPUtil.removeObj("certification")
@@ -162,6 +163,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun hideLoading() {
+        if (mView==null||activity==null)return
         mDialog?.dismiss()
         sl_refresh?.isRefreshing=false
     }
@@ -170,6 +172,7 @@ abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks, B
     }
 
     override fun fail(msg: String) {
+        if (mView==null||activity==null)return
         SToast.showText( msg)
         sl_refresh?.isRefreshing=false
     }

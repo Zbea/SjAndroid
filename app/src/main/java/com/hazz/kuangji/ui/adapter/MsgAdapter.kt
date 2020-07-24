@@ -21,7 +21,6 @@ class MsgAdapter(layoutResId: Int, data: List<Msg>?) : BaseQuickAdapter<Msg, Bas
 
 
         helper.itemView.setOnClickListener {
-
             mContext.startActivity(Intent(mContext, MsgDescActivity::class.java).putExtra("message", item))
         }
     }

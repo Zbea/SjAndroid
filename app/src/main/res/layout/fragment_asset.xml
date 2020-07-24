@@ -186,7 +186,8 @@
                     android:text="转账"
                     android:textColor="@color/color_333333"
                     android:textSize="16sp"
-                    android:visibility="gone" />
+                    android:visibility="gone"
+                    />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

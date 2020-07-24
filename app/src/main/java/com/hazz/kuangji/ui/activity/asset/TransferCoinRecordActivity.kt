@@ -1,6 +1,5 @@
 package com.hazz.kuangji.ui.activity.asset
 
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.hazz.kuangji.R

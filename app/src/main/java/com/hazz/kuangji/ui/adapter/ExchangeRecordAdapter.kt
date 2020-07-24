@@ -22,8 +22,9 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
 
             if (item.is_del==1)
             {
-                setVisible(R.id.ll_reason,true)
+                if (item.reason.contains("None"))setVisible(R.id.ll_reason,false) else setVisible(R.id.ll_reason,true)
                 setText(R.id.tv_reason, item.reason)
+
                 setText(R.id.tv_state, "已取消")
                 setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_666666))
             }

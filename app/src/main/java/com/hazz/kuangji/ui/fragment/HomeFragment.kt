@@ -1,11 +1,8 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
-import android.view.LayoutInflater
-import android.view.View
+import android.text.SpannableString
 import android.view.ViewGroup
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -24,64 +21,45 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import kotlinx.android.synthetic.main.fragment_new_home.*
-import kotlinx.android.synthetic.main.fragment_new_home.sl_refresh
+import java.util.*
 
 class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView {
 
     private var adList: MutableList<String>? = mutableListOf()
-    private var adListDefault: MutableList<Int>? = mutableListOf()
     private var mAdapter: HomeAdapter? = null
     private var mHomePresenter: HomePresenter = HomePresenter(this)
-    private var viewsList: MutableList<View>? = mutableListOf()
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
 
 
     override fun getMsg(rows: List<Msg>) {
-        if (mView==null)return
+        if (mView==null||activity==null)return
         if (!rows.isNullOrEmpty()) {
-            viewsList!!.clear()//记得加这句话，不然可能会产生重影现象
-            for (i in rows.indices) { //设置滚动的单个布局
-                val moreView = LayoutInflater.from(activity).inflate(R.layout.item_view_single, null) as RelativeLayout
-                //初始化布局的控件
-                val tv1 = moreView.findViewById<View>(R.id.tv_title) as TextView
-                /**
-                 * 设置监听
-                 */
-                tv1.setOnClickListener {
-                    if (rows != null && rows.isNotEmpty()) {
-                        val articalBean = rows[i]
-                        val intent = Intent(activity, MsgDescActivity::class.java)
-                        intent.putExtra("message", articalBean)
-                        startActivity(intent)
-                    }
-                }
-
-                //进行对控件赋值
-                tv1.text = rows[i].title
-                //添加到循环滚动数组里面去
-                viewsList!!.add(moreView)
+            var listInfo=ArrayList<CharSequence>()
+            for (s in rows)
+            {
+                listInfo.add(SpannableString(s.title))
             }
-            marqueeview.setViews(viewsList)
-            marqueeview.setFlipInterval(3000)
-            marqueeview.startFlipping()
+            marqueeView.startWithList(listInfo)
+            marqueeView.setOnItemClickListener { position, textView ->
+                val item = rows[position]
+                val intent = Intent(activity, MsgDescActivity::class.java)
+                intent.putExtra("message", item)
+                startActivity(intent)
+            }
         }
     }
 
     override fun getHome(msg: Home) {
-        if (mView==null)return
+        if (mView==null||activity==null)return
         sl_refresh?.isRefreshing=false
 
         val carousel = msg.carousel
         if (!carousel.isNullOrEmpty()) {
-            adList!!.clear()
+            adList?.clear()
             for (a in carousel) {
-                adList!!.add(a.url)
+                adList?.add(a.url)
             }
             initBanner(adList!!)
-        } else {
-            adListDefault!!.clear()
-            adListDefault!!.add(R.mipmap.banner1)
-            initBannerDefault(adListDefault!!)
         }
         mAdapter?.setNewData(msg.products)
     }
@@ -155,24 +133,6 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
-    private fun initBannerDefault(list: List<Int>) {
-        banner?.run {
-            setImageLoader(GlideImageLoader())
-            var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
-            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity, 20f)))?.times(232))?.div(500)!!
-            layoutParams = layoutParams1;
-            setImages(list)
-            //设置banner动画效果
-            setBannerAnimation(Transformer.DepthPage)
-            //设置自动轮播，默认为true
-            isAutoPlay(true)
-            //设置轮播时间
-            setDelayTime(3000)
-            //设置指示器位置（当banner模式中有指示器时）
-            setIndicatorGravity(BannerConfig.CENTER)
-            //banner设置方法全部调用完毕时最后调用
-            start()
-        }
-    }
+
 
 }

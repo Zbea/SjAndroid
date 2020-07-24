@@ -176,7 +176,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
     /**
      * 启动应用的设置
      */
-    fun startAppSettings() {
+    private fun startAppSettings() {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         intent.data = Uri.parse("package:" + "com.hazz.kuangji")
         startActivity(intent)

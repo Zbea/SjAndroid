@@ -37,7 +37,7 @@ class SettingActivity : BaseActivity() {
                 .setTitle(getString(R.string.setting))
                 .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
         tv_version.text=Utils.getVersionName(this)
 

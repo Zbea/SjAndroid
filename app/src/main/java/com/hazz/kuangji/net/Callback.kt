@@ -20,13 +20,13 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
 
 
     override fun onSubscribe(@NonNull d: Disposable) {
-        baseView.addSubscription(d)
+        baseView?.addSubscription(d)
     }
 
     override fun onNext(@NonNull tBaseResult: BaseResult<T>) {
         if (!tBaseResult.error.isNullOrEmpty())
         {
-            baseView.fail(tBaseResult.error)
+            baseView?.fail(tBaseResult.error)
             return
         }
 
@@ -35,11 +35,11 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
         } else {
             when {
                 tBaseResult.code==401 -> {
-                    baseView.login()
+                    baseView?.login()
                 }
 
                 else -> {
-                    baseView.fail(tBaseResult.msg)
+                    baseView?.fail(tBaseResult.msg)
                     failed(tBaseResult)
 
                 }
@@ -48,7 +48,7 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
     }
 
     override fun onComplete() {
-        baseView.hideLoading()
+        baseView?.hideLoading()
     }
 
     override fun onError(@NonNull e: Throwable) {

@@ -50,17 +50,20 @@
                 android:layout_centerVertical="true"
                 android:src="@mipmap/ic_notice" />
 
-            <com.sunsky.marqueeview.MarqueeView
-                android:id="@+id/marqueeview"
+            <com.hazz.kuangji.view.MarqueeView
+                android:id="@+id/marqueeView"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
-                app:animDuration="1500"
-                app:interval="2000"
-                app:isSetAlphaAnim="true" />
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@color/color_translucent"
+                app:mvDirection="bottom_to_top"
+                app:mvAnimDuration="1000"
+                app:mvInterval="3000"
+                app:mvTextSize="12sp"
+                app:mvTextColor="@color/color_666666"
+                app:mvSingleLine="true"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"

@@ -108,7 +108,7 @@ public class BigDecimalUtil {
     }
 
     public static boolean isEmpty(@Nullable CharSequence str) {
-        return str == null || str.length() == 0;
+        return str == null || str.length() == 0||str=="null";
     }
 
     public static BigDecimal mulByDecimal(String v1, String v2) {

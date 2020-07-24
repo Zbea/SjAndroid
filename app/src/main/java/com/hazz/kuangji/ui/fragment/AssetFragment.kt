@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
-import com.hazz.kuangji.events.Index
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
@@ -138,7 +138,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             startActivity(Intent(activity, ChargeActivity::class.java))
         }
         rl_touzi.setOnClickListener {
-            RxBus.get().send(Index())
+            (activity as MainActivity).checkMill()
         }
         rl_shouyi.setOnClickListener {
             startActivity(Intent(activity, IncomingActivity::class.java))

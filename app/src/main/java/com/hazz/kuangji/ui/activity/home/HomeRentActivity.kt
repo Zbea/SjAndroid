@@ -146,7 +146,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                     return@setOnClickListener
                 }
 
-                if (produce!!.rent_type.equals("0"))
+                if (produce?.rent_type.equals("0"))
                 {
                     if (et_num.text.toString().toDouble()<100)
                     {
@@ -161,15 +161,15 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                 }
 
 
-                if (TextUtils.isEmpty(et_name.text.toString())) {
+                if (et_name.text.toString().isNullOrEmpty()) {
                     SToast.showText("请输入真实姓名")
                     return@setOnClickListener
                 }
-                if (TextUtils.isEmpty(et_phone.text.toString())) {
+                if (et_phone.text.toString().isNullOrEmpty()) {
                     SToast.showText("请输入手机号码")
                     return@setOnClickListener
                 }
-                if (TextUtils.isEmpty(et_phone.text.toString())) {
+                if (et_address.text.toString().isNullOrEmpty()) {
                     SToast.showText("请输入收货地址")
                     return@setOnClickListener
                 }

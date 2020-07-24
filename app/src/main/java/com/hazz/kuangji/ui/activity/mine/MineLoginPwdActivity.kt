@@ -60,6 +60,11 @@ class MineLoginPwdActivity : BaseActivity(), IContractView.LoginView {
                 SToast.showText(getString(R.string.pwd_not_length))
                 return@setOnClickListener
             }
+            if (et_old_pwd.text.toString().isNullOrEmpty()||et_new_pwd.text.toString().isNullOrEmpty()||et_new_pwd_again.text.toString().isNullOrEmpty())
+            {
+                SToast.showText("输入内容不能为空")
+                return@setOnClickListener
+            }
             mLoginPresenter.resetPwd(et_old_pwd.text.toString().trim(), et_new_pwd_again.text.toString().trim())
         }
     }
