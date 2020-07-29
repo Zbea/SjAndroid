@@ -98,7 +98,7 @@ interface AiPickService{
     /**
      * 充值哦
      */
-    @GET("trade/recharge/address")
+    @GET("trade/recharge/alladdress")
     fun charge(@Query("coin" )coin:String): Observable<BaseResult<Charge>>
     /**
      * 充值omni

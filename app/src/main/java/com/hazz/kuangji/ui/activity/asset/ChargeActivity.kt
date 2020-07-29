@@ -21,7 +21,10 @@ import kotlinx.android.synthetic.main.activity_charge.mToolBar
 
 class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
-    private var isType: Boolean=true;
+    private var type=1
+    private var mChargePresenter: ChargePresenter = ChargePresenter(this)
+    private var createQRCode:Bitmap?=null
+    private var charge:Charge?=null
 
     override fun chargeRecord(msg: ChargeRecord) {
 
@@ -29,25 +32,25 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
 
     override fun getAddress(msg: Charge) {
+        charge=msg
         tv_bt.visibility=View.VISIBLE
-        var address:String = if (isType) msg.addr else msg.address
-        tv_address.text=address
-        val dip2px = Utils.dip2px(this, 180F)
-        createQRCode = QRCodeUtils.createQRCode(address, dip2px, dip2px, null)
-        iv.setImageBitmap(createQRCode)
-
+        setView()
     }
 
     private fun setView(){
-        tv_address.text=""
-        iv.setImageBitmap(null)
-        createQRCode?.recycle()
-        createQRCode=null
-        tv_bt.visibility=View.GONE
+        if (charge==null)return
+        var address=when(type){
+            1-> charge?.ERC20
+            2-> charge?.OMNI
+            else -> charge?.TRC20
+        }
+        tv_address.text=address
+        val dip2px = Utils.dip2px(this, 180F)
+        createQRCode = address?.let { QRCodeUtils.createQRCode(it, dip2px, dip2px, null) }
+        iv.setImageBitmap(createQRCode)
     }
 
-    private var createQRCode:Bitmap?=null
-    private var userInfo: UserInfo? = null
+
     override fun layoutId(): Int {
         return R.layout.activity_charge
     }
@@ -56,7 +59,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
         mChargePresenter.charge("USDT")
     }
 
-    private var mChargePresenter: ChargePresenter = ChargePresenter(this)
+
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
@@ -74,19 +77,25 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
         rg_charge.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId==R.id.rb_left)
             {
-                isType=true;
+                type=1
                 setView()
                 tv_usdt.text="Erc20-USDT"
                 tv_usdt1.text="Erc20-USDT"
-                mChargePresenter.charge("USDT")
+            }
+            else if (checkedId==R.id.rb_right)
+            {
+                type=3
+                setView()
+                tv_usdt.text="Trc20-USDT"
+                tv_usdt1.text="Trc20-USDT"
             }
             else
             {
-                isType=false;
+                type=2
                 setView()
                 tv_usdt.text="OMNI-USDT"
                 tv_usdt1.text="OMNI-USDT"
-                mChargePresenter.chargeOmni()
+
             }
         }
 

@@ -38,10 +38,21 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="Erc20—USDT"
+                    android:text="Erc20"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:checked="true"
+                    android:textColor="@color/selector_black_blue_color"
+                    android:background="@drawable/icon_rb_line_selector"/>
+                <RadioButton
+                    android:id="@+id/rb_middle"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text="OMNI"
+                    android:gravity="center"
+                    android:textSize="16sp"
                     android:textColor="@color/selector_black_blue_color"
                     android:background="@drawable/icon_rb_line_selector"/>
                 <RadioButton
@@ -50,7 +61,7 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="OMNI—USDT"
+                    android:text="Trc20"
                     android:gravity="center"
                     android:textSize="16sp"
                     android:textColor="@color/selector_black_blue_color"
