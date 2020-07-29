@@ -131,7 +131,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
     override fun onResume() {
         super.onResume()
-        mShouyiPresenter.shouyi()
+        mShouyiPresenter.shouyi(true)
     }
 
 }

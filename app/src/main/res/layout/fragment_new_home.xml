@@ -1,100 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sl_refresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="0dp">
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@mipmap/bg_top02" />
-
-
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="143dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="62dp"
-            android:layout_marginRight="10dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/home_bg"
-
-            />
-
-        <LinearLayout
-            android:id="@+id/ll_notice"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/banner"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:background="@color/color_white"
+            android:layout_height="55dp"
             android:gravity="center_vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+            android:paddingLeft="@dimen/space_dimen"
+            android:paddingRight="@dimen/space_dimen"
+            android:orientation="horizontal">
+
 
             <ImageView
-                android:id="@+id/iv"
+                android:id="@+id/iv_mine"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/ic_notice" />
+                android:src="@mipmap/icon_home_mine"></ImageView>
 
-            <com.hazz.kuangji.view.MarqueeView
-                android:id="@+id/marqueeView"
-                android:layout_width="match_parent"
-                android:layout_height="25dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_10"
-                android:background="@color/color_translucent"
-                app:mvDirection="bottom_to_top"
-                app:mvAnimDuration="1000"
-                app:mvInterval="3000"
-                app:mvTextSize="12sp"
-                app:mvTextColor="@color/color_666666"
-                app:mvSingleLine="true"/>
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_centerInParent="true"
+                android:text="首页"
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp" />
 
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="20dp"
-                    android:background="@color/blue" />
+            <ImageView
+                android:id="@+id/iv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_message"></ImageView>
 
-                <TextView
-                    android:id="@+id/tv_more"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:text="更多"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/sp_14" />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
-            </LinearLayout>
-
-        </LinearLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ll_notice"
-            android:layout_marginLeft="@dimen/space_dimen"
-            android:layout_marginRight="@dimen/space_dimen">
+            android:layout_below="@+id/ll_notice">
 
 
             <LinearLayout
@@ -102,13 +67,80 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <com.youth.banner.Banner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="175dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/home_bg" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp">
+
+                    <ImageView
+                        android:id="@+id/iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_notice" />
+
+                    <com.hazz.kuangji.view.MarqueeView
+                        android:id="@+id/marqueeView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:background="@color/color_translucent"
+                        app:mvAnimDuration="1000"
+                        app:mvDirection="bottom_to_top"
+                        app:mvInterval="3000"
+                        app:mvSingleLine="true"
+                        app:mvTextColor="@color/color_666666"
+                        app:mvTextSize="12sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/mine_icon_more" />
+
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_white_solid_5dp_coner"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@mipmap/icon_home_coin_recharge"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@mipmap/icon_home_coin_transfer"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@mipmap/icon_home_coin_extract"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -191,18 +223,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/space_dimen"
                     android:layout_marginTop="@dimen/space_dimen"
-                    android:text="一  人气推荐  一"
-                    android:textColor="#B3BED9"
-                    android:textSize="18sp" />
+                    android:text="购买eyeball矿机"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_16" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="14dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_margin="@dimen/space_dimen"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
                     android:nestedScrollingEnabled="false">
@@ -211,5 +243,5 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </RelativeLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

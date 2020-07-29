@@ -103,7 +103,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     }
 
     override fun initView() {
-
         EventBus.getDefault().register(this)
         userInfo = SPUtil.getObj("user", UserInfo::class.java)
         mData=SPUtil.getObj("certification", Certification::class.java)
@@ -124,9 +123,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             showPhotoDialog()
         }
 
-        iv_msg.setOnClickListener {
-            startActivity(Intent(activity, MsgListActivity::class.java))
-        }
         layout_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))
         }

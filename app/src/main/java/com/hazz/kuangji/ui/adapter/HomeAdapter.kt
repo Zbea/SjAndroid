@@ -23,13 +23,9 @@ class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickA
             setText(R.id.tv_name, item.name)
             setText(R.id.tv_time, "合约周期:"+item.round+"天")
             setText(R.id.tv_suanli, "矿机算力:"+item.power)
-            setText(R.id.tv_amount, BigDecimalUtil.mul(item.price,"1",8)+"USDT")
+            setText(R.id.tv_amount, "价格："+BigDecimalUtil.mul(item.price,"1",8)+"USDT")
             getView<TextView>(R.id.tv_zu).setOnClickListener {
                 mContext.startActivity(Intent(mContext, HomeRentActivity::class.java).putExtra("produce",item))
-
-            }
-            getView<TextView>(R.id.chakan).setOnClickListener {
-                mContext.startActivity(Intent(mContext, HomeMillDescActivity::class.java).putExtra("name",item.name).putExtra("desc",item.desc))
 
             }
         }

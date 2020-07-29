@@ -48,7 +48,6 @@
         <activity android:name="com.hazz.kuangji.ui.activity.ForgetPwdActivity" />
         <activity android:name=".ui.activity.mine.MineContactActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.RegisterActivity" />
-        <activity android:name="com.hazz.kuangji.ui.activity.CountryActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.InviteActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.InviteRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.SettingActivity"/>

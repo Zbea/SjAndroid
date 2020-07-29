@@ -21,7 +21,7 @@ class MineCertificationActivity : BaseActivity() {
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("实名认证")
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setOnLeftIconClickListener { finish() }
     }
 

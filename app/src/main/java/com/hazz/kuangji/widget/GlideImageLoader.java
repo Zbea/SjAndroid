@@ -14,7 +14,6 @@ public class GlideImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
         RequestOptions options = new RequestOptions()
-                .transform(new GlideRoundTransform(8))
                 .error(R.mipmap.banner1);
         Glide.with(context).load(path).apply(options).into(imageView);
     }

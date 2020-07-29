@@ -64,7 +64,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
                 .setTitle(getString(R.string.charge))
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightText("充值记录")
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { view -> finish() }
                 .setOnRightClickListener {

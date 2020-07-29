@@ -98,7 +98,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(produce!!.name)
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setOnLeftIconClickListener { finish() }
 
         coin = produce!!.coin

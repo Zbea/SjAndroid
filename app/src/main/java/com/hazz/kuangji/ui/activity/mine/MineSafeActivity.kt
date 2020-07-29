@@ -27,7 +27,7 @@ class MineSafeActivity : BaseActivity() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.safe_center))
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
 

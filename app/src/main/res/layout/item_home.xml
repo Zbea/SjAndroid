@@ -3,121 +3,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_white_solid_5dp_coner"
+    android:background="@drawable/bg_gray_solid_5dp_coner"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="@dimen/space_dimen">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:text="开启矿机"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:singleLine="true"
-            android:text="开启矿机"
-            android:textColor="@color/color_333333"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/ic_hot" />
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginTop="9dp"
-        android:background="@color/color_line" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="15dp"
-        >
-
+        android:layout_marginTop="@dimen/dp_10"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
         <ImageView
             android:id="@+id/iv"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:src="@mipmap/pic_wk"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_time"
             android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:src="@mipmap/pic_wk"/>
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:singleLine="true"
-            android:text="合约周期：5年"
-            android:textColor="@color/color_666666"
-            android:textSize="14sp"
-            app:layout_constraintLeft_toRightOf="@+id/iv"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:visibility="invisible"
-            android:id="@+id/tv_suanli"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合约周期：5年"
+                android:textColor="@color/color_999999"
+                android:textSize="10sp" />
 
-            android:text="矿机算力：1G"
-            android:textColor="@color/hintTextColor"
-            android:textSize="14sp"
-            app:layout_constraintLeft_toRightOf="@+id/iv"
-            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+            <TextView
+                android:id="@+id/tv_suanli"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="矿机算力：1G"
+                android:layout_marginTop="@dimen/dp_5"
+                android:textColor="@color/color_999999"
+                android:textSize="10sp"
+                android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tv_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="3dp"
-            android:singleLine="true"
-            android:text="0 USDT"
-            android:textColor="@color/redF4"
-            android:textSize="14sp"
-            app:layout_constraintLeft_toRightOf="@+id/iv"
-            app:layout_constraintTop_toBottomOf="@+id/tv_suanli" />
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 USDT"
+                android:layout_marginTop="@dimen/dp_5"
+                android:textColor="@color/color_999999"
+                android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/tv_zu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bg_red_solid_20dp_coner"
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:text="立即租用"
-            android:textColor="@color/color_white"
-            android:textSize="12sp"
-            app:layout_constraintLeft_toRightOf="@+id/iv"
-            app:layout_constraintTop_toBottomOf="@+id/tv_amount" />
+            <TextView
+                android:id="@+id/tv_zu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_main_solid_10dp_coner"
+                android:layout_marginTop="@dimen/margin_20"
+                android:paddingLeft="25dp"
+                android:paddingTop="5dp"
+                android:paddingRight="25dp"
+                android:paddingBottom="5dp"
+                android:text="抢购"
+                android:textColor="@color/color_white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/chakan"
-            android:layout_width="wrap_content"
 
-            android:layout_height="wrap_content"
-            android:text="查看详情"
-            android:textColor="@color/blue"
-            android:textSize="14sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tv_zu"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

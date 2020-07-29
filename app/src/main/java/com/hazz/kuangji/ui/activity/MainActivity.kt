@@ -3,6 +3,7 @@ package com.hazz.kuangji.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
@@ -18,6 +19,7 @@ import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
+import kotlinx.android.synthetic.main.fragment_new_home.*
 import java.util.logging.Logger
 
 
@@ -32,7 +34,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this,false)
+        StatusBarUtil.darkMode(this)
     }
 
     override fun initView() {
@@ -45,6 +47,12 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.autoCheckUpgrade = true
         Bugly.init(this, Constants.BUGLY_ID, false)
+
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)
+                .commitAllowingStateLoss()
+
+
     }
 
     override fun start() {
@@ -58,9 +66,8 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         mFragments.add(MillFragment())
         mFragments.add(AssetFragment())
         mFragments.add(CoinMarketFragment())
-        mFragments.add(MineFragment())
         supportFragmentManager.beginTransaction()
-            .replace(R.id.mFrame, mFragments[0], mFragments[0]::class.java.simpleName)
+            .replace(R.id.fl_content, mFragments[0], mFragments[0]::class.java.simpleName)
             .commitAllowingStateLoss()
 
         mRbMall.isChecked = true
@@ -83,12 +90,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
             }
             R.id.mRbShopCar -> {
                 checkFragment(2)
-
             }
-            R.id.mRbOtc -> {
-                checkFragment(4)
-            }
-
 
         }
     }
@@ -97,6 +99,11 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     {
         checkFragment(1)
         mRbMining.isChecked=true
+    }
+
+    fun openMine()
+    {
+        dl_layout.openDrawer(Gravity.LEFT)
     }
 
 
@@ -110,7 +117,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
             transaction.hide(mFragments[mLastSelect])
             val fragment = mFragments[index]
             if (!fragment.isAdded) {
-                transaction.add(R.id.mFrame, fragment, fragment::class.java.simpleName).show(fragment)
+                transaction.add(R.id.fl_content, fragment, fragment::class.java.simpleName).show(fragment)
             } else {
                 transaction.show(fragment)
             }

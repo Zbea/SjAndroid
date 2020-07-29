@@ -11,10 +11,12 @@ import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.home.*
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DisplayManager
 import com.hazz.kuangji.utils.DpUtils
+import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.widget.GlideImageLoader
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
@@ -74,9 +76,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun initView() {
+        activity?.let { StatusBarUtil.darkMode(it) }
         sl_refresh=activity?.findViewById(R.id.sl_refresh)
         sl_refresh?.isRefreshing=true
-        sl_refresh?.setColorSchemeResources(R.color.blue)
+        sl_refresh?.setColorSchemeResources(R.color.color_main)
         sl_refresh?.setOnRefreshListener {
             lazyLoad()
         }
@@ -102,7 +105,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
 
-        tv_more.setOnClickListener {
+        iv_mine.setOnClickListener {
+            (activity as MainActivity).openMine()
+        }
+        iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
@@ -117,7 +123,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         banner?.run {
             setImageLoader(GlideImageLoader())
             var layoutParams1: ViewGroup.LayoutParams = banner.layoutParams
-            layoutParams1.height = ((DisplayManager.getScreenWidth()?.minus(DpUtils.dip2px(activity, 20f)))?.times(232))?.div(500)!!
+            layoutParams1.height = (DisplayManager.getScreenWidth()?.times(175))?.div(372)!!
             layoutParams = layoutParams1;
             setImages(list)
             //设置banner动画效果

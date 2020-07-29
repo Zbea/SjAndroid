@@ -38,6 +38,7 @@
         <item name="android:textSize">12sp</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/selector_main_color</item>
     </style>
 
     <style name="mycustom_dialog" parent="@android:style/Theme.Holo.DialogWhenLarge">

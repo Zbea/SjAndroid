@@ -94,7 +94,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("一键卖币")
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { view -> finish() }
                 .setRightText("卖币明细")

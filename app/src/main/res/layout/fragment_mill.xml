@@ -1,125 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/sl_refresh_mill"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="0dp"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/bg_top03">
+            android:layout_height="55dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/space_dimen"
+            android:paddingRight="@dimen/space_dimen">
 
 
             <TextView
-                android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="31dp"
-                android:text=""
-                android:textColor="@color/color_white"
-                android:textSize="16sp" />
+                android:layout_centerInParent="true"
+                android:text="矿机"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/iv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_message"/>
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/sl_refresh_mill"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title"
-                android:layout_marginTop="14dp"
-                android:padding="15dp">
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:layout_marginRight="@dimen/space_dimen"
+                android:padding="@dimen/space_dimen"
+                android:orientation="vertical"
+                android:background="@drawable/bg_main_solid_10dp_coner">
 
-                <RelativeLayout
-                    android:id="@+id/rl_touzi"
-                    android:layout_width="0dp"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_marginTop="@dimen/space_dimen"
+                    android:layout_marginBottom="@dimen/space_dimen">
 
-                    <TextView
-                        android:id="@+id/tv2"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="累计挖矿收益(FIL)"
-                        android:textColor="@color/color_white"
-                        android:textSize="14sp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_touzi"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="矿机总数"
+                            android:textColor="@color/color_white"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:text="0"
+                            android:textColor="@color/color_white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rl_touzi"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="矿机总收益(FIL)"
+                            android:textColor="@color/color_white"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_touzi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:text="000"
+                            android:textColor="@color/color_white"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv2"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="7dp"
-                        android:text="000"
-                        android:textColor="@color/color_white"
-                        android:textSize="14sp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/tv3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="昨日总收益(FIL)"
+                            android:textColor="@color/color_white"
+                            android:textSize="12sp" />
 
-                <View
-                    android:layout_width="0.5dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/color_white" />
+                        <TextView
+                            android:id="@+id/tv_shouyi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:text="000"
+                            android:textColor="@color/color_white"
+                            android:textSize="16sp" />
 
-                <RelativeLayout
-                    android:id="@+id/rl_shouyi"
-                    android:layout_width="0dp"
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_record"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1">
+                    android:gravity="center_vertical|right"
+                    android:layout_marginTop="@dimen/space_dimen"
+                    android:layout_marginBottom="@dimen/space_dimen"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tv3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="4dp"
-                        android:text="昨日挖矿收益(FIL)"
-                        android:textColor="@color/color_white"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_16"
+                        android:text="收益明细"
+                        android:textColor="@color/color_white"/>
 
-                    <TextView
-
-                        android:id="@+id/tv_shouyi"
+                    <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv3"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="7dp"
-                        android:text="000"
-                        android:textColor="@color/color_white"
-                        android:textSize="14sp" />
+                        android:src="@mipmap/mine_icon_more"/>
 
-
-                </RelativeLayout>
-
+                </LinearLayout>
 
             </LinearLayout>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginTop="@dimen/space_dimen">
 
-        </RelativeLayout>
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginRight="15dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

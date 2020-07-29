@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#030727"
-    >
+    android:background="@color/color_bg">
+
+
+
     <com.hazz.kuangji.widget.MyWebview
         android:id="@+id/web_view"
         android:layout_marginBottom="-65dp"
@@ -15,4 +17,24 @@
 
     </com.hazz.kuangji.widget.MyWebview>
 
-</LinearLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+       android:layout_alignTop="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/color_bg"
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="0dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color_333333"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="行情"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+</RelativeLayout>

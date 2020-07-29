@@ -68,7 +68,7 @@ class TransferCoinActivity : BaseActivity(), IContractView.IExchangeBuyView , IC
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setLeftIcon(R.mipmap.back_white)
                 .setTitle("转账")
-                .setToolBarBgRescource(R.drawable.bg_blue_gradient)
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener {finish() }
                 .setRightText("转账明细")

@@ -11,7 +11,7 @@ import com.hazz.kuangji.net.RetrofitManager
 
 class ShouyiPresenter(view: IContractView.ShouyiView) : BasePresenter<IContractView.ShouyiView>(view) {
 
-    fun shouyi() {
+    fun shouyi(boolean: Boolean) {
 
 
 
@@ -27,7 +27,7 @@ class ShouyiPresenter(view: IContractView.ShouyiView) : BasePresenter<IContractV
                 view.inComing(tBaseResult.data!!)
             }
 
-        }, true)
+        }, boolean)
 
     }
 

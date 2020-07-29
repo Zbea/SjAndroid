@@ -1,74 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dl_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
 
-    <RadioGroup
-        android:id="@+id/mRG"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_white"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        android:layout_height="match_parent">
 
-        <RadioButton
-            android:paddingTop="6dp"
-            android:id="@+id/mRbMall"
-            style="@style/rb_style"
-            android:drawableTop="@drawable/tab_icon_main_select"
-            android:text="首页"/>
+        <RadioGroup
+            android:id="@+id/mRG"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/color_white"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <RadioButton
-            android:paddingTop="6dp"
-            android:id="@+id/mRbMining"
-            style="@style/rb_style"
-            android:drawableTop="@drawable/tab_icon_goods_select"
-            android:text="矿机"/>
+            <RadioButton
+                android:id="@+id/mRbMall"
+                style="@style/rb_style"
+                android:checked="true"
+                android:drawableTop="@drawable/tab_icon_main_select"
+                android:paddingTop="6dp"
+                android:text="首页" />
 
-        <RadioButton
-            android:paddingTop="6dp"
-            android:id="@+id/mRbShopCar"
-            style="@style/rb_style"
-            android:drawableTop="@drawable/tab_icon_car_select"
-            android:text="资产"/>
-        <RadioButton
-            android:paddingTop="6dp"
-            android:id="@+id/mRbHangqing"
-            style="@style/rb_style"
-            android:drawableTop="@drawable/tab_icon_hangqing_select"
-            android:text="行情"/>
+            <RadioButton
+                android:id="@+id/mRbMining"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/tab_icon_mill_select"
+                android:paddingTop="6dp"
+                android:text="矿机" />
 
-        <RadioButton
-            android:id="@+id/mRbOtc"
-            style="@style/rb_style"
-            android:paddingTop="6dp"
-            android:drawableTop="@drawable/tab_icon_order_select"
-            android:text="我的"/>
+            <RadioButton
+                android:id="@+id/mRbHangqing"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/tab_icon_market_select"
+                android:paddingTop="6dp"
+                android:text="行情" />
+
+            <RadioButton
+                android:id="@+id/mRbShopCar"
+                style="@style/rb_style"
+                android:drawableTop="@drawable/tab_icon_asset_select"
+                android:paddingTop="6dp"
+                android:text="资产" />
 
 
-    </RadioGroup>
+        </RadioGroup>
 
-    <View
-        android:id="@+id/mPart_line"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/part_line_color"
-        app:layout_constraintTop_toTopOf="@id/mRG"/>
+        <View
+            android:id="@+id/mPart_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/part_line_color"
+            app:layout_constraintTop_toTopOf="@id/mRG" />
+
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/mPart_line"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <FrameLayout
-        android:id="@+id/mFrame"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/mPart_line"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
+        android:id="@+id/fl_left"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left" />
+</androidx.drawerlayout.widget.DrawerLayout>

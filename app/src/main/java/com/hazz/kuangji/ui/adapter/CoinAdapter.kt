@@ -34,15 +34,12 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
         when (item.state) {
             "1" ->{
                 helper.setText(R.id.tv_state, "已运行")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
             }
             "0" -> {
                 helper.setText(R.id.tv_state, "已停止")
                 helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
             }
-        }
-        helper.getView<TextView>(R.id.tv_mingxi).setOnClickListener {
-            mContext.startActivity(Intent(mContext, MillRecordActivity::class.java).putExtra("number",item.miner_number))
         }
     }
 }
