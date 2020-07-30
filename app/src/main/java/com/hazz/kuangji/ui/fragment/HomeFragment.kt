@@ -3,6 +3,7 @@ package com.hazz.kuangji.ui.fragment
 import android.content.Intent
 import android.text.SpannableString
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -14,9 +15,8 @@ import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.home.*
 import com.hazz.kuangji.ui.adapter.HomeAdapter
+import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.DisplayManager
-import com.hazz.kuangji.utils.DpUtils
-import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.widget.GlideImageLoader
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
@@ -76,7 +76,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun initView() {
-        activity?.let { StatusBarUtil.darkMode(it) }
+        var layoutParams: LinearLayout.LayoutParams= toolbar.layoutParams as LinearLayout.LayoutParams
+        layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
+        toolbar.layoutParams=layoutParams
+
         sl_refresh=activity?.findViewById(R.id.sl_refresh)
         sl_refresh?.isRefreshing=true
         sl_refresh?.setColorSchemeResources(R.color.color_main)

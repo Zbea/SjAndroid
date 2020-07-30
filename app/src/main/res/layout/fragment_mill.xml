@@ -10,14 +10,13 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
+        android:layout_height="@dimen/toolbar_dimen"
         app:contentInsetStart="0dp"
         >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/toolbar_dimen"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/space_dimen"

@@ -1,14 +1,10 @@
 package com.hazz.kuangji.ui.adapter
 
-
-import android.content.Intent
 import android.view.View
-import android.widget.TextView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Mill
-import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {

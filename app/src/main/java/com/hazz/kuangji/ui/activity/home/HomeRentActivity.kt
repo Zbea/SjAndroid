@@ -2,6 +2,7 @@ package com.hazz.kuangji.ui.activity.home
 
 import android.content.Intent
 import android.text.Editable
+import android.text.Html
 import android.text.TextUtils
 import android.text.TextWatcher
 import androidx.appcompat.widget.Toolbar
@@ -72,7 +73,6 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     override fun zuyongSucceed(msg: String) {
         SToast.showText(msg)
         finish()
-
     }
 
 
@@ -88,27 +88,23 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         mCertificationInfoPresenter.getCertification()
     }
 
-    // private var mChargePresenter: ChargePresenter = ChargePresenter(this)
 
     override fun initView() {
 
         produce = intent.getSerializableExtra("produce") as Home.ProductsBean?
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
-                .setTitle(produce!!.name)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
+                .setTitle(produce?.name.toString())
                 .setOnLeftIconClickListener { finish() }
 
-        coin = produce!!.coin
-        id = produce!!.id
-        price = produce!!.price
-        amount=BigDecimalUtil.mul(produce!!.price, "1", 8)
+        coin = produce?.coin.toString()
+        id = produce?.id.toString()
+        price = produce?.price.toString()
+        amount=BigDecimalUtil.mul(produce?.price, "1", 8)
         tv_amount.text = BigDecimalUtil.mul(produce?.price, "1", 8) + "USDT"
         //tv_suanli.text = produce!!.power
-        tv_time.text = produce!!.round + "天"
-        rate = produce!!.rate
+        tv_time.text = produce?.round + "天"
+        rate = produce?.rate.toString()
 
         if (produce?.rent_type == "1")
         {
@@ -119,6 +115,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             et_num.isFocusableInTouchMode=false
         }
 
+        tv_info.text=Html.fromHtml(produce?.desc)
 
     }
 

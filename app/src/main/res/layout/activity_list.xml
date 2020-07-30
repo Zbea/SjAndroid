@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color">
+    android:background="@color/color_bg">
 
     <include
         android:id="@+id/mToolBar"
@@ -13,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/space_dimen"
-        android:background="@color/default_color"
         android:scrollbars="none"/>
 
 </LinearLayout>

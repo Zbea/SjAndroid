@@ -2,10 +2,9 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
     <include
@@ -38,11 +37,22 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="Erc20—USDT"
+                    android:text="Erc20"
                     android:gravity="center"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:checked="true"
-                    android:textColor="@color/selector_black_blue_color"
+                    android:textColor="@color/selector_black_main_color"
+                    android:background="@drawable/icon_rb_line_selector"/>
+                <RadioButton
+                    android:id="@+id/rb_middle"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:text="OMNI"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    android:textColor="@color/selector_black_main_color"
                     android:background="@drawable/icon_rb_line_selector"/>
                 <RadioButton
                     android:id="@+id/rb_right"
@@ -50,10 +60,10 @@
                     android:layout_height="45dp"
                     android:layout_weight="1"
                     android:button="@null"
-                    android:text="OMNI—USDT"
+                    android:text="Trc20"
                     android:gravity="center"
-                    android:textSize="16sp"
-                    android:textColor="@color/selector_black_blue_color"
+                    android:textSize="14sp"
+                    android:textColor="@color/selector_black_main_color"
                     android:background="@drawable/icon_rb_line_selector"/>
             </RadioGroup>
 
@@ -61,9 +71,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginTop="@dimen/margin_20"
                 android:text="收款地址二维码"
-                android:textColor="@color/home_text"
+                android:textColor="@color/color_999999"
                 android:textSize="14sp" />
 
             <ImageView
@@ -71,7 +81,7 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -79,31 +89,31 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="20dp"
                 android:text="充值地址"
-                android:textColor="@color/hintTextColor"
-                android:textSize="14sp" />
+                android:textColor="@color/color_999999"
+                android:textSize="12sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/space_dimen"
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:layout_marginRight="@dimen/space_dimen"
+                android:layout_marginTop="@dimen/dp_5"
                 android:gravity="center_vertical"
-                android:padding="5dp"
-                android:background="@drawable/bg_charge_copy"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/home_text"
+                    android:textColor="@color/color_333333"
                     android:layout_weight="1"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
                 <ImageView
                     android:id="@+id/iv_copy"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginLeft="@dimen/dp_5"
                     android:src="@mipmap/icon_charge_copy"/>
 
             </LinearLayout>
@@ -113,10 +123,9 @@
             <Button
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="@dimen/margin_15"
-                android:background="@drawable/bg_blue_solid_5dp_coner"
+                android:layout_height="@dimen/btn_dimen"
+                android:layout_margin="@dimen/space_dimen"
+                android:background="@drawable/bg_main_solid_5dp_coner"
                 android:text="保存二维码"
                 android:visibility="gone"
                 android:textColor="@color/color_white"
@@ -124,7 +133,7 @@
 
             <TextView
                 android:layout_marginLeft="@dimen/margin_15"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="@dimen/space_dimen"
                 android:textSize="12sp"
                 android:text="档次说明:"
                 android:textColor="@color/hintTextColor"

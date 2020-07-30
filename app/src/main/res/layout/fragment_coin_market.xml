@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg">
+    android:background="@color/color_bg"
+>
 
 
 
@@ -17,24 +18,38 @@
 
     </com.hazz.kuangji.widget.MyWebview>
 
-    <androidx.appcompat.widget.Toolbar
+
+
+    <RelativeLayout
         android:id="@+id/toolbar"
-       android:layout_alignTop="@+id/web_view"
+        android:layout_alignTop="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@color/color_bg"
-        android:fitsSystemWindows="true"
-        app:contentInsetStart="0dp"
-        >
+        android:layout_height="51dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/space_dimen"
+        android:paddingRight="@dimen/space_dimen"
+        android:background="@color/color_bg">
+
+
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:text="行情"
             android:textColor="@color/color_333333"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="行情"/>
-    </androidx.appcompat.widget.Toolbar>
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_message"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>

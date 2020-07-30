@@ -26,6 +26,7 @@
     <color name="color_line">#aadddddd</color>
 
     <color name="color_bg">#ffffff</color>
+    <color name="color_gray_bg">#f7f7f7</color>
     <color name="color_main">#00767E</color>
     <color name="color_main_nor">#B6C8D5</color>
 

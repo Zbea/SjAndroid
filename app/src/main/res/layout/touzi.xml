@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:text="等级特权"
                     android:textColor="@color/color_white"
-                    android:background="@drawable/bg_cheng_solid_20dp_coner"
+                    android:background="@drawable/bg_red_solid_20dp_coner"
                     android:paddingLeft="8dp"
                     android:paddingRight="10dp"
                     android:paddingTop="3dp"

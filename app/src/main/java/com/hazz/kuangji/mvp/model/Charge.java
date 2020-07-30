@@ -10,5 +10,10 @@ public class Charge {
         public String addr;
 
         public String address;
+        public String ERC20;
+        public String OMNI;
+        public String TRC20;
+
+
 
 }

@@ -11,8 +11,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/toolbar_dimen"
         android:gravity="center_vertical"
+        android:elevation="@dimen/dp_5"
+        android:background="@drawable/bg_statusbar"
         >
         <TextView
             android:id="@+id/mTvLeftText"
@@ -22,7 +24,7 @@
             android:layout_marginLeft="12sp"
             android:textSize="13sp"
             android:visibility="gone"
-            android:textColor="@color/color_white"
+            android:textColor="@color/color_666666"
             />
 
         <ImageView
@@ -40,13 +42,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/color_white"
+            android:textColor="@color/color_333333"
             android:layout_centerInParent="true"
             android:singleLine="true"
             android:ellipsize="end"
             android:layout_marginLeft="36dp"
             android:layout_marginRight="36dp"
-            android:textSize="18sp"
+            android:textSize="16sp"
             />
 
         <ImageView
@@ -63,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textColor="@color/color_white"
+            android:textColor="@color/color_666666"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="14dp"

@@ -14,13 +14,11 @@ import com.hazz.kuangji.ui.activity.home.MsgListActivity
 import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.ui.adapter.CoinAdapter
 import com.hazz.kuangji.utils.DensityUtils
-import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.fragment_mill.*
 import kotlinx.android.synthetic.main.fragment_mill.iv_msg
 import kotlinx.android.synthetic.main.fragment_mill.recycle_view
-import kotlinx.android.synthetic.main.fragment_new_home.*
 
 class MillFragment : BaseFragment(), IContractView.kuangjiView {
 

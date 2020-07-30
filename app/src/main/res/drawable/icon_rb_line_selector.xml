@@ -6,7 +6,7 @@
             <item android:top="44dp" android:width="60dp" android:gravity="center">
 
                 <shape android:shape="rectangle" >
-                    <solid android:color="@color/blue" />
+                    <solid android:color="@color/color_main" />
                 </shape>
             </item>
         </layer-list>

@@ -79,7 +79,7 @@
                 android:textSize="@dimen/_14_text_size"
                 android:gravity="center"
                 android:textColor="@color/blue"
-                android:background="@drawable/bg_blue_stroke_5dp_coner"
+                android:background="@drawable/bg_main_stroke_5dp_coner"
                 android:text="获取验证码"/>
 
         </LinearLayout>
@@ -93,7 +93,7 @@
             android:text="下一步"
             android:textSize="@dimen/_16_text_size"
             android:textColor="@color/color_white"
-            android:background="@drawable/bg_blue_solid_5dp_coner"/>
+            android:background="@drawable/bg_main_solid_5dp_coner"/>
 
     </LinearLayout>
 

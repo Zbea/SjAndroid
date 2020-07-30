@@ -289,7 +289,7 @@
             android:layout_height="38dp"
             android:layout_margin="@dimen/space_dimen"
             android:layout_weight="1"
-            android:background="@drawable/bg_grey_stroke_5dp_coner"
+            android:background="@drawable/bg_gray_stroke_5dp_coner"
             android:gravity="center"
             android:text="取消订单"
             android:textColor="@color/color_999999"

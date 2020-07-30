@@ -263,7 +263,7 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_blue_solid_5dp_coner"
+                android:background="@drawable/bg_main_solid_5dp_coner"
                 android:text="@string/tibi"
                 android:textColor="@color/color_white"
                 app:layout_constraintTop_toBottomOf="@+id/ll_code" />

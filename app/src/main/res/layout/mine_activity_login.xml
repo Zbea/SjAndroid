@@ -198,7 +198,7 @@
                 android:textColor="@color/color_white"
                 android:gravity="center"
                 android:text="@string/mine_login"
-                android:background="@drawable/bg_blue_solid_5dp_coner"
+                android:background="@drawable/bg_main_solid_5dp_coner"
                 />
 
             <RelativeLayout

@@ -6,49 +6,40 @@
     android:background="@color/color_bg"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <RelativeLayout
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:contentInsetStart="0dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/space_dimen"
-            android:paddingRight="@dimen/space_dimen"
-            android:orientation="horizontal">
+        android:layout_height="@dimen/toolbar_dimen"
+        android:paddingLeft="@dimen/space_dimen"
+        android:paddingRight="@dimen/space_dimen">
 
 
-            <ImageView
-                android:id="@+id/iv_mine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/icon_home_mine"></ImageView>
+        <ImageView
+            android:id="@+id/iv_mine"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_home_mine"/>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_centerInParent="true"
-                android:text="首页"
-                android:textStyle="bold"
-                android:textColor="@color/color_333333"
-                android:textSize="18sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="首页"
+            android:textStyle="bold"
+            android:textColor="@color/color_333333"
+            android:textSize="18sp" />
 
-            <ImageView
-                android:id="@+id/iv_msg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/icon_message"></ImageView>
+        <ImageView
+            android:id="@+id/iv_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/icon_message"/>
 
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sl_refresh"
@@ -220,11 +211,17 @@
                     </LinearLayout>
                 </LinearLayout>
 
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:layout_margin="@dimen/space_dimen"
+                    android:src="@mipmap/home_bg" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_marginTop="@dimen/space_dimen"
                     android:text="购买eyeball矿机"
                     android:textStyle="bold"
                     android:textColor="@color/color_333333"

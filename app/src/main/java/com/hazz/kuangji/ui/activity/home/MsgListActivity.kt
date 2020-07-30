@@ -37,11 +37,8 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
     private var mAdapter: MsgAdapter?=null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.gonggao))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener {finish() }
 
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
@@ -49,17 +46,9 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
+        val leftRightOffset = DensityUtil.dp2px(15f)
 
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
     }
     override fun start() {
