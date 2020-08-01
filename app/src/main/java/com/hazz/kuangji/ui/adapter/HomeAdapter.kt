@@ -8,7 +8,6 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.ui.activity.home.HomeMillDescActivity
 import com.hazz.kuangji.ui.activity.home.HomeRentActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 

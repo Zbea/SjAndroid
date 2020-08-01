@@ -1,16 +1,10 @@
 package com.hazz.kuangji.ui.activity.asset
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.PopupWindow
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -19,9 +13,8 @@ import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.model.TibiRecord
 import com.hazz.kuangji.mvp.presenter.TiBiPresenter
 import com.hazz.kuangji.utils.*
-import kotlinx.android.synthetic.main.coin_choose.view.*
-import kotlinx.android.synthetic.main.invitefriends.mToolBar
 import kotlinx.android.synthetic.main.activity_extract_coin.*
+import kotlinx.android.synthetic.main.activity_extract_coin.et_num
 
 
 class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher {
@@ -55,48 +48,46 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
     }
 
     override fun initData() {
-
     }
 
     private var mTiBiPresenter: TiBiPresenter = TiBiPresenter(this)
     private var myAsset: MyAsset? = null
-    private var popWnd: PopupWindow? = null
     private var currentName = "USDT"
     private var rate = "0.5%"
     private var avaiableAmount = "0"
     private var assets: List<MyAsset.AssetsBean>? = null
 
-    @SuppressLint("SetTextI18n")
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.tibi))
-                .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightText("提币记录")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setRightTextIsShow(true)
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
                 .setOnRightClickListener {
                     startActivity(Intent(this, ExtractCoinRecordActivity::class.java))
 
                 }
         myAsset = intent.getSerializableExtra("amount") as MyAsset?
-        assets = myAsset!!.assets
+        assets = myAsset?.assets
 
-        for (coin in assets!!) {
-            if (coin.coin == currentName) {
-                avaiableAmount = coin.balance
-                tv_lest.text = "可用" + coin.balance + currentName
+        if (assets!=null)
+        {
+            for (coin in assets!!) {
+                if (coin.coin == currentName) {
+                    avaiableAmount = coin.balance
+                    tv_lest.text = "可用" + coin.balance + currentName
+                }
             }
-        }
-        //
-        val config = myAsset!!.config
-        if (config != null) {
-            et_num.hint = "最小:" + config[0].value + "/" + "最大:" + config[1].value
-            rate = config[2].value
+
+            val config = myAsset!!.config
+            if (config != null) {
+                et_num.hint = "最小:" + config[0].value + "/" + "最大:" + config[1].value
+                rate = config[2].value
+            }
+
+            tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
         }
 
-        tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
 
         et_num.addTextChangedListener(this)
     }
@@ -138,51 +129,33 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             et_num.setText(avaiableAmount)
         }
 
-        rl_choose.setOnClickListener {
-            Log.d("junjun", "点击")
-            showPop()
-        }
-    }
-
-
-    @SuppressLint("SetTextI18n")
-    private fun showPop() {
-        val contentView = LayoutInflater.from(this).inflate(R.layout.coin_choose, null, false)
-        popWnd = PopupWindow(
-                contentView,
-                rl_choose.measuredWidth, ViewGroup.LayoutParams.WRAP_CONTENT, true
-        )
-        contentView.tv1.setOnClickListener {
-            currentName = "USDT"
-            et_coin.text = "USDT"
-            popWnd?.dismiss()
-
-            for (coin in assets!!) {
-                if (coin.coin == currentName) {
-                    avaiableAmount = coin.balance
-                    tv_lest.text = "可用" + coin.balance + currentName
+        rg_extract.setOnCheckedChangeListener { group, checkedId ->
+            if (checkedId==R.id.rb_left)
+            {
+                currentName = "USDT"
+                for (coin in assets!!) {
+                    if (coin.coin == currentName) {
+                        avaiableAmount = coin.balance
+                        tv_lest.text = "可用" + coin.balance + currentName
+                    }
+                }
+            }
+            if (checkedId==R.id.rb_right)
+            {
+                currentName = "FIL"
+                for (coin in assets!!) {
+                    if (coin.coin == "FCOIN") {
+                        avaiableAmount = coin.balance
+                        tv_lest.text = "可用" + coin.balance + currentName
+                    }
+                    if (coin.coin == currentName) {
+                        avaiableAmount = coin.balance
+                        tv_lest.text = "可用" + coin.balance + currentName
+                    }
                 }
             }
         }
-        contentView.tv2.setOnClickListener {
-            currentName = "FIL"
-            et_coin.text = "FIL"
-            popWnd?.dismiss()
 
-            for (coin in assets!!) {
-                if (coin.coin == "FCOIN") {
-                    avaiableAmount = coin.balance
-                    tv_lest.text = "可用" + coin.balance + currentName
-                }
-                if (coin.coin == currentName) {
-                    avaiableAmount = coin.balance
-                    tv_lest.text = "可用" + coin.balance + currentName
-                }
-            }
-        }
-        popWnd?.isTouchable = true
-        popWnd?.isOutsideTouchable = true
-        popWnd?.showAsDropDown(rl_choose, 0, 0, Gravity.LEFT)
     }
 
 

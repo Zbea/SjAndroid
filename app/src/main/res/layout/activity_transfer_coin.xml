@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/default_color">
+    android:background="@color/color_bg">
 
     <include
         android:id="@+id/mToolBar"
@@ -15,7 +15,6 @@
         android:padding="@dimen/space_dimen"
         android:layout_marginTop="@dimen/space_dimen"
         android:layout_marginBottom="@dimen/margin_15"
-        android:background="@color/color_white"
         android:orientation="vertical"
         >
 

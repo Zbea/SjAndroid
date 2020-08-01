@@ -67,7 +67,7 @@
                 android:clickable="true"
                 android:id="@+id/tv_ok"
                 android:gravity="center"
-                android:textColor="@color/blue"
+                android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_14"
                 android:text="确定"
                 android:layout_width="0dp"

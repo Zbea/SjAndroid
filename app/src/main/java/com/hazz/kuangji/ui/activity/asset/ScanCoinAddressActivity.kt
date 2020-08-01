@@ -39,7 +39,7 @@ class ScanCoinAddressActivity : AppCompatActivity(), QRCodeView.Delegate {
         mScanView.setDelegate(this)
         ToolBarCustom.newBuilder(mToolbar)
             .setTitle("扫一扫")
-            .setLeftIcon(R.mipmap.back_white)
+            .setLeftIcon(R.mipmap.icon_back)
             .setRightText("相册")
             .setRightTextIsShow(true)
             .setOnLeftIconClickListener { finish() }

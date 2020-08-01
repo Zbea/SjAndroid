@@ -22,6 +22,8 @@ import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
+import com.hazz.kuangji.ui.activity.home.MsgListActivity
+import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.ui.adapter.AssetAdapter
 import com.hazz.kuangji.utils.*
@@ -29,6 +31,7 @@ import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_incoming.*
 import kotlinx.android.synthetic.main.fragment_asset.*
+import kotlinx.android.synthetic.main.fragment_asset.iv_msg
 import kotlinx.android.synthetic.main.fragment_asset.recycle_view
 import kotlinx.android.synthetic.main.fragment_asset.toolbar
 import kotlinx.android.synthetic.main.fragment_asset.tv_share
@@ -36,6 +39,7 @@ import kotlinx.android.synthetic.main.fragment_asset.tv_shouyi
 import kotlinx.android.synthetic.main.fragment_asset.tv_static
 import kotlinx.android.synthetic.main.fragment_asset.tv_touzi
 import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
+import kotlinx.android.synthetic.main.fragment_mill.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -178,12 +182,29 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         }
 
         tv_copy.setOnClickListener {
-            val cm = activity!!.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
+            val cm = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
             val clipData = ClipData.newPlainText("invitation_code", tv_copy.text)
 
             cm.primaryClip = clipData
 
             SToast.showText("已成功复制钱包地址")
+        }
+
+        rl_share.setOnClickListener {
+            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(0))
+        }
+        rl_performance.setOnClickListener {
+            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(1))
+        }
+        rl_team.setOnClickListener {
+            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(2))
+        }
+        rl_yesterday.setOnClickListener {
+            startActivity(Intent(activity, MillRecordActivity::class.java))
+        }
+
+        iv_msg.setOnClickListener {
+            startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理

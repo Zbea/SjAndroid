@@ -23,17 +23,12 @@ import java.util.*
 
 
 class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
-    private var number=""
 
     override fun getKuangji(msg: Mill) {
 
     }
 
     override fun getMingxi(msg: Mingxi) {
-        for (item in msg.list)
-        {
-            item.miner_number=number
-        }
         mAdapter?.setNewData(msg.list)
 
     }
@@ -58,17 +53,15 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("收益明细")
-                .setRightOneIcon(R.mipmap.bt_pick_time)
+                .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
                 .setOnLeftIconClickListener {finish() }
                 .setOnRightIconClickListener {
                     showTime()
                 }
 
-        number=intent.getStringExtra("number")
-
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
-        mAdapter = MillRecordAdapter(R.layout.item_mingxi, null)
+        mAdapter = MillRecordAdapter(R.layout.item_mill_record, null)
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
@@ -106,15 +99,15 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
         }).setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字
-                .setSubCalSize(20)//滚轮文字大小
-                .setTitleSize(20)//标题文字大小
+                .setSubCalSize(16)//滚轮文字大小
+                .setTitleSize(16)//标题文字大小
                 //                        .setTitleText("请选择时间")//标题文字
                 .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
                 .isCyclic(true)//是否循环滚动
                 .setTextColorCenter(Color.BLACK)//设置选中项的颜色
                 .setTitleColor(Color.BLACK)//标题文字颜色
-                .setSubmitColor(Color.BLUE)//确定按钮文字颜色
-                .setCancelColor(Color.BLUE)//取消按钮文字颜色
+                .setSubmitColor(Color.GREEN)//确定按钮文字颜色
+                .setCancelColor(Color.GREEN)//取消按钮文字颜色
                 //                        .setTitleBgColor(0xFF666666)//标题背景颜色 Night mode
                 //                        .setBgColor(0xFF333333)//滚轮背景颜色 Night mode
                 //                        .setRange(calendar.get(Calendar.YEAR) - 20, calendar.get(Calendar.YEAR) + 20)//默认是1900-2100年

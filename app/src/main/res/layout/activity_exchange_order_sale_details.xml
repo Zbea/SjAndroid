@@ -124,28 +124,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="总额:"
-                        android:textSize="@dimen/sp_16"
-                        android:textColor="@color/color_333333"/>
-
-                    <TextView
-                        android:id="@+id/tv_total"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/sp_16"
-                        android:textColor="@color/redF4"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_dimen"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="收款方式："
                         android:textSize="@dimen/sp_14"
                         android:textColor="@color/color_999999"/>
@@ -157,6 +135,29 @@
                         android:textSize="@dimen/sp_14"
                         android:textColor="@color/redF4"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_dimen"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="总额:"
+                        android:textSize="@dimen/sp_14"
+                        android:textColor="@color/color_999999"/>
+
+                    <TextView
+                        android:id="@+id/tv_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/sp_16"
+                        android:textColor="@color/redF4"/>
+                </LinearLayout>
+
+
             </LinearLayout>
 
 
@@ -180,7 +181,8 @@
                         android:layout_weight="1"
                         android:text="收款二维码"
                         android:textSize="@dimen/sp_14"
-                        android:textColor="@color/color_999999"/>
+                        android:textColor="@color/color_333333"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/tv_upload"
@@ -194,16 +196,19 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:gravity="center"
+                    android:background="@drawable/bg_edit"
+                    android:layout_marginLeft="@dimen/space_dimen"
+                    android:layout_marginRight="@dimen/space_dimen"
                     android:layout_marginBottom="@dimen/space_dimen"
+                    android:padding="@dimen/space_dimen"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/iv_qrcode"
-                        android:layout_width="160dp"
-                        android:layout_height="200dp"
-                        android:src="@drawable/picture_image_placeholder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
                         />
 
 
@@ -220,11 +225,20 @@
                 android:orientation="vertical"
                 android:padding="@dimen/space_dimen"
                 android:background="@color/color_white">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="收款银行信息"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_14"
+                    android:textColor="@color/color_333333"/>
 
                 <TextView
                     android:id="@+id/tv_bank_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_dimen"
                     android:padding="10dp"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_666666"
@@ -234,7 +248,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_marginTop="@dimen/space_dimen"
+                    android:layout_marginTop="5dp"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_666666"
                     android:background="@drawable/bg_edit"/>
@@ -244,7 +258,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp"
-                    android:layout_marginTop="@dimen/space_dimen"
+                    android:layout_marginTop="5dp"
                     android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_666666"
                     android:background="@drawable/bg_edit"/>

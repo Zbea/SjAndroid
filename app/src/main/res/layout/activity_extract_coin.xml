@@ -2,10 +2,9 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
     <include
@@ -16,54 +15,49 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:scrollbars="none"
         >
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginLeft="@dimen/space_dimen"
+            android:layout_marginRight="@dimen/space_dimen"
             android:orientation="vertical">
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tibi_choose"
-                android:textColor="@color/home_text"
-                android:textSize="12sp" />
-
-            <RelativeLayout
-                android:id="@+id/rl_choose"
+            <RadioGroup
+                android:id="@+id/rg_extract"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:gravity="center"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/et_coin"
+                <RadioButton
+                    android:id="@+id/rb_left"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:background="@null"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_rb_line_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
                     android:text="USDT"
+                    android:textColor="@color/selector_black_main_color"
+                    android:textSize="16sp" />
 
-                    android:maxLines="1"
-                    android:textColor="@color/home_text"/>
+                <RadioButton
+                    android:id="@+id/rb_right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_rb_line_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="FIL"
+                    android:textColor="@color/selector_black_main_color"
+                    android:textSize="16sp" />
+            </RadioGroup>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    android:src="@mipmap/arrow_bottom" />
-
-            </RelativeLayout>
 
             <TextView
                 android:layout_marginTop="15dp"
@@ -71,17 +65,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tibi_address"
-                android:textColor="@color/home_text"
-                android:textSize="12sp" />
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:background="@drawable/bg_statusbar">
 
                 <EditText
                     android:id="@+id/et_address"
@@ -93,9 +84,8 @@
                     android:layout_marginRight="5dp"
                     android:hint="@string/input_tibi_address"
                     android:maxLines="1"
-                    android:padding="5dp"
                     android:singleLine="true"
-                    android:textColor="@color/home_text"
+                    android:textColor="@color/color_666666"
                     android:textColorHint="@color/color_hint"
                     android:textSize="14sp" />
 
@@ -105,8 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:padding="5dp"
-                    android:src="@mipmap/saomiao" />
+                    android:src="@mipmap/icon_scan" />
 
             </RelativeLayout>
 
@@ -115,17 +104,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/tibi_num"
-                android:textColor="@color/home_text"
-                android:textSize="12sp" />
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:background="@drawable/bg_statusbar">
 
                 <EditText
                     android:id="@+id/et_num"
@@ -137,7 +124,7 @@
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:textColor="@color/home_text"
+                    android:textColor="@color/color_666666"
                     android:textColorHint="@color/color_hint"
                     android:textSize="14sp" />
 
@@ -146,11 +133,11 @@
                     android:id="@+id/tv_all"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
                     android:text="@string/all"
-                    android:textColor="@color/blue" />
+                    android:textColor="@color/color_main" />
 
             </RelativeLayout>
 
@@ -158,88 +145,69 @@
                 android:id="@+id/tv_lest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:text="可用0USDT"
-                android:textColor="@color/text_color_edit_hint" />
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/color_main" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:text="手续费"
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/tv_need"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
-                android:paddingLeft="10dp">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="10dp"
-                    android:text="手续费"
-                    android:textColor="@color/home_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_need"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:text="0"
-                    android:textColor="@color/redF4"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
+                android:background="@drawable/bg_statusbar"
+                android:text="0"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_shouxu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="10dp"
+                android:layout_marginTop="5dp"
                 android:text="手续费为提币数量的5%"
-                android:textColor="@color/text_color_edit_hint" />
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/color_main" />
 
-            <RelativeLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:text="实际到账"
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_shiji"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
-                android:paddingLeft="10dp">
+                android:background="@drawable/bg_statusbar"
+                android:text="0"
+                android:gravity="center_vertical"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp" />
 
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginTop="10dp"
-                    android:text="实际到账"
-                    android:textColor="@color/home_text"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/tv_shiji"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:text="0"
-                    android:textColor="@color/redF4"
-                    android:textSize="14sp" />
-
-            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="@string/jiaoyi_pwd"
-                android:textColor="@color/home_text"
-                android:textSize="12sp" />
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
 
             <EditText
@@ -247,13 +215,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_white_solid_5dp_coner"
+                android:background="@drawable/bg_statusbar"
                 android:hint="@string/input_deal_pwd"
                 android:inputType="textPassword"
-                android:paddingLeft="10dp"
                 android:singleLine="true"
-                android:textColor="@color/home_text"
+                android:textColor="@color/color_666666"
                 android:textColorHint="@color/color_hint"
                 android:textSize="14sp" />
 
@@ -261,12 +227,13 @@
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_main_solid_5dp_coner"
                 android:text="@string/tibi"
                 android:textColor="@color/color_white"
-                app:layout_constraintTop_toBottomOf="@+id/ll_code" />
+                android:textSize="@dimen/sp_14"
+                />
 
 
         </LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/default_color">
+    android:background="@color/color_bg">
 
     <include
         android:id="@+id/mToolBar"
@@ -14,8 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/space_dimen"
-        android:layout_marginTop="@dimen/space_dimen"
-        android:background="@color/color_white"
         android:orientation="vertical"
         >
 
@@ -26,6 +24,7 @@
             android:textColor="@color/color_333333"
             android:textSize="@dimen/sp_16"
             android:text="USDT 转 FIL"
+            android:textStyle="bold"
             />
 
 
@@ -38,7 +37,7 @@
             android:padding="@dimen/dp_10"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_edit_blue">
+            android:background="@drawable/bg_edit_main">
 
             <EditText
                 android:id="@+id/et_count_usdt"
@@ -132,7 +131,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/blue"
+                android:textColor="@color/color_main"
                 android:layout_marginLeft="5dp"
                 android:text="转换"
                 android:textSize="@dimen/sp_14"

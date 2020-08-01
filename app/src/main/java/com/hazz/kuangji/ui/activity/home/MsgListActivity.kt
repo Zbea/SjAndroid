@@ -12,7 +12,6 @@ import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.msg_record.mToolBar
 
 
 class MsgListActivity : BaseActivity(), IContractView.MsgView {
@@ -30,6 +29,7 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
     }
 
     override fun initData() {
+        StatusBarUtil.darkMode(this)
         mCoinPresenter.getMsg()
     }
 
@@ -46,7 +46,7 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(15f)
+        val leftRightOffset = DensityUtil.dp2px(10f)
 
         rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 

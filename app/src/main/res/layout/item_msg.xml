@@ -2,9 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="67dp"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space_dimen"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_white_solid_5dp_coner"
+    android:background="@drawable/bg_gray_solid_5dp_coner"
+    android:layout_marginLeft="@dimen/space_dimen"
+    android:layout_marginRight="@dimen/space_dimen"
     >
 
     <ImageView
@@ -15,7 +18,6 @@
         android:src="@mipmap/mine_icon_more"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="@dimen/margin_14"
         />
 
     <TextView
@@ -25,11 +27,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/mImgIcon"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="@dimen/margin_14"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="@dimen/margin_14"
         android:textSize="@dimen/_14_text_size"
-        android:textColor="@color/commonTextColor"
+        android:textColor="@color/color_333333"
         android:singleLine="true"
         android:ellipsize="end"
         />
@@ -41,11 +40,11 @@
         app:layout_constraintLeft_toLeftOf="@id/mTvNoticeTitle"
         app:layout_constraintRight_toRightOf="@id/mTvNoticeTitle"
         app:layout_constraintTop_toBottomOf="@id/mTvNoticeTitle"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:singleLine="true"
         android:ellipsize="end"
         android:textSize="10sp"
-        android:textColor="@color/hintTextColor"
+        android:textColor="@color/color_999999"
         />
 
     <ImageView

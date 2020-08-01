@@ -64,10 +64,8 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle("卖币信息确认")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
+                .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
         tv_upload.setOnClickListener(this)
@@ -127,6 +125,9 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     override fun onClick(v: View?) {
         when (v) {
             tv_upload -> {
+                showPhotoDialog()
+            }
+            iv_qrcode -> {
                 showPhotoDialog()
             }
             tv_commit1 -> {

@@ -36,7 +36,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginLeft="15dp"
-                    android:src="@mipmap/back_white" />
+                    android:src="@mipmap/icon_back" />
 
                 <TextView
                     android:id="@+id/tv_title"

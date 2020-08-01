@@ -12,7 +12,6 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Charge
 import com.hazz.kuangji.mvp.model.ChargeRecord
-import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.ChargePresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.activity_charge.*
@@ -56,14 +55,11 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
     }
 
     override fun initData() {
-        mChargePresenter.charge("USDT")
+        StatusBarUtil.darkMode(this)
     }
-
-
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle(getString(R.string.charge))
                 .setRightText("记录")
                 .setRightTextIsShow(true)
@@ -96,9 +92,6 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
             }
         }
 
-    }
-
-    override fun start() {
         iv_copy.setOnClickListener {
 
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
@@ -128,6 +121,10 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
         }
 
+    }
+
+    override fun start() {
+        mChargePresenter.charge("USDT")
     }
 
     override fun onDestroy() {

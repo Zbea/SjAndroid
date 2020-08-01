@@ -33,6 +33,7 @@
                     android:layout_centerVertical="true"
                     android:singleLine="true"
                     android:text="FIL币种算力矿机"
+                    android:textStyle="bold"
                     android:textColor="@color/color_333333"
                     android:textSize="16sp" />
 

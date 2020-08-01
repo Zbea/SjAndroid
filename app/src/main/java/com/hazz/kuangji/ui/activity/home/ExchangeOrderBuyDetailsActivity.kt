@@ -129,11 +129,9 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
         code = intent.getStringExtra("code")
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle("买币订单详情")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setToolBarBgRescource(R.color.color_bg)
+                .setOnLeftIconClickListener { finish() }
 
         tv_cancel.setOnClickListener(this)
         tv_commit.setOnClickListener(this)

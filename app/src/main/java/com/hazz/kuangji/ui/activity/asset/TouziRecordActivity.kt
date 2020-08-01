@@ -44,7 +44,7 @@ class TouziRecordActivity : BaseActivity(), IContractView.TouziView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.touzi_record))
                 .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))

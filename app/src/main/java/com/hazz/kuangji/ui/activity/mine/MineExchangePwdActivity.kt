@@ -66,7 +66,7 @@ class MineExchangePwdActivity : BaseActivity(), IContractView.LoginView {
     @SuppressLint("SetTextI18n")
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.find_zijin_pwd))
                 .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))

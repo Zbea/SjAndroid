@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/color_bg"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toolbar"
+        android:id="@+id/mToolBar"
+        />
+
+    <RelativeLayout
+        android:layout_width="355dp"
+        android:layout_height="465dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/mToolBar"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/icon_mine_invite_bg">
+
+        <TextView
+            android:id="@+id/invitedCodeTextView"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/_14_text_size"
+            android:layout_centerHorizontal="true"
+            android:text="已邀请好友0人"
+            android:layout_marginTop="39dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/qrCodeView"
+            android:padding="3dp"
+            android:background="@color/color_white"
+            android:layout_width="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="107dp"
+            android:layout_height="180dp"/>
+
+        <TextView
+            android:id="@+id/tipsText"
+            android:layout_width="wrap_content"
+            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="42dp"
+            android:textSize="18sp"
+            android:text="邀请码:0"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_above="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"/>
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/space_dimen"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/copy_invitation_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/btn_dimen"
+            android:text="复制分享链接"
+            android:textColor="@color/color_main"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:background="@drawable/bg_main_stroke_5dp_coner"
+            />
+        <TextView
+            android:id="@+id/tv_down"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginLeft="@dimen/space_dimen"
+            android:text="保存二维码"
+            android:textColor="@color/color_white"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:background="@drawable/bg_main_solid_5dp_coner"
+            />
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

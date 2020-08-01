@@ -61,14 +61,10 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle("一键买币")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
                 .setRightText("买币明细")
                 .setRightTextIsShow(true)
-                .setRightTextColor(resources.getColor(R.color.color_white))
                 .setOnRightClickListener {
                     var intent= Intent(this, ExchangeRecordActivity::class.java)
                     intent.putExtra("type",1)

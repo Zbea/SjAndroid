@@ -40,7 +40,7 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
         type = intent.getIntExtra("type", 0)
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(if (type == 1) "买币明细" else "卖币明细")
                 .setToolBarBgRescource(R.drawable.bg_main_gradient)
                 .setTitleColor(resources.getColor(R.color.color_white))

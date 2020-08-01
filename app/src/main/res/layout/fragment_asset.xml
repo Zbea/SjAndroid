@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/icon_message" />
+            android:src="@mipmap/icon_message_white" />
 
     </RelativeLayout>
 
@@ -69,8 +69,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:layout_marginRight="@dimen/space_dimen"
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginBottom="@dimen/dp_5"
                 app:cardCornerRadius="10dp"
@@ -90,7 +90,7 @@
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="9"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -99,6 +99,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="投资（USDT）"
                                 android:textColor="@color/color_333333"
+                                android:textStyle="bold"
                                 android:textSize="16sp" />
 
                             <TextView
@@ -108,13 +109,13 @@
                                 android:layout_marginTop="5dp"
                                 android:text="0"
                                 android:textColor="@color/color_main"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_weight="10"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -122,6 +123,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="收益（USDT/FIL）"
+                                android:textStyle="bold"
                                 android:textColor="@color/color_333333"
                                 android:textSize="16sp" />
 
@@ -133,7 +135,7 @@
                                 android:text="0"
                                 android:lines="1"
                                 android:textColor="@color/color_main"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
                     <View
@@ -152,7 +154,7 @@
 
 
                         <RelativeLayout
-                            android:id="@+id/rl_static"
+                            android:id="@+id/rl_share"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -164,7 +166,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="分享收益(USDT)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/tv_static"
@@ -175,7 +177,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -188,7 +190,7 @@
                         </RelativeLayout>
 
                         <RelativeLayout
-                            android:id="@+id/rl_share"
+                            android:id="@+id/rl_performance"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
@@ -200,7 +202,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="业绩收益(FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/tv_share"
@@ -211,7 +213,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -246,7 +248,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="团队收益(FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/tv_team"
@@ -257,7 +259,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -282,7 +284,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="昨日收益(USDT/FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/tv_yesterday"
@@ -293,7 +295,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="10sp" />
+                                android:textSize="12sp" />
 
                             <ImageView
                                 android:layout_width="wrap_content"

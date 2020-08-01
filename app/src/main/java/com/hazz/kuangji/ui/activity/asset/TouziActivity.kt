@@ -53,7 +53,7 @@ class TouziActivity : BaseActivity(), IContractView.TouziView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.touzi))
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightText(getString(R.string.touzi_record))

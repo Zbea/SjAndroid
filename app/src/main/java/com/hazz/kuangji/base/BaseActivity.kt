@@ -18,7 +18,6 @@ import com.hazz.kuangji.ui.activity.LoginActivity
 import com.hazz.kuangji.utils.ActivityManager
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
-import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.utils.StatusBarUtil.Companion.darkMode
 import com.hazz.kuangji.widget.ProgressDialog
 import com.tbruyelle.rxpermissions2.RxPermissions

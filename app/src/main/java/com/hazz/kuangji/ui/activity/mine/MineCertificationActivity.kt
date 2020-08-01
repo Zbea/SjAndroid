@@ -18,7 +18,7 @@ class MineCertificationActivity : BaseActivity() {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle("实名认证")
                 .setTitleColor(resources.getColor(R.color.color_white))
                 .setToolBarBgRescource(R.drawable.bg_main_gradient)

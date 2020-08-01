@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.fragment_mill.*
 import kotlinx.android.synthetic.main.fragment_mill.iv_msg
 import kotlinx.android.synthetic.main.fragment_mill.recycle_view
+import kotlinx.android.synthetic.main.fragment_mill.toolbar
 
 class MillFragment : BaseFragment(), IContractView.kuangjiView {
 
@@ -47,7 +48,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
 
     override fun initView() {
 
-        var layoutParams: LinearLayout.LayoutParams= toolbar.layoutParams as LinearLayout.LayoutParams
+        var layoutParams: RelativeLayout.LayoutParams= toolbar.layoutParams as RelativeLayout.LayoutParams
         layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
         toolbar.layoutParams=layoutParams
 
@@ -63,7 +64,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         }
 
         ll_record.setOnClickListener {
-            startActivity(Intent(activity, MillRecordActivity::class.java).putExtra("number",""))
+            startActivity(Intent(activity, MillRecordActivity::class.java))
         }
 
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理

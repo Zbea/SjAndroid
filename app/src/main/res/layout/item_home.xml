@@ -15,6 +15,7 @@
         android:singleLine="true"
         android:text="开启矿机"
         android:textColor="@color/color_333333"
+        android:textStyle="bold"
         android:textSize="16sp" />
 
     <LinearLayout

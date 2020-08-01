@@ -20,6 +20,13 @@ import kotlinx.android.synthetic.main.activity_incoming.*
 class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContractView.ShouyiView {
 
 
+    private val titles: Array<String> = arrayOf("分享收益", "业绩收益", "团队收益")
+
+    private var adapter: IncomingAdapter? = null
+    private var incoming: InComing? = null
+    private var mShouyiPresenter: ShouyiPresenter = ShouyiPresenter(this)
+    private var position=0
+
     override fun inComing(msg: InComing) {
 
         incoming = msg
@@ -46,17 +53,21 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
         }
 
         if (msg.yesterday_usdt != null&& msg.yesterday_fcoin!=null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",2) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",2)
+            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
         }
 
         if (msg.yesterday_usdt != null&& msg.yesterday_fcoin==null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",2) + "/" +"0.00"
+            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" +"0.00"
         }
         if (msg.yesterday_usdt == null&& msg.yesterday_fcoin!=null) {
-            tv_yesterday.text ="0.00" + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",2)
+            tv_yesterday.text ="0.00" + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
         }
 
-        adapter!!.setNewData(msg.invitation_list)
+        when (position) {
+            0 -> adapter!!.setNewData(incoming!!.invitation_list)
+            1 -> adapter!!.setNewData(incoming!!.achievement_list)
+            2 -> adapter!!.setNewData(incoming!!.team_list)
+        }
     }
 
 
@@ -68,9 +79,8 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
     }
 
     override fun onTabSelected(p0: TabLayout.Tab?) {
-        var position = p0!!.position
         if (incoming != null) {
-            when (position) {
+            when (p0!!.position) {
                 0 -> adapter!!.setNewData(incoming!!.invitation_list)
                 1 -> adapter!!.setNewData(incoming!!.achievement_list)
                 2 -> adapter!!.setNewData(incoming!!.team_list)
@@ -89,26 +99,22 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
         StatusBarUtil.darkMode(this,false)
     }
 
-
-    private val titles: Array<String> = arrayOf("分享收益", "业绩收益", "团队收益")
-
-    private var adapter: IncomingAdapter? = null
-    private var incoming: InComing? = null
-    private var mShouyiPresenter: ShouyiPresenter = ShouyiPresenter(this)
     override fun initView() {
+
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back_white)
                 .setTitle(getString(R.string.shouyi))
                 .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setToolBarBgRescource(R.drawable.bg_main_gradient)
+                .setOnLeftIconClickListener { finish() }
 
-
+        position=intent.flags
 
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
         adapter = IncomingAdapter(R.layout.item_incoming, null)
         recycle_view.adapter = adapter
-        adapter!!.bindToRecyclerView(recycle_view)
-        adapter!!.setEmptyView(R.layout.fragment_empty)
+        adapter?.bindToRecyclerView(recycle_view)
+        adapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(10f)
 
         recycle_view.addItemDecoration(
@@ -124,6 +130,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
         for (a in titles) {
             invitation_tab_layout.addTab(invitation_tab_layout.newTab().setText(a))
         }
+        invitation_tab_layout.getTabAt(position)?.select()
     }
 
     override fun start() {

@@ -4,9 +4,7 @@ import android.graphics.Color
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Msg
-import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_msg_desc.*
 import kotlinx.android.synthetic.main.activity_msg_desc.mToolBar
@@ -28,7 +26,7 @@ class MsgDescActivity : BaseActivity(){
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setOnLeftIconClickListener {finish() }
 
         val msg = intent.getSerializableExtra("message") as Msg

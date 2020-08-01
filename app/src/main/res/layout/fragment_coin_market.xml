@@ -1,55 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
->
+    android:orientation="vertical">
 
-
-
-    <com.hazz.kuangji.widget.MyWebview
-        android:id="@+id/web_view"
-        android:layout_marginBottom="-65dp"
+    <View
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_white">
-
-    </com.hazz.kuangji.widget.MyWebview>
-
-
+        android:layout_height="0dp"/>
 
     <RelativeLayout
-        android:id="@+id/toolbar"
-        android:layout_alignTop="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/space_dimen"
-        android:paddingRight="@dimen/space_dimen"
-        android:background="@color/color_bg">
+        android:layout_height="wrap_content">
+
+        <com.hazz.kuangji.widget.MyWebview
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="-65dp"
+            android:background="@color/color_white">
+
+        </com.hazz.kuangji.widget.MyWebview>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:background="@color/color_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/space_dimen"
+            android:paddingRight="@dimen/space_dimen">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="行情"
-            android:textColor="@color/color_333333"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="行情"
+                android:textColor="@color/color_333333"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/iv_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/icon_message"/>
+            <ImageView
+                android:id="@+id/iv_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/icon_message" />
 
+        </RelativeLayout>
     </RelativeLayout>
 
 
-</RelativeLayout>
+</LinearLayout>

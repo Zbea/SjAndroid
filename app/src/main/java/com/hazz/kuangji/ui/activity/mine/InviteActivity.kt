@@ -16,7 +16,7 @@ import com.hazz.kuangji.mvp.model.Friends
 import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
 import com.hazz.kuangji.utils.*
-import kotlinx.android.synthetic.main.invitefriends.*
+import kotlinx.android.synthetic.main.activity_mine_invitefriends.*
 
 
 class InviteActivity : BaseActivity(), IContractView.CoinView {
@@ -25,7 +25,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
     }
 
     override fun getFriends(msg: Friends) {
-        invitedCodeTextView.text="已邀请好友"+msg.number+"人"
+        invitedCodeTextView.text="已邀请"+msg.number+"人"
     }
 
 
@@ -36,7 +36,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
     private  var invitation_code_url=""
 
     override fun layoutId(): Int {
-        return R.layout.invitefriends
+        return R.layout.activity_mine_invitefriends
     }
 
     override fun initData() {
@@ -46,15 +46,13 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
     @SuppressLint("SetTextI18n")
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
+                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.invite_friends))
-                .setTitleColor(resources.getColor(R.color.color_white))
                 .setRightText("邀请记录")
                 .setRightTextIsShow(true)
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener {finish() }
                 .setOnRightClickListener {
                     startActivity(Intent(this, InviteRecordActivity::class.java))
-
                 }
         userInfo = SPUtil.getObj("user", UserInfo::class.java)
         invitation_code = SPUtil.getString("invitation_code")
@@ -84,7 +82,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
                 val clipData = ClipData.newPlainText("invitation_code_url",Constants.URL_INVITE+"#/home?code="+userInfo!!.invitation_code)
                 cm.primaryClip = clipData
             }else{
-                val clipData = ClipData.newPlainText("invitation_code_url", Constants.URL_INVITE+"URL_INVITE#/home?code=$invitation_code")
+                val clipData = ClipData.newPlainText("invitation_code_url", Constants.URL_INVITE+"#/home?code=$invitation_code")
                 cm.primaryClip = clipData
             }
 
@@ -92,22 +90,6 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
 
             SToast.showText("已成功复制邀请链接")
         }
-
-
-        tv_copy.setOnClickListener {
-            val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            if(userInfo!=null){
-                val clipData = ClipData.newPlainText("invitation_code",userInfo!!.invitation_code)
-                cm.primaryClip = clipData
-            }else{
-                val clipData = ClipData.newPlainText("invitation_code",invitation_code)
-                cm.primaryClip = clipData
-            }
-
-
-            SToast.showText("已成功复制邀请码")
-        }
-
 
 
         tv_down.setOnClickListener {

@@ -66,14 +66,10 @@ class TransferCoinActivity : BaseActivity(), IContractView.IExchangeBuyView , IC
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.back_white)
                 .setTitle("转账")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener {finish() }
                 .setRightText("转账明细")
                 .setRightTextIsShow(true)
-                .setRightTextColor(resources.getColor(R.color.color_white))
                 .setOnRightClickListener {
                     startActivity(Intent(this,TransferCoinRecordActivity::class.java))
                 }

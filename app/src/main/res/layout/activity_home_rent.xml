@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
@@ -113,7 +112,8 @@
                         android:singleLine="true"
                         android:text="投入金额"
                         android:textColor="@color/color_333333"
-                        android:textSize="16sp" />
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tv_yuji"
@@ -123,7 +123,7 @@
                         android:layout_centerVertical="true"
                         android:singleLine="true"
                         android:text="预计每日收益:0FIL"
-                        android:textColor="@color/color_999999"
+                        android:textColor="@color/color_main"
                         android:textSize="10sp" />
 
                 </RelativeLayout>
@@ -154,7 +154,7 @@
                         android:layout_marginRight="15dp"
                         android:singleLine="true"
                         android:text="USDT"
-                        android:textColor="@color/color_main"
+                        android:textColor="@color/color_666666"
                         android:textSize="14sp" />
 
                 </RelativeLayout>
@@ -183,8 +183,9 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="个人信息填写"
+                    android:textStyle="bold"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <EditText
                     android:id="@+id/et_name"
@@ -251,8 +252,9 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="矿机简介"
+                    android:textStyle="bold"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tv_info"
@@ -270,13 +272,18 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:elevation="5dp"
-        android:background="@drawable/bg_edit"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

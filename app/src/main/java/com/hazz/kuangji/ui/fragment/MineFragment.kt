@@ -133,7 +133,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             startActivity(Intent(activity, NodeActivity::class.java))
         }
         layout_team.setOnClickListener {
-            startActivity(Intent(activity, IncomingActivity::class.java))
+            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(0))
         }
         layout_contact.setOnClickListener {
             startActivity(Intent(activity, MineContactActivity::class.java).setFlags(0))

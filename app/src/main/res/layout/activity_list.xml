@@ -13,7 +13,7 @@
         android:id="@+id/rc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/space_dimen"
+        android:layout_marginTop="@dimen/dp_10"
         android:scrollbars="none"/>
 
 </LinearLayout>

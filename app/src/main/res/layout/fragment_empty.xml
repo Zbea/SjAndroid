@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="暂无数据"
-        android:textColor="#887B93DA"
+        android:textColor="@color/color_main_nor"
         />
 
 

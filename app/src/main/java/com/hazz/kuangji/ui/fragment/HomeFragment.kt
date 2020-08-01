@@ -4,6 +4,7 @@ import android.content.Intent
 import android.text.SpannableString
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -13,7 +14,10 @@ import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.activity.MainActivity
+import com.hazz.kuangji.ui.activity.asset.ChargeActivity
+import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.home.*
+import com.hazz.kuangji.ui.activity.mine.InviteActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.DisplayManager
@@ -76,7 +80,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun initView() {
-        var layoutParams: LinearLayout.LayoutParams= toolbar.layoutParams as LinearLayout.LayoutParams
+        var layoutParams: RelativeLayout.LayoutParams= toolbar.layoutParams as RelativeLayout.LayoutParams
         layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
         toolbar.layoutParams=layoutParams
 
@@ -113,6 +117,18 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
+        }
+        iv_invite.setOnClickListener {
+            startActivity(Intent(activity, InviteActivity::class.java))
+        }
+        ll_recharge.setOnClickListener {
+            startActivity(Intent(activity, ChargeActivity::class.java))
+        }
+        ll_extract.setOnClickListener {
+            startActivity(Intent(activity, ExtractCoinActivity::class.java))
+        }
+        ll_transfer.setOnClickListener {
+            startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
 
     }
