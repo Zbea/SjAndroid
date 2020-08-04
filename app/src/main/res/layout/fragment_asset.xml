@@ -286,6 +286,7 @@
                                 android:textColor="@color/color_999999"
                                 android:textSize="12sp" />
 
+
                             <TextView
                                 android:id="@+id/tv_yesterday"
                                 android:layout_width="wrap_content"
