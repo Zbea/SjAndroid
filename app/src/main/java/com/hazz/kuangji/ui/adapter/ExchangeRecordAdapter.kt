@@ -26,7 +26,7 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
                 setText(R.id.tv_reason, item.reason)
 
                 setText(R.id.tv_state, "已取消")
-                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_666666))
+                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
             }
             else
             {
@@ -49,7 +49,7 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
                     }
                     else -> {
                         setText(R.id.tv_state, "已完成")
-                        setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                        setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
                     }
                 }
             }

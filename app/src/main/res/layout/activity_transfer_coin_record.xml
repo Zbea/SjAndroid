@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/icon_rb_line_selector"
+            android:background="@drawable/bg_rb_line_selector"
             android:button="@null"
             android:checked="true"
             android:gravity="center"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/icon_rb_line_selector"
+            android:background="@drawable/bg_rb_line_selector"
             android:button="@null"
             android:gravity="center"
             android:text="转出"
@@ -82,7 +82,7 @@
         android:id="@+id/rc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginTop="@dimen/dp_15"
         android:background="@color/default_color"
         android:scrollbars="none" />
 

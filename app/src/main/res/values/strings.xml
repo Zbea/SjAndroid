@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">眼球矿机</string>
     <string name="mine_register">注册</string>
-    <string name="mine_forget_password">忘记密码</string>
+    <string name="mine_forget_password">忘记密码?</string>
     <string name="mine_login">登录</string>
     <string name="mine_plz_input_password">请输入密码</string>
     <string name="mine_jump">跳过</string>

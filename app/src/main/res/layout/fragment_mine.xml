@@ -27,7 +27,7 @@
                 android:id="@+id/iv_header"
                 android:layout_width="72dp"
                 android:layout_height="72dp"
-                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginTop="@dimen/dp_20"
                 android:src="@mipmap/user_default" />
 
             <LinearLayout

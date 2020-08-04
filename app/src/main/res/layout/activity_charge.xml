@@ -28,7 +28,7 @@
                 android:id="@+id/rg_charge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_15"
+                android:layout_marginTop="@dimen/dp_15"
                 android:gravity="center"
                 android:orientation="horizontal">
                 <RadioButton
@@ -42,7 +42,7 @@
                     android:textSize="14sp"
                     android:checked="true"
                     android:textColor="@color/selector_black_main_color"
-                    android:background="@drawable/icon_rb_line_selector"/>
+                    android:background="@drawable/bg_rb_line_selector"/>
                 <RadioButton
                     android:id="@+id/rb_middle"
                     android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:gravity="center"
                     android:textSize="14sp"
                     android:textColor="@color/selector_black_main_color"
-                    android:background="@drawable/icon_rb_line_selector"/>
+                    android:background="@drawable/bg_rb_line_selector"/>
                 <RadioButton
                     android:id="@+id/rb_right"
                     android:layout_width="match_parent"
@@ -64,14 +64,14 @@
                     android:gravity="center"
                     android:textSize="14sp"
                     android:textColor="@color/selector_black_main_color"
-                    android:background="@drawable/icon_rb_line_selector"/>
+                    android:background="@drawable/bg_rb_line_selector"/>
             </RadioGroup>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginTop="@dimen/dp_20"
                 android:text="收款地址二维码"
                 android:textColor="@color/color_999999"
                 android:textSize="14sp" />
@@ -131,7 +131,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/ll_code" />
 
             <TextView
-                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:layout_marginTop="@dimen/space_dimen"
                 android:textSize="12sp"
                 android:text="档次说明:"
@@ -141,7 +141,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -167,7 +167,7 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginLeft="@dimen/margin_15"
+                android:layout_marginLeft="@dimen/dp_15"
                 android:textSize="10sp"
                 android:layout_marginTop="8dp"
                 android:text="2、充值到账需要2个网络确认，请耐心等待。"

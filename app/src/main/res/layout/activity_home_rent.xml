@@ -93,14 +93,15 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
                 android:background="@color/color_white"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/space_dimen"
-                android:paddingRight="@dimen/space_dimen">
+                android:paddingRight="@dimen/space_dimen"
+                android:paddingBottom="@dimen/dp_10">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -123,15 +124,15 @@
                         android:layout_centerVertical="true"
                         android:singleLine="true"
                         android:text="预计每日收益:0FIL"
-                        android:textColor="@color/color_main"
-                        android:textSize="10sp" />
+                        android:textColor="@color/redF4"
+                        android:textSize="12sp" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="@dimen/dp_5">
+                    android:layout_height="45dp"
+                    android:layout_marginTop="@dimen/dp_10">
 
                     <EditText
                         android:id="@+id/et_num"
@@ -167,16 +168,22 @@
                     android:singleLine="true"
                     android:text="账号余额：0.00"
                     android:textColor="@color/color_main"
-                    android:textSize="10sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dimen"
+                android:background="@color/color_gray_bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
                 android:background="@color/color_white"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:paddingLeft="@dimen/space_dimen"
+                android:paddingRight="@dimen/space_dimen"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -190,7 +197,7 @@
                 <EditText
                     android:id="@+id/et_name"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
+                    android:layout_height="45dp"
                     android:layout_marginTop="9dp"
                     android:background="@drawable/bg_edit"
                     android:hint="真实姓名:"
@@ -203,7 +210,7 @@
                 <EditText
                     android:id="@+id/et_phone"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
+                    android:layout_height="45dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bg_edit"
                     android:hint="手机号码:"
@@ -216,7 +223,7 @@
                 <EditText
                     android:id="@+id/et_address"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="65dp"
                     android:layout_marginTop="5dp"
                     android:background="@drawable/bg_edit"
                     android:gravity="top"
@@ -237,15 +244,19 @@
                     android:textColor="@color/redF4"
                     android:textSize="12sp" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dimen"
+                android:background="@color/color_gray_bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/space_dimen"
                 android:paddingRight="@dimen/space_dimen"
-                android:paddingBottom="@dimen/space_dimen">
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -260,7 +271,7 @@
                     android:id="@+id/tv_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:lineSpacingExtra="@dimen/dp_5"
                     android:textColor="@color/color_999999"
                     android:textSize="12sp" />

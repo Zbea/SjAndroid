@@ -51,7 +51,7 @@ class SafeCheckDialog(var context: Context) {
         window!!.setBackgroundDrawableResource(android.R.color.transparent)
         window.decorView.setPadding(0, 0, 0, 0) //消除边距
         val layoutParams = window.attributes
-        layoutParams.width = context.resources.getDimensionPixelOffset(R.dimen.dialog_wid)
+        layoutParams.width = 280
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.gravity = Gravity.CENTER
         window.attributes = layoutParams

@@ -52,10 +52,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_14"
+                android:layout_marginLeft="@dimen/dp_14"
                 android:layout_marginTop="93dp"
-                android:layout_marginRight="@dimen/margin_14"
-                android:background="@drawable/mine_login_box_bg"
+                android:layout_marginRight="@dimen/dp_14"
+                android:background="@drawable/bg_white_solid_5dp_coner"
                 android:orientation="vertical"
 
                 >
@@ -66,13 +66,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="@dimen/margin_14"
+                    android:layout_marginLeft="@dimen/dp_14"
                     android:layout_marginTop="45dp"
-                    android:layout_marginRight="@dimen/margin_14"
+                    android:layout_marginRight="@dimen/dp_14"
                     android:gravity="center"
                     android:maxLines="2"
                     android:text="USER"
-                    android:textColor="@color/commonTextColor"
+                    android:textColor="@color/color_333333"
                     android:textSize="23sp"
                     android:textStyle="bold" />
                 <LinearLayout

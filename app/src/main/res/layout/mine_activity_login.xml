@@ -1,251 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@mipmap/eye_bg"
+    android:background="@mipmap/icon_login_bg"
     >
 
-    <ImageView
-        android:id="@+id/iv_logo"
-        android:layout_marginTop="65dp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/logo_round"
-
-        />
     <TextView
-        android:visibility="gone"
-        android:id="@+id/mTvJump"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="30sp"
         android:textColor="@color/color_white"
-        android:textSize="@dimen/_14_text_size"
-        android:padding="6dp"
-        android:text="@string/mine_jump"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="@dimen/margin_14"
-        android:background="@color/color_translucent"
+        android:layout_marginTop="94dp"
+        android:layout_marginLeft="@dimen/space_dimen"
+        android:text="登录实久耘智"/>
+
+    <LinearLayout
+        android:layout_below="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_dimen"
+        android:layout_marginRight="@dimen/space_dimen"
+        android:layout_marginTop="94dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/mEtPhoneOrEmail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/bg_transparent_solid_5dp_coner"
+            android:textColorHint="#bbffffff"
+            android:textColor="@color/color_333333"
+            android:hint="请输入用户名"
+            android:textSize="@dimen/sp_14"
+            android:singleLine="true"
+            android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/mEtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="@dimen/space_dimen"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/dp_10"
+            android:background="@drawable/bg_transparent_solid_5dp_coner"
+            android:textColorHint="#bbffffff"
+            android:textColor="@color/color_333333"
+            android:hint="@string/mine_plz_input_password"
+            android:textSize="@dimen/sp_14"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            />
+
+        <TextView
+            android:id="@+id/mTvUseForgetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="14sp"
+            android:gravity="right"
+            android:text="@string/mine_forget_password"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_white"
+            />
+        <TextView
+            android:id="@+id/mTvLogin"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="94dp"
+            android:textSize="16sp"
+            android:textColor="@color/color_white"
+            android:gravity="center"
+            android:text="@string/mine_login"
+            android:background="@drawable/bg_main_solid_5dp_coner"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mTvRegist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="94dp"
+        android:textSize="14sp"
+        android:text="没有账户？立即注册"
+        android:textColor="#1AC2AE"
         />
 
 
-    <androidx.core.widget.NestedScrollView
 
-        android:layout_marginTop="21dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
-
-        android:scrollbars="none"
-        >
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-
-            android:background="@drawable/mine_login_box_bg"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="24dp"
-                android:textSize="29sp"
-                android:textColor="@color/commonTextColor"
-                android:text="@string/mine_login"
-                />
-
-            <RelativeLayout
-                android:layout_marginTop="@dimen/margin_16"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginLeft="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_20"
-                android:background="@drawable/mine_login_et_bg"
-                >
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/mRelaAreaCode"
-                    >
-
-                    <ImageView
-                        android:clickable="false"
-                        android:id="@+id/mTvAreaCode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/account"
-
-                        android:paddingTop="@dimen/margin_12"
-                        android:paddingBottom="@dimen/margin_12"
-                        android:layout_marginStart="20dp"
-
-                        />
-
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="24dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/mTvAreaCode"
-                        android:layout_marginLeft="18dp"
-                        android:background="#D8D8D8"
-                        />
-                </RelativeLayout>
-
-                <EditText
-                    android:id="@+id/mEtPhoneOrEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/mRelaAreaCode"
-                    android:background="@null"
-                    android:layout_centerVertical="true"
-                    android:paddingLeft="30dp"
-                    android:paddingRight="@dimen/margin_16"
-                    android:textColorHint="@color/hintTextColor"
-                    android:hint="请输入用户名"
-                    android:textSize="@dimen/_14_text_size"
-
-                    android:singleLine="true"
-                    android:inputType="text"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                >
-
-                <RelativeLayout
-
-                    android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:layout_marginLeft="@dimen/margin_20"
-                    android:layout_marginRight="@dimen/margin_20"
-                    android:background="@drawable/mine_login_et_bg"
-                    >
-
-                    <ImageView
-                        android:id="@+id/mImgCheck1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/pwd"
-                        android:layout_marginLeft="@dimen/margin_20"
-                        android:layout_marginTop="@dimen/margin_10"
-                        android:layout_marginBottom="@dimen/margin_10"
-                        />
-
-                    <View
-                        android:id="@+id/mPartView2"
-                        android:layout_width="1dp"
-                        android:layout_height="24dp"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/mImgCheck1"
-                        android:layout_marginLeft="18dp"
-                        android:background="#D8D8D8"
-                        />
-
-                    <EditText
-                        android:id="@+id/mEtPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/mPartView2"
-                        android:background="@null"
-                        android:layout_centerVertical="true"
-                        android:paddingLeft="30dp"
-                        android:paddingRight="@dimen/margin_16"
-                        android:textColorHint="@color/hintTextColor"
-                        android:hint="@string/mine_plz_input_password"
-                        android:textSize="14sp"
-
-                        android:singleLine="true"
-                        android:maxLength="18"
-                        android:inputType="textPassword"
-                        />
-                </RelativeLayout>
-
-            </RelativeLayout>
-
-
-            <TextView
-                android:id="@+id/mTvLogin"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_dimen"
-                android:layout_marginLeft="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_20"
-                android:layout_marginTop="@dimen/margin_16"
-                android:textSize="16sp"
-                android:textColor="@color/color_white"
-                android:gravity="center"
-                android:text="@string/mine_login"
-                android:background="@drawable/bg_main_solid_5dp_coner"
-                />
-
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginLeft="20dp"
-                    android:id="@+id/mTvRegist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:padding="10dp"
-                    android:text="@string/mine_register"
-                    android:textColor="#5390FF"
-                    android:paddingTop="16dp"
-                    android:background="@drawable/bg_ripple_selector"
-                    />
-                <TextView
-                    android:id="@+id/mTvUseForgetPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:text="@string/mine_forget_password"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="20dp"
-                    android:textColor="#5390FF"
-                    android:maxWidth="120dp"
-                    android:paddingTop="6dp"
-                    android:padding="10dp"
-                    android:background="@drawable/bg_ripple_selector"
-
-                    />
-            </RelativeLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                />
-
-        </LinearLayout>
-
-
-
-    </androidx.core.widget.NestedScrollView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

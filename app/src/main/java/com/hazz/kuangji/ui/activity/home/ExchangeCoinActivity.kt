@@ -56,13 +56,13 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
         tv_u_f.text = "$uStr  转  $fStr"
         tv_usdt.text = uStr
         tv_price_usdt_title.text = "$uStr 单价："
-        tv_price_usdt.text = mData.usdtPrice
+        tv_price_usdt.text ="￥"+ mData.usdtPrice
         tv_count_usdt_title.text = "$uStr 数量："
         tv_count_usdt.text = mData.usdtNum
 
         tv_fil.text = fStr
         tv_price_fil_title.text = "$fStr 单价："
-        tv_price_fil.text = mData.filPrice
+        tv_price_fil.text = "￥"+mData.filPrice
         tv_count_fil_title.text = "$fStr 数量："
         tv_count_fil.text = mData.filNum
 
@@ -114,13 +114,13 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
                 tv_u_f.text = "$fStr  转  $uStr"
                 tv_usdt.text = "$fStr"
                 tv_price_usdt_title.text = "$fStr 单价："
-                tv_price_usdt.text = mData.filPrice
+                tv_price_usdt.text = "￥"+mData.filPrice
                 tv_count_usdt_title.text = "$fStr 数量："
                 tv_count_usdt.text = mData.filNum
 
                 tv_fil.text = "$uStr"
-                tv_price_fil_title.text = "$uStr 单价："
-                tv_price_fil.text = mData.usdtPrice
+                tv_price_fil_title.text = "$uStr 单价：￥"
+                tv_price_fil.text = "￥"+mData.usdtPrice
                 tv_count_fil_title.text = "$uStr 数量："
                 tv_count_fil.text = mData.usdtNum
             } else {
@@ -131,13 +131,13 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
                 tv_u_f.text = "$uStr  转  $fStr"
                 tv_usdt.text = "$uStr"
                 tv_price_usdt_title.text = "$uStr 单价："
-                tv_price_usdt.text = mData.usdtPrice
+                tv_price_usdt.text = "￥"+mData.usdtPrice
                 tv_count_usdt_title.text = "$uStr 数量："
                 tv_count_usdt.text = mData.usdtNum
 
                 tv_fil.text = "$fStr"
                 tv_price_fil_title.text = "$fStr 单价："
-                tv_price_fil.text = mData.filPrice
+                tv_price_fil.text = "￥"+mData.filPrice
                 tv_count_fil_title.text = "$fStr 数量："
                 tv_count_fil.text = mData.filNum
             }

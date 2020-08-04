@@ -40,27 +40,18 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
         type = intent.getIntExtra("type", 0)
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(if (type == 1) "买币明细" else "卖币明细")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
+                .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
+        rc_list.setBackgroundResource(R.color.color_gray_bg)
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = ExchangeRecordAdapter(R.layout.item_exchange_record, null)
         rc_list.adapter = mAdapter
         mAdapter?.bindToRecyclerView(rc_list)
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         mAdapter?.setOnItemClickListener { adapter, view, position ->
             if (mDate[position].is_del==1)
             {

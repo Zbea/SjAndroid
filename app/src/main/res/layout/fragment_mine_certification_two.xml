@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="姓        名："
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
                 <EditText
                     android:id="@+id/et_name"
@@ -57,7 +57,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
 
             </LinearLayout>
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:text="身份证号："
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
                 <EditText
                     android:id="@+id/et_id_code"
@@ -84,7 +84,7 @@
                     android:digits="0123456789xyzXYZ"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
 
             </LinearLayout>
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:text="现居住地："
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
                 <EditText
                     android:id="@+id/et_address"
@@ -109,7 +109,7 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
 
             </LinearLayout>
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:text="邮        箱："
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
                 <EditText
                     android:id="@+id/et_email"
@@ -135,7 +135,7 @@
                     android:inputType="textEmailAddress"
                     android:layout_marginLeft="@dimen/dp_10"
                     android:textColor="@color/color_666666"
-                    android:textSize="@dimen/_14_text_size"/>
+                    android:textSize="@dimen/sp_14"/>
 
 
             </LinearLayout>
@@ -147,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
                 android:text="下一步"
-                android:textSize="@dimen/_16_text_size"
+                android:textSize="@dimen/sp_16"
                 android:textColor="@color/color_white"
                 android:background="@drawable/bg_main_solid_5dp_coner"/>
 

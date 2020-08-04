@@ -14,7 +14,7 @@
         android:text="@string/safe_check"
         android:textSize="15sp"
         android:visibility="gone"
-        android:textColor="@color/commonTextColor"
+        android:textColor="@color/color_333333"
         />
 
 
@@ -28,11 +28,11 @@
         android:hint="@string/input_deal_password"
         android:textColorHint="@color/color_hint"
         android:textSize="14sp"
-        android:paddingLeft="@dimen/margin_14"
-        android:layout_marginLeft="@dimen/margin_14"
-        android:layout_marginRight="@dimen/margin_14"
+        android:paddingLeft="@dimen/dp_14"
+        android:layout_marginLeft="@dimen/dp_14"
+        android:layout_marginRight="@dimen/dp_14"
         android:layout_centerVertical="true"
-        android:textColor="@color/commonTextColor"
+        android:textColor="@color/color_333333"
         android:inputType="textPassword"
         android:singleLine="true"
         />

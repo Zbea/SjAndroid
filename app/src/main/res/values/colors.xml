@@ -6,14 +6,11 @@
 
 
     <color name="color_white">#FFFFFF</color>
-    <color name="color_black">#000000</color>
     <color name="color_translucent">#00000000</color>
-    <color name="commonTextColor">#444153</color>
+
     <color name="color_yellow">#F0BC33</color>
     <color name="text_color_edit_hint">#576c97</color>
-    <color name="part_line_color">#293559</color>
     <color name="redF4">#FF6254</color>
-    <color name="dilaog_btn_color">#9A66FF</color>
     <color name="blue">#5390FF</color>
     <color name="hintTextColor">#aa999999</color>
     <color name="home_text">#333333</color>

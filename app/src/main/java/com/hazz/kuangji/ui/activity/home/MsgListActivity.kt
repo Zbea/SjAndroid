@@ -46,8 +46,7 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
-
+        val leftRightOffset = DensityUtil.dp2px(15f)
         rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
     }

@@ -23,7 +23,7 @@
                 android:background="@drawable/dialog_bg_top"
                 android:singleLine="true"
                 android:text="@string/tips"
-                android:textColor="@color/commonTextColor"
+                android:textColor="@color/color_333333"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
@@ -56,7 +56,7 @@
             android:id="@+id/line_part"
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/part_line_color" />
+            android:background="@color/color_line" />
 
         <LinearLayout
             android:id="@+id/ll_bt"
@@ -75,14 +75,14 @@
                 android:background="@drawable/dialog_bg"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
-                android:textColor="@color/blue" />
+                android:textColor="@color/color_999999" />
 
             <View
                 android:id="@+id/view1"
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@color/part_line_color" />
+                android:background="@color/color_line" />
 
             <Button
                 android:id="@+id/btn_confirm"
@@ -92,7 +92,7 @@
                 android:layout_weight="50"
                 android:text="@string/confirm"
                 android:textAllCaps="false"
-                android:textColor="@color/blue" />
+                android:textColor="@color/color_main" />
 
         </LinearLayout>
 

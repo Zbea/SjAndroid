@@ -24,7 +24,7 @@
             android:id="@+id/invitedCodeTextView"
             android:layout_width="wrap_content"
             android:textColor="@color/color_white"
-            android:textSize="@dimen/_14_text_size"
+            android:textSize="@dimen/sp_14"
             android:layout_centerHorizontal="true"
             android:text="已邀请好友0人"
             android:layout_marginTop="39dp"
@@ -76,7 +76,7 @@
             android:layout_height="@dimen/btn_dimen"
             android:text="复制分享链接"
             android:textColor="@color/color_main"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:background="@drawable/bg_main_stroke_5dp_coner"
             />
@@ -88,7 +88,7 @@
             android:layout_marginLeft="@dimen/space_dimen"
             android:text="保存二维码"
             android:textColor="@color/color_white"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:gravity="center"
             android:background="@drawable/bg_main_solid_5dp_coner"
             />

@@ -322,7 +322,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/exchange_pay_introduce"
                 android:textSize="@dimen/sp_12"
-                android:layout_marginBottom="@dimen/margin_20"
+                android:layout_marginBottom="@dimen/dp_20"
                 android:textColor="@color/color_999999"/>
 
         </LinearLayout>

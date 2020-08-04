@@ -2,16 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_white"
+    android:background="@color/color_bg"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="@dimen/space_dimen">
+    android:paddingLeft="@dimen/space_dimen"
+    android:paddingRight="@dimen/space_dimen"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_10">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:orientation="vertical"
         >
 
@@ -25,21 +27,36 @@
                 android:layout_height="wrap_content"
                 android:text="订单编号："
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_333333"/>
 
             <TextView
                 android:id="@+id/tv_order_number"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="111111111111111111"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_333333"/>
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="未付款"
+                android:textStyle="bold"
+                android:textColor="@color/redF4"
+                android:textSize="14sp"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/color_line"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -51,8 +68,9 @@
 
             <TextView
                 android:id="@+id/tv_order_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="2020-6-4 10:47"
@@ -74,8 +92,9 @@
 
             <TextView
                 android:id="@+id/tv_order_number_num"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="10"
@@ -90,15 +109,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="总额        ："
+                android:text="总额:"
                 android:textColor="@color/color_999999"
                 android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_order_money"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/sp_14"
+                android:gravity="right"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text="￥600"
                 android:textColor="@color/redF4"/>
@@ -114,14 +134,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="原因        ："
+                android:text="原因："
                 android:textColor="@color/color_999999"
                 android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_reason"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right"
                 android:textSize="@dimen/sp_14"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:text=""
@@ -129,13 +150,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="未付款"
-        android:textColor="@color/redF4"
-        android:textSize="20sp"/>
+
 
 
 </LinearLayout>

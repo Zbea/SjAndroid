@@ -76,7 +76,7 @@ public class SideBar extends View {
         // 设置字母高度
         float letterHeight = (height * 1f) / b.length;
         for (int i = 0; i < b.length; i++) {
-            paint.setColor(context.getResources().getColor(R.color.commonTextColor));
+            paint.setColor(context.getResources().getColor(R.color.color_333333));
             paint.setTypeface(Typeface.DEFAULT_BOLD);
             // 抗锯齿
             paint.setAntiAlias(true);

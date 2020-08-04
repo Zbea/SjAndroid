@@ -86,16 +86,12 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
     }
 
     override fun initView() {
-        tv_tologin.setOnClickListener {
+        iv_back.setOnClickListener {
             finish()
         }
     }
 
     override fun start() {
-//        mTvAreaCode.setOnClickListener {
-//            startActivityForResult(Intent(this, CountryActivity::class.java), 1005)
-//
-//        }
         tv_get_code.setOnClickListener {
             if (TextUtils.isEmpty(mEtPhoneOrEmial.text.toString())) {
                 SToast.showText(getString(R.string.mine_plz_input_phone))

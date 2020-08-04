@@ -33,7 +33,7 @@
             android:id="@+id/ll_count_usdt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="@dimen/margin_20"
+            android:layout_marginTop="@dimen/dp_20"
             android:padding="@dimen/dp_10"
             android:orientation="horizontal"
             android:gravity="center_vertical"
@@ -74,7 +74,7 @@
                 android:id="@+id/tv_price_usdt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
+                android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_12"
                 android:text="USDT单价："
                 />
@@ -83,7 +83,7 @@
                 android:id="@+id/tv_price_usdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/redF4"
                 android:textSize="@dimen/sp_12"
                 android:text="￥0"
                 />
@@ -99,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_dimen"
-                    android:textColor="@color/color_999999"
+                    android:textColor="@color/color_666666"
                     android:text="USDT数量："
                     android:textSize="@dimen/sp_12"
                     />
@@ -108,7 +108,7 @@
                     android:id="@+id/tv_count_usdt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_999999"
                     android:text="0"
                     android:textSize="@dimen/sp_12"
                     />
@@ -185,7 +185,7 @@
                 android:id="@+id/tv_price_fil_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
+                android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_12"
                 android:text="FIL单价："
                 />
@@ -194,7 +194,7 @@
                 android:id="@+id/tv_price_fil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/redF4"
                 android:textSize="@dimen/sp_12"
                 android:text="￥0"
                 />
@@ -209,7 +209,7 @@
                     android:id="@+id/tv_count_fil_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_999999"
+                    android:textColor="@color/color_666666"
                     android:layout_marginLeft="@dimen/space_dimen"
                     android:text="FIL数量："
                     android:textSize="@dimen/sp_12"
@@ -219,7 +219,7 @@
                     android:id="@+id/tv_count_fil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_999999"
                     android:textSize="@dimen/sp_12"
                     android:text="0"
                     />
