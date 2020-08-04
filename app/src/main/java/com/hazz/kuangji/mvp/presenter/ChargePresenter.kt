@@ -21,6 +21,7 @@ class ChargePresenter(view: IContractView.ChargeView) : BasePresenter<IContractV
 //
 //        )
 
+
         val login = RetrofitManager.service.charge(coin)
 
         doRequest(login, object : Callback<Charge>(view) {
