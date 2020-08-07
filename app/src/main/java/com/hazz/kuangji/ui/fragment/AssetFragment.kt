@@ -4,7 +4,8 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
-import android.widget.LinearLayout
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.Constants
@@ -16,8 +17,7 @@ import com.hazz.kuangji.mvp.model.InComing
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
-import com.hazz.kuangji.mvp.presenter.ShouyiPresenter
-import com.hazz.kuangji.ui.activity.MainActivity
+import com.hazz.kuangji.mvp.presenter.IncomingPresenter
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
@@ -29,7 +29,6 @@ import com.hazz.kuangji.ui.adapter.AssetAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
-import kotlinx.android.synthetic.main.activity_incoming.*
 import kotlinx.android.synthetic.main.fragment_asset.*
 import kotlinx.android.synthetic.main.fragment_asset.iv_msg
 import kotlinx.android.synthetic.main.fragment_asset.recycle_view
@@ -39,7 +38,6 @@ import kotlinx.android.synthetic.main.fragment_asset.tv_shouyi
 import kotlinx.android.synthetic.main.fragment_asset.tv_static
 import kotlinx.android.synthetic.main.fragment_asset.tv_touzi
 import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
-import kotlinx.android.synthetic.main.fragment_mill.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -54,7 +52,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     private var mAdapter: AssetAdapter? = null
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
     private var incoming: InComing? = null
-    private var mShouyiPresenter: ShouyiPresenter = ShouyiPresenter(this)
+    private var mIncomingPresenter: IncomingPresenter = IncomingPresenter(this)
 
     override fun getCertification(certification: Certification) {
         sl_refresh?.isRefreshing = false
@@ -68,6 +66,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         if (mView==null || tv_copy==null||tv_shouyi==null)return
         myAsset = msg
         tv_copy?.text = msg.wallet_address
+
         if (msg.investment != null) {
             tv_touzi?.text = BigDecimalUtil.mul(msg.investment.toString(), "1", 8)
         }
@@ -139,6 +138,12 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             lazyLoad()
         }
 
+        if(SPUtil.getBoolean("hide"))cb.isChecked = true
+
+        iv_msg.setOnClickListener {
+            startActivity(Intent(activity, MsgListActivity::class.java))
+        }
+
         tv_tibi.setOnClickListener {
             if (myAsset != null) {
                 when (mCertification?.status) {
@@ -151,8 +156,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
                     else -> {
                         SToast.showText("尚未实名认证，请前往实名认证")
                         Handler().postDelayed(Runnable {
-                            val intent = Intent(activity, MineCertificationActivity::class.java)
-                            startActivity(intent)
+                            startActivity(Intent(activity, MineCertificationActivity::class.java))
                         }, 500)
                     }
                 }
@@ -203,9 +207,30 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             startActivity(Intent(activity, MillRecordActivity::class.java))
         }
 
-        iv_msg.setOnClickListener {
-            startActivity(Intent(activity, MsgListActivity::class.java))
+        cb.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked)
+            {
+                SPUtil.putBoolean("hide",true)
+                tv_touzi.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_static.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
+            }
+            else
+            {
+                SPUtil.putBoolean("hide",false)
+                tv_touzi.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_shouyi.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_static.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_share.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_yesterday.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            }
+            mAdapter?.notifyDataSetChanged()
         }
+
 
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
         mAdapter = AssetAdapter(R.layout.item_asset, null)
@@ -218,8 +243,8 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
 
     override fun lazyLoad() {
-        mAssetPresenter.myAsset()
-        mShouyiPresenter.shouyi(false)
+        mAssetPresenter.myAsset(false)
+        mIncomingPresenter.shouyi(false)
         mCertificationInfoPresenter.getCertification()
     }
 

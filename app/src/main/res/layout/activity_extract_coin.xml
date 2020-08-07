@@ -119,7 +119,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:background="@null"
-                    android:hint="@string/zuidatiqu"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
                     android:singleLine="true"

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color">
+    android:background="@color/color_bg">
 
     <include
         android:id="@+id/mToolBar"
@@ -14,7 +14,6 @@
         android:layout_height="wrap_content"
         android:padding="15dp"
         android:layout_marginTop="@dimen/space_dimen"
-        android:background="@color/color_white"
         android:orientation="horizontal">
 
         <TextView
@@ -34,11 +33,16 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/space_dimen"
+        android:layout_marginRight="@dimen/space_dimen"
+        android:background="@color/color_line"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_white"
-        android:layout_marginTop="1dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"

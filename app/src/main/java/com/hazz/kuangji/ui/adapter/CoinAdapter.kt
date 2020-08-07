@@ -26,6 +26,10 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             helper.setText(R.id.tv_yesterday, item.yesterday+"FIL")
         }
 
+        if (item.product.contains("整机"))
+        {
+            helper.setImageResource(R.id.iv_total,R.mipmap.icon_mill_total)
+        }
 
         when (item.state) {
             "1" ->{

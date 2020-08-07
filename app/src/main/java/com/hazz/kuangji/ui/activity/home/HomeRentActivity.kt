@@ -1,11 +1,14 @@
 package com.hazz.kuangji.ui.activity.home
 
 import android.content.Intent
+import android.os.Handler
 import android.text.Editable
 import android.text.Html
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import androidx.appcompat.widget.Toolbar
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -17,6 +20,7 @@ import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.ui.activity.RuleActivity
+import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
@@ -31,6 +35,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     private var id = ""
     private var price = ""
     private var amount:String="0"
+    private var count="0"
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var mCertificationInfoPresenter: CertificationInfoPresenter = CertificationInfoPresenter(this)
 
@@ -50,7 +55,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         if (!assets.isNullOrEmpty()) {
             for (a in assets) {
                 if (a.coin == "USDT") {
-                    tv_yue.text = "账户余额:" + a.balance
+                    count=a.balance
+
                 }
             }
         }
@@ -84,7 +90,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun initData() {
-        mAssetPresenter.myAsset()
+//        mAssetPresenter.myAsset(true)
         mCertificationInfoPresenter.getCertification()
     }
 
@@ -105,6 +111,9 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         //tv_suanli.text = produce!!.power
         tv_time.text = produce?.round + "天"
         rate = produce?.rate.toString()
+        count=produce?.user_balance.toString()
+        tv_yue.text = "账户余额:$count"
+        produce?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+it,iv_product) }
 
         if (produce?.rent_type == "1")
         {
@@ -119,6 +128,9 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
     }
 
+    /**
+     * 计算收益
+     */
     private fun setEarningsView(s:String)
     {
         val div = BigDecimalUtil.mul(s, rate, 8)
@@ -145,14 +157,22 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
                 if (produce?.rent_type.equals("0"))
                 {
-                    if (et_num.text.toString().toDouble()<100)
+                    if (et_num.text.toString().toDouble()<Constants.BUY_MIN)
                     {
-                        SToast.showText("最低充值100USDT")
+                        SToast.showText("最低购买${Constants.BUY_MIN}USDT")
+                        return@setOnClickListener
+                    }
+                    if (et_num.text.toString().toDouble()>count.toDouble())
+                    {
+                        SToast.showTextLong("账户余额不足，请前往充值")
+                        Handler().postDelayed(Runnable {
+                            startActivity(Intent(this,ExchangeBuyActivity::class.java))
+                        }, 500)
                         return@setOnClickListener
                     }
                     if (et_num.text.toString().toDouble()>amount.toDouble())
                     {
-                        SToast.showText("充值不能超过$amount USDT")
+                        SToast.showText("购买数量不能超过$amount USDT")
                         return@setOnClickListener
                     }
                 }
@@ -176,13 +196,9 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                             .setCancelListener { }
                             .setForgetListener {
                                 startActivity(Intent(this, MineExchangePwdActivity::class.java))
-
                             }
-
                             .setConfirmListener { _, password ->
-
                                 mHomePresenter.zuyong(coin, id, password, et_num.text.toString(), et_name.text.toString(), et_phone.text.toString(), et_address.text.toString())
-
                             }.setCancelListener {
 
                             }

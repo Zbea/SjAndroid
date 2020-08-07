@@ -25,7 +25,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="51dp"
+            android:layout_height="@dimen/toolbar_dimen"
             android:background="@color/color_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal"

@@ -38,11 +38,10 @@ class ScanCoinAddressActivity : AppCompatActivity(), QRCodeView.Delegate {
         mScanView = findViewById(R.id.mScanView)
         mScanView.setDelegate(this)
         ToolBarCustom.newBuilder(mToolbar)
-            .setTitle("扫一扫")
-                .setTitleColor(R.color.color_white)
+            .setTitle("扫一扫").setTitleColor(resources.getColor( R.color.color_white))
             .setLeftIcon(R.mipmap.icon_back_white)
-            .setRightText("相册")
-                .setRightTextColor(R.color.color_white)
+            .setRightText("相册").setRightTextColor(resources.getColor( R.color.color_white))
+                .setToolBarBgRescource(resources.getColor( R.color.color_translucent))
             .setRightTextIsShow(true)
             .setOnLeftIconClickListener { finish() }
 

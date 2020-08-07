@@ -21,6 +21,7 @@
             android:id="@+id/tv_u_f"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_dimen"
             android:textColor="@color/color_333333"
             android:textSize="@dimen/sp_16"
             android:text="USDT 转 FIL"
@@ -33,11 +34,11 @@
             android:id="@+id/ll_count_usdt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_10"
             android:padding="@dimen/dp_10"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_edit_main">
+            >
 
             <EditText
                 android:id="@+id/et_count_usdt"
@@ -62,6 +63,10 @@
 
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_main"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -151,7 +156,7 @@
             android:padding="@dimen/dp_10"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_edit">
+            android:background="@drawable/bg_line_bottom">
 
             <TextView
                 android:id="@+id/tv_num_fil"

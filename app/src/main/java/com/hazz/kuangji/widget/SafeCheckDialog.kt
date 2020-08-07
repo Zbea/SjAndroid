@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import com.hazz.kuangji.R
+import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.SToast
 
 
@@ -32,7 +33,7 @@ class SafeCheckDialog(var context: Context) {
 
 
     private fun createDialog(context: Context) {
-        mDialog = Dialog(context)
+        mDialog = Dialog(context,R.style.StyleDialogCustom)
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_safe_check, null)
         mTvTitle = view.findViewById(R.id.mTvCheckTitle)
@@ -47,11 +48,8 @@ class SafeCheckDialog(var context: Context) {
             mEt!!.text=null
         }
         val window = mDialog.window
-        //要加上设置背景，否则dialog宽高设置无作用
-        window!!.setBackgroundDrawableResource(android.R.color.transparent)
-        window.decorView.setPadding(0, 0, 0, 0) //消除边距
         val layoutParams = window.attributes
-        layoutParams.width = 280
+        layoutParams.width = DensityUtils.dip2px(context,260f)
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.gravity = Gravity.CENTER
         window.attributes = layoutParams

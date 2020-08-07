@@ -1,36 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/color_main</item>
+        <item name="colorAccent">@color/color_main</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="android:windowBackground">@color/color_white</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    <style name="AppLaunchTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
+    <style name="AppLaunchTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@mipmap/icon_login_bg</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-
-    <!-- 设置Dialog弹出样式 -->
-    <style name="SubmitDialog" parent="android:Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">false</item>
-        <item name="android:windowBackground">@color/color_translucent</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <!--设置全屏-->
-        <item name="android:windowFullscreen">true</item>
-    </style>
     <style name="rb_style">
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
@@ -41,7 +26,7 @@
         <item name="android:textColor">@color/selector_main_color</item>
     </style>
 
-    <style name="mycustom_dialog" parent="@android:style/Theme.Holo.DialogWhenLarge">
+    <style name="StyleDialogCustom" >
         <!-- 边框 -->
         <item name="android:windowFrame">@null</item>
         <!-- 是否浮现在activity之上 -->
@@ -51,15 +36,13 @@
         <!-- 半透明 -->
         <item name="android:windowIsTranslucent">true</item>
         <!-- 背景 -->
-        <item name="android:windowBackground">@color/color_white</item>
+        <item name="android:windowBackground">@color/color_translucent</item>
         <!-- 对话框是否有遮盖 -->
         <item name="android:windowContentOverlay">@null</item>
-        <!-- dialog外部分变黑/模糊 -->
-        <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="mystyle" parent="android:Animation">
+    <style name="styleAnim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/dialog_enter</item>  <!-- 进入时的动画 -->
         <item name="android:windowExitAnimation">@anim/dialog_exit</item>    <!-- 退出时的动画 -->
     </style>

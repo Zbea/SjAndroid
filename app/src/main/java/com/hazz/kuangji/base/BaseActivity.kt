@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import android.util.Log
+import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
@@ -28,10 +29,10 @@ import pub.devrel.easypermissions.EasyPermissions
 
 
 abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, BaseView {
+
     /**
      * 多种状态的 View 的切换
      */
-
     var permissionsnew: RxPermissions? = null
     var mDialog: ProgressDialog? = null
     var mSaveState:Bundle?=null

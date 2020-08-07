@@ -12,51 +12,16 @@
         android:layout_height="178dp"
         android:background="@drawable/bg_main_gradient" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <include
-            android:id="@+id/mToolBar"
-            layout="@layout/toolbar" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/iv_head"
-                android:text="总收益(USDT/FIL)"
-                android:textColor="@color/color_white"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tv_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textColor="@color/color_white"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
+    <include
+        android:id="@+id/mToolBar"
+        layout="@layout/toolbar" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/mToolBar"
         android:layout_marginLeft="@dimen/space_dimen"
-        android:layout_marginTop="140dp"
         android:layout_marginRight="@dimen/space_dimen"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp">
@@ -68,12 +33,44 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space_dimen"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/iv_head"
+                    android:text="总收益(USDT/FIL)"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="0"
+                    android:textColor="@color/color_main"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_15"
+                    android:layout_margin="@dimen/dp_10"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -84,7 +81,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/tv1"
                         android:text="分享收益(USDT)"
-                        android:textColor="@color/home_text"
+                        android:textColor="@color/color_999999"
                         android:textSize="12sp" />
 
                     <TextView
@@ -100,16 +97,11 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0.01dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="#F2F6FF" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_15"
+                    android:layout_margin="@dimen/dp_10"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -120,7 +112,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/tv1"
                         android:text="业绩收益(FIL)"
-                        android:textColor="@color/home_text"
+                        android:textColor="@color/color_999999"
                         android:textSize="12sp" />
 
                     <TextView
@@ -137,11 +129,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.01dp"
-                android:layout_gravity="center_vertical"
-                android:background="#F2F6FF" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,7 +139,7 @@
 
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_15"
+                    android:layout_margin="@dimen/dp_10"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -162,7 +150,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/tv1"
                         android:text="团队收益(FIL)"
-                        android:textColor="@color/home_text"
+                        android:textColor="@color/color_999999"
                         android:textSize="12sp" />
 
                     <TextView
@@ -178,16 +166,11 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0.01dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="#F2F6FF" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dp_15"
+                    android:layout_margin="@dimen/dp_10"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -198,7 +181,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/tv1"
                         android:text="昨日收益(USDT/FIL)"
-                        android:textColor="@color/home_text"
+                        android:textColor="@color/color_999999"
                         android:textSize="12sp" />
 
                     <TextView
@@ -223,7 +206,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll"
-        android:layout_marginTop="10dp"
         app:tabIndicatorColor="@color/color_main"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/color_main"

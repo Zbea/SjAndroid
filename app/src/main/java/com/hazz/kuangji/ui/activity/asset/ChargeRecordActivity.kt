@@ -43,29 +43,16 @@ class ChargeRecordActivity : BaseActivity(), IContractView.ChargeView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.charge_record))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
-
+                .setOnLeftIconClickListener {  finish() }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = ChargeRecordAdapter(R.layout.item_extract_coin, null)
         rc_list.adapter = mAdapter
-        mAdapter!!.bindToRecyclerView(rc_list)
-        mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
-
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        mAdapter?.bindToRecyclerView(rc_list)
+        mAdapter?.setEmptyView(R.layout.fragment_empty)
+        val leftRightOffset = DensityUtil.dp2px(15f)
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
     }
     override fun start() {

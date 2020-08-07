@@ -19,7 +19,7 @@ class MillRecordAdapter (layoutResId: Int, data: List<Mingxi.ListBean>?) : BaseQ
 
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_time, item.create_at)
-//        helper.setText(R.id.tv_number, "矿机编号："+item.miner_number)
+        helper.setText(R.id.tv_number, "矿机编号："+item.miner_number)
         helper.setText(R.id.tv_amount, "+"+BigDecimal(BigDecimalUtil.mul(item.amount,"1",8))+" FIL")
 
     }

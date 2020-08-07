@@ -8,7 +8,7 @@ import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 
 
-class TiBiPresenter(view: IContractView.TibiView) : BasePresenter<IContractView.TibiView>(view) {
+class ExtractCoinPresenter(view: IContractView.TibiView) : BasePresenter<IContractView.TibiView>(view) {
 
     fun tibi(amount: String, coin: String, trade_password: String, external_wallet_address: String
     ) {

@@ -7,7 +7,7 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.InComing
-import com.hazz.kuangji.mvp.presenter.ShouyiPresenter
+import com.hazz.kuangji.mvp.presenter.IncomingPresenter
 import com.hazz.kuangji.ui.adapter.IncomingAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.StatusBarUtil
@@ -24,7 +24,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
     private var adapter: IncomingAdapter? = null
     private var incoming: InComing? = null
-    private var mShouyiPresenter: ShouyiPresenter = ShouyiPresenter(this)
+    private var mIncomingPresenter: IncomingPresenter = IncomingPresenter(this)
     private var position=0
 
     override fun inComing(msg: InComing) {
@@ -138,7 +138,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
     override fun onResume() {
         super.onResume()
-        mShouyiPresenter.shouyi(true)
+        mIncomingPresenter.shouyi(true)
     }
 
 }

@@ -29,67 +29,58 @@
                 <ImageView
                     android:id="@+id/iv_product"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="84dp"
                     android:src="@mipmap/pic_wk" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 android:padding="@dimen/space_dimen">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="矿机总价值"
-                        android:textColor="@color/color_666666"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="合同周期"
-                        android:textColor="@color/color_666666"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_5">
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="总价值："
+                        android:textColor="@color/color_999999"
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/tv_amount"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:text="0USDT"
                         android:textColor="@color/redF4"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="合同周期:"
+                        android:textColor="@color/color_999999"
                         android:textSize="14sp" />
 
 
                     <TextView
                         android:id="@+id/tv_time"
-                        android:layout_width="0dp"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="0年"
-                        android:textColor="@color/color_666666"
+                        android:textColor="@color/color_333333"
                         android:textSize="14sp" />
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -113,8 +104,8 @@
                         android:singleLine="true"
                         android:text="投入金额"
                         android:textColor="@color/color_333333"
-                        android:textStyle="bold"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_yuji"
@@ -131,20 +122,18 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="@dimen/dp_10">
+                    android:layout_height="45dp">
 
                     <EditText
                         android:id="@+id/et_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_edit"
+                        android:background="@drawable/bg_line_bottom"
                         android:hint="请输入数量（最低100USDT）"
                         android:inputType="numberDecimal"
-                        android:paddingLeft="15dp"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textColorHint="@color/hintTextColor"
+                        android:textColorHint="@color/color_hint"
                         android:textSize="14sp" />
 
                     <TextView
@@ -152,7 +141,6 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="15dp"
                         android:singleLine="true"
                         android:text="USDT"
                         android:textColor="@color/color_666666"
@@ -170,10 +158,6 @@
                     android:textColor="@color/color_main"
                     android:textSize="12sp" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_dimen"
-                android:background="@color/color_gray_bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,8 +165,8 @@
                 android:background="@color/color_white"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/space_dimen"
-                android:paddingRight="@dimen/space_dimen"
                 android:paddingTop="@dimen/dp_10"
+                android:paddingRight="@dimen/space_dimen"
                 android:paddingBottom="@dimen/dp_10">
 
                 <TextView
@@ -190,72 +174,102 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="个人信息填写"
-                    android:textStyle="bold"
                     android:textColor="@color/color_333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/et_name"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="9dp"
-                    android:background="@drawable/bg_edit"
-                    android:hint="真实姓名:"
-                    android:paddingLeft="15dp"
-                    android:singleLine="true"
-                    android:textColor="@color/color_666666"
-                    android:textColorHint="@color/color_hint"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/et_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/bg_edit"
-                    android:hint="手机号码:"
-                    android:paddingLeft="15dp"
-                    android:singleLine="true"
-                    android:textColor="@color/color_666666"
-                    android:textColorHint="@color/color_hint"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="真实姓名："
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_12" />
 
-                <EditText
-                    android:id="@+id/et_address"
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/bg_edit"
-                    android:gravity="top"
-                    android:hint="收货地址:"
-                    android:paddingLeft="15dp"
-                    android:paddingTop="@dimen/dp_10"
-                    android:singleLine="true"
-                    android:textColor="@color/color_666666"
-                    android:textColorHint="@color/color_hint"
-                    android:textSize="14sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联系方式："
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_12" />
+
+                    <EditText
+                        android:id="@+id/et_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收货地址："
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_12" />
+
+                    <EditText
+                        android:id="@+id/et_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:singleLine="true"
                     android:text="租用成功公司会快递一份租用合同，请务必填写真实准确信息"
                     android:textColor="@color/redF4"
                     android:textSize="12sp" />
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_dimen"
-                android:background="@color/color_gray_bg"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/space_dimen"
-                android:paddingRight="@dimen/space_dimen"
                 android:paddingTop="@dimen/dp_10"
+                android:paddingRight="@dimen/space_dimen"
                 android:paddingBottom="@dimen/dp_10">
 
                 <TextView
@@ -263,9 +277,9 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="矿机简介"
-                    android:textStyle="bold"
                     android:textColor="@color/color_333333"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tv_info"
@@ -286,9 +300,9 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/color_line"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"/>
+        android:layout_marginBottom="80dp"
+        android:background="@color/color_line" />
 
     <LinearLayout
         android:layout_width="match_parent"

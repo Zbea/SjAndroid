@@ -114,7 +114,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
         sl_refresh=activity?.findViewById(R.id.sl_refresh_mine)
         sl_refresh?.isRefreshing=true
-        sl_refresh?.setColorSchemeResources(R.color.blue)
+        sl_refresh?.setColorSchemeResources(R.color.color_main)
         sl_refresh?.setOnRefreshListener {
             lazyLoad()
         }

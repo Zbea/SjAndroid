@@ -1,7 +1,6 @@
 package com.hazz.kuangji.ui.adapter
 
 
-import android.graphics.Color
 import android.view.View
 import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -18,15 +17,15 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>
 
         helper.setText(R.id.tv_name, item.coin)
         helper.setText(R.id.tv_time, item.create_at)
-        helper.setText(R.id.tv_amount, item.amount)
+        helper.setText(R.id.tv_amount, "-"+item.amount)
         when(item.status){
             "pass"->{
                 helper.setText(R.id.tv_state, "已完成")
-                helper.setTextColor(R.id.tv_state, Color.parseColor("#B3BED9"))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
             }
             "wait"->{
                 helper.setText(R.id.tv_state, "待审核")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
             }
             "fail"->{
                 helper.setText(R.id.tv_state, "审核失败")

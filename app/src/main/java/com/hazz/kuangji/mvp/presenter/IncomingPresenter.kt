@@ -9,7 +9,7 @@ import com.hazz.kuangji.net.Callback
 import com.hazz.kuangji.net.RetrofitManager
 
 
-class ShouyiPresenter(view: IContractView.ShouyiView) : BasePresenter<IContractView.ShouyiView>(view) {
+class IncomingPresenter(view: IContractView.ShouyiView) : BasePresenter<IContractView.ShouyiView>(view) {
 
     fun shouyi(boolean: Boolean) {
 

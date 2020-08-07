@@ -30,8 +30,8 @@ class LauncherActivity : AppCompatActivity() {
                 return
             }
         }
-        setContentView(R.layout.activity_launcher)
         StatusBarUtil.darkMode(this,false)
+        setContentView(R.layout.activity_launcher)
         val gifDrawable = GifDrawable(resources, R.drawable.eye)
         gifDrawable.loopCount=1
         gif.setImageDrawable(gifDrawable)

@@ -62,7 +62,6 @@ class SettingActivity : BaseActivity() {
                     }
                 })
                 builder()
-                show()
             }
         }
         rl_version.setOnClickListener {

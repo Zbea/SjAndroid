@@ -34,7 +34,6 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this)
     }
 
     override fun initView() {

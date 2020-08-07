@@ -11,65 +11,26 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.model.TibiRecord
-import com.hazz.kuangji.mvp.presenter.TiBiPresenter
+import com.hazz.kuangji.mvp.presenter.AssetPresenter
+import com.hazz.kuangji.mvp.presenter.ExtractCoinPresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.activity_extract_coin.*
 import kotlinx.android.synthetic.main.activity_extract_coin.et_num
 
 
-class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher {
-    override fun afterTextChanged(s: Editable?) {
+class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractView.AssetView,TextWatcher {
 
-    }
-
-    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-    }
-
-    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val div = BigDecimalUtil.div(rate, "100", 4)
-
-        tv_need.text = BigDecimalUtil.mul(s.toString(), div, 2)
-        tv_shiji.text = BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 2)
-    }
-
-    override fun tibiRecord(msg: TibiRecord) {
-
-    }
-
-    override fun tibiSucceed(msg: String) {
-        SToast.showText(msg)
-        finish()
-    }
-
-
-    override fun layoutId(): Int {
-        return R.layout.activity_extract_coin
-    }
-
-    override fun initData() {
-    }
-
-    private var mTiBiPresenter: TiBiPresenter = TiBiPresenter(this)
+    private var mExtractCoinPresenter: ExtractCoinPresenter = ExtractCoinPresenter(this)
+    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var myAsset: MyAsset? = null
     private var currentName = "USDT"
     private var rate = "0.5%"
     private var avaiableAmount = "0"
     private var assets: List<MyAsset.AssetsBean>? = null
 
-    override fun initView() {
-        ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle(getString(R.string.tibi))
-                .setRightText("提币记录")
-                .setRightTextIsShow(true)
-                .setOnLeftIconClickListener { finish() }
-                .setOnRightClickListener {
-                    startActivity(Intent(this, ExtractCoinRecordActivity::class.java))
-
-                }
-        myAsset = intent.getSerializableExtra("amount") as MyAsset?
+    override fun myAsset(msg: MyAsset) {
+        myAsset=msg
         assets = myAsset?.assets
-
         if (assets!=null)
         {
             for (coin in assets!!) {
@@ -87,12 +48,50 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
 
             tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
         }
+    }
 
+    override fun tibiRecord(msg: TibiRecord) {
+
+    }
+
+    override fun tibiSucceed(msg: String) {
+        SToast.showText(msg)
+        finish()
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+    }
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+    }
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+        val div = BigDecimalUtil.div(rate, "100", 4)
+        tv_need.text = BigDecimalUtil.mul(s.toString(), div, 2)
+        tv_shiji.text = BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 2)
+    }
+
+
+    override fun layoutId(): Int {
+        return R.layout.activity_extract_coin
+    }
+
+    override fun initView() {
+        ToolBarCustom.newBuilder(mToolBar as Toolbar)
+                .setTitle(getString(R.string.tibi))
+                .setRightText("提币记录")
+                .setRightTextIsShow(true)
+                .setOnLeftIconClickListener { finish() }
+                .setOnRightClickListener {
+                    startActivity(Intent(this, ExtractCoinRecordActivity::class.java))
+                }
 
         et_num.addTextChangedListener(this)
     }
 
     override fun start() {
+        mAssetPresenter.myAsset(true)
+    }
+
+    override fun initData() {
         tv_scan.setOnClickListener {
             permissionsnew!!.request(
                     Manifest.permission.CAMERA,
@@ -122,7 +121,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
                 return@setOnClickListener
             }
 
-            mTiBiPresenter.tibi(et_num.text.toString(), currentName, et_pwd.text.toString(), et_address.text.toString())
+            mExtractCoinPresenter.tibi(et_num.text.toString(), currentName, et_pwd.text.toString(), et_address.text.toString())
         }
 
         tv_all.setOnClickListener {
@@ -140,7 +139,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
                     }
                 }
             }
-            if (checkedId==R.id.rb_right)
+            else
             {
                 currentName = "FIL"
                 for (coin in assets!!) {
@@ -154,8 +153,10 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
                     }
                 }
             }
+            et_num.setText("")
+            tv_need.text="0"
+            tv_shiji.text="0"
         }
-
     }
 
 
@@ -166,5 +167,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             et_address.setText(result)
         }
     }
+
+
 
 }

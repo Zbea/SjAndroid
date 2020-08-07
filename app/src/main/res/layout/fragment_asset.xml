@@ -184,7 +184,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/dp_20"
+                                android:layout_marginRight="@dimen/dp_10"
                                 android:src="@mipmap/mine_icon_more"/>
 
                         </RelativeLayout>
@@ -220,7 +220,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/dp_20"
+                                android:layout_marginRight="@dimen/dp_10"
                                 android:src="@mipmap/mine_icon_more"/>
 
                         </RelativeLayout>
@@ -266,7 +266,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/dp_20"
+                                android:layout_marginRight="@dimen/dp_10"
                                 android:src="@mipmap/mine_icon_more"/>
 
                         </RelativeLayout>
@@ -303,7 +303,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentRight="true"
                                 android:layout_centerVertical="true"
-                                android:layout_marginRight="@dimen/dp_20"
+                                android:layout_marginRight="@dimen/dp_10"
                                 android:src="@mipmap/mine_icon_more"/>
 
                         </RelativeLayout>
@@ -367,11 +367,32 @@
                     android:visibility="gone" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:paddingRight="@dimen/space_dimen"
+                android:gravity="right|center_vertical"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="隐藏资产"
+                    android:textColor="@color/color_999999"/>
+
+            </LinearLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/dp_15">
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:layout_marginRight="@dimen/space_dimen"
+                android:layout_marginTop="@dimen/dp_10">
 
             </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>

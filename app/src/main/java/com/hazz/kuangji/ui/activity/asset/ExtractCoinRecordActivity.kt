@@ -6,7 +6,7 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.TibiRecord
-import com.hazz.kuangji.mvp.presenter.TiBiPresenter
+import com.hazz.kuangji.mvp.presenter.ExtractCoinPresenter
 import com.hazz.kuangji.ui.adapter.ExtractCoinRecordAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -31,39 +31,27 @@ class ExtractCoinRecordActivity : BaseActivity(), IContractView.TibiView {
     }
 
     override fun initData() {
-        mTiBiPresenter.tibiRecord()
+        mExtractCoinPresenter.tibiRecord()
     }
 
 
     private var mAdapter: ExtractCoinRecordAdapter?=null
 
-    private var mTiBiPresenter: TiBiPresenter = TiBiPresenter(this)
+    private var mExtractCoinPresenter: ExtractCoinPresenter = ExtractCoinPresenter(this)
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.tibi_record))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = ExtractCoinRecordAdapter(R.layout.item_extract_coin, null)
         rc_list.adapter = mAdapter
-        mAdapter!!.bindToRecyclerView(rc_list)
-        mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
-
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        mAdapter?.bindToRecyclerView(rc_list)
+        mAdapter?.setEmptyView(R.layout.fragment_empty)
+        val leftRightOffset = DensityUtil.dp2px(15f)
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
     }
     override fun start() {

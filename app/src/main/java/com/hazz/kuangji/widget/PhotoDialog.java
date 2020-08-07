@@ -24,10 +24,10 @@ public class PhotoDialog {
         this.context = context;
     }
     public PhotoDialog builder() {
-        alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.mycustom_dialog)).create();
+        alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.StyleDialogCustom)).create();
         alertDialog.show();
         Window win = alertDialog.getWindow();
-        win.setWindowAnimations(R.style.mystyle);
+        win.setWindowAnimations(R.style.styleAnim);
         win.getDecorView().setPadding(0, 0, 0, 0);
         WindowManager.LayoutParams lp = win.getAttributes();
         // 设置弹出框的宽高

@@ -11,7 +11,7 @@ import com.hazz.kuangji.net.RetrofitManager
 
 class AssetPresenter(view: IContractView.AssetView) : BasePresenter<IContractView.AssetView>(view) {
 
-    fun myAsset() {
+    fun myAsset(boolean: Boolean) {
 
         val login = RetrofitManager.service.myAsset()
 
@@ -25,7 +25,7 @@ class AssetPresenter(view: IContractView.AssetView) : BasePresenter<IContractVie
                 tBaseResult.data?.let { view.myAsset(it) }
             }
 
-        }, false)
+        }, boolean)
 
     }
 

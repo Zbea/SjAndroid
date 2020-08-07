@@ -272,8 +272,8 @@
                     android:id="@+id/iv_invite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
                     android:layout_margin="@dimen/space_dimen"
+                    android:scaleType="fitXY"
                     android:src="@mipmap/icon_home_invite_bg" />
 
                 <TextView

@@ -17,11 +17,5 @@ class ChargeRecordAdapter(layoutResId: Int, data: List<ChargeRecord.ListBean>?) 
        // helper.setText(R.id.tv_name, item.coin)
         helper.setText(R.id.tv_time, item.create_at)
         helper.setText(R.id.tv_amount, "+"+item.amount)
-
-//
-//        helper.itemView.setOnClickListener {
-//
-//            mContext.startActivity(Intent(mContext, MsgDescActivity::class.java).putExtra("message", item))
-//        }
     }
 }

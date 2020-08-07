@@ -44,7 +44,7 @@ class TouziConfirmActivity : BaseActivity(), IContractView.TouziView, IContractV
     }
 
     override fun initData() {
-        mAssetPresenter.myAsset()
+        mAssetPresenter.myAsset(true)
     }
 
     private var mPasswordDialog: SafeCheckDialog? = null
