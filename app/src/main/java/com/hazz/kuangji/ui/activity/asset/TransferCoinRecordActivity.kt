@@ -41,17 +41,6 @@ class TransferCoinRecordActivity : BaseActivity(), IContractView.ITransferCoinVi
 
         mImgBack.setOnClickListener { finish() }
 
-        rg_transfer.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId==R.id.rb_left)
-            {
-                type=1
-            }
-            if (checkedId==R.id.rb_right)
-            {
-                type=0
-            }
-            mExchangeRecordPresenter.getTransList(type)
-        }
 
         for (a in titles) {
             invitation_tab_layout.addTab(invitation_tab_layout.newTab().setText(a))

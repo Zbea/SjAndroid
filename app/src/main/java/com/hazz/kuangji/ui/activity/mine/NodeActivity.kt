@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_node.*
 
 
 class NodeActivity : BaseActivity(), IContractView.NodeView {
+
     override fun getAccount(msg: Account) {
 
     }
@@ -32,7 +33,6 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
 
     }
 
-    @SuppressLint("SetTextI18n")
     override fun getNode(msg: Node) {
         if(msg.direct!=null){
             tv_person.text=msg.direct
@@ -43,64 +43,7 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
 
         val invite_users = msg.invite_users
         if (!invite_users.isNullOrEmpty()) {
-            if (invite_users.size > 3) {
-                if (invite_users[0] != null) {
-                    type1=invite_users[0]
-                    tv_name1.text = invite_users[0].username
-                    tv_amount1.text = invite_users[0].self_purchase + "USDT"
-                }
-                if (invite_users[1] != null) {
-                    type2=invite_users[1]
-                    tv_name2.text = invite_users[1].username
-                    tv_amount2.text = invite_users[1].self_purchase + "USDT"
-                }
-                if (invite_users[2] != null) {
-                    type3=invite_users[2]
-                    tv_name3.text = invite_users[2].username
-                    tv_amount3.text = invite_users[2].self_purchase + "USDT"
-                }
-                val subList = invite_users.subList(3, invite_users.size )
-                mAdapter!!.setNewData(subList)
-            } else {
-                if(invite_users.size==1){
-                    if (invite_users[0] != null) {
-                        type1=invite_users[0]
-                        tv_name1.text = invite_users[0].username
-                        tv_amount1.text = invite_users[0].self_purchase + "USDT"
-                    }
-                }
-                if(invite_users.size==2){
-                    if (invite_users[0] != null) {
-                        type1=invite_users[0]
-                        tv_name1.text = invite_users[0].username
-                        tv_amount1.text = invite_users[0].self_purchase + "USDT"
-                    }
-                    if (invite_users[1] != null) {
-                        type2=invite_users[1]
-                        tv_name2.text = invite_users[1].username
-                        tv_amount2.text = invite_users[1].self_purchase + "USDT"
-                    }
-                }
-                if(invite_users.size==3){
-                    if (invite_users[0] != null) {
-                        type1=invite_users[0]
-                        tv_name1.text = invite_users[0].username
-                        tv_amount1.text = invite_users[0].self_purchase + "USDT"
-                    }
-                    if (invite_users[1] != null) {
-                        type2=invite_users[1]
-                        tv_name2.text = invite_users[1].username
-                        tv_amount2.text = invite_users[1].self_purchase + "USDT"
-                    }
-
-                    if (invite_users[2] != null) {
-                        type3=invite_users[2]
-                        tv_name3.text = invite_users[2].username
-                        tv_amount3.text = invite_users[2].self_purchase + "USDT"
-                    }
-                }
-
-            }
+            mAdapter?.setNewData(invite_users)
         }
 
     }
@@ -116,17 +59,11 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
 
     private var mAdapter: NodeAdapter? = null
     private var mNodePresenter: NodePresenter = NodePresenter(this)
-    private var type1: Node.InviteUsersBean?=null
-    private var type2: Node.InviteUsersBean?=null
-    private var type3: Node.InviteUsersBean?=null
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle("我的团队")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
 
     }
@@ -135,39 +72,8 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = NodeAdapter(R.layout.item_node, null)
         recycle_view.adapter = mAdapter
-        mAdapter!!.bindToRecyclerView(recycle_view)
-
-        val leftRightOffset = DensityUtil.dp2px(10f)
-
-        recycle_view.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
-
-
-        rl_1.setOnClickListener {
-            if(type1!=null){
-                startActivity(Intent(this, NodeSecondActivity::class.java).putExtra("type",type1))
-            }
-        }
-
-        rl_2.setOnClickListener {
-            if(type2!=null){
-                startActivity(Intent(this, NodeSecondActivity::class.java).putExtra("type",type2))
-
-            }
-        }
-        rl_3.setOnClickListener {
-            if(type3!=null){
-                startActivity(Intent(this, NodeSecondActivity::class.java).putExtra("type",type3))
-
-            }
-        }
+        mAdapter?.bindToRecyclerView(recycle_view)
+        mAdapter?.setEmptyView(R.layout.fragment_empty)
     }
 
 

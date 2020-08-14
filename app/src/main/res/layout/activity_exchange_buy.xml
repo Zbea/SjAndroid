@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="单价:"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/color_999999"
                 />
 
             <TextView
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="总额:"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_999999"
                     />
 
                 <TextView
@@ -214,7 +214,7 @@
                 android:text="支付宝"
                 android:layout_marginLeft="5dp"
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_999999"/>
             <ImageView
                 android:id="@+id/iv_zfb_cb"
                 android:layout_width="wrap_content"
@@ -249,7 +249,7 @@
                 android:text="银行转账"
                 android:layout_marginLeft="5dp"
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_999999"/>
             <ImageView
                 android:id="@+id/iv_bank_cb"
                 android:layout_width="wrap_content"

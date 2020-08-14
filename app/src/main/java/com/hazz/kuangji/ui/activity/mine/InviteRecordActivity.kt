@@ -10,9 +10,7 @@ import com.hazz.kuangji.mvp.model.Friends
 import com.hazz.kuangji.mvp.presenter.CoinPresenter
 import com.hazz.kuangji.ui.adapter.FriendsAdapter
 import com.hazz.kuangji.utils.*
-import com.hazz.kuangji.widget.RewardItemDeco
-import com.scwang.smartrefresh.layout.util.DensityUtil
-import kotlinx.android.synthetic.main.invitefriends_record.*
+import kotlinx.android.synthetic.main.activity_invitefriends_record.*
 
 
 class InviteRecordActivity : BaseActivity(), IContractView.CoinView {
@@ -30,7 +28,7 @@ class InviteRecordActivity : BaseActivity(), IContractView.CoinView {
     private var mCoinPresenter: CoinPresenter = CoinPresenter(this)
 
     override fun layoutId(): Int {
-        return R.layout.invitefriends_record
+        return R.layout.activity_invitefriends_record
     }
 
     override fun initData() {
@@ -41,29 +39,15 @@ class InviteRecordActivity : BaseActivity(), IContractView.CoinView {
     private var mAdapter: FriendsAdapter?=null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(getString(R.string.invite_friends_record))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener { finish() }
 
 
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = FriendsAdapter(R.layout.item_friends, null)
         recycle_view.adapter = mAdapter
-        mAdapter!!.bindToRecyclerView(recycle_view)
-        mAdapter!!.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(10f)
-
-        recycle_view.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        mAdapter?.bindToRecyclerView(recycle_view)
+        mAdapter?.setEmptyView(R.layout.fragment_empty)
 
     }
     override fun start() {

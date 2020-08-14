@@ -12,7 +12,7 @@ import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
+import kotlinx.android.synthetic.main.activity_invitefriends_record.mToolBar
 
 
 class ExtractCoinRecordActivity : BaseActivity(), IContractView.TibiView {

@@ -87,7 +87,7 @@ public class CommonDialog {
         dialog.show();
         Window window=dialog.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = DpUtils.dip2px(context,260);
+        lp.width = DpUtils.dip2px(context,280);
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
         return this;

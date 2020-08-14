@@ -1,13 +1,11 @@
 package com.hazz.kuangji.ui.adapter
 
 
-import android.content.Intent
 import android.view.View
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Node
-import com.hazz.kuangji.ui.activity.mine.NodeSecondActivity
 
 class NodeAdapter(layoutResId: Int, data: List<Node.InviteUsersBean>?) : BaseQuickAdapter<Node.InviteUsersBean, BaseViewHolder>(layoutResId, data) {
 
@@ -16,19 +14,9 @@ class NodeAdapter(layoutResId: Int, data: List<Node.InviteUsersBean>?) : BaseQui
 
     override fun convert(helper: BaseViewHolder, item: Node.InviteUsersBean) {
 
-        if(4+helper.position<10){
-            helper.setText(R.id.tv_id, "0"+(4+helper.position).toString())
-        }else{
-            helper.setText(R.id.tv_id, (4+helper.position).toString())
-        }
-
         helper.setText(R.id.tv_name, item.username)
-        helper.setText(R.id.tv_amount, item.self_purchase+"USDT")
-
-
-        helper.itemView.setOnClickListener {
-
-            mContext.startActivity(Intent(mContext, NodeSecondActivity::class.java).putExtra("type", item))
-        }
+        helper.setText(R.id.tv_person, if (item.self_purchase == "0.00000000")"0" else item.self_purchase)
+        helper.setText(R.id.tv_team, if (item.direct_purchase == "0.00000000")"0" else item.direct_purchase)
+        helper.setText(R.id.tv_num, "团队："+item.children.size+"人")
     }
 }

@@ -17,7 +17,7 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
-import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
+import kotlinx.android.synthetic.main.activity_invitefriends_record.mToolBar
 import java.text.SimpleDateFormat
 import java.util.*
 

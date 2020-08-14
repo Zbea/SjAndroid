@@ -138,51 +138,8 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             lazyLoad()
         }
 
-        if(SPUtil.getBoolean("hide"))cb.isChecked = true
-
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
-        }
-
-        tv_tibi.setOnClickListener {
-            if (myAsset != null) {
-                when (mCertification?.status) {
-                    0 -> {
-                        SToast.showText("实名认证审核中，请稍等")
-                    }
-                    1 -> {
-                        startActivity(Intent(activity, ExtractCoinActivity::class.java).putExtra("amount", myAsset))
-                    }
-                    else -> {
-                        SToast.showText("尚未实名认证，请前往实名认证")
-                        Handler().postDelayed(Runnable {
-                            startActivity(Intent(activity, MineCertificationActivity::class.java))
-                        }, 500)
-                    }
-                }
-            }
-        }
-        tv_transfer.setOnClickListener {
-            if (myAsset != null) {
-                when (mCertification?.status) {
-                    0 -> {
-                        SToast.showText("实名认证审核中，请稍等")
-                    }
-                    1 -> {
-                        startActivity(Intent(activity, TransferCoinActivity::class.java))
-                    }
-                    else -> {
-                        SToast.showText("尚未实名认证，请前往实名认证")
-                        Handler().postDelayed(Runnable {
-                            startActivity(Intent(activity, MineCertificationActivity::class.java))
-                        }, 500)
-                    }
-                }
-            }
-        }
-
-        rl_charge.setOnClickListener {
-            startActivity(Intent(activity, ChargeActivity::class.java))
         }
 
         tv_copy.setOnClickListener {
@@ -205,6 +162,17 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         }
         rl_yesterday.setOnClickListener {
             startActivity(Intent(activity, MillRecordActivity::class.java))
+        }
+
+        if(SPUtil.getBoolean("hide"))
+        {
+            cb.isChecked = true
+            tv_touzi.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_static.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
         }
 
         cb.setOnCheckedChangeListener { buttonView, isChecked ->

@@ -1,38 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@drawable/bg_white_solid_5dp_coner"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space_dimen"
+    android:background="@drawable/bg_line_bottom">
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:src="@mipmap/user_default"
+        />
 
     <TextView
-        android:id="@+id/tv_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="1"
-        android:textColor="@color/hintTextColor"
-        android:textSize="16sp" />
-
-    <TextView
-        android:layout_toRightOf="@+id/tv_id"
-        android:layout_marginLeft="10dp"
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:text="1user"
-        android:textColor="@color/home_text"
-        android:textSize="16sp" />
+        android:text="user"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textColor="@color/color_333333"
+        android:textSize="14sp"
+        android:layout_toRightOf="@+id/iv"
+        android:layout_alignTop="@+id/iv"
+        />
 
     <TextView
-        android:id="@+id/tv_amount"
+        android:id="@+id/tv_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:text="0CNY"
-        android:textColor="@color/home_text"
-        android:textSize="16sp" />
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_12"
+        android:text="团队:18人"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        android:layout_toRightOf="@id/tv_name"/>
+
+    <LinearLayout
+        android:id="@+id/ll_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_below="@+id/tv_name"
+        android:layout_alignLeft="@+id/tv_name"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp_12"
+            android:text="直推业绩(USDT)" />
+        <TextView
+            android:id="@+id/tv_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="0"
+            android:textColor="@color/color_main"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ll_person"
+        android:layout_alignTop="@id/ll_person"
+        android:layout_marginLeft="50dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="团队业绩(USDT)"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp_12"/>
+        <TextView
+            android:id="@+id/tv_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="0"
+            android:textColor="@color/color_main"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+
 </RelativeLayout>

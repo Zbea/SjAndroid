@@ -1,41 +1,64 @@
 package com.hazz.kuangji.ui.fragment
 
+import android.content.Context
 import android.content.Intent
+import android.os.Handler
 import android.text.SpannableString
+import android.util.Log
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Msg
+import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
+import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.*
 import com.hazz.kuangji.ui.activity.mine.InviteActivity
+import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.DisplayManager
-import com.hazz.kuangji.widget.GlideImageLoader
+import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
+import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.fragment_new_home.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
-class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView {
+class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgView, IContractView.ICertificationInfoView {
 
     private var adList: MutableList<String>? = mutableListOf()
     private var mAdapter: HomeAdapter? = null
     private var mHomePresenter: HomePresenter = HomePresenter(this)
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
+    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
+    private var mCertification: Certification? = null
 
+    override fun getCertification(certification: Certification) {
+        mCertification = certification
+        if (certification.status == 1) {
+            SPUtil.putObj("certification", certification)
+        }
+    }
 
     override fun getMsg(rows: List<Msg>) {
         if (mView==null||activity==null)return
@@ -80,6 +103,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
     override fun initView() {
+        EventBus.getDefault().register(this)
+        mCertification = SPUtil.getObj("certification", Certification::class.java)
+
         var layoutParams: RelativeLayout.LayoutParams= toolbar.layoutParams as RelativeLayout.LayoutParams
         layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
         toolbar.layoutParams=layoutParams
@@ -94,29 +120,28 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
         mAdapter = HomeAdapter(R.layout.item_home, null)
         recycle_view.adapter = mAdapter
-        mAdapter!!.bindToRecyclerView(recycle_view)
-        mAdapter!!.setEmptyView(R.layout.fragment_empty)
+        mAdapter?.bindToRecyclerView(recycle_view)
+        mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
-
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
-
-        ll_charge.setOnClickListener {
-            startActivity(Intent(activity, ExchangeBuyActivity::class.java))
-        }
-
-        ll_sale.setOnClickListener {
-            startActivity(Intent(activity, ExchangeSaleActivity::class.java))
-        }
-
-        ll_exchange.setOnClickListener {
-            startActivity(Intent(activity, ExchangeCoinActivity::class.java))
-        }
 
         iv_mine.setOnClickListener {
             (activity as MainActivity).openMine()
         }
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
+        }
+
+        ll_charge.setOnClickListener {
+            startActivity(Intent(activity, ExchangeBuyActivity::class.java))
+        }
+        ll_sale.setOnClickListener {
+            if (isCertificated())
+                startActivity(Intent(activity, ExchangeSaleActivity::class.java))
+        }
+        ll_exchange.setOnClickListener {
+            if (isCertificated())
+                startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
         iv_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))
@@ -125,17 +150,42 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             startActivity(Intent(activity, ChargeActivity::class.java))
         }
         ll_extract.setOnClickListener {
-            startActivity(Intent(activity, ExtractCoinActivity::class.java))
+            if (isCertificated())
+                startActivity(Intent(activity, ExtractCoinActivity::class.java))
         }
         ll_transfer.setOnClickListener {
-            startActivity(Intent(activity, ExchangeCoinActivity::class.java))
+            if (isCertificated())
+                startActivity(Intent(activity, TransferCoinActivity::class.java))
         }
-
     }
 
     override fun lazyLoad() {
         mCoinPresenter.getMsg()
         mHomePresenter.getHome()
+        mCertificationInfoPresenter.getCertification()
+    }
+
+    /**
+     * 判断是否已经实名认证
+     */
+    private fun isCertificated():Boolean
+    {
+        when (mCertification?.status) {
+            0 -> {
+                SToast.showText("实名认证审核中，请稍等")
+                return false  
+            }
+            1 -> {
+                return true
+            }
+            else -> {
+                SToast.showText("尚未实名认证，请先前往实名认证")
+                Handler().postDelayed(Runnable {
+                    startActivity(Intent(activity, MineCertificationActivity::class.java))
+                }, 500)
+                return false
+            }
+        }
     }
 
     private fun initBanner(list: List<String>) {
@@ -158,6 +208,33 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
+    private class GlideImageLoader : ImageLoader() {
+        override fun displayImage(context: Context, path: Any, imageView: ImageView) {
+            Glide.with(context).load(path).into(imageView)
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: String) {
+        if (event == Constants.CODE_CERTIFICATION_BROAD) {
+            mCertificationInfoPresenter.getCertification()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (!hidden) {
+            if (mCertification?.status==0)
+            {
+                mCertificationInfoPresenter.getCertification()
+            }
+        }
+    }
 
 
 }

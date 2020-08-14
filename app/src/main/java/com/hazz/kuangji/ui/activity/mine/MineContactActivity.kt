@@ -31,10 +31,7 @@ class MineContactActivity : BaseActivity()
         type=intent.flags
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle(if (type==0)"联系我们" else "下载地址")
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
-                .setTitleColor(resources.getColor(R.color.color_white))
                 .setOnLeftIconClickListener { finish() }
 
         qrCodeView.setImageResource(if (type==0)R.mipmap.icon_gz_qrcode else R.mipmap.icon_mine_download_qrcode)

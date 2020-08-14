@@ -12,9 +12,12 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.MainPresenter
 import com.hazz.kuangji.ui.fragment.*
 import com.hazz.kuangji.utils.RxBus
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
@@ -23,23 +26,30 @@ import kotlinx.android.synthetic.main.fragment_new_home.*
 import java.util.logging.Logger
 
 
-class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView{
+class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView, IContractView.ICertificationInfoView{
 
     private var mainPresenter=MainPresenter(this)
+    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
+
+    override fun getCertification(certification: Certification) {
+        if (certification.status == 1) {
+            SPUtil.putObj("certification", certification)
+        }
+    }
 
     override fun layoutId(): Int {
         return R.layout.activity_main_ruoyu_new
     }
 
     override fun initData() {
+//        mCertificationInfoPresenter.getCertification()
     }
 
     override fun initView() {
         initFragment()
         mRG.setOnCheckedChangeListener(this)
-
 
         //腾讯bugly
         Beta.canShowUpgradeActs.add(MainActivity::class.java)
@@ -50,7 +60,6 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)
                 .commitAllowingStateLoss()
-
 
     }
 
@@ -131,6 +140,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
             mFragment.onActivityResult(requestCode, resultCode, data)
         }
     }
+
 
 
 

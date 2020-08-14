@@ -40,7 +40,7 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 
-class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,IContractView.ICertificationInfoView {
+class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
 
     private var typeCoin:String="usdt"//1为USDT,2为FIL
     private var typePay:String="zfb"//1为微信2为支付宝3为银行卡
@@ -50,9 +50,6 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
     private var max="0"
     private var amount=""
     private val mMineExchangePresenter=ExchangeSalePresenter(this)
-    private val mCertificationInfoPresenter=CertificationInfoPresenter(this)
-    private var mCertification: Certification?=null
-
 
     override fun getExchange(data: Exchange) {
         this.data =data
@@ -60,15 +57,6 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
         max=data.usdtNum
         tv_price.text="￥"+currentPrice
         tv_amount.text=max
-    }
-
-    //判断用户是否实名认证
-    override fun getCertification(certification : Certification) {
-        mCertification=certification
-        if (certification.status==1)
-        {
-            SPUtil.putObj("certification",certification)
-        }
     }
 
     override fun commit(data: ExchangeOrder) {
@@ -164,30 +152,16 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
                 return@setOnClickListener
             }
 
-            when(mCertification?.status){
-                0->{
-                    SToast.showText("实名认证审核中，请稍等")
-                }
-                1->{
-                    if (data!=null)
-                    {
-                        val intent=Intent(this, ExchangeOrderSaleCommitActivity::class.java)
-                        intent.putExtra("price",currentPrice)
-                        intent.putExtra("amount",amount)
-                        intent.putExtra("money",money)
-                        intent.putExtra("typePay",typePay)
-                        intent.putExtra("typeCoin",typeCoin)
-                        intent.putExtra("exchange",data)
-                        startActivity(intent)
-                    }
-                }
-                else ->{
-                    SToast.showText("尚未实名认证，请前往实名认证")
-                    Handler().postDelayed(Runnable {
-                        val intent=Intent(this, MineCertificationActivity::class.java)
-                        startActivity(intent)
-                    },500)
-                }
+            if (data!=null)
+            {
+                val intent=Intent(this, ExchangeOrderSaleCommitActivity::class.java)
+                intent.putExtra("price",currentPrice)
+                intent.putExtra("amount",amount)
+                intent.putExtra("money",money)
+                intent.putExtra("typePay",typePay)
+                intent.putExtra("typeCoin",typeCoin)
+                intent.putExtra("exchange",data)
+                startActivity(intent)
             }
         }
 
@@ -198,13 +172,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
     }
     override fun start() {
         mMineExchangePresenter.getExchange()
-        mCertification=SPUtil.getObj("certification", Certification::class.java)
-        if (mCertification==null)
-        {
-            mCertificationInfoPresenter.getCertification()
-        }
     }
-
 
     //清空输入的内容
     private fun clearView()
@@ -235,10 +203,6 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView,ICo
             }
             tv_amount.text=max
             clearView()
-        }
-        if (event==Constants.CODE_CERTIFICATION_BROAD)
-        {
-            mCertificationInfoPresenter.getCertification()
         }
     }
 

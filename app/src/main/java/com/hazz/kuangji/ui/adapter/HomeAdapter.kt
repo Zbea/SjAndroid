@@ -13,7 +13,6 @@ import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.ui.activity.home.HomeRentActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.GlideEngine
-import com.hazz.kuangji.widget.GlideImageLoader
 
 class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickAdapter<Home.ProductsBean, BaseViewHolder>(layoutResId, data) {
 

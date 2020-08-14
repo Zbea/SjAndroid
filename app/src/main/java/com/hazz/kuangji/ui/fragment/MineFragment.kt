@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -102,6 +103,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         return R.layout.fragment_mine
     }
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
         EventBus.getDefault().register(this)
         userInfo = SPUtil.getObj("user", UserInfo::class.java)

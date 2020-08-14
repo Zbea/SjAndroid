@@ -49,7 +49,7 @@ class SafeCheckDialog(var context: Context) {
         }
         val window = mDialog.window
         val layoutParams = window.attributes
-        layoutParams.width = DensityUtils.dip2px(context,260f)
+        layoutParams.width = DensityUtils.dip2px(context,280f)
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.gravity = Gravity.CENTER
         window.attributes = layoutParams

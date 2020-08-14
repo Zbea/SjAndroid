@@ -56,6 +56,7 @@ public class Mill {
                 public String user_id;
                 public String product_id;
                 public String price;
+                public String product_price;
                 public String coin;
                 public String type;
                 public String remain;

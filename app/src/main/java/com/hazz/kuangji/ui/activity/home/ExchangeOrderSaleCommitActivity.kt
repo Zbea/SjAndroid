@@ -69,6 +69,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
                 .setOnLeftIconClickListener { finish() }
 
         tv_upload.setOnClickListener(this)
+        iv_qrcode.setOnClickListener(this)
         tv_commit1.setOnClickListener(this)
     }
 

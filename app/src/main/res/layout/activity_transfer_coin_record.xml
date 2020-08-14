@@ -10,12 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_main_gradient"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:background="@color/color_bg">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/toolbar_dimen"
             android:gravity="center_vertical">
 
 
@@ -33,57 +33,23 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
-                app:tabIndicatorColor="@color/color_white"
+                app:tabIndicatorColor="@color/color_main"
                 app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/color_white"
-                app:tabTextColor="@color/color_white" />
+                app:tabSelectedTextColor="@color/color_main"
+                app:tabTextColor="@color/color_666666" />
 
         </RelativeLayout>
 
 
     </androidx.appcompat.widget.Toolbar>
 
-    <RadioGroup
-        android:id="@+id/rg_transfer"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/btn_dimen"
-        android:background="@color/color_white"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="gone">
 
-        <RadioButton
-            android:id="@+id/rb_left"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rb_line_selector"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="转入"
-            android:textColor="@color/selector_black_main_color"
-            android:textSize="16sp" />
-
-        <RadioButton
-            android:id="@+id/rb_right"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bg_rb_line_selector"
-            android:button="@null"
-            android:gravity="center"
-            android:text="转出"
-            android:textColor="@color/selector_black_main_color"
-            android:textSize="16sp" />
-    </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dp_15"
-        android:background="@color/default_color"
         android:scrollbars="none" />
 
 </LinearLayout>

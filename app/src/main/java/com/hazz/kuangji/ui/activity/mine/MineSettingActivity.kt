@@ -14,7 +14,7 @@ import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_set.*
 import kotlinx.android.synthetic.main.activity_set.tv_login
 import kotlinx.android.synthetic.main.activity_set.tv_zijin
-import kotlinx.android.synthetic.main.invitefriends_record.mToolBar
+import kotlinx.android.synthetic.main.activity_invitefriends_record.mToolBar
 
 
 class SettingActivity : BaseActivity() {

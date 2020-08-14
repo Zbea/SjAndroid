@@ -1,6 +1,5 @@
 package com.hazz.kuangji.ui.activity.home
 
-import android.graphics.Color
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -9,7 +8,6 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_msg_desc.*
 import kotlinx.android.synthetic.main.activity_msg_desc.mToolBar
 import kotlinx.android.synthetic.main.activity_msg_desc.tv_content
-import kotlinx.android.synthetic.main.activity_msg_desc.tv_title
 
 
 class MsgDescActivity : BaseActivity(){
@@ -25,17 +23,14 @@ class MsgDescActivity : BaseActivity(){
     }
 
     override fun initView() {
+        val msg = intent.getSerializableExtra("message") as Msg
+
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
+                .setTitle(msg.title)
                 .setOnLeftIconClickListener {finish() }
 
-        val msg = intent.getSerializableExtra("message") as Msg
-        tv_title.text = msg.title
-        tv_time.text = msg.start_at
-
-        tv_content.loadData(css+msg.content, "text/html", "UTF-8");
-        tv_content.setBackgroundColor(Color.TRANSPARENT);//这个可以设置背景
-        tv_content.settings.javaScriptEnabled=true
+        tv_time.text = "发布时间："+msg.start_at
+        tv_content.loadData(msg.content, "text/html", "UTF-8");
     }
 
     override fun start() {

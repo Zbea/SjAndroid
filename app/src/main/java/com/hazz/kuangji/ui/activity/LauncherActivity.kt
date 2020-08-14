@@ -30,13 +30,12 @@ class LauncherActivity : AppCompatActivity() {
                 return
             }
         }
-        StatusBarUtil.darkMode(this,false)
         setContentView(R.layout.activity_launcher)
-        val gifDrawable = GifDrawable(resources, R.drawable.eye)
+        val gifDrawable = GifDrawable(resources, R.mipmap.launch)
         gifDrawable.loopCount=1
         gif.setImageDrawable(gifDrawable)
 
-        Observable.timer(5, TimeUnit.SECONDS)
+        Observable.timer(3, TimeUnit.SECONDS)
                 .subscribe {
                     if (!TextUtils.isEmpty(SPUtil.getString("token"))) {
                         startActivity(Intent(this, MainActivity::class.java))

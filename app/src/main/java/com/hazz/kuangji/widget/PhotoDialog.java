@@ -28,6 +28,7 @@ public class PhotoDialog {
         alertDialog.show();
         Window win = alertDialog.getWindow();
         win.setWindowAnimations(R.style.styleAnim);
+        win.setBackgroundDrawableResource(android.R.color.transparent);
         win.getDecorView().setPadding(0, 0, 0, 0);
         WindowManager.LayoutParams lp = win.getAttributes();
         // 设置弹出框的宽高

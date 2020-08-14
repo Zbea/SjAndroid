@@ -24,10 +24,9 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
-class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IContractView.ICertificationInfoView {
+class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
 
     private var mMineExchangeCoinPresenter = ExchangeCoinPresenter(this)
-    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var type = "UTOF"//0为u转f ，1为f转u
     private val uStr = "USDT"
     private val fStr = "FIL"
@@ -36,16 +35,7 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
     private var amountRate = ""
     private var rate = "0"
     private var max = "0"
-    private var mCertification: Certification? = null
     private var mPasswordDialog: SafeCheckDialog? = null
-
-    //验证实名认证
-    override fun getCertification(certification: Certification) {
-        mCertification = certification
-        if (certification.status == 1) {
-            SPUtil.putObj("certification", certification)
-        }
-    }
 
 
     override fun getExchange(data: Exchange) {
@@ -119,7 +109,7 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
                 tv_count_usdt.text = mData.filNum
 
                 tv_fil.text = "$uStr"
-                tv_price_fil_title.text = "$uStr 单价：￥"
+                tv_price_fil_title.text = "$uStr 单价："
                 tv_price_fil.text = "￥"+mData.usdtPrice
                 tv_count_fil_title.text = "$uStr 数量："
                 tv_count_fil.text = mData.usdtNum
@@ -153,64 +143,31 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView, IC
                 return@setOnClickListener
             }
 
-            when (mCertification?.status) {
-                0 -> {
-                    SToast.showText("实名认证审核中，请稍等")
-                }
-                1 -> {
+            if (mPasswordDialog == null) {
+                mPasswordDialog = SafeCheckDialog(this)
+                        .setCancelListener { }
+                        .setForgetListener {
+                            startActivity(Intent(this, MineExchangePwdActivity::class.java))
+                        }
+                        .setConfirmListener { _, password ->
+                            mMineExchangeCoinPresenter.commitExchangeCoin(type, amount, amountRate, password)
 
-                    if (mPasswordDialog == null) {
-                        mPasswordDialog = SafeCheckDialog(this)
-                                .setCancelListener { }
-                                .setForgetListener {
-                                    startActivity(Intent(this, MineExchangePwdActivity::class.java))
-                                }
-                                .setConfirmListener { _, password ->
-                                    mMineExchangeCoinPresenter.commitExchangeCoin(type, amount, amountRate, password)
-
-                                }.setCancelListener {
-
-                                }
-                    }
-                    mPasswordDialog?.show()
-                }
-                else -> {
-                    SToast.showText("尚未实名认证，请前往实名认证")
-                    Handler().postDelayed(Runnable {
-                        val intent = Intent(this, MineCertificationActivity::class.java)
-                        startActivity(intent)
-                    }, 500)
-                }
+                        }.setCancelListener {
+                        }
             }
-
+            mPasswordDialog?.show()
         }
 
     }
 
     override fun initData() {
-        EventBus.getDefault().register(this)
-        mCertification = SPUtil.getObj("certification", Certification::class.java)
     }
 
     override fun start() {
         mMineExchangeCoinPresenter.getExchange()
-        if (mCertification == null) {
-            mCertificationInfoPresenter.getCertification()
-        }
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: String) {
-        if (event== Constants.CODE_CERTIFICATION_BROAD)
-        {
-            mCertificationInfoPresenter.getCertification()
-        }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        EventBus.getDefault().unregister(this)
-    }
 
 
 }
