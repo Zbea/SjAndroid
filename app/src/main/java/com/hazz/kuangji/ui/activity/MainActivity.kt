@@ -4,9 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.KeyEvent
 import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -142,6 +144,15 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
 
-
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if(keyCode==KeyEvent.KEYCODE_BACK)
+        {
+            if (dl_layout.isDrawerOpen(GravityCompat.START)){
+                dl_layout.closeDrawers()
+                return false
+            }
+        }
+        return super.onKeyDown(keyCode, event)
+    }
 
 }

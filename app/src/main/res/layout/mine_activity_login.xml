@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
@@ -13,9 +12,9 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="@dimen/sp_30"
         android:textColor="@color/color_white"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="@dimen/dp_94"
         android:layout_marginLeft="@dimen/space_dimen"
         android:text="登录实久耘智"/>
 
@@ -25,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/space_dimen"
         android:layout_marginRight="@dimen/space_dimen"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="@dimen/dp_94"
         android:orientation="vertical">
 
         <EditText
@@ -64,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
-            android:textSize="14sp"
+            android:textSize="@dimen/sp_14"
             android:gravity="right"
             android:text="@string/mine_forget_password"
             android:layout_alignParentRight="true"
@@ -74,8 +73,8 @@
             android:id="@+id/mTvLogin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="94dp"
-            android:textSize="16sp"
+            android:layout_marginTop="@dimen/dp_94"
+            android:textSize="@dimen/sp_16"
             android:textColor="@color/color_white"
             android:gravity="center"
             android:text="@string/mine_login"
@@ -90,8 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="94dp"
-        android:textSize="14sp"
+        android:layout_marginBottom="@dimen/dp_94"
+        android:textSize="@dimen/sp_14"
         android:text="没有账户？立即注册"
         android:textColor="#1AC2AE"
         />

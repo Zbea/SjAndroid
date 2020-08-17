@@ -21,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="12sp"
-            android:textSize="13sp"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:textSize="@dimen/sp_14"
             android:visibility="gone"
             android:textColor="@color/color_666666"
             />
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:paddingLeft="14sp"
+            android:paddingLeft="@dimen/dp_15"
             android:layout_centerVertical="true"
             android:src="@mipmap/icon_back"
             android:visibility="visible"
@@ -48,9 +48,9 @@
             android:singleLine="true"
             android:ellipsize="end"
             android:textStyle="bold"
-            android:layout_marginLeft="36dp"
-            android:layout_marginRight="36dp"
-            android:textSize="16sp"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:textSize="@dimen/sp_16"
             />
 
         <ImageView
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="13dp"
+            android:layout_marginEnd="@dimen/dp_15"
             android:layout_centerVertical="true"
             android:visibility="invisible"
             />
@@ -70,8 +70,8 @@
             android:textColor="@color/color_666666"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="14dp"
-            android:textSize="13sp"
+            android:layout_marginRight="@dimen/dp_15"
+            android:textSize="@dimen/sp_14"
             android:visibility="gone"
             />
 

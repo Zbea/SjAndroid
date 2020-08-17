@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="space_dimen">14.0000dp</dimen>
+	<dimen name="toolbar_dimen">47.6000dp</dimen>
+	<dimen name="btn_dimen">42.0000dp</dimen>
+	<dimen name="dp_5">4.6667dp</dimen>
+	<dimen name="dp_50">46.6667dp</dimen>
+	<dimen name="dp_30">28.0000dp</dimen>
+	<dimen name="dp_40">37.3333dp</dimen>
+	<dimen name="dp_42">39.2000dp</dimen>
+	<dimen name="dp_25">23.3333dp</dimen>
+	<dimen name="dp_20">18.6667dp</dimen>
+	<dimen name="dp_16">14.9333dp</dimen>
+	<dimen name="dp_15">14.0000dp</dimen>
+	<dimen name="dp_10">9.3333dp</dimen>
+	<dimen name="dp_12">11.2000dp</dimen>
+	<dimen name="dp_14">13.0667dp</dimen>
+	<dimen name="dp_94">87.7333dp</dimen>
+	<dimen name="dp_180">168.0000dp</dimen>
+	<dimen name="dp_107">99.8667dp</dimen>
+	<dimen name="dp_355">331.3334dp</dimen>
+	<dimen name="dp_465">434.0001dp</dimen>
+	<dimen name="sp_16">14.9333sp</dimen>
+	<dimen name="sp_14">13.0667sp</dimen>
+	<dimen name="sp_12">11.2000sp</dimen>
+	<dimen name="sp_10">9.3333sp</dimen>
+	<dimen name="sp_30">28.0000sp</dimen>
+</resources>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/color_bg"
@@ -13,9 +12,9 @@
         />
 
     <RelativeLayout
-        android:layout_width="355dp"
-        android:layout_height="465dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="@dimen/dp_355"
+        android:layout_height="@dimen/dp_465"
+        android:layout_marginTop="@dimen/dp_30"
         android:layout_below="@+id/mToolBar"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/icon_mine_invite_bg">
@@ -27,18 +26,18 @@
             android:textSize="@dimen/sp_14"
             android:layout_centerHorizontal="true"
             android:text="已邀请好友0人"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/qrCodeView"
-            android:padding="3dp"
+            android:padding="5dp"
             android:background="@color/color_white"
-            android:layout_width="180dp"
+            android:layout_width="@dimen/dp_180"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="107dp"
-            android:layout_height="180dp"/>
+            android:layout_marginTop="@dimen/dp_107"
+            android:layout_height="@dimen/dp_180"/>
 
         <TextView
             android:id="@+id/tipsText"
@@ -47,8 +46,8 @@
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="42dp"
-            android:textSize="18sp"
+            android:layout_marginBottom="@dimen/dp_42"
+            android:textSize="@dimen/sp_16"
             android:text="邀请码:0"
             android:layout_height="wrap_content"/>
 
@@ -88,7 +87,7 @@
             android:layout_marginLeft="@dimen/space_dimen"
             android:text="保存二维码"
             android:textColor="@color/color_white"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             android:gravity="center"
             android:background="@drawable/bg_main_solid_5dp_coner"
             />

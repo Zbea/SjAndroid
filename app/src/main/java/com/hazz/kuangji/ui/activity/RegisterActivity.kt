@@ -145,13 +145,6 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == 1005) {
-            val areaCode = data?.getStringExtra("countryNumber") ?: "+86"
-            mTvAreaCode.text = areaCode
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
