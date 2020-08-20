@@ -140,4 +140,11 @@ interface IContractView {
 
     }
 
+    interface IContractManagerView: BaseView {
+
+        fun getContracts(datas:List<Contract>)
+        fun setSign(data: Contract)
+
+    }
+
 }

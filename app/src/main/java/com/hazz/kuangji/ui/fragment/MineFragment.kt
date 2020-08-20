@@ -134,6 +134,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         layout_jiedian.setOnClickListener {
             startActivity(Intent(activity, NodeActivity::class.java))
         }
+        layout_manager.setOnClickListener {
+            startActivity(Intent(activity, ContractManagerActivity::class.java))
+        }
         layout_team.setOnClickListener {
             startActivity(Intent(activity, IncomingActivity::class.java).setFlags(0))
         }

@@ -175,6 +175,49 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/layout_manager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_ripple_selector"
+                android:padding="@dimen/space_dimen"
+                tools:ignore="DuplicateIds">
+
+                <ImageView
+                    android:id="@+id/iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_mine_certification_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/space_dimen"
+                    android:layout_toRightOf="@+id/iv"
+                    android:text="合同管理"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp" />
+
+                <View
+                    android:id="@+id/tv_dot"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/shape_red_solid_dot"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawablePadding="12dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/layout_certification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

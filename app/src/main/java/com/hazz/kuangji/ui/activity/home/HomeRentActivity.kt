@@ -6,7 +6,6 @@ import android.text.Editable
 import android.text.Html
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -20,7 +19,7 @@ import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.ui.activity.RuleActivity
-import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
+import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
@@ -77,7 +76,10 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun zuyongSucceed(msg: String) {
-        SToast.showText(msg)
+        SToast.showText("租用成功，请及时为合同签名")
+        startActivity(Intent(this, ContractDetailsActivity::class.java).putExtra("contract_code",msg)
+                .putExtra("contract_sign","0"))
+        if (mDialog!=null) mDialog?.dismiss()
         finish()
     }
 
