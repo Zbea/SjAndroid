@@ -2,6 +2,7 @@ package com.hazz.kuangji.ui.activity.mine
 
 import android.content.Intent
 import android.os.Environment
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -45,7 +46,7 @@ class ContractDetailsActivity : BaseActivity(){
         code=intent.getStringExtra("contract_code")
         isSign=intent.getStringExtra("contract_sign")
         url=Constants.URL_BASE+"contractor?invest_id="+code
-
+        btn_sign.visibility=if (isSign=="2")View.GONE else View.VISIBLE
         btn_sign.text=if (isSign=="1") "下载合同" else "立即签名"
         btn_sign.setOnClickListener {
             if (isSign=="0")

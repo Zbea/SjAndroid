@@ -12,6 +12,8 @@ import com.hazz.kuangji.mvp.model.Mingxi
 import com.hazz.kuangji.mvp.presenter.MillPresenter
 import com.hazz.kuangji.ui.activity.home.MsgListActivity
 import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
+import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
+import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.ui.adapter.CoinAdapter
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -25,6 +27,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
 
     private var mMillPresenter:MillPresenter= MillPresenter(this)
     private var mAdapter: CoinAdapter?=null
+    private var datas:List<Mill.MachineListBean.ListBean> = ArrayList()
 
     override fun getMingxi(msg: Mingxi) {
     }
@@ -39,7 +42,8 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
             tv_shouyi?.text=msg.yesterday
         }
         tv_number?.text=msg.machine_list.list.size.toString()
-        mAdapter?.setNewData(msg.machine_list.list)
+        datas=msg.machine_list.list
+        mAdapter?.setNewData(datas)
     }
 
     override fun getLayoutId(): Int {
@@ -60,7 +64,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         }
 
         iv_msg.setOnClickListener {
-            startActivity(Intent(activity, MsgListActivity::class.java))
+            startActivity(Intent(activity, ContractManagerActivity::class.java))
         }
 
         ll_record.setOnClickListener {
@@ -74,6 +78,10 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",datas[position].id)
+                    .putExtra("contract_sign","2"))
+        }
 
     }
 
