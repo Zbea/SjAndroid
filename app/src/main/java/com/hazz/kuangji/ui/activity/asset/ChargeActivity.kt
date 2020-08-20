@@ -12,7 +12,6 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Charge
 import com.hazz.kuangji.mvp.model.ChargeRecord
-import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.ChargePresenter
 import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.activity_charge.*
