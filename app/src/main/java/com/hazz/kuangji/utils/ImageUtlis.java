@@ -35,17 +35,17 @@ public class ImageUtlis {
     public static void saveImageToGallery(Context context,Bitmap bmp, String bitName) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(),
-                "code");
+                "sign");
         if (!appDir.exists()) {
             appDir.mkdir();
         }
 
-        String fileName = bitName + ".jpg";
+        String fileName = bitName + ".png";
         File file = new File(appDir, fileName);
 
         try {
             FileOutputStream fos = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            bmp.compress(Bitmap.CompressFormat.PNG, 45, fos);
             fos.flush();
             fos.close();
         } catch (IOException e) {
@@ -60,16 +60,9 @@ public class ImageUtlis {
      * @param picName 自定义的图片名
      */
     public static void saveBmp2Gallery(Context context, Bitmap bmp, String picName) {
-        saveImageToGallery(context,bmp, picName);
         String fileName = null;
         //系统相册目录
-        String galleryPath = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.FROYO) {
-            galleryPath = Environment.getExternalStorageDirectory()
-                    + File.separator + Environment.DIRECTORY_DCIM
-                    + File.separator + "Camera" + File.separator;
-        }
-
+        String galleryPath = Environment.getExternalStorageDirectory().toString();
 
         // 声明文件对象
         File file = null;
@@ -77,13 +70,13 @@ public class ImageUtlis {
         FileOutputStream outStream = null;
         try {
             // 如果有目标文件，直接获得文件对象，否则创建一个以filename为名称的文件
-            file = new File(galleryPath, picName + ".jpg");
+            file = new File(galleryPath, picName + ".png");
             // 获得文件相对路径
             fileName = file.toString();
             // 获得输出流，如果文件中有内容，追加内容
             outStream = new FileOutputStream(fileName);
             if (null != outStream) {
-                bmp.compress(Bitmap.CompressFormat.JPEG, 90, outStream);
+                bmp.compress(Bitmap.CompressFormat.PNG, 45, outStream);
             }
         } catch (Exception e) {
             e.getStackTrace();
@@ -97,7 +90,6 @@ public class ImageUtlis {
             }
         }
 
-        MediaStore.Images.Media.insertImage(context.getContentResolver(), bmp, fileName, null);
         Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         Uri uri = Uri.fromFile(file);
         intent.setData(uri);

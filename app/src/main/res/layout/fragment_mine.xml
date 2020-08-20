@@ -208,7 +208,51 @@
                                 android:drawableRight="@mipmap/mine_icon_more"
                                 android:drawablePadding="12dp" />
                         </RelativeLayout>
+                        <RelativeLayout
+                            android:id="@+id/layout_manager"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_ripple_selector"
+                            android:paddingLeft="@dimen/space_dimen"
+                            android:paddingTop="7dp"
+                            android:paddingRight="@dimen/space_dimen"
+                            android:paddingBottom="7dp"
+                            tools:ignore="DuplicateIds">
 
+                            <ImageView
+                                android:id="@+id/iv"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:src="@mipmap/icon_mine_contract_manager" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="17dp"
+                                android:layout_toRightOf="@+id/iv"
+                                android:text="合同管理"
+                                android:textColor="#666666"
+                                android:textSize="16sp" />
+
+                            <View
+                                android:id="@+id/tv_dot"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:visibility="gone"
+                                android:background="@drawable/shape_red_solid_dot"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:drawableRight="@mipmap/mine_icon_more"
+                                android:drawablePadding="12dp" />
+                        </RelativeLayout>
                         <RelativeLayout
                             android:id="@+id/layout_certification"
                             android:layout_width="match_parent"

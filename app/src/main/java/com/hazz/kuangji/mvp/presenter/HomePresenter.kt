@@ -3,6 +3,7 @@ package com.hazz.kuangji.mvp.presenter
 
 import android.util.Pair
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Contract
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
@@ -41,7 +42,7 @@ class HomePresenter(view: IContractView.HomeView) : BasePresenter<IContractView.
             }
 
             override fun success(tBaseResult: BaseResult<Any>) {
-                view.zuyongSucceed(tBaseResult.msg)
+
             }
 
         }, true)
@@ -65,18 +66,16 @@ class HomePresenter(view: IContractView.HomeView) : BasePresenter<IContractView.
                 Pair.create<Any, Any>("address", address)
         )
 
-//        Log.i("sj",body.toString())
-
         val login = RetrofitManager.service.zuyong(body)
 
-        doRequest(login, object : Callback<Any>(view) {
-            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
+        doRequest(login, object : Callback<Contract>(view) {
+            override fun failed(tBaseResult: BaseResult<Contract>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<Any>) {
-                view.zuyongSucceed(tBaseResult.msg)
+            override fun success(tBaseResult: BaseResult<Contract>) {
+                tBaseResult.data?.let { view.zuyongSucceed(it) }
             }
 
         }, true)

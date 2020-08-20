@@ -59,7 +59,7 @@ interface IContractView {
     interface HomeView: BaseView {
 
         fun getHome(msg:Home)
-        fun zuyongSucceed(msg:String)
+        fun zuyongSucceed(data: Contract)
     }
     interface ChargeView: BaseView {
 
@@ -140,4 +140,10 @@ interface IContractView {
 
     }
 
+    interface IContractManagerView: BaseView {
+
+        fun getContracts(datas:List<Contract>)
+        fun setSign(data: Contract)
+
+    }
 }

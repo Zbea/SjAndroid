@@ -106,7 +106,9 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     override fun onDestroy() {
         super.onDestroy()
-
+        if(mDialog!=null) {
+            mDialog?.dismiss();
+        }
     }
 
 

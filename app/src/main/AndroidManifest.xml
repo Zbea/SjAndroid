@@ -85,6 +85,11 @@
         <activity android:name=".ui.activity.mine.MineCertificationActivity"/>
         <activity android:name=".ui.activity.asset.TransferCoinActivity"/>
         <activity android:name=".ui.activity.asset.TransferCoinRecordActivity"/>
+        <activity android:name=".ui.activity.mine.ContractManagerActivity"/>
+        <activity android:name=".ui.activity.home.ContractActivity"/>
+        <activity
+            android:screenOrientation="landscape"
+            android:name=".ui.activity.home.ContractSigningActivity"/>
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

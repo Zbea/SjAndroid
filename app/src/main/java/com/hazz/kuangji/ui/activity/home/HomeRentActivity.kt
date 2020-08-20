@@ -10,6 +10,7 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Contract
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
@@ -69,10 +70,14 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
     }
 
-    override fun zuyongSucceed(msg: String) {
-        SToast.showText(msg)
+    override fun zuyongSucceed(contract: Contract) {
+        SToast.showText("租用成功，请及时为合同签名")
+        startActivity(Intent(this,ContractActivity::class.java).putExtra("contract_code",contract.order_id)
+                .putExtra("contract_sign","0"))
+        if(mDialog!=null) {
+            mDialog?.dismiss();
+        }
         finish()
-
     }
 
 

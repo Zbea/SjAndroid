@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -102,6 +103,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         return R.layout.fragment_mine
     }
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
 
         EventBus.getDefault().register(this)
@@ -132,6 +134,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         }
         layout_setting.setOnClickListener {
             startActivity(Intent(activity, SettingActivity::class.java))
+        }
+        layout_manager.setOnClickListener {
+            startActivity(Intent(activity, ContractManagerActivity::class.java))
         }
         layout_jiedian.setOnClickListener {
             startActivity(Intent(activity, NodeActivity::class.java))
@@ -202,7 +207,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             var selectList = PictureSelector.obtainMultipleResult(data)
             if (selectList.size > 0) {
                 var path = selectList?.get(0)?.path
-                path= FileUtils.uri2String(Uri.parse(path),activity!!).toString()
+                path= FileUtils.uri2String(Uri.parse(path),activity!!)
                 if (path != null) {
                     mNodePresenter.upImage(path)
                 }

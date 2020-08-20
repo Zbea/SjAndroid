@@ -153,7 +153,7 @@ interface AiPickService{
      * 立即租用
      */
     @POST("trade/investment")
-    fun zuyong(@Body request: RequestBody): Observable<BaseResult<Any>>
+    fun zuyong(@Body request: RequestBody): Observable<BaseResult<Contract>>
 
     /**
      * 矿机
@@ -278,4 +278,14 @@ interface AiPickService{
      */
     @GET("accounts/v0/trans_accounts_list")
     fun getTransAccountList(@Query("type") type: Int): Observable<BaseResult<List<TransferCoin>>>
+
+
+    @GET("trade/contractor_list")
+    fun getContracts(): Observable<BaseResult<List<Contract>>>
+    /**
+     * q签名上传
+     */
+    @Multipart
+    @POST("trade/sign_contract")
+    fun upSign(@Query("order_id") code: String, @Part file: MultipartBody.Part): Observable<BaseResult<Contract>>
 }

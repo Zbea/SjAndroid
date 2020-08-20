@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Contract
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
@@ -64,7 +65,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         mAdapter?.setNewData(msg.products)
     }
 
-    override fun zuyongSucceed(msg: String) {
+    override fun zuyongSucceed(contract: Contract) {
     }
 
 
@@ -103,7 +104,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
 
         tv_more.setOnClickListener {
-            startActivity(Intent(activity, MsgListActivity::class.java))
+            startActivity(Intent(activity, ContractSigningActivity::class.java))
         }
 
     }
