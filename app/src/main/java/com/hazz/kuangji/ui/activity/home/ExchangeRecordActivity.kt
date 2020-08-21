@@ -52,15 +52,7 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
         mAdapter?.bindToRecyclerView(rc_list)
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         mAdapter?.setOnItemClickListener { adapter, view, position ->
             if (mDate[position].is_del==1)
             {

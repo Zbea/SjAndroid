@@ -187,20 +187,7 @@
                 android:textColor="@color/color_333333"
                 android:textSize="16sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:layout_marginTop="9dp"
-                android:background="#F2F6FF" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:singleLine="true"
-                android:text="租用成功公司会快递一份租用合同，请务必填写真实准确信息"
-                android:textColor="@color/redF4"
-                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/et_name"

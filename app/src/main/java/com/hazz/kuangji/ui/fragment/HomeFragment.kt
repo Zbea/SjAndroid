@@ -104,7 +104,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
 
         tv_more.setOnClickListener {
-            startActivity(Intent(activity, ContractSigningActivity::class.java))
+            startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
     }
