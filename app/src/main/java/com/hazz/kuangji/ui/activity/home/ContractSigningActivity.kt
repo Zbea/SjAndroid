@@ -32,7 +32,7 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
     private val mContractManagerPresenter= ContractManagerPresenter(this)
 
     override fun setSign(data: Contract) {
-        EventBus.getDefault().post(Constants.CODE_SIGN_BROAD)
+        EventBus.getDefault().post(data)
         if(mDialog!=null) {
             mDialog?.dismiss();
         }
@@ -63,10 +63,10 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
             )?.subscribe { permission ->
                 if (permission!!) {
-                    fileName="signing"+System.currentTimeMillis()
+                    fileName= "signing$code"
                     ImageUtlis.saveBmp2Gallery(this,signature_pad.transparentSignatureBitmap,fileName)
                     Handler().postDelayed(Runnable {
-                        mContractManagerPresenter.setSign(code,File(Environment.getExternalStorageDirectory().toString(), "$fileName.png"))
+                        mContractManagerPresenter.setSign(code,File(Environment.getExternalStorageDirectory().toString(), "/eye/image/$fileName.png"))
                     }, 500)
 
 

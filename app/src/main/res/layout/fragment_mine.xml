@@ -235,15 +235,6 @@
                                 android:textColor="#666666"
                                 android:textSize="16sp" />
 
-                            <View
-                                android:id="@+id/tv_dot"
-                                android:layout_width="12dp"
-                                android:layout_height="12dp"
-                                android:layout_marginEnd="15dp"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:visibility="gone"
-                                android:background="@drawable/shape_red_solid_dot"/>
 
                             <TextView
                                 android:layout_width="wrap_content"

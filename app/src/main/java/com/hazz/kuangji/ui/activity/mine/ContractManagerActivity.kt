@@ -78,14 +78,14 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
     }
 
     override fun start() {
-        mContractManagerPresenter.getContracts()
+        mContractManagerPresenter.getContracts(true)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: String) {
-        if (event== Constants.CODE_SIGN_BROAD)
+    fun onMessageEvent(data: Contract) {
+        if (data!=null)
         {
-            mContractManagerPresenter.getContracts()
+            mContractManagerPresenter.getContracts(false)
         }
     }
 

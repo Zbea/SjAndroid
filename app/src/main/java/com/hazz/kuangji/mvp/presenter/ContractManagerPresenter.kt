@@ -14,7 +14,7 @@ import java.io.File
 class ContractManagerPresenter(view: IContractView.IContractManagerView) : BasePresenter<IContractView.IContractManagerView>(view) {
 
 
-    fun getContracts() {
+    fun getContracts(boolean: Boolean) {
 
 
         val login = RetrofitManager.service.getContracts()
@@ -29,7 +29,7 @@ class ContractManagerPresenter(view: IContractView.IContractManagerView) : BaseP
                 tBaseResult.data?.let { view.getContracts(it) }
             }
 
-        }, true)
+        }, boolean)
 
     }
 

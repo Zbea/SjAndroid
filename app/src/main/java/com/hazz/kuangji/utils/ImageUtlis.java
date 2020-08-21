@@ -35,7 +35,7 @@ public class ImageUtlis {
     public static void saveImageToGallery(Context context,Bitmap bmp, String bitName) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(),
-                "sign");
+                "eye/image");
         if (!appDir.exists()) {
             appDir.mkdir();
         }
@@ -62,8 +62,11 @@ public class ImageUtlis {
     public static void saveBmp2Gallery(Context context, Bitmap bmp, String picName) {
         String fileName = null;
         //系统相册目录
-        String galleryPath = Environment.getExternalStorageDirectory().toString();
-
+        String galleryPath = Environment.getExternalStorageDirectory().toString()+"/eye/image/";
+        File dir = new File(galleryPath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         // 声明文件对象
         File file = null;
         // 声明输出流

@@ -3,20 +3,16 @@ package com.hazz.kuangji
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.os.StrictMode
 import android.util.Log
-import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.BuildConfig
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.squareup.leakcanary.RefWatcher
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
 import kotlin.properties.Delegates
-
-
 
 
 class MyApplication : Application(){
@@ -35,6 +31,11 @@ class MyApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val builder = StrictMode.VmPolicy.Builder()
+            StrictMode.setVmPolicy(builder.build())
+        }
         initConfig()
         DisplayManager.init(this)
         DensityUtils.setDensity(this)
