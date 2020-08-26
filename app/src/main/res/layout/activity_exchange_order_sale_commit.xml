@@ -113,7 +113,7 @@
                         android:id="@+id/tv_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/sp_16"
+                        android:textSize="@dimen/sp_14"
                         android:text="￥55"
                         android:textColor="@color/redF4"/>
                 </LinearLayout>
@@ -156,7 +156,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="@dimen/dp_200"
                     android:gravity="center"
                     android:layout_marginLeft="@dimen/space_dimen"
                     android:layout_marginRight="@dimen/space_dimen"
@@ -266,9 +266,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_333333"
+                android:textColor="@color/color_666666"
                 android:layout_marginLeft="@dimen/space_dimen"
                 android:layout_marginTop="@dimen/space_dimen"
+                android:textSize="@dimen/sp_12"
                 android:text="温馨提示"/>
 
             <TextView
@@ -277,10 +278,10 @@
                 android:layout_marginLeft="@dimen/space_dimen"
                 android:layout_marginRight="@dimen/space_dimen"
                 android:layout_marginBottom="@dimen/space_dimen"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:text="@string/exchange_payee_introduce"
-                android:textSize="@dimen/sp_12"
-                android:textColor="@color/color_999999"/>
+                android:textSize="@dimen/sp_10"
+                android:textColor="@color/color_hint"/>
 
         </LinearLayout>
 
@@ -291,7 +292,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/color_white"
+        android:background="@drawable/bg_line_top"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -305,7 +306,7 @@
             android:gravity="center"
             android:text="确认提交"
             android:textColor="@color/color_white"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_16"
             />
     </LinearLayout>
 

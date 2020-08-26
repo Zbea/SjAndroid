@@ -62,32 +62,26 @@ public class CommonDialog {
         if (!is)
         {
             titleTv.setVisibility(View.GONE);
-            contentTv.setMinHeight(200);
+            contentTv.setMinHeight(220);
         }
         if(!TextUtils.isEmpty(content)) contentTv.setText(content);
         if(!TextUtils.isEmpty(cancle)) cancleTv.setText(cancle);
         if(!TextUtils.isEmpty(ok))okTv.setText(ok);
 
-        cancleTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cancel();
-                if(dialogClickListener!=null)dialogClickListener.cancel();
-            }
+        cancleTv.setOnClickListener(v -> {
+            cancel();
+            if(dialogClickListener!=null)dialogClickListener.cancel();
         });
-        okTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cancel();
-                if(dialogClickListener!=null)dialogClickListener.ok();
-            }
+        okTv.setOnClickListener(v -> {
+            cancel();
+            if(dialogClickListener!=null)dialogClickListener.ok();
         });
         dialog = new AlertDialog.Builder(new ContextThemeWrapper(context,R.style.StyleDialogCustom)).create();
         dialog.setView(view);
         dialog.show();
         Window window=dialog.getWindow();
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = DpUtils.dip2px(context,280);
+        lp.width = DpUtils.dip2px(context,300f);
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
         return this;

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sl_refresh_mine"
     android:layout_width="match_parent"
@@ -13,55 +12,64 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@drawable/bg_main_gradient" />
-
+            android:layout_height="@dimen/dp_220"
+            android:background="@mipmap/icon_mine_header_bg" />
 
         <LinearLayout
+            android:id="@+id/ll_header"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="@dimen/dp_220"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/iv_header"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="@dimen/dp_72"
+                android:layout_height="@dimen/dp_72"
                 android:layout_marginTop="@dimen/dp_20"
                 android:src="@mipmap/user_default" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_5"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_type"
-                    android:layout_width="40dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/iv_certification"
-                    android:layout_width="40dp"
-                    android:layout_height="20dp"
-                    android:src="@mipmap/icon_mine_certification" />
-            </LinearLayout>
 
-            <TextView
-                android:id="@+id/mTvUserName"
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_dimen"
-                android:gravity="center"
-                android:maxLines="1"
-                android:text="USER"
-                android:textColor="@color/color_white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="@dimen/dp_5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/iv_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_20"
+                    android:visibility="gone"
+                    android:src="@mipmap/icon_mine_certification" />
+                <TextView
+                    android:id="@+id/mTvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="USER"
+                    android:ellipsize="end"
+                    android:textColor="@color/color_white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/mTvMobile"
@@ -75,21 +83,86 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_header"
+            android:layout_above="@+id/ll_bottom"
+            android:scrollbars="none">
+            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="220dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/ll_buy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_mine_buy" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="一键买币"
+                        android:textColor="@color/color_main"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_sale"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_mine_sale" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="一键卖币"
+                        android:textColor="@color/color_main"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_line"/>
 
             <RelativeLayout
                 android:id="@+id/layout_team"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_dimen"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:layout_marginTop="@dimen/dp_10"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
 
                 <TextView
@@ -97,11 +170,11 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:drawableLeft="@mipmap/icon_mine_shouyi"
-                    android:drawablePadding="15dp"
+                    android:drawablePadding="@dimen/dp_15"
                     android:gravity="center"
                     android:text="我的收益"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,7 +182,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -117,7 +190,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
 
                 <TextView
@@ -125,11 +201,11 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:drawableLeft="@mipmap/icon_mine_yaoqing"
-                    android:drawablePadding="15dp"
+                    android:drawablePadding="@dimen/dp_15"
                     android:gravity="center"
                     android:text="我的邀请"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -137,7 +213,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -145,25 +221,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
-
-
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_mine_jiedian" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_toRightOf="@+id/iv"
+                    android:drawableLeft="@mipmap/icon_mine_jiedian"
+                    android:drawablePadding="@dimen/dp_15"
+                    android:gravity="center"
                     android:text="我的团队"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,7 +244,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -179,34 +252,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
-
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_mine_certification_logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_toRightOf="@+id/iv"
+                    android:drawableLeft="@mipmap/icon_mine_contract_logo"
+                    android:drawablePadding="@dimen/dp_15"
+                    android:gravity="center"
                     android:text="合同管理"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
-                <View
-                    android:id="@+id/tv_dot"
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/shape_red_solid_dot"
-                    android:visibility="gone" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -214,7 +277,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -222,24 +285,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
-
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_mine_certification_logo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_toRightOf="@+id/iv"
+                    android:drawableLeft="@mipmap/icon_mine_certification_logo"
+                    android:drawablePadding="@dimen/dp_15"
+                    android:gravity="center"
                     android:text="实名认证"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
+
 
                 <View
                     android:id="@+id/tv_dot"
@@ -257,34 +319,31 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:id="@+id/layout_download"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:clickable="true"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
-
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_mine_download" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_toRightOf="@+id/iv"
+                    android:drawableLeft="@mipmap/icon_mine_download"
+                    android:drawablePadding="@dimen/dp_15"
+                    android:gravity="center"
                     android:text="下载地址"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -292,7 +351,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -300,24 +359,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_ripple_selector"
-                android:padding="@dimen/space_dimen"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
                 tools:ignore="DuplicateIds">
-
-                <ImageView
-                    android:id="@+id/iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/icon_mine_setting" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:layout_toRightOf="@+id/iv"
+                    android:drawableLeft="@mipmap/icon_mine_setting"
+                    android:drawablePadding="@dimen/dp_15"
+                    android:gravity="center"
                     android:text="账号设置"
                     android:textColor="@color/color_333333"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
 
                 <TextView
@@ -326,15 +382,17 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/mine_icon_more"
-                    android:drawablePadding="12dp" />
+                    android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
 
         </LinearLayout>
+        </ScrollView>
 
         <LinearLayout
+            android:id="@+id/ll_bottom"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:layout_alignParentBottom="true"
             android:background="#F2F2F2"
             android:gravity="center_vertical"
@@ -365,7 +423,7 @@
 
             <View
                 android:layout_width="1dp"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/dp_30"
                 android:background="@color/color_line" />
 
             <LinearLayout
@@ -386,7 +444,7 @@
                     android:layout_marginLeft="5dp"
                     android:text="关于我们"
                     android:textColor="@color/color_999999"
-                    android:textSize="16sp" />
+                    android:textSize="@dimen/sp_16" />
 
 
             </LinearLayout>

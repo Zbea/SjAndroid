@@ -32,7 +32,7 @@ public class ImageUtlis {
     public static void saveImageToGallery(Context context,Bitmap bmp, String bitName) {
         // 首先保存图片
         File appDir = new File(Environment.getExternalStorageDirectory(),
-                "code");
+                "eye");
         if (!appDir.exists()) {
             appDir.mkdir();
         }
@@ -60,14 +60,17 @@ public class ImageUtlis {
 //        saveImageToGallery(context,bmp, picName);
         String fileName = null;
         //系统相册目录
-        String galleryPath =  Environment.getExternalStorageDirectory().toString();
+        File appDir = new File(Environment.getExternalStorageDirectory()+"/eye/image/");
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
         // 声明文件对象
         File file = null;
         // 声明输出流
         FileOutputStream outStream = null;
         try {
             // 如果有目标文件，直接获得文件对象，否则创建一个以filename为名称的文件
-            file = new File(galleryPath, picName + ".png");
+            file = new File(Environment.getExternalStorageDirectory()+"/eye/image/", picName + ".png");
             // 获得文件相对路径
             fileName = file.toString();
             // 获得输出流，如果文件中有内容，追加内容

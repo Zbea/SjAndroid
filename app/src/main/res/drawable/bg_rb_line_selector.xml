@@ -3,7 +3,7 @@
     <item android:state_checked="true">
         <layer-list>
 
-            <item android:top="44dp" android:width="70dp" android:gravity="center">
+            <item android:top="43.5dp" android:width="70dp" android:gravity="center">
 
 
                 <shape android:shape="rectangle" >

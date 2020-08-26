@@ -36,7 +36,7 @@
                 android:singleLine="true"
                 android:text="BTC"
                 android:textColor="@color/color_333333"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
             <TextView
                 android:id="@+id/tv1"
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
                 android:text="0"
                 android:layout_marginTop="@dimen/dp_10"
                 android:textColor="@color/color_999999"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:text="可用/冻结"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/color_333333"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv2"
@@ -72,7 +72,7 @@
                 android:text="0"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/color_999999"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
         </LinearLayout>
 
     </LinearLayout>

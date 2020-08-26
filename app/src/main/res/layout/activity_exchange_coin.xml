@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/color_bg">
+    android:background="@color/color_bg"
+    android:orientation="vertical">
 
     <include
         android:id="@+id/mToolBar"
@@ -13,20 +13,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/space_dimen"
         android:orientation="vertical"
-        >
+        android:padding="@dimen/space_dimen">
 
         <TextView
             android:id="@+id/tv_u_f"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_dimen"
-            android:textColor="@color/color_333333"
-            android:textSize="@dimen/sp_16"
             android:text="USDT 转 FIL"
-            />
-
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_16" />
 
 
         <LinearLayout
@@ -34,88 +31,83 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
             android:layout_marginTop="@dimen/space_dimen"
-            android:padding="@dimen/dp_10"
-            android:orientation="horizontal"
             android:gravity="center_vertical"
-            >
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
 
             <EditText
                 android:id="@+id/et_count_usdt"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"
+                android:background="@color/color_translucent"
                 android:hint="请输入数量"
                 android:inputType="number"
+                android:textColor="@color/color_666666"
                 android:textColorHint="@color/color_hint"
-                android:layout_height="wrap_content"
-                android:background="@color/color_translucent"/>
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_usdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_666666"
-                android:textSize="@dimen/sp_16"
                 android:text="USDT"
-                />
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/sp_16" />
 
 
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/color_main"/>
+            android:background="@color/color_main" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/dp_10"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_price_usdt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_12"
                 android:text="USDT单价："
-                />
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_12" />
 
             <TextView
                 android:id="@+id/tv_price_usdt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/redF4"
-                android:textSize="@dimen/sp_12"
                 android:text="￥0"
-                />
+                android:textColor="@color/redF4"
+                android:textSize="@dimen/sp_12" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_count_usdt_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/space_dimen"
-                    android:textColor="@color/color_999999"
                     android:text="USDT数量："
-                    android:textSize="@dimen/sp_12"
-                    />
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/sp_12" />
 
                 <TextView
                     android:id="@+id/tv_count_usdt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_666666"
                     android:text="0"
-                    android:textSize="@dimen/sp_12"
-                    />
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_12" />
             </LinearLayout>
         </LinearLayout>
 
@@ -123,56 +115,50 @@
             android:id="@+id/ll_transition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_margin="@dimen/dp_10"
-            android:gravity="center_vertical|right">
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/icon_exchange_transition"/>
+                android:src="@mipmap/icon_exchange_transition" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_main"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="@dimen/dp_5"
                 android:text="转换"
-                android:textSize="@dimen/sp_14"
-                />
+                android:textColor="@color/color_main"
+                android:textSize="@dimen/sp_14" />
 
 
         </LinearLayout>
 
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:padding="@dimen/dp_10"
-            android:orientation="horizontal"
+            android:background="@drawable/bg_line_bottom"
             android:gravity="center_vertical"
-            android:background="@drawable/bg_line_bottom">
+            android:orientation="horizontal"
+            android:padding="@dimen/dp_10">
 
             <TextView
                 android:id="@+id/tv_num_fil"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"
                 android:layout_height="wrap_content"
-                />
+                android:layout_weight="1"
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:id="@+id/tv_fil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_16"
                 android:text="FIL"
-                />
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_16" />
 
 
         </LinearLayout>
@@ -180,52 +166,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="@dimen/dp_10"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_price_fil_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_12"
                 android:text="FIL单价："
-                />
+                android:textColor="@color/color_999999"
+                android:textSize="@dimen/sp_12" />
 
             <TextView
                 android:id="@+id/tv_price_fil"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/redF4"
-                android:textSize="@dimen/sp_12"
                 android:text="￥0"
-                />
+                android:textColor="@color/redF4"
+                android:textSize="@dimen/sp_12" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_count_fil_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_999999"
                     android:layout_marginLeft="@dimen/space_dimen"
                     android:text="FIL数量："
-                    android:textSize="@dimen/sp_12"
-                    />
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/sp_12" />
 
                 <TextView
                     android:id="@+id/tv_count_fil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_12"
                     android:text="0"
-                    />
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_12" />
             </LinearLayout>
         </LinearLayout>
 
@@ -235,13 +217,12 @@
         android:id="@+id/tv_commit"
         android:layout_width="match_parent"
         android:layout_height="@dimen/btn_dimen"
-        android:text="提交"
-        android:gravity="center"
-        android:textSize="@dimen/sp_16"
+        android:layout_margin="@dimen/space_dimen"
         android:background="@drawable/bg_main_solid_5dp_coner"
+        android:gravity="center"
+        android:text="提交"
         android:textColor="@color/color_white"
-        android:layout_margin="@dimen/space_dimen"/>
-
+        android:textSize="@dimen/sp_16" />
 
 
 </LinearLayout>

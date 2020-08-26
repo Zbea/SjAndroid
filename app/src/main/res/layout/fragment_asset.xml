@@ -9,7 +9,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="@dimen/dp_220"
         android:background="@drawable/bg_main_gradient" />
 
     <RelativeLayout
@@ -26,7 +26,7 @@
             android:layout_centerInParent="true"
             android:text="资产"
             android:textColor="@color/color_white"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp_18"
             android:textStyle="bold" />
 
         <ImageView
@@ -74,7 +74,7 @@
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginBottom="@dimen/dp_5"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="5dp">
+                app:cardElevation="@dimen/dp_5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -100,16 +100,16 @@
                                 android:text="投资（USDT）"
                                 android:textColor="@color/color_333333"
                                 android:textStyle="bold"
-                                android:textSize="16sp" />
+                                android:textSize="@dimen/sp_16" />
 
                             <TextView
                                 android:id="@+id/tv_touzi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:text="0"
                                 android:textColor="@color/color_main"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -125,17 +125,18 @@
                                 android:text="收益（USDT/FIL）"
                                 android:textStyle="bold"
                                 android:textColor="@color/color_333333"
-                                android:textSize="16sp" />
+                                android:textSize="@dimen/sp_16" />
 
                             <TextView
                                 android:id="@+id/tv_shouyi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:text="0"
                                 android:lines="1"
+                                android:ellipsize="end"
                                 android:textColor="@color/color_main"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
                         </LinearLayout>
                     </LinearLayout>
                     <View
@@ -166,18 +167,18 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="分享收益(USDT)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <TextView
                                 android:id="@+id/tv_static"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv1"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -202,18 +203,18 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="业绩收益(FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <TextView
                                 android:id="@+id/tv_share"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv2"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -248,18 +249,18 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="团队收益(FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <TextView
                                 android:id="@+id/tv_team"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv3"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -284,7 +285,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:text="昨日收益(USDT/FIL)"
                                 android:textColor="@color/color_999999"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
 
                             <TextView
@@ -292,11 +293,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv4"
-                                android:layout_marginTop="5dp"
+                                android:layout_marginTop="@dimen/dp_5"
                                 android:layout_centerHorizontal="true"
                                 android:text="0"
                                 android:textColor="@color/color_666666"
-                                android:textSize="12sp" />
+                                android:textSize="@dimen/sp_12" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -329,6 +330,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="隐藏资产"
+                    android:textSize="@dimen/sp_14"
                     android:textColor="@color/color_999999"/>
 
             </LinearLayout>

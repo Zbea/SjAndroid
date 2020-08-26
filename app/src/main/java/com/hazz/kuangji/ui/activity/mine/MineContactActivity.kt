@@ -49,7 +49,7 @@ class MineContactActivity : BaseActivity()
 
                     SToast.showText("图片保存成功")
 
-                    ImageUtlis.saveBmp2Gallery(this,mCodeBitmap,"gzcode")
+                    ImageUtlis.saveBmp2Gallery(this,mCodeBitmap,if (type==0)"contactCode" else "downloadCode")
 
                 } else {
                     showMissingPermissionDialog()

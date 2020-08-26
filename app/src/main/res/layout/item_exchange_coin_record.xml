@@ -40,7 +40,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/sp_14"
-            android:text="100"
             android:layout_marginLeft="@dimen/dp_10"
             android:textColor="@color/color_333333"/>
 
@@ -58,13 +57,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/sp_14"
-            android:text="14"
             android:textColor="@color/color_333333"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:orientation="horizontal">
 
         <TextView
@@ -81,7 +79,6 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/sp_14"
             android:layout_marginLeft="@dimen/dp_10"
-            android:text="2020-6-4 10:47"
             android:textColor="@color/color_333333"/>
     </LinearLayout>
 

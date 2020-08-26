@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <TextView
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="@dimen/dp_100"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

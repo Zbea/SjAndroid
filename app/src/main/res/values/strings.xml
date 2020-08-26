@@ -50,10 +50,10 @@
     <string name="all">全部</string>
     <string name="jiaoyi_pwd">交易密码</string>
     <string name="input_deal_pwd">请输入资金密码</string>
-    <string name="tibi_record">提币记录</string>
+    <string name="tibi_record">提币明细</string>
     <string name="charge">充值</string>
     <string name="copy_address">复制地址</string>
-    <string name="charge_record">充值记录</string>
+    <string name="charge_record">充值明细</string>
     <string name="touzi">投资</string>
     <string name="touzi_record">投资记录</string>
     <string name="qitou_num">起投金额</string>

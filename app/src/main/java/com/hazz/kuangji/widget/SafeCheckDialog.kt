@@ -25,7 +25,6 @@ class SafeCheckDialog(var context: Context) {
     }
 
     lateinit var mDialog: Dialog
-    var mTvTitle: TextView? = null
     var mTvCancel: TextView? = null
     var mTvConfirm: TextView? = null
     var mTvForget: TextView? = null
@@ -36,7 +35,6 @@ class SafeCheckDialog(var context: Context) {
         mDialog = Dialog(context,R.style.StyleDialogCustom)
         mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val view = LayoutInflater.from(context).inflate(R.layout.dialog_safe_check, null)
-        mTvTitle = view.findViewById(R.id.mTvCheckTitle)
         mTvCancel = view.findViewById(R.id.mTvCheckCancel)
         mTvConfirm = view.findViewById(R.id.mTvCheckConfirm)
         mTvForget= view.findViewById(R.id.mTvForget)
@@ -63,19 +61,6 @@ class SafeCheckDialog(var context: Context) {
         return this
     }
 
-    fun setTitle(title: String): SafeCheckDialog {
-        mTvTitle?.let {
-            it.text = title
-        }
-        return this
-    }
-
-    fun setTitleColoe(@ColorInt color: Int): SafeCheckDialog {
-        mTvTitle?.let {
-            it.setTextColor(color)
-        }
-        return this
-    }
 
     fun setCancelText(cancel: String): SafeCheckDialog {
         mTvCancel?.let {

@@ -43,10 +43,10 @@
         app:layout_constraintLeft_toLeftOf="@id/mTvNoticeTitle"
         app:layout_constraintRight_toRightOf="@id/mTvNoticeTitle"
         app:layout_constraintTop_toBottomOf="@id/mTvNoticeTitle"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:singleLine="true"
         android:ellipsize="end"
-        android:textSize="10sp"
+        android:textSize="@dimen/sp_10"
         android:textColor="@color/color_999999"
         />
 

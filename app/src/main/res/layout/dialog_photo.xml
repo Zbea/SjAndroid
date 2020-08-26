@@ -11,7 +11,7 @@
         android:gravity="center"
         android:textColor="@color/color_666666"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/btn_dimen"
         android:background="@drawable/bg_ripple_selector"
         />
 
@@ -22,7 +22,7 @@
         android:gravity="center"
         android:textColor="@color/color_666666"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/btn_dimen"
         android:background="@drawable/bg_ripple_selector"/>
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginTop="@dimen/space_dimen"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/btn_dimen"
         android:background="@drawable/bg_ripple_selector"/>
 
 

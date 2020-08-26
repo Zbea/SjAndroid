@@ -33,13 +33,13 @@
             android:layout_height="wrap_content" />
 
         <View
-            android:background="#88999999"
+            android:background="@color/color_line"
             android:layout_width="match_parent"
             android:layout_height="1px"
             />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/btn_dimen"
             android:orientation="horizontal">
             <TextView
                 android:clickable="true"
@@ -53,7 +53,7 @@
                 android:layout_height="match_parent" />
 
             <View
-                android:background="#88999999"
+                android:background="@color/color_line"
                 android:layout_width="1px"
                 android:layout_height="match_parent"
                 />

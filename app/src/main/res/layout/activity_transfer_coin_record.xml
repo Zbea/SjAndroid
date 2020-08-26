@@ -29,7 +29,7 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/invitation_tab_layout"
-                android:layout_width="180dp"
+                android:layout_width="@dimen/dp_180"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Medium"

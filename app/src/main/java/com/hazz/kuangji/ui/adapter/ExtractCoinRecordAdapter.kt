@@ -25,7 +25,7 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>
             }
             "wait"->{
                 helper.setText(R.id.tv_state, "待审核")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
             }
             "fail"->{
                 helper.setText(R.id.tv_state, "审核失败")

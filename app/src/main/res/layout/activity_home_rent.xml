@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/mToolBar"
-        android:layout_marginBottom="80dp">
+        android:layout_marginBottom="@dimen/dp_72">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,15 +22,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="@dimen/dp_130"
                 android:background="@color/color_gray_bg"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/iv_product"
                     android:layout_width="wrap_content"
-                    android:layout_height="84dp"
-                    />
+                    android:layout_height="@dimen/dp_84" />
             </LinearLayout>
 
             <LinearLayout
@@ -42,6 +41,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -50,7 +50,7 @@
                         android:gravity="center"
                         android:text="总价值："
                         android:textColor="@color/color_999999"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:id="@+id/tv_amount"
@@ -59,31 +59,35 @@
                         android:layout_weight="1"
                         android:text="0USDT"
                         android:textColor="@color/redF4"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_16" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="合同周期:"
+                        android:text="合同周期："
                         android:textColor="@color/color_999999"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_14" />
 
 
                     <TextView
                         android:id="@+id/tv_time"
-                        android:layout_width="60dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="0年"
                         android:textColor="@color/color_333333"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_16" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dimen"
+                android:background="@color/color_gray_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,7 +100,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -104,7 +109,7 @@
                         android:singleLine="true"
                         android:text="投入金额"
                         android:textColor="@color/color_333333"
-                        android:textSize="14sp"
+                        android:textSize="@dimen/sp_14"
                         android:textStyle="bold" />
 
                     <TextView
@@ -116,13 +121,13 @@
                         android:singleLine="true"
                         android:text="预计每日收益:0FIL"
                         android:textColor="@color/redF4"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_12" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/btn_dimen"
+                    android:layout_height="@dimen/dp_40"
                     android:layout_marginTop="@dimen/dp_5">
 
                     <EditText
@@ -135,7 +140,7 @@
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
                         android:textColorHint="@color/color_hint"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -145,7 +150,7 @@
                         android:singleLine="true"
                         android:text="USDT"
                         android:textColor="@color/color_666666"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_14" />
 
                 </RelativeLayout>
 
@@ -157,8 +162,13 @@
                     android:singleLine="true"
                     android:text="账号余额：0.00"
                     android:textColor="@color/color_main"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/sp_12" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dimen"
+                android:background="@color/color_gray_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,7 +186,7 @@
                     android:singleLine="true"
                     android:text="个人信息填写"
                     android:textColor="@color/color_333333"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -191,17 +201,17 @@
                         android:layout_height="wrap_content"
                         android:text="真实姓名："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_12" />
+                        android:textSize="@dimen/sp_14" />
 
                     <EditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="@dimen/dp_35"
                         android:background="@drawable/bg_line_bottom"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -216,17 +226,17 @@
                         android:layout_height="wrap_content"
                         android:text="联系方式："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_12" />
+                        android:textSize="@dimen/sp_14" />
 
                     <EditText
                         android:id="@+id/et_phone"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="@dimen/dp_35"
                         android:background="@drawable/bg_line_bottom"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -241,28 +251,34 @@
                         android:layout_height="wrap_content"
                         android:text="收货地址："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_12" />
+                        android:textSize="@dimen/sp_14" />
 
                     <EditText
                         android:id="@+id/et_address"
                         android:layout_width="match_parent"
-                        android:layout_height="35dp"
+                        android:layout_height="@dimen/dp_35"
                         android:background="@drawable/bg_line_bottom"
-                        android:paddingLeft="5dp"
+                        android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="12sp" />
+                        android:textSize="@dimen/sp_14" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:singleLine="true"
                     android:text="租用成功公司会快递一份租用合同，请务必填写真实准确信息"
                     android:textColor="@color/redF4"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/sp_12"
+                    android:visibility="gone" />
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_dimen"
+                android:background="@color/color_gray_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -279,7 +295,7 @@
                     android:singleLine="true"
                     android:text="矿机简介"
                     android:textColor="@color/color_333333"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />
 
                 <TextView
@@ -289,7 +305,7 @@
                     android:layout_marginTop="@dimen/dp_10"
                     android:lineSpacingExtra="@dimen/dp_5"
                     android:textColor="@color/color_999999"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/sp_12" />
             </LinearLayout>
 
 
@@ -298,18 +314,13 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        android:background="@color/color_line" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="@dimen/dp_72"
         android:layout_alignParentBottom="true"
-        android:elevation="5dp"
+        android:background="@drawable/bg_line_top"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -328,10 +339,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="@dimen/dp_5"
                 android:text="我已阅读同意"
                 android:textColor="@color/color_999999"
-                android:textSize="12sp" />
+                android:textSize="@dimen/sp_12" />
 
             <TextView
                 android:id="@+id/tv_xieyi"
@@ -339,19 +350,19 @@
                 android:layout_height="wrap_content"
                 android:text="《矿机租赁服务协议》"
                 android:textColor="@color/color_main"
-                android:textSize="12sp" />
+                android:textSize="@dimen/sp_12" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/mTvLogin"
-            android:layout_width="106dp"
-            android:layout_height="38dp"
+            android:layout_width="@dimen/dp_107"
+            android:layout_height="@dimen/dp_40"
             android:layout_marginRight="@dimen/space_dimen"
             android:background="@drawable/bg_main_solid_5dp_coner"
             android:gravity="center"
             android:text="立即租用"
             android:textColor="@color/color_white"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
     </LinearLayout>
 

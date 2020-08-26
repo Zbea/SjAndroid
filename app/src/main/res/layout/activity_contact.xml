@@ -11,43 +11,48 @@
         layout="@layout/toolbar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:padding="20dp"
+        android:padding="@dimen/dp_20"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="@dimen/dp_100">
         <ImageView
             android:id="@+id/qrCodeView"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:padding="3dp"
             android:background="@color/color_white"
-            android:layout_width="200dp"
+            android:layout_width="@dimen/dp_200"
             android:layout_gravity="center_horizontal"
             android:src="@mipmap/icon_gz_qrcode"
-            android:layout_height="200dp"/>
+            android:layout_height="@dimen/dp_200"/>
 
 
         <TextView
             android:id="@+id/tv_down"
             android:layout_width="0dp"
-            android:layout_height="45dp"
+            android:layout_height="wrap_content"
             android:text="保存二维码"
             android:textColor="@color/color_main"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp_14"
             android:gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/dp_30"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/qrCodeView"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="30dp"
 
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="实久耘智科技集团有限公司版权所有"
+        android:textColor="@color/color_999999"
+        android:textSize="@dimen/sp_14"
+        android:paddingBottom="@dimen/dp_15"
+        android:gravity="center|bottom"/>
 
 </LinearLayout>

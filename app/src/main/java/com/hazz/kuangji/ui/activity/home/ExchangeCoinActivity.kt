@@ -73,7 +73,7 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("币币兑换")
                 .setOnLeftIconClickListener { finish() }
-                .setRightText("兑换明细")
+                .setRightText("明细")
                 .setRightTextIsShow(true)
                 .setOnRightClickListener {
                     startActivity(Intent(this, ExchangeCoinRecordActivity::class.java))

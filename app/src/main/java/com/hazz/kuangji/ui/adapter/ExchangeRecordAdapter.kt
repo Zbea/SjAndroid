@@ -26,7 +26,7 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
                 setText(R.id.tv_reason, item.reason)
 
                 setText(R.id.tv_state, "已取消")
-                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_999999))
             }
             else
             {
@@ -35,14 +35,14 @@ class ExchangeRecordAdapter(layoutResId: Int, data: List<ExchangeRecord>?) : Bas
                     "0" -> {
                         if (item.transaction_type == "2") {
                             setText(R.id.tv_state, "处理中")
-                            setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+                            setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
                         } else {
                             if (item.is_pay == "0") {
                                 setText(R.id.tv_state, "待付款")
                                 setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
                             } else {
                                 setText(R.id.tv_state, "处理中")
-                                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+                                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
                             }
                         }
 

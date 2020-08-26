@@ -29,10 +29,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_number"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/dp_5"
         android:textColor="@color/color_999999"
-        tools:text="2019-06-13 15:30:12"
-        android:textSize="12sp"
+        android:textSize="@dimen/sp_12"
 
         />
 
@@ -43,8 +42,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:textColor="@color/redF4"
-        android:textSize="16sp"
-        tools:text="000" />
+        android:textSize="@dimen/sp_16"
+        />
 
 
 </RelativeLayout>

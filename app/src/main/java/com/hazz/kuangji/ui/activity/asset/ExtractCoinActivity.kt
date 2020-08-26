@@ -77,7 +77,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(getString(R.string.tibi))
-                .setRightText("提币记录")
+                .setRightText("明细")
                 .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { finish() }
                 .setOnRightClickListener {

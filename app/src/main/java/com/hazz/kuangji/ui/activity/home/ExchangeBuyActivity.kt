@@ -64,7 +64,7 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
                 .setTitle("一键买币")
                 .setOnLeftIconClickListener { finish() }
                 .setToolBarBgRescource(R.color.color_bg)
-                .setRightText("买币明细")
+                .setRightText("明细")
                 .setRightTextIsShow(true)
                 .setOnRightClickListener {
                     var intent= Intent(this, ExchangeRecordActivity::class.java)

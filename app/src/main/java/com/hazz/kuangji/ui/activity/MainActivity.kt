@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -62,7 +63,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)
                 .commitAllowingStateLoss()
-
+        dl_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 
     override fun start() {

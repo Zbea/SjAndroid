@@ -25,28 +25,14 @@
 
             <RadioButton
                 android:id="@+id/rb_left"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/bg_rb_line_selector"
-                android:button="@null"
+                style="@style/rb_style1"
                 android:checked="true"
-                android:gravity="center"
-                android:text="USDT"
-                android:textColor="@color/selector_black_main_color"
-                android:textSize="16sp" />
+                android:text="USDT" />
 
             <RadioButton
                 android:id="@+id/rb_right"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/bg_rb_line_selector"
-                android:button="@null"
-                android:gravity="center"
-                android:text="FIL"
-                android:textColor="@color/selector_black_main_color"
-                android:textSize="16sp" />
+                style="@style/rb_style1"
+                android:text="FIL" />
         </RadioGroup>
 
         <LinearLayout
@@ -103,11 +89,11 @@
             android:background="@drawable/bg_line_bottom">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp_84"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_14"
-                android:text="用户名    ："
+                android:text="用户名："
                 />
 
             <EditText
@@ -136,7 +122,7 @@
             android:background="@drawable/bg_line_bottom">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/dp_84"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_666666"
                 android:textSize="@dimen/sp_14"

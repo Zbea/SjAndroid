@@ -3,7 +3,7 @@ package com.hazz.kuangji.ui.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
+import android.os.Handler
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -16,7 +16,8 @@ import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
-import com.hazz.kuangji.ui.activity.home.MsgListActivity
+import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
+import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
 import com.hazz.kuangji.ui.activity.mine.*
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.PhotoDialog
@@ -34,7 +35,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mNodePresenter: NodePresenter = NodePresenter(this)
     private var userInfo: UserInfo? = null
     private var mPhotoDialog: PhotoDialog? = null
-    private var status= 3
     private var mData: Certification? = null
 
     override fun getAccount(msg: Account) {
@@ -47,13 +47,12 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         }
         iv_type.visibility=View.VISIBLE
         when (msg.level) {
-            "总裁" -> iv_type.setImageResource(R.mipmap.icon_mine_zongcai)
             "初级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chuji)
             "中级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_zhongji)
             "高级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_gaoji)
             "超级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chaoji)
-            "节点合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_jiedianhehuo)
-            "联创合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_lianchuang)
+            "节点合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
+            "联创合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
             else ->iv_type.visibility=View.GONE
         }
     }
@@ -70,8 +69,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     override fun getCertification(data: Certification) {
         if (mView==null||tv_dot==null||iv_certification==null)return
         mData = data
-        status = data.status
-        when (status) {
+        when (data.status) {
             0 -> {
                 tv_dot.visibility= View.GONE
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
@@ -125,6 +123,15 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             showPhotoDialog()
         }
 
+        ll_buy.setOnClickListener {
+            startActivity(Intent(activity, ExchangeBuyActivity::class.java))
+        }
+
+        ll_sale.setOnClickListener {
+            if (isCertificated())
+                startActivity(Intent(activity, ExchangeSaleActivity::class.java))
+        }
+
         layout_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))
         }
@@ -147,21 +154,19 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             startActivity(Intent(activity, MineContactActivity::class.java).setFlags(1))
         }
         layout_about.setOnClickListener {
-            startActivity(Intent(activity, RegistRuleActivity::class.java).putExtra("type", 1))
+            startActivity(Intent(activity, ProtocolActivity::class.java).putExtra("type", 1))
         }
         layout_certification.setOnClickListener {
-            when (status) {
-                0, 1 -> {
-                    var intent = Intent(activity, MineCertificatedActivity::class.java)
-                    intent.putExtra("certification", mData)
-                    startActivity(intent)
-                }
-
-                2, 3 -> {   
-                    startActivity(Intent(activity, MineCertificationActivity::class.java))
-                }
+            if (isCertificated())
+            {
+                var intent = Intent(activity, MineCertificatedActivity::class.java)
+                intent.putExtra("certification", mData)
+                startActivity(intent)
             }
-
+            else
+            {
+                startActivity(Intent(activity, MineCertificationActivity::class.java))
+            }
         }
 
     }
@@ -169,6 +174,29 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     override fun lazyLoad() {
         mNodePresenter.getCertification()
         mNodePresenter.getAccount()
+    }
+
+    /**
+     * 判断是否已经实名认证
+     */
+    private fun isCertificated():Boolean
+    {
+        when (mData?.status) {
+            0 -> {
+                SToast.showText("实名认证审核中，请稍等")
+                return false
+            }
+            1 -> {
+                return true
+            }
+            else -> {
+                SToast.showText("尚未实名认证，请先前往实名认证")
+                Handler().postDelayed(Runnable {
+                    startActivity(Intent(activity, MineCertificationActivity::class.java))
+                }, 500)
+                return false
+            }
+        }
     }
 
     private fun showPhotoDialog() {

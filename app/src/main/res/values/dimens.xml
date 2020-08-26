@@ -4,8 +4,10 @@
     <dimen name="toolbar_dimen">51dp</dimen>
     <dimen name="btn_dimen">45dp</dimen>
     <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_55">56dp</dimen>
     <dimen name="dp_50">50dp</dimen>
     <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_35">35dp</dimen>
     <dimen name="dp_40">40dp</dimen>
     <dimen name="dp_42">42dp</dimen>
     <dimen name="dp_25">25dp</dimen>
@@ -15,12 +17,25 @@
     <dimen name="dp_10">10dp</dimen>
     <dimen name="dp_12">12dp</dimen>
     <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_84">84dp</dimen>
     <dimen name="dp_94">94dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
     <dimen name="dp_180">180dp</dimen>
     <dimen name="dp_107">107dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_220">220dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_355">355dp</dimen>
     <dimen name="dp_465">465dp</dimen>
 
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_14">14sp</dimen>
     <dimen name="sp_12">12sp</dimen>

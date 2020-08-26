@@ -132,20 +132,22 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
-        ll_charge.setOnClickListener {
+        ll_buy.setOnClickListener {
             startActivity(Intent(activity, ExchangeBuyActivity::class.java))
         }
         ll_sale.setOnClickListener {
             if (isCertificated())
                 startActivity(Intent(activity, ExchangeSaleActivity::class.java))
         }
-        ll_exchange.setOnClickListener {
+        ll_transfer.setOnClickListener {
             if (isCertificated())
-                startActivity(Intent(activity, ExchangeCoinActivity::class.java))
+                startActivity(Intent(activity, TransferCoinActivity::class.java))
         }
+
         iv_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))
         }
+
         ll_recharge.setOnClickListener {
             startActivity(Intent(activity, ChargeActivity::class.java))
         }
@@ -153,9 +155,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             if (isCertificated())
                 startActivity(Intent(activity, ExtractCoinActivity::class.java))
         }
-        ll_transfer.setOnClickListener {
+        ll_exchange.setOnClickListener {
             if (isCertificated())
-                startActivity(Intent(activity, TransferCoinActivity::class.java))
+                startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
     }
 

@@ -20,7 +20,7 @@ class ContractListAdapter(layoutResId: Int, data: List<Contract>?) : BaseQuickAd
             if (item.is_sign=="1")
             {
                 setText(R.id.tv_state, "已签署")
-                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
             }
             else {
                 setText(R.id.tv_state, "未签署")

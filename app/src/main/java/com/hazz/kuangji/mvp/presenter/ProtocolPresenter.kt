@@ -10,9 +10,9 @@ import com.hazz.kuangji.net.Callback
 import com.hazz.kuangji.net.RetrofitManager
 
 
-class XieyiPresenter(view: IContractView.XieyiView) : BasePresenter<IContractView.XieyiView>(view) {
+class ProtocolPresenter(view: IContractView.XieyiView) : BasePresenter<IContractView.XieyiView>(view) {
 
-    fun xieyi(target:String) {
+    fun protocol(target:String) {
 
 
 

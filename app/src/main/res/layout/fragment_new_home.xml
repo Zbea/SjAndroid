@@ -16,7 +16,7 @@
 
         <ImageView
             android:id="@+id/iv_mine"
-            android:layout_width="32dp"
+            android:layout_width="@dimen/dp_35"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@mipmap/icon_home_mine"/>
@@ -29,7 +29,9 @@
             android:text="首页"
             android:textStyle="bold"
             android:textColor="@color/color_333333"
-            android:textSize="18sp" />
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            android:textSize="@dimen/sp_18" />
 
         <ImageView
             android:id="@+id/iv_msg"
@@ -62,18 +64,19 @@
                 <com.youth.banner.Banner
                     android:id="@+id/banner"
                     android:layout_width="match_parent"
-                    android:layout_height="175dp"
+                    android:layout_height="@dimen/dp_180"
                     android:scaleType="fitXY"
                      />
 
 
                 <LinearLayout
                     android:id="@+id/ll_notice"
+                    android:layout_marginTop="@dimen/space_dimen"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp">
+                    android:paddingLeft="@dimen/space_dimen"
+                    android:paddingRight="@dimen/space_dimen">
 
                     <ImageView
                         android:id="@+id/iv"
@@ -95,7 +98,7 @@
                         app:mvInterval="3000"
                         app:mvSingleLine="true"
                         app:mvTextColor="@color/color_666666"
-                        app:mvTextSize="12sp" />
+                        app:mvTextSize="13sp" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -108,6 +111,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -159,7 +163,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_transfer"
+                        android:id="@+id/ll_exchange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -176,7 +180,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="转币"
+                            android:text="兑换"
                             android:textColor="@color/color_333333"
                             android:textSize="@dimen/sp_14" />
 
@@ -186,10 +190,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/ll_charge"
+                        android:id="@+id/ll_buy"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -239,7 +244,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_exchange"
+                        android:id="@+id/ll_transfer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

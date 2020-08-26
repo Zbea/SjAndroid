@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:text="未签署"
             android:textColor="@color/redF4"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/sp_16"/>
 
     </LinearLayout>
 
@@ -60,7 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:orientation="horizontal">
 
             <TextView
@@ -82,7 +82,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:orientation="horizontal">
 
             <TextView
@@ -104,7 +104,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:orientation="horizontal">
 
             <TextView

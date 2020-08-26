@@ -1,7 +1,6 @@
 package com.hazz.kuangji.ui.activity
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.os.CountDownTimer
 import android.text.Editable
@@ -80,7 +79,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
         StatusBarUtil.darkMode(this,false)
         mEtNickName.addTextChangedListener(this)
         tv_xieyi.setOnClickListener {
-            startActivity(Intent(this,RegistRuleActivity::class.java).putExtra("type",0))
+            startActivity(Intent(this,ProtocolActivity::class.java).putExtra("type",0))
 
         }
     }

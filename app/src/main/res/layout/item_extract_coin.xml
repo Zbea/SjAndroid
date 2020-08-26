@@ -9,8 +9,8 @@
     android:background="@drawable/bg_gray_solid_5dp_coner">
     <ImageView
         android:id="@+id/iv"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/dp_35"
+        android:layout_height="@dimen/dp_35"
         android:src="@mipmap/usdt"
         android:layout_centerVertical="true"
         />

@@ -14,8 +14,8 @@
         <RadioGroup
             android:id="@+id/mRG"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@color/color_white"
+            android:layout_height="@dimen/dp_55"
+            android:background="@drawable/bg_line_top"
             android:orientation="horizontal"
             android:weightSum="4"
             android:layout_alignParentBottom="true"
@@ -26,46 +26,35 @@
                 style="@style/rb_style"
                 android:checked="true"
                 android:drawableTop="@drawable/tab_icon_main_select"
-                android:paddingTop="6dp"
                 android:text="首页" />
 
             <RadioButton
                 android:id="@+id/mRbMining"
                 style="@style/rb_style"
                 android:drawableTop="@drawable/tab_icon_mill_select"
-                android:paddingTop="6dp"
                 android:text="矿机" />
 
             <RadioButton
                 android:id="@+id/mRbHangqing"
                 style="@style/rb_style"
                 android:drawableTop="@drawable/tab_icon_market_select"
-                android:paddingTop="6dp"
                 android:text="行情" />
 
             <RadioButton
                 android:id="@+id/mRbShopCar"
                 style="@style/rb_style"
                 android:drawableTop="@drawable/tab_icon_asset_select"
-                android:paddingTop="6dp"
                 android:text="资产" />
 
 
         </RadioGroup>
 
-        <View
-            android:id="@+id/mPart_line"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/color_line"
-            android:layout_above="@+id/mRG"
-             />
 
         <FrameLayout
             android:id="@+id/fl_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/mPart_line"
+            android:layout_above="@+id/mRG"
 />
 
     </RelativeLayout>
@@ -73,7 +62,7 @@
 
     <FrameLayout
         android:id="@+id/fl_left"
-        android:layout_width="300dp"
+        android:layout_width="@dimen/dp_300"
         android:layout_height="match_parent"
         android:layout_gravity="left" />
 </androidx.drawerlayout.widget.DrawerLayout>

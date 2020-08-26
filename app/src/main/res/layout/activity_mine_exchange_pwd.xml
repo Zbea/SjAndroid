@@ -12,44 +12,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_dimen"
         android:background="@drawable/bg_white_solid_5dp_coner"
         android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingTop="20dp"
-        android:paddingRight="15dp">
+        android:padding="@dimen/space_dimen">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="手机号"
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <EditText
             android:focusable="false"
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="@dimen/btn_dimen"
+            android:layout_marginTop="@dimen/dp_5"
             android:hint="输入手机号"
             android:background="@drawable/bg_gray_solid_5dp_coner"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/dp_10"
             android:textColorHint="@color/color_hint"
             android:textColor="@color/color_666666"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/space_dimen"
             android:text="验证码"
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/bg_gray_solid_5dp_coner">
 
             <EditText
@@ -58,10 +57,10 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:background="@null"
                 android:hint="@string/mine_plz_input_check_code"
-                android:paddingLeft="8dp"
+                android:paddingLeft="@dimen/dp_10"
                 android:textColor="@color/color_666666"
                 android:textColorHint="@color/color_hint"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
 
             <TextView
                 android:layout_centerVertical="true"
@@ -70,59 +69,58 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
-                android:paddingRight="15dp"
+                android:paddingRight="@dimen/dp_10"
                 android:text="@string/mine_get_check_code"
                 android:textColor="@color/color_main"
-                android:textSize="14sp" />
+                android:textSize="@dimen/sp_14" />
 
         </RelativeLayout>
         <TextView
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/space_dimen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="设置资金密码"
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <EditText
             android:id="@+id/et_zijin_pwd"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/bg_gray_solid_5dp_coner"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/dp_10"
             android:hint="@string/input_deal_pwd"
             android:inputType="textPassword"
             android:textColor="@color/color_666666"
             android:textColorHint="@color/color_hint"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
         <TextView
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/space_dimen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="再次确认"
             android:textColor="@color/color_333333"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <EditText
             android:id="@+id/et_zijin_pwd_again"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/bg_gray_solid_5dp_coner"
-            android:paddingLeft="8dp"
+            android:paddingLeft="@dimen/dp_10"
             android:hint="@string/mine_deal_password_again"
             android:inputType="textPassword"
             android:textColor="@color/color_666666"
             android:textColorHint="@color/color_hint"
-            android:textSize="14sp" />
+            android:textSize="@dimen/sp_14" />
 
         <Button
             android:id="@+id/tv_bt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginTop="@dimen/dp_30"
             android:background="@drawable/bg_main_solid_5dp_coner"
             android:text="@string/confirm"
             android:textSize="@dimen/sp_16"

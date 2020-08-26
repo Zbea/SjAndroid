@@ -83,7 +83,6 @@ class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchange
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back)
                 .setTitle("卖币订单详情")
                 .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
