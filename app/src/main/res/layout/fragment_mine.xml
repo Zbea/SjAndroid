@@ -15,6 +15,7 @@
             android:layout_height="@dimen/dp_220"
             android:background="@mipmap/icon_mine_header_bg" />
 
+
         <LinearLayout
             android:id="@+id/ll_header"
             android:layout_width="match_parent"
