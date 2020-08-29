@@ -151,13 +151,13 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             startActivity(Intent(activity, MineContactActivity::class.java).setFlags(0))
         }
         layout_download.setOnClickListener {
-            startActivity(Intent(activity, MineContactActivity::class.java).setFlags(1))
+            startActivity(Intent(activity, MineDownloadActivity::class.java))
         }
         layout_about.setOnClickListener {
-            startActivity(Intent(activity, ProtocolActivity::class.java).putExtra("type", 1))
+            startActivity(Intent(activity, AboutActivity::class.java))
         }
         layout_certification.setOnClickListener {
-            if (isCertificated())
+            if (mData?.status==1||mData?.status==0)
             {
                 var intent = Intent(activity, MineCertificatedActivity::class.java)
                 intent.putExtra("certification", mData)

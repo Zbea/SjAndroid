@@ -47,6 +47,7 @@ class Constants private constructor() {
         const val URL_BASE = "http://123.57.245.50/api/"
         const val URL_NEW_BASE = "http://123.57.245.50:5000/"
         const val URL_INVITE = "http://123.57.245.50/"
+        const val URL_DOWNLOAD = "$URL_INVITE#/about"
     }
 
 

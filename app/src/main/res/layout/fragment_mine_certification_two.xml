@@ -4,155 +4,122 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
-    android:background="@color/default_color">
+    android:background="@color/color_bg"
+    android:padding="@dimen/dp_15">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/rl_id_front"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-        <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_160"
+        android:layout_marginTop="@dimen/dp_15"
+        android:padding="@dimen/dp_5"
+        android:background="@drawable/bg_edit_main"
+        >
+
+        <ImageView
+        android:id="@+id/iv_id_front"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/color_white"
-            android:orientation="vertical"
-            android:padding="15dp"
-            >
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_certification_add"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/icon_mine_certification_two"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_666666"
+            android:text="上传身份证正面照"/>
 
-            <ImageView
-                android:id="@+id/iv_id_front"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/icon_certification_id_opposite"/>
-
-            <ImageView
-                android:id="@+id/iv_id_opposite"
-                android:layout_width="match_parent"
-                android:layout_height="160dp"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/icon_certification_id_front"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="姓        名："
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
-
-                <EditText
-                    android:id="@+id/et_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+    </RelativeLayout>
 
 
-            </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_id_opposite"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_160"
+        android:layout_marginTop="@dimen/dp_15"
+        android:padding="@dimen/dp_5"
+        android:background="@drawable/bg_edit_main"
+        >
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="身份证号："
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+        <ImageView
+            android:id="@+id/iv_id_opposite"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"/>
 
-                <EditText
-                    android:id="@+id/et_id_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:inputType="number"
-                    android:digits="0123456789xyzXYZ"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_certification_add"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_666666"
+            android:text="上传身份证反面照"/>
 
-            </LinearLayout>
+    </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="现居住地："
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+    <RelativeLayout
+        android:id="@+id/rl_id_hand"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_160"
+        android:layout_marginTop="@dimen/dp_15"
+        android:padding="@dimen/dp_5"
+        android:background="@drawable/bg_edit_main"
+        >
 
-                <EditText
-                    android:id="@+id/et_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+        <ImageView
+            android:id="@+id/iv_id_hand"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"/>
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/icon_certification_add"/>
 
-            </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dp_40"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_666666"
+            android:text="上传身份证手持正面照"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="邮        箱："
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
-
-                <EditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:inputType="textEmailAddress"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:textColor="@color/color_666666"
-                    android:textSize="@dimen/sp_14"/>
+    </RelativeLayout>
 
 
-            </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="下一步"
-                android:textSize="@dimen/sp_16"
-                android:textColor="@color/color_white"
-                android:background="@drawable/bg_main_solid_5dp_coner"/>
 
-        </LinearLayout>
-    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_dimen"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="提交"
+        android:textSize="@dimen/sp_16"
+        android:textColor="@color/color_white"
+        android:background="@drawable/bg_main_solid_5dp_coner"/>
 
 
 

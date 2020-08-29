@@ -8,12 +8,19 @@ import android.view.View
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.CertificationPresenter
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import kotlinx.android.synthetic.main.fragment_mine_certification_one.*
+import kotlinx.android.synthetic.main.fragment_mine_certification_one.btn_next
+import kotlinx.android.synthetic.main.fragment_mine_certification_one.et_address
+import kotlinx.android.synthetic.main.fragment_mine_certification_one.et_email
+import kotlinx.android.synthetic.main.fragment_mine_certification_one.et_id_code
+import kotlinx.android.synthetic.main.fragment_mine_certification_one.et_name
 import kotlinx.android.synthetic.main.fragment_mine_certification_one.tv_get_code
+import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
 
 class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificationView ,View.OnClickListener{
 
@@ -81,14 +88,41 @@ class MineCertificationOneFragment : BaseFragment() , IContractView.ICertificati
             }
             btn_next->{
                 mPhone=et_code.text.toString()
+                var name = et_name.text.toString()
+                var idNumber = et_id_code.text.toString()
+                var address = et_address.text.toString()
+                var email = et_email.text.toString()
                 if (mPhone.isNullOrEmpty())
                 {
                     SToast.showText("请输入验证码")
                     return
                 }
+                if (TextUtils.isEmpty(name)) {
+                    SToast.showText("姓名不能为空")
+                    return
+                }
+                if (TextUtils.isEmpty(idNumber)) {
+                    SToast.showText("身份证号不能为空")
+                    return
+                }
+                if (TextUtils.isEmpty(address)) {
+                    SToast.showText("现居住地址不能为空")
+                    return
+                }
+                if (TextUtils.isEmpty(email)) {
+                    SToast.showText("邮箱不能为空")
+                    return
+                }
+
+                var mCertification = Certification()
+                mCertification.name = name
+                mCertification.idNumber = idNumber
+                mCertification.address = address
+                mCertification.email = email
+                mCertification.code=mPhone
 
                 fragmentManager?.beginTransaction()
-                        ?.add(R.id.fl_content, MineCertificationTwoFragment().newInstance(mPhone))
+                        ?.add(R.id.fl_content, MineCertificationTwoFragment().newInstance(mCertification))
                         ?.addToBackStack(null)
                         ?.commit()
             }

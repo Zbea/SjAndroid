@@ -5,9 +5,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
+import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.presenter.CertificationPresenter
 import com.hazz.kuangji.utils.FileUtils
 import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.SToast
@@ -17,19 +20,35 @@ import com.luck.picture.lib.config.PictureConfig
 import com.luck.picture.lib.config.PictureMimeType
 import kotlinx.android.synthetic.main.fragment_mine_certification_one.btn_next
 import kotlinx.android.synthetic.main.fragment_mine_certification_two.*
+import org.greenrobot.eventbus.EventBus
 import java.io.File
 
-class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
-    private var PHONE: String = "phone"
-    private var mPhone: String = ""
-    private var mPhotoDialog: PhotoDialog? = null;
+class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener, IContractView.ICertificationView{
+
+    private var mCertificationPresenter= CertificationPresenter(this)
+    private var CERTIFICATION: String = "certification"
+    private lateinit var mCertification: Certification
+    private var mPhotoDialog: PhotoDialog? = null
     private var frontPath: String = ""
     private var oppositePath: String = ""
-    private var isFront: Boolean = true
+    private var handPath: String = ""
+    private var type = 0
 
-    public fun newInstance(phone: String): MineCertificationTwoFragment {
+
+    override fun sendSms(msg: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun commit() {
+        SToast.showText("提交成功，待审核")
+        activity?.finish()
+        EventBus.getDefault().post(Constants.CODE_CERTIFICATION_BROAD)
+    }
+
+
+    public fun newInstance(certification: Certification): MineCertificationTwoFragment {
         var bundle = Bundle()
-        bundle.putString(PHONE, phone);
+        bundle.putSerializable(CERTIFICATION, certification);
         var mineCertificationOneFragment = MineCertificationTwoFragment();
         mineCertificationOneFragment.arguments = bundle;
         return mineCertificationOneFragment
@@ -37,7 +56,7 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mPhone = arguments?.getString(PHONE).toString()
+        mCertification= arguments?.getSerializable(CERTIFICATION) as Certification
     }
 
     override fun getLayoutId(): Int {
@@ -46,8 +65,9 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     override fun initView() {
 
-        iv_id_front.setOnClickListener(this)
-        iv_id_opposite.setOnClickListener(this)
+        rl_id_front.setOnClickListener(this)
+        rl_id_opposite.setOnClickListener(this)
+        rl_id_hand.setOnClickListener(this)
         btn_next.setOnClickListener(this)
 
     }
@@ -57,19 +77,19 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v) {
-            iv_id_front -> {
-                isFront = true
+            rl_id_front -> {
+                type =0
                 showPhotoDialog()
             }
-            iv_id_opposite -> {
-                isFront = false
+            rl_id_opposite -> {
+                type = 1
+                showPhotoDialog()
+            }
+            rl_id_hand -> {
+                type = 2
                 showPhotoDialog()
             }
             btn_next -> {
-                var name = et_name.text.toString()
-                var idNumber = et_id_code.text.toString()
-                var address = et_address.text.toString()
-                var email = et_email.text.toString()
 
                 if (TextUtils.isEmpty(frontPath)) {
                     SToast.showText("请上传身份证正面照")
@@ -79,35 +99,19 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                     SToast.showText("请上传身份证反面照")
                     return
                 }
-                if (TextUtils.isEmpty(name)) {
-                    SToast.showText("姓名不能为空")
-                    return
-                }
-                if (TextUtils.isEmpty(idNumber)) {
-                    SToast.showText("身份证号不能为空")
-                    return
-                }
-                if (TextUtils.isEmpty(address)) {
-                    SToast.showText("现居住地址不能为空")
-                    return
-                }
-                if (TextUtils.isEmpty(email)) {
-                    SToast.showText("邮箱不能为空")
+                if (TextUtils.isEmpty(handPath)) {
+                    SToast.showText("请上传手持身份证照")
                     return
                 }
 
-                var mCertification = Certification()
-                mCertification.name = name
-                mCertification.idNumber = idNumber
-                mCertification.address = address
-                mCertification.email = email
-                mCertification.front = frontPath
-                mCertification.opposite = oppositePath
-                mCertification.code = mPhone
-                fragmentManager?.beginTransaction()
-                        ?.add(R.id.fl_content, MineCertificationThreeFragment().newInstance(mCertification))
-                        ?.addToBackStack(null)
-                        ?.commit()
+                var map=HashMap<String,String>()
+                map["name"]= mCertification.name
+                map["idNumber"]= mCertification.idNumber
+                map["address"]=mCertification.address
+                map["email"]=mCertification.email
+                map["code"]=mCertification.code
+                mCertificationPresenter.commitCertification(map,frontPath,oppositePath,handPath)
+
             }
         }
     }
@@ -121,7 +125,6 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                             .openCamera(PictureMimeType.ofImage())
                             .isCompress(true)
                             .isEnableCrop(true)
-                            .withAspectRatio(16, 10)
                             .isDragFrame(true)
                             .scaleEnabled(true)
                             .minimumCompressSize(100)
@@ -141,7 +144,6 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                             .isDragFrame(true)
                             .scaleEnabled(true)
                             .minimumCompressSize(100)
-                            .withAspectRatio(16, 10)
                             .freeStyleCropEnabled(true)// 裁剪框是否可拖拽 true or false
                             .forResult(PictureConfig.CHOOSE_REQUEST) //结果回调onActivityResult code
                 }
@@ -171,18 +173,28 @@ class MineCertificationTwoFragment : BaseFragment(), View.OnClickListener {
                 path = FileUtils.uri2String(Uri.parse(path), activity!!).toString()
 
                 if (path != null) {
-                    if (isFront) {
-                        frontPath = path
-                        iv_id_front.setImageURI(Uri.fromFile(File(path)))
-                    } else {
-                        oppositePath = path
-                        iv_id_opposite.setImageURI(Uri.fromFile(File(path)))
+                    when(type)
+                    {
+                        0->{
+                            frontPath = path
+                            iv_id_front.setImageURI(Uri.fromFile(File(path)))
+                        }
+                        1->{
+                            oppositePath = path
+                            iv_id_opposite.setImageURI(Uri.fromFile(File(path)))
+                        }
+                        else->{
+                            handPath = path
+                            iv_id_hand.setImageURI(Uri.fromFile(File(path)))
+                        }
                     }
                 }
             }
         }
 
     }
+
+
 
 
 }

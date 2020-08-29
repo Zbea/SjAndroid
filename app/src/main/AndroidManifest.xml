@@ -77,6 +77,9 @@
         <activity android:name=".ui.activity.mine.MineCertificationActivity"/>
         <activity android:name=".ui.activity.asset.TransferCoinActivity"/>
         <activity android:name=".ui.activity.asset.TransferCoinRecordActivity"/>
+        <activity android:name=".ui.activity.mine.MineDownloadActivity"/>
+        <activity android:name=".ui.activity.mine.AboutActivity"/>
+        <activity android:name=".ui.activity.mine.CompanyInfoActivity"/>
 
         <activity android:name=".ui.activity.mine.ContractManagerActivity"/>
         <activity android:name=".ui.activity.mine.ContractDetailsActivity"/>
