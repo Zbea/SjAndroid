@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -125,6 +126,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
+        setImage()
         iv_mine.setOnClickListener {
             (activity as MainActivity).openMine()
         }
@@ -165,6 +167,15 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         mCoinPresenter.getMsg()
         mHomePresenter.getHome()
         mCertificationInfoPresenter.getCertification()
+    }
+
+    /**
+     * 设置头像
+     */
+    private fun setImage()
+    {
+        val requestOptions=RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine)
+        Glide.with(activity!!).load(Constants.URL_INVITE+SPUtil.getString("image")).apply(requestOptions).into(iv_mine)
     }
 
     /**
@@ -220,6 +231,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     fun onMessageEvent(event: String) {
         if (event == Constants.CODE_CERTIFICATION_BROAD) {
             mCertificationInfoPresenter.getCertification()
+        }
+        if (event == Constants.CODE_IMAGE_BROAD) {
+            setImage()
         }
     }
 

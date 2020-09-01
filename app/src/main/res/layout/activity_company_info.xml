@@ -24,9 +24,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_160"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_dimen"
-                android:background="@color/color_main" />
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_about" />
 
             <TextView
                 android:id="@+id/tv_rule"

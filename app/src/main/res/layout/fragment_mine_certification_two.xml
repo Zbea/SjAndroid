@@ -26,14 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@mipmap/icon_certification_add"/>
+            android:src="@mipmap/icon_upload"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginBottom="@dimen/dp_20"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_666666"
             android:text="上传身份证正面照"/>
@@ -60,14 +60,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@mipmap/icon_certification_add"/>
+            android:src="@mipmap/icon_upload"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginBottom="@dimen/dp_20"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_666666"
             android:text="上传身份证反面照"/>
@@ -93,14 +93,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@mipmap/icon_certification_add"/>
+            android:src="@mipmap/icon_upload"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/dp_40"
+            android:layout_marginBottom="@dimen/dp_20"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_666666"
             android:text="上传身份证手持正面照"/>

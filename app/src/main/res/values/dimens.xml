@@ -30,7 +30,10 @@
     <dimen name="dp_107">107dp</dimen>
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_220">220dp</dimen>
+    <dimen name="dp_250">250dp</dimen>
+    <dimen name="dp_280">280dp</dimen>
     <dimen name="dp_300">300dp</dimen>
+    <dimen name="dp_340">340dp</dimen>
     <dimen name="dp_355">355dp</dimen>
     <dimen name="dp_465">465dp</dimen>
 

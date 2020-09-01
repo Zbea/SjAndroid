@@ -92,7 +92,7 @@ class ContractDetailsActivity : BaseActivity(){
                 connection.connect()
                 if (connection.responseCode === 200) {
                     val iss= connection.inputStream
-                    pdfView.fromStream(iss).load()
+                    pdfView?.fromStream(iss)?.load()
                 }
             } catch (e: IOException) {
                 e.printStackTrace()

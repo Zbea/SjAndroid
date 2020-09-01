@@ -59,6 +59,8 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     override fun setHeader(msg: UploadModel) {
         if (mView==null)return
+        SPUtil.putString("image",msg.path)
+        EventBus.getDefault().register(Constants.CODE_IMAGE_BROAD)
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + msg.path)
                     .apply(RequestOptions.bitmapTransform(CircleCrop()))

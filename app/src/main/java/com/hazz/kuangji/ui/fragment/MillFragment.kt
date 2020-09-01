@@ -64,7 +64,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         }
 
         iv_msg.setOnClickListener {
-            startActivity(Intent(activity, ContractManagerActivity::class.java))
+            startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
         ll_record.setOnClickListener {
@@ -79,8 +79,8 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         mAdapter?.setOnItemClickListener { adapter, view, position ->
-            startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",datas[position].id)
-                    .putExtra("contract_sign","2"))
+//            startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",datas[position].id)
+//                    .putExtra("contract_sign","2"))
         }
 
     }

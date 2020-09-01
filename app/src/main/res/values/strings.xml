@@ -63,7 +63,7 @@
     <string name="pwd_not_length">登录密码长度需在6~18位之间</string>
     <string name="deal_login_pwd_not_null">资金密码不能为空</string>
     <string name="deal_pwd_not_length">资金密码长度需在6~18位之间</string>
-    <string name="find_zijin_pwd">找回资金密码</string>
+    <string name="find_zijin_pwd">修改资金密码</string>
     <string name="input_old_pwd">请输入原登录密码</string>
     <string name="modify_pwd">修改登录密码</string>
     <string name="gonggao">公告</string>

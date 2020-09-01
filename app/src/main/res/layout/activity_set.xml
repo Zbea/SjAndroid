@@ -78,6 +78,7 @@
         android:layout_height="@dimen/btn_dimen"
         android:layout_below="@+id/tv_zijin"
         android:layout_marginTop="@dimen/dp_15"
+        android:visibility="gone"
         android:background="@color/color_bg">
 
         <TextView

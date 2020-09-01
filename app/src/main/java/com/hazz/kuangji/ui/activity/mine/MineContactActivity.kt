@@ -16,7 +16,6 @@ class MineContactActivity : BaseActivity()
 {
 
     private var mCodeBitmap:Bitmap?=null
-    private var type=0
 
     override fun layoutId(): Int {
         return R.layout.activity_contact
@@ -28,35 +27,30 @@ class MineContactActivity : BaseActivity()
 
     override fun initView() {
 
-        type=intent.flags
-
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle(if (type==0)"联系我们" else "下载地址")
+                .setTitle("联系我们" )
+                .setRightText("保存")
+                .setRightTextColor(resources.getColor(R.color.color_main))
+                .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { finish() }
-
-        qrCodeView.setImageResource(if (type==0)R.mipmap.icon_gz_qrcode else R.mipmap.icon_mine_download_qrcode)
+                .setOnRightClickListener {
+                    permissionsnew!!.request(
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    ).subscribe { permission ->
+                        if (permission!!) {
+                            SToast.showText("图片保存成功")
+                            ImageUtlis.saveBmp2Gallery(this,mCodeBitmap,"contactCode")
+                        } else {
+                            showMissingPermissionDialog()
+                        }
+                    }
+                }
+        qrCodeView.setImageResource(R.mipmap.icon_gz_qrcode )
 
     }
 
     override fun start() {
-        mCodeBitmap=BitmapFactory.decodeResource(resources,if (type==0)R.mipmap.icon_gz_qrcode else R.mipmap.icon_mine_download_qrcode)
-        tv_down.setOnClickListener {
-            permissionsnew!!.request(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE
-
-            ).subscribe { permission ->
-                if (permission!!) {
-
-                    SToast.showText("图片保存成功")
-
-                    ImageUtlis.saveBmp2Gallery(this,mCodeBitmap,if (type==0)"contactCode" else "downloadCode")
-
-                } else {
-                    showMissingPermissionDialog()
-                }
-            }
-        }
-
+        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_gz_qrcode)
     }
 
 }

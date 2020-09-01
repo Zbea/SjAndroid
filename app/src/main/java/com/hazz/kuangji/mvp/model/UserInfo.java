@@ -25,6 +25,7 @@ public class UserInfo {
         public String invitation_code;
         public String invitation_code_url;
         public String wallet_address;
+        public String profile_img;
         public AssetBean asset;
 
         public static class AssetBean {

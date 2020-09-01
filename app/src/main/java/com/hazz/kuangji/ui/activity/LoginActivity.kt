@@ -26,6 +26,7 @@ class LoginActivity : BaseActivity(), IContractView.LoginView {
         SPUtil.putObj("user",msg)
         SPUtil.putString("mobile",msg.mobile)
         SPUtil.putString("username",msg.username)
+        SPUtil.putString("image",msg.profile_img)
         SPUtil.putString("invitation_code",msg.invitation_code)
         SPUtil.putString("invitation_code_url",msg.invitation_code_url)
         SPUtil.putString("token",msg.token)

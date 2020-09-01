@@ -37,7 +37,7 @@ class SettingActivity : BaseActivity() {
                 .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
-        tv_version.text=Utils.getVersionName(this)
+        tv_version.text="V"+Utils.getVersionName(this)
 
     }
 
