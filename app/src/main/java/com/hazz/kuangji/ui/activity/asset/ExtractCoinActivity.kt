@@ -35,9 +35,18 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         val div = BigDecimalUtil.div(rate, "100", 4)
-
-        tv_need.text = BigDecimalUtil.mul(s.toString(), div, 2)
-        tv_shiji.text = BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 2)
+        val fee=BigDecimalUtil.mul(s.toString(), div, 4)
+        if (BigDecimalUtil.compare(rateAmount,fee))
+        {
+            tv_need.text = rateAmount
+            var surplus=BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 4)
+            tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
+        }
+        else
+        {
+            tv_need.text = fee
+            tv_shiji.text = BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 4)
+        }
     }
 
     override fun tibiRecord(msg: TibiRecord) {
@@ -63,6 +72,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
     private var popWnd: PopupWindow? = null
     private var currentName = "USDT"
     private var rate = "0.5%"
+    private var rateAmount="10"
     private var avaiableAmount = "0"
     private var assets: List<MyAsset.AssetsBean>? = null
 
@@ -95,6 +105,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             et_num.hint = "最小:" + config[0].value + "/" + "最大:" + config[1].value
             rate = config[2].value
         }
+
+        rateAmount=config[6].value
 
         tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
 
