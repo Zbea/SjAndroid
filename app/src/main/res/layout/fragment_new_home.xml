@@ -19,7 +19,6 @@
             android:layout_width="@dimen/dp_35"
             android:layout_height="@dimen/dp_35"
             android:layout_centerVertical="true"
-            android:scaleType="center"
             android:src="@mipmap/icon_home_mine"/>
 
 

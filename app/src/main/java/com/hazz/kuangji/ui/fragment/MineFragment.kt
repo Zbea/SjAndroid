@@ -42,7 +42,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         sl_refresh?.isRefreshing=false
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
-                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
                     .into(iv_header)
         }
         iv_type.visibility=View.VISIBLE
@@ -60,10 +60,10 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     override fun setHeader(msg: UploadModel) {
         if (mView==null)return
         SPUtil.putString("image",msg.path)
-        EventBus.getDefault().register(Constants.CODE_IMAGE_BROAD)
+        EventBus.getDefault().post(Constants.CODE_IMAGE_BROAD)
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + msg.path)
-                    .apply(RequestOptions.bitmapTransform(CircleCrop()))
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
                     .into(iv_header)
         }
     }
