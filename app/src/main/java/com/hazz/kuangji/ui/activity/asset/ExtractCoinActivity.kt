@@ -108,10 +108,10 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             max=config[1].value
             et_num.hint = "最小:$min/最大:$max"
             rate = config[2].value
-            rateAmount=config[config.size-1].value
+            rateAmount=config[6].value
         }
 
-        tv_shouxu.text = "手续费为提币数量的$rate%"
+        tv_shouxu.text = "手续费为提币数量的$rate%,最低扣除$rateAmount"
 
         et_num.addTextChangedListener(this)
     }
