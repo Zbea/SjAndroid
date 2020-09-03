@@ -24,8 +24,10 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var myAsset: MyAsset? = null
     private var currentName = "USDT"
-    private var rate = "0.5%"
-    private var rateAmount="10"
+    private var rateUsdt = "0.5"
+    private var rateAmountUsdt="10"
+    private var rateFil = "0.5"
+    private var rateAmountFil="10"
     private var avaiableAmount = "0"
     private var min="10"
     private var max="20000"
@@ -48,12 +50,12 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 min=config[0].value
                 max=config[1].value
                 et_num.hint = "最小:$min/最大:$max"
-                rate = config[2].value
+                rateUsdt = config[2].value
+                rateAmountUsdt= config[6].value
+                rateAmountFil=config[7].value
+                rateFil = config[8].value
             }
-
-            tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
-
-            rateAmount= config[config.size-1].value
+            setFee()
         }
     }
 
@@ -71,11 +73,11 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val div = BigDecimalUtil.div(rate, "100", 4)
+        val div = BigDecimalUtil.div(getCurrentRate(), "100", 4)
         val fee=BigDecimalUtil.mul(s.toString(), div, 4)
-        if (BigDecimalUtil.compare(rateAmount.toString(),fee))
+        if (BigDecimalUtil.compare(getCurrentRateAmount(),fee))
         {
-            tv_need.text = rateAmount
+            tv_need.text = getCurrentRateAmount()
             var surplus=BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 4)
             tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
         }
@@ -141,7 +143,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 SToast.showText("提币数量不能低于$min")
                 return@setOnClickListener
             }
-            if (!BigDecimalUtil.compare(amount,rateAmount))
+            if (!BigDecimalUtil.compare(amount,getCurrentRateAmount()))
             {
                 SToast.showText("提币数量不能低于扣除费用")
                 return@setOnClickListener
@@ -182,18 +184,36 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                         avaiableAmount = coin.balance
                         tv_lest.text = "可用" + coin.balance + currentName
                     }
-                    if (coin.coin == currentName) {
-                        avaiableAmount = coin.balance
-                        tv_lest.text = "可用" + coin.balance + currentName
-                    }
                 }
+
             }
             et_num.setText("")
             tv_need.text="0"
             tv_shiji.text="0"
+            setFee()
         }
     }
 
+    /**
+     * 设置费用
+     */
+    private fun setFee(){
+        tv_shouxu.text = "手续费为提币数量的"+getCurrentRate()+"%,最少扣除"+getCurrentRateAmount()+currentName
+    }
+
+    /**
+     * 获得当前rate
+     */
+    private fun getCurrentRate():String{
+        return if (currentName=="USDT") rateUsdt else rateFil
+    }
+
+    /**
+     * 获得当前币最低
+     */
+    private fun getCurrentRateAmount():String{
+        return if (currentName=="USDT") rateAmountUsdt else rateAmountFil
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
