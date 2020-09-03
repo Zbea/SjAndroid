@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.media.ThumbnailUtils;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,6 +23,29 @@ import java.util.List;
  * Created by LGM on 2015/12/2.
  */
 public class Utils {
+
+	/**
+	 * 截断输出日志
+	 * @param msg
+	 */
+	public static void i(String tag, String msg) {
+		if (tag == null || tag.length() == 0
+				|| msg == null || msg.length() == 0)
+			return;
+
+		int segmentSize = 3 * 1024;
+		long length = msg.length();
+		// 打印剩余日志
+		if (length <= segmentSize ) {// 长度小于等于限制直接打印
+		}else {
+			while (msg.length() > segmentSize ) {// 循环分段打印日志
+				String logContent = msg.substring(0, segmentSize );
+				msg = msg.replace(logContent, "");
+				Log.i(tag, logContent);
+			}
+		}
+		Log.i(tag, msg);
+	}
 
 	public static String encryptMD5(String inputText) {
 		if (inputText == null || "".equals(inputText.trim())) {

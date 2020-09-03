@@ -27,6 +27,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var rate = "0.5%"
     private var rateAmount="10"
     private var avaiableAmount = "0"
+    private var min="10"
+    private var max="20000"
     private var assets: List<MyAsset.AssetsBean>? = null
 
     override fun myAsset(msg: MyAsset) {
@@ -43,13 +45,15 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
 
             val config = myAsset!!.config
             if (config != null) {
-                et_num.hint = "最小:" + config[0].value + "/" + "最大:" + config[1].value
+                min=config[0].value
+                max=config[1].value
+                et_num.hint = "最小:$min/最大:$max"
                 rate = config[2].value
             }
 
             tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
 
-            rateAmount= config[6].value
+            rateAmount= config[config.size-1].value
         }
     }
 
@@ -121,10 +125,28 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
         }
 
         tv_bt.setOnClickListener {
-            if (TextUtils.isEmpty(et_num.text.toString())) {
+            var amount=et_num.text.toString()
+            if (TextUtils.isEmpty(amount)) {
                 SToast.showText("请输入提币数量")
                 return@setOnClickListener
             }
+
+            if (!BigDecimalUtil.compare(max,amount))
+            {
+                SToast.showText("提币数量不能超过$max")
+                return@setOnClickListener
+            }
+            if (!BigDecimalUtil.compare(amount,min))
+            {
+                SToast.showText("提币数量不能低于$min")
+                return@setOnClickListener
+            }
+            if (!BigDecimalUtil.compare(amount,rateAmount))
+            {
+                SToast.showText("提币数量不能低于扣除费用")
+                return@setOnClickListener
+            }
+
             if (TextUtils.isEmpty(et_pwd.text.toString())) {
                 SToast.showText("请输入资金密码")
                 return@setOnClickListener
