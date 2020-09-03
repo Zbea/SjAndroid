@@ -116,6 +116,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
         et_num.addTextChangedListener(this)
     }
 
+
     override fun start() {
         tv_scan.setOnClickListener {
             permissionsnew!!.request(
