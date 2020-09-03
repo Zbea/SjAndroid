@@ -74,6 +74,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
     private var rate = "0.5%"
     private var rateAmount="10"
     private var avaiableAmount = "0"
+    private var min = "10"
+    private var max = "20000"
     private var assets: List<MyAsset.AssetsBean>? = null
 
     @SuppressLint("SetTextI18n")
@@ -85,13 +87,13 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
                 .setRightText("提币记录")
                 .setToolBarBgRescource(R.drawable.bg_blue_gradient)
                 .setRightTextIsShow(true)
-                .setOnLeftIconClickListener { view -> finish() }
+                .setOnLeftIconClickListener {  finish() }
                 .setOnRightClickListener {
                     startActivity(Intent(this, ExtractCoinRecordActivity::class.java))
 
                 }
         myAsset = intent.getSerializableExtra("amount") as MyAsset?
-        assets = myAsset!!.assets
+        assets = myAsset?.assets
 
         for (coin in assets!!) {
             if (coin.coin == currentName) {
@@ -100,15 +102,16 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             }
         }
         //
-        val config = myAsset!!.config
+        val config = myAsset?.config
         if (config != null) {
-            et_num.hint = "最小:" + config[0].value + "/" + "最大:" + config[1].value
+            min=config[0].value
+            max=config[1].value
+            et_num.hint = "最小:$min/最大:$max"
             rate = config[2].value
+            rateAmount=config[config.size-1].value
         }
 
-        rateAmount=config[6].value
-
-        tv_shouxu.text = "手续费为提币数量的" + config[2].value + "%"
+        tv_shouxu.text = "手续费为提币数量的$rate%"
 
         et_num.addTextChangedListener(this)
     }
@@ -130,7 +133,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
         }
 
         tv_bt.setOnClickListener {
-            if (TextUtils.isEmpty(et_num.text.toString())) {
+            val amount=et_num.text.toString()
+            if (TextUtils.isEmpty(amount)) {
                 SToast.showText("请输入提币数量")
                 return@setOnClickListener
             }
@@ -140,6 +144,22 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, TextWatcher 
             }
             if (TextUtils.isEmpty(et_address.text.toString())) {
                 SToast.showText("请输入提币地址")
+                return@setOnClickListener
+            }
+
+            if (!BigDecimalUtil.compare(max,amount))
+            {
+                SToast.showText("提币数量不能超过$max")
+                return@setOnClickListener
+            }
+            if (!BigDecimalUtil.compare(amount,min))
+            {
+                SToast.showText("提币数量不能低于$min")
+                return@setOnClickListener
+            }
+            if (!BigDecimalUtil.compare(amount,rateAmount))
+            {
+                SToast.showText("提币数量不能低于扣除费用")
                 return@setOnClickListener
             }
 
