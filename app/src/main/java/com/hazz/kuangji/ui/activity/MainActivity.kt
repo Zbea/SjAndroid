@@ -48,17 +48,18 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
 
     override fun initData() {
 //        mCertificationInfoPresenter.getCertification()
+        //腾讯bugly
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
+        Beta.autoCheckUpgrade = true
+        Beta.upgradeCheckPeriod = 60 * 1000
+        Bugly.init(this, Constants.BUGLY_ID, false)
+
     }
 
     override fun initView() {
         initFragment()
         mRG.setOnCheckedChangeListener(this)
-
-        //腾讯bugly
-        Beta.canShowUpgradeActs.add(MainActivity::class.java)
-        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
-        Beta.autoCheckUpgrade = true
-        Bugly.init(this, Constants.BUGLY_ID, false)
 
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)

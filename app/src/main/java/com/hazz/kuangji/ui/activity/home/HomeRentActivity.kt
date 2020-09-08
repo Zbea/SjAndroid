@@ -116,7 +116,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         count=produce?.user_balance.toString()
         tv_yue.text = "账户余额:$count"
         produce?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+it,iv_product) }
-
+        tv_type.text="散售"
+        tv_storage.text=produce?.storage+"T"
         if (produce?.rent_type == "1")
         {
             et_num.setText(amount)
@@ -124,6 +125,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             et_num.background=resources.getDrawable(R.drawable.bg_edit_solid_gray)
             et_num.isFocusable=false
             et_num.isFocusableInTouchMode=false
+            tv_type.text="整售"
         }
 
         tv_info.text=Html.fromHtml(produce?.desc)

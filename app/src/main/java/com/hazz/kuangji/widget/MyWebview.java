@@ -2,6 +2,7 @@ package com.hazz.kuangji.widget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -15,7 +16,7 @@ public class MyWebview extends WebView {
     public ProgressDialog mDialog;
 
     public MyWebview(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        super(getFixedContext(context), attrs);
         setBackgroundColor(Color.TRANSPARENT);
 //        initWebViewSetting();
         String userAgentString = getSettings().getUserAgentString();
@@ -92,6 +93,11 @@ public class MyWebview extends WebView {
 
     }
 
+    public static Context getFixedContext(Context context) {
+        if (Build.VERSION.SDK_INT >= 21 && Build.VERSION.SDK_INT < 23) // Android Lollipop 5.0 & 5.1
+            return context.createConfigurationContext(new Configuration());
+        return context;
+    }
 
 
 

@@ -36,7 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/space_dimen">
+                android:paddingLeft="@dimen/space_dimen"
+                android:paddingRight="@dimen/space_dimen"
+                android:paddingTop="@dimen/dp_10">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="总价值："
+                        android:text="总价："
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 
@@ -59,7 +61,7 @@
                         android:layout_weight="1"
                         android:text="0USDT"
                         android:textColor="@color/redF4"
-                        android:textSize="@dimen/sp_16" />
+                        android:textSize="@dimen/sp_14" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -77,17 +79,66 @@
                         android:gravity="center"
                         android:text="0年"
                         android:textColor="@color/color_333333"
-                        android:textSize="@dimen/sp_16" />
+                        android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
-
-            <View
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/space_dimen"
-                android:background="@color/color_gray_bg" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/space_dimen"
+                android:paddingRight="@dimen/space_dimen"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="方式："
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="零售"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="矿机容量："
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <TextView
+                        android:id="@+id/tv_storage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="0T"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,10 +216,6 @@
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_dimen"
-                android:background="@color/color_gray_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -275,10 +322,6 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/space_dimen"
-                android:background="@color/color_gray_bg" />
 
             <LinearLayout
                 android:layout_width="match_parent"

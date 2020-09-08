@@ -47,6 +47,8 @@ public class Home implements Serializable {
             public String created_at;
             public String updated_at;
             public String user_balance;
+            public String storage;
+
         }
 
         public static class CarouselBean {
