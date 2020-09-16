@@ -110,11 +110,12 @@ class ContractDetailsActivity : BaseActivity(){
             try {
                 val connection= URL(url).openConnection() as HttpURLConnection
                 connection.requestMethod = "GET"
+
                 connection.doInput = true
                 connection.connectTimeout = 10000
                 connection.readTimeout = 10000
                 connection.connect()
-                if (connection.responseCode=== 200) {
+                if (connection.responseCode== 200) {
                     val iss= connection.inputStream
                     val arr = ByteArray(1)
                     val baos = ByteArrayOutputStream ()

@@ -26,7 +26,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             helper.setText(R.id.tv_yesterday, item.yesterday+"FIL")
         }
 
-        if (!BigDecimalUtil.compare(item.product_price,item.price))
+        if (BigDecimalUtil.compare(item.price,item.product_price))
         {
             helper.setImageResource(R.id.iv_total,R.mipmap.icon_mill_total)
         }

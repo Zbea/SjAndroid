@@ -1,7 +1,5 @@
 package com.hazz.kuangji.ui.activity.mine
 
-import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
@@ -14,10 +12,7 @@ import com.hazz.kuangji.mvp.model.UploadModel
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.adapter.NodeAdapter
 import com.hazz.kuangji.utils.ToolBarCustom
-import com.hazz.kuangji.widget.RewardItemDeco
-import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_node.*
-
 
 class NodeActivity : BaseActivity(), IContractView.NodeView {
 

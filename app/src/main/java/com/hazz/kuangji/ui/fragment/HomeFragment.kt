@@ -126,7 +126,6 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
-        setImage()
         iv_mine.setOnClickListener {
             (activity as MainActivity).openMine()
         }
@@ -164,6 +163,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     }
 
     override fun lazyLoad() {
+        setImage()
         mCoinPresenter.getMsg()
         mHomePresenter.getHome()
         mCertificationInfoPresenter.getCertification()
@@ -230,10 +230,14 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: String) {
         if (event == Constants.CODE_CERTIFICATION_BROAD) {
-            mCertificationInfoPresenter.getCertification()
-        }
-        if (event == Constants.CODE_IMAGE_BROAD) {
-            setImage()
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    if (mCertification?.status!=1)
+                    {
+                        mCertificationInfoPresenter.getCertification()
+                    }
+                }
+            } , 0, 3*60*1000)
         }
     }
 
@@ -245,10 +249,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
-            if (mCertification?.status==0)
-            {
-                mCertificationInfoPresenter.getCertification()
-            }
+            mCertification = SPUtil.getObj("certification", Certification::class.java)
         }
     }
 

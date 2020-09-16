@@ -25,11 +25,11 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>
             }
             "wait"->{
                 helper.setText(R.id.tv_state, "待审核")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.blue))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
             }
             "fail"->{
                 helper.setText(R.id.tv_state, "审核失败")
-                helper.setTextColor(R.id.tv_state,mContext.resources.getColor(R.color.redF4))
+                helper.setTextColor(R.id.tv_state,mContext.resources.getColor(R.color.color_999999))
             }
         }
         if(item.coin=="USDT"){

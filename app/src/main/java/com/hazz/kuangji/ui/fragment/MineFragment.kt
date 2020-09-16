@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -28,6 +29,7 @@ import kotlinx.android.synthetic.main.fragment_mine.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.*
 
 class MineFragment : BaseFragment(), IContractView.NodeView {
 
@@ -242,20 +244,18 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     }
 
-    override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden) {
-            if (mData?.status==0)
-            {
-                mNodePresenter.getCertification()
-            }
-        }
-    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: String) {
         if (event == Constants.CODE_CERTIFICATION_BROAD) {
-            mNodePresenter.getCertification()
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    if (mData?.status!=1)
+                    {
+                        mNodePresenter.getCertification()
+                    }
+                }
+            } , 0, 3*60*1000)
         }
     }
 

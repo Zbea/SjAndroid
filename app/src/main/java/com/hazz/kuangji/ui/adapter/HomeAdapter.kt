@@ -2,6 +2,7 @@ package com.hazz.kuangji.ui.adapter
 
 
 import android.content.Intent
+import android.text.Html
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView

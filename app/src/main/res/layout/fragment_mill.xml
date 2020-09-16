@@ -53,8 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_15"
                 android:layout_marginRight="@dimen/dp_15"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginBottom="@dimen/dp_5"
                 app:cardBackgroundColor="@color/color_main"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
@@ -62,13 +60,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/space_dimen"
+                    android:paddingLeft="@dimen/space_dimen"
+                    android:paddingRight="@dimen/space_dimen"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/space_dimen"
+                        android:layout_marginTop="@dimen/dp_25"
                         android:layout_marginBottom="@dimen/space_dimen">
 
                         <LinearLayout
@@ -88,7 +87,7 @@
                                 android:id="@+id/tv_number"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_20"
                                 android:text="0"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_16" />
@@ -115,7 +114,7 @@
                                 android:id="@+id/tv_touzi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_20"
                                 android:text="0"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_16" />
@@ -141,7 +140,7 @@
                                 android:id="@+id/tv_shouyi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
+                                android:layout_marginTop="@dimen/dp_20"
                                 android:text="0"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_16" />
@@ -157,16 +156,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical|right"
-                        android:layout_marginTop="@dimen/space_dimen"
-                        android:layout_marginBottom="@dimen/space_dimen"
+                        android:layout_marginBottom="@dimen/dp_20"
                         android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/sp_14"
+                            android:textSize="@dimen/sp_12"
                             android:text="收益明细 >>"
-                            android:textColor="@color/color_white"/>
+                            android:textColor="#aaffffff"/>
 
 
                     </LinearLayout>
