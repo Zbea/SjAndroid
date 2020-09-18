@@ -101,7 +101,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
 
                     SToast.showText("图片保存成功")
 
-                    ImageUtlis.saveBmp2Gallery(this,createQRCode,"qrcode")
+                    ImageUtlis.saveBmpGallery(this,createQRCode,"qrcode")
 
                 } else {
                     showMissingPermissionDialog()

@@ -85,6 +85,19 @@
                         android:layout_centerVertical="true"
                         android:src="@mipmap/icon_notice" />
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:src="@mipmap/mine_icon_more" />
+
+
                     <com.hazz.kuangji.view.MarqueeView
                         android:id="@+id/marqueeView"
                         android:layout_width="match_parent"
@@ -100,11 +113,8 @@
                         app:mvTextColor="@color/color_666666"
                         app:mvTextSize="13sp" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/mine_icon_more" />
 
+                    </RelativeLayout>
 
                 </LinearLayout>
 

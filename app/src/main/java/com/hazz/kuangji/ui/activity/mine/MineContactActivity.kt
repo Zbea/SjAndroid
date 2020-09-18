@@ -39,7 +39,7 @@ class MineContactActivity : BaseActivity()
                     ).subscribe { permission ->
                         if (permission!!) {
                             SToast.showText("图片保存成功")
-                            ImageUtlis.saveBmp2Gallery(this,mCodeBitmap,"contactCode")
+                            ImageUtlis.saveBmpGallery(this,mCodeBitmap,"contactCode")
                         } else {
                             showMissingPermissionDialog()
                         }

@@ -41,7 +41,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
     override fun getAccount(msg: Account) {
         if (mView==null||iv_header==null||iv_type==null)return
-        sl_refresh?.isRefreshing=false
+        SPUtil.putString("image",msg.profile_img)
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
                     .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
@@ -116,12 +116,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
         mTvMobile.text = mobile
         mTvUserName.text = userName
 
-        sl_refresh=activity?.findViewById(R.id.sl_refresh_mine)
-        sl_refresh?.isRefreshing=true
-        sl_refresh?.setColorSchemeResources(R.color.color_main)
-        sl_refresh?.setOnRefreshListener {
-            lazyLoad()
-        }
 
         iv_header.setOnClickListener {
             showPhotoDialog()

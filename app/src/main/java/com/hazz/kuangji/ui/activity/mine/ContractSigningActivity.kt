@@ -3,7 +3,7 @@ package com.hazz.kuangji.ui.activity.mine
 import android.Manifest
 import android.os.Environment
 import android.os.Handler
-import com.hazz.kuangji.Constants
+import android.util.Log
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -61,9 +61,11 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
             )?.subscribe { permission ->
                 if (permission!!) {
                     fileName="signing"+System.currentTimeMillis()
-                    ImageUtlis.saveBmp2Gallery(this,signature_pad.transparentSignatureBitmap,fileName)
+                    ImageUtlis.saveBmpGallery(this, signature_pad.transparentSignatureBitmap, fileName)
                     Handler().postDelayed(Runnable {
-                        mContractManagerPresenter.setSign(code,File(Environment.getExternalStorageDirectory().toString(), "/eye/image/$fileName.png"))
+//                        Log.i("sj", File(Environment.getExternalStorageDirectory(), "/eye/image/$fileName.png").toString())
+//                        Log.i("sj", ImageUtlis.getFilePath(this,"/eye/")+"$fileName.png")
+                        mContractManagerPresenter.setSign(code, File(ImageUtlis.getFilePath(this,"/eye/"), "$fileName.png"))
                     }, 500)
 
 

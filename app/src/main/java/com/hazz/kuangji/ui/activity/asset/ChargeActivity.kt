@@ -112,7 +112,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
                     SToast.showText("充值二维码保存成功")
 
-                    ImageUtlis.saveBmp2Gallery(this,createQRCode,"charge_qrcode")
+                    ImageUtlis.saveBmpGallery(this,createQRCode,"charge_qrcode")
 
                 } else {
                     showMissingPermissionDialog()

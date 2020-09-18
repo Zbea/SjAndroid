@@ -21,6 +21,7 @@
 
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+    <!--        android:requestLegacyExternalStorage="true"-->
     <application
         android:name="com.hazz.kuangji.MyApplication"
         android:allowBackup="true"

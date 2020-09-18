@@ -104,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="方式："
+                        android:text="收益："
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 
@@ -113,8 +113,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="零售"
-                        android:textColor="@color/color_333333"
+                        android:text="0FIL"
+                        android:textColor="@color/redF4"
                         android:textSize="@dimen/sp_14" />
 
                     <TextView
@@ -172,6 +172,7 @@
                         android:singleLine="true"
                         android:text="预计每日收益:0FIL"
                         android:textColor="@color/redF4"
+                        android:visibility="gone"
                         android:textSize="@dimen/sp_12" />
 
                 </RelativeLayout>
@@ -212,7 +213,7 @@
                     android:layout_marginTop="@dimen/dp_5"
                     android:singleLine="true"
                     android:text="账号余额：0.00"
-                    android:textColor="@color/color_main"
+                    android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>
 
@@ -248,17 +249,17 @@
                         android:layout_height="wrap_content"
                         android:text="真实姓名："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
 
                     <EditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_35"
-                        android:background="@drawable/bg_line_bottom"
+                        android:layout_height="@dimen/dp_30"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
                         android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -273,17 +274,17 @@
                         android:layout_height="wrap_content"
                         android:text="联系方式："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
 
                     <EditText
                         android:id="@+id/et_phone"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_35"
-                        android:background="@drawable/bg_line_bottom"
+                        android:layout_height="@dimen/dp_30"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
                         android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -298,17 +299,17 @@
                         android:layout_height="wrap_content"
                         android:text="收货地址："
                         android:textColor="@color/color_999999"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
 
                     <EditText
                         android:id="@+id/et_address"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_35"
-                        android:background="@drawable/bg_line_bottom"
+                        android:layout_height="@dimen/dp_30"
+                        android:background="@drawable/bg_gray_solid_5dp_coner"
                         android:paddingLeft="@dimen/dp_5"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/sp_12" />
                 </LinearLayout>
 
                 <TextView

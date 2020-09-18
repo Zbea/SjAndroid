@@ -1,7 +1,6 @@
 package com.hazz.kuangji.ui.activity.mine
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
 import android.graphics.Bitmap
@@ -13,10 +12,7 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.utils.ImageUtlis
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
-import kotlinx.android.synthetic.main.activity_charge.*
-import kotlinx.android.synthetic.main.activity_contact.*
 import kotlinx.android.synthetic.main.activity_contact.tv_down
-import kotlinx.android.synthetic.main.activity_download.*
 import kotlinx.android.synthetic.main.activity_download.tv_address
 import kotlinx.android.synthetic.main.activity_rule.mToolBar
 
@@ -65,8 +61,7 @@ class MineDownloadActivity : BaseActivity()
 
                     SToast.showText("图片保存成功")
 
-                    ImageUtlis.saveBmp2Gallery(this,mCodeBitmap, "downloadCode")
-
+                    ImageUtlis.saveBmpGallery(this,mCodeBitmap, "downloadCode")
                 } else {
                     showMissingPermissionDialog()
                 }

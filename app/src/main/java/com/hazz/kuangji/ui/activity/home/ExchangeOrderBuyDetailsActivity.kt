@@ -182,7 +182,7 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
 
                         SToast.showText("付款二维码保存成功")
 
-                        ImageUtlis.saveBmp2Gallery(this,bitmap,if (mData.pay_type=="wx") "微信付款码" else "支付宝付款码" )
+                        ImageUtlis.saveBmpGallery(this,bitmap,if (mData.pay_type=="wx") "微信付款码" else "支付宝付款码" )
 
                     } else {
                         showMissingPermissionDialog()

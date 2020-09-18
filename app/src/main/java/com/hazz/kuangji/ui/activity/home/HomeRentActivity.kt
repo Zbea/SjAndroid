@@ -116,7 +116,6 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         count=produce?.user_balance.toString()
         tv_yue.text = "账户余额:$count"
         produce?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+it,iv_product) }
-        tv_type.text="散售"
         tv_storage.text=produce?.storage+"T"
         if (produce?.rent_type == "1")
         {
@@ -139,6 +138,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     {
         val div = BigDecimalUtil.mul(s, rate, 8)
         tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
+        tv_type.text= BigDecimalUtil.mul(div, "0.7", 8) + "FIL(每日预计)"
     }
 
 
