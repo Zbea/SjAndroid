@@ -152,7 +152,7 @@ class ExchangeSaleActivity : BaseActivity(), IContractView.IExchangeSaleView {
                 return@setOnClickListener
             }
 
-            if (data!=null)
+            if (data!=null&&currentPrice!="0")
             {
                 val intent=Intent(this, ExchangeOrderSaleCommitActivity::class.java)
                 intent.putExtra("price",currentPrice)

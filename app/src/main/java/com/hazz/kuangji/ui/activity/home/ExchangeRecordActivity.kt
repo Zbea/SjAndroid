@@ -41,10 +41,9 @@ class ExchangeRecordActivity : BaseActivity(), IContractView.IExchangeRecordView
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(if (type == 1) "买币明细" else "卖币明细")
-                .setToolBarBgRescource(R.color.color_bg)
+                .setToolBarBgRescource(R.color.color_item_bg)
                 .setOnLeftIconClickListener { finish() }
 
-        rc_list.setBackgroundResource(R.color.color_gray_bg)
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = ExchangeRecordAdapter(R.layout.item_exchange_record, null)
         rc_list.adapter = mAdapter

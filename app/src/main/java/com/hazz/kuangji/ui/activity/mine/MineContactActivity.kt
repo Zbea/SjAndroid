@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.utils.ImageUtlis
+import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_contact.*
@@ -38,19 +38,19 @@ class MineContactActivity : BaseActivity()
                             Manifest.permission.WRITE_EXTERNAL_STORAGE
                     ).subscribe { permission ->
                         if (permission!!) {
+
                             SToast.showText("图片保存成功")
-                            ImageUtlis.saveBmpGallery(this,mCodeBitmap,"contactCode")
+                            ImageUtils.saveBmp2Gallery(this,mCodeBitmap,"contactCode")
                         } else {
                             showMissingPermissionDialog()
                         }
                     }
                 }
-        qrCodeView.setImageResource(R.mipmap.icon_gz_qrcode )
 
     }
 
     override fun start() {
-        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_gz_qrcode)
+        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_gz_qrcode_address)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.activity.asset
 
+import android.graphics.Color
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
@@ -10,6 +11,7 @@ import com.hazz.kuangji.mvp.model.InComing
 import com.hazz.kuangji.mvp.presenter.IncomingPresenter
 import com.hazz.kuangji.ui.adapter.IncomingAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
+import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -101,11 +103,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
     override fun initView() {
 
-        ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setLeftIcon(R.mipmap.icon_back_white)
-                .setTitle(getString(R.string.shouyi))
-                .setTitleColor(resources.getColor(R.color.color_white))
-                .setToolBarBgRescource(R.drawable.bg_main_gradient)
+        ToolBarCustom.newBuilder(toolbar as Toolbar)
                 .setOnLeftIconClickListener { finish() }
 
         position=intent.flags
@@ -126,6 +124,8 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
                         0
                 )
         )
+        if (SPUtil.getBoolean("skin"))
+            invitation_tab_layout.setTabTextColors(Color.parseColor("#ffffff"),Color.parseColor("#00767E"))
         invitation_tab_layout.addOnTabSelectedListener(this)
         for (a in titles) {
             invitation_tab_layout.addTab(invitation_tab_layout.newTab().setText(a))

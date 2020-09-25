@@ -6,6 +6,7 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -30,6 +31,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
 
 
     private var createQRCode: Bitmap? = null
+    private var downBitmap: Bitmap? = null
     private var mCoinPresenter: CoinPresenter = CoinPresenter(this)
     private  var userInfo: UserInfo?=null
     private  var invitation_code=""
@@ -71,7 +73,8 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
            qrCodeView.setImageBitmap(createQRCode)
        }
 
-
+        var bitmapBg=BitmapFactory.decodeResource(resources,R.mipmap.icon_mine_invite_bg)
+        downBitmap=ImageUtils.mergeBitmap(bitmapBg,createQRCode,tipsText.text.toString())
 
     }
 
@@ -92,6 +95,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
         }
 
 
+
         tv_down.setOnClickListener {
             permissionsnew!!.request(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -101,7 +105,7 @@ class InviteActivity : BaseActivity(), IContractView.CoinView {
 
                     SToast.showText("图片保存成功")
 
-                    ImageUtlis.saveBmpGallery(this,createQRCode,"qrcode")
+                    ImageUtils.saveBmp2Gallery(this,downBitmap,"qrcode")
 
                 } else {
                     showMissingPermissionDialog()

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_gray_bg"
     android:orientation="vertical">
 
     <include
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/space_dimen"
-        android:background="@color/color_white"
+        android:background="@color/color_bg"
         android:orientation="vertical">
 
         <RadioGroup
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="单价:"
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/color_999999"
                 />
 
             <TextView
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:text="数量:"
                 android:layout_marginLeft="@dimen/dp_10"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/color_999999"
                 android:textSize="@dimen/sp_14"
                 />
 
@@ -111,7 +111,7 @@
                 android:id="@+id/tv_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_999999"
+                android:textColor="@color/color_666666"
                 android:text="0"
                 android:textSize="@dimen/sp_14"
                 />
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:text="总额:"
                     android:textSize="@dimen/sp_14"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_999999"
                     />
 
                 <TextView
@@ -149,7 +149,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_white"
+        android:background="@color/color_bg"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/space_dimen">
         <TextView
@@ -222,7 +222,7 @@
                 android:text="支付宝"
                 android:layout_marginLeft="5dp"
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_999999"/>
             <ImageView
                 android:id="@+id/iv_zfb_cb"
                 android:layout_width="wrap_content"
@@ -257,7 +257,7 @@
                 android:text="银行转账"
                 android:layout_marginLeft="5dp"
                 android:textSize="@dimen/sp_14"
-                android:textColor="@color/color_666666"/>
+                android:textColor="@color/color_999999"/>
             <ImageView
                 android:id="@+id/iv_bank_cb"
                 android:layout_width="wrap_content"

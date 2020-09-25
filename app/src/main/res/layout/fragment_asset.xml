@@ -10,7 +10,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_220"
-        android:background="@drawable/bg_main_gradient" />
+        android:background="@color/color_asset_bg" />
 
     <RelativeLayout
         android:id="@+id/toolbar"
@@ -73,6 +73,7 @@
                 android:layout_marginRight="@dimen/space_dimen"
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginBottom="@dimen/dp_5"
+                app:cardBackgroundColor="@color/color_card_bg"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="@dimen/dp_5">
 

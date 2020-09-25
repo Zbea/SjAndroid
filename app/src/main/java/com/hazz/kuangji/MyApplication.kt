@@ -5,18 +5,20 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import com.hazz.kuangji.ui.activity.MainActivity
+import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.BuildConfig
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
-import com.squareup.leakcanary.RefWatcher
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
+import skin.support.SkinCompatManager
+import skin.support.app.SkinAppCompatViewInflater
+import skin.support.app.SkinCardViewInflater
+import skin.support.constraint.app.SkinConstraintViewInflater
+import skin.support.design.app.SkinMaterialViewInflater
 import kotlin.properties.Delegates
-
-
 
 
 class MyApplication : Application(){
@@ -43,8 +45,16 @@ class MyApplication : Application(){
         SPUtil.init(this)
         SToast.initToast(this)
 
-    }
+        SkinCompatManager.withoutActivity(this)
+                .addInflater(SkinAppCompatViewInflater()) // 基础控件换肤初始化
+                .addInflater(SkinMaterialViewInflater()) // material design 控件换肤初始化[可选]
+                .addInflater(SkinConstraintViewInflater()) // ConstraintLayout 控件换肤初始化[可选]
+                .addInflater(SkinCardViewInflater()) // CardView v7 控件换肤初始化[可选]
+                .setSkinStatusBarColorEnable(true) // 关闭状态栏换肤，默认打开[可选]
+                .setSkinWindowBackgroundEnable(false) // 关闭windowBackground换肤，默认打开[可选]
+                .loadSkin()
 
+    }
 
 
     /**

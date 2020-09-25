@@ -16,7 +16,7 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.ExchangeOrder
 import com.hazz.kuangji.mvp.presenter.ExchangeOrderBuyDetailsPresenter
-import com.hazz.kuangji.utils.ImageUtlis
+import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.CommonDialog
@@ -182,7 +182,7 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
 
                         SToast.showText("付款二维码保存成功")
 
-                        ImageUtlis.saveBmpGallery(this,bitmap,if (mData.pay_type=="wx") "微信付款码" else "支付宝付款码" )
+                        ImageUtils.saveBmpGallery(this,bitmap,if (mData.pay_type=="wx") "微信付款码" else "支付宝付款码" )
 
                     } else {
                         showMissingPermissionDialog()

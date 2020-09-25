@@ -80,8 +80,10 @@ public class CommonDialog {
         dialog.setView(view);
         dialog.show();
         Window window=dialog.getWindow();
+        window.setBackgroundDrawableResource(android.R.color.transparent);
+        window.getDecorView().setPadding(0, 0, 0, 0);
         WindowManager.LayoutParams lp = window.getAttributes();
-        lp.width = DpUtils.dip2px(context,300f);
+        lp.width = DpUtils.dip2px(context,280f);
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
         return this;

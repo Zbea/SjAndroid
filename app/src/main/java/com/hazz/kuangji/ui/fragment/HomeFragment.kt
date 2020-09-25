@@ -2,6 +2,7 @@ package com.hazz.kuangji.ui.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Handler
 import android.text.SpannableString
 import android.util.Log
@@ -39,7 +40,10 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
+import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_new_home.*
+import kotlinx.android.synthetic.main.fragment_new_home.ll_buy
+import kotlinx.android.synthetic.main.fragment_new_home.ll_sale
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -186,7 +190,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         when (mCertification?.status) {
             0 -> {
                 SToast.showText("实名认证审核中，请稍等")
-                return false  
+                return false
             }
             1 -> {
                 return true
@@ -238,6 +242,19 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
                     }
                 }
             } , 0, 3*60*1000)
+        }
+        if (event==Constants.CODE_IMAGE_BROAD)
+        {
+            setImage()
+            if (SPUtil.getBoolean("skin"))
+            {
+                marqueeView.setTextColor(Color.parseColor("#ffffff"))
+            }
+            else
+            {
+                marqueeView.setTextColor(Color.parseColor("#666666"))
+            }
+
         }
     }
 

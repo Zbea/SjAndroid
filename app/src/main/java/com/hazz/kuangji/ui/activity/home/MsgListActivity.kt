@@ -11,7 +11,7 @@ import com.hazz.kuangji.ui.adapter.MsgAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
-import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.activity_list_wihte.*
 
 
 class MsgListActivity : BaseActivity(), IContractView.MsgView {
@@ -25,7 +25,7 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
 
     override fun layoutId(): Int {
-        return R.layout.activity_list
+        return R.layout.activity_list_wihte
     }
 
     override fun initData() {

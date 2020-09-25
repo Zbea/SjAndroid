@@ -110,7 +110,7 @@
                         app:mvDirection="bottom_to_top"
                         app:mvInterval="3000"
                         app:mvSingleLine="true"
-                        app:mvTextColor="@color/color_666666"
+                        app:mvTextColor="@color/color_999999"
                         app:mvTextSize="13sp" />
 
 

@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
+import com.hazz.kuangji.MyApplication
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.fragment_mine.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import skin.support.SkinCompatManager
 import java.util.*
 
 class MineFragment : BaseFragment(), IContractView.NodeView {
@@ -42,11 +44,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     override fun getAccount(msg: Account) {
         if (mView==null||iv_header==null||iv_type==null)return
         SPUtil.putString("image",msg.profile_img)
-        activity?.let {
-            Glide.with(it).load(Constants.URL_INVITE + msg.profile_img)
-                    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
-                    .into(iv_header)
-        }
+        setHeaderImage()
         iv_type.visibility=View.VISIBLE
         when (msg.level) {
             "初级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chuji)
@@ -62,12 +60,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     override fun setHeader(msg: UploadModel) {
         if (mView==null)return
         SPUtil.putString("image",msg.path)
-        EventBus.getDefault().post(Constants.CODE_IMAGE_BROAD)
-        activity?.let {
-            Glide.with(it).load(Constants.URL_INVITE + msg.path)
-                    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
-                    .into(iv_header)
-        }
+        setHeaderImage()
     }
 
     override fun getCertification(data: Certification) {
@@ -167,11 +160,41 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             }
         }
 
+        iv_skin.setOnClickListener {
+            if (!SPUtil.getBoolean("skin"))
+            {
+                SPUtil.putBoolean("skin",true)
+                SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN); // 后缀加载
+            }
+            else
+            {
+                SPUtil.putBoolean("skin",false)
+                SkinCompatManager.getInstance().restoreDefaultTheme();//恢复默认皮肤
+            }
+            Handler().postDelayed(Runnable {
+                setHeaderImage()
+            },100)
+
+        }
+
     }
 
     override fun lazyLoad() {
         mNodePresenter.getCertification()
         mNodePresenter.getAccount()
+    }
+
+    /**
+     * 设置头像
+     */
+    private fun setHeaderImage()
+    {
+        EventBus.getDefault().post(Constants.CODE_IMAGE_BROAD)
+        activity?.let {
+            Glide.with(it).load(Constants.URL_INVITE + SPUtil.getString("image"))
+                    .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
+                    .into(iv_header)
+        }
     }
 
     /**
@@ -251,6 +274,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
                 }
             } , 0, 3*60*1000)
         }
+
     }
 
     override fun onDestroy() {

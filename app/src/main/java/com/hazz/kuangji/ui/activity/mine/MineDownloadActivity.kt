@@ -9,11 +9,10 @@ import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
-import com.hazz.kuangji.utils.ImageUtlis
+import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
-import kotlinx.android.synthetic.main.activity_contact.tv_down
-import kotlinx.android.synthetic.main.activity_download.tv_address
+import kotlinx.android.synthetic.main.activity_download.*
 import kotlinx.android.synthetic.main.activity_rule.mToolBar
 
 class MineDownloadActivity : BaseActivity()
@@ -33,7 +32,7 @@ class MineDownloadActivity : BaseActivity()
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("下载地址")
-                .setToolBarBgRescource(R.color.color_white)
+                .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
         tv_address.text=Constants.URL_DOWNLOAD
@@ -44,14 +43,14 @@ class MineDownloadActivity : BaseActivity()
 
             cm.primaryClip = clipData
 
-            SToast.showText("已成功复制充值地址")
+            SToast.showText("已成功复制下载地址")
 
         }
 
     }
 
     override fun start() {
-        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_mine_download_qrcode)
+        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_download_address)
         tv_down.setOnClickListener {
             permissionsnew!!.request(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -61,7 +60,7 @@ class MineDownloadActivity : BaseActivity()
 
                     SToast.showText("图片保存成功")
 
-                    ImageUtlis.saveBmpGallery(this,mCodeBitmap, "downloadCode")
+                    ImageUtils.saveBmp2Gallery(this,mCodeBitmap, "downloadCode")
                 } else {
                     showMissingPermissionDialog()
                 }

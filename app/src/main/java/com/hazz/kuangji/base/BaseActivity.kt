@@ -8,11 +8,12 @@ import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
 import android.util.Log
-import android.view.Window
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
@@ -60,7 +61,10 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     }
 
-
+    @NonNull
+    override fun getDelegate(): AppCompatDelegate {
+        return SkinAppCompatDelegateImpl.get(this, this)
+    }
 
     /**
      *  加载布局

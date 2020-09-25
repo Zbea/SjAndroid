@@ -15,6 +15,14 @@
             android:layout_height="@dimen/dp_220"
             android:background="@mipmap/icon_mine_header_bg" />
 
+        <ImageView
+            android:id="@+id/iv_skin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_20"
+            android:src="@mipmap/icon_mine_skin"/>
 
         <LinearLayout
             android:id="@+id/ll_header"
@@ -27,7 +35,7 @@
                 android:id="@+id/iv_header"
                 android:layout_width="@dimen/dp_72"
                 android:layout_height="@dimen/dp_72"
-                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_25"
                 android:src="@mipmap/icon_home_mine" />
 
             <LinearLayout
@@ -120,7 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_10"
                         android:text="一键买币"
-                        android:textColor="@color/color_main"
+                        android:textColor="@color/color_mine_btn"
                         android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
@@ -143,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_10"
                         android:text="一键卖币"
-                        android:textColor="@color/color_main"
+                        android:textColor="@color/color_mine_btn"
                         android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
@@ -393,9 +401,9 @@
         <LinearLayout
             android:id="@+id/ll_bottom"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/btn_dimen"
             android:layout_alignParentBottom="true"
-            android:background="#F2F2F2"
+            android:background="@color/color_mine_bottom_bg"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -425,7 +433,7 @@
             <View
                 android:layout_width="1dp"
                 android:layout_height="@dimen/dp_30"
-                android:background="@color/color_line" />
+                android:background="@color/color_mine_bottom_line" />
 
             <LinearLayout
                 android:id="@+id/layout_about"

@@ -77,6 +77,7 @@ object QRCodeUtils {
                         pixels[y * w + x] = pixel
                     } else {
                         if (matrix!!.get(x, y)) {
+
                             pixels[y * w + x] = -0x1000000
                         } else {
                             pixels[y * w + x] = -0x1

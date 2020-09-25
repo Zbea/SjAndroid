@@ -55,7 +55,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             for (a in assets) {
                 if (a.coin == "USDT") {
                     count=a.balance
-
+                    tv_yue.text = "账户余额:$count"
                 }
             }
         }
@@ -92,7 +92,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun initData() {
-//        mAssetPresenter.myAsset(true)
+        mAssetPresenter.myAsset(true)
         mCertificationInfoPresenter.getCertification()
     }
 
@@ -114,7 +114,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         tv_time.text = produce?.round + "天"
         rate = produce?.rate.toString()
         count=produce?.user_balance.toString()
-        tv_yue.text = "账户余额:$count"
+
         produce?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE+it,iv_product) }
         tv_storage.text=produce?.storage+"T"
         if (produce?.rent_type == "1")

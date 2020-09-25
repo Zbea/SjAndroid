@@ -1,15 +1,13 @@
 package com.hazz.kuangji.ui.activity.mine
 
 import android.Manifest
-import android.os.Environment
 import android.os.Handler
-import android.util.Log
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Contract
 import com.hazz.kuangji.mvp.presenter.ContractManagerPresenter
-import com.hazz.kuangji.utils.ImageUtlis
+import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import kotlinx.android.synthetic.main.activity_contract_signing.*
 import org.greenrobot.eventbus.EventBus
@@ -61,11 +59,11 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
             )?.subscribe { permission ->
                 if (permission!!) {
                     fileName="signing"+System.currentTimeMillis()
-                    ImageUtlis.saveBmpGallery(this, signature_pad.transparentSignatureBitmap, fileName)
+                    ImageUtils.saveBmpGallery(this, signature_pad.transparentSignatureBitmap, fileName)
                     Handler().postDelayed(Runnable {
 //                        Log.i("sj", File(Environment.getExternalStorageDirectory(), "/eye/image/$fileName.png").toString())
 //                        Log.i("sj", ImageUtlis.getFilePath(this,"/eye/")+"$fileName.png")
-                        mContractManagerPresenter.setSign(code, File(ImageUtlis.getFilePath(this,"/eye/"), "$fileName.png"))
+                        mContractManagerPresenter.setSign(code, File(ImageUtils.getFilePath(this,"/eye/"), "$fileName.png"))
                     }, 500)
 
 

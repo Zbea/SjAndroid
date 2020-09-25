@@ -274,6 +274,11 @@ public class MarqueeView extends ViewFlipper {
         return textView;
     }
 
+    public void setTextColor(int color)
+    {
+        textColor=color;
+    }
+
     public int getPosition() {
         return (int) getCurrentView().getTag();
     }
