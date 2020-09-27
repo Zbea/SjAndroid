@@ -52,6 +52,7 @@
         <activity android:name="com.hazz.kuangji.ui.activity.mine.InviteRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.SettingActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.NodeActivity"/>
+        <activity android:name="com.hazz.kuangji.ui.activity.mine.NodeTwoActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.asset.ExtractCoinRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.asset.ChargeActivity"/>

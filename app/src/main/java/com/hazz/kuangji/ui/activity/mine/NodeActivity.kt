@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.activity.mine
 
+import android.content.Intent
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
@@ -36,9 +37,9 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
             tv_team.text=if(msg.team == "0")"0.00000000" else msg.team
         }
 
-        val invite_users = msg.invite_users
-        if (!invite_users.isNullOrEmpty()) {
-            mAdapter?.setNewData(invite_users)
+        datas = msg.invite_users
+        if (!datas.isNullOrEmpty()) {
+            mAdapter?.setNewData(datas)
         }
 
     }
@@ -54,6 +55,7 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
 
     private var mAdapter: NodeAdapter? = null
     private var mNodePresenter: NodePresenter = NodePresenter(this)
+    private var datas:List<Node.InviteUsersBean>?=null
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
@@ -69,6 +71,9 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
         mAdapter?.setEmptyView(R.layout.fragment_empty)
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(this,NodeTwoActivity::class.java).putExtra("node", datas?.get(position)))
+        }
     }
 
 

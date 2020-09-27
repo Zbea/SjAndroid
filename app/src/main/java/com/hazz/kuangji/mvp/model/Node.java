@@ -30,6 +30,7 @@ public class Node implements Serializable{
             public String id;
             public String username;
             public String level;
+            public String profile_img;
             public String self_purchase;
             public String direct_purchase;
             public List<ChildrenBean> children;
@@ -44,8 +45,10 @@ public class Node implements Serializable{
 
                 public String id;
                 public String username;
+                public String profile_img;
                 public String level;
                 public String self_purchase;
+                public String direct_purchase;
             }
         }
 

@@ -49,6 +49,8 @@ class SettingActivity : BaseActivity() {
             startActivity(Intent(this, MineLoginPwdActivity::class.java))
         }
         tv_zijin.setOnClickListener {
+
+            
             startActivity(Intent(this, MineExchangePwdActivity::class.java))
         }
         tv_logout.setOnClickListener {

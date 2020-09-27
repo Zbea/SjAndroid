@@ -15,7 +15,8 @@
         android:layout_height="@dimen/dp_100"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="@color/color_main">
+        android:layout_margin="@dimen/space_dimen"
+        android:background="@drawable/bg_main_solid_5dp_coner">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -75,7 +76,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/space_dimen"
+        android:layout_marginRight="@dimen/space_dimen"
+        android:background="@drawable/bg_gray_solid_5dp_coner"
         />
 
 
