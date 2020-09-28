@@ -13,20 +13,23 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Exchange
 import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
+import com.hazz.kuangji.mvp.presenter.ExchangeCoinPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.ui.activity.RuleActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
+import kotlinx.android.synthetic.main.activity_exchange_coin.*
 import kotlinx.android.synthetic.main.activity_home_rent.*
 
 
-class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.AssetView ,IContractView.ICertificationInfoView {
+class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.IExchangeCoinView ,IContractView.ICertificationInfoView {
 
     private var mHomePresenter: HomePresenter = HomePresenter(this)
     private var rate = "0.1"
@@ -35,8 +38,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     private var price = ""
     private var amount:String="0"
     private var count="0"
-    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var mCertificationInfoPresenter: CertificationInfoPresenter = CertificationInfoPresenter(this)
+    private var mMineExchangeCoinPresenter = ExchangeCoinPresenter(this)
 
     override fun getCertification(certification: Certification) {
         if (certification.status==1)
@@ -47,19 +50,15 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         }
     }
 
-
-    override fun myAsset(msg: MyAsset) {
-
-        val assets = msg.assets
-        if (!assets.isNullOrEmpty()) {
-            for (a in assets) {
-                if (a.coin == "USDT") {
-                    count=a.balance
-                    tv_yue.text = "账户余额:$count"
-                }
-            }
+    override fun getExchange(data: Exchange) {
+        if(data!=null) {
+            count = data?.usdtNum
+            tv_yue.text = "账户余额:$count"
         }
     }
+    override fun commitCoin() {
+    }
+
 
     override fun afterTextChanged(s: Editable?) {
         setEarningsView(s.toString())
@@ -92,7 +91,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun initData() {
-        mAssetPresenter.myAsset(true)
+        mMineExchangeCoinPresenter.getExchange()
         mCertificationInfoPresenter.getCertification()
     }
 
@@ -215,6 +214,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
         }
     }
+
 
 
 

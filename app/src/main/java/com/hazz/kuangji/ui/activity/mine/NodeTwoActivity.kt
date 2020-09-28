@@ -42,6 +42,7 @@ class NodeTwoActivity : BaseActivity() {
 
 
 
+
     override fun initView() {
 
         data=intent.getSerializableExtra("node") as Node.InviteUsersBean
@@ -56,11 +57,11 @@ class NodeTwoActivity : BaseActivity() {
 
         tv_name.text=data?.username
 
-        if(data?.direct_purchase!=null){
-            tv_person.text=if(data?.direct_purchase == "0")"0.00000000" else data?.direct_purchase
-        }
         if(data?.self_purchase!=null){
-            tv_team.text=if(data?.self_purchase == "0")"0.00000000" else data?.self_purchase
+            tv_person.text=if(data?.self_purchase == "0")"0.00000000" else data?.self_purchase
+        }
+        if(data?.direct_purchase!=null){
+            tv_direct.text=if(data?.direct_purchase == "0")"0.00000000" else data?.direct_purchase
         }
         val childrens = data?.children
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理

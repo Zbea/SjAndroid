@@ -23,6 +23,7 @@
             android:layout_marginTop="@dimen/dp_40"
             android:layout_marginRight="@dimen/dp_20"
             android:src="@mipmap/icon_mine_skin"
+            android:visibility="gone"
             />
 
         <LinearLayout

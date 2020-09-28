@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="直推业绩(USDT)"
+                    android:text="个人业绩(USDT)"
                     android:textColor="@color/color_white"
                     android:textSize="@dimen/sp_12" />
 
@@ -78,12 +78,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="团队业绩(USDT)"
+                    android:text="直推业绩(USDT)"
                     android:textColor="@color/color_white"
                     android:textSize="@dimen/sp_12" />
 
                 <TextView
-                    android:id="@+id/tv_team"
+                    android:id="@+id/tv_direct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"

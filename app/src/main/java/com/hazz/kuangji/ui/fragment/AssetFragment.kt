@@ -93,7 +93,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
     override fun inComing(msg: InComing) {
         incoming = msg
-
+        if (mView==null || tv_static==null||tv_share==null|| tv_team==null||tv_yesterday==null)return
         if (msg.invitation != null) {
             tv_static.text = msg.invitation
         }

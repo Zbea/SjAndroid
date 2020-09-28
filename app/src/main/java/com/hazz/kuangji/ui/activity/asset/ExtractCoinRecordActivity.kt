@@ -27,7 +27,7 @@ class ExtractCoinRecordActivity : BaseActivity(), IContractView.TibiView {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_list
+        return R.layout.activity_list_wihte
     }
 
     override fun initData() {

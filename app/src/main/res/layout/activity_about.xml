@@ -82,6 +82,7 @@
             android:layout_centerVertical="true"
             android:text="sssssss"
             android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_333333"
             android:drawableRight="@mipmap/mine_icon_more"
             android:drawablePadding="@dimen/dp_12" />
     </RelativeLayout>

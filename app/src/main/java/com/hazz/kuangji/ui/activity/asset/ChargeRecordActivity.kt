@@ -29,7 +29,7 @@ class ChargeRecordActivity : BaseActivity(), IContractView.ChargeView {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_list
+        return R.layout.activity_list_wihte
     }
 
     override fun initData() {
