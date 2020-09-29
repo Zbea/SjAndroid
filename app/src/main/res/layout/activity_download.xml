@@ -40,17 +40,17 @@
 
             <ImageView
                 android:id="@+id/qrCodeView"
-                android:layout_width="@dimen/dp_200"
+                android:layout_width="@dimen/dp_180"
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_gravity="center_horizontal"
                 android:src="@mipmap/icon_mine_download_qrcode"
-                android:layout_height="@dimen/dp_200"/>
+                android:layout_height="@dimen/dp_180"/>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_20"
                 android:text="下载地址"
                 android:textColor="#333333"
                 android:textSize="@dimen/sp_14"/>
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/space_dimen"
-                android:layout_marginBottom="@dimen/space_dimen"
+                android:layout_marginBottom="@dimen/dp_10"
                 android:drawableRight="@mipmap/icon_charge_copy"
                 android:drawablePadding="@dimen/dp_5"
                 android:textColor="#333333"
