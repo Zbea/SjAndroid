@@ -12,7 +12,7 @@
         android:textColor="@color/color_666666"
         android:layout_width="match_parent"
         android:layout_height="@dimen/btn_dimen"
-        android:background="@drawable/bg_ripple_selector_night"
+        android:background="@drawable/bg_ripple_selector"
         />
 
     <TextView
@@ -23,7 +23,7 @@
         android:textColor="@color/color_666666"
         android:layout_width="match_parent"
         android:layout_height="@dimen/btn_dimen"
-        android:background="@drawable/bg_ripple_selector_night"/>
+        android:background="@drawable/bg_ripple_selector"/>
 
     <TextView
         android:id="@+id/tv_cancel"
@@ -33,7 +33,7 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="@dimen/btn_dimen"
-        android:background="@drawable/bg_ripple_selector_night"/>
+        android:background="@drawable/bg_ripple_selector"/>
 
 
 

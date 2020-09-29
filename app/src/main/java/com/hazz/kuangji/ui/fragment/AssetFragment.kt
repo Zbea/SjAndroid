@@ -1,11 +1,13 @@
 package com.hazz.kuangji.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
+import android.util.Log
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.Constants
@@ -41,6 +43,7 @@ import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.util.*
 
 
 class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
@@ -122,6 +125,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
 
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
 
         var layoutParams: RelativeLayout.LayoutParams= toolbar.layoutParams as RelativeLayout.LayoutParams
@@ -206,14 +210,24 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         mAdapter?.bindToRecyclerView(recycle_view)
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
-        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0)
-        )
+        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
+
+        //定时器(每隔三分钟让下拉刷新可以执行)
+        Timer().schedule(object : TimerTask() {
+            override fun run() {
+                Log.i("sj","开始计时")
+                sl_refresh?.isEnabled=true
+            }
+        } , 0, 3*60*1000)
     }
 
     override fun lazyLoad() {
+        sl_refresh?.isEnabled=false
         mAssetPresenter.myAsset(false)
         mIncomingPresenter.shouyi(false)
         mCertificationInfoPresenter.getCertification()
+
+
     }
 
 

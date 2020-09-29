@@ -35,7 +35,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
 
     override fun layoutId(): Int {
-        return R.layout.activity_list
+        return R.layout.activity_list_wihte
     }
 
     override fun initData() {

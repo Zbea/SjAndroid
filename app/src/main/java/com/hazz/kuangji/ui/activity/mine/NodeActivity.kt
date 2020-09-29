@@ -70,7 +70,6 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
         mAdapter = NodeAdapter(R.layout.item_node, null)
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
-        mAdapter?.setEmptyView(R.layout.fragment_empty)
         mAdapter?.setOnItemClickListener { adapter, view, position ->
             startActivity(Intent(this,NodeTwoActivity::class.java).putExtra("node", datas?.get(position)))
         }
