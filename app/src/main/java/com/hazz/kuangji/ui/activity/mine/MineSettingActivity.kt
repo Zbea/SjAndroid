@@ -2,7 +2,6 @@ package com.hazz.kuangji.ui.activity.mine
 
 import android.content.Intent
 import androidx.appcompat.widget.Toolbar
-import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.ui.activity.LoginActivity
@@ -16,8 +15,6 @@ import kotlinx.android.synthetic.main.activity_set.*
 import kotlinx.android.synthetic.main.activity_set.tv_login
 import kotlinx.android.synthetic.main.activity_set.tv_zijin
 import kotlinx.android.synthetic.main.activity_invitefriends_record.mToolBar
-import org.greenrobot.eventbus.EventBus
-import skin.support.SkinCompatManager
 
 
 class SettingActivity : BaseActivity() {
@@ -72,19 +69,6 @@ class SettingActivity : BaseActivity() {
             Beta.checkAppUpgrade()
         }
 
-        tv_skin.setOnClickListener {
-            if (!SPUtil.getBoolean("skin"))
-            {
-                SPUtil.putBoolean("skin",true)
-                SkinCompatManager.getInstance().loadSkin("night", SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN); // 后缀加载
-            }
-            else
-            {
-                SPUtil.putBoolean("skin",false)
-                SkinCompatManager.getInstance().restoreDefaultTheme();//恢复默认皮肤
-            }
-            EventBus.getDefault().post(Constants.CODE_IMAGE_BROAD)
-        }
 
     }
 
