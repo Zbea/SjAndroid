@@ -29,7 +29,6 @@ class MsgListActivity : BaseActivity(), IContractView.MsgView {
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this)
         mCoinPresenter.getMsg()
     }
 

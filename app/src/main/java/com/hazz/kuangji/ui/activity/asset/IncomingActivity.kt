@@ -98,7 +98,6 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this,false)
     }
 
     override fun initView() {

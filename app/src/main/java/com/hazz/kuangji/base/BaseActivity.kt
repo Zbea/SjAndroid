@@ -3,6 +3,7 @@ package com.hazz.kuangji.base
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -17,16 +18,18 @@ import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.ActivityManager
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
-import com.hazz.kuangji.utils.StatusBarUtil.Companion.darkMode
+import com.hazz.kuangji.utils.StatusBarUtil
 import com.hazz.kuangji.widget.ProgressDialog
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
+import skin.support.SkinCompatManager
 
 
 abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, BaseView {
@@ -46,7 +49,16 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
         super.onCreate(savedInstanceState)
         mSaveState=savedInstanceState
         setContentView(layoutId())
-        darkMode(this)
+
+        if (SPUtil.getBoolean("skin"))
+        {
+            StatusBarUtil.darkMode(this,false)
+        }
+        else
+        {
+            StatusBarUtil.darkMode(this)
+        }
+
         mDialog = ProgressDialog(this)
         initView()
         initData()

@@ -72,7 +72,8 @@ public class Mill {
                 public String revenue;
                 public String yesterday;
                 public String miner_number;
-
+                public String storage;
+                public String buy_storage;
             }
 
     }

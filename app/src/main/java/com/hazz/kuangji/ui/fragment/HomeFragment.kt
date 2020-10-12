@@ -58,6 +58,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var mCertification: Certification? = null
 
+    //实名认证
     override fun getCertification(certification: Certification) {
         mCertification = certification
         if (certification.status == 1) {
@@ -65,6 +66,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
+    //消息列表
     override fun getMsg(rows: List<Msg>) {
         if (mView==null||activity==null)return
         if (!rows.isNullOrEmpty()) {
@@ -72,6 +74,14 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             for (s in rows)
             {
                 listInfo.add(SpannableString(s.title))
+            }
+            if (SPUtil.getBoolean("skin"))
+            {
+                marqueeView.setTextColor(Color.parseColor("#ffffff"))
+            }
+            else
+            {
+                marqueeView.setTextColor(Color.parseColor("#666666"))
             }
             marqueeView.startWithList(listInfo)
             marqueeView.setOnItemClickListener { position, textView ->
@@ -83,6 +93,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
+    //矿机列表
     override fun getHome(msg: Home) {
         if (mView==null||activity==null)return
         sl_refresh?.isRefreshing=false
@@ -130,9 +141,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
-        iv_mine.setOnClickListener {
-            (activity as MainActivity).openMine()
-        }
+
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
@@ -167,19 +176,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     }
 
     override fun lazyLoad() {
-        setImage()
         mCoinPresenter.getMsg()
         mHomePresenter.getHome()
         mCertificationInfoPresenter.getCertification()
-    }
-
-    /**
-     * 设置头像
-     */
-    private fun setImage()
-    {
-        val requestOptions=RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine)
-        Glide.with(activity!!).load(Constants.URL_INVITE+SPUtil.getString("image")).apply(requestOptions).into(iv_mine)
     }
 
     /**
@@ -243,18 +242,9 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
                 }
             } , 0, 3*60*1000)
         }
-        if (event==Constants.CODE_IMAGE_BROAD)
+        if (event==Constants.CODE_SKIN_BROAD)
         {
-            setImage()
-            if (SPUtil.getBoolean("skin"))
-            {
-                marqueeView.setTextColor(Color.parseColor("#ffffff"))
-            }
-            else
-            {
-                marqueeView.setTextColor(Color.parseColor("#666666"))
-            }
-
+            mCoinPresenter.getMsg()
         }
     }
 

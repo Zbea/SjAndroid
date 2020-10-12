@@ -55,7 +55,6 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this)
     }
 
     override fun initView() {

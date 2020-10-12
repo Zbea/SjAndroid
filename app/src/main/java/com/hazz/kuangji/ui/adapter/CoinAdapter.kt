@@ -13,10 +13,10 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
     lateinit var onConfirm: (View, Int) -> Unit
 
     override fun convert(helper: BaseViewHolder, item: Mill.MachineListBean.ListBean) {
-
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_day, item.remain)
         helper.setText(R.id.tv_number, "矿机编号："+item.miner_number)
+        helper.setText(R.id.tv_mill_num, item.buy_storage+"T")
         if(item.revenue!=null){
             helper.setText(R.id.tv_leiji, BigDecimalUtil.mul(item.revenue,"1",8)+"FIL")
         }
@@ -26,9 +26,13 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             helper.setText(R.id.tv_yesterday, item.yesterday+"FIL")
         }
 
-        if (BigDecimalUtil.compare(item.price,item.product_price))
+        if (item.storage=="192")
         {
-            helper.setImageResource(R.id.iv_total,R.mipmap.icon_mill_total)
+            helper.setText(R.id.iv_total, "整机")
+            helper.setTextColor(R.id.iv_total, mContext.resources.getColor(R.color.color_yellow))
+        }else {
+            helper.setText(R.id.iv_total, item.storage+"T")
+            helper.setTextColor(R.id.iv_total, mContext.resources.getColor(R.color.color_666666))
         }
 
         when (item.state) {

@@ -65,7 +65,6 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("卖币信息确认")
-                .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
         tv_upload.setOnClickListener(this)

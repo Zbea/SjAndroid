@@ -59,7 +59,7 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_earnings"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_title"
             android:layout_marginTop="@dimen/dp_15"
@@ -89,8 +89,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
@@ -109,14 +110,40 @@
                     android:textSize="@dimen/sp_12" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="矿机当量(T)"
+                    android:textColor="@color/color_999999"
+                    android:textSize="@dimen/sp_10" />
+
+                <TextView
+                    android:id="@+id/tv_mill_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="0T"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_12" />
+
+            </LinearLayout>
         </LinearLayout>
 
-        <ImageView
+        <TextView
             android:id="@+id/iv_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/icon_mill_part" />
+            android:text="整机"
+            android:textSize="@dimen/sp_20"
+            android:textColor="@color/color_666666"
+             />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_below="@+id/ll_earnings"
             android:layout_width="match_parent"
@@ -196,7 +223,7 @@
                 android:layout_marginTop="@dimen/dp_5"
                 android:singleLine="true"
                 android:text="0天"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_12"
                 app:layout_constraintRight_toRightOf="@id/tv3"
                 app:layout_constraintTop_toBottomOf="@+id/tv3"/>

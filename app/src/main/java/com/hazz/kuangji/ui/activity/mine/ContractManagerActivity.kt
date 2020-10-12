@@ -50,7 +50,7 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("合同管理")
-                .setToolBarBgRescource(R.color.color_item_bg)
+                .setToolBarBgRescource(R.drawable.bg_line_bottom)
                 .setOnLeftIconClickListener { finish() }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理

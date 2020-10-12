@@ -31,6 +31,8 @@ class LauncherActivity : AppCompatActivity() {
             }
         }
         setContentView(R.layout.activity_launcher)
+        StatusBarUtil.darkMode(this,false)
+
         val gifDrawable = GifDrawable(resources, R.mipmap.launch)
         gifDrawable.loopCount=1
         gif.setImageDrawable(gifDrawable)

@@ -7,9 +7,11 @@
 >
 
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <RadioGroup
             android:id="@+id/mRG"
@@ -54,8 +56,20 @@
             android:id="@+id/fl_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/mRG"
-/>
+            android:layout_above="@+id/mRG" />
+
+        <LinearLayout
+            android:id="@+id/ll_header"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:gravity="center"
+            android:layout_height="@dimen/toolbar_dimen">
+            <ImageView
+                android:id="@+id/iv_mine"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:src="@mipmap/icon_home_mine"/>
+        </LinearLayout>
 
     </RelativeLayout>
 

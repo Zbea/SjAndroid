@@ -14,14 +14,6 @@
         android:paddingRight="@dimen/space_dimen">
 
 
-        <ImageView
-            android:id="@+id/iv_mine"
-            android:layout_width="@dimen/dp_35"
-            android:layout_height="@dimen/dp_35"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/icon_home_mine"/>
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

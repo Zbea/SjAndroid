@@ -23,7 +23,6 @@
             android:layout_marginTop="@dimen/dp_40"
             android:layout_marginRight="@dimen/dp_20"
             android:src="@mipmap/icon_mine_skin"
-            android:visibility="gone"
             />
 
         <LinearLayout
@@ -59,7 +58,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_10"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <ImageView
@@ -426,7 +425,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="联系我们"
-                    android:textColor="@color/color_999999"
+                    android:textColor="@color/color_mine_bottom_text"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -454,7 +453,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="关于我们"
-                    android:textColor="@color/color_999999"
+                    android:textColor="@color/color_mine_bottom_text"
                     android:textSize="@dimen/sp_16" />
 
 

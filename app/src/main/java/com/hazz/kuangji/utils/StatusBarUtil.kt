@@ -33,7 +33,7 @@ class StatusBarUtil {
                     || Build.VERSION.INCREMENTAL.contains("Flyme_OS_4")
                     || Pattern.compile("Flyme OS [4|5]", Pattern.CASE_INSENSITIVE).matcher(Build.DISPLAY).find())
 
-        /** 判断是否为MIUI6以上  */
+        /** 判断是否为MIUI9以上  */
         private val isMIUI6Later: Boolean
             get() {
                 return try {
@@ -42,7 +42,7 @@ class StatusBarUtil {
                     var `val` = mtd.invoke(null, "ro.miui.ui.version.name") as String
                     `val` = `val`.replace("[vV]".toRegex(), "")
                     val version = Integer.parseInt(`val`)
-                    version >= 6
+                    version <= 9
                 } catch (e: Exception) {
                     false
                 }

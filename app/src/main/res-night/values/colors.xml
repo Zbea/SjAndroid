@@ -15,6 +15,7 @@
     <color name="color_mine_btn_night">#ffffff</color>
     <color name="color_mine_bottom_bg_night">#242838</color>
     <color name="color_mine_bottom_line_night">#ffffff</color>
+    <color name="color_mine_bottom_text_night">#ffffff</color>
 
     <color name="color_asset_bg_night">#1F2336</color>
 

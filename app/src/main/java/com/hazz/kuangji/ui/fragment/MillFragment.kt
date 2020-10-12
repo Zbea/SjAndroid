@@ -15,6 +15,7 @@ import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.ui.adapter.CoinAdapter
+import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
@@ -41,9 +42,16 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         if(msg.yesterday!=null){
             tv_shouyi?.text=msg.yesterday
         }
-        tv_number?.text=msg.machine_list.list.size.toString()
+
         datas=msg.machine_list.list
         mAdapter?.setNewData(datas)
+
+        var countNum="0" //矿机总量
+        for (item in datas)
+        {
+            countNum=BigDecimalUtil.add(countNum,item.buy_storage)
+        }
+        tv_number?.text=countNum
     }
 
     override fun getLayoutId(): Int {

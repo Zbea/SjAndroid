@@ -41,6 +41,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
     private var mPhotoDialog: PhotoDialog? = null
     private var mData: Certification? = null
 
+    //账户信息
     override fun getAccount(msg: Account) {
         if (mView==null||iv_header==null||iv_type==null)return
         SPUtil.putString("image",msg.profile_img)
@@ -56,13 +57,14 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             else ->iv_type.visibility=View.GONE
         }
     }
-
+    //头像上传
     override fun setHeader(msg: UploadModel) {
         if (mView==null)return
         SPUtil.putString("image",msg.path)
         setHeaderImage()
     }
 
+    //实名认证
     override fun getCertification(data: Certification) {
         if (mView==null||tv_dot==null||iv_certification==null)return
         mData = data
@@ -171,6 +173,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
                 SPUtil.putBoolean("skin",false)
                 SkinCompatManager.getInstance().restoreDefaultTheme();//恢复默认皮肤
             }
+            EventBus.getDefault().post(Constants.CODE_SKIN_BROAD)
             Handler().postDelayed(Runnable {
                 setHeaderImage()
             },100)
@@ -189,7 +192,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
      */
     private fun setHeaderImage()
     {
-        EventBus.getDefault().post(Constants.CODE_IMAGE_BROAD)
+        (activity as MainActivity).setImage()
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + SPUtil.getString("image"))
                     .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))

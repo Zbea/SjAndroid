@@ -130,7 +130,6 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle("买币订单详情")
-                .setToolBarBgRescource(R.color.color_bg)
                 .setOnLeftIconClickListener { finish() }
 
         tv_cancel.setOnClickListener(this)

@@ -6,11 +6,16 @@ import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.RadioGroup
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -19,12 +24,14 @@ import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.MainPresenter
 import com.hazz.kuangji.ui.fragment.*
+import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.RxBus
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
+import kotlinx.android.synthetic.main.activity_main_ruoyu_new.iv_mine
 import kotlinx.android.synthetic.main.fragment_new_home.*
 import java.util.logging.Logger
 
@@ -65,6 +72,16 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
                 .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)
                 .commitAllowingStateLoss()
         dl_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+
+        var layoutParams: RelativeLayout.LayoutParams= ll_header.layoutParams as RelativeLayout.LayoutParams
+        layoutParams.topMargin= DensityUtils.getStatusBarHeight(this)
+        ll_header.layoutParams=layoutParams
+
+        setImage()
+
+        iv_mine.setOnClickListener {
+            openMine()
+        }
     }
 
     override fun start() {
@@ -113,9 +130,23 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         mRbMining.isChecked=true
     }
 
-    fun openMine()
+    private fun openMine()
     {
         dl_layout.openDrawer(Gravity.LEFT)
+    }
+
+    /**
+     * 设置头像
+     */
+    fun setImage()
+    {
+        val requestOptions= RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine)
+        Glide.with(this).load(Constants.URL_INVITE+SPUtil.getString("image")).apply(requestOptions).into(iv_mine)
+    }
+
+    fun setStateMode(s:Boolean)
+    {
+        StatusBarUtil.darkMode(this,s)
     }
 
 
