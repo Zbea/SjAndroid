@@ -12,6 +12,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
 
     lateinit var onConfirm: (View, Int) -> Unit
 
+
     override fun convert(helper: BaseViewHolder, item: Mill.MachineListBean.ListBean) {
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_day, item.remain)
