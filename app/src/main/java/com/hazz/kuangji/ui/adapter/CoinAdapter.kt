@@ -22,6 +22,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             helper.setText(R.id.tv_leiji, BigDecimalUtil.mul(item.revenue,"1",8)+"FIL")
         }
 
+
         helper.setText(R.id.tv_touru, item.buy_storage+"T")
         if( item.yesterday!=null){
             helper.setText(R.id.tv_yesterday, item.yesterday+"FIL")
