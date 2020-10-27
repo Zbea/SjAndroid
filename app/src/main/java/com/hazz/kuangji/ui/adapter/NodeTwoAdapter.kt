@@ -20,9 +20,7 @@ class NodeTwoAdapter(layoutResId: Int, data: List<Node.InviteUsersBean.ChildrenB
 
         helper.setText(R.id.tv_name, item.username)
         helper.setText(R.id.tv_person, if (item.self_purchase == "0.00000000")"0" else item.self_purchase)
-        helper.setText(R.id.tv_direct, if (item.direct_purchase==null)"0" else item.direct_purchase)
-        helper.getView<TextView>(R.id.tv_num).visibility=View.GONE
-        helper.getView<ImageView>(R.id.iv_more).visibility=View.GONE
+        helper.setText(R.id.tv_person_t, if (item.self_purchase == "0.00000000")"0" else item.self_purchase_t)
         GlideEngine.createGlideEngine().loadImage(mContext, Constants.URL_INVITE+item.profile_img,helper.getView(R.id.iv_header))
     }
 }

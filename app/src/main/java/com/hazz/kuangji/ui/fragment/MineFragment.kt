@@ -18,6 +18,7 @@ import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.mvp.presenter.NodePresenter
 import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
+import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
 import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
 import com.hazz.kuangji.ui.activity.mine.*
@@ -122,7 +123,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
         ll_sale.setOnClickListener {
             if (isCertificated())
-                startActivity(Intent(activity, ExchangeSaleActivity::class.java))
+                startActivity(Intent(activity, TransferCoinActivity::class.java))
         }
 
         layout_invite.setOnClickListener {

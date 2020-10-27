@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.fragment_mill.*
 import kotlinx.android.synthetic.main.fragment_mill.iv_msg
 import kotlinx.android.synthetic.main.fragment_mill.recycle_view
 import kotlinx.android.synthetic.main.fragment_mill.toolbar
+import java.math.RoundingMode
 
 class MillFragment : BaseFragment(), IContractView.kuangjiView {
 
@@ -49,7 +50,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         var countNum="0" //矿机总量
         for (item in datas)
         {
-            countNum=BigDecimalUtil.add(countNum,item.buy_storage)
+            countNum=BigDecimalUtil.add(countNum,item.buy_storage,4,RoundingMode.HALF_UP)
         }
         tv_number?.text=countNum
     }
@@ -87,8 +88,12 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         mAdapter?.setOnItemClickListener { adapter, view, position ->
-//            startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",datas[position].id)
-//                    .putExtra("contract_sign","2"))
+            var contract=datas[position]
+            if (contract.hide_contract=="0")
+            {
+                startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",contract.id)
+                        .putExtra("contract_sign",contract.is_sign))
+            }
         }
 
     }

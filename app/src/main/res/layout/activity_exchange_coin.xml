@@ -33,7 +33,7 @@
             android:layout_marginTop="@dimen/space_dimen"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/dp_10">
+            >
 
             <EditText
                 android:id="@+id/et_count_usdt"
@@ -142,7 +142,7 @@
             android:background="@drawable/bg_line_bottom"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/dp_10">
+            >
 
             <TextView
                 android:id="@+id/tv_num_fil"

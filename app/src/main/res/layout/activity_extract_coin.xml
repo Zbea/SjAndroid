@@ -160,7 +160,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="手续费为提币数量的5%"
                 android:textSize="@dimen/sp_12"
                 android:textColor="@color/color_main_nor" />
 

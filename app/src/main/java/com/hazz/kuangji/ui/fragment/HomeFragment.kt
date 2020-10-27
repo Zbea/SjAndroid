@@ -23,10 +23,8 @@ import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.HomePresenter
 import com.hazz.kuangji.mvp.presenter.MsgPresenter
-import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
-import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.*
 import com.hazz.kuangji.ui.activity.mine.InviteActivity
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
@@ -42,8 +40,6 @@ import com.youth.banner.Transformer
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.fragment_mine.*
 import kotlinx.android.synthetic.main.fragment_new_home.*
-import kotlinx.android.synthetic.main.fragment_new_home.ll_buy
-import kotlinx.android.synthetic.main.fragment_new_home.ll_sale
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -57,6 +53,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     private var mCoinPresenter: MsgPresenter = MsgPresenter(this)
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var mCertification: Certification? = null
+    private var home:Home?=null
 
     //实名认证
     override fun getCertification(certification: Certification) {
@@ -97,7 +94,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
     override fun getHome(msg: Home) {
         if (mView==null||activity==null)return
         sl_refresh?.isRefreshing=false
-
+        home=msg
         val carousel = msg.carousel
         if (!carousel.isNullOrEmpty()) {
             adList?.clear()
@@ -140,23 +137,14 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
-
+        mAdapter?.setOnItemClickListener { adapter, view, position ->
+            startActivity(Intent(context, HomeRentActivity::class.java).putExtra("produce", home?.products?.get(position)))
+        }
 
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
-        ll_buy.setOnClickListener {
-            startActivity(Intent(activity, ExchangeBuyActivity::class.java))
-        }
-        ll_sale.setOnClickListener {
-            if (isCertificated())
-                startActivity(Intent(activity, ExchangeSaleActivity::class.java))
-        }
-        ll_transfer.setOnClickListener {
-            if (isCertificated())
-                startActivity(Intent(activity, TransferCoinActivity::class.java))
-        }
 
         iv_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))

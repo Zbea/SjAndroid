@@ -17,7 +17,7 @@ class IncomingAdapter(layoutResId: Int, data: List<InComing.StaticListBean>?) : 
 
         helper.setText(R.id.tv_time, item.create_at)
 
-        helper.setText(R.id.tv_amount, "+"+item.amount+item.coin)
+        helper.setText(R.id.tv_amount, "+"+item.amount+(if(item.coin=="FCOIN") "FIL" else item.coin))
 
 
     }

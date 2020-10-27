@@ -10,12 +10,9 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.model.Node
 import com.hazz.kuangji.ui.adapter.NodeTwoAdapter
-import com.hazz.kuangji.utils.GlideEngine
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_node.mToolBar
 import kotlinx.android.synthetic.main.activity_node.recycle_view
-import kotlinx.android.synthetic.main.activity_node.tv_person
-import kotlinx.android.synthetic.main.activity_node.tv_team
 import kotlinx.android.synthetic.main.activity_node_two.*
 
 /**
@@ -57,15 +54,17 @@ class NodeTwoActivity : BaseActivity() {
 
         tv_name.text=data?.username
 
-        if(data?.self_purchase!=null){
-            tv_person.text=if(data?.self_purchase == "0")"0.00000000" else data?.self_purchase
+        if(data?.team!=null){
+            tv_team.text=if(data?.team == "0")"0.00000000" else data?.team
+            tv_team_t.text=if(data?.team_t == "0")"0.00000000" else data?.team_t
         }
         if(data?.direct_purchase!=null){
             tv_direct.text=if(data?.direct_purchase == "0")"0.00000000" else data?.direct_purchase
+            tv_direct_t.text=if(data?.direct_t == "0")"0.00000000" else data?.direct_t
         }
         val childrens = data?.children
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
-        mAdapter = NodeTwoAdapter(R.layout.item_node, childrens)
+        mAdapter = NodeTwoAdapter(R.layout.item_node_two, childrens)
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
 

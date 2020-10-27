@@ -31,10 +31,12 @@ class NodeActivity : BaseActivity(), IContractView.NodeView {
 
     override fun getNode(msg: Node) {
         if(msg.direct!=null){
-            tv_person.text=if(msg.direct == "0")"0.00000000" else msg.direct
+            tv_direct.text=if(msg.direct == "0")"0.00000000" else msg.direct
+            tv_direct_t.text=if(msg.direct_t == "0")"0.00000000" else msg.direct_t
         }
         if(msg.team!=null){
             tv_team.text=if(msg.team == "0")"0.00000000" else msg.team
+            tv_team_t.text=if(msg.team_t == "0")"0.00000000" else msg.team_t
         }
 
         datas = msg.invite_users

@@ -138,6 +138,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:visibility="gone"
                     android:background="?android:attr/selectableItemBackground"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -145,13 +146,13 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/icon_mine_sale" />
+                        android:src="@mipmap/icon_mine_transfer_coin" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:text="一键卖币"
+                        android:text="账户互转"
                         android:textColor="@color/color_mine_btn"
                         android:textSize="@dimen/sp_14" />
 

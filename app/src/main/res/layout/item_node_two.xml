@@ -13,15 +13,6 @@
         android:src="@mipmap/user_default"
         />
 
-    <ImageView
-        android:id="@+id/iv_more"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/space_dimen"
-        android:src="@mipmap/mine_icon_more"
-        />
 
     <TextView
         android:id="@+id/tv_name"
@@ -36,16 +27,7 @@
         android:layout_alignTop="@+id/iv_header"
         />
 
-    <TextView
-        android:id="@+id/tv_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_15"
-        android:layout_marginTop="@dimen/dp_12"
-        android:text="团队:18人"
-        android:textColor="@color/color_999999"
-        android:textSize="@dimen/sp_12"
-        android:layout_toRightOf="@id/tv_name"/>
+
 
     <LinearLayout
         android:id="@+id/ll_person"
@@ -64,26 +46,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/sp_12"
-            android:text="直推业绩(USDT)" />
+            android:text="个人业绩(USDT)" />
         <TextView
-            android:id="@+id/tv_direct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:text="0"
-            android:textColor="@color/color_main"
-            android:textSize="@dimen/sp_10" />
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_999999"
-            android:layout_marginTop="@dimen/dp_10"
-            android:textSize="@dimen/sp_12"
-            android:text="直推业绩(T)" />
-        <TextView
-            android:id="@+id/tv_direct_t"
+            android:id="@+id/tv_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
@@ -105,33 +70,18 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="团队业绩(USDT)"
+            android:text="个人业绩(T)"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/sp_12"/>
         <TextView
-            android:id="@+id/tv_team"
+            android:id="@+id/tv_person_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:text="0"
             android:textColor="@color/color_main"
             android:textSize="@dimen/sp_10" />
-        <TextView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
-            android:text="团队业绩(T)"
-            android:textColor="@color/color_999999"
-            android:textSize="@dimen/sp_12"/>
-        <TextView
-            android:id="@+id/tv_team_t"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:text="0"
-            android:textColor="@color/color_main"
-            android:textSize="@dimen/sp_10" />
+
     </LinearLayout>
 
     <View

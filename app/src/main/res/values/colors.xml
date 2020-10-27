@@ -20,6 +20,7 @@
     <color name="color_666666">#666666</color>
     <color name="color_hint">#aa999999</color>
     <color name="color_line">#aadddddd</color>
+    <color name="color_gray">#666666</color>
 
     <color name="color_bg">#ffffff</color>
     <color name="color_gray_bg">#f7f7f7</color>

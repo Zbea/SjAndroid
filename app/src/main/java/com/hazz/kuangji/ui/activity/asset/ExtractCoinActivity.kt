@@ -14,8 +14,10 @@ import com.hazz.kuangji.mvp.model.TibiRecord
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.ExtractCoinPresenter
 import com.hazz.kuangji.utils.*
+import kotlinx.android.synthetic.main.activity_exchange_coin.*
 import kotlinx.android.synthetic.main.activity_extract_coin.*
 import kotlinx.android.synthetic.main.activity_extract_coin.et_num
+import kotlinx.android.synthetic.main.activity_extract_coin.mToolBar
 
 
 class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractView.AssetView,TextWatcher {
@@ -28,10 +30,14 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var rateAmountUsdt="10"
     private var rateFil = "0.5"
     private var rateAmountFil="10"
+    private var rateTrc = "0.5"
+    private var rateAmountTrc="1"
     private var avaiableAmount = "0"
     private var min="10"
     private var max="20000"
     private var assets: List<MyAsset.AssetsBean>? = null
+    private var isTrc=false
+    private var num=""
 
     override fun myAsset(msg: MyAsset) {
         myAsset=msg
@@ -54,6 +60,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 rateAmountUsdt= config[6].value
                 rateAmountFil=config[7].value
                 rateFil = config[8].value
+                rateTrc =config[10].value
+                rateAmountTrc=config[9].value
             }
             setFee()
         }
@@ -73,19 +81,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        val div = BigDecimalUtil.div(getCurrentRate(), "100", 4)
-        val fee=BigDecimalUtil.mul(s.toString(), div, 4)
-        if (BigDecimalUtil.compare(getCurrentRateAmount(),fee))
-        {
-            tv_need.text = getCurrentRateAmount()
-            var surplus=BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 4)
-            tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
-        }
-        else
-        {
-            tv_need.text = fee
-            tv_shiji.text = BigDecimalUtil.sub(s.toString(), tv_need.text.toString(), 4)
-        }
+        num=s.toString()
+        setCalculate()
     }
 
 
@@ -126,6 +123,20 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             }
         }
 
+        et_address.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if(s.isNullOrEmpty())return
+                var addr=s.toString()
+                isTrc=addr.subSequence(0,1)=="T"
+                if (!num.isNullOrEmpty())
+                    setCalculate()
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
         tv_bt.setOnClickListener {
             var amount=et_num.text.toString()
             if (TextUtils.isEmpty(amount)) {
@@ -143,11 +154,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 SToast.showText("提币数量不能低于$min")
                 return@setOnClickListener
             }
-            if (!BigDecimalUtil.compare(amount,getCurrentRateAmount()))
-            {
-                SToast.showText("提币数量不能低于扣除费用")
-                return@setOnClickListener
-            }
+
 
             if (TextUtils.isEmpty(et_pwd.text.toString())) {
                 SToast.showText("请输入资金密码")
@@ -156,6 +163,15 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             if (TextUtils.isEmpty(et_address.text.toString())) {
                 SToast.showText("请输入提币地址")
                 return@setOnClickListener
+            }
+
+            if (!isTrc)
+            {
+                if (!BigDecimalUtil.compare(amount,getCurrentRateAmount()))
+                {
+                    SToast.showText("提币数量不能低于扣除费用")
+                    return@setOnClickListener
+                }
             }
 
             mExtractCoinPresenter.tibi(et_num.text.toString(), currentName, et_pwd.text.toString(), et_address.text.toString())
@@ -195,10 +211,49 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     }
 
     /**
+     * 开始计算
+     */
+    private fun setCalculate()
+    {
+        val div = BigDecimalUtil.div(getCurrentRate(), "100", 4)
+        val fee=BigDecimalUtil.mul(num, div, 4)
+        if (isTrc)
+        {
+            val div = BigDecimalUtil.div(rateTrc, "100", 4)
+            val fee=BigDecimalUtil.mul(num, div, 4)
+            if (BigDecimalUtil.compare(rateAmountTrc,fee))
+            {
+                tv_need.text = rateAmountTrc
+                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
+            }
+            else
+            {
+                tv_need.text = fee
+                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+            }
+        }
+        else{
+            if (BigDecimalUtil.compare(getCurrentRateAmount(),fee))
+            {
+                tv_need.text = getCurrentRateAmount()
+                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
+            }
+            else
+            {
+                tv_need.text = fee
+                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+            }
+        }
+    }
+
+    /**
      * 设置费用
      */
     private fun setFee(){
-        tv_shouxu.text = "手续费为提币数量的"+getCurrentRate()+"%,最少扣除"+getCurrentRateAmount()+currentName
+        //手续费为"+getCurrentRate()+"%,
+        tv_shouxu.text ="Trc手续费最少扣除"+rateAmountTrc+"USDT ; Erc手续费最少扣除"+getCurrentRateAmount()+currentName
     }
 
     /**

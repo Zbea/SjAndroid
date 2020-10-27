@@ -123,7 +123,6 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             et_num.background=resources.getDrawable(R.drawable.bg_edit_solid_gray)
             et_num.isFocusable=false
             et_num.isFocusableInTouchMode=false
-            tv_type.text="整售"
         }
 
         tv_info.text=Html.fromHtml(produce?.desc)
@@ -137,7 +136,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     {
         val div = BigDecimalUtil.mul(s, rate, 8)
         tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
-        tv_type.text= BigDecimalUtil.mul(div, "0.7", 8) + "FIL(每日预计)"
+//        tv_type.text= BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
     }
 
 
@@ -160,9 +159,9 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
 
                 if (produce?.rent_type.equals("0"))
                 {
-                    if (et_num.text.toString().toDouble()<Constants.BUY_MIN)
+                    if (et_num.text.toString().toDouble()<Constants.REAT_MIN)
                     {
-                        SToast.showText("最低购买${Constants.BUY_MIN}USDT")
+                        SToast.showText("最低购买${Constants.REAT_MIN}USDT")
                         return@setOnClickListener
                     }
                     if (et_num.text.toString().toDouble()>count.toDouble())

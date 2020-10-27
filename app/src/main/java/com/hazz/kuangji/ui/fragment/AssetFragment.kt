@@ -23,7 +23,6 @@ import com.hazz.kuangji.mvp.presenter.IncomingPresenter
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
-import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.MsgListActivity
 import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
@@ -215,7 +214,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         //定时器(每隔三分钟让下拉刷新可以执行)
         Timer().schedule(object : TimerTask() {
             override fun run() {
-                Log.i("sj","开始计时")
                 sl_refresh?.isEnabled=true
             }
         } , 0, 3*60*1000)

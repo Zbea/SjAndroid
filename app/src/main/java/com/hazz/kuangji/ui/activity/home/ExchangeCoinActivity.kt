@@ -40,21 +40,22 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
 
     override fun getExchange(data: Exchange) {
         mData = data
-        max = mData?.usdtNum.toString()
-        rate = mData?.usdtrate.toString()
-        type = "UTOF"
-        tv_u_f.text = "$uStr  转  $fStr"
-        tv_usdt.text = uStr
-        tv_price_usdt_title.text = "$uStr 单价："
-        tv_price_usdt.text ="￥"+ mData?.usdtPrice
-        tv_count_usdt_title.text = "$uStr 数量："
-        tv_count_usdt.text = mData?.usdtNum
+        type = "FTOU"
+        rate = mData?.filrate.toString()
+        max = mData?.filNum.toString()
 
-        tv_fil.text = fStr
-        tv_price_fil_title.text = "$fStr 单价："
-        tv_price_fil.text = "￥"+mData?.filPrice
-        tv_count_fil_title.text = "$fStr 数量："
-        tv_count_fil.text = mData?.filNum
+        tv_u_f.text = "$fStr  转  $uStr"
+        tv_usdt.text = "$fStr"
+        tv_price_usdt_title.text = "$fStr 单价："
+        tv_price_usdt.text = "￥"+mData?.filPrice
+        tv_count_usdt_title.text = "$fStr 数量："
+        tv_count_usdt.text = mData?.filNum
+
+        tv_fil.text = "$uStr"
+        tv_price_fil_title.text = "$uStr 单价："
+        tv_price_fil.text = "￥"+mData?.usdtPrice
+        tv_count_fil_title.text = "$uStr 数量："
+        tv_count_fil.text = mData?.usdtNum
 
     }
 
@@ -94,43 +95,43 @@ class ExchangeCoinActivity : BaseActivity(), IContractView.IExchangeCoinView {
         })
 
         ll_transition.setOnClickListener {
-            et_count_usdt.setText("")
-            tv_num_fil.text = ""
-            if (type == "UTOF") {
-                type = "FTOU"
-                rate = mData?.filrate.toString()
-                max = mData?.filNum.toString()
-
-                tv_u_f.text = "$fStr  转  $uStr"
-                tv_usdt.text = "$fStr"
-                tv_price_usdt_title.text = "$fStr 单价："
-                tv_price_usdt.text = "￥"+mData?.filPrice
-                tv_count_usdt_title.text = "$fStr 数量："
-                tv_count_usdt.text = mData?.filNum
-
-                tv_fil.text = "$uStr"
-                tv_price_fil_title.text = "$uStr 单价："
-                tv_price_fil.text = "￥"+mData?.usdtPrice
-                tv_count_fil_title.text = "$uStr 数量："
-                tv_count_fil.text = mData?.usdtNum
-            } else {
-                type = "UTOF"
-                rate = mData?.usdtrate.toString()
-                max = mData?.usdtNum.toString()
-
-                tv_u_f.text = "$uStr  转  $fStr"
-                tv_usdt.text = "$uStr"
-                tv_price_usdt_title.text = "$uStr 单价："
-                tv_price_usdt.text = "￥"+mData?.usdtPrice
-                tv_count_usdt_title.text = "$uStr 数量："
-                tv_count_usdt.text = mData?.usdtNum
-
-                tv_fil.text = "$fStr"
-                tv_price_fil_title.text = "$fStr 单价："
-                tv_price_fil.text = "￥"+mData?.filPrice
-                tv_count_fil_title.text = "$fStr 数量："
-                tv_count_fil.text = mData?.filNum
-            }
+//            et_count_usdt.setText("")
+//            tv_num_fil.text = ""
+//            if (type == "UTOF") {
+//                type = "FTOU"
+//                rate = mData?.filrate.toString()
+//                max = mData?.filNum.toString()
+//
+//                tv_u_f.text = "$fStr  转  $uStr"
+//                tv_usdt.text = "$fStr"
+//                tv_price_usdt_title.text = "$fStr 单价："
+//                tv_price_usdt.text = "￥"+mData?.filPrice
+//                tv_count_usdt_title.text = "$fStr 数量："
+//                tv_count_usdt.text = mData?.filNum
+//
+//                tv_fil.text = "$uStr"
+//                tv_price_fil_title.text = "$uStr 单价："
+//                tv_price_fil.text = "￥"+mData?.usdtPrice
+//                tv_count_fil_title.text = "$uStr 数量："
+//                tv_count_fil.text = mData?.usdtNum
+//            } else {
+//                type = "UTOF"
+//                rate = mData?.usdtrate.toString()
+//                max = mData?.usdtNum.toString()
+//
+//                tv_u_f.text = "$uStr  转  $fStr"
+//                tv_usdt.text = "$uStr"
+//                tv_price_usdt_title.text = "$uStr 单价："
+//                tv_price_usdt.text = "￥"+mData?.usdtPrice
+//                tv_count_usdt_title.text = "$uStr 数量："
+//                tv_count_usdt.text = mData?.usdtNum
+//
+//                tv_fil.text = "$fStr"
+//                tv_price_fil_title.text = "$fStr 单价："
+//                tv_price_fil.text = "￥"+mData?.filPrice
+//                tv_count_fil_title.text = "$fStr 数量："
+//                tv_count_fil.text = mData?.filNum
+//            }
         }
 
         tv_commit.setOnClickListener {

@@ -74,6 +74,9 @@ public class Mill {
                 public String miner_number;
                 public String storage;
                 public String buy_storage;
+                public String hide_contract;//后台显示状态
+                public String is_sign;//合同签名状态
+                public String contract_path;//合同地址
             }
 
     }

@@ -189,88 +189,6 @@
                     </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/ll_buy"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dp_10">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_home_charge" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="一键买币"
-                            android:textColor="@color/color_333333"
-                            android:textSize="@dimen/sp_14" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_sale"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dp_10">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_home_sale" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="一键卖币"
-                            android:textColor="@color/color_333333"
-                            android:textSize="@dimen/sp_14" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll_transfer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="?android:attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="@dimen/dp_10">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/icon_home_exchange_coin" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="币币兑换"
-                            android:textColor="@color/color_333333"
-                            android:textSize="@dimen/sp_14" />
-
-                    </LinearLayout>
-                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/iv_invite"
@@ -286,6 +204,7 @@
                     android:layout_marginLeft="@dimen/space_dimen"
                     android:text="购买eyeball矿机"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_16" />
 

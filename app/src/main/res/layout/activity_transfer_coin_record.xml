@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_color"
+    android:background="@color/color_list_bg"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        android:background="@color/color_bg">
+        android:background="@drawable/bg_line_bottom">
 
         <RelativeLayout
             android:layout_width="match_parent"
