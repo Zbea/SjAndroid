@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/sp_12"
-            android:text="个人业绩(USDT)" />
+            android:text="个人投资(USDT)" />
         <TextView
             android:id="@+id/tv_person"
             android:layout_width="wrap_content"
@@ -70,7 +70,7 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="个人业绩(T)"
+            android:text="个人投资(T)"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/sp_12"/>
         <TextView

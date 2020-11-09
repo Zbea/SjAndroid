@@ -62,6 +62,12 @@ class NodeTwoActivity : BaseActivity() {
             tv_direct.text=if(data?.direct_purchase == "0")"0.00000000" else data?.direct_purchase
             tv_direct_t.text=if(data?.direct_t == "0")"0.00000000" else data?.direct_t
         }
+
+        if(data?.self_purchase!=null){
+            tv_person.text=if(data?.self_purchase == "0")"0.00000000" else data?.self_purchase
+            tv_person_t.text=if(data?.self_purchase_t == "0")"0.00000000" else data?.self_purchase_t
+        }
+
         val childrens = data?.children
         recycle_view.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = NodeTwoAdapter(R.layout.item_node_two, childrens)

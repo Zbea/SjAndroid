@@ -133,7 +133,7 @@
                                 android:id="@+id/tv3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="昨日总收益(FIL)"
+                                android:text="矿机昨日总收益(FIL)"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_12" />
 
@@ -164,7 +164,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/sp_12"
-                            android:text="收益明细 >>"
+                            android:text="矿机收益明细 >>"
                             android:textColor="#aaffffff"/>
 
 

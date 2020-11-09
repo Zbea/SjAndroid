@@ -1,19 +1,16 @@
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
-import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Mill
-import com.hazz.kuangji.mvp.model.Mingxi
+import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.mvp.presenter.MillPresenter
 import com.hazz.kuangji.ui.activity.home.MsgListActivity
 import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
-import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
-import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.ui.adapter.CoinAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.DensityUtils
@@ -31,10 +28,10 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
     private var mAdapter: CoinAdapter?=null
     private var datas:List<Mill.MachineListBean.ListBean> = ArrayList()
 
-    override fun getMingxi(msg: Mingxi) {
+    override fun getEarningsList(msg: MillEarningsList) {
     }
 
-    override fun getKuangji(msg: Mill) {
+    override fun getMill(msg: Mill) {
         if (mView==null)return
         sl_refresh?.isRefreshing=false
         if(msg.total!=null){
@@ -87,15 +84,6 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         mAdapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
         recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
-        mAdapter?.setOnItemClickListener { adapter, view, position ->
-            var contract=datas[position]
-            if (contract.hide_contract=="0")
-            {
-                startActivity(Intent(activity, ContractDetailsActivity::class.java).putExtra("contract_code",contract.id)
-                        .putExtra("contract_sign",contract.is_sign))
-            }
-        }
-
     }
 
     override fun lazyLoad() {

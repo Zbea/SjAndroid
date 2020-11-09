@@ -136,7 +136,16 @@ interface AiPickService{
      */
     @GET("trade/my_asset")
     fun myAsset(): Observable<BaseResult<MyAsset>>
-
+    /**
+     * 昨日收益来源
+     */
+    @GET("trade/filldetail?pageSize=30&pageNum=1")
+    fun filEarningsList(): Observable<BaseResult<EarningsSource>>
+    /**
+     * 昨日收益来源
+     */
+    @GET("trade/usdtdetail")
+    fun usdtEarningsList(): Observable<BaseResult<EarningsSource>>
     /**
      * 首页
      */
@@ -159,14 +168,18 @@ interface AiPickService{
      * 矿机
      */
     @GET("trade/investment")
-    fun kuangji(): Observable<BaseResult<Mill>>
+    fun getMill(): Observable<BaseResult<Mill>>
 
     /**
      * 矿机明细
      */
     @GET("trade/statement")
-    fun mingxi(@Query("start" )start:String,@Query("end" )end:String): Observable<BaseResult<Mingxi>>
-
+    fun getMillEarnings(@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<MillEarningsList>>
+    /**
+     * 获取矿机收益详情
+     */
+    @POST("/api/trade/miner_coinage")
+    fun getEarningsDetails(@Query("order_id" ) type:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
      * 矿机
      */

@@ -10,7 +10,7 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Mill
-import com.hazz.kuangji.mvp.model.Mingxi
+import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.mvp.presenter.MillPresenter
 import com.hazz.kuangji.ui.adapter.MillRecordAdapter
 import com.hazz.kuangji.utils.ToolBarCustom
@@ -24,11 +24,11 @@ import java.util.*
 
 class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
-    override fun getKuangji(msg: Mill) {
+    override fun getMill(msg: Mill) {
 
     }
 
-    override fun getMingxi(msg: Mingxi) {
+    override fun getEarningsList(msg: MillEarningsList) {
         mAdapter?.setNewData(msg.list)
 
     }
@@ -52,7 +52,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
     private var pvTime: TimePickerView? = null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("收益明细")
+                .setTitle("矿机收益明细")
                 .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
                 .setOnLeftIconClickListener {finish() }
@@ -66,15 +66,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(10f)
-        rc_list.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = System.currentTimeMillis()

@@ -53,9 +53,16 @@ interface IContractView {
     }
     interface kuangjiView: BaseView {
 
-        fun getKuangji(msg: Mill)
-        fun getMingxi(msg: Mingxi)
+        fun getMill(msg: Mill)
+        fun getEarningsList(msg: MillEarningsList)
     }
+
+    interface EarningsDetailsView: BaseView {
+
+        fun getDetails(msg:List<MillEarningsDetails>)
+
+    }
+
     interface HomeView: BaseView {
 
         fun getHome(msg:Home)
@@ -67,17 +74,18 @@ interface IContractView {
 
         fun chargeRecord(msg: ChargeRecord)
     }
-    interface TouziView: BaseView {
 
-        fun touziList(msg: Touzi)
-        fun touziConfirm(msg:String)
-        fun touziRecord(msg: TouziRecord)
-    }
 
     interface AssetView: BaseView {
 
         fun myAsset(msg: MyAsset)
     }
+
+    interface EarningsSourceView: BaseView {
+
+        fun getList(msg: EarningsSource)
+    }
+
     interface XieyiView: BaseView {
 
         fun xieyi(msg:Xieyi)

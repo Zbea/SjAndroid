@@ -52,6 +52,12 @@ public class MyAsset implements Serializable {
             public String balance;
             public String coin;
             public String frozen;
+            public String locked;
+            public String pledge;
+            public String team;
+            public String achievement;
+            public String line25;
+            public String line75;
         }
 
 }

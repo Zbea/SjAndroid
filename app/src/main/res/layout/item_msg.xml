@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
-        android:src="@mipmap/mine_icon_more"
+        android:src="@mipmap/icon_arrow_right"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         />

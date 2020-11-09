@@ -5,6 +5,7 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -191,17 +192,21 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                         tv_lest.text = "可用" + coin.balance + currentName
                     }
                 }
+                tv_tips.visibility= View.GONE
             }
             else
             {
                 currentName = "FIL"
+                var tipsNum=""
                 for (coin in assets!!) {
                     if (coin.coin == "FCOIN") {
                         avaiableAmount = coin.balance
                         tv_lest.text = "可用" + coin.balance + currentName
+                        tipsNum=BigDecimalUtil.sub(coin.balance,coin.line25,8)
                     }
                 }
-
+                tv_tips.text="提币超过$tipsNum FIL后将影响您的矿机产出算力"
+                tv_tips.visibility= View.VISIBLE
             }
             et_num.setText("")
             tv_need.text="0"
@@ -253,7 +258,15 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
      */
     private fun setFee(){
         //手续费为"+getCurrentRate()+"%,
-        tv_shouxu.text ="Trc手续费最少扣除"+rateAmountTrc+"USDT ; Erc手续费最少扣除"+getCurrentRateAmount()+currentName
+        tv_shouxu.text =if (currentName=="USDT")
+        {
+           "Trc手续费最少扣除"+rateAmountTrc+"USDT ; Erc手续费最少扣除"+getCurrentRateAmount()+currentName
+        }
+        else
+        {
+            "FIL手续费最少扣除"+getCurrentRateAmount()+currentName
+        }
+
     }
 
     /**

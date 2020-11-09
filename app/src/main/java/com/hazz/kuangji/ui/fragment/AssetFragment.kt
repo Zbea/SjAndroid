@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
+import android.view.View
 import android.widget.RelativeLayout
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
@@ -20,25 +18,19 @@ import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.IncomingPresenter
-import com.hazz.kuangji.ui.activity.asset.ChargeActivity
-import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
+import com.hazz.kuangji.ui.activity.asset.YesterdayEarningsSourceActivity
 import com.hazz.kuangji.ui.activity.home.MsgListActivity
-import com.hazz.kuangji.ui.activity.mill.MillRecordActivity
-import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
-import com.hazz.kuangji.ui.adapter.AssetAdapter
 import com.hazz.kuangji.utils.*
-import com.hazz.kuangji.widget.RewardItemDeco
-import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.fragment_asset.*
 import kotlinx.android.synthetic.main.fragment_asset.iv_msg
-import kotlinx.android.synthetic.main.fragment_asset.recycle_view
 import kotlinx.android.synthetic.main.fragment_asset.toolbar
 import kotlinx.android.synthetic.main.fragment_asset.tv_share
 import kotlinx.android.synthetic.main.fragment_asset.tv_shouyi
 import kotlinx.android.synthetic.main.fragment_asset.tv_static
 import kotlinx.android.synthetic.main.fragment_asset.tv_touzi
 import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
+import kotlinx.android.synthetic.main.item_asset.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -51,10 +43,10 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var myAsset: MyAsset? = null
-    private var mAdapter: AssetAdapter? = null
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
     private var incoming: InComing? = null
     private var mIncomingPresenter: IncomingPresenter = IncomingPresenter(this)
+    private var isClickFilBalance=false
 
     override fun getCertification(certification: Certification) {
         sl_refresh?.isRefreshing = false
@@ -86,11 +78,21 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         val assets = msg.assets
         list?.clear()
         for (coin in assets) {
-            if (coin.coin != "BTC" && coin.coin != "ETH") {
-                list?.add(coin)
+            if (coin.coin == "FCOIN" ) {
+                tv_fil_balance.text=coin.balance
+                tv_fil_frozen.text=coin.frozen
+                tv_fil_locked.text=coin.locked
+                tv_fil_pledge.text=coin.pledge
+                tv_fil_balance_25.text=coin.line25
+                tv_fil_balance_75.text=coin.line75
+                tv_fil_balance_achievement.text=coin.achievement
+                tv_fil_balance_team.text=coin.team
+            }
+            if (coin.coin == "USDT" ) {
+                tv_usdt_balance.text=coin.balance
+                tv_usdt_frozen.text=coin.frozen
             }
         }
-        mAdapter?.setNewData(list)
 
     }
     override fun inComing(msg: InComing) {
@@ -164,7 +166,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             startActivity(Intent(activity, IncomingActivity::class.java).setFlags(2))
         }
         rl_yesterday.setOnClickListener {
-            startActivity(Intent(activity, MillRecordActivity::class.java))
+            startActivity(Intent(activity, YesterdayEarningsSourceActivity::class.java))
         }
 
         if(SPUtil.getBoolean("hide"))
@@ -175,7 +177,17 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             tv_static.transformationMethod = PasswordTransformationMethod.getInstance()
             tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
             tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
+
+            tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+            tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
         }
 
         cb.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -188,6 +200,16 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
                 tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+                tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
             }
             else
             {
@@ -198,18 +220,34 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
                 tv_share.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_yesterday.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_locked.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_pledge.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_balance_25.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_balance_75.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_balance_achievement.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_fil_balance_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_usdt_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                tv_usdt_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
             }
-            mAdapter?.notifyDataSetChanged()
         }
 
-
-        recycle_view.layoutManager = LinearLayoutManager(activity)//创建布局管理
-        mAdapter = AssetAdapter(R.layout.item_asset, null)
-        recycle_view.adapter = mAdapter
-        mAdapter?.bindToRecyclerView(recycle_view)
-        mAdapter?.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(15f)
-        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
+        rl_fil_balance.setOnClickListener {
+            if (isClickFilBalance)
+            {
+                isClickFilBalance=false
+                ll_fil_balance_details.visibility=View.GONE
+                tv_fil_tips.visibility=View.GONE
+                iv_arrow.setImageResource(R.mipmap.icon_arrow_right)
+            }
+            else{
+                isClickFilBalance=true
+                ll_fil_balance_details.visibility=View.VISIBLE
+                tv_fil_tips.visibility=View.VISIBLE
+                iv_arrow.setImageResource(R.mipmap.icon_arrow_down)
+            }
+        }
 
         //定时器(每隔三分钟让下拉刷新可以执行)
         Timer().schedule(object : TimerTask() {

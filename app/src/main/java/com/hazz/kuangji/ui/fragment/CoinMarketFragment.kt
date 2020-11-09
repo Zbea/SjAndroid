@@ -27,7 +27,7 @@ class CoinMarketFragment : BaseFragment() {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
-        web_view.loadUrl("https://m.huobi.me/zh-cn/market/")
+        web_view.loadUrl("https://m.huobi.pr/zh-cn/market/")
 
 
         web_view.setOnKeyListener { v, keyCode, event ->

@@ -67,27 +67,27 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
                     startActivity(Intent(this, ChargeRecordActivity::class.java))
                 }
         rg_charge.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId==R.id.rb_left)
-            {
-                type=1
-                setView()
-                tv_usdt.text="Erc20-USDT"
-                tv_usdt1.text="Erc20-USDT"
-            }
-            else if (checkedId==R.id.rb_right)
-            {
-                type=3
-                setView()
-                tv_usdt.text="Trc20-USDT"
-                tv_usdt1.text="Trc20-USDT"
-            }
-            else
-            {
-                type=2
-                setView()
-                tv_usdt.text="OMNI-USDT"
-                tv_usdt1.text="OMNI-USDT"
 
+            when(checkedId)
+            {
+                R.id.rb_left->{
+                    type=1
+                    setView()
+                    tv_usdt.text="Erc20-USDT"
+                    tv_usdt1.text="Erc20-USDT"
+                }
+                R.id.rb_right->{
+                    type=3
+                    setView()
+                    tv_usdt.text="Trc20-USDT"
+                    tv_usdt1.text="Trc20-USDT"
+                }
+                else->{
+                    type=2
+                    setView()
+                    tv_usdt.text="OMNI-USDT"
+                    tv_usdt1.text="OMNI-USDT"
+                }
             }
         }
 

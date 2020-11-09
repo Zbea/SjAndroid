@@ -3,7 +3,7 @@ package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Mill
-import com.hazz.kuangji.mvp.model.Mingxi
+import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.net.BasePresenter
 import com.hazz.kuangji.net.BaseResult
 import com.hazz.kuangji.net.Callback
@@ -16,7 +16,7 @@ class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractVi
 
 
 
-        val login = RetrofitManager.service.kuangji()
+        val login = RetrofitManager.service.getMill()
 
         doRequest(login, object : Callback<Mill>(view) {
             override fun failed(tBaseResult: BaseResult<Mill>): Boolean {
@@ -25,7 +25,7 @@ class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractVi
             }
 
             override fun success(tBaseResult: BaseResult<Mill>) {
-                tBaseResult.data?.let { view.getKuangji(it) }
+                tBaseResult.data?.let { view.getMill(it) }
             }
 
         }, false)
@@ -37,16 +37,16 @@ class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractVi
 
 
 
-        val login = RetrofitManager.service.mingxi(start,end)
+        val login = RetrofitManager.service.getMillEarnings(start,end)
 
-        doRequest(login, object : Callback<Mingxi>(view) {
-            override fun failed(tBaseResult: BaseResult<Mingxi>): Boolean {
+        doRequest(login, object : Callback<MillEarningsList>(view) {
+            override fun failed(tBaseResult: BaseResult<MillEarningsList>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<Mingxi>) {
-                view.getMingxi(tBaseResult.data!!)
+            override fun success(tBaseResult: BaseResult<MillEarningsList>) {
+                view.getEarningsList(tBaseResult.data!!)
             }
 
         }, true)

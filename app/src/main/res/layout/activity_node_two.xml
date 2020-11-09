@@ -64,16 +64,37 @@
                     android:text="0"
                     android:textColor="@color/color_666666_night"
                     android:textSize="@dimen/sp_12" />
+
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:gravity="center"
-                    android:text="直推业绩(T)"
+                    android:text="团队业绩(USDT)"
                     android:textColor="@color/color_white"
                     android:textSize="@dimen/sp_14" />
+
                 <TextView
-                    android:id="@+id/tv_direct_t"
+                    android:id="@+id/tv_team"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="0"
+                    android:textColor="@color/color_666666_night"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="个人投资(USDT)"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_person"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
@@ -94,12 +115,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="团队业绩(USDT)"
+                    android:text="直推业绩(T)"
                     android:textColor="@color/color_white"
                     android:textSize="@dimen/sp_14" />
-
                 <TextView
-                    android:id="@+id/tv_team"
+                    android:id="@+id/tv_direct_t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
@@ -117,6 +137,24 @@
                     android:textSize="@dimen/sp_14" />
                 <TextView
                     android:id="@+id/tv_team_t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="0"
+                    android:textColor="@color/color_666666_night"
+                    android:textSize="@dimen/sp_12" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="个人投资(T)"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_person_t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"

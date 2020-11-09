@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SjAndroid.iml" filepath="$PROJECT_DIR$/SjAndroid.iml" group="SjAndroid" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SjAndroid/app" />
-      <module fileurl="file://$PROJECT_DIR$/pickerview/pickerview.iml" filepath="$PROJECT_DIR$/pickerview/pickerview.iml" group="SjAndroid/pickerview" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wheelview/wheelview.iml" filepath="$PROJECT_DIR$/.idea/modules/wheelview/wheelview.iml" group="SjAndroid/wheelview" />
+      <module fileurl="file://$PROJECT_DIR$/SjAndroid.iml" filepath="$PROJECT_DIR$/SjAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SjAndroid.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SjAndroid.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/pickerview/SjAndroid.pickerview.iml" filepath="$PROJECT_DIR$/.idea/modules/pickerview/SjAndroid.pickerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wheelview/SjAndroid.wheelview.iml" filepath="$PROJECT_DIR$/.idea/modules/wheelview/SjAndroid.wheelview.iml" />
     </modules>
   </component>
 </project>

@@ -192,7 +192,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -287,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -329,7 +329,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -361,7 +361,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 
@@ -392,7 +392,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:drawableRight="@mipmap/mine_icon_more"
+                    android:drawableRight="@mipmap/icon_arrow_right"
                     android:drawablePadding="@dimen/dp_12" />
             </RelativeLayout>
 

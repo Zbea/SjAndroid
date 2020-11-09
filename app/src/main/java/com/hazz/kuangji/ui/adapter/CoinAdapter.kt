@@ -1,10 +1,14 @@
 package com.hazz.kuangji.ui.adapter
 
+import android.content.Intent
 import android.view.View
+import android.widget.Button
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Mill
+import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
+import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
@@ -16,7 +20,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
     override fun convert(helper: BaseViewHolder, item: Mill.MachineListBean.ListBean) {
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_day, item.remain)
-        helper.setText(R.id.tv_number, "矿机编号："+item.miner_number)
+        helper.setText(R.id.tv_number, "矿机ID："+item.id+" / 矿机编号："+item.miner_number)
         helper.setText(R.id.tv_mill_num, item.buy_storage+"T")
         if(item.revenue!=null){
             helper.setText(R.id.tv_leiji, BigDecimalUtil.mul(item.revenue,"1",8)+"FIL")
@@ -47,5 +51,19 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
                 helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
             }
         }
+
+        helper.setVisible(R.id.ll_bottom, item.hide_contract=="0")
+
+        helper.getView<Button>(R.id.btn_contract).setOnClickListener {
+            if (item.hide_contract=="0")
+            {
+                mContext.startActivity(Intent(mContext, ContractDetailsActivity::class.java).putExtra("contract_code",item.id)
+                        .putExtra("contract_sign",item.is_sign))
+            }
+        }
+        helper.getView<Button>(R.id.btn_earning).setOnClickListener {
+            mContext.startActivity(Intent(mContext, MillEarningsDetailsActivity::class.java).putExtra("orderId",item.id))
+        }
+
     }
 }

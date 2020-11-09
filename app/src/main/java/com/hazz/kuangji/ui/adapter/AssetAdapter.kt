@@ -22,6 +22,9 @@ class AssetAdapter(layoutResId: Int, data: List<MyAsset.AssetsBean>?) : BaseQuic
         if(item.coin=="FCOIN"){
             helper.setText(R.id.tv_coin, "FIL")
         }
+        else{
+            helper.setVisible(R.id.ll_fil,false)
+        }
 
         if (SPUtil.getBoolean("hide")) {
             helper.getView<TextView>(R.id.tv1).transformationMethod= PasswordTransformationMethod.getInstance()
@@ -34,7 +37,9 @@ class AssetAdapter(layoutResId: Int, data: List<MyAsset.AssetsBean>?) : BaseQuic
         }
 
         helper.setText(R.id.tv1, BigDecimalUtil.mul(item.balance, "1", 8))
-        helper.setText(R.id.tv2, item.frozen)
+        helper.setText(R.id.tv2,  BigDecimalUtil.mul(item.frozen, "1", 8))
+        helper.setText(R.id.tv3, BigDecimalUtil.mul(item.locked, "1", 8))
+        helper.setText(R.id.tv4,  BigDecimalUtil.mul(item.pledge, "1", 8))
 
     }
 

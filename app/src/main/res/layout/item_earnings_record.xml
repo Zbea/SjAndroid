@@ -15,34 +15,6 @@
         android:textColor="@color/color_333333"
         android:textSize="@dimen/sp_14" />
 
-    <TextView
-        android:id="@+id/tv_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_name"
-        android:textColor="@color/color_999999"
-        android:layout_marginTop="@dimen/dp_5"
-        android:textSize="@dimen/sp_12" />
-
-    <TextView
-        android:id="@+id/tv_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_id"
-        android:textColor="@color/color_999999"
-        android:layout_marginTop="@dimen/dp_5"
-        android:textSize="@dimen/sp_12" />
-
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_number"
-        android:layout_marginTop="@dimen/dp_5"
-        android:textColor="@color/color_999999"
-        android:textSize="@dimen/sp_12"
-
-        />
 
     <TextView
         android:id="@+id/tv_amount"

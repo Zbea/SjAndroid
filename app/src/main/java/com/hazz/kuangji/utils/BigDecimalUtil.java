@@ -16,6 +16,11 @@ public class BigDecimalUtil {
     private BigDecimalUtil() {
     }
 
+    public static boolean isOdd(int v1)
+    {
+        return (v1&1)==1;
+    }
+
     /**
      * 提供精确的加法运算。
      *

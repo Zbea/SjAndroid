@@ -20,7 +20,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/space_dimen"
-        android:src="@mipmap/mine_icon_more"
+        android:src="@mipmap/icon_arrow_right"
         />
 
     <TextView
@@ -48,7 +48,7 @@
         android:layout_toRightOf="@id/tv_name"/>
 
     <LinearLayout
-        android:id="@+id/ll_person"
+        android:id="@+id/ll_direct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space_dimen"
@@ -78,12 +78,29 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_999999"
+            android:text="团队业绩(USDT)"
             android:layout_marginTop="@dimen/dp_10"
-            android:textSize="@dimen/sp_12"
-            android:text="直推业绩(T)" />
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp_12"/>
         <TextView
-            android:id="@+id/tv_direct_t"
+            android:id="@+id/tv_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="0"
+            android:textColor="@color/color_main"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人投资(USDT)"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp_12"/>
+        <TextView
+            android:id="@+id/tv_person"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
@@ -95,8 +112,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/ll_person"
-        android:layout_alignTop="@id/ll_person"
+        android:layout_toRightOf="@id/ll_direct"
+        android:layout_alignTop="@id/ll_direct"
         android:layout_marginLeft="@dimen/dp_50"
         android:gravity="center_vertical"
         android:orientation="vertical">
@@ -105,17 +122,19 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="团队业绩(USDT)"
             android:textColor="@color/color_999999"
-            android:textSize="@dimen/sp_12"/>
+            android:textSize="@dimen/sp_12"
+            android:text="直推业绩(T)" />
         <TextView
-            android:id="@+id/tv_team"
+            android:id="@+id/tv_direct_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"
             android:text="0"
             android:textColor="@color/color_main"
             android:textSize="@dimen/sp_10" />
+
+
         <TextView
             android:gravity="center"
             android:layout_width="wrap_content"
@@ -126,6 +145,23 @@
             android:textSize="@dimen/sp_12"/>
         <TextView
             android:id="@+id/tv_team_t"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:text="0"
+            android:textColor="@color/color_main"
+            android:textSize="@dimen/sp_10" />
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="个人投资(T)"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="@color/color_999999"
+            android:textSize="@dimen/sp_12"/>
+        <TextView
+            android:id="@+id/tv_person_t"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_5"

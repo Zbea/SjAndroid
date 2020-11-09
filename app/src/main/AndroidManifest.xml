@@ -82,7 +82,8 @@
         <activity android:name=".ui.activity.mine.MineDownloadActivity"/>
         <activity android:name=".ui.activity.mine.AboutActivity"/>
         <activity android:name=".ui.activity.mine.CompanyInfoActivity"/>
-
+        <activity android:name=".ui.activity.asset.YesterdayEarningsSourceActivity"/>
+        <activity android:name=".ui.activity.mill.MillEarningsDetailsActivity"/>
         <activity android:name=".ui.activity.mine.ContractManagerActivity"/>
         <activity android:name=".ui.activity.mine.ContractDetailsActivity"/>
         <activity
