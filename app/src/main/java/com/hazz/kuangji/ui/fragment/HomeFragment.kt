@@ -26,6 +26,7 @@ import com.hazz.kuangji.mvp.presenter.MsgPresenter
 import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.asset.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.home.*
+import com.hazz.kuangji.ui.activity.investment.InvestmentActivity
 import com.hazz.kuangji.ui.activity.mine.InviteActivity
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
@@ -147,7 +148,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
 
         iv_invite.setOnClickListener {
-            startActivity(Intent(activity, InviteActivity::class.java))
+            startActivity(Intent(activity, InvestmentActivity::class.java))
         }
 
         ll_recharge.setOnClickListener {

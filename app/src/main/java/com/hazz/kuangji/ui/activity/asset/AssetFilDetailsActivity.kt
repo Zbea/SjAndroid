@@ -1,6 +1,4 @@
-
-
-package com.hazz.kuangji.ui.activity.mill
+package com.hazz.kuangji.ui.activity.asset
 
 import android.graphics.Color
 import android.util.Log
@@ -12,12 +10,21 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.AssetDetails
 import com.hazz.kuangji.mvp.model.MillEarningsDetails
+import com.hazz.kuangji.mvp.presenter.AssetDetailsPresenter
 import com.hazz.kuangji.mvp.presenter.MillEarningsDetailsPresenter
+import com.hazz.kuangji.ui.adapter.AssetDetailsAdapter
 import com.hazz.kuangji.ui.adapter.EarningDetailsAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
+import kotlinx.android.synthetic.main.activity_asset_fil_details.*
 import kotlinx.android.synthetic.main.activity_mill_earnings_details.*
+import kotlinx.android.synthetic.main.activity_mill_earnings_details.mToolBar
+import kotlinx.android.synthetic.main.activity_mill_earnings_details.rc_list
+import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_25
+import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_75
+import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_usable
 import java.math.RoundingMode
 import java.util.*
 
@@ -25,75 +32,48 @@ import java.util.*
 /**
  * @Created by Zbea
  * @fileName MillEarningsDetailsActivity
- * @date 2020/11/6 14:31
+ * @date 2020/11/12 14:31
  * @email xiaofeng9212@126.com
  * @describe 矿机收益详细
  **/
-class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetailsView{
+class AssetFilDetailsActivity : BaseActivity(), IContractView.AssetFilDetailsView{
 
-    private val presenter=MillEarningsDetailsPresenter(this)
-    private var mAdapter: EarningDetailsAdapter? = null
-    private var id=""
-    private var pvTime: TimePickerView? = null
+    private val presenter=AssetDetailsPresenter(this)
+    private var mAdapter: AssetDetailsAdapter? = null
 
-    override fun getDetails(msg: List<MillEarningsDetails>) {
-        var totalT="0"
-        var totalFil="0"
-        var total25="0"
-
-
-        var totalLock="0"
-        var totalRelease="0"
-        var totalUsable="0"
+    override fun getDetails(msg: List<AssetDetails>) {
+        var totalT="0" //业绩收益
+        var total25="0" //立即释放
+        var totalLock="0" //锁仓
+        var totalRelease="0" //线性释放
+        var totalUsable="0" //可用
         for (item in msg)
         {
 
-            var f25= BigDecimalUtil.mul(item.return_fil,"0.25",8)
-
-            var f75= BigDecimalUtil.mul(item.return_fil,"0.75",8)
-
-            var day= BigDecimalUtil.sub("180",item.remain,8)//运行天数
-
-            var dayRelease= BigDecimalUtil.div(f75,"180",8)//每天释放额度
-
-            var release= BigDecimalUtil.mul(dayRelease,day,8)//运行多少天释放
-
-            var lock= BigDecimalUtil.mul(dayRelease,item.remain,8)//运行多少天质押
-
-            var usable= BigDecimalUtil.add(f25,release,8, RoundingMode.UP)//每天可用
-
-            item.line25=f25
-            item.line75=f75
-            item.lock=lock
-            item.release=release
-            item.usable=usable
-
-            totalT=BigDecimalUtil.add(totalT,item.fil_amount,8, RoundingMode.UP)
-            totalFil=BigDecimalUtil.add(totalFil,item.return_fil,8, RoundingMode.UP)
-            total25=BigDecimalUtil.add(total25,f25,8, RoundingMode.UP)
-            totalLock=BigDecimalUtil.add(totalLock,lock,8, RoundingMode.UP)
-            totalRelease=BigDecimalUtil.add(totalRelease,release,8, RoundingMode.UP)
-            totalUsable=BigDecimalUtil.add(totalUsable,usable,8, RoundingMode.UP)
+            totalT=BigDecimalUtil.add(totalT,item.day_total_invite,8, RoundingMode.UP)
+            total25=BigDecimalUtil.add(total25,item.day_direct_release,8, RoundingMode.UP)
+            totalLock=BigDecimalUtil.add(totalLock,item.day_lockfil,8, RoundingMode.UP)
+            totalRelease=BigDecimalUtil.add(totalRelease,item.day_line,8, RoundingMode.UP)
+            totalUsable=BigDecimalUtil.add(totalUsable,item.balance,8, RoundingMode.UP)
 
         }
-        tv_total_fil.text=totalFil
         tv_total_25.text=total25
-        tv_total_75.text=totalLock
-        tv_total_release.text=totalRelease
+        tv_total_75.text=totalRelease
+        tv_total_lock.text=totalLock
         tv_total_usable.text=totalUsable
-        tv_total_t.text=totalT
+        tv_total_achviment.text=totalT
 
         mAdapter?.setNewData(msg)
 
     }
 
     override fun layoutId(): Int {
-        return R.layout.activity_mill_earnings_details
+        return R.layout.activity_asset_fil_details
     }
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("收益明细")
+                .setTitle("可用明细")
                 .setOnLeftIconClickListener {finish() }
                 .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
@@ -101,10 +81,9 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
                     showTime()
                 }
 
-        id=intent.getStringExtra("orderId")
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
-        mAdapter = EarningDetailsAdapter(R.layout.item_mill_earnings_details, null)
+        mAdapter = AssetDetailsAdapter(R.layout.item_asset_fil_details, null)
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
@@ -112,7 +91,7 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
     }
 
     override fun initData() {
-        presenter.getLists(id)
+        presenter.getLists()
     }
     override fun start() {
     }
@@ -123,8 +102,8 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
         val endDate = Calendar.getInstance()
         endDate.set(2029, 11, 28)
         //时间选择器
-        pvTime = TimePickerBuilder(this, OnTimeSelectListener { start, end ->
-            presenter.getLists(id,start,end)
+        var pvTime = TimePickerBuilder(this, OnTimeSelectListener { start, end ->
+            presenter.getLists(start,end)
 
         }).setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字

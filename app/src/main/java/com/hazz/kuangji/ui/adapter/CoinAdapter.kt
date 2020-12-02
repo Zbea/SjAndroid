@@ -52,7 +52,7 @@ class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             }
         }
 
-        helper.setVisible(R.id.ll_bottom, item.hide_contract=="0")
+        helper.setVisible(R.id.btn_contract, item.hide_contract=="0")
 
         helper.getView<Button>(R.id.btn_contract).setOnClickListener {
             if (item.hide_contract=="0")

@@ -62,6 +62,11 @@ interface IContractView {
         fun getDetails(msg:List<MillEarningsDetails>)
 
     }
+    interface AssetFilDetailsView: BaseView {
+
+        fun getDetails(msg:List<AssetDetails>)
+
+    }
 
     interface HomeView: BaseView {
 
@@ -152,6 +157,20 @@ interface IContractView {
 
         fun getContracts(datas:List<Contract>)
         fun setSign(data: Contract)
+
+    }
+
+    interface IInvestmentView: BaseView {
+
+        fun getLists(item:Investment)
+        fun getListsCompleted(item:Investment)
+        fun onSuccess()
+    }
+
+    interface IInvestmentProductView: BaseView {
+
+        fun getLists(items:List<InvestmentProduct>)
+        fun onSuccess()
 
     }
 

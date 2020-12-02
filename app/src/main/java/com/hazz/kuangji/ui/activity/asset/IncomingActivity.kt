@@ -1,6 +1,7 @@
 package com.hazz.kuangji.ui.activity.asset
 
 import android.graphics.Color
+import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
@@ -33,15 +34,17 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
 
         incoming = msg
         if (msg.fcoin_revenue != null&&msg.usdt_revenue != null) {
-            tv_total.text =BigDecimalUtil.mul( msg.usdt_revenue,"1",8)+"/"+ BigDecimalUtil.mul( msg.fcoin_revenue,"1",8)
+            tv_total.text =BigDecimalUtil.mul( msg.usdt_revenue,"1",8)+" USDT"
+            tv_total_fil.text=BigDecimalUtil.mul( msg.fcoin_revenue,"1",8)+" FIL"
         }
         if (msg.fcoin_revenue != null&&msg.usdt_revenue == null) {
             tv_total.text ="0.00/"+BigDecimalUtil.mul( msg.fcoin_revenue,"1",8)
+            tv_total_fil.visibility= View.GONE
         }
 
         if (msg.fcoin_revenue == null&&msg.usdt_revenue != null) {
             tv_total.text = BigDecimalUtil.mul( msg.usdt_revenue,"1",8)+"/0.00"
-
+            tv_total_fil.visibility= View.GONE
         }
 
         if (msg.invitation != null) {
@@ -55,11 +58,11 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
         }
 
         if (msg.yesterday_usdt != null&& msg.yesterday_fcoin!=null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
+            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",4) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
         }
 
         if (msg.yesterday_usdt != null&& msg.yesterday_fcoin==null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" +"0.00"
+            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",4) + "/" +"0.00"
         }
         if (msg.yesterday_usdt == null&& msg.yesterday_fcoin!=null) {
             tv_yesterday.text ="0.00" + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
@@ -114,15 +117,7 @@ class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContr
         adapter?.setEmptyView(R.layout.fragment_empty)
         val leftRightOffset = DensityUtil.dp2px(10f)
 
-        recycle_view.addItemDecoration(
-                RewardItemDeco(
-                        0,
-                        0,
-                        0,
-                        leftRightOffset,
-                        0
-                )
-        )
+        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         if (SPUtil.getBoolean("skin"))
             invitation_tab_layout.setTabTextColors(Color.parseColor("#ffffff"),Color.parseColor("#00767E"))
         invitation_tab_layout.addOnTabSelectedListener(this)

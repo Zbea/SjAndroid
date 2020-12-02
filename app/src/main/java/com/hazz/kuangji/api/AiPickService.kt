@@ -137,6 +137,17 @@ interface AiPickService{
     @GET("trade/my_asset")
     fun myAsset(): Observable<BaseResult<MyAsset>>
     /**
+     * 获取资产可用详情
+     */
+    @POST("/api/trade/predaydetail")
+    fun getAssetFilDetails(): Observable<BaseResult<List<AssetDetails>>>
+    /**
+     * 获取资产可用详情
+     */
+    @POST("/api/trade/predaydetail")
+    fun getAssetFilDetails(@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<AssetDetails>>>
+
+    /**
      * 昨日收益来源
      */
     @GET("trade/filldetail?pageSize=30&pageNum=1")
@@ -144,7 +155,7 @@ interface AiPickService{
     /**
      * 昨日收益来源
      */
-    @GET("trade/usdtdetail")
+    @GET("trade/usdtdetail?pageSize=30")
     fun usdtEarningsList(): Observable<BaseResult<EarningsSource>>
     /**
      * 首页
@@ -180,6 +191,11 @@ interface AiPickService{
      */
     @POST("/api/trade/miner_coinage")
     fun getEarningsDetails(@Query("order_id" ) type:String): Observable<BaseResult<List<MillEarningsDetails>>>
+    /**
+     * 获取矿机收益详情
+     */
+    @POST("/api/trade/miner_coinage")
+    fun getEarningsDetails(@Query("order_id" ) type:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
      * 矿机
      */
@@ -300,4 +316,29 @@ interface AiPickService{
     @Multipart
     @POST("trade/sign_contract")
     fun upSign(@Query("order_id") code: String, @Part file: MultipartBody.Part): Observable<BaseResult<Contract>>
+
+
+    /**
+     * 获取投资列表
+     */
+    @POST("/api/trade/get_user_deposit?pageSize=20")
+    fun getInvestments(@Query("pageNum" )pageNum:String,@Query("type" )type:String): Observable<BaseResult<Investment>>
+    /**
+     * 获取投资产品列表
+     */
+    @POST("/api/deposit/list")
+    fun getInvestmentProducts(): Observable<BaseResult<List<InvestmentProduct>>>
+
+    /**
+     * 购买投资产品
+     */
+    @POST("/api/trade/deposit_order")
+    fun onInvestmentBuy(@Query("product" )product :String,@Query("amount" )amount:String,@Query("trade_password" )trade_password:String): Observable<BaseResult<Any>>
+
+    /**
+     * 购买投资产品
+     */
+    @POST("/api/trade/deposit_withdraw")
+    fun outInvestment(@Query("order_id" )id :String,@Query("trade_password" )trade_password:String): Observable<BaseResult<Any>>
+
 }

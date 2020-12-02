@@ -194,19 +194,12 @@
                     android:id="@+id/iv_invite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/space_dimen"
+                    android:layout_marginLeft="@dimen/space_dimen"
+                    android:layout_marginTop="@dimen/space_dimen"
+                    android:paddingRight="@dimen/space_dimen"
                     android:scaleType="fitXY"
                     android:src="@mipmap/icon_home_invite_bg" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/space_dimen"
-                    android:text="购买eyeball矿机"
-                    android:textStyle="bold"
-                    android:visibility="gone"
-                    android:textColor="@color/color_333333"
-                    android:textSize="@dimen/sp_16" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle_view"

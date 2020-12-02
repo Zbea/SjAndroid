@@ -30,6 +30,23 @@ class MillEarningsDetailsPresenter(view: IContractView.EarningsDetailsView) : Ba
 
     }
 
+    fun getLists(orderId:String,start:String,end:String) {
+
+        val login = RetrofitManager.service.getEarningsDetails(orderId,start,end)
+
+        doRequest(login, object : Callback<List<MillEarningsDetails>>(view) {
+            override fun failed(tBaseResult: BaseResult<List<MillEarningsDetails>>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<List<MillEarningsDetails>>) {
+                tBaseResult.data?.let { view.getDetails(it)}
+            }
+
+        }, true)
+
+    }
 
 
 }

@@ -36,6 +36,7 @@ class Constants private constructor() {
         const val CODE_EXCHANGE_SALE="10001"
         const val CODE_CERTIFICATION_BROAD="10003"
         const val CODE_SKIN_BROAD="10004"
+        const val CODE_INVESTMENT_BUY="10005"
 
         const val BUGLY_ID="9e1bc2b87d"
 

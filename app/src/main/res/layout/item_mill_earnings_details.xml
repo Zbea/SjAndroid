@@ -3,64 +3,64 @@
     android:id="@+id/ll_bg"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_30"
+    android:layout_height="@dimen/dp_35"
     >
-
-
 
         <TextView
             android:id="@+id/tv_date"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:id="@+id/tv_t"
+            android:gravity="center"
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="match_parent"
+            android:textColor="@color/color_666666"
+            android:textSize="12sp"
             />
         <TextView
             android:id="@+id/tv_fil"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
             />
         <TextView
             android:id="@+id/tv_25"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
             />
         <TextView
             android:id="@+id/tv_75"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
             />
         <TextView
             android:id="@+id/tv_release"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
             />
         <TextView
             android:id="@+id/tv_usable"
-            android:layout_weight="1"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="8sp"
+            android:textSize="12sp"
             />
 
 

@@ -240,7 +240,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp_25"
                 android:text="查看收益"
-                android:textSize="@dimen/sp_10"
+                android:textSize="11sp"
                 android:textColor="@color/color_white"
                 android:background="@drawable/bg_red_solid_5dp_coner"/>
             <Button
@@ -249,7 +249,7 @@
                 android:layout_height="@dimen/dp_25"
                 android:layout_marginLeft="@dimen/dp_15"
                 android:text="查看合同"
-                android:textSize="@dimen/sp_10"
+                android:textSize="11sp"
                 android:textColor="@color/color_white"
                 android:background="@drawable/bg_main_solid_5dp_coner"/>
 

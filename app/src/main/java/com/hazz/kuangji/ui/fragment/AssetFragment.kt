@@ -1,3 +1,7 @@
+
+
+
+
 package com.hazz.kuangji.ui.fragment
 
 import android.annotation.SuppressLint
@@ -18,6 +22,7 @@ import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.IncomingPresenter
+import com.hazz.kuangji.ui.activity.asset.AssetFilDetailsActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.YesterdayEarningsSourceActivity
 import com.hazz.kuangji.ui.activity.home.MsgListActivity
@@ -25,10 +30,7 @@ import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.fragment_asset.*
 import kotlinx.android.synthetic.main.fragment_asset.iv_msg
 import kotlinx.android.synthetic.main.fragment_asset.toolbar
-import kotlinx.android.synthetic.main.fragment_asset.tv_share
 import kotlinx.android.synthetic.main.fragment_asset.tv_shouyi
-import kotlinx.android.synthetic.main.fragment_asset.tv_static
-import kotlinx.android.synthetic.main.fragment_asset.tv_touzi
 import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
 import kotlinx.android.synthetic.main.item_asset.*
 import org.greenrobot.eventbus.EventBus
@@ -37,7 +39,9 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
-class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
+class
+
+AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
 
     private var mCertification: Certification? = null
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
@@ -46,7 +50,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
     private var incoming: InComing? = null
     private var mIncomingPresenter: IncomingPresenter = IncomingPresenter(this)
-    private var isClickFilBalance=false
 
     override fun getCertification(certification: Certification) {
         sl_refresh?.isRefreshing = false
@@ -57,13 +60,8 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
 
     override fun myAsset(msg: MyAsset) {
-        if (mView==null || tv_copy==null||tv_shouyi==null)return
+        if (mView==null ||tv_shouyi==null)return
         myAsset = msg
-        tv_copy?.text = msg.wallet_address
-
-        if (msg.investment != null) {
-            tv_touzi?.text = BigDecimalUtil.mul(msg.investment.toString(), "1", 8)
-        }
 
         if (msg.usdt_revenue != null && msg.fcoin_revenue != null) {
             tv_shouyi?.text = BigDecimalUtil.mul(msg.usdt_revenue, "1", 8) + "/" + BigDecimalUtil.mul(msg.fcoin_revenue, "1", 8)
@@ -97,16 +95,8 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     }
     override fun inComing(msg: InComing) {
         incoming = msg
-        if (mView==null || tv_static==null||tv_share==null|| tv_team==null||tv_yesterday==null)return
-        if (msg.invitation != null) {
-            tv_static.text = msg.invitation
-        }
-        if (msg.achievement != null) {
-            tv_share.text = msg.achievement
-        }
-        if (msg.team != null) {
-            tv_team.text = msg.team
-        }
+        if (mView==null || tv_yesterday==null)return
+
 
         if (msg.yesterday_usdt != null&& msg.yesterday_fcoin!=null) {
             tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
@@ -146,37 +136,23 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
-
-        tv_copy.setOnClickListener {
-            val cm = activity?.getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            val clipData = ClipData.newPlainText("invitation_code", tv_copy.text)
-
-            cm.primaryClip = clipData
-
-            SToast.showText("已成功复制钱包地址")
+        rl_earnings.setOnClickListener {
+            startActivity(Intent(activity, IncomingActivity::class.java))
         }
 
-        rl_share.setOnClickListener {
-            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(0))
-        }
-        rl_performance.setOnClickListener {
-            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(1))
-        }
-        rl_team.setOnClickListener {
-            startActivity(Intent(activity, IncomingActivity::class.java).setFlags(2))
-        }
         rl_yesterday.setOnClickListener {
             startActivity(Intent(activity, YesterdayEarningsSourceActivity::class.java))
         }
 
+        rl_fil_balance.setOnClickListener {
+            startActivity(Intent(activity, AssetFilDetailsActivity::class.java))
+        }
+
+
         if(SPUtil.getBoolean("hide"))
         {
             cb.isChecked = true
-            tv_touzi.transformationMethod = PasswordTransformationMethod.getInstance()
             tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_static.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
 
             tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
             tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -194,11 +170,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             if (isChecked)
             {
                 SPUtil.putBoolean("hide",true)
-                tv_touzi.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_static.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_share.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_team.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
                 tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
@@ -214,11 +186,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             else
             {
                 SPUtil.putBoolean("hide",false)
-                tv_touzi.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_shouyi.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_static.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_share.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_yesterday.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_fil_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_fil_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
@@ -233,21 +201,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
             }
         }
 
-        rl_fil_balance.setOnClickListener {
-            if (isClickFilBalance)
-            {
-                isClickFilBalance=false
-                ll_fil_balance_details.visibility=View.GONE
-                tv_fil_tips.visibility=View.GONE
-                iv_arrow.setImageResource(R.mipmap.icon_arrow_right)
-            }
-            else{
-                isClickFilBalance=true
-                ll_fil_balance_details.visibility=View.VISIBLE
-                tv_fil_tips.visibility=View.VISIBLE
-                iv_arrow.setImageResource(R.mipmap.icon_arrow_down)
-            }
-        }
 
         //定时器(每隔三分钟让下拉刷新可以执行)
         Timer().schedule(object : TimerTask() {

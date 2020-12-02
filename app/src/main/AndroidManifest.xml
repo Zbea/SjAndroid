@@ -28,6 +28,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
+        android:screenOrientation="portrait"
         android:networkSecurityConfig="@xml/network_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
@@ -86,6 +87,11 @@
         <activity android:name=".ui.activity.mill.MillEarningsDetailsActivity"/>
         <activity android:name=".ui.activity.mine.ContractManagerActivity"/>
         <activity android:name=".ui.activity.mine.ContractDetailsActivity"/>
+        <activity android:name=".ui.activity.asset.AssetFilDetailsActivity"/>
+        <activity android:name=".ui.activity.investment.InvestmentActivity"/>
+        <activity android:name=".ui.activity.investment.InvestmentProductListActivity"/>
+        <activity android:name=".ui.activity.investment.InvestmentProductBuyActivity"/>
+
         <activity
             android:screenOrientation="landscape"
             android:name=".ui.activity.mine.ContractSigningActivity"/>

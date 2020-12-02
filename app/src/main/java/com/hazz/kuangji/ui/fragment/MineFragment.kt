@@ -21,6 +21,7 @@ import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
 import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
+import com.hazz.kuangji.ui.activity.investment.InvestmentActivity
 import com.hazz.kuangji.ui.activity.mine.*
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.PhotoDialog
@@ -53,8 +54,6 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             "中级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_zhongji)
             "高级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_gaoji)
             "超级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chaoji)
-            "节点合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
-            "联创合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
             else ->iv_type.visibility=View.GONE
         }
     }
@@ -128,6 +127,9 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
 
         layout_invite.setOnClickListener {
             startActivity(Intent(activity, InviteActivity::class.java))
+        }
+        layout_investment.setOnClickListener {
+            startActivity(Intent(activity, InvestmentActivity::class.java))
         }
         layout_setting.setOnClickListener {
             startActivity(Intent(activity, SettingActivity::class.java))
