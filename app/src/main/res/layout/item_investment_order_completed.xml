@@ -16,11 +16,11 @@
         >
 
         <View
-            android:layout_width="3dp"
+            android:layout_width="4dp"
             android:layout_height="match_parent"
-            android:background="@color/color_main_nor"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"
+            android:background="@drawable/bg_investment_line"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
             />
 
         <TextView

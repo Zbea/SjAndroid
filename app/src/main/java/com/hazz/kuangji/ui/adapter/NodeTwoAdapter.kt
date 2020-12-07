@@ -19,7 +19,6 @@ class NodeTwoAdapter(layoutResId: Int, data: List<Node.InviteUsersBean.ChildrenB
     override fun convert(helper: BaseViewHolder, item: Node.InviteUsersBean.ChildrenBean) {
 
         helper.setText(R.id.tv_name, item.username)
-        helper.setText(R.id.tv_person, if (item.self_purchase == "0.00000000")"0" else item.self_purchase)
         helper.setText(R.id.tv_person_t, if (item.self_purchase == "0.00000000")"0" else item.self_purchase_t)
         GlideEngine.createGlideEngine().loadImage(mContext, Constants.URL_INVITE+item.profile_img,helper.getView(R.id.iv_header))
     }

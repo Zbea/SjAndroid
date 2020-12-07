@@ -54,8 +54,17 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             "中级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_zhongji)
             "高级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_gaoji)
             "超级矿商" -> iv_type.setImageResource(R.mipmap.icon_mine_chaoji)
+            "合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
             else ->iv_type.visibility=View.GONE
         }
+        iv_type.visibility=View.VISIBLE
+        when (msg.team_level) {
+            "1" -> iv_company_type.setImageResource(R.mipmap.icon_mine_company_city)
+            "2" -> iv_company_type.setImageResource(R.mipmap.icon_mine_company_province)
+            "3" -> iv_company_type.setImageResource(R.mipmap.icon_mine_company_area)
+            else ->iv_company_type.visibility=View.GONE
+        }
+
     }
     //头像上传
     override fun setHeader(msg: UploadModel) {

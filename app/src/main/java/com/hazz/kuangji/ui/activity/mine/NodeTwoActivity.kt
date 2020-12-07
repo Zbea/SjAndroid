@@ -64,7 +64,6 @@ class NodeTwoActivity : BaseActivity() {
         }
 
         if(data?.self_purchase!=null){
-            tv_person.text=if(data?.self_purchase == "0")"0.00000000" else data?.self_purchase
             tv_person_t.text=if(data?.self_purchase_t == "0")"0.00000000" else data?.self_purchase_t
         }
 

@@ -225,6 +225,9 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
         if (event == Constants.CODE_CERTIFICATION_BROAD) {
             mCertificationInfoPresenter.getCertification()
         }
+        if (event == Constants.CODE_INVESTMENT_BUY) {
+            mAssetPresenter.myAsset(false)
+        }
     }
 
     override fun onDestroy() {

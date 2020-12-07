@@ -44,32 +44,6 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_999999"
-            android:textSize="@dimen/sp_12"
-            android:text="个人投资(USDT)" />
-        <TextView
-            android:id="@+id/tv_person"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:text="0"
-            android:textColor="@color/color_main"
-            android:textSize="@dimen/sp_10" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/ll_person"
-        android:layout_alignTop="@id/ll_person"
-        android:layout_marginLeft="@dimen/dp_50"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
-
-        <TextView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="个人投资(T)"
             android:textColor="@color/color_999999"
             android:textSize="@dimen/sp_12"/>
@@ -83,6 +57,7 @@
             android:textSize="@dimen/sp_10" />
 
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

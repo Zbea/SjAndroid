@@ -80,7 +80,7 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
         if (isBuy)
         {
             isBuy=false
-            startActivity(Intent(this, InvestmentProductBuyActivity::class.java).putExtra("investment", mInvestmentProduct))
+            startActivity(Intent(this, InvestmentProductListActivity::class.java))
         }
         else
         {
@@ -95,6 +95,7 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(toolbar as Toolbar)
+                
                 .setOnLeftIconClickListener { finish() }
 
         EventBus.getDefault().register(this)
@@ -171,7 +172,6 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
         mAdapterCompleted = InvestmentCompletedAdapter(R.layout.item_investment_order_completed, null)
         rc_listed.adapter = mAdapterCompleted
         mAdapterCompleted?.bindToRecyclerView(rc_listed)
-        mAdapterCompleted?.setEmptyView(R.layout.template_investment_empty)
         rc_listed.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
 
     }

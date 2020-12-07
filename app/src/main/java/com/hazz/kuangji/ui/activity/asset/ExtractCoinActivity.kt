@@ -39,6 +39,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var assets: List<MyAsset.AssetsBean>? = null
     private var isTrc=false
     private var num=""
+    private var max_fil="0.00"
 
     override fun myAsset(msg: MyAsset) {
         myAsset=msg
@@ -63,6 +64,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 rateFil = config[8].value
                 rateTrc =config[10].value
                 rateAmountTrc=config[9].value
+                max_fil=config[11].value
             }
             setFee()
         }
@@ -205,7 +207,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                         tipsNum=BigDecimalUtil.sub(coin.balance,coin.line25,8)
                     }
                 }
-                tv_tips.text="提币超过$tipsNum FIL后将影响您的矿机产出算力"
+                tv_tips.text="提币超过$max_fil FIL后将影响您的矿机产出算力"
                 tv_tips.visibility= View.VISIBLE
             }
             et_num.setText("")

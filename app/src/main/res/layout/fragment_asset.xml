@@ -206,6 +206,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/dp_5"
+                                android:visibility="gone"
                                 android:text="（提示：立即释放收益提出将影响您的矿机算力产出）"
                                 android:textColor="@color/redF4"
                                 android:textSize="@dimen/sp_10"
