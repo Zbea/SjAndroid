@@ -9,10 +9,10 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.ClusterOrder
-import com.hazz.kuangji.mvp.model.Mill
-import com.hazz.kuangji.mvp.model.MillEarningsList
+import com.hazz.kuangji.mvp.model.*
+import com.hazz.kuangji.mvp.presenter.ClusterPresenter
 import com.hazz.kuangji.mvp.presenter.MillPresenter
+import com.hazz.kuangji.ui.adapter.MillClusterRecordAdapter
 import com.hazz.kuangji.ui.adapter.MillRecordAdapter
 import com.hazz.kuangji.utils.ToolBarCustom
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -23,21 +23,17 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
+class ClusterEarningsRecordActivity : BaseActivity(), IContractView.IClusterView {
 
-    override fun getMill(msg: Mill) {
-
+    override fun getLists(item: Cluster) {
     }
 
-    override fun getClusterOrders(item: ClusterOrder) {
-
+    override fun getEarningsLists(item: ClusterEarnings) {
+        mAdapter?.setNewData(item.list)
     }
 
-    override fun getEarningsList(msg: MillEarningsList) {
-        mAdapter?.setNewData(msg.list)
-
+    override fun onSuccess() {
     }
-
 
     override fun layoutId(): Int {
         return R.layout.activity_list_wihte
@@ -48,16 +44,16 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
     }
 
 
-    private var mAdapter: MillRecordAdapter? = null
+    private var mAdapter: MillClusterRecordAdapter? = null
     private var year=0
     private var month=0
     private var day=0
 
-    private var mMillPresenter: MillPresenter = MillPresenter(this)
+    private var mPresenter = ClusterPresenter(this)
     private var pvTime: TimePickerView? = null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("矿机收益明细")
+                .setTitle("集群收益明细")
                 .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
                 .setOnLeftIconClickListener {finish() }
@@ -66,7 +62,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
                 }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
-        mAdapter = MillRecordAdapter(R.layout.item_mill_record, null)
+        mAdapter = MillClusterRecordAdapter(R.layout.item_mill_cluster_record, null)
         rc_list.adapter = mAdapter
         mAdapter!!.bindToRecyclerView(rc_list)
         mAdapter!!.setEmptyView(R.layout.fragment_empty)
@@ -79,7 +75,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
         month = calendar.get(Calendar.MONTH)+1
         day = calendar.get(Calendar.DAY_OF_MONTH)
         var time= "$year-$month-$day"
-        mMillPresenter.mingxi(time,time)
+        mPresenter.getClusterEarnings(time,time)
     }
 
     private fun showTime() {
@@ -92,7 +88,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
         pvTime = TimePickerBuilder(this, OnTimeSelectListener { start, end ->
 
-            mMillPresenter.mingxi(start,end)
+            mPresenter.getClusterEarnings(start,end)
 
         }).setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字
@@ -119,15 +115,13 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
     }
 
-    private fun getTimes(date: Date): String {//可根据需要自行截取数据显示
-        val format = SimpleDateFormat("yyyy-MM-dd")
-        return format.format(date)
-    }
 
     override fun start() {
 
 
     }
+
+
 
 
 }

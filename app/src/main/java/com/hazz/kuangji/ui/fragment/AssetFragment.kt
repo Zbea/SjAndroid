@@ -1,12 +1,6 @@
-
-
-
-
 package com.hazz.kuangji.ui.fragment
 
 import android.annotation.SuppressLint
-import android.content.ClipData
-import android.content.Context
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -22,6 +16,7 @@ import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.IncomingPresenter
+import com.hazz.kuangji.ui.activity.asset.AssetClusterEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.asset.AssetFilDetailsActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.YesterdayEarningsSourceActivity
@@ -30,9 +25,11 @@ import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.fragment_asset.*
 import kotlinx.android.synthetic.main.fragment_asset.iv_msg
 import kotlinx.android.synthetic.main.fragment_asset.toolbar
+import kotlinx.android.synthetic.main.fragment_asset.tv_share
 import kotlinx.android.synthetic.main.fragment_asset.tv_shouyi
+import kotlinx.android.synthetic.main.fragment_asset.tv_static
+import kotlinx.android.synthetic.main.fragment_asset.tv_yeji
 import kotlinx.android.synthetic.main.fragment_asset.tv_yesterday
-import kotlinx.android.synthetic.main.item_asset.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -97,17 +94,17 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
         incoming = msg
         if (mView==null || tv_yesterday==null)return
 
+        tv_static.text = msg.invitation
+        tv_share.text = msg.achievement
+        tv_yeji.text = msg.team
+        tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
 
-        if (msg.yesterday_usdt != null&& msg.yesterday_fcoin!=null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
-        }
+        tv_earnings_cluster.text=msg.cluster_total
+        tv_sealed_now.text=msg.sealed_total
+        tv_sealed_add.text=msg.sealed_add
+        tv_yesterday_cluster.text=msg.cluster_yesterday
 
-        if (msg.yesterday_usdt != null&& msg.yesterday_fcoin==null) {
-            tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" +"0.00"
-        }
-        if (msg.yesterday_usdt == null&& msg.yesterday_fcoin!=null) {
-            tv_yesterday.text ="0.00" + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
-        }
+
     }
 
 
@@ -140,14 +137,16 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
 
-        rl_yesterday.setOnClickListener {
+        ll_yesterday.setOnClickListener {
             startActivity(Intent(activity, YesterdayEarningsSourceActivity::class.java))
         }
 
-        rl_fil_balance.setOnClickListener {
+        ll_fil.setOnClickListener {
             startActivity(Intent(activity, AssetFilDetailsActivity::class.java))
         }
-
+        rl_earnings_cluster.setOnClickListener {
+            startActivity(Intent(activity, AssetClusterEarningsDetailsActivity::class.java))
+        }
 
         if(SPUtil.getBoolean("hide"))
         {
@@ -198,6 +197,19 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
                 tv_fil_balance_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_usdt_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
                 tv_usdt_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            }
+        }
+
+        rg_asset.setOnCheckedChangeListener { group, checkedId ->
+            when(checkedId){
+                R.id.rb_left->{
+                    ll_mill_content.visibility= View.VISIBLE
+                    ll_cluster_content.visibility=View.GONE
+                }
+                R.id.rb_right->{
+                    ll_mill_content.visibility= View.GONE
+                    ll_cluster_content.visibility=View.VISIBLE
+                }
             }
         }
 

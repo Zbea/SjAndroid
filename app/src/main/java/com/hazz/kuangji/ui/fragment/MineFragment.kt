@@ -4,13 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
-import com.hazz.kuangji.MyApplication
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -20,7 +18,6 @@ import com.hazz.kuangji.ui.activity.*
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.TransferCoinActivity
 import com.hazz.kuangji.ui.activity.home.ExchangeBuyActivity
-import com.hazz.kuangji.ui.activity.home.ExchangeSaleActivity
 import com.hazz.kuangji.ui.activity.investment.InvestmentActivity
 import com.hazz.kuangji.ui.activity.mine.*
 import com.hazz.kuangji.utils.*
@@ -57,7 +54,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
             "合伙人" -> iv_type.setImageResource(R.mipmap.icon_mine_hehuo)
             else ->iv_type.visibility=View.GONE
         }
-        iv_type.visibility=View.VISIBLE
+        iv_company_type.visibility=View.VISIBLE
         when (msg.team_level) {
             "1" -> iv_company_type.setImageResource(R.mipmap.icon_mine_company_city)
             "2" -> iv_company_type.setImageResource(R.mipmap.icon_mine_company_province)
@@ -204,7 +201,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
      */
     private fun setHeaderImage()
     {
-        (activity as MainActivity).setImage()
+        (activity as IConfigActivity).setImage()
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + SPUtil.getString("image"))
                     .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))

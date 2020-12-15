@@ -30,11 +30,6 @@ object RetrofitManager{
     val serviceSms: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getSms().create(AiPickService::class.java)
     }
-    val serviceTest: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
-        getRetrofitTest().create(AiPickService::class.java)
-    }
-
-    private var token:String = SPUtil.getString("token")
 
     /**
      * 设置公共参数

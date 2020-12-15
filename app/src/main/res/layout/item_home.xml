@@ -61,6 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 USDT"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/dp_5"
                 android:textColor="@color/color_999999"
                 android:textSize="12sp" />
@@ -70,7 +71,7 @@
                 android:layout_width="@dimen/dp_80"
                 android:layout_height="@dimen/dp_30"
                 android:background="@drawable/bg_main_solid_10dp_coner"
-                android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_30"
                 android:gravity="center"
                 android:text="抢购"
                 android:textColor="@color/color_white"

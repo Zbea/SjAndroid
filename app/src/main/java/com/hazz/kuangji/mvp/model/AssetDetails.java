@@ -22,4 +22,5 @@ public class AssetDetails {
     public String day_direct_release;//当天立即释放
     public String day_line;//当天线性释放
     public String balance;//当天可用
+
 }

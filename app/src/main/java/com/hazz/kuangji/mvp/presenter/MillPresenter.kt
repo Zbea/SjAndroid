@@ -2,6 +2,7 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.ClusterOrder
 import com.hazz.kuangji.mvp.model.Mill
 import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.net.BasePresenter
@@ -26,6 +27,26 @@ class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractVi
 
             override fun success(tBaseResult: BaseResult<Mill>) {
                 tBaseResult.data?.let { view.getMill(it) }
+            }
+
+        }, false)
+
+    }
+
+    fun getClusterOrders() {
+
+
+
+        val login = RetrofitManager.service.getClusterOrders()
+
+        doRequest(login, object : Callback<ClusterOrder>(view) {
+            override fun failed(tBaseResult: BaseResult<ClusterOrder>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<ClusterOrder>) {
+                tBaseResult.data?.let { view.getClusterOrders(it) }
             }
 
         }, false)

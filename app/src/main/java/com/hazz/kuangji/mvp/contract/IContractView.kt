@@ -11,7 +11,9 @@ import com.hazz.kuangji.net.BaseView
  */
 interface IContractView {
 
-    interface MainView: BaseView {
+    interface IConfigView: BaseView {
+
+        fun getConfig(item: Config)
 
     }
 
@@ -54,18 +56,19 @@ interface IContractView {
     interface kuangjiView: BaseView {
 
         fun getMill(msg: Mill)
+        fun getClusterOrders(item: ClusterOrder)
         fun getEarningsList(msg: MillEarningsList)
     }
 
     interface EarningsDetailsView: BaseView {
 
         fun getDetails(msg:List<MillEarningsDetails>)
-
+        fun getClusterDetails(msg:ClusterEarningsDetails)
     }
     interface AssetFilDetailsView: BaseView {
 
         fun getDetails(msg:List<AssetDetails>)
-
+        fun getClusterDetails(msg:AssetClusterEarningsDetails)
     }
 
     interface HomeView: BaseView {
@@ -170,6 +173,14 @@ interface IContractView {
     interface IInvestmentProductView: BaseView {
 
         fun getLists(items:List<InvestmentProduct>)
+        fun onSuccess()
+
+    }
+
+    interface IClusterView: BaseView {
+
+        fun getLists(item:Cluster)
+        fun getEarningsLists(item:ClusterEarnings)
         fun onSuccess()
 
     }

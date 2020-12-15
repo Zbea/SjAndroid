@@ -11,7 +11,7 @@ import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
-class CoinAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
+class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
 
 
     lateinit var onConfirm: (View, Int) -> Unit

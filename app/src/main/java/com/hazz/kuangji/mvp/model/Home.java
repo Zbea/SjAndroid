@@ -14,6 +14,7 @@ public class Home implements Serializable {
         public int signed;
         public List<ProductsBean> products;
         public List<CarouselBean> carousel;
+        public ClusterBean clusters;
 
         public static class ProductsBean implements Serializable{
             /**
@@ -48,7 +49,7 @@ public class Home implements Serializable {
             public String updated_at;
             public String user_balance;
             public String storage;
-
+            public String type;
         }
 
         public static class CarouselBean {
@@ -69,6 +70,14 @@ public class Home implements Serializable {
             public String state;
             public String created_at;
             public String updated_at;
+        }
+
+        public static class ClusterBean{
+
+            public String name;
+            public String pic;
+            public String type;
+            public String round;
         }
 
 }

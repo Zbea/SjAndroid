@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Handler
 import android.text.SpannableString
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
@@ -30,10 +31,7 @@ import com.hazz.kuangji.ui.activity.investment.InvestmentActivity
 import com.hazz.kuangji.ui.activity.mine.InviteActivity
 import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
-import com.hazz.kuangji.utils.DensityUtils
-import com.hazz.kuangji.utils.DisplayManager
-import com.hazz.kuangji.utils.SPUtil
-import com.hazz.kuangji.utils.SToast
+import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import com.youth.banner.BannerConfig
@@ -105,6 +103,22 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             initBanner(adList!!)
         }
         mAdapter?.setNewData(msg.products)
+
+        if (msg.clusters!=null)
+        {
+            ll_cluster.visibility= View.VISIBLE
+            tv_cluster_name.text = msg.clusters.name
+            tv_cluster_type.text = "矿机类型："+msg.clusters.type
+            tv_cluster_time.text = "合约周期："+msg.clusters.round+"天"
+            GlideEngine.createGlideEngine().loadImage(context!!, Constants.URL_INVITE+ msg.clusters.pic,iv_cluster)
+            ll_cluster.setOnClickListener {
+                startActivity(Intent(activity, HomeRentClusterActivity::class.java).putExtra("clusters",msg.clusters.name))
+            }
+            tv_zu.setOnClickListener {
+                startActivity(Intent(activity, HomeRentClusterActivity::class.java).putExtra("clusters",msg.clusters.name))
+            }
+        }
+
     }
 
     override fun zuyongSucceed(msg: String) {
@@ -135,17 +149,13 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         mAdapter = HomeAdapter(R.layout.item_home, null)
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
-        mAdapter?.setEmptyView(R.layout.fragment_empty)
-        val leftRightOffset = DensityUtil.dp2px(15f)
-        recycle_view.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
-        mAdapter?.setOnItemClickListener { adapter, view, position ->
+        mAdapter?.setOnItemClickListener { _, _, position ->
             startActivity(Intent(context, HomeRentActivity::class.java).putExtra("produce", home?.products?.get(position)))
         }
 
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
-
 
         iv_invite.setOnClickListener {
             startActivity(Intent(activity, InvestmentActivity::class.java))
@@ -162,6 +172,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             if (isCertificated())
                 startActivity(Intent(activity, ExchangeCoinActivity::class.java))
         }
+
     }
 
     override fun lazyLoad() {

@@ -31,7 +31,7 @@ class LoginActivity : BaseActivity(), IContractView.LoginView {
         SPUtil.putString("invitation_code_url",msg.invitation_code_url)
         SPUtil.putString("token",msg.token)
         SToast.showText(getString(R.string.login_succeed))
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, IConfigActivity::class.java))
         finish()
     }
 

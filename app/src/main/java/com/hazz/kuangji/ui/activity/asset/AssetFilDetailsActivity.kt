@@ -1,25 +1,20 @@
 package com.hazz.kuangji.ui.activity.asset
 
 import android.graphics.Color
-import android.util.Log
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
-import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.AssetClusterEarningsDetails
 import com.hazz.kuangji.mvp.model.AssetDetails
-import com.hazz.kuangji.mvp.model.MillEarningsDetails
 import com.hazz.kuangji.mvp.presenter.AssetDetailsPresenter
-import com.hazz.kuangji.mvp.presenter.MillEarningsDetailsPresenter
 import com.hazz.kuangji.ui.adapter.AssetDetailsAdapter
-import com.hazz.kuangji.ui.adapter.EarningDetailsAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_asset_fil_details.*
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.*
 import kotlinx.android.synthetic.main.activity_mill_earnings_details.mToolBar
 import kotlinx.android.synthetic.main.activity_mill_earnings_details.rc_list
 import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_25
@@ -65,6 +60,9 @@ class AssetFilDetailsActivity : BaseActivity(), IContractView.AssetFilDetailsVie
 
         mAdapter?.setNewData(msg)
 
+    }
+
+    override fun getClusterDetails(msg: AssetClusterEarningsDetails) {
     }
 
     override fun layoutId(): Int {

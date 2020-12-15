@@ -37,18 +37,19 @@ class Constants private constructor() {
         const val CODE_CERTIFICATION_BROAD="10003"
         const val CODE_SKIN_BROAD="10004"
         const val CODE_INVESTMENT_BUY="10005"
+        const val CODE_CLUSTER_BUY="10006"
 
         const val BUGLY_ID="9e1bc2b87d"
 
         const val URL_TEST = "http://192.168.1.13:5000/"
 
-//        const val URL_NEW_BASE = "http://192.168.1.116:5000/"
-//        const val URL_BASE = "http://192.168.1.116/api/"
-//        const val URL_INVITE = "http://192.168.1.116/"
+        const val URL_NEW_BASE = "http://192.168.1.116:5000/"
+        const val URL_BASE = "http://192.168.1.116/api/"
+        const val URL_INVITE = "http://192.168.1.116/"
 
-        const val URL_BASE = "http://app.sjyminer.com/api/"
-        const val URL_NEW_BASE = "http://app.sjyminer.com:5000/"
-        const val URL_INVITE = "http://app.sjyminer.com/"
+//        const val URL_BASE = "http://app.sjyminer.com/api/"
+//        const val URL_NEW_BASE = "http://app.sjyminer.com:5000/"
+//        const val URL_INVITE = "http://app.sjyminer.com/"
 
         const val URL_DOWNLOAD = "$URL_INVITE#/about"
     }

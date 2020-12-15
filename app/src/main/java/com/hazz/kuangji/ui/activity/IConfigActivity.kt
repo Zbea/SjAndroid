@@ -1,15 +1,10 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
-import android.view.View
-import android.widget.LinearLayout
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -21,24 +16,22 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Certification
+import com.hazz.kuangji.mvp.model.Config
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
-import com.hazz.kuangji.mvp.presenter.MainPresenter
+import com.hazz.kuangji.mvp.presenter.ConfigPresenter
 import com.hazz.kuangji.ui.fragment.*
 import com.hazz.kuangji.utils.DensityUtils
-import com.hazz.kuangji.utils.RxBus
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.iv_mine
-import kotlinx.android.synthetic.main.fragment_new_home.*
-import java.util.logging.Logger
 
 
-class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.MainView, IContractView.ICertificationInfoView{
+class   IConfigActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.IConfigView, IContractView.ICertificationInfoView{
 
-    private var mainPresenter=MainPresenter(this)
+    private var mConfigPresenter=ConfigPresenter(this)
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
@@ -49,6 +42,10 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         }
     }
 
+    override fun getConfig(item: Config) {
+        SPUtil.putObj("Config",item)
+    }
+
     override fun layoutId(): Int {
         return R.layout.activity_main_ruoyu_new
     }
@@ -56,7 +53,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     override fun initData() {
 //        mCertificationInfoPresenter.getCertification()
         //腾讯bugly
-        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.canShowUpgradeActs.add(IConfigActivity::class.java)
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.autoCheckUpgrade = true
         Beta.upgradeCheckPeriod = 60 * 1000
@@ -85,7 +82,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun start() {
-//        mainPresenter.getTest()
+        mConfigPresenter.getConfig()
     }
 
 
@@ -187,5 +184,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         }
         return super.onKeyDown(keyCode, event)
     }
+
+
 
 }

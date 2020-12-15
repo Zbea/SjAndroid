@@ -2,6 +2,7 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.AssetClusterEarningsDetails
 import com.hazz.kuangji.mvp.model.AssetDetails
 import com.hazz.kuangji.net.BasePresenter
 import com.hazz.kuangji.net.BaseResult
@@ -42,6 +43,42 @@ class AssetDetailsPresenter(view: IContractView.AssetFilDetailsView) : BasePrese
 
             override fun success(tBaseResult: BaseResult<List<AssetDetails>>) {
                 tBaseResult.data?.let { view.getDetails(it)}
+            }
+
+        }, true)
+
+    }
+
+    fun getClusterLists() {
+
+        val login = RetrofitManager.service.getAssetClusterDetails()
+
+        doRequest(login, object : Callback<AssetClusterEarningsDetails>(view) {
+            override fun failed(tBaseResult: BaseResult<AssetClusterEarningsDetails>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<AssetClusterEarningsDetails>) {
+                tBaseResult.data?.let { view.getClusterDetails(it)}
+            }
+
+        }, true)
+
+    }
+
+    fun getClusterLists(start:String,end:String) {
+
+        val login = RetrofitManager.service.getAssetClusterDetails(start,end)
+
+        doRequest(login, object : Callback<AssetClusterEarningsDetails>(view) {
+            override fun failed(tBaseResult: BaseResult<AssetClusterEarningsDetails>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<AssetClusterEarningsDetails>) {
+                tBaseResult.data?.let { view.getClusterDetails(it)}
             }
 
         }, true)

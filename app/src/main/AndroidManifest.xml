@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.hazz.kuangji.ui.activity.MainActivity" />
+        <activity android:name="com.hazz.kuangji.ui.activity.IConfigActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.LoginActivity" android:launchMode="singleTask"/>
         <activity android:name="com.hazz.kuangji.ui.activity.ForgetPwdActivity" />
         <activity android:name=".ui.activity.mine.MineContactActivity" />
@@ -91,7 +91,10 @@
         <activity android:name=".ui.activity.investment.InvestmentActivity"/>
         <activity android:name=".ui.activity.investment.InvestmentProductListActivity"/>
         <activity android:name=".ui.activity.investment.InvestmentProductBuyActivity"/>
-
+        <activity android:name=".ui.activity.home.HomeRentClusterActivity"/>
+        <activity android:name=".ui.activity.mill.ClusterEarningsRecordActivity"/>
+        <activity android:name=".ui.activity.mill.ClusterEarningsDetailsActivity"/>
+        <activity android:name=".ui.activity.asset.AssetClusterEarningsDetailsActivity"/>
         <activity
             android:screenOrientation="landscape"
             android:name=".ui.activity.mine.ContractSigningActivity"/>

@@ -42,6 +42,9 @@ public class InComing {
         public String coin;
     }
 
-
+    public String sealed_total;
+    public String sealed_add;
+    public String cluster_total;
+    public String cluster_yesterday;
 
 }
