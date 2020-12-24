@@ -31,6 +31,7 @@ public class AssetClusterEarningsDetails {
          *                 "sum_seal_amount": "13之前的总算力",
          *                 "line25": "3.86100000",
          *                 "line75": "0.00000000"
+         * static 每日产币,  invite业绩收益, team 团队,hor平级业绩
          */
         public String create_at;
         public String remain;
@@ -42,6 +43,10 @@ public class AssetClusterEarningsDetails {
         public String line25;
         public String line75;
         public String usable;
+//        public String static;
+        public String invite;
+        public String team;
+        public String hor;
     }
 
 

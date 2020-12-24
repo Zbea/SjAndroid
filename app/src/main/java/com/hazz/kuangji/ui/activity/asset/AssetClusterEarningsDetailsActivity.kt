@@ -1,5 +1,3 @@
-
-
 package com.hazz.kuangji.ui.activity.asset
 
 import android.graphics.Color
@@ -13,15 +11,11 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.AssetClusterEarningsDetails
 import com.hazz.kuangji.mvp.model.AssetDetails
-import com.hazz.kuangji.mvp.model.ClusterEarningsDetails
-import com.hazz.kuangji.mvp.model.MillEarningsDetails
 import com.hazz.kuangji.mvp.presenter.AssetDetailsPresenter
-import com.hazz.kuangji.mvp.presenter.MillEarningsDetailsPresenter
 import com.hazz.kuangji.ui.adapter.AssetClusterEarningDetailsAdapter
-import com.hazz.kuangji.ui.adapter.MillClusterEarningDetailsAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
-import kotlinx.android.synthetic.main.activity_mill_cluster_earnings_details.*
+import kotlinx.android.synthetic.main.activity_asset_cluster_earnings_details.*
 import java.math.RoundingMode
 import java.util.*
 
@@ -35,9 +29,11 @@ import java.util.*
  **/
 class AssetClusterEarningsDetailsActivity : BaseActivity(), IContractView.AssetFilDetailsView{
 
+
     private val presenter=AssetDetailsPresenter(this)
     private var mAdapter: AssetClusterEarningDetailsAdapter? = null
     private var pvTime: TimePickerView? = null
+    
 
     override fun getDetails(msg: List<AssetDetails>) {
     }
@@ -48,6 +44,7 @@ class AssetClusterEarningsDetailsActivity : BaseActivity(), IContractView.AssetF
         var totalFil="0"
         var total25="0"
         var total75="0"
+        var totalInvite="0"
         var totalUsable="0"
 
         for (item in msg.list)
@@ -60,6 +57,7 @@ class AssetClusterEarningsDetailsActivity : BaseActivity(), IContractView.AssetF
             total25=BigDecimalUtil.add(total25,item.line25,8, RoundingMode.UP)
             total75=BigDecimalUtil.add(total75,item.line75,8, RoundingMode.UP)
             totalUsable=BigDecimalUtil.add(totalUsable,item.usable,8, RoundingMode.UP)
+            totalInvite=BigDecimalUtil.add(totalInvite,item.invite,8, RoundingMode.UP)
 
         }
         tv_total_sealed_sum.text=totalSealedSum
@@ -67,6 +65,7 @@ class AssetClusterEarningsDetailsActivity : BaseActivity(), IContractView.AssetF
         tv_total_fil.text=totalFil
         tv_total_25.text=total25
         tv_total_75.text=total75
+        tv_total_invate.text=totalInvite
         tv_total_usable.text=totalUsable
         mAdapter?.setNewData(msg.list)
     }

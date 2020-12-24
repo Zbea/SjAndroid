@@ -17,6 +17,7 @@ public class Node implements Serializable {
     public String direct_t;//直推t
     public String team_t;//团队t
     public String local_t;//大区t
+    public String cluster_team_level;
     public List<InviteUsersBean> invite_users;
 
     public static class InviteUsersBean implements Serializable {
@@ -41,6 +42,7 @@ public class Node implements Serializable {
         public String team_t;
         public String local_t;
         public String self_purchase_t;
+        public String cluster_team_level;
         public List<ChildrenBean> children;
 
         public static class ChildrenBean implements Serializable {

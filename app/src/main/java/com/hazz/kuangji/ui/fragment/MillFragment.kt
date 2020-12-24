@@ -1,3 +1,4 @@
+
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
@@ -45,6 +46,9 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         sl_refresh?.isRefreshing=false
         if(msg.total!=null){
             tv_touzi?.text=msg.total
+
+
+
         }
         if(msg.yesterday!=null){
             tv_shouyi?.text=msg.yesterday
@@ -58,6 +62,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
         {
             countNum=BigDecimalUtil.add(countNum,item.buy_storage,4,RoundingMode.HALF_UP)
         }
+
         tv_number?.text=countNum
     }
 

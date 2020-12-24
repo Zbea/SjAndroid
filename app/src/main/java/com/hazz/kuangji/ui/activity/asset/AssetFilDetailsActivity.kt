@@ -15,11 +15,6 @@ import com.hazz.kuangji.ui.adapter.AssetDetailsAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_asset_fil_details.*
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.mToolBar
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.rc_list
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_25
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_75
-import kotlinx.android.synthetic.main.activity_mill_earnings_details.tv_total_usable
 import java.math.RoundingMode
 import java.util.*
 

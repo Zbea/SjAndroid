@@ -31,7 +31,7 @@ class AssetClusterEarningDetailsAdapter (layoutResId: Int, data: List<AssetClust
         helper.setText(R.id.tv_25,item.line25)
         helper.setText(R.id.tv_75,item.line75)
         helper.setText(R.id.tv_usable,item.usable)
-
+        helper.setText(R.id.tv_invite,item.invite)
 
         if (BigDecimalUtil.isOdd(position))
         {

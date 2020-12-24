@@ -14,6 +14,7 @@ public class Account {
         public String level;
         public String level_num;
         public String team_level;//公司等级：1、地区级；2、省级；3、战区级
+        public String cluster_team_level;//这个字段 1、地区级；2、省级；3、战区级
 
 
 }
