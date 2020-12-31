@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.ClusterOrder
 import com.hazz.kuangji.ui.activity.mill.ClusterEarningsDetailsActivity
+import com.hazz.kuangji.ui.activity.mill.MillClusterNodeActivity
 import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
@@ -48,6 +49,8 @@ class MillClusterAdapter(layoutResId: Int, data: List<ClusterOrder.ClusterList.C
         helper.getView<Button>(R.id.btn_earning).setOnClickListener {
             mContext.startActivity(Intent(mContext, ClusterEarningsDetailsActivity::class.java).putExtra("orderId",item.id))
         }
-
+        helper.getView<Button>(R.id.btn_team).setOnClickListener {
+            mContext.startActivity(Intent(mContext,MillClusterNodeActivity::class.java).putExtra("nodeId",item.id))
+        }
     }
 }

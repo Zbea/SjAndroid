@@ -4,6 +4,7 @@ package com.hazz.kuangji.mvp.presenter
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Cluster
 import com.hazz.kuangji.mvp.model.ClusterEarnings
+import com.hazz.kuangji.mvp.model.ClusterNode
 import com.hazz.kuangji.net.*
 
 
@@ -61,6 +62,24 @@ class ClusterPresenter(view: IContractView.IClusterView) : BasePresenter<IContra
 
             override fun success(tBaseResult: BaseResult<ClusterEarnings>) {
                 tBaseResult.data?.let { view.getEarningsLists(it) }
+            }
+
+        }, true)
+
+    }
+
+    fun getClusterNode(id:String) {
+
+        val login = RetrofitManager.service.getClusterNode(id)
+
+        doRequest(login, object : Callback<ClusterNode>(view) {
+            override fun failed(tBaseResult: BaseResult<ClusterNode>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<ClusterNode>) {
+                tBaseResult.data?.let { view.getLists(it) }
             }
 
         }, true)

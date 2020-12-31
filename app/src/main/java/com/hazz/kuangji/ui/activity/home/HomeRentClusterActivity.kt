@@ -12,10 +12,7 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.Certification
-import com.hazz.kuangji.mvp.model.Cluster
-import com.hazz.kuangji.mvp.model.ClusterEarnings
-import com.hazz.kuangji.mvp.model.Exchange
+import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.ClusterPresenter
 import com.hazz.kuangji.mvp.presenter.ExchangeCoinPresenter
@@ -84,6 +81,10 @@ class HomeRentClusterActivity : BaseActivity(), IContractView.IExchangeCoinView,
         tv_amount.text = item.products[0].price
         tv_info.text = Html.fromHtml(item.products[0].desc)
         item.products[0]?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE + it, iv_product) }
+    }
+
+    override fun getLists(item: ClusterNode) {
+        TODO("Not yet implemented")
     }
 
     override fun getEarningsLists(item: ClusterEarnings) {

@@ -352,6 +352,12 @@ interface AiPickService{
     fun getClusters(): Observable<BaseResult<Cluster>>
 
     /**
+     * 购买投资产品
+     */
+    @POST("/api/cluster/team_detail")
+    fun getClusterNode(@Query("order_id" )id :String): Observable<BaseResult<ClusterNode>>
+
+    /**
      * 提交集群订单
      */
     @POST("/api/cluster/into")

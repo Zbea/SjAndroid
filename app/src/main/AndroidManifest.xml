@@ -95,6 +95,7 @@
         <activity android:name=".ui.activity.mill.ClusterEarningsRecordActivity"/>
         <activity android:name=".ui.activity.mill.ClusterEarningsDetailsActivity"/>
         <activity android:name=".ui.activity.asset.AssetClusterEarningsDetailsActivity"/>
+        <activity android:name=".ui.activity.mill.MillClusterNodeActivity"/>
         <activity
             android:screenOrientation="landscape"
             android:name=".ui.activity.mine.ContractSigningActivity"/>

@@ -221,18 +221,28 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_status"
             android:layout_marginTop="@dimen/dp_10"
-            android:gravity="right"
+            android:gravity="center"
             android:orientation="horizontal"
             >
 
             <Button
-                android:id="@+id/btn_earning"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_25"
-                android:text="查看收益"
-                android:textSize="11sp"
+                android:id="@+id/btn_team"
+                android:layout_width="120dp"
+                android:layout_height="@dimen/dp_30"
+                android:text="查看团队"
+                android:textSize="@dimen/sp_12"
+                android:layout_marginRight="@dimen/dp_50"
                 android:textColor="@color/color_white"
-                android:background="@drawable/bg_red_solid_5dp_coner"/>
+                android:background="@drawable/bg_yellow_solid_arc"/>
+
+            <Button
+                android:id="@+id/btn_earning"
+                android:layout_width="120dp"
+                android:layout_height="@dimen/dp_30"
+                android:text="查看收益"
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/color_white"
+                android:background="@drawable/bg_red_solid_arc"/>
 
         </LinearLayout>
 

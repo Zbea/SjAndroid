@@ -28,6 +28,9 @@ class ClusterEarningsRecordActivity : BaseActivity(), IContractView.IClusterView
     override fun getLists(item: Cluster) {
     }
 
+    override fun getLists(item: ClusterNode) {
+    }
+
     override fun getEarningsLists(item: ClusterEarnings) {
         mAdapter?.setNewData(item.list)
     }

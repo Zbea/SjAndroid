@@ -182,7 +182,7 @@ interface IContractView {
         fun getLists(item:Cluster)
         fun getEarningsLists(item:ClusterEarnings)
         fun onSuccess()
-
+        fun getLists(item:ClusterNode)
     }
 
 }
