@@ -30,6 +30,7 @@
 
                 <TextView
                     android:layout_width="80dp"
+                    
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="日期"
@@ -41,6 +42,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="算力增速(TB)"
+                    android:visibility="gone"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14" />
 
@@ -49,6 +51,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="有效算力(TB)"
+                    android:visibility="gone"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14" />
 
@@ -124,6 +127,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="0"
+                    android:visibility="gone"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_12" />
 
@@ -133,6 +137,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="0"
+                    android:visibility="gone"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_12" />
 

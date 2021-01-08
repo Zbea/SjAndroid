@@ -23,7 +23,7 @@ class MillClusterAdapter(layoutResId: Int, data: List<ClusterOrder.ClusterList.C
         helper.setText(R.id.tv_name, item.product_name)
         helper.setText(R.id.tv_day, item.remain)
         helper.setText(R.id.tv_amount, item.buy_storage+"T")
-        helper.setText(R.id.tv_cluster_date, item.buy_date+"天")
+        helper.setText(R.id.tv_cluster_date, item.buy_date)
         if(item.revenue!=null){
             helper.setText(R.id.tv_leiji, item.revenue+"FIL")
         }

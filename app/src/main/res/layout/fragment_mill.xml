@@ -156,7 +156,7 @@
                         android:id="@+id/ll_record"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_30"
+                        android:layout_marginBottom="@dimen/dp_35"
                         android:gravity="center_vertical|right"
                         android:orientation="horizontal">
 
@@ -245,7 +245,7 @@
                         android:id="@+id/ll_record_cluster"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_30"
+                        android:layout_marginBottom="@dimen/dp_35"
                         android:gravity="center_vertical|right"
                         android:orientation="horizontal">
 

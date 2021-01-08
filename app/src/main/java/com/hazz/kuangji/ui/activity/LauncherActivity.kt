@@ -40,7 +40,7 @@ class LauncherActivity : AppCompatActivity() {
         Observable.timer(3, TimeUnit.SECONDS)
                 .subscribe {
                     if (!TextUtils.isEmpty(SPUtil.getString("token"))) {
-                        startActivity(Intent(this, IConfigActivity::class.java))
+                        startActivity(Intent(this, MainActivity::class.java))
                     } else {
                         //IFragmentActivity.startSelf(this,LoginFragment())
                         startActivity(Intent(this, LoginActivity::class.java))

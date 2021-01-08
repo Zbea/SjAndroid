@@ -15,20 +15,23 @@ class MillClusterNodeActivity : BaseActivity(), IContractView.IClusterView {
 
     private var mAdapter: ClusterNodeAdapter? = null
     private var mNodePresenter = ClusterPresenter(this)
-    private var id:String?=null
+    private var id: String? = null
 
     override fun getLists(item: Cluster) {
     }
+
     override fun getEarningsLists(item: ClusterEarnings) {
     }
+
     override fun onSuccess() {
     }
+
     override fun getLists(item: ClusterNode) {
 
-        tv_direct.text=item.direct_t
-        tv_myself.text=item.self_t
-        tv_team.text=item.team
-        tv_team_myself.text=item.invite
+        tv_direct.text = item.direct_t
+        tv_myself.text = item.self_t
+        tv_team.text = item.team
+        tv_team_myself.text = item.invite
 
         mAdapter?.setNewData(item.cluster_users)
     }
@@ -47,7 +50,7 @@ class MillClusterNodeActivity : BaseActivity(), IContractView.IClusterView {
                 .setTitle("集群方案团队")
                 .setOnLeftIconClickListener { finish() }
 
-        id=intent.getStringExtra("nodeId")
+        id = intent.getStringExtra("nodeId")
 
     }
 
@@ -57,8 +60,6 @@ class MillClusterNodeActivity : BaseActivity(), IContractView.IClusterView {
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
     }
-
-
 
 
 }

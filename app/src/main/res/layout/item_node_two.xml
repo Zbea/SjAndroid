@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/space_dimen"
-    android:background="@color/color_gray_bg">
+    android:paddingTop="@dimen/space_dimen">
 
     <ImageView
         android:id="@+id/iv_header"

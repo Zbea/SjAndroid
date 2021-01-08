@@ -25,9 +25,8 @@ import kotlinx.android.synthetic.main.activity_node_two.*
 class NodeTwoActivity : BaseActivity() {
 
 
-
     private var mAdapter: NodeTwoAdapter? = null
-    private var data:Node.InviteUsersBean?=null
+    private var data: Node.InviteUsersBean? = null
 
 
     override fun layoutId(): Int {
@@ -38,33 +37,31 @@ class NodeTwoActivity : BaseActivity() {
     }
 
 
-
-
     override fun initView() {
 
-        data=intent.getSerializableExtra("node") as Node.InviteUsersBean
+        data = intent.getSerializableExtra("node") as Node.InviteUsersBean
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle(data?.username+"的团队")
+                .setTitle(data?.username + "的团队")
                 .setOnLeftIconClickListener { finish() }
 
-        Glide.with(this).load(Constants.URL_INVITE+data?.profile_img)
+        Glide.with(this).load(Constants.URL_INVITE + data?.profile_img)
                 .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))
                 .into(iv_header)
 
-        tv_name.text=data?.username
+        tv_name.text = data?.username
 
-        if(data?.team!=null){
-            tv_team.text=if(data?.team == "0")"0.00000000" else data?.team
-            tv_team_t.text=if(data?.team_t == "0")"0.00000000" else data?.team_t
+        if (data?.team != null) {
+            tv_team.text = if (data?.team == "0") "0.00000000" else data?.team
+            tv_team_t.text = if (data?.team_t == "0") "0.00000000" else data?.team_t
         }
-        if(data?.direct_purchase!=null){
-            tv_direct.text=if(data?.direct_purchase == "0")"0.00000000" else data?.direct_purchase
-            tv_direct_t.text=if(data?.direct_t == "0")"0.00000000" else data?.direct_t
+        if (data?.direct_purchase != null) {
+            tv_direct.text = if (data?.direct_purchase == "0") "0.00000000" else data?.direct_purchase
+            tv_direct_t.text = if (data?.direct_t == "0") "0.00000000" else data?.direct_t
         }
 
-        if(data?.self_purchase!=null){
-            tv_person_t.text=if(data?.self_purchase_t == "0")"0.00000000" else data?.self_purchase_t
+        if (data?.self_purchase != null) {
+            tv_person_t.text = if (data?.self_purchase_t == "0") "0.00000000" else data?.self_purchase_t
         }
 
         val childrens = data?.children
@@ -77,8 +74,6 @@ class NodeTwoActivity : BaseActivity() {
 
     override fun start() {
     }
-
-
 
 
 }

@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.hazz.kuangji.ui.activity.IConfigActivity" />
+        <activity android:name="com.hazz.kuangji.ui.activity.MainActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.LoginActivity" android:launchMode="singleTask"/>
         <activity android:name="com.hazz.kuangji.ui.activity.ForgetPwdActivity" />
         <activity android:name=".ui.activity.mine.MineContactActivity" />

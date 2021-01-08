@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
 import kotlinx.android.synthetic.main.activity_main_ruoyu_new.iv_mine
 
 
-class   IConfigActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.IConfigView, IContractView.ICertificationInfoView{
+class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.IConfigView, IContractView.ICertificationInfoView{
 
     private var mConfigPresenter=ConfigPresenter(this)
     private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
@@ -53,7 +53,7 @@ class   IConfigActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IC
     override fun initData() {
 //        mCertificationInfoPresenter.getCertification()
         //腾讯bugly
-        Beta.canShowUpgradeActs.add(IConfigActivity::class.java)
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.autoCheckUpgrade = true
         Beta.upgradeCheckPeriod = 60 * 1000

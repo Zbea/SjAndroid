@@ -201,7 +201,7 @@ class MineFragment : BaseFragment(), IContractView.NodeView {
      */
     private fun setHeaderImage()
     {
-        (activity as IConfigActivity).setImage()
+        (activity as MainActivity).setImage()
         activity?.let {
             Glide.with(it).load(Constants.URL_INVITE + SPUtil.getString("image"))
                     .apply(RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine))

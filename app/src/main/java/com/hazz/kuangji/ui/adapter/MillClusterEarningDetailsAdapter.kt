@@ -24,7 +24,7 @@ class MillClusterEarningDetailsAdapter (layoutResId: Int, data: List<ClusterEarn
 
         helper.setText(R.id.tv_date,item.start_at)
         helper.setText(R.id.tv_sealed,item.seal_amount)
-        helper.setText(R.id.tv_sealed_sum,item.sealed_storage)
+        helper.setText(R.id.tv_sealed_sum,item.sum_seal_amount)
         helper.setText(R.id.tv_fil,fil)
         helper.setText(R.id.tv_t,item.fil_amount)
         helper.setText(R.id.tv_25,item.line25)
