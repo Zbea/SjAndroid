@@ -1,3 +1,4 @@
+
 package com.hazz.kuangji.ui.fragment
 
 import android.content.Intent
@@ -64,11 +65,16 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
     }
 
     override fun getClusterOrders(item: ClusterOrder) {
+        if (mView == null) return
+        if(item!=null)
+        {
+            tv_cluster_total.text = item.total
+            tv_cluster_yesterday.text = item.yesterday
 
-        tv_cluster_total.text = item.total
-        tv_cluster_yesterday.text = item.yesterday
+            mClusterAdapter?.setNewData(item.cluster_list.list)
+        }
 
-        mClusterAdapter?.setNewData(item.cluster_list.list)
+
 
     }
 

@@ -148,22 +148,22 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
             startActivity(Intent(activity, AssetClusterEarningsDetailsActivity::class.java))
         }
 
-        if(SPUtil.getBoolean("hide"))
-        {
-            cb.isChecked = true
-            tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
-
-            tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-            tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-        }
+//        if(SPUtil.getBoolean("hide"))
+//        {
+//            cb.isChecked = true
+//            tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
+//
+//            tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
+//            tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
+//        }
 
         cb.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked)

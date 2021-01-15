@@ -56,7 +56,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         Beta.canShowUpgradeActs.add(MainActivity::class.java)
         Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
         Beta.autoCheckUpgrade = true
-        Beta.upgradeCheckPeriod = 60 * 1000
+        Beta.upgradeCheckPeriod = 20 * 1000
         Bugly.init(this, Constants.BUGLY_ID, false)
 
     }
