@@ -34,6 +34,8 @@ public class AssetClusterEarningsDetails {
          * static 每日产币,  invite业绩收益, team 团队,hor平级业绩
          */
         public String create_at;
+        public String amount;
+
         public String remain;
         public String day_return_fil;
         public String day_seal_amount;
@@ -48,6 +50,10 @@ public class AssetClusterEarningsDetails {
         public String team;
         public String hor;
     }
+
+
+
+
 
 
 }

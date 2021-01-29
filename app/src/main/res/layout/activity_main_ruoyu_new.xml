@@ -34,13 +34,13 @@
                 android:id="@+id/mRbMining"
                 style="@style/rb_style"
                 android:drawableTop="@drawable/tab_icon_mill_select"
-                android:text="矿机" />
+                android:text="服务器" />
 
             <RadioButton
                 android:id="@+id/mRbHangqing"
                 style="@style/rb_style"
-                android:drawableTop="@drawable/tab_icon_market_select"
-                android:text="行情" />
+                android:drawableTop="@drawable/tab_icon_cluster_select"
+                android:text="集群" />
 
             <RadioButton
                 android:id="@+id/mRbShopCar"

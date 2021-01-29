@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.view.View
 import android.widget.RelativeLayout
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
@@ -16,7 +15,6 @@ import com.hazz.kuangji.mvp.model.MyAsset
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.IncomingPresenter
-import com.hazz.kuangji.ui.activity.asset.AssetClusterEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.asset.AssetFilDetailsActivity
 import com.hazz.kuangji.ui.activity.asset.IncomingActivity
 import com.hazz.kuangji.ui.activity.asset.YesterdayEarningsSourceActivity
@@ -99,11 +97,6 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
         tv_yeji.text = msg.team
         tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
 
-        tv_earnings_cluster.text=msg.cluster_total
-        tv_sealed_now.text=msg.sealed_total
-        tv_sealed_add.text=msg.sealed_add
-        tv_yesterday_cluster.text=msg.cluster_yesterday
-
 
     }
 
@@ -143,9 +136,6 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
 
         ll_fil.setOnClickListener {
             startActivity(Intent(activity, AssetFilDetailsActivity::class.java))
-        }
-        rl_earnings_cluster.setOnClickListener {
-            startActivity(Intent(activity, AssetClusterEarningsDetailsActivity::class.java))
         }
 
 //        if(SPUtil.getBoolean("hide"))
@@ -200,18 +190,6 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
             }
         }
 
-        rg_asset.setOnCheckedChangeListener { group, checkedId ->
-            when(checkedId){
-                R.id.rb_left->{
-                    ll_mill_content.visibility= View.VISIBLE
-                    ll_cluster_content.visibility=View.GONE
-                }
-                R.id.rb_right->{
-                    ll_mill_content.visibility= View.GONE
-                    ll_cluster_content.visibility=View.VISIBLE
-                }
-            }
-        }
 
 
         //定时器(每隔三分钟让下拉刷新可以执行)

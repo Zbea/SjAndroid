@@ -11,7 +11,7 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.ClusterEarningsDetails
+
 import com.hazz.kuangji.mvp.model.MillEarningsDetails
 import com.hazz.kuangji.mvp.presenter.MillEarningsDetailsPresenter
 import com.hazz.kuangji.ui.adapter.MillEarningDetailsAdapter
@@ -85,9 +85,6 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
 
         mAdapterMill?.setNewData(msg)
 
-    }
-
-    override fun getClusterDetails(msg: ClusterEarningsDetails) {
     }
 
     override fun layoutId(): Int {

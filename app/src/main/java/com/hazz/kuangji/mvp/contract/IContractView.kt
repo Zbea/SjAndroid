@@ -46,7 +46,7 @@ interface IContractView {
     interface TibiView: BaseView {
 
         fun tibiSucceed(msg:String)
-        fun tibiRecord(msg: TibiRecord)
+        fun tibiRecord(msg: ExtractRecord)
     }
 
     interface ShouyiView: BaseView {
@@ -56,14 +56,12 @@ interface IContractView {
     interface kuangjiView: BaseView {
 
         fun getMill(msg: Mill)
-        fun getClusterOrders(item: ClusterOrder)
         fun getEarningsList(msg: MillEarningsList)
     }
 
     interface EarningsDetailsView: BaseView {
 
         fun getDetails(msg:List<MillEarningsDetails>)
-        fun getClusterDetails(msg:ClusterEarningsDetails)
     }
     interface AssetFilDetailsView: BaseView {
 
@@ -76,6 +74,18 @@ interface IContractView {
         fun getHome(msg:Home)
         fun zuyongSucceed(msg:String)
     }
+
+    /**
+     *
+     */
+    interface IAssetClusterView: BaseView {
+
+        fun getCluster(msg:AssetCluster)
+        fun getList(item:AssetClusterEarningsDetails)
+        fun onSuccess()
+        fun getExtractList(item: ExtractRecord)
+    }
+
     interface ChargeView: BaseView {
 
         fun getAddress(msg: Charge)
@@ -180,9 +190,7 @@ interface IContractView {
     interface IClusterView: BaseView {
 
         fun getLists(item:Cluster)
-        fun getEarningsLists(item:ClusterEarnings)
         fun onSuccess()
-        fun getLists(item:ClusterNode)
     }
 
 }

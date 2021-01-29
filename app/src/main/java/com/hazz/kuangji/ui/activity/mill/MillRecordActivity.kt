@@ -9,7 +9,6 @@ import com.bigkoo.pickerview.view.TimePickerView
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.ClusterOrder
 import com.hazz.kuangji.mvp.model.Mill
 import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.mvp.presenter.MillPresenter
@@ -29,9 +28,6 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
 
     }
 
-    override fun getClusterOrders(item: ClusterOrder) {
-
-    }
 
     override fun getEarningsList(msg: MillEarningsList) {
         mAdapter?.setNewData(msg.list)
@@ -57,7 +53,7 @@ class MillRecordActivity : BaseActivity(), IContractView.kuangjiView {
     private var pvTime: TimePickerView? = null
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("矿机收益明细")
+                .setTitle("收益明细")
                 .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
                 .setOnLeftIconClickListener {finish() }

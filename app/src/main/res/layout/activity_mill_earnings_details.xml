@@ -40,7 +40,7 @@
                     android:layout_width="@dimen/dp_80"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="单T产币"
+                    android:text="单T产出"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14" />
 
@@ -48,7 +48,7 @@
                     android:layout_width="@dimen/dp_80"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="产币"
+                    android:text="@string/str_product"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14" />
 
@@ -64,7 +64,7 @@
                     android:layout_width="@dimen/dp_80"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:text="锁仓"
+                    android:text="@string/str_lock"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14" />
 

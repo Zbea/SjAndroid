@@ -41,7 +41,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
             SPUtil.putObj("certification", certification)
         }
     }
-
+ 
     override fun getConfig(item: Config) {
         SPUtil.putObj("Config",item)
     }
@@ -91,7 +91,7 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         mFragments.add(HomeFragment())
         mFragments.add(MillFragment())
         mFragments.add(AssetFragment())
-        mFragments.add(CoinMarketFragment())
+        mFragments.add(ClusterFragment())
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_content, mFragments[0], mFragments[0]::class.java.simpleName)
             .commitAllowingStateLoss()

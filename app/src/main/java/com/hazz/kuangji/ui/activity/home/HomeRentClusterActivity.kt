@@ -83,16 +83,8 @@ class HomeRentClusterActivity : BaseActivity(), IContractView.IExchangeCoinView,
         item.products[0]?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE + it, iv_product) }
     }
 
-    override fun getLists(item: ClusterNode) {
-        TODO("Not yet implemented")
-    }
-
-    override fun getEarningsLists(item: ClusterEarnings) {
-    }
-
     override fun onSuccess() {
         SToast.showText("集群租用成功")
-        EventBus.getDefault().post(Constants.CODE_CLUSTER_BUY)
         finish()
     }
 

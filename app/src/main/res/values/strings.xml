@@ -42,15 +42,15 @@
     <string name="version_code">版本更新</string>
     <string name="zijin_pwd">资金密码</string>
     <string name="login_pwd">登录密码</string>
-    <string name="tibi">提币</string>
-    <string name="tibi_address">提币地址</string>
-    <string name="input_tibi_address">请输入提币地址或扫码</string>
-    <string name="tibi_num">提币数量</string>
+    <string name="tibi">提现</string>
+    <string name="tibi_address">提现地址</string>
+    <string name="input_tibi_address">请输入提现地址或扫码</string>
+    <string name="tibi_num">提现数量</string>
     <string name="zuidatiqu">最小:100/最大:1000000</string>
     <string name="all">全部</string>
     <string name="jiaoyi_pwd">交易密码</string>
     <string name="input_deal_pwd">请输入资金密码</string>
-    <string name="tibi_record">提币明细</string>
+    <string name="tibi_record">提现明细</string>
     <string name="charge">充值</string>
     <string name="copy_address">复制地址</string>
     <string name="charge_record">充值明细</string>
@@ -77,6 +77,9 @@
     <string name="zuyong">租用</string>
     <string name="tibi_choose">提币币种</string>
 
-
+    <string name="str_lock">未释放</string>
+    <string name="str_freeze">待审核</string>
+    <string name="str_pledge">待退回</string>
+    <string name="str_product">产出</string>
 
 </resources>

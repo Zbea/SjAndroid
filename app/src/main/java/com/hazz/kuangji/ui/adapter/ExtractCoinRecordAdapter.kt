@@ -6,14 +6,14 @@ import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
-import com.hazz.kuangji.mvp.model.TibiRecord
+import com.hazz.kuangji.mvp.model.ExtractRecord
 
-class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>?) : BaseQuickAdapter<TibiRecord.ListBean, BaseViewHolder>(layoutResId, data) {
+class ExtractCoinRecordAdapter(layoutResId: Int, data: List<ExtractRecord.ListBean>?) : BaseQuickAdapter<ExtractRecord.ListBean, BaseViewHolder>(layoutResId, data) {
 
 
     lateinit var onConfirm: (View, Int) -> Unit
 
-    override fun convert(helper: BaseViewHolder, item: TibiRecord.ListBean) {
+    override fun convert(helper: BaseViewHolder, item: ExtractRecord.ListBean) {
 
         helper.setText(R.id.tv_name, item.coin)
         helper.setText(R.id.tv_time, item.create_at)
@@ -35,7 +35,7 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<TibiRecord.ListBean>
         if(item.coin=="USDT"){
             helper.getView<ImageView>(R.id.iv).setImageResource(R.mipmap.usdt)
         }else{
-            helper.getView<ImageView>(R.id.iv).setImageResource(R.mipmap.eth)
+            helper.getView<ImageView>(R.id.iv).setImageResource(R.mipmap.icon_fil)
         }
 
     }

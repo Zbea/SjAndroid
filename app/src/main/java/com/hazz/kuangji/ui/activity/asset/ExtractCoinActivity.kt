@@ -11,7 +11,7 @@ import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.MyAsset
-import com.hazz.kuangji.mvp.model.TibiRecord
+import com.hazz.kuangji.mvp.model.ExtractRecord
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.ExtractCoinPresenter
 import com.hazz.kuangji.utils.*
@@ -70,7 +70,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
         }
     }
 
-    override fun tibiRecord(msg: TibiRecord) {
+    override fun tibiRecord(msg: ExtractRecord) {
 
     }
 
@@ -100,7 +100,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 .setRightTextIsShow(true)
                 .setOnLeftIconClickListener { finish() }
                 .setOnRightClickListener {
-                    startActivity(Intent(this, ExtractCoinRecordActivity::class.java))
+                    startActivity(Intent(this, ExtractCoinRecordActivity::class.java).setFlags(1))
                 }
 
         et_num.addTextChangedListener(this)

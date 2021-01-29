@@ -20,7 +20,7 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
     override fun convert(helper: BaseViewHolder, item: Mill.MachineListBean.ListBean) {
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_day, item.remain)
-        helper.setText(R.id.tv_number, "矿机ID："+item.id+" / 矿机编号："+item.miner_number)
+        helper.setText(R.id.tv_number, "服务器ID："+item.id+" / 服务器编号："+item.miner_number)
         helper.setText(R.id.tv_mill_num, item.buy_storage+"T")
         if(item.revenue!=null){
             helper.setText(R.id.tv_leiji, BigDecimalUtil.mul(item.revenue,"1",8)+"FIL")

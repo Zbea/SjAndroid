@@ -2,7 +2,7 @@ package com.hazz.kuangji.mvp.model;
 
 import java.util.List;
 
-public class TibiRecord {
+public class ExtractRecord {
 
 
         /**

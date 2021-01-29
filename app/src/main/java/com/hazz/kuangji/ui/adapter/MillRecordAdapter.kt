@@ -16,8 +16,8 @@ class MillRecordAdapter (layoutResId: Int, data: List<MillEarningsList.ListBean>
 
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_time, item.create_at)
-        helper.setText(R.id.tv_id, "矿机ID："+item.order_id)
-        helper.setText(R.id.tv_number, "矿机编号："+item.miner_number)
+        helper.setText(R.id.tv_id, "服务器ID："+item.order_id)
+        helper.setText(R.id.tv_number, "服务器编号："+item.miner_number)
         helper.setText(R.id.tv_amount, "+"+item.amount+" FIL")
 
     }

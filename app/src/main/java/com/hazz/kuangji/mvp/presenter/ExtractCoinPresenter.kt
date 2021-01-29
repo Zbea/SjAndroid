@@ -3,7 +3,7 @@ package com.hazz.kuangji.mvp.presenter
 
 import android.util.Pair
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.TibiRecord
+import com.hazz.kuangji.mvp.model.ExtractRecord
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
 
@@ -46,13 +46,13 @@ class ExtractCoinPresenter(view: IContractView.TibiView) : BasePresenter<IContra
 
         val login = RetrofitManager.service.tibiRecord()
 
-        doRequest(login, object : Callback<TibiRecord>(view) {
-            override fun failed(tBaseResult: BaseResult<TibiRecord>): Boolean {
+        doRequest(login, object : Callback<ExtractRecord>(view) {
+            override fun failed(tBaseResult: BaseResult<ExtractRecord>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<TibiRecord>) {
+            override fun success(tBaseResult: BaseResult<ExtractRecord>) {
                 view.tibiRecord(tBaseResult.data!!)
             }
 

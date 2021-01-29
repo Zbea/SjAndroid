@@ -9,13 +9,14 @@
     <View
         android:id="@+id/iv_bg"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="180dp"
         android:background="@color/color_main" />
 
     <RelativeLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_dimen"
+        android:background="@color/color_main"
         android:paddingLeft="@dimen/space_dimen"
         android:paddingRight="@dimen/space_dimen">
 
@@ -39,45 +40,13 @@
 
     </RelativeLayout>
 
-    <RadioGroup
-        android:id="@+id/rg_asset"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@+id/iv_bg"
-        android:layout_marginTop="-20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rb_left"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_25"
-            android:background="@drawable/bg_gray_stroke_arc"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="矿机"
-            android:textColor="@color/selector_main_color" />
-
-        <RadioButton
-            android:id="@+id/rb_right"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_25"
-            android:background="@drawable/bg_gray_stroke_arc"
-            android:button="@null"
-            android:gravity="center"
-            android:text="集群"
-            android:textColor="@color/selector_main_color" />
-
-    </RadioGroup>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sl_refresh_asset"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/rg_asset">
+        android:layout_below="@+id/toolbar">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -401,7 +370,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:singleLine="true"
-                                        android:text="冻结"
+                                        android:text="@string/str_freeze"
                                         android:textColor="@color/color_666666"
                                         android:textSize="@dimen/sp_12" />
 
@@ -508,7 +477,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:singleLine="true"
-                                        android:text="锁仓"
+                                        android:text="@string/str_lock"
                                         android:textColor="@color/color_666666"
                                         android:textSize="@dimen/sp_12" />
 
@@ -535,7 +504,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:singleLine="true"
-                                        android:text="质押"
+                                        android:text="@string/str_pledge"
                                         android:textColor="@color/color_666666"
                                         android:textSize="@dimen/sp_12" />
 
@@ -704,7 +673,7 @@
                                         android:layout_alignParentRight="true"
                                         android:layout_centerVertical="true"
                                         android:singleLine="true"
-                                        android:text="冻结"
+                                        android:text="@string/str_freeze"
                                         android:textColor="@color/color_666666"
                                         android:textSize="@dimen/sp_12" />
 
@@ -729,167 +698,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_cluster_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/toolbar"
-                        android:layout_margin="@dimen/space_dimen"
-                        app:cardBackgroundColor="@color/color_card_bg"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <RelativeLayout
-                                android:id="@+id/rl_earnings_cluster"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/dp_10">
-
-                                <TextView
-                                    android:id="@+id/tv2"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="集群总收益(FIL)"
-                                    android:textColor="@color/color_333333"
-                                    android:textSize="@dimen/sp_14"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/tv_earnings_cluster"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/tv2"
-                                    android:layout_marginTop="@dimen/dp_10"
-                                    android:text="0"
-                                    android:textColor="@color/color_main"
-                                    android:textSize="@dimen/sp_14" />
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:src="@mipmap/icon_arrow_right" />
-
-                            </RelativeLayout>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:visibility="gone"
-                                android:background="@color/color_line" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                android:orientation="horizontal">
-
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/dp_10"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="当前有效算力(T)"
-                                        android:textColor="@color/color_666666"
-                                        android:textSize="@dimen/sp_12" />
-
-                                    <TextView
-                                        android:id="@+id/tv_sealed_now"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/dp_5"
-                                        android:text="0"
-                                        android:textColor="@color/color_999999"
-                                        android:textSize="12sp" />
-
-                                </LinearLayout>
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/dp_10"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="昨日算力增速(T)"
-                                        android:textColor="@color/color_666666"
-                                        android:textSize="@dimen/sp_12" />
-
-                                    <TextView
-                                        android:id="@+id/tv_sealed_add"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/dp_5"
-                                        android:text="0"
-                                        android:textColor="@color/color_999999"
-                                        android:textSize="12sp" />
-
-                                </LinearLayout>
-
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                android:orientation="horizontal">
-
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/dp_10"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_toRightOf="@+id/tv1"
-                                        android:text="昨日集群收益(FIL)"
-                                        android:textColor="@color/color_666666"
-                                        android:textSize="@dimen/sp_12" />
-
-                                    <TextView
-                                        android:id="@+id/tv_yesterday_cluster"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerVertical="true"
-                                        android:layout_marginTop="4dp"
-                                        android:layout_toRightOf="@+id/tv1"
-                                        android:text="0"
-                                        android:textColor="@color/color_999999"
-                                        android:textSize="12sp" />
-
-                                </LinearLayout>
-                            </LinearLayout>
-
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

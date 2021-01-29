@@ -94,7 +94,7 @@ interface AiPickService{
      * 提币记录
      */
     @GET("trade/withdrawal")
-    fun tibiRecord(): Observable<BaseResult<TibiRecord>>
+    fun tibiRecord(): Observable<BaseResult<ExtractRecord>>
     /**
      * 充值
      */
@@ -114,21 +114,7 @@ interface AiPickService{
      */
     @GET("trade/recharge")
     fun chargeRecord(): Observable<BaseResult<ChargeRecord>>
-    /**
-     * 投资列表
-     */
-    @GET("trade/products")
-    fun touxiList(): Observable<BaseResult<Touzi>>
-    /**
-     * 投资jilu
-     */
-    @GET("trade/investment")
-    fun touziRecord(): Observable<BaseResult<TouziRecord>>
-    /**
-     * queren投资
-     */
-    @POST("trade/investment")
-    fun touzi(@Body request: RequestBody): Observable<BaseResult<Any>>
+
     /**
      * 我的收益
      */
@@ -351,11 +337,6 @@ interface AiPickService{
     @POST("/api/cluster/products")
     fun getClusters(): Observable<BaseResult<Cluster>>
 
-    /**
-     * 购买投资产品
-     */
-    @POST("/api/cluster/team_detail")
-    fun getClusterNode(@Query("order_id" )id :String): Observable<BaseResult<ClusterNode>>
 
     /**
      * 提交集群订单
@@ -363,28 +344,6 @@ interface AiPickService{
     @POST("/api/cluster/into")
     fun commitCluster(@QueryMap map: HashMap<String, String>): Observable<BaseResult<Any>>
 
-    /**
-     * 获取集群订单
-     */
-    @POST("/api/cluster/orders")
-    fun getClusterOrders(): Observable<BaseResult<ClusterOrder>>
-
-    /**
-     * 获取集群收益列表
-     */
-    @POST("/api/cluster/revenue")
-    fun getClusterEarnings(@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<ClusterEarnings>>
-
-    /**
-     * 获取集群收益详情
-     */
-    @POST("/api/cluster/coinage")
-    fun getClusterEarningsDetails(@Query("order_id" ) type:String): Observable<BaseResult<ClusterEarningsDetails>>
-    /**
-     * 获取集群收益详情
-     */
-    @POST("/api/cluster/coinage")
-    fun getClusterEarningsDetails(@Query("order_id" ) type:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<ClusterEarningsDetails>>
 
     /**
      * 集群资产可用详情
@@ -397,4 +356,24 @@ interface AiPickService{
     @POST("/api/cluster/all_coinage")
     fun getAssetClusterDetails(@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<AssetClusterEarningsDetails>>
 
+    /**
+     * 集群资产可用详情
+     */
+    @GET("/api/cluster/cluster_asset")
+    fun getAssetCluster(): Observable<BaseResult<AssetCluster>>
+    /**
+     * 集群资产可用详情
+     */
+    @POST("/api/cluster/cluster_coinage?pageSize=20")
+    fun getAssetEarningsList(@Query("pageNum" )start:String): Observable<BaseResult<AssetClusterEarningsDetails>>
+    /**
+     * 提交集群fil提取
+     */
+    @POST("/api/cluster/cluster_withdraw")
+    fun extractCluster(@QueryMap map: HashMap<String, String>): Observable<BaseResult<Any>>
+    /**
+     * 提交集群fil提取记录
+     */
+    @GET("/api/cluster/withdraw_list")
+    fun extractClusterList(): Observable<BaseResult<ExtractRecord>>
 }
