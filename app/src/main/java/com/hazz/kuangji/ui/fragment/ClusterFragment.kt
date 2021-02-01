@@ -50,7 +50,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
             tv_day_coinage_fil.text=msg.day_coinage_fil
             tv_unrelease_fil.text=msg.unrelease_fil
             tv_pledge_fil.text=msg.pledge_fil
-
+            tv_day.text=msg.round
         }
     }
 
@@ -127,12 +127,15 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
 
     }
 
+
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: String) {
         if (event== Constants.CODE_CLUSTER_EXTRACT)
         {
             assetClusterPresenter.getCluster(false)
         }
+
     }
 
     override fun lazyLoad() {

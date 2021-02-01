@@ -119,7 +119,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="有限算力（T）"
+                                android:text="有效算力（T）"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_10" />
 
@@ -142,7 +142,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="算力增量（T）"
+                                android:text="算力增幅（T）"
                                 android:textColor="@color/color_white"
                                 android:textSize="@dimen/sp_10" />
 
@@ -297,9 +297,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
                             android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="第一周期剩余天数"
+                                android:textColor="@color/color_white"
+                                android:textSize="@dimen/sp_10" />
 
+                            <TextView
+                                android:id="@+id/tv_day"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dp_5"
+                                android:text="0"
+                                android:textColor="@color/color_666666_night"
+                                android:textSize="@dimen/sp_12" />
 
                         </LinearLayout>
 

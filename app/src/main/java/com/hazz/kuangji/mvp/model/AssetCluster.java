@@ -31,7 +31,9 @@ public class AssetCluster implements Serializable {
     public String day_coinage_fil;
     public String unrelease_fil;
     public String pledge_fil;
-    public List<MyAsset.ConfigBean> config;
+    public String round;
+
+    public List<ConfigBean> config;
 
     public static class ConfigBean implements Serializable {
         /**

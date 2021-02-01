@@ -21,6 +21,7 @@ import com.hazz.kuangji.mvp.presenter.AssetPresenter
 import com.hazz.kuangji.mvp.presenter.ExchangeCoinPresenter
 import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
 import com.hazz.kuangji.ui.activity.RuleActivity
+import com.hazz.kuangji.ui.activity.asset.ChargeActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
@@ -168,7 +169,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
                     {
                         SToast.showTextLong("账户余额不足，请前往充值")
                         Handler().postDelayed(Runnable {
-                            startActivity(Intent(this,ExchangeBuyActivity::class.java))
+                            startActivity(Intent(this,ChargeActivity::class.java))
                         }, 500)
                         return@setOnClickListener
                     }

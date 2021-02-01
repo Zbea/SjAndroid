@@ -77,8 +77,8 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
             min=config[0].value
             max=config[1].value
             et_num.hint = "最小:$min/最大:$max"
-            rateAmountFil=config[7].value
-            rateFil = config[8].value
+            rateAmountFil=config[2].value
+            rateFil = config[3].value
         }
         tv_shouxu.text = "FIL手续费最少扣除" + rateAmountFil + "FIL"
 

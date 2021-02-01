@@ -24,9 +24,9 @@ class HomeAdapter(layoutResId: Int, data: List<Home.ProductsBean>?) : BaseQuickA
 
         helper.run {
             setText(R.id.tv_name, item.name)
-            setText(R.id.tv_type, "矿机类型："+item.type)
+            setText(R.id.tv_type, "服务器类型："+item.type)
             setText(R.id.tv_time, "合约周期："+item.round+"天")
-            setText(R.id.tv_suanli, "矿机算力："+item.power)
+            setText(R.id.tv_suanli, "服务器算力："+item.power)
             setText(R.id.tv_amount, "价格："+BigDecimalUtil.mul(item.price,"1",8)+"USDT")
             GlideEngine.createGlideEngine().loadImage(mContext, Constants.URL_INVITE+item.pic,getView(R.id.iv))
             getView<TextView>(R.id.tv_zu).setOnClickListener {
