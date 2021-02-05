@@ -116,7 +116,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
                     page += 1
                     assetClusterPresenter.getClusterEarnings(page.toString())
                 }
-            }, 3000)
+            }, 1000)
         }, list_cluster)
 
         tv_make.setOnClickListener {
@@ -127,15 +127,12 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
 
     }
 
-
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: String) {
         if (event== Constants.CODE_CLUSTER_EXTRACT)
         {
             assetClusterPresenter.getCluster(false)
         }
-
     }
 
     override fun lazyLoad() {
