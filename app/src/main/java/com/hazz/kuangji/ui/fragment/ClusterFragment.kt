@@ -54,6 +54,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
         }
     }
 
+
     override fun getList(item: AssetClusterEarningsDetails) {
         sl_refresh?.isRefreshing = false
         if (item!=null)
