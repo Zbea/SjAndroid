@@ -140,6 +140,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
         assetClusterPresenter.getCluster(false)
         assetClusterPresenter.getClusterEarnings(page.toString())
     }
+    
 
     override fun onDestroy() {
         super.onDestroy()

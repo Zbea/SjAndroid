@@ -92,10 +92,6 @@
         <activity android:name=".ui.activity.investment.InvestmentProductListActivity"/>
         <activity android:name=".ui.activity.investment.InvestmentProductBuyActivity"/>
         <activity android:name=".ui.activity.home.HomeRentClusterActivity"/>
-        <activity android:name=".ui.activity.mill.ClusterEarningsRecordActivity"/>
-        <activity android:name=".ui.activity.mill.ClusterEarningsDetailsActivity"/>
-        <activity android:name=".ui.activity.asset.AssetClusterEarningsDetailsActivity"/>
-        <activity android:name=".ui.activity.mill.MillClusterNodeActivity"/>
         <activity android:name=".ui.activity.asset.ExtractFilActivity"/>
         <activity
             android:screenOrientation="landscape"

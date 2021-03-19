@@ -7,6 +7,7 @@ import android.os.Environment
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.FileProvider
+import com.github.barteksc.pdfviewer.PDFView
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
@@ -30,10 +31,12 @@ import java.net.URL
  **/
 class ContractDetailsActivity : BaseActivity(){
 
-    private var code=""
-    private var isSign="0"
-    private var url=""
-    private var file:File?=null
+    private var code = ""
+    private var isSign = "0"
+    private var url = ""
+    private var file: File? = null
+    private var pdfView: PDFView? = null
+    private var connection :HttpURLConnection?=null
 
     override fun layoutId(): Int {
         return R.layout.activity_contract_details
@@ -48,18 +51,21 @@ class ContractDetailsActivity : BaseActivity(){
                 .setTitle("合同详情")
                 .setOnLeftIconClickListener { finish() }
 
-        code=intent.getStringExtra("contract_code")
-        isSign=intent.getStringExtra("contract_sign")
-        url=Constants.URL_BASE+"contractor?invest_id="+code
-        file=File(Environment.getExternalStorageDirectory().toString() ,"/eye/M000000$code.pdf")
-        btn_sign.visibility=if (isSign=="2")View.GONE else View.VISIBLE
-        btn_sign.text=if (isSign=="1") "下载及分享" else "立即签名"
+        pdfView = findViewById(R.id.pdfView)
+
+        code = intent.getStringExtra("contract_code")
+        isSign = intent.getStringExtra("contract_sign")
+        url = Constants.URL_BASE + "contractor?invest_id=" + code
+        connection= URL(url).openConnection() as HttpURLConnection
+
+
+        file = File(Environment.getExternalStorageDirectory().toString(), "/eye/M000000$code.pdf")
+        btn_sign.visibility = if (isSign == "2") View.GONE else View.VISIBLE
+        btn_sign.text = if (isSign == "1") "下载及分享" else "立即签名"
         btn_sign.setOnClickListener {
-            if (isSign=="0")
-            {
-                startActivity(Intent(this,ContractSigningActivity::class.java).putExtra("contract_code",code))
-            }else
-            {
+            if (isSign == "0") {
+                startActivity(Intent(this, ContractSigningActivity::class.java).putExtra("contract_code", code))
+            } else {
                 permissionsnew?.request(
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                 )?.subscribe { permission ->
@@ -71,7 +77,8 @@ class ContractDetailsActivity : BaseActivity(){
                 }
             }
         }
-        showPdf()
+        if (pdfView!=null)
+            showPdf()
     }
 
     override fun start() {
@@ -80,20 +87,25 @@ class ContractDetailsActivity : BaseActivity(){
     /**
      * 展示pdf
      */
-    private fun showPdf()
-    {
+    private fun showPdf() {
         Thread(Runnable {
             try {
-                val connection = URL(url).openConnection() as HttpURLConnection
-                connection.requestMethod = "GET"
-                connection.doInput = true
-                connection.connectTimeout = 10000
-                connection.readTimeout = 10000
-                connection.connect()
-                if (connection.responseCode === 200) {
-                    val iss= connection.inputStream
-                    pdfView?.fromStream(iss)?.load()
+                connection?.let {
+                    it.requestMethod = "GET"
+                    it.doInput = true
+                    it.connectTimeout = 10000
+                    it.readTimeout = 10000
+                    it.connect()
+                    if (it.responseCode === 200) {
+                        var iss = it.inputStream
+                        if (iss!=null)
+                        {
+                            pdfView?.fromStream(iss)?.load()
+                        }
+                    }
                 }
+
+
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -103,41 +115,43 @@ class ContractDetailsActivity : BaseActivity(){
     /**
      * 下载pdf
      */
-    private fun download()
-    {
+    private fun download() {
         mDialog?.show()
         Thread(Runnable {
             try {
-                val connection= URL(url).openConnection() as HttpURLConnection
-                connection.requestMethod = "GET"
 
-                connection.doInput = true
-                connection.connectTimeout = 10000
-                connection.readTimeout = 10000
-                connection.connect()
-                if (connection.responseCode== 200) {
-                    val iss= connection.inputStream
-                    val arr = ByteArray(1)
-                    val baos = ByteArrayOutputStream ()
-                    val bos = BufferedOutputStream(baos)
-                    var n: Int = iss.read(arr)
-                    while (n > 0) {
-                        bos.write(arr)
-                        n = iss.read(arr)
-                    }
-                    val galleryPath = Environment.getExternalStorageDirectory().toString() + "/eye/"
-                    val dir = File(galleryPath)
-                    if (!dir.exists()) {
-                        dir.mkdirs()
-                    }
-                    bos.close()
-                    val fos = FileOutputStream(file)
-                    fos.write(baos.toByteArray())
-                    fos.close()
-                    connection.disconnect()
-                    mDialog?.dismiss()
+                connection?.let {
+                    it.requestMethod = "GET"
+                    it.doInput = true
+                    it.connectTimeout = 10000
+                    it.readTimeout = 10000
+                    it.connect()
+                    if (it.responseCode == 200) {
+                        val iss = it.inputStream
+                        val arr = ByteArray(1)
+                        val baos = ByteArrayOutputStream()
+                        val bos = BufferedOutputStream(baos)
+                        var n: Int = iss.read(arr)
+                        while (n > 0) {
+                            bos.write(arr)
+                            n = iss.read(arr)
+                        }
+                        val galleryPath = Environment.getExternalStorageDirectory().toString() + "/eye/"
+                        val dir = File(galleryPath)
+                        if (!dir.exists()) {
+                            dir.mkdirs()
+                        }
+                        bos.close()
+                        val fos = FileOutputStream(file)
+                        fos.write(baos.toByteArray())
+                        fos.close()
+                        it.disconnect()
+                        mDialog?.dismiss()
 //                    SToast.showText("合同下载成功，请前往文件管理眼球矿机查看")
+                    }
                 }
+
+
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -152,20 +166,25 @@ class ContractDetailsActivity : BaseActivity(){
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(data: Contract) {
-        if (data!=null)
-        {
-            url=Constants.URL_INVITE+data.path
+        if (data != null) {
+
+            if (pdfView==null)
+                pdfView = findViewById(R.id.pdfView)
+
+            url = Constants.URL_INVITE + data.path
+            connection= URL(url).openConnection() as HttpURLConnection
             showPdf()
-            isSign="1"
-            btn_sign.text=if (isSign=="1") "下载及分享" else "立即签名"
+            isSign = "1"
+
+            btn_sign.text = if (isSign == "1") "下载及分享" else "立即签名"
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        connection?.disconnect()
         EventBus.getDefault().unregister(this)
     }
-
 
 
 }

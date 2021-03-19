@@ -30,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_exchange_coin.*
 import kotlinx.android.synthetic.main.activity_home_rent.*
 
 
-class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.IExchangeCoinView ,IContractView.ICertificationInfoView {
+class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IContractView.AssetView ,IContractView.ICertificationInfoView {
 
     private var mHomePresenter: HomePresenter = HomePresenter(this)
     private var rate = "0.1"
@@ -40,7 +40,8 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     private var amount:String="0"
     private var count="0"
     private var mCertificationInfoPresenter: CertificationInfoPresenter = CertificationInfoPresenter(this)
-    private var mMineExchangeCoinPresenter = ExchangeCoinPresenter(this)
+    private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
+
 
     override fun getCertification(certification: Certification) {
         if (certification.status==1)
@@ -51,13 +52,18 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
         }
     }
 
-    override fun getExchange(data: Exchange) {
-        if(data!=null) {
-            count = data?.usdtNum
-            tv_yue.text = "账户余额:$count"
+    override fun myAsset(msg: MyAsset) {
+        if(msg!=null) {
+            val assets = msg.assets
+            for (coin in assets) {
+                if (coin.coin == "USDT" ) {
+                    count = coin.balance
+                    tv_yue.text = "账户余额:$count"
+                }
+            }
+
         }
-    }
-    override fun commitCoin() {
+
     }
 
 
@@ -92,7 +98,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     }
 
     override fun initData() {
-        mMineExchangeCoinPresenter.getExchange()
+        mAssetPresenter.myAsset(true)
         mCertificationInfoPresenter.getCertification()
     }
 
@@ -126,9 +132,11 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             et_num.isFocusableInTouchMode=false
         }
 
-        tv_info.text=Html.fromHtml(produce?.desc)
+        if(produce?.desc!=null)
+            tv_info.text=Html.fromHtml(produce?.desc)
 
     }
+
 
     /**
      * 计算收益
@@ -137,7 +145,6 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
     {
         val div = BigDecimalUtil.mul(s, rate, 8)
         tv_yuji.text = "预计每日收益" + BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
-//        tv_type.text= BigDecimalUtil.mul(div, "0.7", 8) + "FIL"
     }
 
 
