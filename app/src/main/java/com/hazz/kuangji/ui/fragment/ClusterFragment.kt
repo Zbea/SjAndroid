@@ -40,7 +40,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
     override fun getCluster(msg: AssetCluster) {
         assetCluster=msg
         sl_refresh?.isRefreshing = false
-        if (mView!=null)
+        if (activity!=null && mView!=null)
         {
             tv_total_storage.text=msg.total_storage
             tv_seal_storage.text=msg.seal_storage
@@ -121,9 +121,12 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
         }, list_cluster)
 
         tv_make.setOnClickListener {
-            var intent = Intent(activity, ExtractFilActivity::class.java)
-            intent.putExtra("asset", assetCluster)
-            startActivity(intent)
+            if (assetCluster!=null && assetCluster is AssetCluster)
+            {
+                var intent = Intent(activity, ExtractFilActivity::class.java)
+                intent.putExtra("asset", assetCluster)
+                startActivity(intent)
+            }
         }
 
     }

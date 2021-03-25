@@ -30,7 +30,10 @@ import kotlinx.android.synthetic.main.activity_exchange_buy.mToolBar
 import kotlinx.android.synthetic.main.activity_exchange_sale.*
 import kotlinx.android.synthetic.main.activity_investment.*
 import kotlinx.android.synthetic.main.activity_investment.rc_list
+import kotlinx.android.synthetic.main.activity_investment.toolbar
+import kotlinx.android.synthetic.main.activity_investment.tv_fil
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.fragment_cluster.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -48,8 +51,8 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
     private var mAdapter: InvestmentAdapter? = null
     private var mAdapterCompleted: InvestmentCompletedAdapter? = null
     private var pageNuming = 1
-    private var pageNumed = "1"
-    private var pageSize="20"
+    private var pageNumed = 1
+    private var pageSize=20
     private var item: Investment? = null
     private var mPasswordDialog: SafeCheckDialog? = null
     private var pos=0
@@ -61,18 +64,39 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
     override fun getLists(item: Investment) {
         this.item = item
         tv_fil.text = if (item.amount.isNullOrEmpty()) "0 FIL" else item.amount+"FIL"
-        mAdapter?.setNewData(item.list)
-//        if (item.list.size<20)
-//        {
-//            mAdapter?.loadMoreEnd()
-//        }
-//        else{
-//            mAdapter?.loadMoreComplete()
-//        }
+        if (pageNuming==1)
+        {
+            mAdapter?.setNewData(item.list)
+        }
+        else
+        {
+            mAdapter?.addData(item.list)
+        }
+        if (item.list.size<pageSize)
+        {
+            mAdapter?.loadMoreEnd(true)
+        }
+        else{
+            mAdapter?.loadMoreComplete()
+        }
     }
 
     override fun getListsCompleted(item: Investment) {
-        mAdapterCompleted?.setNewData(item.list)
+        if (pageNumed==1)
+        {
+            mAdapterCompleted?.setNewData(item.list)
+        }
+        else
+        {
+            mAdapterCompleted?.addData(item.list)
+        }
+        if (item.list.size<pageSize)
+        {
+            mAdapterCompleted?.loadMoreEnd(true)
+        }
+        else{
+            mAdapterCompleted?.loadMoreComplete()
+        }
     }
 
     override fun onSuccess() {
@@ -123,7 +147,6 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
         mAdapter = InvestmentAdapter(R.layout.item_investment_order, null)
         rc_list.adapter = mAdapter
         mAdapter?.bindToRecyclerView(rc_list)
-        mAdapter?.setEmptyView(R.layout.template_investment_empty)
         val leftRightOffset = DensityUtil.dp2px(15f)
         rc_list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         mAdapter?.setOnItemChildClickListener { adapter, view, position ->
@@ -161,11 +184,16 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
             }
 
         }
-//
-//        mAdapter?.setOnLoadMoreListener {
-//            pageNuming++
-//            mInvestmentPresenter.getLists(pageNuming.toString())
-//        }
+
+        mAdapter?.setOnLoadMoreListener(BaseQuickAdapter.RequestLoadMoreListener {
+            rc_list.postDelayed(Runnable {
+                var size = mAdapter?.data?.size
+                if (pageNuming * pageSize == size) {
+                    pageNuming+=1
+                    mInvestmentPresenter.getLists(pageNuming.toString(),false)
+                }
+            }, 1000)
+        }, rc_list)
 
 
         rc_listed.layoutManager = LinearLayoutManager(this)//创建布局管理
@@ -173,12 +201,21 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
         rc_listed.adapter = mAdapterCompleted
         mAdapterCompleted?.bindToRecyclerView(rc_listed)
         rc_listed.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
+        mAdapterCompleted?.setOnLoadMoreListener(BaseQuickAdapter.RequestLoadMoreListener {
+            rc_listed.postDelayed(Runnable {
+                var size = mAdapterCompleted?.data?.size
+                if (pageNumed * pageSize == size) {
+                    pageNumed+=1
+                    mInvestmentPresenter.getListsCompleted(pageNumed.toString(),false)
+                }
+            }, 1000)
+        }, rc_listed)
 
     }
 
     override fun start() {
-        mInvestmentPresenter.getLists(pageNuming.toString())
-        mInvestmentPresenter.getListsCompleted(pageNumed)
+        mInvestmentPresenter.getLists(pageNuming.toString(),true)
+        mInvestmentPresenter.getListsCompleted(pageNumed.toString(),false)
     }
 
 
@@ -186,7 +223,7 @@ class InvestmentActivity : BaseActivity(), IContractView.IInvestmentView {
     fun onMessageEvent(event: String) {
         if (event == Constants.CODE_INVESTMENT_BUY) {
             pageNuming = 1
-            mInvestmentPresenter.getLists(pageNuming.toString())
+            mInvestmentPresenter.getLists(pageNuming.toString(),false)
         }
     }
 

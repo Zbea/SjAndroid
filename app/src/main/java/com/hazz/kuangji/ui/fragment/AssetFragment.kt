@@ -34,9 +34,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
-class
-
-AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
+class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
 
     private var mCertification: Certification? = null
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
@@ -190,23 +188,12 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
             }
         }
 
-
-
-        //定时器(每隔三分钟让下拉刷新可以执行)
-        Timer().schedule(object : TimerTask() {
-            override fun run() {
-                sl_refresh?.isEnabled=true
-            }
-        } , 0, 3*60*1000)
     }
 
     override fun lazyLoad() {
-        sl_refresh?.isEnabled=false
         mAssetPresenter.myAsset(false)
         mIncomingPresenter.shouyi(false)
         mCertificationInfoPresenter.getCertification()
-
-
     }
 
 
@@ -214,9 +201,6 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
     fun onMessageEvent(event: String) {
         if (event == Constants.CODE_CERTIFICATION_BROAD) {
             mCertificationInfoPresenter.getCertification()
-        }
-        if (event == Constants.CODE_INVESTMENT_BUY) {
-            mAssetPresenter.myAsset(false)
         }
     }
 
@@ -232,9 +216,13 @@ AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertific
             {
                 mCertificationInfoPresenter.getCertification()
             }
+            mAssetPresenter.myAsset(false)
         }
     }
 
+    override fun onComplete() {
+        super.onComplete()
+    }
 
 
 

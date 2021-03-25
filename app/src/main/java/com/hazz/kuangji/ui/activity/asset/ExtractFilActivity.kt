@@ -30,7 +30,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
     private var rateFil = "0.5"
     private var rateAmountFil = "10"
     private var avaiableAmount = "0"
-    private var min = "10"
+    private var min = "1"
     private var max = "20000"
     private var num = ""
 

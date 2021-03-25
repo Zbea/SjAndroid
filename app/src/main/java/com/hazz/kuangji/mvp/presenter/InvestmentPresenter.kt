@@ -13,7 +13,7 @@ import com.hazz.kuangji.net.RetrofitManager
 class InvestmentPresenter(view: IContractView.IInvestmentView) : BasePresenter<IContractView.IInvestmentView>(view) {
 
 
-    fun getLists(pageNum:String) {
+    fun getLists(pageNum:String,isShow:Boolean) {
 
         val login = RetrofitManager.service.getInvestments(pageNum,"0")
 
@@ -27,11 +27,11 @@ class InvestmentPresenter(view: IContractView.IInvestmentView) : BasePresenter<I
                 tBaseResult.data?.let { view.getLists(it)}
             }
 
-        }, true)
+        }, isShow)
 
     }
 
-    fun getListsCompleted(pageNum:String) {
+    fun getListsCompleted(pageNum:String,isShow:Boolean) {
 
         val login = RetrofitManager.service.getInvestments(pageNum,"1")
 
@@ -45,7 +45,7 @@ class InvestmentPresenter(view: IContractView.IInvestmentView) : BasePresenter<I
                 tBaseResult.data?.let { view.getListsCompleted(it)}
             }
 
-        }, false)
+        }, isShow)
 
     }
 

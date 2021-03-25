@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.ArrayMap
 import com.google.gson.Gson
-import com.hazz.kuangji.LanguageType
 import io.reactivex.schedulers.Schedulers
 import java.io.*
 
@@ -117,21 +116,7 @@ object SPUtil {
         return map.remove(key)
     }
 
-    fun saveLanguage(context: Context, language: LanguageType) {
-        val sharedPreferences = context.getSharedPreferences(APP_CONFIG, Context.MODE_PRIVATE)
-        sharedPreferences.edit().putString("lang", language.value).commit()
-    }
 
-    /**
-     * 获取语言，默认中文
-     *
-     * @param context
-     * @return
-     */
-    fun getLanguage(context: Context): String? {
-        val sharedPreferences = context.getSharedPreferences(APP_CONFIG, Context.MODE_PRIVATE)
-        return sharedPreferences.getString("lang", LanguageType.LG_SIMPLIFIED_CHINESE.value)
-    }
 
     /**
      * 序列化对象

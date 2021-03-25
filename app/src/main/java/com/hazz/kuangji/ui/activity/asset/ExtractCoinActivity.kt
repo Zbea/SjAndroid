@@ -1,6 +1,7 @@
 package com.hazz.kuangji.ui.activity.asset
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
@@ -93,6 +94,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
         return R.layout.activity_extract_coin
     }
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(getString(R.string.tibi))
@@ -185,6 +187,10 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
         }
 
         rg_extract.setOnCheckedChangeListener { group, checkedId ->
+
+            if (assets==null)
+                return@setOnCheckedChangeListener
+
             if (checkedId==R.id.rb_left)
             {
                 currentName = "USDT"
@@ -198,13 +204,12 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             }
             else
             {
+
                 currentName = "FIL"
-                var tipsNum=""
                 for (coin in assets!!) {
                     if (coin.coin == "FCOIN") {
                         avaiableAmount = coin.balance
                         tv_lest.text = "可用" + coin.balance + currentName
-                        tipsNum=BigDecimalUtil.sub(coin.balance,coin.line25,8)
                     }
                 }
                 tv_tips.text="提币超过$max_fil FIL后将影响您的矿机产出算力"
