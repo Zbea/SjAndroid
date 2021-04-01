@@ -28,11 +28,11 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
     private var myAsset: MyAsset? = null
     private var currentName = "USDT"
-    private var rateUsdt = "0.5"
-    private var rateAmountUsdt="10"
-    private var rateFil = "0.5"
-    private var rateAmountFil="10"
-    private var rateTrc = "0.5"
+    private var rateUsdt = "1"
+    private var rateAmountUsdt="1"
+    private var rateFil = "1"
+    private var rateAmountFil="0.1"
+    private var rateTrc = "1"
     private var rateAmountTrc="1"
     private var avaiableAmount = "0"
     private var min="10"
@@ -186,7 +186,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             et_num.setText(avaiableAmount)
         }
 
-        rg_extract.setOnCheckedChangeListener { group, checkedId ->
+        rg_extract?.setOnCheckedChangeListener { group, checkedId ->
 
             if (assets==null)
                 return@setOnCheckedChangeListener

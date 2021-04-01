@@ -40,17 +40,17 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
     override fun getCluster(msg: AssetCluster) {
         assetCluster=msg
         sl_refresh?.isRefreshing = false
-        if (activity!=null && mView!=null)
+        if (msg !=null && mView!=null)
         {
-            tv_total_storage.text=msg.total_storage
-            tv_seal_storage.text=msg.seal_storage
-            tv_seal_add.text=msg.seal_add
-            tv_release_fil.text=msg.release_fil
-            tv_day_t_fil.text=msg.day_t_fil
-            tv_day_coinage_fil.text=msg.day_coinage_fil
-            tv_unrelease_fil.text=msg.unrelease_fil
-            tv_pledge_fil.text=msg.pledge_fil
-            tv_day.text=msg.round
+            tv_total_storage?.text=msg.total_storage
+            tv_seal_storage?.text=msg.seal_storage
+            tv_seal_add?.text=msg.seal_add
+            tv_release_fil?.text=msg.release_fil
+            tv_day_t_fil?.text=msg.day_t_fil
+            tv_day_coinage_fil?.text=msg.day_coinage_fil
+            tv_unrelease_fil?.text=msg.unrelease_fil
+            tv_pledge_fil?.text=msg.pledge_fil
+            tv_day?.text=msg.round
         }
     }
 
@@ -121,7 +121,7 @@ class ClusterFragment : BaseFragment() ,IContractView.IAssetClusterView{
         }, list_cluster)
 
         tv_make.setOnClickListener {
-            if (assetCluster!=null && assetCluster is AssetCluster)
+            if (assetCluster!=null )
             {
                 var intent = Intent(activity, ExtractFilActivity::class.java)
                 intent.putExtra("asset", assetCluster)

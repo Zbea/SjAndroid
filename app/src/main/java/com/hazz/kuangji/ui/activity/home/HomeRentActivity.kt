@@ -1,4 +1,4 @@
-package com.hazz.kuangji.ui.activity.home
+package com.hazz .kuangji.ui.activity.home
 
 import android.content.Intent
 import android.os.Handler
@@ -132,7 +132,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, TextWatcher, IC
             et_num.isFocusableInTouchMode=false
         }
 
-        if(produce?.desc!=null)
+        if(produce?.desc !=null)
             tv_info.text=Html.fromHtml(produce?.desc)
 
     }

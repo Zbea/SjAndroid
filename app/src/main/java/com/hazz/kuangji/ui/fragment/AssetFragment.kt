@@ -34,26 +34,17 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
-class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICertificationInfoView,IContractView.ShouyiView {
+class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ShouyiView {
 
-    private var mCertification: Certification? = null
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
-    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private var myAsset: MyAsset? = null
     private var list: MutableList<MyAsset.AssetsBean>? = mutableListOf()
     private var incoming: InComing? = null
     private var mIncomingPresenter: IncomingPresenter = IncomingPresenter(this)
 
-    override fun getCertification(certification: Certification) {
-        sl_refresh?.isRefreshing = false
-        mCertification = certification
-        if (certification.status == 1) {
-            SPUtil.putObj("certification", certification)
-        }
-    }
 
     override fun myAsset(msg: MyAsset) {
-        if (mView==null ||tv_shouyi==null)return
+        if (mView==null ||msg==null)return
         myAsset = msg
 
         if (msg.usdt_revenue != null && msg.fcoin_revenue != null) {
@@ -70,18 +61,18 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         list?.clear()
         for (coin in assets) {
             if (coin.coin == "FCOIN" ) {
-                tv_fil_balance.text=coin.balance
-                tv_fil_frozen.text=coin.frozen
-                tv_fil_locked.text=coin.locked
-                tv_fil_pledge.text=coin.pledge
-                tv_fil_balance_25.text=coin.line25
-                tv_fil_balance_75.text=coin.line75
-                tv_fil_balance_achievement.text=coin.achievement
-                tv_fil_balance_team.text=coin.team
+                tv_fil_balance?.text=coin.balance
+                tv_fil_frozen?.text=coin.frozen
+                tv_fil_locked?.text=coin.locked
+                tv_fil_pledge?.text=coin.pledge
+                tv_fil_balance_25?.text=coin.line25
+                tv_fil_balance_75?.text=coin.line75
+                tv_fil_balance_achievement?.text=coin.achievement
+                tv_fil_balance_team?.text=coin.team
             }
             if (coin.coin == "USDT" ) {
-                tv_usdt_balance.text=coin.balance
-                tv_usdt_frozen.text=coin.frozen
+                tv_usdt_balance?.text=coin.balance
+                tv_usdt_frozen?.text=coin.frozen
             }
         }
 
@@ -90,10 +81,10 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         incoming = msg
         if (mView==null || tv_yesterday==null)return
 
-        tv_static.text = msg.invitation
-        tv_share.text = msg.achievement
-        tv_yeji.text = msg.team
-        tv_yesterday.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
+        tv_static?.text = msg.invitation
+        tv_share?.text = msg.achievement
+        tv_yeji?.text = msg.team
+        tv_yesterday?.text = BigDecimalUtil.mul( msg.yesterday_usdt,"1",8) + "/" + BigDecimalUtil.mul( msg.yesterday_fcoin,"1",8)
 
 
     }
@@ -111,9 +102,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         layoutParams.topMargin= activity?.let { DensityUtils.getStatusBarHeight(it) }!!
         toolbar.layoutParams=layoutParams
 
-        EventBus.getDefault().register(this)
-        mCertification = SPUtil.getObj("certification", Certification::class.java)
-
         sl_refresh=activity?.findViewById(R.id.sl_refresh_asset)
         sl_refresh?.isRefreshing = true
         sl_refresh?.setColorSchemeResources(R.color.color_main)
@@ -124,6 +112,7 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         iv_msg.setOnClickListener {
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
+
         rl_earnings.setOnClickListener {
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
@@ -135,23 +124,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
         ll_fil.setOnClickListener {
             startActivity(Intent(activity, AssetFilDetailsActivity::class.java))
         }
-
-//        if(SPUtil.getBoolean("hide"))
-//        {
-//            cb.isChecked = true
-//            tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
-//
-//            tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-//            tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-//        }
 
         cb.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked)
@@ -193,36 +165,15 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.ICe
     override fun lazyLoad() {
         mAssetPresenter.myAsset(false)
         mIncomingPresenter.shouyi(false)
-        mCertificationInfoPresenter.getCertification()
-    }
-
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: String) {
-        if (event == Constants.CODE_CERTIFICATION_BROAD) {
-            mCertificationInfoPresenter.getCertification()
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        EventBus.getDefault().unregister(this)
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (!hidden) {
-            if (mCertification?.status==0)
-            {
-                mCertificationInfoPresenter.getCertification()
-            }
             mAssetPresenter.myAsset(false)
         }
     }
 
-    override fun onComplete() {
-        super.onComplete()
-    }
 
 
 

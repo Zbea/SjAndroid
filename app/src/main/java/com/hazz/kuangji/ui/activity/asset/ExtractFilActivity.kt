@@ -1,6 +1,7 @@
 package com.hazz.kuangji.ui.activity.asset
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
@@ -27,8 +28,8 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
 
     private val assetClusterPresenter=AssetClusterPresenter(this)
     private var assetCluster: AssetCluster? =null
-    private var rateFil = "0.5"
-    private var rateAmountFil = "10"
+    private var rateFil = "1"
+    private var rateAmountFil = "0.1"
     private var avaiableAmount = "0"
     private var min = "1"
     private var max = "20000"
@@ -49,6 +50,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
         finish()
     }
 
+
     override fun getExtractList(item: ExtractRecord) {
         TODO("Not yet implemented")
     }
@@ -58,6 +60,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
         return R.layout.activity_extract_fil
     }
 
+    @SuppressLint("WrongConstant")
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(getString(R.string.tibi))
@@ -68,7 +71,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
                     startActivity(Intent(this, ExtractCoinRecordActivity::class.java).setFlags(2))
                 }
 
-        assetCluster=intent.getSerializableExtra("asset") as AssetCluster
+        assetCluster=intent.getSerializableExtra("asset") as  AssetCluster
         avaiableAmount = assetCluster?.release_fil.toString()
         tv_lest.text = "可用" + avaiableAmount + "FIL"
 
