@@ -36,6 +36,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
     private var num = ""
 
 
+
     override fun getCluster(msg: AssetCluster) {
         TODO("Not yet implemented")
     }
