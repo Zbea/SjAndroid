@@ -125,40 +125,6 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.Sho
             startActivity(Intent(activity, AssetFilDetailsActivity::class.java))
         }
 
-        cb.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked)
-            {
-                SPUtil.putBoolean("hide",true)
-                tv_shouyi.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_yesterday.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_locked.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_pledge.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_balance_25.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_balance_75.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_balance_achievement.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_fil_balance_team.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_usdt_balance.transformationMethod = PasswordTransformationMethod.getInstance()
-                tv_usdt_frozen.transformationMethod = PasswordTransformationMethod.getInstance()
-            }
-            else
-            {
-                SPUtil.putBoolean("hide",false)
-                tv_shouyi.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_yesterday.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_locked.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_pledge.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_balance_25.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_balance_75.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_balance_achievement.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_fil_balance_team.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_usdt_balance.transformationMethod = HideReturnsTransformationMethod.getInstance()
-                tv_usdt_frozen.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            }
-        }
 
     }
 
