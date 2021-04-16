@@ -19,4 +19,10 @@ public class MillEarningsDetails {
     public String usable;
     public String lock;
     public String fil_amount;
+
+
+    public String gas; //当天gas费
+    public String seal_day; //当天封装
+    public String sealed; //已封装
+
 }

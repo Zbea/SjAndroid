@@ -14,6 +14,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 
 import com.hazz.kuangji.mvp.model.MillEarningsDetails
 import com.hazz.kuangji.mvp.presenter.MillEarningsDetailsPresenter
+import com.hazz.kuangji.ui.adapter.MillEarningAccelerateAdapter
 import com.hazz.kuangji.ui.adapter.MillEarningDetailsAdapter
 import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.ToolBarCustom
@@ -24,15 +25,15 @@ import java.util.*
 
 /**
  * @Created by Zbea
- * @fileName MillEarningsDetailsActivity
- * @date 2020/11/6 14:31
+ * @fileName MillEarningsAccelerateDetailsActivity
+ * @date 2021/4/16 14:31
  * @email xiaofeng9212@126.com
- * @describe 矿机收益详细
+ * @describe 加速服务器收益详细
  **/
-class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetailsView{
+class MillEarningsAccelerateDetailsActivity : BaseActivity(), IContractView.EarningsDetailsView{
 
     private val presenter=MillEarningsDetailsPresenter(this)
-    private var mAdapterMill: MillEarningDetailsAdapter? = null
+    private var mAdapterMill: MillEarningAccelerateAdapter? = null
     private var id=""
     private var pvTime: TimePickerView? = null
 
@@ -86,12 +87,12 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
     }
 
     override fun layoutId(): Int {
-        return R.layout.activity_mill_earnings_details
+        return R.layout.activity_mill_earnings_accelerate_details
     }
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("收益明细")
+                .setTitle("加速收益明细")
                 .setOnLeftIconClickListener {finish() }
                 .setRightOneIcon(R.mipmap.icon_mill_pick_time)
                 .setRightOneIconIsShow(true)
@@ -102,7 +103,7 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
         id=intent.getStringExtra("orderId")
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
-        mAdapterMill = MillEarningDetailsAdapter(R.layout.item_mill_earnings_details, null)
+        mAdapterMill = MillEarningAccelerateAdapter(R.layout.item_mill_earnings_accelerate, null)
         rc_list.adapter = mAdapterMill
         mAdapterMill!!.bindToRecyclerView(rc_list)
         mAdapterMill!!.setEmptyView(R.layout.fragment_empty)

@@ -21,6 +21,7 @@
     <color name="color_hint">#aa999999</color>
     <color name="color_line">#88dddddd</color>
     <color name="color_gray">#666666</color>
+    <color name="color_gray_b">#bbbbbb</color>
 
     <color name="color_bg">#ffffff</color>
     <color name="color_gray_bg">#f7f7f7</color>

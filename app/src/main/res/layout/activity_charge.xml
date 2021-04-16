@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
@@ -34,26 +32,27 @@
                 <RadioButton
                     android:id="@+id/rb_left"
                     style="@style/rb_style1"
-                    android:text="Erc20"
+                    android:text="FIL"
                     android:checked="true" />
                 <RadioButton
                     android:id="@+id/rb_middle"
                     style="@style/rb_style1"
-                    android:text="OMNI" />
+                    android:text="Erc20-USDT" />
                 <RadioButton
                     android:id="@+id/rb_right"
                     style="@style/rb_style1"
-                    android:text="Trc20" />
+                    android:text="Trc20-USDT" />
             </RadioGroup>
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_40"
                 android:text="收款地址二维码"
                 android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/sp_12" />
 
             <ImageView
                 android:id="@+id/iv"
@@ -133,7 +132,7 @@
                     android:layout_height="wrap_content" />
                 <TextView
                     android:id="@+id/tv_usdt"
-                    android:text="Erc20-USDT"
+                    android:text="FIL"
                     android:textSize="@dimen/sp_10"
                     android:textColor="@color/color_hint"
                     android:layout_width="wrap_content"
@@ -162,18 +161,13 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/tv_count"
                     android:textSize="@dimen/sp_10"
-                    android:text="3、100"
+                    android:text="3、0.1 FIL"
                     android:textColor="@color/color_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tv_usdt1"
-                    android:textSize="@dimen/sp_10"
-                    android:text="Erc20-USDT"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+
                 <TextView
                     android:textSize="@dimen/sp_10"
                     android:text="起充。"

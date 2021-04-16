@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
@@ -156,7 +155,7 @@
                         android:id="@+id/ll_record"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_20"
+                        android:layout_marginBottom="@dimen/dp_40"
                         android:gravity="center_vertical|right"
                         android:orientation="horizontal">
 
@@ -173,6 +172,37 @@
 
             </LinearLayout>
 
+
+            <RadioGroup
+                android:id="@+id/rg_mill"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="-20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/rb_left"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:textColor="@color/selector_main_color"
+                    android:layout_marginRight="@dimen/dp_25"
+                    android:gravity="center"
+                    android:background="@drawable/bg_gray_stroke_arc"
+                    android:text="未加速服务器"
+                    android:checked="true" />
+                <RadioButton
+                    android:id="@+id/rb_right"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:button="@null"
+                    android:textColor="@color/selector_main_color"
+                    android:gravity="center"
+                    android:background="@drawable/bg_gray_stroke_arc"
+                    android:text="已加速服务器" />
+
+            </RadioGroup>
 
 
             <androidx.recyclerview.widget.RecyclerView

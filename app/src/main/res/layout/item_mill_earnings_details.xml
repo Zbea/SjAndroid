@@ -12,7 +12,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_t"
@@ -20,7 +20,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_fil"
@@ -28,7 +28,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_25"
@@ -36,7 +36,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_75"
@@ -44,7 +44,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_release"
@@ -52,7 +52,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
         <TextView
             android:id="@+id/tv_usable"
@@ -60,7 +60,7 @@
             android:layout_width="@dimen/dp_80"
             android:layout_height="match_parent"
             android:textColor="@color/color_666666"
-            android:textSize="12sp"
+            android:textSize="11sp"
             />
 
 

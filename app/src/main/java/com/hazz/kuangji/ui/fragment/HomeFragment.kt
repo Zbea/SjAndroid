@@ -102,7 +102,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             }
             initBanner(adList!!)
         }
-        mAdapter?.setNewData(msg.products)
+        mAdapter?.setNewData(msg.boost)
 
         if (msg.clusters!=null)
         {
@@ -111,12 +111,6 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             tv_cluster_type.text = "服务器类型："+msg.clusters.type
             tv_cluster_time.text = "合约周期："+msg.clusters.round+"天"
             GlideEngine.createGlideEngine().loadImage(context!!, Constants.URL_INVITE+ msg.clusters.pic,iv_cluster)
-            ll_cluster.setOnClickListener {
-                startActivity(Intent(activity, HomeRentClusterActivity::class.java).putExtra("clusters",msg.clusters.name))
-            }
-            tv_zu.setOnClickListener {
-                startActivity(Intent(activity, HomeRentClusterActivity::class.java).putExtra("clusters",msg.clusters.name))
-            }
         }
 
     }

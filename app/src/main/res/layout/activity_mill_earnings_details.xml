@@ -25,7 +25,7 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_below="@+id/mToolBar"
                 android:layout_marginTop="@dimen/dp_10"
-                android:background="@color/color_gray_bg"
+                android:background="@color/color_gray_b"
                 android:orientation="horizontal">
 
                 <TextView

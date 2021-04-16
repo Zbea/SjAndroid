@@ -3,10 +3,12 @@ package com.hazz.kuangji.ui.adapter
 import android.content.Intent
 import android.view.View
 import android.widget.Button
+import android.widget.RelativeLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Mill
+import com.hazz.kuangji.ui.activity.mill.MillAccelerateActivity
 import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
@@ -20,7 +22,7 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
     override fun convert(helper: BaseViewHolder, item: Mill.MachineListBean.ListBean) {
         helper.setText(R.id.tv_name, item.product)
         helper.setText(R.id.tv_day, item.remain)
-        helper.setText(R.id.tv_number, "服务器ID："+item.id+" / 服务器编号："+item.miner_number)
+        helper.setText(R.id.tv_number, "服务器编号："+item.miner_number)
         helper.setText(R.id.tv_mill_num, item.buy_storage+"T")
         if(item.revenue!=null){
             helper.setText(R.id.tv_leiji, BigDecimalUtil.mul(item.revenue,"1",8)+"FIL")
@@ -32,14 +34,6 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             helper.setText(R.id.tv_yesterday, item.yesterday+"FIL")
         }
 
-        if (item.storage=="192")
-        {
-            helper.setText(R.id.iv_total, "整机")
-            helper.setTextColor(R.id.iv_total, mContext.resources.getColor(R.color.color_yellow))
-        }else {
-            helper.setText(R.id.iv_total, item.storage+"T")
-            helper.setTextColor(R.id.iv_total, mContext.resources.getColor(R.color.color_666666))
-        }
 
         when (item.state) {
             "1" ->{
@@ -63,6 +57,9 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
         }
         helper.getView<Button>(R.id.btn_earning).setOnClickListener {
             mContext.startActivity(Intent(mContext, MillEarningsDetailsActivity::class.java).putExtra("orderId",item.id))
+        }
+        helper.getView<RelativeLayout>(R.id.rl_accelerate).setOnClickListener {
+            mContext.startActivity(Intent(mContext, MillAccelerateActivity::class.java))
         }
 
     }

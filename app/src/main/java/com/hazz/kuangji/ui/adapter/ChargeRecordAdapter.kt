@@ -14,8 +14,17 @@ class ChargeRecordAdapter(layoutResId: Int, data: List<ChargeRecord.ListBean>?) 
 
     override fun convert(helper: BaseViewHolder, item: ChargeRecord.ListBean) {
 
-       // helper.setText(R.id.tv_name, item.coin)
+        helper.setText(R.id.tv_name, item.coin)
         helper.setText(R.id.tv_time, item.create_at)
         helper.setText(R.id.tv_amount, "+"+item.amount)
+
+        if (item.coin.equals("USDT"))
+        {
+            helper.setImageResource(R.id.iv,R.mipmap.usdt)
+        }
+        else{
+            helper.setImageResource(R.id.iv,R.mipmap.icon_fil)
+        }
+
     }
 }

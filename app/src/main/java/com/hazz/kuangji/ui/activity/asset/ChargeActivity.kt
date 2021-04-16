@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.activity_charge.mToolBar
 
 class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
-    private var type=1
+    private var type = 1
     private var mChargePresenter: ChargePresenter = ChargePresenter(this)
-    private var createQRCode:Bitmap?=null
-    private var charge:Charge?=null
+    private var createQRCode: Bitmap? = null
+    private var charge: Charge? = null
 
     override fun chargeRecord(msg: ChargeRecord) {
 
@@ -31,19 +31,19 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
 
     override fun getAddress(msg: Charge) {
-        charge=msg
-        tv_bt.visibility=View.VISIBLE
+        charge = msg
+        tv_bt.visibility = View.VISIBLE
         setView()
     }
 
-    private fun setView(){
-        if (charge==null)return
-        var address=when(type){
-            1-> charge?.ERC20
-            2-> charge?.OMNI
+    private fun setView() {
+        if (charge == null) return
+        var address = when (type) {
+            1 -> charge?.FCOIN
+            2 -> charge?.ERC20
             else -> charge?.TRC20
         }
-        tv_address.text=address
+        tv_address.text = address
         val dip2px = Utils.dip2px(this, 180F)
         createQRCode = address?.let { QRCodeUtils.createQRCode(it, dip2px, dip2px, null) }
         iv.setImageBitmap(createQRCode)
@@ -68,25 +68,24 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
                 }
         rg_charge.setOnCheckedChangeListener { group, checkedId ->
 
-            when(checkedId)
-            {
-                R.id.rb_left->{
-                    type=1
+            when (checkedId) {
+                R.id.rb_left -> {
+                    type = 1
                     setView()
-                    tv_usdt.text="Erc20-USDT"
-                    tv_usdt1.text="Erc20-USDT"
+                    tv_usdt.text = "FIL"
+                    tv_count.text = "3、0.1 FIL"
                 }
-                R.id.rb_right->{
-                    type=3
+                R.id.rb_right -> {
+                    type = 3
                     setView()
-                    tv_usdt.text="Trc20-USDT"
-                    tv_usdt1.text="Trc20-USDT"
+                    tv_usdt.text = "Trc20-USDT"
+                    tv_count.text = "3、100 Trc20-USDT"
                 }
-                else->{
-                    type=2
+                else -> {
+                    type = 2
                     setView()
-                    tv_usdt.text="OMNI-USDT"
-                    tv_usdt1.text="OMNI-USDT"
+                    tv_usdt.text = "Erc20-USDT"
+                    tv_count.text = "3、100 Erc20-USDT"
                 }
             }
         }
@@ -94,7 +93,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
         iv_copy.setOnClickListener {
 
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            val clipData = ClipData.newPlainText("invitation_code",tv_address.text.toString())
+            val clipData = ClipData.newPlainText("invitation_code", tv_address.text.toString())
 
             cm.primaryClip = clipData
 
@@ -111,7 +110,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
                     SToast.showText("充值二维码保存成功")
 
-                    ImageUtils.saveBmp2Gallery(this,createQRCode,"charge_qrcode")
+                    ImageUtils.saveBmp2Gallery(this, createQRCode, "charge_qrcode")
 
                 } else {
                     showMissingPermissionDialog()
@@ -129,7 +128,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
     override fun onDestroy() {
         super.onDestroy()
         createQRCode?.recycle()
-        createQRCode=null
+        createQRCode = null
     }
 
 

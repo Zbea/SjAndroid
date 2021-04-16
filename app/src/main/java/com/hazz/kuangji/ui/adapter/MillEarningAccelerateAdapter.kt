@@ -11,9 +11,9 @@ import com.hazz.kuangji.utils.BigDecimalUtil
 import com.hazz.kuangji.utils.SPUtil
 
 /**
- * 未加速服务器收益适配器
+ * 加速服务器收益适配器
  */
-class MillEarningDetailsAdapter (layoutResId: Int, data: List<MillEarningsDetails>?) : BaseQuickAdapter<MillEarningsDetails, BaseViewHolder>(layoutResId, data) {
+class MillEarningAccelerateAdapter (layoutResId: Int, data: List<MillEarningsDetails>?) : BaseQuickAdapter<MillEarningsDetails, BaseViewHolder>(layoutResId, data) {
 
 
     lateinit var onConfirm: (View, Int) -> Unit
@@ -22,16 +22,14 @@ class MillEarningDetailsAdapter (layoutResId: Int, data: List<MillEarningsDetail
 
         var position=helper.adapterPosition
 
-        var fil=BigDecimalUtil.mul(item.return_fil,"1",8)
-
         helper.setText(R.id.tv_date,item.start_at)
-        helper.setText(R.id.tv_fil,fil)
+        helper.setText(R.id.tv_seal_day,item.seal_day)
+        helper.setText(R.id.tv_sealed,item.sealed)
+        helper.setText(R.id.tv_gas,item.gas)
         helper.setText(R.id.tv_25,item.line25)
-        helper.setText(R.id.tv_75,item.lock)
-        helper.setText(R.id.tv_release,item.release)
-        helper.setText(R.id.tv_usable,item.usable)
-        helper.setText(R.id.tv_t,item.fil_amount)
-
+        helper.setText(R.id.tv_75,item.release)
+        helper.setText(R.id.tv_fil_t,item.fil_amount)
+        helper.setText(R.id.tv_fil,item.return_fil)
 
         if (BigDecimalUtil.isOdd(position))
         {
