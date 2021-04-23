@@ -187,10 +187,9 @@ interface IContractView {
 
     }
 
-    interface IClusterView: BaseView {
-
-        fun getLists(item:Cluster)
-        fun onSuccess()
+    interface IAccelerateView: BaseView {
+        fun getAccelerateInfo(item:AccelerateInfo)
+        fun onSuccess(msg: String)
     }
 
 }

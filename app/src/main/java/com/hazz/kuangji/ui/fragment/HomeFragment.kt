@@ -144,7 +144,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         recycle_view.adapter = mAdapter
         mAdapter?.bindToRecyclerView(recycle_view)
         mAdapter?.setOnItemClickListener { _, _, position ->
-            startActivity(Intent(context, HomeRentActivity::class.java).putExtra("produce", home?.products?.get(position)))
+            startActivity(Intent(context, HomeRentActivity::class.java).putExtra("produce", home?.boost?.get(position)))
         }
 
         iv_msg.setOnClickListener {

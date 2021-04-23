@@ -64,7 +64,7 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
         mAdapter?.setOnItemClickListener { _, _, position ->
             var contract=mContracts[position]
             startActivity(Intent(this, ContractDetailsActivity::class.java).putExtra("contract_code",contract.id)
-                    .putExtra("contract_sign",contract.is_sign))
+                    .putExtra("contract_sign",contract.is_sign).putExtra("miner_type", contract.miner_type))
         }
 
     }

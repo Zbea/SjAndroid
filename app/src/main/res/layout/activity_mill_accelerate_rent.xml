@@ -161,7 +161,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_line_bottom"
-                        android:hint="请输入加速算力(最少1T)"
+                        android:hint="请输入加速算力"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
@@ -169,14 +169,15 @@
                         android:textSize="@dimen/sp_14" />
 
                     <TextView
+                        android:id="@+id/tv_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginRight="@dimen/dp_10"
                         android:singleLine="true"
-                        android:text="T"
-                        android:textColor="@color/color_333333"
+                        android:text="全部"
+                        android:textColor="@color/color_main"
                         android:textSize="@dimen/sp_14" />
 
                 </RelativeLayout>
@@ -189,7 +190,7 @@
                     android:singleLine="true"
                     android:text="账号余额：0.00000000 USDT / 0.00000000 FIL"
                     android:textColor="@color/color_main"
-                    android:textSize="@dimen/sp_12" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
 
@@ -487,6 +488,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_accelerate"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_72"
         android:layout_alignParentBottom="true"

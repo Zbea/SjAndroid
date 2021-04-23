@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/space_dimen"
@@ -16,22 +15,13 @@
         android:textSize="@dimen/sp_14" />
 
     <TextView
-        android:id="@+id/tv_id"
+        android:id="@+id/tv_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_name"
         android:textColor="@color/color_999999"
         android:layout_marginTop="@dimen/dp_5"
-        android:textSize="@dimen/sp_12" />
-
-    <TextView
-        android:id="@+id/tv_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_id"
-        android:textColor="@color/color_999999"
-        android:layout_marginTop="@dimen/dp_5"
-        android:textSize="@dimen/sp_12" />
+        android:textSize="@dimen/sp_10" />
 
     <TextView
         android:id="@+id/tv_time"
@@ -40,7 +30,7 @@
         android:layout_below="@id/tv_number"
         android:layout_marginTop="@dimen/dp_5"
         android:textColor="@color/color_999999"
-        android:textSize="@dimen/sp_12"
+        android:textSize="@dimen/sp_10"
 
         />
 

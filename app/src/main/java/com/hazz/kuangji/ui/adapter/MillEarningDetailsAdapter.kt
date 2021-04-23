@@ -22,10 +22,8 @@ class MillEarningDetailsAdapter (layoutResId: Int, data: List<MillEarningsDetail
 
         var position=helper.adapterPosition
 
-        var fil=BigDecimalUtil.mul(item.return_fil,"1",8)
-
         helper.setText(R.id.tv_date,item.start_at)
-        helper.setText(R.id.tv_fil,fil)
+        helper.setText(R.id.tv_fil,item.return_fil)
         helper.setText(R.id.tv_25,item.line25)
         helper.setText(R.id.tv_75,item.lock)
         helper.setText(R.id.tv_release,item.release)

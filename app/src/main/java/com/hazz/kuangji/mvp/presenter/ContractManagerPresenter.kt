@@ -33,10 +33,10 @@ class ContractManagerPresenter(view: IContractView.IContractManagerView) : BaseP
 
     }
 
-    fun setSign(code:String,file:File) {
+    fun setSign(code:String,type:String,file:File) {
 
         var requestBody = MultipartBody.Part.createFormData("file",  "signing", RequestBody.create(MediaType.parse("multipart/form-data"), file))
-        val login = RetrofitManager.service.upSign(code,requestBody)
+        val login = RetrofitManager.service.upSign(code,type,requestBody)
 
         doRequest(login, object : Callback<Contract>(view) {
             override fun failed(tBaseResult: BaseResult<Contract>): Boolean {

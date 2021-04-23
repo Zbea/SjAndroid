@@ -65,7 +65,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <LinearLayout
-                android:layout_width="130dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
@@ -145,7 +145,7 @@
 
             <TextView
                 android:id="@+id/tv1"
-                android:layout_width="130dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:text="服务器当量"
@@ -183,6 +183,7 @@
                 android:layout_width="6dp"
                 android:layout_height="6dp"
                 android:layout_marginLeft="@dimen/dp_5"
+                android:visibility="gone"
                 android:background="@drawable/shape_main_solid_dot"
                 app:layout_constraintLeft_toRightOf="@+id/tv2"
                 app:layout_constraintTop_toTopOf="@+id/tv2"/>
@@ -224,11 +225,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/ll_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_status"
+            android:minHeight="@dimen/dp_50"
             android:gravity="center_vertical"
             >
 
@@ -238,6 +240,7 @@
                 android:layout_height="@dimen/dp_30"
                 android:text="查看合同"
                 android:textSize="12sp"
+                android:layout_centerVertical="true"
                 android:textColor="@color/color_white"
                 android:background="@drawable/bg_main_solid_arc"/>
 
@@ -246,10 +249,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_centerInParent="true"
                 android:orientation="vertical"
                 >
 
                 <ImageView
+                    android:id="@+id/iv_accelerate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
@@ -258,7 +263,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_below="@+id/iv_accelerate"
+                    android:layout_marginTop="-10dp"
                     android:layout_centerHorizontal="true"
                     android:text="服务器加速"
                     android:textSize="@dimen/sp_10"
@@ -272,12 +278,14 @@
                 android:layout_width="110dp"
                 android:layout_height="@dimen/dp_30"
                 android:text="查看收益"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:textSize="12sp"
                 android:textColor="@color/color_white"
                 android:background="@drawable/bg_red_solid_arc"/>
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </RelativeLayout>

@@ -32,6 +32,7 @@ class Constants private constructor() {
         const val REAT_MIN=20 //最少租用矿机
 
         const val CODE_EXCHANGE_SALE="10001"
+        const val CODE_BUY_BROAD="10002"
         const val CODE_CERTIFICATION_BROAD="10003"
         const val CODE_SKIN_BROAD="10004"
         const val CODE_INVESTMENT_BUY="10005"

@@ -20,4 +20,5 @@ public class Contract implements Serializable {
     public String id;
     public String order_id;
     public String path;
+    public String miner_type;
 }

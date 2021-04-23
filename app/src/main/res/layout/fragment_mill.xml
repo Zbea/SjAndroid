@@ -204,7 +204,6 @@
 
             </RadioGroup>
 
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list_mill"
                 android:layout_width="match_parent"
@@ -212,7 +211,14 @@
                 android:layout_marginLeft="@dimen/dp_15"
                 android:layout_marginTop="@dimen/space_dimen"
                 android:layout_marginRight="@dimen/dp_15" />
-
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_mill_accelerate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/space_dimen"
+                android:layout_marginRight="@dimen/dp_15" />
 
         </LinearLayout>
 

@@ -43,23 +43,21 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             "0" -> {
                 helper.setText(R.id.tv_state, "已停止")
                 helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
+                helper.setVisible(R.id.rl_accelerate,false)
             }
         }
 
         helper.setVisible(R.id.btn_contract, item.hide_contract=="0")
 
         helper.getView<Button>(R.id.btn_contract).setOnClickListener {
-            if (item.hide_contract=="0")
-            {
-                mContext.startActivity(Intent(mContext, ContractDetailsActivity::class.java).putExtra("contract_code",item.id)
-                        .putExtra("contract_sign",item.is_sign))
-            }
+            mContext.startActivity(Intent(mContext, ContractDetailsActivity::class.java).putExtra("contract_code",item.id)
+                    .putExtra("contract_sign",item.is_sign).putExtra("miner_type", "0"))
         }
         helper.getView<Button>(R.id.btn_earning).setOnClickListener {
             mContext.startActivity(Intent(mContext, MillEarningsDetailsActivity::class.java).putExtra("orderId",item.id))
         }
         helper.getView<RelativeLayout>(R.id.rl_accelerate).setOnClickListener {
-            mContext.startActivity(Intent(mContext, MillAccelerateActivity::class.java))
+            mContext.startActivity(Intent(mContext, MillAccelerateActivity::class.java).putExtra("order_id",item.id))
         }
 
     }

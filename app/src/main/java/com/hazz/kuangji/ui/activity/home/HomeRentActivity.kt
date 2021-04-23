@@ -28,6 +28,7 @@ import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
 import kotlinx.android.synthetic.main.activity_exchange_coin.*
 import kotlinx.android.synthetic.main.activity_home_rent.*
+import org.greenrobot.eventbus.EventBus
 
 
 class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.AssetView {
@@ -64,9 +65,10 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
     }
 
     override fun zuyongSucceed(msg: String) {
+        EventBus.getDefault().post(Constants.CODE_BUY_BROAD)
         SToast.showText("租用成功，请及时为合同签名")
         startActivity(Intent(this, ContractDetailsActivity::class.java).putExtra("contract_code", msg)
-                .putExtra("contract_sign", "0"))
+                .putExtra("contract_sign", "0").putExtra("miner_type", "1"))
         if (mDialog != null) mDialog?.dismiss()
         finish()
     }
@@ -127,6 +129,11 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                     return@setOnClickListener
                 }
 
+                if (TextUtils.isEmpty(et_name.text.toString())) {
+                    SToast.showText("请输入姓名")
+                    return@setOnClickListener
+                }
+
                 if (et_num.text.toString().toFloat()<1) {
                     SToast.showText("最少购买1T")
                     return@setOnClickListener
@@ -155,7 +162,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                                 startActivity(Intent(this, MineExchangePwdActivity::class.java))
                             }
                             .setConfirmListener { _, password ->
-                                mHomePresenter.zuyong("USDT", id, password, "", "", "", "")
+                                mHomePresenter.zuyong(id, password, et_num.text.toString(), et_name.text.toString())
                             }.setCancelListener {
 
                             }

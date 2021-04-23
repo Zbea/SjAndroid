@@ -162,7 +162,7 @@ interface AiPickService{
     /**
      * 立即租用
      */
-    @POST("trade/investment")
+    @POST("boost/investment")
     fun zuyong(@Body request: RequestBody): Observable<BaseResult<Contract>>
 
     /**
@@ -184,8 +184,8 @@ interface AiPickService{
     /**
      * 获取矿机收益详情
      */
-    @POST("/api/trade/miner_coinage")
-    fun getEarningsDetails(@Query("order_id" ) type:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>
+    @POST("/api/trade/miner_coinage?pageSize=20")
+    fun getEarningsDetails(@Query("order_id" ) type:String,@Query("pageNum" ) page:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
      * 矿机
      */
@@ -298,14 +298,14 @@ interface AiPickService{
     @GET("accounts/v0/trans_accounts_list")
     fun getTransAccountList(@Query("type") type: Int): Observable<BaseResult<List<TransferCoin>>>
 
-    @GET("trade/contractor_list")
+    @GET("/api/boost/contact_list")
     fun getContracts(): Observable<BaseResult<List<Contract>>>
     /**
      * q签名上传
      */
     @Multipart
     @POST("trade/sign_contract")
-    fun upSign(@Query("order_id") code: String, @Part file: MultipartBody.Part): Observable<BaseResult<Contract>>
+    fun upSign(@Query("order_id") code: String,@Query("miner_type") type: String, @Part file: MultipartBody.Part): Observable<BaseResult<Contract>>
 
 
     /**
@@ -376,4 +376,28 @@ interface AiPickService{
      */
     @GET("/api/cluster/withdraw_list")
     fun extractClusterList(): Observable<BaseResult<ExtractRecord>>
+
+    /**
+     * 获取加速矿机信息
+     */
+    @GET("/api/boost/getProduct")
+    fun getAccelerateInfo(@Query("order_id") id: String): Observable<BaseResult<AccelerateInfo>>
+    /**
+     * 提交加速包
+     */
+    @POST("/api/boost/orderUp")
+    fun commitAccelerate(@QueryMap map: HashMap<String, String>): Observable<BaseResult<Contract>>
+
+
+    /**
+     * 获取加速矿机收益详情
+     */
+    @POST("/api/boost/boost_coinage")
+    fun getEarningsAccelerateDetails(@Query("order_id" ) type:String): Observable<BaseResult<List<MillEarningsDetails>>>
+    /**
+     * 获取加速矿机收益详情
+     */
+    @POST("/api/boost/boost_coinage?pageSize=20")
+    fun getEarningsAccelerateDetails(@Query("order_id" ) type:String,@Query("pageNum" ) page:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>
+
 }

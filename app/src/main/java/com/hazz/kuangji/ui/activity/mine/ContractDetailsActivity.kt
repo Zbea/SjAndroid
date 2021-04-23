@@ -34,6 +34,7 @@ class ContractDetailsActivity : BaseActivity(){
     private var code = ""
     private var isSign = "0"
     private var url = ""
+    private var miner_type = ""
     private var file: File? = null
     private var pdfView: PDFView? = null
     private var connection :HttpURLConnection?=null
@@ -55,7 +56,9 @@ class ContractDetailsActivity : BaseActivity(){
 
         code = intent.getStringExtra("contract_code")
         isSign = intent.getStringExtra("contract_sign")
-        url = Constants.URL_BASE + "contractor?invest_id=" + code
+        miner_type=intent.getStringExtra("miner_type")
+
+        url = Constants.URL_BASE + "contractor?miner_type=$miner_type&invest_id="+ code
         connection= URL(url).openConnection() as HttpURLConnection
 
 

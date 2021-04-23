@@ -12,7 +12,7 @@ import com.hazz.kuangji.net.RetrofitManager
 class MillEarningsDetailsPresenter(view: IContractView.EarningsDetailsView) : BasePresenter<IContractView.EarningsDetailsView>(view) {
 
 
-    fun getLists(orderId:String) {
+    fun getLists(orderId: String) {
 
         val login = RetrofitManager.service.getEarningsDetails(orderId)
 
@@ -23,16 +23,16 @@ class MillEarningsDetailsPresenter(view: IContractView.EarningsDetailsView) : Ba
             }
 
             override fun success(tBaseResult: BaseResult<List<MillEarningsDetails>>) {
-                tBaseResult.data?.let { view.getDetails(it)}
+                tBaseResult.data?.let { view.getDetails(it) }
             }
 
         }, true)
 
     }
 
-    fun getLists(orderId:String,start:String,end:String) {
+    fun getLists(orderId: String, page: String, start: String, end: String) {
 
-        val login = RetrofitManager.service.getEarningsDetails(orderId,start,end)
+        val login = RetrofitManager.service.getEarningsDetails(orderId, page, start, end)
 
         doRequest(login, object : Callback<List<MillEarningsDetails>>(view) {
             override fun failed(tBaseResult: BaseResult<List<MillEarningsDetails>>): Boolean {
@@ -41,15 +41,49 @@ class MillEarningsDetailsPresenter(view: IContractView.EarningsDetailsView) : Ba
             }
 
             override fun success(tBaseResult: BaseResult<List<MillEarningsDetails>>) {
-                tBaseResult.data?.let { view.getDetails(it)}
+                tBaseResult.data?.let { view.getDetails(it) }
+            }
+
+        }, false)
+
+    }
+
+
+    fun getAccelerateLists(orderId: String) {
+
+        val login = RetrofitManager.service.getEarningsAccelerateDetails(orderId)
+
+        doRequest(login, object : Callback<List<MillEarningsDetails>>(view) {
+            override fun failed(tBaseResult: BaseResult<List<MillEarningsDetails>>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<List<MillEarningsDetails>>) {
+                tBaseResult.data?.let { view.getDetails(it) }
             }
 
         }, true)
 
     }
 
+    fun getAccelerateLists(orderId: String, page: String, start: String, end: String) {
 
+        val login = RetrofitManager.service.getEarningsAccelerateDetails(orderId, page, start, end)
 
+        doRequest(login, object : Callback<List<MillEarningsDetails>>(view) {
+            override fun failed(tBaseResult: BaseResult<List<MillEarningsDetails>>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<List<MillEarningsDetails>>) {
+                tBaseResult.data?.let { view.getDetails(it) }
+            }
+
+        }, false)
+
+    }
 
 
 }

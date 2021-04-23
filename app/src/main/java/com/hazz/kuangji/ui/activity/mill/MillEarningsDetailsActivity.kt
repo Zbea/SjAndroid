@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.TimePickerView
+import com.chad.library.adapter.base.BaseQuickAdapter
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -20,6 +21,7 @@ import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_mill_earnings_details.*
 import java.math.RoundingMode
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -35,15 +37,23 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
     private var mAdapterMill: MillEarningDetailsAdapter? = null
     private var id=""
     private var pvTime: TimePickerView? = null
+    private var page=1
+    private var start=""
+    private var end=""
+    private var datas:MutableList<MillEarningsDetails> = ArrayList()
+    private var type=1//type=1为不分页
 
     override fun getDetails(msg: List<MillEarningsDetails>) {
+
+        datas.addAll(msg)
+
         var totalT="0"
         var totalFil="0"
         var total25="0"
         var totalLock="0"
         var totalRelease="0"
         var totalUsable="0"
-        for (item in msg)
+        for (item in datas)
         {
 
             var f25= BigDecimalUtil.mul(item.return_fil,"0.25",8)
@@ -81,7 +91,24 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
         tv_total_usable.text=totalUsable
         tv_total_t.text=totalT
 
-        mAdapterMill?.setNewData(msg)
+        if (page==1)
+        {
+            mAdapterMill?.setNewData(msg)
+            if (type==1)
+                mAdapterMill?.loadMoreEnd(true)
+        }
+        else
+        {
+            mAdapterMill?.addData(msg)
+        }
+
+        if (msg.size<20)
+        {
+            mAdapterMill?.loadMoreEnd(true)
+        }
+        else{
+            mAdapterMill?.loadMoreComplete()
+        }
 
     }
 
@@ -104,8 +131,16 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapterMill = MillEarningDetailsAdapter(R.layout.item_mill_earnings_details, null)
         rc_list.adapter = mAdapterMill
-        mAdapterMill!!.bindToRecyclerView(rc_list)
-        mAdapterMill!!.setEmptyView(R.layout.fragment_empty)
+        mAdapterMill?.bindToRecyclerView(rc_list)
+        mAdapterMill?.setOnLoadMoreListener(BaseQuickAdapter.RequestLoadMoreListener {
+            rc_list.postDelayed(Runnable {
+                var size = mAdapterMill?.data?.size
+                if (page * 20 == size) {
+                    page+=1
+                    presenter.getLists(id,page.toString(),start,end)
+                }
+            }, 1000)
+        }, rc_list)
 
     }
 
@@ -122,7 +157,12 @@ class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetail
         endDate.set(2029, 11, 28)
         //时间选择器
         pvTime = TimePickerBuilder(this, OnTimeSelectListener { start, end ->
-            presenter.getLists(id,start,end)
+            this.start=start
+            this.end=end
+            page=1
+            type=2
+            datas.clear()
+            presenter.getLists(id,page.toString(),start,end)
 
         }).setCancelText("取消")//取消按钮文字
                 .setSubmitText("确定")//确认按钮文字

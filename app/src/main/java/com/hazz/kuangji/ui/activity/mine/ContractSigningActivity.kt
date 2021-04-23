@@ -24,6 +24,7 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
 
     private var fileName=""
     private var code=""
+    private var type=""
     private val mContractManagerPresenter= ContractManagerPresenter(this)
 
     override fun setSign(data: Contract) {
@@ -44,6 +45,7 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
 
     override fun initView() {
         code=intent.getStringExtra("contract_code")
+        type=intent.getStringExtra("miner_type")
         btn_clear.setOnClickListener {
             signature_pad.clear()
         }
@@ -63,7 +65,7 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
                     Handler().postDelayed(Runnable {
 //                        Log.i("sj", File(Environment.getExternalStorageDirectory(), "/eye/image/$fileName.png").toString())
 //                        Log.i("sj", ImageUtlis.getFilePath(this,"/eye/")+"$fileName.png")
-                        mContractManagerPresenter.setSign(code, File(ImageUtils.getFilePath(this,"/eye/"), "$fileName.png"))
+                        mContractManagerPresenter.setSign(code,type,File(ImageUtils.getFilePath(this,"/eye/"), "$fileName.png"))
                     }, 500)
 
 

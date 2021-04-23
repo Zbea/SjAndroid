@@ -1,5 +1,6 @@
 package com.hazz.kuangji.mvp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class Mill {
@@ -29,8 +30,9 @@ public class Mill {
             public int pageSize;
             public String total;
             public List<ListBean> list;
+            public List<ListBean> boost_list;
 
-            public static class ListBean {
+            public static class ListBean implements Serializable {
                 /**
                  * id : 82
                  * user_id : 132
@@ -77,6 +79,12 @@ public class Mill {
                 public String hide_contract;//后台显示状态
                 public String is_sign;//合同签名状态
                 public String contract_path;//合同地址
+                public int miner_type;//0  原矿机     1加速矿机
+                public String build_remain;//剩余建设期
+                public String seal_remain;//剩余封装
+                public String pledge_amount;//质押总数
+                public String gas_amount;//gas总数
+                public String gas_consume;//gas消耗
             }
 
     }

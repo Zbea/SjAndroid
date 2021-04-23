@@ -30,43 +30,16 @@ class HomePresenter(view: IContractView.HomeView) : BasePresenter<IContractView.
 
     }
 
-    fun sign() {
-
-
-        val login = RetrofitManager.service.sign()
-
-        doRequest(login, object : Callback<Any>(view) {
-            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
-
-                return false
-            }
-
-            override fun success(tBaseResult: BaseResult<Any>) {
-                view.zuyongSucceed(tBaseResult.msg)
-            }
-
-        }, true)
-
-    }
-
-    fun zuyong(coin: String, product_id: String, trade_password: String, amount: String
-               , contractor: String, mobile: String, address: String
-
-    ) {
+    fun zuyong(product_id: String, trade_password: String, amount: String, contractor: String) {
 
 
         val body = RequestUtils.getBody(
 
-                Pair.create<Any, Any>("coin", coin),
                 Pair.create<Any, Any>("product_id", product_id),
-                Pair.create<Any, Any>("trade_password", Utils.encryptMD5(trade_password)),
-                Pair.create<Any, Any>("amount", amount),
                 Pair.create<Any, Any>("contractor", contractor),
-                Pair.create<Any, Any>("mobile", mobile),
-                Pair.create<Any, Any>("address", address)
+                Pair.create<Any, Any>("trade_password", Utils.encryptMD5(trade_password)),
+                Pair.create<Any, Any>("amount", amount)
         )
-
-//        Log.i("sj",body.toString())
 
         val login = RetrofitManager.service.zuyong(body)
 
@@ -83,7 +56,6 @@ class HomePresenter(view: IContractView.HomeView) : BasePresenter<IContractView.
         }, true)
 
     }
-
 
 
 }

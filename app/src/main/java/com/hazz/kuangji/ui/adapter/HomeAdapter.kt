@@ -27,10 +27,6 @@ class HomeAdapter(layoutResId: Int, data: List<Home.BoostBean>?) : BaseQuickAdap
             setText(R.id.tv_type, "服务器类型：FIL服务器")
             setText(R.id.tv_time, "合约周期："+item.term+"天")
             GlideEngine.createGlideEngine().loadImage(mContext, Constants.URL_INVITE+item.pic,getView(R.id.iv))
-            getView<TextView>(R.id.tv_zu).setOnClickListener {
-                mContext.startActivity(Intent(mContext, HomeRentActivity::class.java).putExtra("produce",item))
-
-            }
         }
     }
 
