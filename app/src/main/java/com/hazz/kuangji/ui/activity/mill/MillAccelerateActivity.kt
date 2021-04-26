@@ -151,6 +151,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
             }
         })
 
+
         tv_accelerate.setOnClickListener {
 
             if (TextUtils.isEmpty(et_num.text.toString())) {
