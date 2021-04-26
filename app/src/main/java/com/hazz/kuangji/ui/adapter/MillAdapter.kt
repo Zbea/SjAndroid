@@ -11,6 +11,7 @@ import com.hazz.kuangji.mvp.model.Mill
 import com.hazz.kuangji.ui.activity.mill.MillAccelerateActivity
 import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
+import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
@@ -39,6 +40,7 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
             "1" ->{
                 helper.setText(R.id.tv_state, "已运行")
                 helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
+                helper.setVisible(R.id.rl_accelerate,true)
             }
             "0" -> {
                 helper.setText(R.id.tv_state, "已停止")
@@ -50,8 +52,9 @@ class MillAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) 
         helper.setVisible(R.id.btn_contract, item.hide_contract=="0")
 
         helper.getView<Button>(R.id.btn_contract).setOnClickListener {
-            mContext.startActivity(Intent(mContext, ContractDetailsActivity::class.java).putExtra("contract_code",item.id)
-                    .putExtra("contract_sign",item.is_sign).putExtra("miner_type", "0"))
+//            mContext.startActivity(Intent(mContext, ContractDetailsActivity::class.java).putExtra("contract_code",item.id)
+//                    .putExtra("contract_sign",item.is_sign).putExtra("miner_type", "0"))
+            mContext.startActivity(Intent(mContext, ContractManagerActivity::class.java).putExtra("order_id",item.id))
         }
         helper.getView<Button>(R.id.btn_earning).setOnClickListener {
             mContext.startActivity(Intent(mContext, MillEarningsDetailsActivity::class.java).putExtra("orderId",item.id))

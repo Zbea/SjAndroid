@@ -14,7 +14,7 @@ class AcceleratePresenter(view: IContractView.IAccelerateView) : BasePresenter<I
 
         doRequest(accelerate, object : Callback<AccelerateInfo>(view) {
             override fun failed(tBaseResult: BaseResult<AccelerateInfo>): Boolean {
-
+                view.onFail(tBaseResult.msg)
                 return false
             }
 

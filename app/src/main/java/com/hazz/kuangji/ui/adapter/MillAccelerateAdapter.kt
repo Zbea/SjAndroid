@@ -12,6 +12,7 @@ import com.hazz.kuangji.ui.activity.mill.MillAccelerateActivity
 import com.hazz.kuangji.ui.activity.mill.MillEarningsAccelerateDetailsActivity
 import com.hazz.kuangji.ui.activity.mill.MillEarningsDetailsActivity
 import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
+import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 /**

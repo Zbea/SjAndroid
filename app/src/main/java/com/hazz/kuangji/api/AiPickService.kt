@@ -5,25 +5,16 @@ import com.hazz.kuangji.net.BaseResult
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.http.*
-
+import java.io.InputStream
 
 
 interface AiPickService{
 
-
-    @GET("accounts/v0/buycoin/")
-    fun getTest(): Observable<BaseResult<Any>>
-
     @GET("/api/app/config")
     fun getConfig(): Observable<BaseResult<Config>>
 
-    /**
-     * 文件上传
-     */
-    @Multipart
-    @POST("/api/uploader_img")
-    fun upLoadImage(@Part file: MultipartBody.Part): Observable<BaseResult<UploadModel>>
     /**
      * 头像上传
      */
@@ -300,13 +291,19 @@ interface AiPickService{
 
     @GET("/api/boost/contact_list")
     fun getContracts(): Observable<BaseResult<List<Contract>>>
+    @GET("/api/boost/contact_list")
+    fun getContracts(@Query("order_id")code: String): Observable<BaseResult<List<Contract>>>
     /**
      * q签名上传
      */
     @Multipart
     @POST("trade/sign_contract")
     fun upSign(@Query("order_id") code: String,@Query("miner_type") type: String, @Part file: MultipartBody.Part): Observable<BaseResult<Contract>>
-
+    /**
+     * 下载
+     */
+    @GET("contractor")
+    fun downPdf(@Query("miner_type") type: String,@Query("invest_id") id: String): Observable<ResponseBody>
 
     /**
      * 获取投资列表

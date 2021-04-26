@@ -15,9 +15,11 @@ import com.hazz.kuangji.widget.RewardItemDeco
 import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.activity_rule.mToolBar
+import okhttp3.ResponseBody
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.InputStream
 
 /**
  * @Created by Zbea
@@ -31,12 +33,16 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
     private var mAdapter: ContractListAdapter? =null
     private var mContracts:List<Contract> = ArrayList()
     private val mContractManagerPresenter=ContractManagerPresenter(this)
+    private var code:String?=null
 
     override fun getContracts(datas: List<Contract>) {
         mContracts=datas
         mAdapter?.setNewData(datas)
     }
     override fun setSign(data: Contract) {
+    }
+
+    override fun downPdf(responseBody: ResponseBody) {
     }
 
     override fun layoutId(): Int {
@@ -52,6 +58,8 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
                 .setTitle("合同管理")
                 .setToolBarBgRescource(R.drawable.bg_line_bottom)
                 .setOnLeftIconClickListener { finish() }
+
+        code=intent.getStringExtra("order_id")
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
         mAdapter = ContractListAdapter(R.layout.item_contract_record, null)
@@ -70,14 +78,28 @@ class ContractManagerActivity :BaseActivity(),IContractView.IContractManagerView
     }
 
     override fun start() {
-        mContractManagerPresenter.getContracts(true)
+        if (code.isNullOrEmpty())
+        {
+            mContractManagerPresenter.getContracts(true)
+        }
+        else{
+            mContractManagerPresenter.getContracts(code!!,true)
+        }
+
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(data: Contract) {
         if (data!=null)
         {
-            mContractManagerPresenter.getContracts(false)
+            if (code.isNullOrEmpty())
+            {
+                mContractManagerPresenter.getContracts(true)
+            }
+            else{
+                mContractManagerPresenter.getContracts(code!!,true)
+            }
+
         }
     }
 

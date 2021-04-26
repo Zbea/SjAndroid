@@ -10,8 +10,10 @@ import com.hazz.kuangji.mvp.presenter.ContractManagerPresenter
 import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import kotlinx.android.synthetic.main.activity_contract_signing.*
+import okhttp3.ResponseBody
 import org.greenrobot.eventbus.EventBus
 import java.io.File
+import java.io.InputStream
 
 /**
  * @Created by Zbea
@@ -34,6 +36,10 @@ class ContractSigningActivity : BaseActivity(), IContractView.IContractManagerVi
         }
         finish()
     }
+
+    override fun downPdf(responseBody: ResponseBody) {
+    }
+
     override fun getContracts(datas: List<Contract>) {
     }
     override fun layoutId(): Int {

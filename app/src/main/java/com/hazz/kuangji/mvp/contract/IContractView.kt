@@ -2,6 +2,8 @@ package com.hazz.kuangji.mvp.contract
 
 import com.hazz.kuangji.mvp.model.*
 import com.hazz.kuangji.net.BaseView
+import okhttp3.ResponseBody
+import java.io.InputStream
 
 
 /**
@@ -170,7 +172,7 @@ interface IContractView {
 
         fun getContracts(datas:List<Contract>)
         fun setSign(data: Contract)
-
+        fun downPdf(responseBody: ResponseBody)
     }
 
     interface IInvestmentView: BaseView {
@@ -190,6 +192,7 @@ interface IContractView {
     interface IAccelerateView: BaseView {
         fun getAccelerateInfo(item:AccelerateInfo)
         fun onSuccess(msg: String)
+        fun onFail(msg: String)
     }
 
 }

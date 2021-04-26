@@ -3,12 +3,14 @@ package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Contract
-import com.hazz.kuangji.mvp.model.UploadModel
 import com.hazz.kuangji.net.*
+import com.hazz.kuangji.net.Callback1
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import java.io.File
+import java.io.InputStream
 
 
 class ContractManagerPresenter(view: IContractView.IContractManagerView) : BasePresenter<IContractView.IContractManagerView>(view) {
@@ -18,6 +20,25 @@ class ContractManagerPresenter(view: IContractView.IContractManagerView) : BaseP
 
 
         val login = RetrofitManager.service.getContracts()
+
+        doRequest(login, object : Callback<List<Contract>>(view) {
+            override fun failed(tBaseResult: BaseResult<List<Contract>>): Boolean {
+
+                return false
+            }
+
+            override fun success(tBaseResult: BaseResult<List<Contract>>) {
+                tBaseResult.data?.let { view.getContracts(it) }
+            }
+
+        }, boolean)
+
+    }
+
+    fun getContracts(code:String,boolean: Boolean) {
+
+
+        val login = RetrofitManager.service.getContracts(code)
 
         doRequest(login, object : Callback<List<Contract>>(view) {
             override fun failed(tBaseResult: BaseResult<List<Contract>>): Boolean {
@@ -48,6 +69,21 @@ class ContractManagerPresenter(view: IContractView.IContractManagerView) : BaseP
                 tBaseResult.data?.let { view.setSign(it) }
             }
 
+        }, true)
+
+    }
+
+    fun downPdf(type: String,id:String) {
+
+        val down = RetrofitManager.service.downPdf(type,id)
+
+        doRequest1(down, object : Callback1<ResponseBody>(view) {
+            override fun failed(tBaseResult: ResponseBody): Boolean {
+                TODO("Not yet implemented")
+            }
+            override fun success(iss: ResponseBody) {
+                view.downPdf(iss)
+            }
         }, true)
 
     }

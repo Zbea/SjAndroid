@@ -68,16 +68,16 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
     private var mPasswordDialog: SafeCheckDialog? = null
     private var item:AccelerateInfo?=null
 
+    override fun onFail(msg: String) {
+        ll_accelerate.visibility=View.GONE
+        SToast.showText(msg)
+    }
+
     override fun getAccelerateInfo(item:AccelerateInfo) {
-
-        if (item==null)
-            ll_accelerate.visibility=View.GONE
-
         this.item=item
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(item?.name)
-                .setOnLeftIconClickListener { finish() }
 
         item?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE + it, iv_product) }
         if (item?.desc != null)
@@ -104,8 +104,6 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
         SToast.showText("加速成功，请及时为合同签名")
         startActivity(Intent(this, ContractDetailsActivity::class.java).putExtra("contract_code", msg)
                 .putExtra("contract_sign", "0").putExtra("miner_type", "1"))
-        if (mDialog != null) mDialog?.dismiss()
-        finish()
     }
 
     override fun myAsset(msg: MyAsset) {
@@ -133,6 +131,9 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
     }
 
     override fun initData() {
+        ToolBarCustom.newBuilder(mToolBar as Toolbar)
+                .setTitle("加速包")
+                .setOnLeftIconClickListener { finish() }
 
         tv_all.setOnClickListener {
             et_num.setText(max)
@@ -197,8 +198,6 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
                         }
             }
             mPasswordDialog?.show()
-
-
         }
     }
 

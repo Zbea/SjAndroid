@@ -1,14 +1,10 @@
 package com.hazz.kuangji.net
 
 
-import android.util.Log
-import com.google.gson.Gson
-import com.hazz.kuangji.MyApplication
 import com.hazz.kuangji.utils.SToast
 import io.reactivex.Observer
 import io.reactivex.annotations.NonNull
 import io.reactivex.disposables.Disposable
-import retrofit2.HttpException
 
 abstract class Callback<T> : Observer<BaseResult<T>> {
 
