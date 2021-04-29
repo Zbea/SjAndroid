@@ -157,15 +157,15 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
      * 开始计算
      */
     private fun setCalculate() {
-        val div = BigDecimalUtil.div(rateFil, "100", 4)
-        val fee = BigDecimalUtil.mul(num, div, 4)
+        val div = BigDecimalUtil.div(rateFil, "100", 8)
+        val fee = BigDecimalUtil.mul(num, div, 8)
         if (BigDecimalUtil.compare(rateAmountFil, fee)) {
             tv_need.text = rateAmountFil
-            var surplus = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+            var surplus = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
             tv_shiji.text = if (surplus.toDouble() < 0) "0" else surplus
         } else {
             tv_need.text = fee
-            tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+            tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
         }
     }
 

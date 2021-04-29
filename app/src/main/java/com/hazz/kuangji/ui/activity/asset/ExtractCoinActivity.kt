@@ -227,35 +227,35 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
      */
     private fun setCalculate()
     {
-        val div = BigDecimalUtil.div(getCurrentRate(), "100", 4)
-        val fee=BigDecimalUtil.mul(num, div, 4)
+        val div = BigDecimalUtil.div(getCurrentRate(), "100", 8)
+        val fee=BigDecimalUtil.mul(num, div, 8)
         if (isTrc)
         {
-            val div = BigDecimalUtil.div(rateTrc, "100", 4)
-            val fee=BigDecimalUtil.mul(num, div, 4)
+            val div = BigDecimalUtil.div(rateTrc, "100", 8)
+            val fee=BigDecimalUtil.mul(num, div, 8)
             if (BigDecimalUtil.compare(rateAmountTrc,fee))
             {
                 tv_need.text = rateAmountTrc
-                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
                 tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
             }
             else
             {
                 tv_need.text = fee
-                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
             }
         }
         else{
             if (BigDecimalUtil.compare(getCurrentRateAmount(),fee))
             {
                 tv_need.text = getCurrentRateAmount()
-                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                var surplus=BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
                 tv_shiji.text = if (surplus.toDouble()<0) "0" else surplus
             }
             else
             {
                 tv_need.text = fee
-                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 4)
+                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
             }
         }
     }
