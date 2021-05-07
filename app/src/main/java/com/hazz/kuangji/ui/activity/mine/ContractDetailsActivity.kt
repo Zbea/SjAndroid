@@ -43,7 +43,7 @@ class ContractDetailsActivity : BaseActivity(), IContractView.IContractManagerVi
     private var file: File? = null
 
     private val mContractManagerPresenter= ContractManagerPresenter(this)
-    private var responseBody:ResponseBody?=null
+    private lateinit var iss:InputStream
 
     override fun getContracts(datas: List<Contract>) {
         TODO("Not yet implemented")
@@ -55,8 +55,8 @@ class ContractDetailsActivity : BaseActivity(), IContractView.IContractManagerVi
 
     override fun downPdf(responseBody: ResponseBody) {
         if (responseBody==null)return
-        this.responseBody=responseBody
-         pdfView?.fromStream(responseBody.byteStream())?.load()
+        iss=responseBody.byteStream()
+        pdfView?.fromStream(iss)?.load()
     }
 
 
@@ -78,7 +78,6 @@ class ContractDetailsActivity : BaseActivity(), IContractView.IContractManagerVi
         miner_type=intent.getStringExtra("miner_type")
 
         url = Constants.URL_BASE + "contractor?miner_type=$miner_type&invest_id="+ code
-        Log.i("sj",url)
 
         file = File(Environment.getExternalStorageDirectory().toString(), "/eye/M000000$code.pdf")
         btn_sign.visibility = if (isSign == "2") View.GONE else View.VISIBLE
@@ -109,31 +108,69 @@ class ContractDetailsActivity : BaseActivity(), IContractView.IContractManagerVi
      */
     private fun download() {
 
-        try {
-            if (responseBody!=null)
-            {
-                var iss = responseBody!!.byteStream()
-                var arr = ByteArray(1)
-                var baos = ByteArrayOutputStream()
-                var bos = BufferedOutputStream(baos)
-                var n= iss.read(arr)
-                while (n > 0) {
-                    bos.write(arr)
-                    n = iss?.read(arr)!!
-                }
-                val dir = File(Environment.getExternalStorageDirectory().toString() + "/eye/")
-                if (!dir.exists()) {
-                    dir.mkdirs()
-                }
-                bos.close()
-                var fos = FileOutputStream(file)
-                fos.write(baos.toByteArray())
-                fos.close()
-            }
+//        try {
+//            if (iss!=null)
+//            {
+//                val arr = ByteArray(1)
+//                val baos = ByteArrayOutputStream()
+//                val bos = BufferedOutputStream(baos)
+//                var n: Int = iss.read(arr)
+//                while (n > 0) {
+//                    bos.write(arr)
+//                    n = iss.read(arr)
+//                }
+//                val galleryPath = Environment.getExternalStorageDirectory().toString() + "/eye/"
+//                val dir = File(galleryPath)
+//                if (!dir.exists()) {
+//                    dir.mkdirs()
+//                }
+//                val fos = FileOutputStream(file)
+//                fos.write(baos.toByteArray())
+//                fos.close()
+//                bos.close()
+//            }
+//
+//        } catch (e: IOException) {
+//            e.printStackTrace()
+//        }
 
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
+
+        mDialog?.show()
+        Thread(Runnable {
+            try {
+                val connection= URL(url).openConnection() as HttpURLConnection
+                connection.requestMethod = "GET"
+                connection.doInput = true
+                connection.connectTimeout = 10000
+                connection.readTimeout = 10000
+                connection.connect()
+                if (connection.responseCode=== 200) {
+                    val iss= connection.inputStream
+                    val arr = ByteArray(1)
+                    val baos = ByteArrayOutputStream ()
+                    val bos = BufferedOutputStream(baos)
+                    var n: Int = iss.read(arr)
+                    while (n > 0) {
+                        bos.write(arr)
+                        n = iss.read(arr)
+                    }
+                    val galleryPath = Environment.getExternalStorageDirectory().toString() + "/eye/"
+                    val dir = File(galleryPath)
+                    if (!dir.exists()) {
+                        dir.mkdirs()
+                    }
+                    bos.close()
+                    val fos = FileOutputStream(file)
+                    fos.write(baos.toByteArray())
+                    fos.close()
+                    connection.disconnect()
+                    mDialog?.dismiss()
+//                    SToast.showText("合同下载成功，请前往文件管理眼球矿机查看")
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }).start()
 
         val intent = Intent(Intent.ACTION_SEND)
         intent.putExtra(Intent.EXTRA_STREAM, file?.let { FileProvider.getUriForFile(this, applicationContext.packageName + ".provider", it) })
