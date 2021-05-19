@@ -5,8 +5,8 @@ ext{
             buildToolsVersion: "28.0.3",
             minSdkVersion    : 21,
             targetSdkVersion : 28,
-            versionCode      : 43,
-            versionName      : "2.2.01"
+            versionCode      : 45,
+            versionName      : "2.2.03"
     ]
 
     dependVersion = [

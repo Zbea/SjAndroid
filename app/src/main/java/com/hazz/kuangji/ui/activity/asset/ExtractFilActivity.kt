@@ -35,8 +35,6 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
     private var max = "20000"
     private var num = ""
 
-
-
     override fun getCluster(msg: AssetCluster) {
         TODO("Not yet implemented")
     }
@@ -73,9 +71,8 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
                 }
 
         assetCluster=intent.getSerializableExtra("asset") as  AssetCluster
-        avaiableAmount = assetCluster?.release_fil.toString()
-        tv_lest.text = "可用" + avaiableAmount + "FIL"
-
+        avaiableAmount = assetCluster?.max_withdraw.toString()
+        tv_lest.text = "可提" + avaiableAmount + "FIL"
         val config = assetCluster!!.config
         if (config != null) {
             min=config[0].value

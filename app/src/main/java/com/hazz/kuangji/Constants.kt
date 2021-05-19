@@ -24,10 +24,8 @@ package com.hazz.kuangji
 class Constants private constructor() {
 
     companion object {
-
+        const val CODE=1024
         const val SALE_MIN=10 //最少卖多少个
-
-
         const val BUY_MIN=100 //最少买多少个
         const val REAT_MIN=20 //最少租用矿机
 

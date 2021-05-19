@@ -35,7 +35,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     private var rateTrc = "1"
     private var rateAmountTrc="1"
     private var avaiableAmount = "0"
-    private var min="10"
+    private var min="1"
     private var max="20000"
     private var assets: List<MyAsset.AssetsBean>? = null
     private var isTrc=false
@@ -50,7 +50,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             for (coin in assets!!) {
                 if (coin.coin == currentName) {
                     avaiableAmount = coin.balance
-                    tv_lest.text = "可用" + coin.balance + currentName
+                    tv_lest.text = "可提" + coin.balance + currentName
                 }
             }
 
@@ -106,12 +106,52 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 }
 
         et_num.addTextChangedListener(this)
+
+        rg_extract?.setOnCheckedChangeListener { group, checkedId ->
+            if (assets==null)
+                return@setOnCheckedChangeListener
+            if (checkedId==R.id.rb_left)
+            {
+                currentName = "USDT"
+                for (coin in assets!!) {
+                    if (coin.coin == currentName) {
+                        avaiableAmount = coin.balance
+                    }
+                }
+                val config = myAsset?.config
+                if (config != null) {
+                    min=config[0].value
+                    max=config[1].value
+                }
+            }
+            else
+            {
+                currentName = "FIL"
+                for (coin in assets!!) {
+                    if (coin.coin == "FCOIN") {
+                        avaiableAmount = coin.max_withdraw
+                    }
+                }
+                val config = myAsset?.config
+                if (config != null) {
+                    min=config[13].value
+                    max=config[12].value
+                }
+            }
+            et_num.hint = "最小:$min/最大:$max"
+            tv_lest.text = "可提$avaiableAmount $currentName"
+            et_num.setText("")
+            tv_need.text="0"
+            tv_shiji.text="0"
+            setFee()
+        }
     }
 
     override fun start() {
         mAssetPresenter.myAsset(true)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun initData() {
         tv_scan.setOnClickListener {
             permissionsnew!!.request(
@@ -186,40 +226,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             et_num.setText(avaiableAmount)
         }
 
-        rg_extract?.setOnCheckedChangeListener { group, checkedId ->
 
-            if (assets==null)
-                return@setOnCheckedChangeListener
-
-            if (checkedId==R.id.rb_left)
-            {
-                currentName = "USDT"
-                for (coin in assets!!) {
-                    if (coin.coin == currentName) {
-                        avaiableAmount = coin.balance
-                        tv_lest.text = "可用" + coin.balance + currentName
-                    }
-                }
-                tv_tips.visibility= View.GONE
-            }
-            else
-            {
-
-                currentName = "FIL"
-                for (coin in assets!!) {
-                    if (coin.coin == "FCOIN") {
-                        avaiableAmount = coin.balance
-                        tv_lest.text = "可用" + coin.balance + currentName
-                    }
-                }
-                tv_tips.text="提币超过$max_fil FIL后将影响您的矿机产出算力"
-                tv_tips.visibility= View.VISIBLE
-            }
-            et_num.setText("")
-            tv_need.text="0"
-            tv_shiji.text="0"
-            setFee()
-        }
     }
 
     /**

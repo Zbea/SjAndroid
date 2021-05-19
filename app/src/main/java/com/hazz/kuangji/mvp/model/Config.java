@@ -11,6 +11,7 @@ import java.io.Serializable;
  **/
 public class Config  implements Serializable {
 
+    public int androidVersion;
     public ConfigBean config;
 
     public static class ConfigBean{

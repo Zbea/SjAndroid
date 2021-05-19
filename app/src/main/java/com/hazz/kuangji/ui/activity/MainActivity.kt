@@ -1,10 +1,12 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
+import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.widget.RadioGroup
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -22,6 +24,7 @@ import com.hazz.kuangji.mvp.presenter.ConfigPresenter
 import com.hazz.kuangji.ui.fragment.*
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.utils.SPUtil
+import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.StatusBarUtil
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
@@ -32,7 +35,6 @@ import kotlinx.android.synthetic.main.activity_main_ruoyu_new.iv_mine
 class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.IConfigView, IContractView.ICertificationInfoView{
 
     private var mConfigPresenter=ConfigPresenter(this)
-    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
 
@@ -43,7 +45,12 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
  
     override fun getConfig(item: Config) {
-        SPUtil.putObj("Config",item)
+        Log.i("sj","code:"+item.androidVersion)
+        if (item.androidVersion>Constants.CODE)
+        {
+            Beta.checkAppUpgrade()
+            SToast.showTextLong("有新版本，请及时更新")
+        }
     }
 
     override fun layoutId(): Int {
@@ -51,14 +58,6 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun initData() {
-//        mCertificationInfoPresenter.getCertification()
-        //腾讯bugly
-        Beta.canShowUpgradeActs.add(MainActivity::class.java)
-        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
-        Beta.autoCheckUpgrade = true
-        Beta.upgradeCheckPeriod = 20 * 1000
-        Bugly.init(this, Constants.BUGLY_ID, false)
-
     }
 
     override fun initView() {
@@ -82,9 +81,8 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
     }
 
     override fun start() {
-        mConfigPresenter.getConfig()
+        mConfigPresenter.getDownload()
     }
-
 
     private fun initFragment() {
         mFragments = ArrayList()

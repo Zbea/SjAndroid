@@ -32,6 +32,7 @@ public class AssetCluster implements Serializable {
     public String unrelease_fil;
     public String pledge_fil;
     public String round;
+    public String max_withdraw;
 
     public List<ConfigBean> config;
 

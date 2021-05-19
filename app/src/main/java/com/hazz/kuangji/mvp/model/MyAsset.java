@@ -56,6 +56,7 @@ public class MyAsset implements Serializable {
             public String pledge;
             public String team;
             public String achievement;
+            public String max_withdraw;
             public String line25;
             public String line75;
         }

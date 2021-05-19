@@ -8,11 +8,14 @@ import android.util.Log
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.app.SkinAppCompatDelegateImpl
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.BuildConfig
 import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
+import com.tencent.bugly.Bugly
+import com.tencent.bugly.beta.Beta
 import skin.support.SkinCompatManager
 import skin.support.app.SkinAppCompatViewInflater
 import skin.support.app.SkinCardViewInflater
@@ -41,6 +44,15 @@ class MyApplication : Application(){
         DisplayManager.init(this)
         DensityUtils.setDensity(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
+
+        //腾讯bugly
+        Beta.canShowUpgradeActs.add(MainActivity::class.java)
+        Beta.upgradeDialogLayoutId = R.layout.dialog_upgrade
+        Beta.autoCheckUpgrade = true
+        Beta.upgradeCheckPeriod = 20 * 1000
+        Beta.initDelay = 4 * 1000
+        Beta.enableNotification = true
+        Bugly.init(this, Constants.BUGLY_ID, false)
 
         SPUtil.init(this)
         SToast.initToast(this)

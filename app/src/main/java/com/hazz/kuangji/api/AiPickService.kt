@@ -14,7 +14,8 @@ interface AiPickService{
 
     @GET("/api/app/config")
     fun getConfig(): Observable<BaseResult<Config>>
-
+    @GET("/json/download.json")
+    fun getDownloadCode(): Observable<Config>
     /**
      * 头像上传
      */
