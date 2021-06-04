@@ -158,28 +158,28 @@ interface AiPickService{
     fun zuyong(@Body request: RequestBody): Observable<BaseResult<Contract>>
 
     /**
-     * 矿机
+     * 服务器
      */
     @GET("trade/investment")
     fun getMill(): Observable<BaseResult<Mill>>
 
     /**
-     * 矿机明细
+     * 服务器明细
      */
     @GET("trade/statement")
     fun getMillEarnings(@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<MillEarningsList>>
     /**
-     * 获取矿机收益详情
+     * 获取服务器收益详情
      */
     @POST("/api/trade/miner_coinage")
     fun getEarningsDetails(@Query("order_id" ) type:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
-     * 获取矿机收益详情
+     * 获取服务器收益详情
      */
     @POST("/api/trade/miner_coinage?pageSize=20")
     fun getEarningsDetails(@Query("order_id" ) type:String,@Query("pageNum" ) page:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
-     * 矿机
+     * 服务器
      */
     @GET("profile")
     fun getAccount(): Observable<BaseResult<Account>>
@@ -376,7 +376,7 @@ interface AiPickService{
     fun extractClusterList(): Observable<BaseResult<ExtractRecord>>
 
     /**
-     * 获取加速矿机信息
+     * 获取加速服务器信息
      */
     @GET("/api/boost/getProduct")
     fun getAccelerateInfo(@Query("order_id") id: String): Observable<BaseResult<AccelerateInfo>>
@@ -388,12 +388,12 @@ interface AiPickService{
 
 
     /**
-     * 获取加速矿机收益详情
+     * 获取加速服务器收益详情
      */
     @POST("/api/boost/boost_coinage")
     fun getEarningsAccelerateDetails(@Query("order_id" ) type:String): Observable<BaseResult<List<MillEarningsDetails>>>
     /**
-     * 获取加速矿机收益详情
+     * 获取加速服务器收益详情
      */
     @POST("/api/boost/boost_coinage?pageSize=20")
     fun getEarningsAccelerateDetails(@Query("order_id" ) type:String,@Query("pageNum" ) page:String,@Query("start" )start:String, @Query("end" )end:String): Observable<BaseResult<List<MillEarningsDetails>>>

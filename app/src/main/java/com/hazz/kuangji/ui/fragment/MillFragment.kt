@@ -57,7 +57,7 @@ class MillFragment : BaseFragment(), IContractView.kuangjiView {
             datas.addAll(msg.machine_list.list)
         if (msg.machine_list.boost_list!=null)
             datas.addAll(msg.machine_list.boost_list)
-        var countNum = "0" //矿机总量
+        var countNum = "0" //服务器总量
         for (item in datas) {
             countNum = BigDecimalUtil.add(countNum, item.buy_storage, 2, RoundingMode.HALF_UP)
         }

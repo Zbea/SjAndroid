@@ -27,7 +27,7 @@ class Constants private constructor() {
         const val CODE=1024
         const val SALE_MIN=10 //最少卖多少个
         const val BUY_MIN=100 //最少买多少个
-        const val REAT_MIN=20 //最少租用矿机
+        const val REAT_MIN=20 //最少租用服务器
 
         const val CODE_EXCHANGE_SALE="10001"
         const val CODE_BUY_BROAD="10002"

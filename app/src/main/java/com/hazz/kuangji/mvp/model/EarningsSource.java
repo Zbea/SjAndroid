@@ -22,7 +22,7 @@ public class EarningsSource {
              * category : static
              * order_id : 96
              * create_at_index : 202004
-             * product : FIL币种算力矿机
+             * product : FIL币种算力服务器
              */
 
             public String create_at;

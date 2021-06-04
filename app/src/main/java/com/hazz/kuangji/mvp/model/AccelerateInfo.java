@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
 public class AccelerateInfo {
     /**
      * id : 2
-     * name : 加速矿机2
+     * name : 加速服务器2
      * desc : 测试
      * old_product_id : 20
      * storage : 200

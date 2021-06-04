@@ -112,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="矿机类型："
+                        android:text="服务器类型："
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 
@@ -121,7 +121,7 @@
                         android:layout_width="@dimen/dp_60"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="FIL矿机"
+                        android:text="FIL服务器"
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/sp_14" />
 
@@ -540,7 +540,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/space_dimen"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:gravity="center_vertical">
 
@@ -552,7 +552,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_5"
                 android:text="我已阅读同意"
                 android:textColor="@color/color_999999"
                 android:textSize="@dimen/sp_12" />
@@ -561,7 +560,7 @@
                 android:id="@+id/tv_xieyi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="《矿机租赁服务协议》"
+                android:text="《服务器租赁服务协议》"
                 android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_12" />
         </LinearLayout>

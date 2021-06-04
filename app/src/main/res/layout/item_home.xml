@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:singleLine="true"
-        android:text="开启矿机"
+        android:text="开启服务器"
         android:textStyle="bold"
         android:textColor="@color/color_333333"
         android:textSize="14sp" />
@@ -35,7 +35,7 @@
                 android:id="@+id/tv_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="矿机类型：Fil矿机"
+                android:text="服务器类型：Fil服务器"
                 android:textColor="@color/color_999999"
                 android:textSize="12sp" />
             <TextView
@@ -51,7 +51,7 @@
                 android:id="@+id/tv_suanli"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="矿机算力：1G"
+                android:text="服务器算力：1G"
                 android:layout_marginTop="@dimen/dp_5"
                 android:textColor="@color/color_999999"
                 android:textSize="12sp"

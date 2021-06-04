@@ -16,7 +16,7 @@ import com.hazz.kuangji.ui.activity.mine.ContractManagerActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
 
 /**
- * 加速矿机适配器
+ * 加速服务器适配器
  */
 class MillAccelerateAdapter(layoutResId: Int, data: List<Mill.MachineListBean.ListBean>?) : BaseQuickAdapter<Mill.MachineListBean.ListBean, BaseViewHolder>(layoutResId, data) {
 

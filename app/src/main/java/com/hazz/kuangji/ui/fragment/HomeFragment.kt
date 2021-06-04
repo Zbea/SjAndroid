@@ -89,7 +89,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         }
     }
 
-    //矿机列表
+    //服务器列表
     override fun getHome(msg: Home) {
         if (mView==null||activity==null)return
         sl_refresh?.isRefreshing=false

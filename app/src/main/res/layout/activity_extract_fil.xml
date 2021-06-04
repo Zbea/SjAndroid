@@ -117,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                android:text="25%矿机产出收益提出将影响您的矿机算力产出"
+                android:text="25%服务器产出收益提出将影响您的服务器算力产出"
                 android:textColor="@color/color_yellow"
                 android:textSize="@dimen/sp_12"
                 android:visibility="gone" />

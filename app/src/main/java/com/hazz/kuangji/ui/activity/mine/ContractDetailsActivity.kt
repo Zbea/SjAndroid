@@ -165,7 +165,7 @@ class ContractDetailsActivity : BaseActivity(), IContractView.IContractManagerVi
                     fos.close()
                     connection.disconnect()
                     mDialog?.dismiss()
-//                    SToast.showText("合同下载成功，请前往文件管理眼球矿机查看")
+//                    SToast.showText("合同下载成功，请前往文件管理眼球服务器查看")
                 }
             } catch (e: IOException) {
                 e.printStackTrace()

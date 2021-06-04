@@ -29,7 +29,7 @@ class AboutActivity : BaseActivity() {
 
     }
     override fun start() {
-        tv_version.text="眼球矿机V"+Utils.getVersionName(this)
+        tv_version.text="眼球存储V"+Utils.getVersionName(this)
         tv_versions.text="V"+Utils.getVersionName(this)
         rl_version.setOnClickListener {
             Beta.checkAppUpgrade()

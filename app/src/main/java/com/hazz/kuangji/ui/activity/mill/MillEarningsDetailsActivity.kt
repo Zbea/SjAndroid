@@ -29,7 +29,7 @@ import kotlin.collections.ArrayList
  * @fileName MillEarningsDetailsActivity
  * @date 2020/11/6 14:31
  * @email xiaofeng9212@126.com
- * @describe 矿机收益详细
+ * @describe 服务器收益详细
  **/
 class MillEarningsDetailsActivity : BaseActivity(), IContractView.EarningsDetailsView{
 

@@ -253,7 +253,7 @@
                                 android:id="@+id/tv_cluster_type"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="矿机类型：Fil矿机集群"
+                                android:text="服务器类型：Fil服务器集群"
                                 android:textColor="@color/color_999999"
                                 android:textSize="12sp" />
                             <TextView
