@@ -45,7 +45,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
 
     override fun onSuccess() {
         EventBus.getDefault().post(Constants.CODE_CLUSTER_EXTRACT)
-        ToastUtils.s(this,"提现成功,等待审核")
+        ToastUtils.s(this,"转出成功,等待审核")
         finish()
     }
 
@@ -72,7 +72,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
 
         assetCluster=intent.getSerializableExtra("asset") as  AssetCluster
         avaiableAmount = assetCluster?.max_withdraw.toString()
-        tv_lest.text = "可提" + avaiableAmount + "FIL"
+        tv_lest.text = "可转" + avaiableAmount + "FIL"
         val config = assetCluster!!.config
         if (config != null) {
             min=config[0].value
@@ -121,15 +121,15 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
         tv_bt.setOnClickListener {
             var amount = et_num.text.toString()
             if (TextUtils.isEmpty(amount)) {
-                SToast.showText("请输入提现数量")
+                SToast.showText("请输入转出数量")
                 return@setOnClickListener
             }
             if (!BigDecimalUtil.compare(max, amount)) {
-                SToast.showText("提现数量不能超过$max")
+                SToast.showText("转出数量不能超过$max")
                 return@setOnClickListener
             }
             if (!BigDecimalUtil.compare(amount, min)) {
-                SToast.showText("提现数量不能低于$min")
+                SToast.showText("转出数量不能低于$min")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(et_pwd.text.toString())) {
@@ -137,7 +137,7 @@ class ExtractFilActivity : BaseActivity(), IContractView.IAssetClusterView {
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(et_address.text.toString())) {
-                SToast.showText("请输入提币地址")
+                SToast.showText("请输入转出地址")
                 return@setOnClickListener
             }
 

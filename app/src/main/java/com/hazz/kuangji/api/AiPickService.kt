@@ -76,14 +76,14 @@ interface AiPickService{
 
 
     /**
-     * 提币
+     * 转出
      */
     @POST("trade/withdrawal")
     fun tibi(@Body request: RequestBody): Observable<BaseResult<Any>>
 
 
     /**
-     * 提币记录
+     * 转出记录
      */
     @GET("trade/withdrawal")
     fun tibiRecord(): Observable<BaseResult<ExtractRecord>>
@@ -200,7 +200,7 @@ interface AiPickService{
 
 
     /**
-     * 获取我的币种信息
+     * 获取我的fil种类信息
      */
     @GET("accounts/v0/buycoin/")
     fun getExchange(): Observable<BaseResult<Exchange>>
@@ -231,31 +231,31 @@ interface AiPickService{
     @GET("accounts/v0/allorders/{type}")
     fun getOrderBuyList(@Path("type" ) type:String): Observable<BaseResult<List<ExchangeRecord>>>
     /**
-     * 提交卖币订单
+     * 提交卖订单
      */
     @Multipart
     @POST("user_selling")
     fun commitOrderSale(@QueryMap map:HashMap<String,String>,@Part file: MultipartBody.Part): Observable<BaseResult<ExchangeOrder>>
     /**
-     * 提交卖币订单
+     * 提交卖订单
      */
     @POST("user_selling")
     fun commitOrderSale(@QueryMap map:HashMap<String,String>): Observable<BaseResult<ExchangeOrder>>
 
     /**
-     * 币币兑换
+     * 种类兑换
      */
     @FormUrlEncoded
     @POST("accounts/v0/trans/")
     fun commitExchange(@FieldMap map: HashMap<String, String>): Observable<BaseResult<Any>>
     /**
-     * 获取卖币订单
+     * 获取卖订单
      */
     @POST("get_order_detail")
     fun getOrderSale(@Query("order_code" ) type:String): Observable<BaseResult<ExchangeOrder>>
 
     /**
-     * 取消卖币订单
+     * 取消卖订单
      */
     @POST("cancel_order")
     fun cancelOrderSale(@Query("order_code" ) type:String): Observable<BaseResult<Any>>

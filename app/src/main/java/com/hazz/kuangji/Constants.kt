@@ -38,8 +38,6 @@ class Constants private constructor() {
 
         const val BUGLY_ID="9e1bc2b87d"
 
-        const val URL_TEST = "http://192.168.1.13:5000/"
-
 //        const val URL_NEW_BASE = "http://192.168.1.116:5000/"
 //        const val URL_BASE = "http://192.168.1.116/api/"
 //        const val URL_INVITE = "http://192.168.1.116/"

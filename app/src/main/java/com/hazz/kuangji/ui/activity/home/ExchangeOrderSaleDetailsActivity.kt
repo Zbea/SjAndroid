@@ -83,7 +83,7 @@ class ExchangeOrderSaleDetailsActivity : BaseActivity(), IContractView.IExchange
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("卖币订单详情")
+                .setTitle("卖订单详情")
                 .setOnLeftIconClickListener { finish() }
 
         tv_commit.setOnClickListener{

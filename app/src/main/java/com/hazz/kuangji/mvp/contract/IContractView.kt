@@ -141,7 +141,6 @@ interface IContractView {
         fun cancelOrder()
     }
 
-    //币币兑换
     interface IExchangeCoinView: BaseView {
         fun getExchange(data: Exchange)
         fun commitCoin()

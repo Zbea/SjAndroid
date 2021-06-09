@@ -19,13 +19,4 @@
 
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="实久耘智科技集团有限公司版权所有"
-        android:textColor="@color/color_999999"
-        android:textSize="@dimen/sp_12"
-        android:paddingBottom="@dimen/dp_15"
-        android:gravity="center|bottom"/>
-
 </LinearLayout>

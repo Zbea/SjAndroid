@@ -82,7 +82,7 @@
                 android:id="@+id/tv_order_number_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="买币数量："
+                android:text="购买数量："
                 android:textSize="@dimen/sp_14"
                 android:textColor="@color/color_999999"/>
 

@@ -129,7 +129,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="分享收益(USDT)"
+                        android:text="分享(USDT)"
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 
@@ -165,7 +165,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="业绩收益(FIL)"
+                        android:text="绩效(FIL)"
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 
@@ -190,7 +190,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="团队收益(FIL)"
+                        android:text="团队(FIL)"
                         android:textColor="@color/color_999999"
                         android:textSize="@dimen/sp_14" />
 

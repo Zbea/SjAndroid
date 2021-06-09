@@ -17,10 +17,10 @@ public class AssetCluster implements Serializable {
         "seal_storage": "有效封装算力",
         "seal_add": "算力增量",
         "release_fil": "总释放量",
-        "day_t_fil": "一天单T产币量",
-        "day_coinage_fil": "一天总产币",
+        "day_t_fil": "一天单T产",
+        "day_coinage_fil": "一天总产",
         "unrelease_fil": "未释放",
-        "pledge_fil": "质押币"
+        "pledge_fil": "质押"
      */
 
     public String total_storage;
@@ -41,7 +41,7 @@ public class AssetCluster implements Serializable {
          * create_at : 2020-04-05 02:45:30
          * update_at : 2020-04-05 02:45:30
          * id : 1
-         * name : 提币最低
+         * name : 转出最低
          * value : 20
          * desc :
          */

@@ -75,7 +75,7 @@ android {
     // 自定义输出配置
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "kuangji${variant.versionName}_${variant.name}.apk"
+            outputFileName = "Eyeball${variant.versionName}_${variant.name}.apk"
         }
     }
 

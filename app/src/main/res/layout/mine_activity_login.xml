@@ -16,7 +16,7 @@
         android:textColor="@color/color_white"
         android:layout_marginTop="@dimen/dp_94"
         android:layout_marginLeft="@dimen/space_dimen"
-        android:text="登录实久耘智"/>
+        android:text="登录眼球存储"/>
 
     <LinearLayout
         android:layout_below="@+id/tv_title"

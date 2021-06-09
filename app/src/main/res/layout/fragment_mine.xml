@@ -39,32 +39,11 @@
                 android:layout_marginTop="@dimen/dp_30"
                 android:src="@mipmap/icon_home_mine" />
 
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_15"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/iv_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                     />
-                <ImageView
-                    android:id="@+id/iv_company_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:visibility="gone"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_40"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <ImageView
@@ -132,7 +111,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_10"
-                        android:text="一键买币"
+                        android:text="一键买"
                         android:textColor="@color/color_mine_btn"
                         android:textSize="@dimen/sp_14" />
 

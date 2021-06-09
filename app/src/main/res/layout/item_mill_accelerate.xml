@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:singleLine="true"
-                android:text="FIL币种算力服务器"
+                android:text="FIL种类算力服务器"
                 android:lines="1"
                 android:ellipsize="end"
                 android:textStyle="bold"
@@ -145,7 +145,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="质押币总数（FIL）"
+                    android:text="质押总数（FIL）"
                     android:textColor="@color/color_999999"
                     android:textSize="@dimen/sp_10" />
 

@@ -15,13 +15,13 @@ public class ExchangeOrder {
     public int is_pay;
     public String pay_type;
 
-    //买币
+    //买
     public String wx;
     public String zfb;
     public String banknum;
     public String bankname;
     public String username;
-    //卖币
+    //卖
     public String wx_url;
     public String zfb_url;
     public String bank_code;

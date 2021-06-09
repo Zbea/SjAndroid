@@ -116,16 +116,6 @@ object RetrofitManager{
 
     }
 
-    private fun getRetrofitTest(): Retrofit {
-        // 获取retrofit的实例
-        return Retrofit.Builder()
-                .baseUrl(Constants.URL_TEST)  //自己配置
-                .client(getOkHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-    }
 
     private fun getSms(): Retrofit {
         // 获取retrofit的实例

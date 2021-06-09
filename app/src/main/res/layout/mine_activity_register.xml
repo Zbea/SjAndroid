@@ -19,7 +19,7 @@
         android:textColor="@color/color_white"
         android:layout_marginTop="@dimen/dp_50"
         android:layout_marginLeft="@dimen/space_dimen"
-        android:text="注册实久耘智"/>
+        android:text="注册眼球存储"/>
 
 
 

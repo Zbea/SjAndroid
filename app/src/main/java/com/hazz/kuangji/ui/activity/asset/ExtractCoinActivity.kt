@@ -50,7 +50,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             for (coin in assets!!) {
                 if (coin.coin == currentName) {
                     avaiableAmount = coin.balance
-                    tv_lest.text = "可提" + coin.balance + currentName
+                    tv_lest.text = "可转" + coin.balance + currentName
                 }
             }
 
@@ -139,7 +139,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 }
             }
             et_num.hint = "最小:$min/最大:$max"
-            tv_lest.text = "可提$avaiableAmount $currentName"
+            tv_lest.text = "可转$avaiableAmount $currentName"
             et_num.setText("")
             tv_need.text="0"
             tv_shiji.text="0"
@@ -185,18 +185,18 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
         tv_bt.setOnClickListener {
             var amount=et_num.text.toString()
             if (TextUtils.isEmpty(amount)) {
-                SToast.showText("请输入提币数量")
+                SToast.showText("请输入转出数量")
                 return@setOnClickListener
             }
 
             if (!BigDecimalUtil.compare(max,amount))
             {
-                SToast.showText("提币数量不能超过$max")
+                SToast.showText("转出数量不能超过$max")
                 return@setOnClickListener
             }
             if (!BigDecimalUtil.compare(amount,min))
             {
-                SToast.showText("提币数量不能低于$min")
+                SToast.showText("转出数量不能低于$min")
                 return@setOnClickListener
             }
 
@@ -206,7 +206,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(et_address.text.toString())) {
-                SToast.showText("请输入提币地址")
+                SToast.showText("请输入转出地址")
                 return@setOnClickListener
             }
 
@@ -214,7 +214,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
             {
                 if (!BigDecimalUtil.compare(amount,getCurrentRateAmount()))
                 {
-                    SToast.showText("提币数量不能低于扣除费用")
+                    SToast.showText("转出数量不能低于扣除费用")
                     return@setOnClickListener
                 }
             }
@@ -291,7 +291,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.TibiView, IContractVie
     }
 
     /**
-     * 获得当前币最低
+     * 获得当前最低
      */
     private fun getCurrentRateAmount():String{
         return if (currentName=="USDT") rateAmountUsdt else rateAmountFil

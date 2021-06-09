@@ -8,7 +8,7 @@ public class MyAsset implements Serializable {
 
         /**
          * wallet_address : 0x61e337e8a91900d57bc6801e3d0cf909cbe52356
-         * config : [{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"1","name":"提币最低","value":"20","desc":""},{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"2","name":"提币最高","value":"10000","desc":""},{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"3","name":"转账手续费","value":"0.5","desc":"百分比"}]
+         * config : [{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"1","name":"转出最低","value":"20","desc":""},{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"2","name":"转出最高","value":"10000","desc":""},{"create_at":"2020-04-05 02:45:30","update_at":"2020-04-05 02:45:30","id":"3","name":"转账手续费","value":"0.5","desc":"百分比"}]
          * usdt_to_cny_rate : 7.1768
          * fcoin_revenue : 735.00000000
          * usdt_revenue : 10033.00000000
@@ -29,7 +29,7 @@ public class MyAsset implements Serializable {
              * create_at : 2020-04-05 02:45:30
              * update_at : 2020-04-05 02:45:30
              * id : 1
-             * name : 提币最低
+             * name : 提最低
              * value : 20
              * desc :
              */

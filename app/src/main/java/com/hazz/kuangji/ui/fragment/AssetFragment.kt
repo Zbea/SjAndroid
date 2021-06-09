@@ -117,9 +117,9 @@ class AssetFragment : BaseFragment(), IContractView.AssetView, IContractView.Sho
             startActivity(Intent(activity, IncomingActivity::class.java))
         }
 
-        ll_yesterday.setOnClickListener {
-            startActivity(Intent(activity, YesterdayEarningsSourceActivity::class.java))
-        }
+//        ll_yesterday.setOnClickListener {
+//            startActivity(Intent(activity, YesterdayEarningsSourceActivity::class.java))
+//        }
 
         ll_fil.setOnClickListener {
             startActivity(Intent(activity, AssetFilDetailsActivity::class.java))

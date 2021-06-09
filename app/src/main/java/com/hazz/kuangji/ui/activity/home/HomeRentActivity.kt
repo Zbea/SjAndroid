@@ -140,7 +140,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                 }
 
                 if (totalUSDT.toFloat() > usableUSDT.toFloat()) {
-                    SToast.showTextLong("账户USDT余额不足，请前往充值")
+                    SToast.showTextLong("账户USDT余额不足，请转入USDT")
                     Handler().postDelayed(Runnable {
                         startActivity(Intent(this, ChargeActivity::class.java))
                     }, 500)
@@ -148,7 +148,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                 }
 
                 if (totalFIL.toFloat() > usableFIL.toFloat()) {
-                    SToast.showTextLong("账户FIL余额不足，请前往充值")
+                    SToast.showTextLong("账户FIL余额不足，请转入FIL")
                     Handler().postDelayed(Runnable {
                         startActivity(Intent(this, ChargeActivity::class.java))
                     }, 500)

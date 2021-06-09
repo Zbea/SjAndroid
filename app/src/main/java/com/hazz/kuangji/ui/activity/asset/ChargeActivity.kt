@@ -97,7 +97,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
             cm.primaryClip = clipData
 
-            SToast.showText("已成功复制充值地址")
+            SToast.showText("已成功复制转入地址")
 
         }
 
@@ -108,7 +108,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
             ).subscribe { permission ->
                 if (permission!!) {
 
-                    SToast.showText("充值二维码保存成功")
+                    SToast.showText("二维码保存成功")
 
                     ImageUtils.saveBmp2Gallery(this, createQRCode, "charge_qrcode")
 

@@ -64,7 +64,7 @@ class ExchangeOrderSaleCommitActivity : BaseActivity(), IContractView.IExchangeS
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("卖币信息确认")
+                .setTitle("卖信息确认")
                 .setOnLeftIconClickListener { finish() }
 
         tv_upload.setOnClickListener(this)

@@ -147,7 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="理财币种"
+                    android:text="理财种类"
                     android:textColor="@color/color_666666_night"
                     android:textSize="@dimen/sp_14"
                     app:layout_constraintLeft_toLeftOf="@+id/tv2"

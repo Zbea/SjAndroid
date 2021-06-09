@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="实久耘智科技集团有限公司版权所有"
+        android:text="眼球存储科技集团有限公司版权所有"
         android:layout_margin="@dimen/dp_15"
         android:textColor="@color/color_999999"
         android:textSize="@dimen/sp_14"

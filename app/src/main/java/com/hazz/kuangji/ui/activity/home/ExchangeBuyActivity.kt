@@ -61,7 +61,7 @@ class ExchangeBuyActivity : BaseActivity(), IContractView.IExchangeBuyView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("一键买币")
+                .setTitle("一键买")
                 .setOnLeftIconClickListener { finish() }
                 .setRightText("明细")
                 .setRightTextIsShow(true)

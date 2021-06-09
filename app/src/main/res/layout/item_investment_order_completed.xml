@@ -27,7 +27,7 @@
             android:id="@+id/tv_title"
             android:layout_width="@dimen/dp_220"
             android:layout_height="wrap_content"
-            android:text="持币升息（90天）"
+            android:text="增值服务（90天）"
             android:layout_marginLeft="@dimen/dp_10"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_main_nor"/>

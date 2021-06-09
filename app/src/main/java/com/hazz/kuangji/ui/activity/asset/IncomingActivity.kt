@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_incoming.*
 class IncomingActivity : BaseActivity(), TabLayout.OnTabSelectedListener, IContractView.ShouyiView {
 
 
-    private val titles: Array<String> = arrayOf("分享收益", "业绩收益", "团队收益")
+    private val titles: Array<String> = arrayOf("分享", "绩效", "团队")
 
     private var adapter: IncomingAdapter? = null
     private var incoming: InComing? = null

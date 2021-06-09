@@ -240,7 +240,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总需质押币（FIL）"
+                            android:text="总需质押（FIL）"
                             android:textColor="@color/color_999999"
                             android:textSize="@dimen/sp_10" />
 
@@ -321,7 +321,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每T需质押币（FIL）"
+                            android:text="每T需质押（FIL）"
                             android:textColor="@color/color_999999"
                             android:textSize="@dimen/sp_10" />
 

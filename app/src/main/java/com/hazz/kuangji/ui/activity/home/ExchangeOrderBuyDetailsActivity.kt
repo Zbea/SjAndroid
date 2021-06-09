@@ -169,7 +169,7 @@ class ExchangeOrderBuyDetailsActivity : BaseActivity(), IContractView.IExchangeO
                 val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
                 val clipData = ClipData.newPlainText("bank_code", tv_bank_card.text.toString())
                 cm.primaryClip = clipData
-                SToast.showText("已成功复制充值地址")
+                SToast.showText("已成功复制转入地址")
             }
             tv_qrcode_save ->
             {

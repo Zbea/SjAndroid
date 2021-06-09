@@ -58,7 +58,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
     private var usableUSDT = "0.00000000"
     private var usableFIL = "0.00000000"
     private var price = "0.00000000" //每T需补 usdt
-    private var pledge = "0.00000000" //每T质押币 fil
+    private var pledge = "0.00000000" //每T质押 fil
     private var gas = "0.00000000" //每Tgas fil
     private var totalFIL = "0.00000000" //所需总fil
     private var totalUSDT = "0.00000000" //总需补usdt
@@ -166,7 +166,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
             }
 
             if (totalUSDT.toFloat() > usableUSDT.toFloat()) {
-                SToast.showTextLong("账户USDT余额不足，请前往充值")
+                SToast.showTextLong("账户USDT余额不足，请转入USDT")
                 Handler().postDelayed(Runnable {
                     startActivity(Intent(this, ChargeActivity::class.java))
                 }, 500)
@@ -174,7 +174,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
             }
 
             if (totalFIL.toFloat() > usableFIL.toFloat()) {
-                SToast.showTextLong("账户FIL余额不足，请前往充值")
+                SToast.showTextLong("账户FIL余额不足，请转入FIL")
                 Handler().postDelayed(Runnable {
                     startActivity(Intent(this, ChargeActivity::class.java))
                 }, 500)
