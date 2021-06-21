@@ -48,8 +48,8 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         Log.i("sj","code:"+item.androidVersion)
         if (item.androidVersion>Constants.CODE)
         {
-            Beta.checkAppUpgrade()
-            SToast.showTextLong("有新版本，请及时更新")
+//            Beta.checkAppUpgrade()
+//            SToast.showTextLong("有新版本，请及时更新")
         }
     }
 
