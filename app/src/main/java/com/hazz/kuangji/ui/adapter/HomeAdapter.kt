@@ -1,32 +1,30 @@
 package com.hazz.kuangji.ui.adapter
 
 
-import android.content.Intent
-import android.text.Html
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.ui.activity.home.HomeRentActivity
-import com.hazz.kuangji.utils.BigDecimalUtil
-import com.hazz.kuangji.utils.GlideEngine
 
-class HomeAdapter(layoutResId: Int, data: List<Home.BoostBean>?) : BaseQuickAdapter<Home.BoostBean, BaseViewHolder>(layoutResId, data) {
+class HomeAdapter(layoutResId: Int, data: List<Home.ProductBean.FilBean>?) : BaseQuickAdapter<Home.ProductBean.FilBean, BaseViewHolder>(layoutResId, data) {
 
 
     lateinit var onConfirm: (View, Int) -> Unit
 
-    override fun convert(helper: BaseViewHolder, item: Home.BoostBean) {
+    override fun convert(helper: BaseViewHolder, item: Home.ProductBean.FilBean) {
 
         helper.run {
             setText(R.id.tv_name, item.name)
             setText(R.id.tv_type, "服务器类型：FIL服务器")
-            setText(R.id.tv_time, "合约周期："+item.term+"天")
-            GlideEngine.createGlideEngine().loadImage(mContext, Constants.URL_INVITE+item.pic,getView(R.id.iv))
+            setText(R.id.tv_time, "周期："+item.allTerm+"天")
+
+            Glide.with(mContext).load(Constants.URL_BASE+item.img).apply(
+                RequestOptions.bitmapTransform(RoundedCorners(20))).into(getView(R.id.iv))
         }
     }
 

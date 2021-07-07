@@ -10,11 +10,9 @@ import com.hazz.kuangji.net.Callback
 import com.hazz.kuangji.net.RetrofitManager
 
 
-class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractView.kuangjiView>(view) {
+class MillPresenter(view: IContractView.IMillView) : BasePresenter<IContractView.IMillView>(view) {
 
-    fun kuangji() {
-
-
+    fun mill() {
 
         val login = RetrofitManager.service.getMill()
 
@@ -33,20 +31,17 @@ class MillPresenter(view: IContractView.kuangjiView) : BasePresenter<IContractVi
     }
 
 
+    fun getEargings(id: String) {
 
-    fun mingxi(start:String,end:String) {
+        val eargings = RetrofitManager.service.getMillEarnings(id)
 
-
-
-        val login = RetrofitManager.service.getMillEarnings(start,end)
-
-        doRequest(login, object : Callback<MillEarningsList>(view) {
-            override fun failed(tBaseResult: BaseResult<MillEarningsList>): Boolean {
+        doRequest(eargings, object : Callback<List<MillEarningsList>>(view) {
+            override fun failed(tBaseResult: BaseResult<List<MillEarningsList>>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<MillEarningsList>) {
+            override fun success(tBaseResult: BaseResult<List<MillEarningsList>>) {
                 view.getEarningsList(tBaseResult.data!!)
             }
 

@@ -1,7 +1,6 @@
 package com.hazz.kuangji.net
 
 import android.util.ArrayMap
-import android.util.Log
 import android.util.Pair
 import com.google.gson.Gson
 import okhttp3.MediaType

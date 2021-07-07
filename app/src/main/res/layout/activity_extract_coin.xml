@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
@@ -15,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_dimen"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,27 +29,37 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_left"
+                    android:id="@+id/rb_usdt"
                     style="@style/rb_style1"
                     android:checked="true"
-                    android:text="USDT"  />
+                    android:text="USDT" />
 
                 <RadioButton
-                    android:id="@+id/rb_right"
+                    android:id="@+id/rb_fil"
                     style="@style/rb_style1"
                     android:text="FIL" />
+
+                <RadioButton
+                    android:id="@+id/rb_bzz"
+                    style="@style/rb_style1"
+                    android:text="BZZ" />
+
+                <RadioButton
+                    android:id="@+id/rb_chia"
+                    style="@style/rb_style1"
+                    android:text="Chia" />
             </RadioGroup>
 
 
             <TextView
-                android:layout_marginTop="@dimen/dp_30"
                 android:id="@+id/tv_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_30"
                 android:text="@string/tibi_address"
                 android:textColor="@color/color_333333"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -61,17 +69,17 @@
                 <EditText
                     android:id="@+id/et_address"
                     android:layout_width="match_parent"
-                    android:layout_toLeftOf="@+id/tv_scan"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:background="@null"
                     android:layout_marginRight="@dimen/dp_5"
+                    android:layout_toLeftOf="@+id/tv_scan"
+                    android:background="@null"
                     android:hint="@string/input_tibi_address"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:textColor="@color/color_666666"
                     android:textColorHint="@color/color_hint"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="13sp" />
 
                 <ImageView
                     android:id="@+id/tv_scan"
@@ -86,11 +94,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_20"
                 android:text="@string/tibi_num"
                 android:textColor="@color/color_333333"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/sp_16"
+                android:textStyle="bold" />
 
 
             <RelativeLayout
@@ -109,7 +117,26 @@
                     android:singleLine="true"
                     android:textColor="@color/color_666666"
                     android:textColorHint="@color/color_hint"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="13sp" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_lest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="可转0USDT"
+                    android:textColor="@color/color_hint"
+                    android:textSize="@dimen/sp_12" />
 
                 <TextView
 
@@ -119,104 +146,151 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="center_vertical"
-                    android:text="@string/all"
-                    android:textSize="@dimen/sp_14"
-                    android:textColor="@color/color_main" />
+                    android:text="全部转出"
+                    android:textColor="@color/color_main"
+                    android:textSize="@dimen/sp_12" />
 
-            </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/jiaoyi_pwd"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/tv_lest"
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_dimen"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_line_bottom"
+                    android:hint="@string/input_deal_pwd"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@color/color_666666"
+                    android:textColorHint="@color/color_hint"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手续费"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_need"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_12" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                android:text="可提0USDT"
-                android:textSize="@dimen/sp_12"
-                android:textColor="@color/color_main_nor" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/dp_15"
-                android:text="手续费"
-                android:textColor="@color/color_333333"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="实际到账"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_12"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv_need"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_dimen"
-                android:background="@drawable/bg_line_bottom"
-                android:text="0"
-                android:gravity="center_vertical"
-                android:textColor="@color/color_666666"
-                android:textSize="@dimen/sp_14" />
+                <TextView
+                    android:id="@+id/tv_shiji"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="0"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_12" />
 
-            <TextView
-                android:id="@+id/tv_shouxu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textSize="@dimen/sp_12"
-                android:textColor="@color/color_main_nor" />
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/dp_15"
-                android:text="实际到账"
-                android:textColor="@color/color_333333"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_14" />
-
-            <TextView
-                android:id="@+id/tv_shiji"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_dimen"
-                android:background="@drawable/bg_line_bottom"
-                android:text="0"
-                android:gravity="center_vertical"
-                android:textColor="@color/color_666666"
-                android:textSize="@dimen/sp_14" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_15"
-                android:text="@string/jiaoyi_pwd"
-                android:textColor="@color/color_333333"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp_14" />
-
-
-            <EditText
-                android:id="@+id/et_pwd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_dimen"
-                android:layout_centerVertical="true"
-                android:background="@drawable/bg_line_bottom"
-                android:hint="@string/input_deal_pwd"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:textColor="@color/color_666666"
-                android:textColorHint="@color/color_hint"
-                android:textSize="@dimen/sp_14" />
 
             <Button
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
                 android:background="@drawable/bg_main_solid_5dp_coner"
-                android:text="@string/tibi"
+                android:text="确认转出"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/sp_16"
-                />
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_50"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_15">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_tips" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:text="温馨提示"
+                        android:textColor="@color/color_main_nor"
+                        android:textSize="@dimen/sp_10"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="请您仔细确认转出地址是否存在且正确，否则将会导致转出失败，且可能 造成资产不可找回。请务必仔细核对地址，否则造成资产损失且不可找回 由用户自行承担！"
+                    android:textColor="@color/color_main_nor"
+                    android:textSize="@dimen/sp_10"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

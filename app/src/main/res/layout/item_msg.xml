@@ -11,6 +11,7 @@
     android:background="@drawable/bg_gray_solid_5dp_coner"
     android:layout_marginLeft="@dimen/space_dimen"
     android:layout_marginRight="@dimen/space_dimen"
+    android:layout_marginTop="@dimen/dp_15"
     >
 
     <ImageView
@@ -32,6 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="@dimen/sp_14"
         android:textColor="@color/color_333333"
+        android:textStyle="bold"
         android:singleLine="true"
         android:ellipsize="end"
         />

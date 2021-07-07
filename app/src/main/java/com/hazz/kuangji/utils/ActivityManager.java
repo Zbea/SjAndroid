@@ -2,7 +2,6 @@ package com.hazz.kuangji.utils;
 
 import android.app.Activity;
 
-
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.Stack;

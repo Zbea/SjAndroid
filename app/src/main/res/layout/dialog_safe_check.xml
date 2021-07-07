@@ -57,6 +57,7 @@
             android:text="@string/cancel"
             android:gravity="center"
             android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
             android:textColor="@color/color_999999"
             />
         <View
@@ -70,6 +71,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/confirm"
+            android:textStyle="bold"
             android:gravity="center"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_main"

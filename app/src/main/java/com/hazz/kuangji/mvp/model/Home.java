@@ -7,120 +7,64 @@ import java.util.List;
 
 public class Home implements Serializable {
 
-    public int signed;
-    public List<ProductsBean> products;
-    public List<CarouselBean> carousel;
-    public ClusterBean clusters;
-    public List<BoostBean> boost;
 
-    public static class BoostBean implements Serializable{
+    @SerializedName("product")
+    public ProductBean product;
+    @SerializedName("banner")
+    public List<BannerBean> banner;
+
+    public static class ProductBean implements Serializable{
         /**
-         * id : 3
-         * name : 加速服务器3
-         * desc : 测试
-         * old_product_id : 0
-         * storage : 600
-         * usdt_price : 600.00000000
+         * id : 211
+         * name : 矿机名称
+         * img :
+         * power : 算力存储 T
+         * usdt_price : 400.00000000
+         * pledge_price : 10.00000000
          * gas_price : 5.00000000
-         * pledge_price : 15.00000000
-         * term : 540
-         * build_term : 20
-         * seal_term : 100
-         * contract_id : 1
-         * status : 1
-         * rent_type : 1
-         * created_at : 2021-04-08 12:54:50
-         * updated_at : 2021-04-15 14:50:01
-         * miner_number :
-         * pic : /uploads/miner_pic/miner-01.png
+         * build_term : 建设期
+         * seal_term : 封装期
+         * all_term : 运行周期
          */
+        @SerializedName("fil")
+        public List<FilBean> fil;
+        @SerializedName("chia")
+        public List<FilBean> chia;
+        @SerializedName("bzz")
+        public List<FilBean> bzz;
 
-        @SerializedName("id")
-        public String id;
+        public static class FilBean {
+            @SerializedName("id")
+            public String id;
+            @SerializedName("name")
+            public String name;
+            @SerializedName("img")
+            public String img;
+            @SerializedName("power")
+            public String power;
+            @SerializedName("usdt_price")
+            public String usdtPrice;
+            @SerializedName("pledge_price")
+            public String pledgePrice;
+            @SerializedName("gas_price")
+            public String gasPrice;
+            @SerializedName("build_term")
+            public String buildTerm;
+            @SerializedName("seal_term")
+            public String sealTerm;
+            @SerializedName("all_term")
+            public String allTerm;
+        }
+    }
+
+    public static class BannerBean {
+        @SerializedName("img")
+        public String img;
         @SerializedName("name")
         public String name;
-        @SerializedName("desc")
-        public String desc;
-        @SerializedName("old_product_id")
-        public String oldProductId;
-        @SerializedName("storage")
-        public String storage;
-        @SerializedName("usdt_price")
-        public String usdtPrice;
-        @SerializedName("gas_price")
-        public String gasPrice;
-        @SerializedName("pledge_price")
-        public String pledgePrice;
-        @SerializedName("term")
-        public String term;
-        @SerializedName("build_term")
-        public String buildTerm;
-        @SerializedName("seal_term")
-        public String sealTerm;
-        @SerializedName("contract_id")
-        public String contractId;
-        @SerializedName("status")
-        public String status;
-        @SerializedName("rent_type")
-        public String rentType;
-        @SerializedName("created_at")
-        public String createdAt;
-        @SerializedName("updated_at")
-        public String updatedAt;
-        @SerializedName("miner_number")
-        public String minerNumber;
-        @SerializedName("pic")
-        public String pic;
-
-    }
-
-    public static class ProductsBean implements Serializable {
-
+        @SerializedName("detail")
+        public String detail;
+        @SerializedName("id")
         public String id;
-        public String name;
-        public String price;
-        public String desc;
-        public String coin;
-        public String round;
-        public String power;
-        public String status;
-        public String outcome_coin;
-        public String rent_type;
-        public String pic;
-        public String rate;
-        public String created_at;
-        public String updated_at;
-        public String user_balance;
-        public String storage;
-        public String type;
     }
-
-    public static class CarouselBean {
-        /**
-         * id : 2
-         * url : fffffddaaaaaaaaaaaa
-         * title : daaaaaaaaaaaa
-         * content : asdfasdfaaaaaaaaaaaaaaaaaa
-         * state : 1
-         * created_at : 2020-04-28 16:29:12
-         * updated_at : 2020-04-28 17:19:09
-         */
-
-        public String id;
-        public String url;
-        public String title;
-        public String content;
-        public String state;
-        public String created_at;
-        public String updated_at;
-    }
-
-    public static class ClusterBean {
-
-        public String name;
-        public String pic;
-        public String type;
-        public String round;
-    }
-
 }

@@ -12,8 +12,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.hazz.kuangji.net.BaseView
 import com.hazz.kuangji.net.ExceptionHandle
 import com.hazz.kuangji.ui.activity.LoginActivity
@@ -47,14 +45,7 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
         mSaveState=savedInstanceState
         setContentView(layoutId())
 
-        if (SPUtil.getBoolean("skin"))
-        {
-            StatusBarUtil.darkMode(this,false)
-        }
-        else
-        {
-            StatusBarUtil.darkMode(this)
-        }
+        StatusBarUtil.darkMode(this)
 
         mDialog = ProgressDialog(this)
         initView()
@@ -70,10 +61,6 @@ abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCal
 
     }
 
-    @NonNull
-    override fun getDelegate(): AppCompatDelegate {
-        return SkinAppCompatDelegateImpl.get(this, this)
-    }
 
     /**
      *  加载布局

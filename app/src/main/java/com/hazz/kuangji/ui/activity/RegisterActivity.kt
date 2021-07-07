@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
@@ -13,10 +14,17 @@ import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.StatusBarUtil
+import com.hazz.kuangji.utils.ToolBarCustom
+import kotlinx.android.synthetic.main.activity_mine_exchange_pwd.*
 import kotlinx.android.synthetic.main.mine_activity_register.*
+import kotlinx.android.synthetic.main.mine_activity_register.mToolBar
+import kotlinx.android.synthetic.main.mine_activity_register.tv_get_code
 
 
 class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
+
+    private var mLoginPresenter: LoginPresenter = LoginPresenter(this)
+    private var countDownTimer: CountDownTimer? = null
 
     override fun afterTextChanged(s: Editable?) {
         if(s.toString().contains(" ")){
@@ -33,8 +41,6 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
     }
 
     override fun loginSuccess(msg: UserInfo) {
-
-
     }
 
     override fun sendSms(msg: String) {
@@ -66,28 +72,21 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
         finish()
     }
 
-
-    private var mLoginPresenter: LoginPresenter = LoginPresenter(this)
-    private var countDownTimer: CountDownTimer? = null
-
-
     override fun layoutId(): Int {
         return R.layout.mine_activity_register
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this,false)
         mEtNickName.addTextChangedListener(this)
-        tv_xieyi.setOnClickListener {
-            startActivity(Intent(this,ProtocolActivity::class.java).putExtra("type",0))
-
+        tv_agreement.setOnClickListener {
+            startActivity(Intent(this,AgreementActivity::class.java).setFlags(0))
         }
     }
 
     override fun initView() {
-        iv_back.setOnClickListener {
-            finish()
-        }
+        ToolBarCustom.newBuilder(mToolBar as Toolbar)
+            .setTitle("注册眼球存储")
+            .setOnLeftIconClickListener { view -> finish() }
     }
 
     override fun start() {
@@ -100,7 +99,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
                 SToast.showText(getString(R.string.phone_length_fail))
                 return@setOnClickListener
             }
-            mLoginPresenter.sendSMs(mEtPhoneOrEmial.text.toString().trim())
+            mLoginPresenter.sendSMs(mEtPhoneOrEmial.text.toString().trim(),"0")
         }
 
         mTvRegister.setOnClickListener {

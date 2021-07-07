@@ -2,10 +2,10 @@ package com.hazz.kuangji.mvp.presenter
 
 
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.Sms
-import com.hazz.kuangji.net.*
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
+import com.hazz.kuangji.net.BasePresenter
+import com.hazz.kuangji.net.BaseResult
+import com.hazz.kuangji.net.Callback
+import com.hazz.kuangji.net.RetrofitManager
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -19,25 +19,18 @@ class CertificationPresenter(view: IContractView.ICertificationView) : BasePrese
     fun sendSMs(mobile: String) {
 
 
-        val login = RetrofitManager.serviceSms.sendCode(mobile)
+        val sms = RetrofitManager.service.sendCode(mobile,"3")
+        doRequest(sms, object : Callback<Any>(view) {
+            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
+                view.sendSms("发送失败")
+                return false
+            }
 
-
-        doRequest1(login, object :Observer<Sms>{
-            override fun onComplete() {
+            override fun success(tBaseResult: BaseResult<Any>) {
                 view.sendSms("发送成功")
             }
 
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onNext(t: Sms) {
-            }
-
-            override fun onError(e: Throwable) {
-                view.sendSms("发送失败")
-            }
-
-        },true)
+        }, true)
 
     }
 

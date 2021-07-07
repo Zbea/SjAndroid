@@ -1,35 +1,38 @@
 package com.hazz.kuangji.mvp.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ChargeRecord {
+    /**
+     * total : 23
+     * pageSize : 30
+     * pageNum : 1
+     * list : [{"coin":"USDT","create_at":"2020-05-23 06:49:12","amount":"100.00000000"}]
+     */
 
+    @SerializedName("total")
+    public String total;
+    @SerializedName("pageSize")
+    public int pageSize;
+    @SerializedName("pageNum")
+    public int pageNum;
+    /**
+     * coin : USDT
+     * create_at : 2020-05-23 06:49:12
+     * amount : 100.00000000
+     */
 
+    @SerializedName("list")
+    public List<ListBean> list;
 
-        /**
-         * pageNum : 1
-         * pageSize : 10
-         * total : 1
-         * list : [{"amount":"123456.00000000","coin":"BTC","create_at":"2020-03-19 03:41:50","number":"4dfb88088e23fc1224d9b80344037fa3"}]
-         */
-
-        public int pageNum;
-        public int pageSize;
-        public String total;
-        public List<ListBean> list;
-
-        public static class ListBean {
-            /**
-             * amount : 123456.00000000
-             * coin : BTC
-             * create_at : 2020-03-19 03:41:50
-             * number : 4dfb88088e23fc1224d9b80344037fa3
-             */
-
-            public String amount;
-            public String coin;
-            public String create_at;
-            public String number;
-        }
-
+    public static class ListBean {
+        @SerializedName("coin")
+        public String coin;
+        @SerializedName("create_at")
+        public String createAt;
+        @SerializedName("amount")
+        public String amount;
+    }
 }

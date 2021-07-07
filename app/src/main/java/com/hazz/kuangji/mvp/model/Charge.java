@@ -2,18 +2,10 @@ package com.hazz.kuangji.mvp.model;
 
 public class Charge {
 
-
-        /**
-         * addr : 0x5775be0ebc59f27fefe8fbf87636dca4a6672751
-         */
-
-        public String addr;
-        public String FCOIN;
-        public String address;
-        public String ERC20;
-        public String OMNI;
-        public String TRC20;
-
-
+        public String FIL;
+        public String ERC;
+        public String TRC;
+        public String BZZ;
+        public String CHIA;
 
 }

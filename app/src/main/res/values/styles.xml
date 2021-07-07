@@ -21,9 +21,11 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textSize">@dimen/sp_12</item>
-        <item name="android:paddingTop">@dimen/dp_5</item>
+        <item name="android:paddingTop">@dimen/dp_12</item>
+        <item name="android:paddingBottom">@dimen/dp_10</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/selector_main_color</item>
     </style>
     
@@ -31,12 +33,13 @@
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/selector_black_main_color</item>
+        <item name="android:textColor">@color/selector_black_gray_color</item>
         <item name="android:background">@drawable/bg_rb_line_selector</item>
     </style>
+
     
 
     <style name="StyleDialogCustom" >

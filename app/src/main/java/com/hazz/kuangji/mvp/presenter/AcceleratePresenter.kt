@@ -2,8 +2,10 @@ package com.hazz.kuangji.mvp.presenter
 
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.AccelerateInfo
-import com.hazz.kuangji.mvp.model.Contract
-import com.hazz.kuangji.net.*
+import com.hazz.kuangji.net.BasePresenter
+import com.hazz.kuangji.net.BaseResult
+import com.hazz.kuangji.net.Callback
+import com.hazz.kuangji.net.RetrofitManager
 
 class AcceleratePresenter(view: IContractView.IAccelerateView) : BasePresenter<IContractView.IAccelerateView>(view) {
 
@@ -30,14 +32,14 @@ class AcceleratePresenter(view: IContractView.IAccelerateView) : BasePresenter<I
 
         val accelerate = RetrofitManager.service.commitAccelerate(map)
 
-        doRequest(accelerate, object : Callback<Contract>(view) {
-            override fun failed(tBaseResult: BaseResult<Contract>): Boolean {
+        doRequest(accelerate, object : Callback<Any>(view) {
+            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
 
                 return false
             }
 
-            override fun success(tBaseResult: BaseResult<Contract>) {
-                tBaseResult.data?.order_id?.let { view?.onSuccess(it) }
+            override fun success(tBaseResult: BaseResult<Any>) {
+                tBaseResult.msg?.let { view?.onSuccess(it) }
             }
 
         }, false)

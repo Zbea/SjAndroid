@@ -4,24 +4,18 @@ package com.hazz.kuangji.mvp.presenter
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Charge
 import com.hazz.kuangji.mvp.model.ChargeRecord
-import com.hazz.kuangji.net.*
+import com.hazz.kuangji.net.BasePresenter
+import com.hazz.kuangji.net.BaseResult
+import com.hazz.kuangji.net.Callback
+import com.hazz.kuangji.net.RetrofitManager
 
 
 class ChargePresenter(view: IContractView.ChargeView) : BasePresenter<IContractView.ChargeView>(view) {
 
-    fun charge(coin: String) {
+    fun charge() {
 
 
-//        val body = RequestUtils.getBody(
-//
-//                Pair.create<Any, Any>("amount", amount),
-//                Pair.create<Any, Any>("coin", coin),
-//                Pair.create<Any, Any>("trade_password", Utils.encryptMD5(trade_password)),
-//                Pair.create<Any, Any>("external_wallet_address", external_wallet_address)
-//
-//        )
-
-        val login = RetrofitManager.service.charge(coin)
+        val login = RetrofitManager.service.charge()
 
         doRequest(login, object : Callback<Charge>(view) {
             override fun failed(tBaseResult: BaseResult<Charge>): Boolean {
@@ -37,27 +31,13 @@ class ChargePresenter(view: IContractView.ChargeView) : BasePresenter<IContractV
 
     }
 
-    fun chargeOmni() {
-        doRequest(RetrofitManager.serviceNew.charge(), object : Callback<Charge>(view) {
-            override fun failed(tBaseResult: BaseResult<Charge>): Boolean {
 
-                return false
-            }
-
-            override fun success(tBaseResult: BaseResult<Charge>) {
-                view.getAddress(tBaseResult.data!!)
-            }
-
-        }, true)
-
-    }
-
-    fun chargeRecord(){
+    fun chargeRecord(page:String){
 
 
-        val login = RetrofitManager.service.chargeRecord()
+        val record = RetrofitManager.service.chargeRecord(page)
 
-        doRequest(login, object : Callback<ChargeRecord>(view) {
+        doRequest(record, object : Callback<ChargeRecord>(view) {
             override fun failed(tBaseResult: BaseResult<ChargeRecord>): Boolean {
 
                 return false

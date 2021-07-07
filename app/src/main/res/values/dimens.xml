@@ -3,16 +3,13 @@
     <dimen name="space_dimen">15dp</dimen>
     <dimen name="toolbar_dimen">51dp</dimen>
     <dimen name="btn_dimen">45dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
     <dimen name="dp_5">5dp</dimen>
-    <dimen name="dp_55">56dp</dimen>
     <dimen name="dp_50">50dp</dimen>
     <dimen name="dp_30">30dp</dimen>
-    <dimen name="dp_35">35dp</dimen>
     <dimen name="dp_40">40dp</dimen>
-    <dimen name="dp_42">42dp</dimen>
     <dimen name="dp_25">25dp</dimen>
     <dimen name="dp_20">20dp</dimen>
-    <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_15">15dp</dimen>
     <dimen name="dp_10">10dp</dimen>
     <dimen name="dp_12">12dp</dimen>
@@ -29,16 +26,10 @@
     <dimen name="dp_180">180dp</dimen>
     <dimen name="dp_107">107dp</dimen>
     <dimen name="dp_200">200dp</dimen>
-    <dimen name="dp_220">230dp</dimen>
-    <dimen name="dp_250">250dp</dimen>
-    <dimen name="dp_280">280dp</dimen>
     <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_340">340dp</dimen>
-    <dimen name="dp_355">355dp</dimen>
-    <dimen name="dp_465">465dp</dimen>
 
     <dimen name="sp_20">20sp</dimen>
-    <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_16">16sp</dimen>
     <dimen name="sp_14">14sp</dimen>
     <dimen name="sp_12">12sp</dimen>

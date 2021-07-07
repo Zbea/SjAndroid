@@ -1,38 +1,48 @@
 package com.hazz.kuangji.mvp.model;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.List;
 
 public class ExtractRecord {
 
-
-        /**
-         * pageNum : 1
-         * pageSize : 10
-         * total : 4
-         * list : [{"amount":"232.00","coin":"ETH","status":"wait","number":"812910782eeff69de42956db78efa9ba","remark":"{\"fee_rate\":0.05,\"fee_amount\":\"11.6ETH\",\"get_amount\":220.4,\"external_wallet_address\":\"123456789\"}","create_at":"2020-03-10 03:37:57"},{"amount":"232.00","coin":"ETH","status":"wait","number":"4dfb88088e23fc1224d9b80344037fa3","remark":"{\"fee_rate\":0.05,\"fee_amount\":\"11.6ETH\",\"get_amount\":220.4,\"external_wallet_address\":\"123456789\"}","create_at":"2020-03-11 22:06:56"},{"amount":"232.00","coin":"ETH","status":"wait","number":"0aa77d67b61810be985de00af30f933c","remark":"{\"fee_rate\":0.05,\"fee_amount\":\"11.6ETH\",\"get_amount\":220.4,\"external_wallet_address\":\"123456789\"}","create_at":"2020-03-12 16:00:50"},{"amount":"232.00","coin":"ETH","status":"wait","number":"20567285701aacb40cd6768c2565633b","remark":"{\"fee_rate\":0.05,\"fee_amount\":\"11.6ETH\",\"get_amount\":220.4,\"external_wallet_address\":\"123456789\"}","create_at":"2020-03-16 01:46:58"}]
-         */
-
         public int pageNum;
         public int pageSize;
-        public String total;
+        public int total;
         public List<ListBean> list;
 
-        public static class ListBean {
-            /**
-             * amount : 232.00
-             * coin : ETH
-             * status : wait
-             * number : 812910782eeff69de42956db78efa9ba
-             * remark : {"fee_rate":0.05,"fee_amount":"11.6ETH","get_amount":220.4,"external_wallet_address":"123456789"}
-             * create_at : 2020-03-10 03:37:57
-             */
+        public static class ListBean implements Serializable {
 
-            public String amount;
+            /**
+             * id : 3381
+             * user_id : 172
+             * amount_all : 140.00000000
+             * amount_fee : 10.00000000
+             * amount_trans : 130.00000000
+             * address :
+             * stat : 4
+             * stat_txt : 转账成功  0=待审核；1=审核通过；2=审核驳回；3=转账中；4=转账成功；5=转账失败；6=已退回；
+             */
+            @SerializedName("id")
+            public String id;
+            @SerializedName("user_id")
+            public String userId;
+            @SerializedName("amount_all")
+            public String amountAll;
+            @SerializedName("amount_fee")
+            public String amountFee;
+            @SerializedName("amount_trans")
+            public String amountTrans;
+            @SerializedName("address")
+            public String address;
+            @SerializedName("stat")
+            public String stat;
+            @SerializedName("stat_txt")
+            public String statTxt;
             public String coin;
-            public String status;
-            public String number;
-            public String remark;
             public String create_at;
+
         }
 
 }

@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:contentInsetStart="0dp"
     android:id="@+id/toolbar"
-    android:background="@drawable/bg_line_bottom"
+    android:background="@color/color_white"
     >
 
     <RelativeLayout

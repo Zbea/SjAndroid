@@ -7,6 +7,7 @@ import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.mvp.presenter.LoginPresenter
+import com.hazz.kuangji.ui.activity.mine.ChangePwdActivity
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.StatusBarUtil
@@ -14,8 +15,10 @@ import kotlinx.android.synthetic.main.mine_activity_login.*
 
 
 class LoginActivity : BaseActivity(), IContractView.LoginView {
-    override fun sendSms(msg: String) {
 
+    private var mLoginPresenter:LoginPresenter= LoginPresenter(this)
+
+    override fun sendSms(msg: String) {
     }
 
     override fun registerSucceed(msg: String) {
@@ -23,29 +26,29 @@ class LoginActivity : BaseActivity(), IContractView.LoginView {
 
 
     override fun loginSuccess(msg: UserInfo) {
-        SPUtil.putObj("user",msg)
-        SPUtil.putString("mobile",msg.mobile)
-        SPUtil.putString("username",msg.username)
-        SPUtil.putString("image",msg.profile_img)
-        SPUtil.putString("invitation_code",msg.invitation_code)
-        SPUtil.putString("invitation_code_url",msg.invitation_code_url)
         SPUtil.putString("token",msg.token)
         SToast.showText(getString(R.string.login_succeed))
         startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 
-
-    private var mLoginPresenter:LoginPresenter= LoginPresenter(this)
     override fun layoutId(): Int {
         return R.layout.mine_activity_login
     }
 
     override fun initData() {
-        StatusBarUtil.darkMode(this,false)
     }
 
     override fun initView() {
+
+        mTvRegist.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+
+        mTvUseForgetPassword.setOnClickListener {
+            startActivity(Intent(this, ChangePwdActivity::class.java).setFlags(0))
+        }
+
     }
 
     override fun start() {
@@ -63,13 +66,6 @@ class LoginActivity : BaseActivity(), IContractView.LoginView {
            //
         }
 
-        mTvRegist.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
-
-        mTvUseForgetPassword.setOnClickListener {
-            startActivity(Intent(this, ForgetPwdActivity::class.java))
-        }
     }
 
 

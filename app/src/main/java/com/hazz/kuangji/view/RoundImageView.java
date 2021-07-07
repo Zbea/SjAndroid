@@ -17,7 +17,6 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-
 import com.hazz.kuangji.R;
 
 import java.io.ByteArrayOutputStream;

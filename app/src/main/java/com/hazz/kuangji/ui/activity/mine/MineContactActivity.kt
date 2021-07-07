@@ -10,12 +10,10 @@ import com.hazz.kuangji.utils.ImageUtils
 import com.hazz.kuangji.utils.SToast
 import com.hazz.kuangji.utils.ToolBarCustom
 import kotlinx.android.synthetic.main.activity_contact.*
-import kotlinx.android.synthetic.main.activity_rule.mToolBar
 
-class MineContactActivity : BaseActivity()
-{
+class MineContactActivity : BaseActivity() {
 
-    private var mCodeBitmap:Bitmap?=null
+    private var mCodeBitmap: Bitmap? = null
 
     override fun layoutId(): Int {
         return R.layout.activity_contact
@@ -28,29 +26,26 @@ class MineContactActivity : BaseActivity()
     override fun initView() {
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("联系我们" )
-                .setRightText("保存")
-                .setRightTextColor(resources.getColor(R.color.color_main))
-                .setRightTextIsShow(true)
-                .setOnLeftIconClickListener { finish() }
-                .setOnRightClickListener {
-                    permissionsnew!!.request(
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-                    ).subscribe { permission ->
-                        if (permission!!) {
-
-                            SToast.showText("图片保存成功")
-                            ImageUtils.saveBmp2Gallery(this,mCodeBitmap,"contactCode")
-                        } else {
-                            showMissingPermissionDialog()
-                        }
-                    }
-                }
+            .setTitle("联系我们")
+            .setOnLeftIconClickListener { finish() }
 
     }
 
     override fun start() {
-        mCodeBitmap=BitmapFactory.decodeResource(resources,R.mipmap.icon_gz_qrcode_address)
+        mCodeBitmap = BitmapFactory.decodeResource(resources, R.mipmap.icon_gz_qrcode_address)
+        btn_save.setOnClickListener {
+            permissionsnew!!.request(
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ).subscribe { permission ->
+                if (permission!!) {
+
+                    SToast.showText("图片保存成功")
+                    ImageUtils.saveBmp2Gallery(this, mCodeBitmap, "contactCode")
+                } else {
+                    showMissingPermissionDialog()
+                }
+            }
+        }
     }
 
 }

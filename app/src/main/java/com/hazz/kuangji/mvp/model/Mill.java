@@ -1,77 +1,103 @@
 package com.hazz.kuangji.mvp.model;
 
-import java.io.Serializable;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Mill {
 
-        public String total;
+    @SerializedName("fil")
+    public FilBean fil;
+    @SerializedName("bzz")
+    public BzzBean bzz;
+    @SerializedName("chia")
+    public ChiaBean chia;
+
+    public static class FilBean {
+        @SerializedName("power")
+        public String power;
+        @SerializedName("total_revenue")
+        public String totalRevenue;
+        @SerializedName("yesterday_revenue")
+        public String yesterdayRevenue;
+
+        @SerializedName("list")
+        public List<ListBean> list;
+
+
+    }
+
+    public static class BzzBean {
+        @SerializedName("power")
+        public String power;
+        @SerializedName("total_revenue")
+        public String totalRevenue;
+        @SerializedName("yesterday_revenue")
+        public String yesterdayRevenue;
+        @SerializedName("list")
+        public List<ListBean> list;
+    }
+
+    public static class ChiaBean{
+        @SerializedName("power")
+        public String power;
+        @SerializedName("total_revenue")
+        public String totalRevenue;
+        @SerializedName("yesterday_revenue")
+        public String yesterdayRevenue;
+        @SerializedName("list")
+        public List<ListBean> list;
+    }
+    /**
+     * id : 6675
+     * user_id : 172
+     * cluster_id : 1
+     * product_name : eyeball-BM19 FIL 存储服务器
+     * power : 0.10
+     * stat : 0  //0=正常；1=到期；2=停产
+     * power_seal : 0.00000000
+     * all_remain : 540 //周期
+     * build_remain : 30 //建设期
+     * seal_remain : 1 //封装期
+     * gas_amount : 0.50000000 //gas
+     * revenue : 0.00000000
+     * yesterday : 0.00000000
+     * pledge_amount : 1.00000000 //质押
+     * miner_type : 1  // 0 老矿机  1 已加速服务器   2  集群
+     * miner_type_txt : 已加速服务器
+     */
+    public static class ListBean {
+        @SerializedName("id")
+        public String id;
+        @SerializedName("user_id")
+        public String userId;
+        @SerializedName("cluster_id")
+        public String clusterId;
+        @SerializedName("product_name")
+        public String productName;
+        @SerializedName("power")
+        public String power;
+        @SerializedName("stat")
+        public String stat;
+        @SerializedName("power_seal")
+        public String powerSeal;
+        @SerializedName("all_remain")
+        public String allRemain;
+        @SerializedName("build_remain")
+        public String buildRemain;
+        @SerializedName("seal_remain")
+        public String sealRemain;
+        @SerializedName("gas_amount")
+        public String gasAmount;
+        @SerializedName("revenue")
+        public String revenue;
+        @SerializedName("yesterday")
         public String yesterday;
-        public String coin_name;
-        public MachineListBean machine_list;
-
-        public static class MachineListBean {
-
-            public int pageNum;
-            public int pageSize;
-            public String total;
-            public List<ListBean> list;
-            public List<ListBean> boost_list;
-
-            public static class ListBean implements Serializable {
-                /**
-                 * id : 82
-                 * user_id : 132
-                 * product_id : 1
-                 * price : 100.00000000
-                 * coin : USDT
-                 * type : 1
-                 * remain : 1790
-                 * number : null
-                 * state : 1
-                 * create_at : 2020-04-05 03:47:55
-                 * updated_at : 2020-04-18 15:43:21
-                 * mobile :
-                 * contractor :
-                 * address :
-                 * product : FIL算力服务器
-                 * outcome_coin : FIL
-                 * revenue : 210.00000000
-                 * yesterday : 35.00000000
-                 */
-
-                public String id;
-                public String user_id;
-                public String product_id;
-                public String price;
-                public String product_price;
-                public String coin;
-                public String type;
-                public String remain;
-                public Object number;
-                public String state;
-                public String create_at;
-                public String updated_at;
-                public String mobile;
-                public String contractor;
-                public String address;
-                public String product;
-                public String outcome_coin;
-                public String revenue;
-                public String yesterday;
-                public String miner_number;
-                public String storage;
-                public String buy_storage;
-                public String hide_contract;//后台显示状态
-                public String is_sign;//合同签名状态
-                public String contract_path;//合同地址
-                public int miner_type;//0  原服务器     1加速服务器
-                public String build_remain;//剩余建设期
-                public String seal_remain;//剩余封装
-                public String pledge_amount;//质押总数
-                public String gas_amount;//gas总数
-                public String gas_consume;//gas消耗
-            }
-
+        @SerializedName("pledge_amount")
+        public String pledgeAmount;
+        @SerializedName("miner_type")
+        public String minerType;
+        @SerializedName("miner_type_txt")
+        public String minerTypeTxt;
     }
 }

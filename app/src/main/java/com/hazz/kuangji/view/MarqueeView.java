@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.AnimRes;
+
 import com.hazz.kuangji.R;
 
 import java.util.ArrayList;
@@ -260,6 +261,7 @@ public class MarqueeView extends ViewFlipper {
             textView.setTextColor(textColor);
             textView.setTextSize(textSize);
             textView.setSingleLine(singleLine);
+            textView.getPaint().setFakeBoldText(true);
         }
         textView.setOnClickListener(new OnClickListener() {
             @Override

@@ -5,9 +5,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.annotation.NonNull
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.SkinAppCompatDelegateImpl
 import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.utils.*
 import com.orhanobut.logger.AndroidLogAdapter
@@ -16,11 +13,6 @@ import com.orhanobut.logger.Logger
 import com.orhanobut.logger.PrettyFormatStrategy
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
-import skin.support.SkinCompatManager
-import skin.support.app.SkinAppCompatViewInflater
-import skin.support.app.SkinCardViewInflater
-import skin.support.constraint.app.SkinConstraintViewInflater
-import skin.support.design.app.SkinMaterialViewInflater
 import kotlin.properties.Delegates
 
 
@@ -57,15 +49,6 @@ class MyApplication : Application(){
         SPUtil.init(this)
         SToast.initToast(this)
 
-        SkinCompatManager.withoutActivity(this)
-                .addInflater(SkinAppCompatViewInflater()) // 基础控件换肤初始化
-                .addInflater(SkinMaterialViewInflater()) // material design 控件换肤初始化[可选]
-                .addInflater(SkinConstraintViewInflater()) // ConstraintLayout 控件换肤初始化[可选]
-                .addInflater(SkinCardViewInflater()) // CardView v7 控件换肤初始化[可选]
-                .setSkinStatusBarColorEnable(true) // 关闭状态栏换肤，默认打开[可选]
-                .setSkinWindowBackgroundEnable(false) // 关闭windowBackground换肤，默认打开[可选]
-                .loadSkin()
-
     }
 
 
@@ -78,7 +61,7 @@ class MyApplication : Application(){
                 .showThreadInfo(false)  // 隐藏线程信息 默认：显示
                 .methodCount(0)         // 决定打印多少行（每一行代表一个方法）默认：2
                 .methodOffset(7)        // (Optional) Hides internal method calls up to offset. Default 5
-                .tag("hao_zz")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
+                .tag("sj")   // (Optional) Global tag for every log. Default PRETTY_LOGGER
                 .build()
         Logger.addLogAdapter(object : AndroidLogAdapter(formatStrategy) {
             override fun isLoggable(priority: Int, tag: String?): Boolean {

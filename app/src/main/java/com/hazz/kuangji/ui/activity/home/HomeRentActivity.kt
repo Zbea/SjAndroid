@@ -7,33 +7,45 @@ import android.text.Html
 import android.text.TextUtils
 import android.text.TextWatcher
 import androidx.appcompat.widget.Toolbar
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Asset
+import com.hazz.kuangji.mvp.model.AssetCoin
 import com.hazz.kuangji.mvp.model.Home
-import com.hazz.kuangji.mvp.model.Certification
-import com.hazz.kuangji.mvp.model.Exchange
-import com.hazz.kuangji.mvp.model.MyAsset
-import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
-import com.hazz.kuangji.mvp.presenter.HomePresenter
+import com.hazz.kuangji.mvp.model.MinerFILInfo
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
-import com.hazz.kuangji.mvp.presenter.ExchangeCoinPresenter
-import com.hazz.kuangji.ui.activity.mine.MineExchangePwdActivity
-import com.hazz.kuangji.ui.activity.RuleActivity
-import com.hazz.kuangji.ui.activity.asset.ChargeActivity
-import com.hazz.kuangji.ui.activity.mine.ContractDetailsActivity
+import com.hazz.kuangji.mvp.presenter.MinerRentPresenter
+import com.hazz.kuangji.ui.activity.AgreementActivity
+import com.hazz.kuangji.ui.activity.mine.ChangePwdActivity
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.SafeCheckDialog
 import kotlinx.android.synthetic.main.activity_charge.mToolBar
-import kotlinx.android.synthetic.main.activity_exchange_coin.*
 import kotlinx.android.synthetic.main.activity_home_rent.*
+import kotlinx.android.synthetic.main.activity_home_rent.et_num
+import kotlinx.android.synthetic.main.activity_home_rent.iv_product
+import kotlinx.android.synthetic.main.activity_home_rent.tv_construction_day
+import kotlinx.android.synthetic.main.activity_home_rent.tv_day
+import kotlinx.android.synthetic.main.activity_home_rent.tv_gas
+import kotlinx.android.synthetic.main.activity_home_rent.tv_gas_t
+import kotlinx.android.synthetic.main.activity_home_rent.tv_info
+import kotlinx.android.synthetic.main.activity_home_rent.tv_money_t
+import kotlinx.android.synthetic.main.activity_home_rent.tv_num
+import kotlinx.android.synthetic.main.activity_home_rent.tv_package_day
+import kotlinx.android.synthetic.main.activity_home_rent.tv_pledge
+import kotlinx.android.synthetic.main.activity_home_rent.tv_pledge_t
+import kotlinx.android.synthetic.main.activity_home_rent.tv_yue
+import kotlinx.android.synthetic.main.activity_mill_accelerate_rent.*
 import org.greenrobot.eventbus.EventBus
 
 
-class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.AssetView {
+class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContractView.IAssetView {
 
-    private var mHomePresenter: HomePresenter = HomePresenter(this)
+    private var mHomePresenter: MinerRentPresenter = MinerRentPresenter(this)
     private var id = ""
     private var usableUSDT = "0.00000000"
     private var usableFIL = "0.00000000"
@@ -43,32 +55,55 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
     private var totalFIL = "0.00000000" //所需总fil
     private var totalUSDT = "0.00000000" //所需总usdt
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
-    private var produce: Home.BoostBean? = null
+    private var produce: Home.ProductBean.FilBean? = null
     private var mPasswordDialog: SafeCheckDialog? = null
+    private var item:MinerFILInfo?=null
 
-    override fun myAsset(msg: MyAsset) {
+    override fun myAsset(msg: List<Asset>) {
         if (msg != null) {
-            val assets = msg.assets
-            for (coin in assets) {
+            for (coin in msg) {
                 if (coin.coin == "USDT") {
-                    usableUSDT = coin.balance
+                    usableUSDT = coin.amount
                 }
-                if (coin.coin == "FCOIN") {
-                    usableFIL = coin.balance
+                if (coin.coin == "FIL") {
+                    usableFIL = coin.amount
                 }
             }
             tv_yue.text = "账户余额：$usableUSDT USDT  /  $usableFIL FIL"
         }
     }
 
-    override fun getHome(msg: Home) {
+    override fun getAssetCoinList(items: List<AssetCoin>) {
+        TODO("Not yet implemented")
     }
 
-    override fun zuyongSucceed(msg: String) {
+    override fun getInfo(item: MinerFILInfo) {
+        this.item = item
+
+        ToolBarCustom.newBuilder(mToolBar as Toolbar)
+            .setTitle(item?.name)
+
+        Glide.with(this)
+            .load(Constants.URL_BASE + item.img)
+            .apply(RequestOptions().transform(RoundedCorners(30)))
+            .into(iv_product)
+
+        if (item?.detail != null)
+            tv_info.text = Html.fromHtml(item?.detail)
+
+        price = item?.usdtPrice
+        pledge = item?.pledgePrice
+        gas = item?.gasPrice
+        tv_money_t.text = price
+        tv_pledge_t.text = pledge
+        tv_gas_t.text = gas
+        tv_construction_day.text = item?.buildTerm
+        tv_package_day.text = item?.sealTerm
+        tv_day.text = item?.allTerm
+    }
+
+    override fun onSucceed(msg: String) {
         EventBus.getDefault().post(Constants.CODE_BUY_BROAD)
-        SToast.showText("租用成功，请及时为合同签名")
-        startActivity(Intent(this, ContractDetailsActivity::class.java).putExtra("contract_code", msg)
-                .putExtra("contract_sign", "0").putExtra("miner_type", "1"))
         if (mDialog != null) mDialog?.dismiss()
         finish()
     }
@@ -80,27 +115,10 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
 
 
     override fun initView() {
-
-        produce = intent.getSerializableExtra("produce") as Home.BoostBean?
-
+        id = intent.getStringExtra("produceId")
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
                 .setTitle(produce?.name.toString())
                 .setOnLeftIconClickListener { finish() }
-
-        id = produce?.id.toString()
-        produce?.pic?.let { GlideEngine.createGlideEngine().loadImage(this, Constants.URL_INVITE + it, iv_product) }
-        if (produce?.desc != null)
-            tv_info.text = Html.fromHtml(produce?.desc)
-
-        price= produce?.usdtPrice.toString()
-        pledge=produce?.pledgePrice.toString()
-        gas=produce?.gasPrice.toString()
-        tv_money_t.text=price
-        tv_pledge_t.text=pledge
-        tv_gas_t.text=gas
-        tv_construction_day.text=produce?.buildTerm.toString()
-        tv_package_day.text=produce?.sealTerm.toString()
-        tv_day.text=produce?.term.toString()
     }
 
     override fun initData() {
@@ -118,7 +136,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
         })
 
         tv_xieyi.setOnClickListener {
-            startActivity(Intent(this, RuleActivity::class.java))
+            startActivity(Intent(this, AgreementActivity::class.java).setFlags(1))
         }
 
         mTvLogin.setOnClickListener {
@@ -129,10 +147,6 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                     return@setOnClickListener
                 }
 
-                if (TextUtils.isEmpty(et_name.text.toString())) {
-                    SToast.showText("请输入姓名")
-                    return@setOnClickListener
-                }
 
                 if (et_num.text.toString().toFloat()<1) {
                     SToast.showText("最少购买1T")
@@ -159,10 +173,10 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
                     mPasswordDialog = SafeCheckDialog(this)
                             .setCancelListener { }
                             .setForgetListener {
-                                startActivity(Intent(this, MineExchangePwdActivity::class.java))
+                                startActivity(Intent(this, ChangePwdActivity::class.java))
                             }
                             .setConfirmListener { _, password ->
-                                mHomePresenter.zuyong(id, password, et_num.text.toString(), et_name.text.toString())
+                                mHomePresenter.buyRent(id, password, et_num.text.toString())
                             }.setCancelListener {
 
                             }
@@ -178,6 +192,7 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
 
     override fun start() {
         mAssetPresenter.myAsset(true)
+        mHomePresenter.getInfo(id)
     }
 
     /**
@@ -192,10 +207,12 @@ class HomeRentActivity : BaseActivity(), IContractView.HomeView, IContractView.A
 
         totalFIL=BigDecimalUtil.add(totalPledge,totalGas)
 
-        tv_money.text=totalUSDT
+        tv_num.text=totalUSDT
         tv_pledge.text=totalPledge
         tv_gas.text=totalGas
 
     }
+
+
 
 }

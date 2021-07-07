@@ -3,12 +3,9 @@ package com.hazz.kuangji.mvp.presenter
 
 import android.util.Pair
 import com.hazz.kuangji.mvp.contract.IContractView
-import com.hazz.kuangji.mvp.model.Sms
 import com.hazz.kuangji.mvp.model.UserInfo
 import com.hazz.kuangji.net.*
 import com.hazz.kuangji.utils.Utils
-import io.reactivex.Observer
-import io.reactivex.disposables.Disposable
 
 
 class LoginPresenter(view: IContractView.LoginView) : BasePresenter<IContractView.LoginView>(view) {
@@ -68,42 +65,20 @@ class LoginPresenter(view: IContractView.LoginView) : BasePresenter<IContractVie
 
     }
 
-    fun sendSMs(mobile: String) {
+    fun sendSMs(mobile: String,type: String) {
 
+        val sms = RetrofitManager.service.sendCode(mobile,type)
+        doRequest(sms, object : Callback<Any>(view) {
+            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
+                view.sendSms("发送失败")
+                return false
+            }
 
-        val login = RetrofitManager.serviceSms.sendCode(mobile)
-
-
-        doRequest1(login, object :Observer<Sms>{
-            override fun onComplete() {
+            override fun success(tBaseResult: BaseResult<Any>) {
                 view.sendSms("发送成功")
             }
 
-            override fun onSubscribe(d: Disposable) {
-            }
-
-            override fun onNext(t: Sms) {
-            }
-
-            override fun onError(e: Throwable) {
-                view.sendSms("发送失败")
-            }
-
-        },true)
-//        doRequest(login, object : Callback<Any>(view) {
-//            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
-//
-//                return false
-//            }
-//
-//            override fun success(tBaseResult: BaseResult<Any>) {
-//                view.sendSms(tBaseResult.msg)
-//            }
-//
-//        }, true)
-
-
-
+        }, true)
     }
 
     fun regist(username: String, invitation_code: String, mobile: String,
@@ -138,19 +113,21 @@ class LoginPresenter(view: IContractView.LoginView) : BasePresenter<IContractVie
     }
 
 
-    fun forgetPwd(username: String, mobile: String, captcha: String, password: String, confirm_password: String, password_type: String) {
-
+    fun forgetPwd(username: String, mobile: String, captcha: String, password: String, type: Int) {
 
         val body = RequestUtils.getBody(
                 Pair.create<Any, Any>("username", username),
                 Pair.create<Any, Any>("mobile", mobile),
                 Pair.create<Any, Any>("captcha", captcha),
-                Pair.create<Any, Any>("password", Utils.encryptMD5(password)),
-                Pair.create<Any, Any>("confirm_password", Utils.encryptMD5(confirm_password)),
-                Pair.create<Any, Any>("password_type", password_type)
-        )
+                Pair.create<Any, Any>("password", Utils.encryptMD5(password)))
 
-        val login = RetrofitManager.service.forgetPwd(body)
+        val login =if (type==1)
+        {
+             RetrofitManager.service.findLoginPwd(body)//找回登录密码
+        }
+        else{
+            RetrofitManager.service.findTradePwd(body)//找回资金密码
+        }
 
         doRequest(login, object : Callback<Any>(view) {
             override fun failed(tBaseResult: BaseResult<Any>): Boolean {

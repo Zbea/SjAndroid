@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+>
+
+
+    <RadioGroup
+        android:id="@+id/mRG"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_line_top"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        android:layout_alignParentBottom="true"
+        >
+
+        <RadioButton
+            android:id="@+id/mRbHome"
+            style="@style/rb_style"
+            android:checked="true"
+            android:drawableTop="@drawable/tab_icon_main_select"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/mRbMining"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_icon_mill_select"
+            android:text="服务器" />
+
+        <RadioButton
+            android:id="@+id/mRbAsset"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_icon_asset_select"
+            android:text="@string/zichan" />
+
+        <RadioButton
+            android:id="@+id/mRbMy"
+            style="@style/rb_style"
+            android:drawableTop="@drawable/tab_icon_mine_select"
+            android:text="我的" />
+
+
+    </RadioGroup>
+
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mRG" />
+
+
+
+</RelativeLayout>

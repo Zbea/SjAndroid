@@ -9,8 +9,7 @@ import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
-
-import java.util.Hashtable
+import java.util.*
 
 object QRCodeUtils {
 

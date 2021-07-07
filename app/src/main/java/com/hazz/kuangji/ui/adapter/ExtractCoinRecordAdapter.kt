@@ -2,7 +2,6 @@ package com.hazz.kuangji.ui.adapter
 
 
 import android.view.View
-import android.widget.ImageView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.hazz.kuangji.R
@@ -15,27 +14,21 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<ExtractRecord.ListBe
 
     override fun convert(helper: BaseViewHolder, item: ExtractRecord.ListBean) {
 
-        helper.setText(R.id.tv_name, item.coin)
         helper.setText(R.id.tv_time, item.create_at)
-        helper.setText(R.id.tv_amount, "-"+item.amount)
-        when(item.status){
-            "pass"->{
+        helper.setText(R.id.tv_amount, "-"+item.amountAll+" "+item.coin)
+        when(item.stat){
+            "4"->{
                 helper.setText(R.id.tv_state, "已完成")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_333333))
             }
-            "wait"->{
+            "0"->{
                 helper.setText(R.id.tv_state, "待审核")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.redF4))
+                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
             }
-            "fail"->{
-                helper.setText(R.id.tv_state, "审核失败")
+            else->{
+                helper.setText(R.id.tv_state, "已取消")
                 helper.setTextColor(R.id.tv_state,mContext.resources.getColor(R.color.color_999999))
             }
-        }
-        if(item.coin=="USDT"){
-            helper.getView<ImageView>(R.id.iv).setImageResource(R.mipmap.usdt)
-        }else{
-            helper.getView<ImageView>(R.id.iv).setImageResource(R.mipmap.icon_fil)
         }
 
     }

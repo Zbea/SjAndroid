@@ -3,17 +3,21 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_list_bg">
+    android:background="@color/color_bg">
 
     <include
         android:id="@+id/mToolBar"
         layout="@layout/toolbar"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_10"
+        android:background="@color/color_gray_bg"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rc_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/space_dimen"
         android:scrollbars="none"/>
 
 </LinearLayout>

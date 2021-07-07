@@ -20,6 +20,7 @@
             android:id="@+id/ll_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <RadioGroup
@@ -29,72 +30,74 @@
                 android:layout_marginTop="@dimen/dp_15"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <RadioButton
-                    android:id="@+id/rb_left"
+                    android:id="@+id/rb_1"
                     style="@style/rb_style1"
-                    android:text="FIL"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="USDT" />
+
                 <RadioButton
-                    android:id="@+id/rb_middle"
+                    android:id="@+id/rb_2"
                     style="@style/rb_style1"
-                    android:text="Erc20-USDT" />
+                    android:text="FIL" />
+
                 <RadioButton
-                    android:id="@+id/rb_right"
+                    android:id="@+id/rb_3"
                     style="@style/rb_style1"
-                    android:text="Trc20-USDT" />
+                    android:text="BZZ" />
+
+                <RadioButton
+                    android:id="@+id/rb_4"
+                    style="@style/rb_style1"
+                    android:text="CHIA" />
             </RadioGroup>
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_40"
-                android:text="收款地址二维码"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_12" />
-
-            <ImageView
-                android:id="@+id/iv"
-                android:layout_width="@dimen/dp_180"
-                android:layout_height="@dimen/dp_180"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_5" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_15"
-                android:layout_marginTop="@dimen/dp_20"
-                android:text="转入地址"
-                android:textColor="@color/color_999999"
-                android:textSize="@dimen/sp_14" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_50"
-                android:layout_marginLeft="@dimen/space_dimen"
-                android:layout_marginRight="@dimen/space_dimen"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tv_address"
+                android:layout_height="220dp">
+                <RadioGroup
+                    android:id="@+id/rg_usdt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_333333"
-                    android:layout_weight="1"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_trc"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginRight="@dimen/dp_15"
+                        android:background="@drawable/bg_rb_charge_selector"
+                        android:gravity="center"
+                        android:textSize="@dimen/sp_10"
+                        android:textColor="@color/selector_main_black_color"
+                        android:button="@null"
+                        android:checked="true"
+                        android:text="Trc-20" />
+
+                    <RadioButton
+                        android:id="@+id/rb_erc"
+                        android:layout_width="@dimen/dp_60"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:background="@drawable/bg_rb_charge_selector"
+                        android:gravity="center"
+                        android:textSize="@dimen/sp_10"
+                        android:textColor="@color/selector_main_black_color"
+                        android:button="@null"
+                        android:text="Erc-20" />
+                </RadioGroup>
 
                 <ImageView
-                    android:id="@+id/iv_copy"
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:src="@mipmap/icon_charge_copy"/>
-
-            </LinearLayout>
+                    android:id="@+id/iv"
+                    android:layout_width="@dimen/dp_130"
+                    android:layout_height="@dimen/dp_130"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center" />
+            </RelativeLayout>
 
 
 
@@ -102,78 +105,79 @@
                 android:id="@+id/tv_bt"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_margin="@dimen/space_dimen"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_30"
                 android:background="@drawable/bg_main_solid_5dp_coner"
                 android:text="保存二维码"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/sp_16"
-                 />
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_marginLeft="@dimen/dp_15"
-                android:layout_marginTop="@dimen/space_dimen"
-                android:textSize="@dimen/sp_12"
-                android:text="档次说明:"
-                android:textColor="@color/color_999999"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_15"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="@dimen/sp_10"
-                    android:text="1、此地址只接收"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tv_usdt"
-                    android:text="FIL"
-                    android:textSize="@dimen/sp_10"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textSize="@dimen/sp_10"
-                    android:text="，发送其他种类到此地址将不可找回"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
+                android:layout_marginTop="@dimen/dp_30"
+                android:layout_marginRight="@dimen/dp_15"
+                android:gravity="center"
+                android:textColor="@color/color_main_nor"
+                android:textSize="@dimen/sp_12" />
 
-            <TextView
-                android:layout_marginLeft="@dimen/dp_15"
-                android:textSize="@dimen/sp_10"
-                android:layout_marginTop="@dimen/dp_5"
-                android:text="2、转入到账需要2个网络确认，请耐心等待。"
-                android:textColor="@color/color_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="@dimen/dp_107"
+                android:layout_height="42dp"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@drawable/bg_main_stroke_5dp_coner"
+                android:text="复制地址"
+                android:textColor="@color/color_main"
+                android:textSize="@dimen/sp_16" />
+
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_15"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/tv_count"
-                    android:textSize="@dimen/sp_10"
-                    android:text="3、0.1 FIL"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                android:layout_marginTop="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
+                android:orientation="vertical"
+                android:padding="@dimen/dp_15">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_tips" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:text="温馨提示"
+                        android:textColor="@color/color_main_nor"
+                        android:textSize="@dimen/sp_10"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="请您仔细确认地址是否复制成功且正确，否则将会导致转入失败，且可能 造成资产不可找回。请务必仔细核对地址，否则造成资产损失且不可找回 由用户自行承担！"
+                    android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10"
-                    android:text="起充。"
-                    android:textColor="@color/color_hint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:textStyle="bold" />
+
+
             </LinearLayout>
 
         </LinearLayout>

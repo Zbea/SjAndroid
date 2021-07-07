@@ -34,17 +34,22 @@
     <remote-repository>
       <option name="id" value="E:\Sdk\extras\google\m2repository" />
       <option name="name" value="E:\Sdk\extras\google\m2repository" />
-      <option name="url" value="file:/E:/Sdk/extras/google/m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../../Sdk/extras/google/m2repository" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="E:\Sdk\extras\android\m2repository" />
       <option name="name" value="E:\Sdk\extras\android\m2repository" />
-      <option name="url" value="file:/E:/Sdk/extras/android/m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../../Sdk/extras/android/m2repository" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="E:\Sdk\extras\m2repository" />
       <option name="name" value="E:\Sdk\extras\m2repository" />
-      <option name="url" value="file:/E:/Sdk/extras/m2repository" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../../Sdk/extras/m2repository" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/groups/public" />
     </remote-repository>
   </component>
 </project>

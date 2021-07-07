@@ -28,6 +28,7 @@
             android:id="@+id/tv_dialog_content"
             android:gravity="center"
             android:textColor="@color/color_333333"
+            android:textStyle="bold"
             android:textSize="@dimen/sp_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -45,9 +46,10 @@
                 android:clickable="true"
                 android:id="@+id/tv_cancle"
                 android:gravity="center"
-                android:textColor="@color/color_666666"
+                android:textColor="@color/color_999999"
                 android:textSize="@dimen/sp_14"
                 android:text="取消"
+                android:textStyle="bold"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent" />
@@ -64,6 +66,7 @@
                 android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_14"
                 android:text="确定"
+                android:textStyle="bold"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent" />

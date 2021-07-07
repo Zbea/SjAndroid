@@ -1,87 +1,76 @@
 package com.hazz.kuangji.ui.activity
 
 import android.content.Intent
-import android.util.Log
-import android.view.Gravity
-import android.view.KeyEvent
+import android.os.Handler
 import android.widget.RadioGroup
-import android.widget.RelativeLayout
-import android.widget.Toast
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
-import com.bumptech.glide.request.RequestOptions
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseActivity
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Account
 import com.hazz.kuangji.mvp.model.Certification
-import com.hazz.kuangji.mvp.model.Config
+import com.hazz.kuangji.mvp.model.UploadModel
 import com.hazz.kuangji.mvp.presenter.CertificationInfoPresenter
-import com.hazz.kuangji.mvp.presenter.ConfigPresenter
-import com.hazz.kuangji.ui.fragment.*
-import com.hazz.kuangji.utils.DensityUtils
+import com.hazz.kuangji.mvp.presenter.MyAccountPresenter
+import com.hazz.kuangji.net.BaseView
+import com.hazz.kuangji.net.IBaseView
+import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
+import com.hazz.kuangji.ui.fragment.AssetFragment
+import com.hazz.kuangji.ui.fragment.HomeFragment
+import com.hazz.kuangji.ui.fragment.MillFragment
+import com.hazz.kuangji.ui.fragment.MyFragment
 import com.hazz.kuangji.utils.SPUtil
 import com.hazz.kuangji.utils.SToast
-import com.hazz.kuangji.utils.StatusBarUtil
-import com.tencent.bugly.Bugly
-import com.tencent.bugly.beta.Beta
-import kotlinx.android.synthetic.main.activity_main_ruoyu_new.*
-import kotlinx.android.synthetic.main.activity_main_ruoyu_new.iv_mine
+import kotlinx.android.synthetic.main.activity_main.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import java.util.*
+import kotlin.collections.ArrayList
 
-
-class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,IContractView.IConfigView, IContractView.ICertificationInfoView{
-
-    private var mConfigPresenter=ConfigPresenter(this)
+class  MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener,IContractView.IAccountView,IContractView.ICertificationInfoView  {
+    private var myAccountPresenter=MyAccountPresenter(this)
+    private val mCertificationInfoPresenter = CertificationInfoPresenter(this)
     private lateinit var mFragments: ArrayList<Fragment>
     private var mLastSelect = 0
+    var mCertification:Certification?=null
 
     override fun getCertification(certification: Certification) {
-        if (certification.status == 1) {
+        mCertification = certification
+        if (certification.stat == "1") {
             SPUtil.putObj("certification", certification)
         }
     }
- 
-    override fun getConfig(item: Config) {
-        Log.i("sj","code:"+item.androidVersion)
-        if (item.androidVersion>Constants.CODE)
-        {
-//            Beta.checkAppUpgrade()
-//            SToast.showTextLong("有新版本，请及时更新")
-        }
+
+    override fun getAccount(msg: Account) {
+        SPUtil.putString("mobile",msg.mobile)
+        SPUtil.putString("username",msg.userName)
+        SPUtil.putString("image",msg.img)
+        SPUtil.putString("invitation_code",msg.inviteCode)
+    }
+    override fun setHeader(msg: UploadModel) {
+        TODO("Not yet implemented")
     }
 
+
     override fun layoutId(): Int {
-        return R.layout.activity_main_ruoyu_new
+        return R.layout.activity_main
     }
 
     override fun initData() {
     }
 
     override fun initView() {
+        EventBus.getDefault().register(this)
+        mCertification= SPUtil.getObj("certification", Certification::class.java)
         initFragment()
         mRG.setOnCheckedChangeListener(this)
-
-        supportFragmentManager.beginTransaction()
-                .replace(R.id.fl_left, MineFragment(), MineFragment()::class.java.simpleName)
-                .commitAllowingStateLoss()
-        dl_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-
-        var layoutParams: RelativeLayout.LayoutParams= ll_header.layoutParams as RelativeLayout.LayoutParams
-        layoutParams.topMargin= DensityUtils.getStatusBarHeight(this)
-        ll_header.layoutParams=layoutParams
-
-        setImage()
-
-        iv_mine.setOnClickListener {
-            openMine()
-        }
     }
 
     override fun start() {
-        mConfigPresenter.getDownload()
+        myAccountPresenter.getAccount()
+        mCertificationInfoPresenter.getCertification()
     }
 
     private fun initFragment() {
@@ -89,59 +78,32 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         mFragments.add(HomeFragment())
         mFragments.add(MillFragment())
         mFragments.add(AssetFragment())
-        mFragments.add(ClusterFragment())
+        mFragments.add(MyFragment())
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_content, mFragments[0], mFragments[0]::class.java.simpleName)
             .commitAllowingStateLoss()
 
-        mRbMall.isChecked = true
+        mRbHome.isChecked = true
         mLastSelect = 0
     }
-
-
 
     override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
         when (checkedId) {
 
-            R.id.mRbMall -> {
+            R.id.mRbHome -> {
                 checkFragment(0)
             }
             R.id.mRbMining -> {
                 checkFragment(1)
             }
-            R.id.mRbHangqing -> {
-                checkFragment(3)
-            }
-            R.id.mRbShopCar -> {
+            R.id.mRbAsset -> {
                 checkFragment(2)
+            }
+            R.id.mRbMy -> {
+                checkFragment(3)
             }
 
         }
-    }
-
-    fun checkMill()
-    {
-        checkFragment(1)
-        mRbMining.isChecked=true
-    }
-
-    private fun openMine()
-    {
-        dl_layout.openDrawer(Gravity.LEFT)
-    }
-
-    /**
-     * 设置头像
-     */
-    fun setImage()
-    {
-        val requestOptions= RequestOptions.bitmapTransform(CircleCrop()).error(R.mipmap.icon_home_mine)
-        Glide.with(this).load(Constants.URL_INVITE+SPUtil.getString("image")).apply(requestOptions).into(iv_mine)
-    }
-
-    fun setStateMode(s:Boolean)
-    {
-        StatusBarUtil.darkMode(this,s)
     }
 
 
@@ -164,6 +126,46 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         }
     }
 
+
+    /**
+     * 判断是否已经实名认证
+     */
+    fun isCertificated():Boolean
+    {
+        mCertification= SPUtil.getObj("certification", Certification::class.java)
+        when (mCertification?.stat) {
+            "0"-> {
+                SToast.showText("实名认证审核中，请稍等")
+                return false
+            }
+            "1"-> {
+                return true
+            }
+            else -> {
+                SToast.showText("尚未实名认证，请先前往实名认证")
+                Handler().postDelayed(Runnable {
+                    startActivity(Intent(this, MineCertificationActivity::class.java))
+                }, 500)
+                return false
+            }
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: String) {
+        if (event == Constants.CODE_CERTIFICATION_BROAD) {
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    if (mCertification?.stat!="1")
+                    {
+                        mCertificationInfoPresenter.getCertification()
+                    }
+                }
+            } , 0, 3*60*1000)
+        }
+    }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         for (mFragment in supportFragmentManager.fragments) {
@@ -171,18 +173,9 @@ class   MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener ,ICont
         }
     }
 
-
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        if(keyCode==KeyEvent.KEYCODE_BACK)
-        {
-            if (dl_layout.isDrawerOpen(GravityCompat.START)){
-                dl_layout.closeDrawers()
-                return false
-            }
-        }
-        return super.onKeyDown(keyCode, event)
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
-
-
 
 }

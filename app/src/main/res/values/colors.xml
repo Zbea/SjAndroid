@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorPrimaryDark">#549cf8</color>
-    <color name="colorAccent">#EF5362</color>
 
 
     <color name="color_white">#FFFFFF</color>
@@ -10,32 +8,20 @@
 
     <color name="color_yellow">#F0BC33</color>
     <color name="redF4">#FF6254</color>
-    <color name="blue">#5390FF</color>
-    <color name="default_color">#f7f7f7</color>
-    <color name="color_launch">#333b4b</color>
+    <color name="color_launch">#4F80FA</color>
 
     <color name="color_card_bg">#ffffff</color>
+    <color name="color_black">#0A0E29</color>
     <color name="color_333333">#333333</color>
     <color name="color_999999">#999999</color>
     <color name="color_666666">#666666</color>
     <color name="color_hint">#88999999</color>
     <color name="color_line">#88dddddd</color>
-    <color name="color_gray">#666666</color>
-    <color name="color_gray_b">#bbbbbb</color>
 
     <color name="color_bg">#ffffff</color>
-    <color name="color_gray_bg">#f7f7f7</color>
-    <color name="color_main">#00767E</color>
-    <color name="color_main_nor">#B6C8D5</color>
+    <color name="color_gray_bg">#F6F5FA</color>
+    <color name="color_main">#4F80FA</color>
+    <color name="color_main_nor">#BBC1DB</color>
 
-    <color name="color_mine_btn">#00767E</color>
-    <color name="color_mine_bottom_bg">#f2f2f2</color>
-    <color name="color_mine_bottom_line">#aadddddd</color>
-    <color name="color_mine_bottom_text">#666666</color>
-
-    <color name="color_asset_bg">#00767E</color>
-
-    <color name="color_list_bg">#f7f7f7</color>
-    <color name="color_item_bg">#ffffff</color>
 
 </resources>

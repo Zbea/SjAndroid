@@ -1,8 +1,12 @@
 package com.hazz.kuangji.utils;
 
 import android.util.Log;
+
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.Relay;
+
+import java.util.HashMap;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
@@ -13,8 +17,6 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 import io.reactivex.schedulers.Schedulers;
-
-import java.util.HashMap;
 
 /**
  * RxBus

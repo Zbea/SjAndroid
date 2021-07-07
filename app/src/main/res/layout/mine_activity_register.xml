@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:background="@mipmap/icon_login_bg"
-
+    android:orientation="vertical"
+    android:background="@color/color_bg"
     >
 
-
-    <TextView
-        android:id="@+id/iv_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/sp_30"
-        android:drawablePadding="@dimen/dp_10"
-        android:drawableLeft="@mipmap/icon_back_white"
-        android:textColor="@color/color_white"
-        android:layout_marginTop="@dimen/dp_50"
-        android:layout_marginLeft="@dimen/space_dimen"
-        android:text="注册眼球存储"/>
-
-
-
+    <include layout="@layout/toolbar"
+        android:id="@+id/mToolBar"></include>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/iv_back"
         android:layout_margin="@dimen/space_dimen"
         android:scrollbars="none"
         >
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,14 +28,13 @@
                 android:id="@+id/mEtInviteCode"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="@dimen/space_dimen"
                 android:paddingLeft="@dimen/dp_10"
                 android:layout_centerVertical="true"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="@string/mine_input_invite_code"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14" />
 
 
@@ -61,36 +45,28 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
                 android:layout_centerVertical="true"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="请输入用户名"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14" />
 
-            <RelativeLayout
-                android:id="@+id/rl_area"
+            <EditText
+                android:id="@+id/mEtPhoneOrEmial"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_centerVertical="true"
                 android:paddingLeft="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
-                android:clickable="true">
-
-                <EditText
-                    android:id="@+id/mEtPhoneOrEmial"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:background="@null"
-                    android:hint="@string/mine_plz_input_phone"
-                    android:inputType="text"
-                    android:maxLength="11"
-                    android:singleLine="true"
-                    android:textColor="@color/color_333333"
-                    android:textColorHint="#bbffffff"
-                    android:textSize="@dimen/sp_14"  />
-            </RelativeLayout>
+                android:layout_marginTop="@dimen/dp_10"
+                android:hint="@string/mine_plz_input_phone"
+                android:inputType="text"
+                android:maxLength="11"
+                android:singleLine="true"
+                android:textColor="@color/color_333333"
+                android:textColorHint="@color/color_main_nor"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
+                android:textSize="@dimen/sp_14"  />
 
             <RelativeLayout
                 android:id="@+id/mRelaCode"
@@ -99,7 +75,7 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
                 android:paddingRight="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 >
 
                 <EditText
@@ -113,7 +89,7 @@
                     android:inputType="text"
                     android:singleLine="true"
                     android:textColor="@color/color_333333"
-                    android:textColorHint="#bbffffff"
+                    android:textColorHint="@color/color_main_nor"
                     android:textSize="@dimen/sp_14"  />
 
                 <TextView
@@ -123,6 +99,7 @@
                     android:layout_alignParentRight="true"
                     android:gravity="center"
                     android:text="@string/mine_get_check_code"
+                    android:textStyle="bold"
                     android:textColor="@color/color_main"
                     android:textSize="@dimen/sp_14" />
             </RelativeLayout>
@@ -133,14 +110,14 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="@dimen/dp_25"
                 android:paddingLeft="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="请输入登录密码（6~18位英文数字组合）"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:maxLines="18"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14"   />
 
 
@@ -150,14 +127,14 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="@string/mine_plz_input_password_again"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:maxLines="18"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14" />
 
             <EditText
@@ -166,13 +143,13 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="@dimen/dp_25"
                 android:paddingLeft="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="请输入资金密码（6~18位英文数字组合）"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14"  />
 
             <EditText
@@ -181,19 +158,19 @@
                 android:layout_height="@dimen/btn_dimen"
                 android:layout_marginTop="@dimen/dp_10"
                 android:paddingLeft="@dimen/dp_10"
-                android:background="@drawable/bg_transparent_solid_5dp_coner"
+                android:background="@drawable/bg_gray_solid_5dp_coner"
                 android:hint="@string/mine_deal_password_again"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
-                android:textColorHint="#bbffffff"
+                android:textColorHint="@color/color_main_nor"
                 android:textSize="@dimen/sp_14"  />
             <LinearLayout
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_20">
+                android:layout_marginTop="@dimen/dp_30">
                 <CheckBox
                     android:id="@+id/cb"
                     android:layout_width="wrap_content"
@@ -206,11 +183,11 @@
                     android:textColor="#666E8B"
                     android:textSize="@dimen/sp_12" />
                 <TextView
-                    android:id="@+id/tv_xieyi"
+                    android:id="@+id/tv_agreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="《用户注册协议》"
-                    android:textColor="#1AC2AE"
+                    android:textColor="@color/color_main"
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>
 
@@ -219,9 +196,11 @@
                 android:id="@+id/mTvRegister"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_dimen"
+                android:layout_marginTop="@dimen/dp_3"
                 android:background="@drawable/bg_main_solid_5dp_coner"
                 android:gravity="center"
                 android:text="@string/mine_register"
+                android:textStyle="bold"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/sp_16" />
 
@@ -231,4 +210,4 @@
 
     </ScrollView>
 
-</RelativeLayout>
+</LinearLayout>

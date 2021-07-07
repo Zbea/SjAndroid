@@ -11,62 +11,41 @@ import com.google.gson.annotations.SerializedName;
  **/
 public class AccelerateInfo {
     /**
-     * id : 2
-     * name : 加速服务器2
-     * desc : 测试
-     * old_product_id : 20
-     * storage : 200
-     * usdt_price : 300.00000000
-     * gas_price : 5.00000000
-     * pledge_price : 10.00000000
-     * term : 540
-     * build_term : 30
-     * seal_term : 120
-     * contract_id : 1
-     * status : 1
-     * rent_type : 0
-     * created_at : 2021-04-08 12:53:05
-     * updated_at : 2021-04-20 16:16:36
-     * miner_number :
-     * pic : /uploads/miner_pic/miner-01.png
+     * id : 209  //矿机id
+     * name : 20号矿机
+     * img : null
+     * detail : <span style="white-space:normal;">老用户升级加速</span>
+     * usdt_price : 0.00000000 //单T USDT
+     * pledge_price : 10.00000000  //单T 质押
+     * gas_price : 5.10000000 //单TGAS
+     * build_term : 0  //建设期
+     * seal_term : 1 //封装期
+     * all_term : 540 //周期
+     * max_boost_t : 2.85714286 //最大可加速t数
+     * order_id :
      */
-
     @SerializedName("id")
     public String id;
     @SerializedName("name")
     public String name;
-    @SerializedName("desc")
-    public String desc;
-    @SerializedName("old_product_id")
-    public String oldProductId;
-    @SerializedName("storage")
-    public String storage;
+    @SerializedName("img")
+    public Object img;
+    @SerializedName("detail")
+    public String detail;
     @SerializedName("usdt_price")
     public String usdtPrice;
-    @SerializedName("gas_price")
-    public String gasPrice;
     @SerializedName("pledge_price")
     public String pledgePrice;
-    @SerializedName("term")
-    public String term;
+    @SerializedName("gas_price")
+    public String gasPrice;
     @SerializedName("build_term")
     public String buildTerm;
     @SerializedName("seal_term")
     public String sealTerm;
-    @SerializedName("contract_id")
-    public String contractId;
-    @SerializedName("status")
-    public String status;
-    @SerializedName("rent_type")
-    public String rentType;
-    @SerializedName("created_at")
-    public String createdAt;
-    @SerializedName("updated_at")
-    public String updatedAt;
-    @SerializedName("miner_number")
-    public String minerNumber;
-    @SerializedName("less_boost")
-    public String lessBoost;
-    public String pic;
-
+    @SerializedName("all_term")
+    public String allTerm;
+    @SerializedName("max_boost_t")
+    public String maxBoostT;
+    @SerializedName("order_id")
+    public String orderId;
 }

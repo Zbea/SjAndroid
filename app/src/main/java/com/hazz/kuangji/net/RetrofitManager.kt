@@ -1,6 +1,5 @@
 package com.hazz.kuangji.net
 
-import android.util.Log
 import com.hazz.kuangji.Constants
 import com.hazz.kuangji.MyApplication
 import com.hazz.kuangji.api.AiPickService
@@ -19,16 +18,8 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitManager{
 
-
     val service: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
         getRetrofit().create(AiPickService::class.java)
-    }
-    val serviceNew: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
-        getRetrofitNew().create(AiPickService::class.java)
-    }
-
-    val serviceSms: AiPickService by lazy (LazyThreadSafetyMode.SYNCHRONIZED){
-        getSms().create(AiPickService::class.java)
     }
 
     /**
@@ -105,29 +96,6 @@ object RetrofitManager{
                 .build()
 
     }
-    private fun getRetrofitNew(): Retrofit {
-        // 获取retrofit的实例
-        return Retrofit.Builder()
-                .baseUrl(Constants.URL_NEW_BASE)  //自己配置
-                .client(getOkHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-    }
-
-
-    private fun getSms(): Retrofit {
-        // 获取retrofit的实例
-        return Retrofit.Builder()
-                .baseUrl(Constants.URL_INVITE)  //自己配置
-                .client(getOkHttpClient())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-    }
-
 
 
     private fun getOkHttpClient(): OkHttpClient {

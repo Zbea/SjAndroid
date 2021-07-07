@@ -30,24 +30,21 @@ class LauncherActivity : AppCompatActivity() {
                 return
             }
         }
+        StatusBarUtil.darkMode(this)
         setContentView(R.layout.activity_launcher)
-        StatusBarUtil.darkMode(this,false)
 
-        val gifDrawable = GifDrawable(resources, R.mipmap.launch)
-        gifDrawable.loopCount=1
-        gif.setImageDrawable(gifDrawable)
+//        val gifDrawable = GifDrawable(resources, R.mipmap.launch)
+//        gifDrawable.loopCount=1
+//        gif.setImageDrawable(gifDrawable)
 
         Observable.timer(3, TimeUnit.SECONDS)
                 .subscribe {
                     if (!TextUtils.isEmpty(SPUtil.getString("token"))) {
                         startActivity(Intent(this, MainActivity::class.java))
                     } else {
-                        //IFragmentActivity.startSelf(this,LoginFragment())
                         startActivity(Intent(this, LoginActivity::class.java))
-
                     }
                     finish()
-
                 }
     }
 
