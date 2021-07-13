@@ -67,7 +67,6 @@
             android:textSize="@dimen/sp_14"
             android:gravity="right"
             android:text="@string/mine_forget_password"
-            android:textStyle="bold"
             android:layout_alignParentRight="true"
             android:textColor="@color/color_main_nor"
             />

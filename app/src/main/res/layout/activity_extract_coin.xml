@@ -42,11 +42,13 @@
                 <RadioButton
                     android:id="@+id/rb_bzz"
                     style="@style/rb_style1"
+                    android:visibility="gone"
                     android:text="BZZ" />
 
                 <RadioButton
                     android:id="@+id/rb_chia"
                     style="@style/rb_style1"
+                    android:visibility="gone"
                     android:text="Chia" />
             </RadioGroup>
 
@@ -197,7 +199,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_need"
+                    android:id="@+id/tv_money_fee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -224,7 +226,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_shiji"
+                    android:id="@+id/tv_money"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -79,10 +79,12 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
         initTab()
         initBanner()
-
-        allLists.addAll(msg.product.fil)
-        allLists.addAll(msg.product.chia)
-        allLists.addAll(msg.product.bzz)
+        if (msg.product?.fil!=null)
+            allLists.addAll(msg.product?.fil!!)
+        if (msg.product?.chia!=null)
+            allLists.addAll(msg.product?.chia!!)
+        if (msg.product?.bzz!=null)
+            allLists.addAll(msg.product?.bzz!!)
         mAdapter?.setNewData(allLists)
 
     }
@@ -140,6 +142,8 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
     private fun initTab()
     {
+        if (home?.product==null)return
+        //遍历索引
         var json= JSONObject(Gson().toJson(home?.product).toString())
         var it=json.keys()
         while (it.hasNext())
@@ -156,13 +160,16 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             override fun onTabSelected(tab: XTabLayout.Tab?) {
                 when(tab?.text.toString()){
                     "fil"->{
-                        mAdapter?.setNewData(home?.product?.fil)
+                        if (home?.product?.fil!=null)
+                            mAdapter?.setNewData(home?.product?.fil)
                     }
                     "chia"->{
-                        mAdapter?.setNewData(home?.product?.chia)
+                        if (home?.product?.chia!=null)
+                            mAdapter?.setNewData(home?.product?.chia)
                     }
                     "bzz"->{
-                        mAdapter?.setNewData(home?.product?.bzz)
+                        if (home?.product?.bzz!=null)
+                            mAdapter?.setNewData(home?.product?.bzz)
                     }
                     else->{
                         mAdapter?.setNewData(allLists)

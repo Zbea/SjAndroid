@@ -44,9 +44,9 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         sl_refresh?.isRefreshing = false
         mMill = msg
 
-        tv_number?.text = msg.fil.power
-        tv_earnings?.text = msg.fil.totalRevenue
-        tv_yesterday?.text = msg.fil.yesterdayRevenue
+        tv_number.text = msg.fil?.power
+        tv_earnings.text = msg.fil?.totalRevenue
+        tv_yesterday.text = msg.fil?.yesterdayRevenue
 
         //区分老服务器，集群
         for (item in msg.fil.list) {
@@ -117,6 +117,8 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
      */
     private fun initTab(msg: Mill)
     {
+        if(msg==null)return
+
         var json= JSONObject(Gson().toJson(msg).toString())
         var it=json.keys()
         while (it.hasNext())
@@ -136,25 +138,27 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         }
         tab.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
-                if (tab?.text.toString() == "fil") {
-                    rg_mill.visibility = View.VISIBLE
-                    mAdapterFIL?.setNewData(datas)
-                    rg_mill.check(R.id.rb_left)
-                    tv_number?.text = mMill?.fil?.power
-                    tv_earnings?.text = mMill?.fil?.totalRevenue
-                    tv_yesterday?.text = mMill?.fil?.yesterdayRevenue
+                if (tab?.text.toString() == "chia") {
+                    if (mMill?.chia==null)return
+                    rg_mill.visibility = View.GONE
+                    mAdapterFIL?.setNewData(mMill?.chia?.list)
+                    tv_number?.text = mMill?.chia?.power
+                    tv_earnings?.text = mMill?.chia?.totalRevenue
+                    tv_yesterday?.text = mMill?.chia?.yesterdayRevenue
                 } else if (tab?.text.toString() == "bzz") {
+                    if (mMill?.bzz==null)return
                     rg_mill.visibility = View.GONE
                     mAdapterFIL?.setNewData(mMill?.bzz?.list)
                     tv_number?.text = mMill?.bzz?.power
                     tv_earnings?.text = mMill?.bzz?.totalRevenue
                     tv_yesterday?.text = mMill?.bzz?.yesterdayRevenue
                 } else {
-                    rg_mill.visibility = View.GONE
-                    mAdapterFIL?.setNewData(mMill?.chia?.list)
-                    tv_number?.text = mMill?.chia?.power
-                    tv_earnings?.text = mMill?.chia?.totalRevenue
-                    tv_yesterday?.text = mMill?.chia?.yesterdayRevenue
+                    rg_mill.visibility = View.VISIBLE
+                    mAdapterFIL?.setNewData(datas)
+                    rg_mill.check(R.id.rb_left)
+                    tv_number?.text = mMill?.fil?.power
+                    tv_earnings?.text = mMill?.fil?.totalRevenue
+                    tv_yesterday?.text = mMill?.fil?.yesterdayRevenue
                 }
             }
             override fun onTabUnselected(tab: XTabLayout.Tab?) {

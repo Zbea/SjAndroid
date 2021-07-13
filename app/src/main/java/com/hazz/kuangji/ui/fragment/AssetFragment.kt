@@ -24,24 +24,22 @@ class AssetFragment : BaseFragment(), IContractView.IAssetView {
 
         for (coin in items) {
             if (coin.coin == "FIL") {
-                tv_fil_balance?.text = coin.amount
-                tv_fil_frozen?.text = coin.frozen
-                ll_fil.visibility= View.VISIBLE
+                tv_fil_balance?.text = coin?.amount
+                tv_fil_frozen?.text = coin?.frozen
+            }
+            if (coin.coin == "USDT") {
+                tv_usdt_balance?.text = coin?.amount
+                tv_usdt_frozen?.text = coin?.frozen
             }
             if (coin.coin == "BZZ") {
-                tv_bzz_balance?.text = coin.amount
-                tv_bzz_frozen?.text = coin.frozen
+                tv_bzz_balance?.text = coin?.amount
+                tv_bzz_frozen?.text = coin?.frozen
                 ll_bzz.visibility= View.VISIBLE
             }
             if (coin.coin == "CHIA") {
-                tv_chia_balance?.text = coin.amount
-                tv_chia_frozen?.text = coin.frozen
+                tv_chia_balance?.text = coin?.amount
+                tv_chia_frozen?.text = coin?.frozen
                 ll_chia.visibility= View.VISIBLE
-            }
-            if (coin.coin == "USDT") {
-                tv_usdt_balance?.text = coin.amount
-                tv_usdt_frozen?.text = coin.frozen
-                ll_usdt.visibility= View.VISIBLE
             }
         }
 

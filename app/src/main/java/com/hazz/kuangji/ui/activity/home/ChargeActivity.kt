@@ -40,8 +40,15 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
         if (msg.BZZ==null){
             rb_3.visibility=View.GONE
         }
+        else{
+            rb_3.visibility=View.VISIBLE
+        }
+
         if (msg.CHIA==null){
             rb_4.visibility=View.GONE
+        }
+        else{
+            rb_4.visibility=View.VISIBLE
         }
         setView()
     }

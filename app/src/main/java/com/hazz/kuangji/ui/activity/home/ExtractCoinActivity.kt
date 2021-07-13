@@ -21,8 +21,7 @@ import com.hazz.kuangji.utils.*
 import kotlinx.android.synthetic.main.activity_extract_coin.*
 
 
-class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContractView.IAssetView,
-    TextWatcher {
+class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContractView.IAssetView, TextWatcher {
 
     private var mExtractCoinPresenter: ExtractCoinPresenter = ExtractCoinPresenter(this)
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
@@ -54,7 +53,6 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                 tv_lest.text = "可转" + coin.withdraw_max + currentName
             }
         }
-        setFee()
     }
 
     override fun getAssetCoinList(items: List<AssetCoin>) {
@@ -88,6 +86,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
         if (ruleBzz != null) {
             rateAmountBzz = ruleBzz.feeMin
             rateBzz = ruleBzz.feeRate
+            rb_bzz.visibility= View.VISIBLE
         }
         else
         {
@@ -97,6 +96,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
         if (ruleChia != null) {
             rateAmountChia = ruleChia.feeMin
             rateChia = ruleChia.feeRate
+            rb_chia.visibility= View.VISIBLE
         }
         else
         {
@@ -149,11 +149,12 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
         rg_extract?.setOnCheckedChangeListener { group, checkedId ->
             if (assets == null)
                 return@setOnCheckedChangeListener
+            avaiableAmount = "0.00000000"
             if (checkedId == R.id.rb_usdt) {
                 currentName = "USDT"
                 for (coin in assets!!) {
                     if (coin.coin == currentName) {
-                        avaiableAmount = coin.withdraw_max
+                        avaiableAmount = coin?.withdraw_max
                     }
                 }
                 min = extractRule?.ERC?.amountMin.toString()
@@ -161,20 +162,18 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
 
             } else if (checkedId == R.id.rb_bzz) {
                 currentName = "BZZ"
-                avaiableAmount = "0.00000000"
                 for (coin in assets!!) {
                     if (coin.coin == "BZZ") {
-                        avaiableAmount = coin.withdraw_max
+                        avaiableAmount = coin?.withdraw_max
                     }
                 }
                 min = extractRule?.BZZ?.amountMin.toString()
                 max = extractRule?.BZZ?.amountMax.toString()
             } else if (checkedId == R.id.rb_chia) {
                 currentName = "CHIA"
-                avaiableAmount = "0.0000000"
                 for (coin in assets!!) {
                     if (coin.coin == "CHIA") {
-                        avaiableAmount = coin.withdraw_max
+                        avaiableAmount = coin?.withdraw_max
                     }
                 }
                 min = extractRule?.CHIA?.amountMin.toString()
@@ -183,7 +182,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                 currentName = "FIL"
                 for (coin in assets!!) {
                     if (coin.coin == "FIL") {
-                        avaiableAmount = coin.withdraw_max
+                        avaiableAmount = coin?.withdraw_max
                     }
                 }
                 min = extractRule?.FIL?.amountMin.toString()
@@ -192,9 +191,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
             et_num.hint = "最小:$min / 最大:$max"
             tv_lest.text = "可转$avaiableAmount $currentName"
             et_num.setText("")
-            tv_need.text = "0"
-            tv_shiji.text = "0"
-            setFee()
+            tv_money_fee.text = "0"
+            tv_money.text = "0"
         }
     }
 
@@ -280,58 +278,36 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
             et_num.setText(avaiableAmount)
         }
 
-
     }
 
     /**
      * 开始计算
      */
     private fun setCalculate() {
-        val div = BigDecimalUtil.div(getCurrentRate(), "100", 8)
-        val fee = BigDecimalUtil.mul(num, div, 8)
-        if (isTrc) {
-            val div = BigDecimalUtil.div(rateTrc, "100", 8)
-            val fee = BigDecimalUtil.mul(num, div, 8)
-            if (BigDecimalUtil.compare(rateAmountTrc, fee)) {
-                tv_need.text = rateAmountTrc
-                var surplus = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
-                tv_shiji.text = if (surplus.toDouble() < 0) "0" else surplus
-            } else {
-                tv_need.text = fee
-                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
-            }
+        val fee = BigDecimalUtil.mul(num, getCurrentRate(), 8)
+        if (BigDecimalUtil.compare(getCurrentRateAmount(), fee)) {
+            tv_money_fee.text = getCurrentRateAmount()
+            var surplus = BigDecimalUtil.sub(num, getCurrentRateAmount(), 8)
+            tv_money.text = if (surplus.toDouble() < 0) "0" else surplus
         } else {
-            if (BigDecimalUtil.compare(getCurrentRateAmount(), fee)) {
-                tv_need.text = getCurrentRateAmount()
-                var surplus = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
-                tv_shiji.text = if (surplus.toDouble() < 0) "0" else surplus
-            } else {
-                tv_need.text = fee
-                tv_shiji.text = BigDecimalUtil.sub(num, tv_need.text.toString(), 8)
-            }
+            tv_money_fee.text = fee
+            tv_money.text = BigDecimalUtil.sub(num, fee, 8)
         }
     }
 
-    /**
-     * 设置费用
-     */
-    private fun setFee() {
-//        //手续费为"+getCurrentRate()+"%,
-        if (currentName == "USDT") {
-            "Trc手续费最少扣除" + rateAmountTrc + "USDT ; Erc手续费最少扣除" + getCurrentRateAmount() + currentName
-        } else {
-            "FIL手续费最少扣除" + getCurrentRateAmount() + currentName
-        }
-
-    }
 
     /**
-     * 获得当前rate
+     * 获得当前选中的rate
      */
     private fun getCurrentRate(): String {
-
         return if (currentName == "USDT") {
-            rateUsdt
+            if (isTrc)
+            {
+                rateTrc
+            }
+            else{
+                rateUsdt
+            }
         } else if (currentName == "BZZ") {
             rateBzz
         } else if (currentName == "CHIA") {
@@ -342,10 +318,17 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
     }
 
     /**
-     * 获得当前最低
+     * 获得当前选中的所需最低费用
      */
     private fun getCurrentRateAmount(): String {
-        return if (currentName == "USDT") rateAmountUsdt
+        return if (currentName == "USDT")
+            if (isTrc)
+            {
+                rateAmountTrc
+            }
+            else{
+                rateAmountUsdt
+            }
         else if (currentName == "BZZ") {
             rateAmountBzz
         } else if (currentName == "CHIA") {

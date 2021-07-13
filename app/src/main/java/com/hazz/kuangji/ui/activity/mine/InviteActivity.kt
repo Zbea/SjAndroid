@@ -47,7 +47,7 @@ class InviteActivity : BaseActivity(), IContractView.IInviteView {
             .setOnLeftIconClickListener { finish() }
 
         invitation_code = SPUtil.getString("invitation_code")
-        invitation_code_url = Constants.URL_BASE + "web/index.html#/home?code=" + invitation_code
+        invitation_code_url = Constants.URL_INVITE_ADDRESS+ invitation_code
 
         tipsText.text = "您的专属邀请码:$invitation_code"
 
