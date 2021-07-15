@@ -56,7 +56,7 @@
                         android:id="@+id/et_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="请输入加速算力"
+                        android:hint="请输入购买T数"
                         android:background="@color/color_translucent"
                         android:inputType="numberDecimal"
                         android:singleLine="true"

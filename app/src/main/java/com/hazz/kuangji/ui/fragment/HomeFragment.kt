@@ -85,7 +85,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             allLists.addAll(msg.product?.chia!!)
         if (msg.product?.bzz!=null)
             allLists.addAll(msg.product?.bzz!!)
-        mAdapter?.setNewData(allLists)
+        mAdapter?.setNewData(msg.product?.fil)
 
     }
 
@@ -150,11 +150,12 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
         {
             keyLists.add(it.next().toString())
         }
-        keyLists.add("火爆系列")
         keyLists.reverse()//倒序
         for (i in keyLists) {
             tab.addTab(tab.newTab().setText(i))
         }
+
+
 
         tab.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
@@ -178,10 +179,10 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
             }
             override fun onTabUnselected(tab: XTabLayout.Tab?) {
-                Log.i("sj",tab?.text.toString())
+
             }
             override fun onTabReselected(tab: XTabLayout.Tab?) {
-                TODO("Not yet implemented")
+
             }
 
         })
@@ -189,10 +190,6 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
     private fun initBanner() {
 
-        var list =ArrayList<Home.BannerBean>()
-        home?.banner?.let { list.addAll(it) }
-        home?.banner?.let { list.addAll(it) }
-        home?.banner?.let { list.addAll(it) }
         var banner =mBanner as Banner<Home.BannerBean, ImageAdapter>
         banner?.run {
             addBannerLifecycleObserver(this@HomeFragment)//添加生命周期观察者
@@ -204,7 +201,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 //                    }
 //                }
 //            })
-            setAdapter(ImageAdapter(list))
+            setAdapter(home?.banner?.let { ImageAdapter(it) })
             setBannerGalleryEffect(25,15)
             setIndicatorMargins(IndicatorConfig.Margins(30))
             setIndicator(rIndicator,false)

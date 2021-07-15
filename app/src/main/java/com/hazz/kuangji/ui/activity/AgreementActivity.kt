@@ -17,7 +17,8 @@ class AgreementActivity : BaseActivity(), IContractView.IAgreementView {
     private var type=0
 
     override fun agreement(msg: Agreement) {
-        tv_rule.text=Html.fromHtml(msg.detail)
+        if (msg.detail!=null)
+            tv_rule.text=Html.fromHtml(msg.detail)
     }
 
     override fun initData() {

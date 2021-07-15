@@ -41,6 +41,7 @@ import kotlinx.android.synthetic.main.activity_mill_accelerate_rent.tv_pledge
 import kotlinx.android.synthetic.main.activity_mill_accelerate_rent.tv_pledge_t
 import kotlinx.android.synthetic.main.activity_mill_accelerate_rent.tv_yue
 import org.greenrobot.eventbus.EventBus
+import java.math.RoundingMode
 
 /**
  * @Created by Zbea
@@ -87,7 +88,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
         price = item?.usdtPrice
         pledge = item?.pledgePrice
         gas = item?.gasPrice
-        max = item?.maxBoostT
+        max = BigDecimalUtil.mul(item?.maxBoostT,"1",2, RoundingMode.UP)
         tv_money_t.text = price
         tv_pledge_t.text = pledge
         tv_gas_t.text = gas
@@ -102,6 +103,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
         max = BigDecimalUtil.sub(max, et_num.text.toString(), 2)
         et_num.setText("")
         et_num.hint = "请输入加速算力（最大$max T）"
+        SToast.showText("加速成功")
     }
 
     override fun myAsset(msg: List<Asset>) {

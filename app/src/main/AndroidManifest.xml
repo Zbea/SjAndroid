@@ -46,7 +46,6 @@
 
         <activity android:name="com.hazz.kuangji.ui.activity.MainActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.LoginActivity" android:launchMode="singleTask"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.ForgetPwdActivity" />
         <activity android:name=".ui.activity.mine.MineContactActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.RegisterActivity" />
         <activity android:name="com.hazz.kuangji.ui.activity.mine.InviteActivity"/>
@@ -57,21 +56,18 @@
         <activity android:name="com.hazz.kuangji.ui.activity.home.ChargeActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.home.ChargeRecordActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mine.ChangePwdActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.mine.MineLoginPwdActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.home.MsgListActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.home.MsgDescActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.home.ScanCoinAddressActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.home.HomeRentActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.mill.MillEargingsListActivity"/>
-        <activity android:name="com.hazz.kuangji.ui.activity.RuleActivity"/>
         <activity android:name="com.hazz.kuangji.ui.activity.AgreementActivity"/>
         <activity android:name=".ui.activity.mine.MineCertificatedActivity"/>
         <activity android:name=".ui.activity.mine.MineCertificationActivity"/>
         <activity android:name=".ui.activity.mine.DownloadActivity"/>
-        <activity android:name=".ui.activity.mine.AboutActivity"/>
-        <activity android:name=".ui.activity.mine.CompanyInfoActivity"/>
         <activity android:name=".ui.activity.asset.AssetCoinRecordActivity"/>
         <activity android:name=".ui.activity.mill.MillAccelerateActivity"/>
+        <activity android:name=".ui.activity.mine.ValueAddActivity"/>
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"

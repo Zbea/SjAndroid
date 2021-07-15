@@ -55,22 +55,13 @@ class ExtractCoinRecordDetailsActivity : BaseActivity(), IContractView.IExtractV
 
         tv_num.text = record?.amountAll+record?.coin
         tv_fee.text=record?.amountFee+record?.coin
+        tv_money.text=record?.amountTrans+record?.coin
         tv_time.text=record?.create_at
+        tv_state.text=record?.statTxt
         if (record?.stat=="0")
         {
-            tv_state.text="待审核"
             tv_state.setTextColor(resources.getColor(R.color.color_yellow))
             btn_cancel.visibility= View.VISIBLE
-        }
-        else if (record?.stat=="4")
-        {
-            tv_state.text="已完成"
-            btn_cancel.visibility= View.GONE
-        }
-        else{
-            tv_state.text="已取消"
-            tv_state.setTextColor(resources.getColor(R.color.color_999999))
-            btn_cancel.visibility= View.GONE
         }
 
     }

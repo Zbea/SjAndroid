@@ -92,4 +92,12 @@ interface IContractView {
         fun onFail(msg: String)
     }
 
+    /**
+     * 增值服务
+     */
+    interface IValueAddView: BaseView {
+        fun getList(item : ValueAdd)
+        fun onSuccess(msg: String)
+    }
+
 }

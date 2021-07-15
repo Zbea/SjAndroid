@@ -104,6 +104,7 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
 
     override fun onSucceed(msg: String) {
         EventBus.getDefault().post(Constants.CODE_BUY_BROAD)
+        SToast.showText("购买成功")
         if (mDialog != null) mDialog?.dismiss()
         finish()
     }

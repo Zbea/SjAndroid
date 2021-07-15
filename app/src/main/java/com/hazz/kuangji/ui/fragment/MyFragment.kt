@@ -3,6 +3,7 @@ package com.hazz.kuangji.ui.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -41,6 +42,13 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
         SPUtil.putString("invitation_code",msg.inviteCode)
         mTvMobile.text = msg.mobile
         mTvUserName.text = msg.userName
+        if (msg.exist_deposit=="0")
+        {
+            layout_value_add.visibility= View.GONE
+        }
+        else{
+            layout_value_add.visibility= View.VISIBLE
+        }
         setHeaderImage()
     }
     //头像上传
@@ -94,8 +102,9 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
         layout_setting.setOnClickListener {
             startActivity(Intent(activity, SettingActivity::class.java))
         }
-
-
+        layout_value_add.setOnClickListener {
+            startActivity(Intent(activity, ValueAddActivity::class.java))
+        }
         layout_contact.setOnClickListener {
             startActivity(Intent(activity, MineContactActivity::class.java).setFlags(0))
         }

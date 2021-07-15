@@ -20,7 +20,6 @@ import com.scwang.smartrefresh.layout.util.DensityUtil
 import kotlinx.android.synthetic.main.fragment_mill.*
 import kotlinx.android.synthetic.main.fragment_mill.tab
 import kotlinx.android.synthetic.main.fragment_mill.tv_top
-import kotlinx.android.synthetic.main.fragment_new_home.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -33,11 +32,13 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
     private var datas: MutableList<Mill.ListBean> = ArrayList()
     private var datasAccelerate: MutableList<Mill.ListBean> = ArrayList()
     private var mMill: Mill? = null
-    private var keyLists=ArrayList<String>()
+    private var keyLists = ArrayList<String>()
+    private var type = 0
+    private var typeMill = 0
 
     override fun getMill(msg: Mill) {
         if (mView == null) return
-        if (msg==null) return
+        if (msg == null) return
 
         initTab(msg)
 
@@ -56,8 +57,9 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
                 datasAccelerate.add(item)
             }
         }
-        mAdapterFIL?.setNewData(datas)
+        setListFil()
     }
+
 
     override fun getEarningsList(msg: List<MillEarningsList>) {
         TODO("Not yet implemented")
@@ -80,13 +82,11 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         sl_refresh?.isRefreshing = true
         sl_refresh?.setColorSchemeResources(R.color.color_main)
         sl_refresh?.setOnRefreshListener {
-            rg_mill.check(R.id.rb_left)
             tab.getTabAt(0)?.select()
             lazyLoad()
         }
 
         val leftRightOffset = DensityUtil.dp2px(5f)
-        list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
         list.layoutManager = LinearLayoutManager(activity)//创建布局管理
         mAdapterFIL = MillFILAdapter(R.layout.item_mill_fil, null)
         list.adapter = mAdapterFIL
@@ -97,9 +97,11 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         rg_mill.setOnCheckedChangeListener { group, checkedId ->
             if (checkedId == R.id.rb_left) {
                 mAdapterFIL?.setNewData(datas)
+                typeMill = 0
             }
             if (checkedId == R.id.rb_right) {
                 mAdapterFIL?.setNewData(datasAccelerate)
+                typeMill = 1
             }
         }
     }
@@ -112,17 +114,25 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         mMillPresenter.mill()
     }
 
+    //设置矿机数据
+    private fun setListFil() {
+        //设置刷新后的选中需要显示的类型
+        if (typeMill == 0) {
+            mAdapterFIL?.setNewData(datas)
+        } else {
+            mAdapterFIL?.setNewData(datasAccelerate)
+        }
+    }
+
     /**
      * 动态获取设置tab索引
      */
-    private fun initTab(msg: Mill)
-    {
-        if(msg==null)return
+    private fun initTab(msg: Mill) {
+        if (msg == null) return
 
-        var json= JSONObject(Gson().toJson(msg).toString())
-        var it=json.keys()
-        while (it.hasNext())
-        {
+        var json = JSONObject(Gson().toJson(msg).toString())
+        var it = json.keys()
+        while (it.hasNext()) {
             keyLists.add(it.next().toString())
         }
         keyLists.reverse()//倒序
@@ -130,23 +140,23 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
             tab.addTab(tab.newTab().setText(i))
         }
 
-        if (keyLists.size>1){
-            ll_tab.visibility=View.VISIBLE
+        if (keyLists.size > 1) {
+            ll_tab.visibility = View.VISIBLE
+        } else {
+            ll_tab.visibility = View.GONE
         }
-        else{
-            ll_tab.visibility=View.GONE
-        }
+
         tab.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
                 if (tab?.text.toString() == "chia") {
-                    if (mMill?.chia==null)return
+                    if (mMill?.chia == null) return
                     rg_mill.visibility = View.GONE
                     mAdapterFIL?.setNewData(mMill?.chia?.list)
                     tv_number?.text = mMill?.chia?.power
                     tv_earnings?.text = mMill?.chia?.totalRevenue
                     tv_yesterday?.text = mMill?.chia?.yesterdayRevenue
                 } else if (tab?.text.toString() == "bzz") {
-                    if (mMill?.bzz==null)return
+                    if (mMill?.bzz == null) return
                     rg_mill.visibility = View.GONE
                     mAdapterFIL?.setNewData(mMill?.bzz?.list)
                     tv_number?.text = mMill?.bzz?.power
@@ -154,15 +164,16 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
                     tv_yesterday?.text = mMill?.bzz?.yesterdayRevenue
                 } else {
                     rg_mill.visibility = View.VISIBLE
-                    mAdapterFIL?.setNewData(datas)
-                    rg_mill.check(R.id.rb_left)
+                    setListFil()
                     tv_number?.text = mMill?.fil?.power
                     tv_earnings?.text = mMill?.fil?.totalRevenue
                     tv_yesterday?.text = mMill?.fil?.yesterdayRevenue
                 }
             }
+
             override fun onTabUnselected(tab: XTabLayout.Tab?) {
             }
+
             override fun onTabReselected(tab: XTabLayout.Tab?) {
             }
 

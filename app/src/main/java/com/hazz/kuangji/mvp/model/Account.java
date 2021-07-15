@@ -22,4 +22,5 @@ public class Account {
         public String inviteCode;
         @SerializedName("img")
         public String img;
+        public String exist_deposit;
 }

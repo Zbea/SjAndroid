@@ -184,5 +184,16 @@ interface AiPickService{
     @POST("/app/boost/investment")
     fun commitAccelerate(@QueryMap map: HashMap<String, String>): Observable<BaseResult<Any>>
 
+    /**
+     * 查看增值服务
+     */
+    @GET("app/deposit/list")
+    fun getValueList(): Observable<BaseResult<ValueAdd>>
+
+    /**
+     * 提取增值服务
+     */
+    @POST("app/deposit/withdraw")
+    fun extractValue(@Query("order_id") id: String,@Query("trade_password") pwd: String): Observable<BaseResult<Any>>
 
 }

@@ -54,17 +54,18 @@
 
                     <LinearLayout
                         android:id="@+id/ll_tab"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="39dp"
+                        android:layout_gravity="center_horizontal"
+                        android:visibility="gone"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
-                        android:visibility="gone"
                         android:background="@drawable/bg_white_stroke_5dp_coner"
                         android:gravity="center">
 
                         <com.androidkun.xtablayout.XTabLayout
                             android:id="@+id/tab"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="35dp"
                             android:layout_marginLeft="-2dp"
                             android:background="@color/color_main"

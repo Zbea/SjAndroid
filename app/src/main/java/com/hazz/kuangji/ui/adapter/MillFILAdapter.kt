@@ -11,6 +11,7 @@ import com.hazz.kuangji.mvp.model.Mill
 import com.hazz.kuangji.ui.activity.mill.MillAccelerateActivity
 import com.hazz.kuangji.ui.activity.mill.MillEargingsListActivity
 import com.hazz.kuangji.utils.BigDecimalUtil
+import java.math.RoundingMode
 
 /**
  * 加速服务器适配器
@@ -22,7 +23,7 @@ class MillFILAdapter(layoutResId: Int, data: List<Mill.ListBean>?) : BaseQuickAd
     override fun convert(helper: BaseViewHolder, item: Mill.ListBean) {
         helper.setText(R.id.tv_name, item.productName)
         helper.setText(R.id.tv_power, item.power)
-        helper.setText(R.id.tv_seal, BigDecimalUtil.mul(item.powerSeal,"1",2) )
+        helper.setText(R.id.tv_seal, BigDecimalUtil.mul(item.powerSeal,"1",2,RoundingMode.UP) )
         helper.setText(R.id.tv_total_fil, item.revenue)
         helper.setText(R.id.tv_yesterday_fil, item.yesterday)
         helper.setText(R.id.tv_day, item.allRemain)
@@ -35,7 +36,8 @@ class MillFILAdapter(layoutResId: Int, data: List<Mill.ListBean>?) : BaseQuickAd
             mContext.startActivity(Intent(mContext, MillEargingsListActivity::class.java).putExtra("orderId",item.id))
         }
 
-        helper.setVisible(R.id.iv_accelerate,item.minerType=="0")
+        helper.setVisible(R.id.iv_accelerate,item.stat=="0"&&item.minerType=="0")//倒期隐藏加速包
+
         helper.getView<ImageView>(R.id.iv_accelerate).setOnClickListener {
             mContext.startActivity(Intent(mContext, MillAccelerateActivity::class.java).putExtra("orderId",item.id))
         }

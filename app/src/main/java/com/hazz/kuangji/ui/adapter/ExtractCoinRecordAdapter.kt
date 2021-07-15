@@ -16,19 +16,12 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<ExtractRecord.ListBe
 
         helper.setText(R.id.tv_time, item.create_at)
         helper.setText(R.id.tv_amount, "-"+item.amountAll+" "+item.coin)
-        when(item.stat){
-            "4"->{
-                helper.setText(R.id.tv_state, "已完成")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_333333))
-            }
-            "0"->{
-                helper.setText(R.id.tv_state, "待审核")
-                helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
-            }
-            else->{
-                helper.setText(R.id.tv_state, "已取消")
-                helper.setTextColor(R.id.tv_state,mContext.resources.getColor(R.color.color_999999))
-            }
+        helper.setText(R.id.tv_state, item.statTxt)
+        if (item.stat=="0"){
+            helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+        }
+        else{
+            helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_333333))
         }
 
     }
