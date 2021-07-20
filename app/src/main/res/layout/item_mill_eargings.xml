@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_60"
+    android:layout_height="55dp"
     android:paddingLeft="@dimen/dp_15"
     android:paddingRight="@dimen/dp_15"
     android:gravity="center_vertical"
-    android:background="@drawable/bg_line_top">
+    android:background="@drawable/bg_line_bottom">
 
     <TextView
         android:id="@+id/tv_date"
