@@ -38,32 +38,6 @@ class LoginPresenter(view: IContractView.LoginView) : BasePresenter<IContractVie
 
     }
 
-    fun resetPwd(old_password: String, password: String
-    ) {
-
-
-        val body = RequestUtils.getBody(
-
-                Pair.create<Any, Any>("old_password", Utils.encryptMD5(old_password)),
-                Pair.create<Any, Any>("password", Utils.encryptMD5(password))
-
-        )
-
-        val login = RetrofitManager.service.resetPwd(body)
-
-        doRequest(login, object : Callback<Any>(view) {
-            override fun failed(tBaseResult: BaseResult<Any>): Boolean {
-
-                return false
-            }
-
-            override fun success(tBaseResult: BaseResult<Any>) {
-                view.registerSucceed(tBaseResult.msg)
-            }
-
-        }, true)
-
-    }
 
     fun sendSMs(mobile: String,type: String) {
 

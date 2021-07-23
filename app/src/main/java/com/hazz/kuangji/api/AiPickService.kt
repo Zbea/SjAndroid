@@ -40,11 +40,7 @@ interface AiPickService{
     @POST("/app/trade/password")
     fun findTradePwd(@Body request: RequestBody): Observable<BaseResult<Any>>
 
-    /**
-     * 修改登陆密码
-     */
-    @PUT(" reset/password")
-    fun resetPwd(@Body request: RequestBody): Observable<BaseResult<Any>>
+
     /**
      * 注册
      */
