@@ -1,6 +1,7 @@
 package com.hazz.kuangji.net
 
 
+import android.util.Log
 import com.hazz.kuangji.utils.SToast
 import io.reactivex.Observer
 import io.reactivex.annotations.NonNull
@@ -33,7 +34,6 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
                 tBaseResult.code==401 -> {
                     baseView?.login()
                 }
-
                 else -> {
                     baseView?.fail(tBaseResult.msg)
                     failed(tBaseResult)
