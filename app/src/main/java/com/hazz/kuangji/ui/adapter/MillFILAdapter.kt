@@ -23,7 +23,7 @@ class MillFILAdapter(layoutResId: Int, data: List<Mill.ListBean>?) : BaseQuickAd
     override fun convert(helper: BaseViewHolder, item: Mill.ListBean) {
         helper.setText(R.id.tv_name, item.productName)
         helper.setText(R.id.tv_power, item.power)
-        helper.setText(R.id.tv_seal, BigDecimalUtil.mul(item.powerSeal,"1",2,RoundingMode.UP) )
+        helper.setText(R.id.tv_seal, BigDecimalUtil.mul(item.powerSeal,"1",2) )
         helper.setText(R.id.tv_total_fil, item.revenue)
         helper.setText(R.id.tv_yesterday_fil, item.yesterday)
         helper.setText(R.id.tv_day, item.allRemain)
