@@ -37,7 +37,6 @@ abstract class Callback<T> : Observer<BaseResult<T>> {
                 else -> {
                     baseView?.fail(tBaseResult.msg)
                     failed(tBaseResult)
-
                 }
             }
         }

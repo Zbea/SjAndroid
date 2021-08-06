@@ -82,7 +82,7 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         sl_refresh?.isRefreshing = true
         sl_refresh?.setColorSchemeResources(R.color.color_main)
         sl_refresh?.setOnRefreshListener {
-            tab.getTabAt(0)?.select()
+            tab.removeAllTabs()
             lazyLoad()
         }
 
