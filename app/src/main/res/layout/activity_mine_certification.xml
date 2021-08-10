@@ -87,7 +87,7 @@
                     android:id="@+id/tv_get_code"
                     android:layout_width="@dimen/dp_80"
                     android:layout_height="38dp"
-                    android:gravity="center"
+                    android:gravity="center|right"
                     android:text="获取验证码"
                     android:textColor="@color/color_main"
                     android:textStyle="bold"
