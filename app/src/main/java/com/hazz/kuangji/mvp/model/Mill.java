@@ -99,5 +99,8 @@ public class Mill {
         public String minerType;
         @SerializedName("miner_type_txt")
         public String minerTypeTxt;
+        @SerializedName("line_release")
+        public String lineRelease;
+
     }
 }

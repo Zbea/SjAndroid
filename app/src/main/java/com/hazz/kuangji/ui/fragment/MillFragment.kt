@@ -45,12 +45,12 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         sl_refresh?.isRefreshing = false
         mMill = msg
 
-        tv_number.text = msg.fil?.power
-        tv_earnings.text = msg.fil?.totalRevenue
-        tv_yesterday.text = msg.fil?.yesterdayRevenue
+        tv_number.text = msg?.fil?.power
+        tv_earnings.text = msg?.fil?.totalRevenue
+        tv_yesterday.text = msg?.fil?.yesterdayRevenue
 
         //区分老服务器，集群
-        for (item in msg.fil.list) {
+        for (item in msg?.fil.list) {
             if (item.minerType == "0") {
                 datas.add(item)
             } else {
@@ -137,7 +137,7 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         }
         keyLists.reverse()//倒序
         for (i in keyLists) {
-            tab.addTab(tab.newTab().setText(i))
+            tab?.newTab()?.setText(i)?.let { it -> tab?.addTab(it) }
         }
 
         if (keyLists.size > 1) {
@@ -146,7 +146,7 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
             ll_tab.visibility = View.GONE
         }
 
-        tab.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
+        tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
                 if (tab?.text.toString() == "chia") {
                     if (mMill?.chia == null) return

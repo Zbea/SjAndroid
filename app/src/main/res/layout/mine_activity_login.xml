@@ -1,102 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
+    android:orientation="vertical"
     android:background="@color/color_bg"
     >
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="34sp"
-        android:textColor="@color/color_333333"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/dp_130"
-        android:layout_marginLeft="@dimen/space_dimen"
-        android:text="欢迎使用眼球存储"/>
-
-    <LinearLayout
-        android:layout_below="@+id/tv_title"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/space_dimen"
-        android:layout_marginRight="@dimen/space_dimen"
-        android:layout_marginTop="@dimen/dp_94"
-        android:orientation="vertical">
+        android:scrollbars="none"
+        >
 
-        <EditText
-            android:id="@+id/mEtPhoneOrEmail"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dp_10"
-            android:background="@drawable/bg_gray_solid_5dp_coner"
-            android:textColorHint="@color/color_main_nor"
-            android:textColor="@color/color_333333"
-            android:hint="请输入用户名"
-            android:textSize="@dimen/sp_16"
-            android:singleLine="true"
-            android:inputType="text"
-            />
-
-        <EditText
-            android:id="@+id/mEtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_50"
-            android:layout_marginTop="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/dp_10"
-            android:background="@drawable/bg_gray_solid_5dp_coner"
-            android:textColorHint="@color/color_main_nor"
-            android:textColor="@color/color_333333"
-            android:hint="@string/mine_plz_input_password"
-            android:textSize="@dimen/sp_16"
-            android:singleLine="true"
-            android:inputType="textPassword"
-            />
-
-        <TextView
-            android:id="@+id/mTvUseForgetPassword"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_10"
-            android:textSize="@dimen/sp_14"
-            android:gravity="right"
-            android:text="@string/mine_forget_password"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_main_nor"
-            />
-        <TextView
-            android:id="@+id/mTvLogin"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btn_dimen"
-            android:layout_marginTop="@dimen/dp_94"
-            android:textSize="@dimen/sp_16"
-            android:textColor="@color/color_white"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="@string/mine_login"
-            android:background="@drawable/bg_main_solid_5dp_coner"
-            />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            >
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="34sp"
+                android:textColor="@color/color_333333"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/dp_130"
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:text="欢迎使用眼球存储"/>
 
-    <TextView
-        android:id="@+id/mTvRegist"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dp_94"
-        android:textSize="@dimen/sp_14"
-        android:text="没有账户？立即注册"
-        android:textColor="@color/color_main"
-        />
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title"
+                android:layout_marginLeft="@dimen/space_dimen"
+                android:layout_marginTop="@dimen/dp_94"
+                android:layout_marginRight="@dimen/space_dimen"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/mEtPhoneOrEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_gray_solid_5dp_coner"
+                    android:hint="请输入用户名"
+                    android:inputType="text"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/color_333333"
+                    android:textColorHint="@color/color_main_nor"
+                    android:textSize="@dimen/sp_16" />
+
+                <EditText
+                    android:id="@+id/mEtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_50"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:background="@drawable/bg_gray_solid_5dp_coner"
+                    android:hint="@string/mine_plz_input_password"
+                    android:inputType="textPassword"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:singleLine="true"
+                    android:textColor="@color/color_333333"
+                    android:textColorHint="@color/color_main_nor"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:id="@+id/mTvUseForgetPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="right"
+                    android:text="@string/mine_forget_password"
+                    android:textColor="@color/color_main_nor"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/mTvLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_dimen"
+                    android:layout_marginTop="@dimen/dp_94"
+                    android:background="@drawable/bg_main_solid_5dp_coner"
+                    android:gravity="center"
+                    android:text="@string/mine_login"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp_16"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/mTvRegist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_content"
+                android:layout_marginTop="@dimen/dp_60"
+                android:text="没有账户？立即注册"
+                android:textColor="@color/color_main"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 
 
-</RelativeLayout>
+
+
+</LinearLayout>

@@ -62,6 +62,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_power_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="封装总量（T）"
@@ -87,16 +88,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="有效封装(T)"
+                    android:text="未释放（FIL）"
                     android:textColor="@color/color_999999"
                     android:textSize="@dimen/sp_10" />
 
                 <TextView
-                    android:id="@+id/tv_seal"
+                    android:id="@+id/tv_line_release"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_3"
-                    android:text="0.00000000"
+                    android:text="0"
                     android:textColor="@color/color_black"
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>
@@ -293,15 +294,45 @@
             android:id="@+id/ll_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_status"
-            android:layout_marginBottom="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_5"
-            android:gravity="right">
+            android:layout_margin="@dimen/dp_15"
+            android:gravity="center|right">
 
-            <Button
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+                <LinearLayout
+                    android:id="@+id/ll_seal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="有效封装(T)"
+                        android:textColor="@color/color_999999"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:id="@+id/tv_seal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_3"
+                        android:text="0.00000000"
+                        android:textColor="@color/color_black"
+                        android:textSize="@dimen/sp_12" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
                 android:id="@+id/btn_earning"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp_30"
+                android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/dp_15"
                 android:background="@color/color_translucent"
                 android:text="查看收益 >>>"
