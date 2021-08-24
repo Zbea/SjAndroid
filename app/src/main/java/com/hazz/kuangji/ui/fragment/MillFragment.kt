@@ -141,9 +141,9 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         }
 
         if (keyLists.size > 1) {
-            ll_tab.visibility = View.VISIBLE
+            ll_tab?.visibility = View.VISIBLE
         } else {
-            ll_tab.visibility = View.GONE
+            ll_tab?.visibility = View.GONE
         }
 
         tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {

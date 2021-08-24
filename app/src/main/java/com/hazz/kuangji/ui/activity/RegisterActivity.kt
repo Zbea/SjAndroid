@@ -130,7 +130,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
                     return@setOnClickListener
                 }
 
-                mLoginPresenter.regist(mEtNickName.text.toString(), mEtInviteCode.text.toString().trim(), mEtPhoneOrEmial.text.toString().trim(),
+                mLoginPresenter.regist(mEtNickName.text.toString().trim(), mEtInviteCode.text.toString().trim(), mEtPhoneOrEmial.text.toString().trim(),
                         mEtCheckCode.text.toString().trim(), mEtPasswordConfirm.text.toString().trim(),
                         mEtDealPasswordConfirm.text.toString().trim()
                 )
