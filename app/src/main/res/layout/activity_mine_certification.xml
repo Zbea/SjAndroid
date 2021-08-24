@@ -76,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp_10"
                     android:layout_weight="1"
+                    android:inputType="number"
                     android:background="@color/color_translucent"
                     android:gravity="right"
                     android:hint="请填写验证码"

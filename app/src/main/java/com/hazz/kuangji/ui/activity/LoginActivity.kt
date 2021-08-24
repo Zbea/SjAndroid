@@ -62,8 +62,8 @@ class LoginActivity : BaseActivity(), IContractView.LoginView {
                 return@setOnClickListener
             }
 
-            mLoginPresenter.login(mEtPhoneOrEmail.text.toString().trim(),mEtPassword.text.toString().trim())
-           //
+            mLoginPresenter.login(mEtPhoneOrEmail.text.toString(),mEtPassword.text.toString())
+
         }
 
     }
