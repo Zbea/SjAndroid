@@ -31,10 +31,14 @@ class MillPresenter(view: IContractView.IMillView) : BasePresenter<IContractView
     }
 
 
-    fun getEargings(id: String) {
+    fun getEargings(id: String,type:Int) {
 
-        val eargings = RetrofitManager.service.getMillEarnings(id)
-
+        val eargings = if (type==2){
+            RetrofitManager.service.getMillEarnings2(id)
+        }
+        else{
+            RetrofitManager.service.getMillEarnings(id)
+        }
         doRequest(eargings, object : Callback<List<MillEarningsList>>(view) {
             override fun failed(tBaseResult: BaseResult<List<MillEarningsList>>): Boolean {
 

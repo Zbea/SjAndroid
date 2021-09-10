@@ -17,6 +17,7 @@ class MillEargingsListActivity : BaseActivity(), IContractView.IMillView {
 
     private var mMillPresenter: MillPresenter = MillPresenter(this)
     private var id=""
+    private var type=0
     private var mAdapter: MillRecordAdapter? = null
 
     override fun getMill(msg: Mill) {
@@ -33,6 +34,7 @@ class MillEargingsListActivity : BaseActivity(), IContractView.IMillView {
 
     override fun initData() {
         id=intent.getStringExtra("orderId")
+        type=intent.getIntExtra("type",0)
     }
 
     override fun initView() {
@@ -49,7 +51,7 @@ class MillEargingsListActivity : BaseActivity(), IContractView.IMillView {
     }
 
     override fun start() {
-        mMillPresenter.getEargings(id)
+        mMillPresenter.getEargings(id,type)
     }
 
 

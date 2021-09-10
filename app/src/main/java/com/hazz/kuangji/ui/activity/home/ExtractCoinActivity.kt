@@ -77,6 +77,12 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
             rateFil = ruleFil.feeRate
             max_fil = ruleFil.amountMax
         }
+        val ruleFil2 = msg.FIL2
+        if (ruleFil2 != null) {
+            rateAmountFil = ruleFil2.feeMin
+            rateFil = ruleFil2.feeRate
+            max_fil = ruleFil2.amountMax
+        }
         val ruleTrc = msg.TRC
         if (ruleTrc != null) {
             rateAmountTrc = ruleTrc.feeMin
@@ -178,7 +184,18 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                 }
                 min = extractRule?.CHIA?.amountMin.toString()
                 max = extractRule?.CHIA?.amountMax.toString()
-            } else {
+            }
+            else if (checkedId == R.id.rb_fil2) {
+                currentName = "FIL2"
+                for (coin in assets!!) {
+                    if (coin.coin == "FIL2") {
+                        avaiableAmount = coin?.withdraw_max
+                    }
+                }
+                min = extractRule?.FIL2?.amountMin.toString()
+                max = extractRule?.FIL2?.amountMax.toString()
+            }
+            else {
                 currentName = "FIL"
                 for (coin in assets!!) {
                     if (coin.coin == "FIL") {
@@ -198,7 +215,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
 
     override fun start() {
         mAssetPresenter.myAsset(false)
-        mExtractCoinPresenter.rule()
+        mExtractCoinPresenter.rule( )
     }
 
     @SuppressLint("SetTextI18n")

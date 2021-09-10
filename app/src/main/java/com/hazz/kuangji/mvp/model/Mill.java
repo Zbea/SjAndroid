@@ -8,6 +8,10 @@ public class Mill {
 
     @SerializedName("fil")
     public FilBean fil;
+    @SerializedName("cluster")
+    public FilBean cluster;
+    @SerializedName("fil2")
+    public FilBean fil2;
     @SerializedName("bzz")
     public BzzBean bzz;
     @SerializedName("chia")

@@ -142,6 +142,7 @@ class ChangePwdActivity : BaseActivity(), IContractView.LoginView {
 
     }
 
+
     override fun onDestroy() {
         super.onDestroy()
         countDownTimer?.cancel()

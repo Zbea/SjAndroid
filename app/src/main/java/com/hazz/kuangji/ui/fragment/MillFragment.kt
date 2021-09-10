@@ -1,5 +1,6 @@
 package com.hazz.kuangji.ui.fragment
 
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.RelativeLayout
@@ -13,6 +14,7 @@ import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Mill
 import com.hazz.kuangji.mvp.model.MillEarningsList
 import com.hazz.kuangji.mvp.presenter.MillPresenter
+import com.hazz.kuangji.ui.activity.mill.MillEargingsListActivity
 import com.hazz.kuangji.ui.adapter.MillFILAdapter
 import com.hazz.kuangji.utils.DensityUtils
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -29,35 +31,37 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
 
     private var mMillPresenter: MillPresenter = MillPresenter(this)
     private var mAdapterFIL: MillFILAdapter? = null
-    private var datas: MutableList<Mill.ListBean> = ArrayList()
-    private var datasAccelerate: MutableList<Mill.ListBean> = ArrayList()
     private var mMill: Mill? = null
-    private var keyLists = ArrayList<String>()
-    private var type = 0
-    private var typeMill = 0
+    private var type=0
 
     override fun getMill(msg: Mill) {
         if (mView == null) return
         if (msg == null) return
 
-        initTab(msg)
-
         sl_refresh?.isRefreshing = false
         mMill = msg
 
-        tv_number.text = msg?.fil?.power
-        tv_earnings.text = msg?.fil?.totalRevenue
-        tv_yesterday.text = msg?.fil?.yesterdayRevenue
-
-        //区分老服务器，集群
-        for (item in msg?.fil.list) {
-            if (item.minerType == "0") {
-                datas.add(item)
-            } else {
-                datasAccelerate.add(item)
+        when(type){
+            0->{
+                tv_number?.text = msg?.fil?.power
+                tv_earnings?.text = msg?.fil?.totalRevenue
+                tv_yesterday?.text = msg?.fil?.yesterdayRevenue
+                mAdapterFIL?.setNewData(msg?.fil?.list)
+            }
+            1->{
+                tv_number?.text = msg?.cluster?.power
+                tv_earnings?.text = msg?.cluster?.totalRevenue
+                tv_yesterday?.text = msg?.cluster?.yesterdayRevenue
+                mAdapterFIL?.setNewData(msg?.cluster?.list)
+            }
+            2->{
+                tv_number?.text = msg?.fil2?.power
+                tv_earnings?.text = msg?.fil2?.totalRevenue
+                tv_yesterday?.text = msg?.fil2?.yesterdayRevenue
+                mAdapterFIL?.setNewData(mMill?.fil2?.list)
             }
         }
-        setListFil()
+
     }
 
 
@@ -82,7 +86,6 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         sl_refresh?.isRefreshing = true
         sl_refresh?.setColorSchemeResources(R.color.color_main)
         sl_refresh?.setOnRefreshListener {
-            tab.removeAllTabs()
             lazyLoad()
         }
 
@@ -93,81 +96,69 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         mAdapterFIL?.bindToRecyclerView(list)
         mAdapterFIL?.setEmptyView(R.layout.fragment_empty)
         list.addItemDecoration(RewardItemDeco(0, 0, 0, leftRightOffset, 0))
+        mAdapterFIL?.setOnItemChildClickListener { adapter, view, position ->
+            if (view.id==R.id.btn_earning){
+                when(type){
+                    0->{
+                        startActivity(Intent(activity, MillEargingsListActivity::class.java).putExtra("type",type)
+                            .putExtra("orderId", mMill?.fil?.list?.get(position)?.id))
+                    }
+                    1->{
+                        startActivity(Intent(activity, MillEargingsListActivity::class.java).putExtra("type",type)
+                            .putExtra("orderId", mMill?.cluster?.list?.get(position)?.id))
+                    }
+                    2->{
+                        startActivity(Intent(activity, MillEargingsListActivity::class.java).putExtra("type",type)
+                            .putExtra("orderId", mMill?.fil2?.list?.get(position)?.id))
+                    }
+                }
 
-        rg_mill.setOnCheckedChangeListener { group, checkedId ->
-            if (checkedId == R.id.rb_left) {
-                mAdapterFIL?.setNewData(datas)
-                typeMill = 0
-            }
-            if (checkedId == R.id.rb_right) {
-                mAdapterFIL?.setNewData(datasAccelerate)
-                typeMill = 1
             }
         }
+
+        initTab()
+
     }
 
     override fun lazyLoad() {
-        tab.removeAllTabs()
-        keyLists.clear()
-        datas.clear()
-        datasAccelerate.clear()
         mMillPresenter.mill()
     }
 
-    //设置矿机数据
-    private fun setListFil() {
-        //设置刷新后的选中需要显示的类型
-        if (typeMill == 0) {
-            mAdapterFIL?.setNewData(datas)
-        } else {
-            mAdapterFIL?.setNewData(datasAccelerate)
-        }
-    }
 
     /**
      * 动态获取设置tab索引
      */
-    private fun initTab(msg: Mill) {
-        if (msg == null) return
+    private fun initTab() {
 
-        var json = JSONObject(Gson().toJson(msg).toString())
-        var it = json.keys()
-        while (it.hasNext()) {
-            keyLists.add(it.next().toString())
-        }
-        keyLists.reverse()//倒序
-        for (i in keyLists) {
-            tab?.newTab()?.setText(i)?.let { it -> tab?.addTab(it) }
-        }
-
-        if (keyLists.size > 1) {
-            ll_tab?.visibility = View.VISIBLE
-        } else {
-            ll_tab?.visibility = View.GONE
-        }
+        tab?.newTab()?.setText("服务器")?.let { it -> tab?.addTab(it) }
+        tab?.newTab()?.setText("集群")?.let { it -> tab?.addTab(it) }
+        tab?.newTab()?.setText("新方案")?.let { it -> tab?.addTab(it) }
 
         tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
-                if (tab?.text.toString() == "chia") {
-                    if (mMill?.chia == null) return
-                    rg_mill.visibility = View.GONE
-                    mAdapterFIL?.setNewData(mMill?.chia?.list)
-                    tv_number?.text = mMill?.chia?.power
-                    tv_earnings?.text = mMill?.chia?.totalRevenue
-                    tv_yesterday?.text = mMill?.chia?.yesterdayRevenue
-                } else if (tab?.text.toString() == "bzz") {
-                    if (mMill?.bzz == null) return
-                    rg_mill.visibility = View.GONE
-                    mAdapterFIL?.setNewData(mMill?.bzz?.list)
-                    tv_number?.text = mMill?.bzz?.power
-                    tv_earnings?.text = mMill?.bzz?.totalRevenue
-                    tv_yesterday?.text = mMill?.bzz?.yesterdayRevenue
-                } else {
-                    rg_mill.visibility = View.VISIBLE
-                    setListFil()
+                if (tab?.text.toString() == "服务器") {
+                    if (mMill?.fil == null) return
+                    type=0
+                    mAdapterFIL?.setNewData(mMill?.fil?.list)
                     tv_number?.text = mMill?.fil?.power
                     tv_earnings?.text = mMill?.fil?.totalRevenue
                     tv_yesterday?.text = mMill?.fil?.yesterdayRevenue
+
+                } else if (tab?.text.toString() == "集群") {
+                    if (mMill?.fil == null) return
+                    type=1
+                    mAdapterFIL?.setNewData(mMill?.cluster?.list)
+                    tv_number?.text = mMill?.cluster?.power
+                    tv_earnings?.text = mMill?.cluster?.totalRevenue
+                    tv_yesterday?.text = mMill?.cluster?.yesterdayRevenue
+
+                } else {
+                    if (mMill?.fil2 == null) return
+                    type=2
+                    mAdapterFIL?.setNewData(mMill?.fil2?.list)
+                    tv_number?.text = mMill?.fil2?.power
+                    tv_earnings?.text = mMill?.fil2?.totalRevenue
+                    tv_yesterday?.text = mMill?.fil2?.yesterdayRevenue
                 }
             }
 

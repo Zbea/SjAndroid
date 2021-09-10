@@ -39,7 +39,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/space_dimen"
                 android:paddingRight="@dimen/space_dimen">
@@ -48,8 +48,8 @@
                     android:id="@+id/ll_earnings_mill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:layout_marginRight="@dimen/dp_5"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginRight="@dimen/dp_10"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -57,7 +57,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="39dp"
                         android:layout_gravity="center_horizontal"
-                        android:visibility="gone"
                         android:paddingLeft="2dp"
                         android:paddingRight="2dp"
                         android:background="@drawable/bg_white_stroke_5dp_coner"
@@ -72,10 +71,10 @@
                             app:xTabDisplayNum="3"
                             app:xTabSelectedBackgroundColor="@color/color_white"
                             app:xTabSelectedTextColor="@color/color_main"
-                            app:xTabSelectedTextSize="16sp"
+                            app:xTabSelectedTextSize="15sp"
                             app:xTabTextColor="@color/color_white"
                             app:xTabBackgroundColor="@color/color_main"
-                            app:xTabTextSize="16sp"
+                            app:xTabTextSize="15sp"
                             app:xTabDividerWidth="2dp"
                             app:xTabDividerColor="@color/color_white"
                             app:xTabDividerGravity="center"
@@ -178,54 +177,14 @@
             </LinearLayout>
 
 
-            <RelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_25"
-                    android:background="@drawable/bg_mill_list"
-                    android:paddingLeft="@dimen/dp_15"
-                    android:paddingTop="35dp"
-                    android:paddingRight="@dimen/dp_15" />
-
-                <RadioGroup
-                    android:id="@+id/rg_mill"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/rb_left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/dp_20"
-                        android:background="@drawable/bg_mill_rb_selector"
-                        android:button="@null"
-                        android:checked="true"
-                        android:gravity="center"
-                        android:text="服务器"
-                        android:textStyle="bold"
-                        android:textColor="@color/selector_white_gray_color" />
-
-                    <RadioButton
-                        android:id="@+id/rb_right"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:background="@drawable/bg_mill_rb_selector"
-                        android:button="@null"
-                        android:gravity="center"
-                        android:text="集群"
-                        android:textStyle="bold"
-                        android:textColor="@color/selector_white_gray_color" />
-
-                </RadioGroup>
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_mill_list"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_15" />
 
 
         </LinearLayout>

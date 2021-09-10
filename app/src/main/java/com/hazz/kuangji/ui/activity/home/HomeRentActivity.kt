@@ -55,7 +55,6 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
     private var totalFIL = "0.00000000" //所需总fil
     private var totalUSDT = "0.00000000" //所需总usdt
     private var mAssetPresenter: AssetPresenter = AssetPresenter(this)
-    private var produce: Home.ProductBean.FilBean? = null
     private var mPasswordDialog: SafeCheckDialog? = null
     private var item:MinerFILInfo?=null
 
@@ -116,10 +115,10 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
 
 
     override fun initView() {
-        id = intent.getStringExtra("produceId")
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle(produce?.name.toString())
                 .setOnLeftIconClickListener { finish() }
+        id = intent.getStringExtra("produceId")
+        if (id==null)return
     }
 
     override fun initData() {

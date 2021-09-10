@@ -16,6 +16,7 @@ public class ExtractRule {
     public RuleBean FIL;
     public RuleBean BZZ;
     public RuleBean CHIA;
+    public RuleBean FIL2;
 
     public static class RuleBean {
 

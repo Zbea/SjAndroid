@@ -38,6 +38,10 @@
                     android:id="@+id/rb_fil"
                     style="@style/rb_style1"
                     android:text="FIL" />
+                <RadioButton
+                    android:id="@+id/rb_fil2"
+                    style="@style/rb_style1"
+                    android:text="FIL(新方案)" />
 
                 <RadioButton
                     android:id="@+id/rb_bzz"
