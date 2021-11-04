@@ -41,7 +41,7 @@
                 <RadioButton
                     android:id="@+id/rb_fil2"
                     style="@style/rb_style1"
-                    android:text="FIL(新方案)" />
+                    android:text="FIL(方案A)" />
 
                 <RadioButton
                     android:id="@+id/rb_bzz"

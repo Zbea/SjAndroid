@@ -157,6 +157,7 @@
                     android:background="@mipmap/icon_asset_fil"
                     android:paddingLeft="@dimen/dp_15"
                     android:paddingRight="@dimen/dp_15"
+                    android:visibility="gone"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -176,7 +177,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
                             android:layout_weight="1"
-                            android:text="FIL(新方案)"
+                            android:text="FIL(方案A)"
                             android:textColor="@color/color_white"
                             android:textSize="@dimen/sp_16"
                             android:textStyle="bold" />

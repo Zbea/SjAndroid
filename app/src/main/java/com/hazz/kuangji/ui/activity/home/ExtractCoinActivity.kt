@@ -206,7 +206,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                 max = extractRule?.FIL?.amountMax.toString()
             }
             et_num.hint = "最小:$min / 最大:$max"
-            tv_lest.text = "可转$avaiableAmount $currentName"
+            tv_lest.text = if(currentName == "FIL2")"可转$avaiableAmount FIL(方案A)" else "可转$avaiableAmount $currentName"
             et_num.setText("")
             tv_money_fee.text = "0"
             tv_money.text = "0"

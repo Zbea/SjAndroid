@@ -4,13 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/shape_upgrade_bg.xml" value="0.2953125" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_extract_coin.xml" value="0.16983695652173914" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_extract_coin.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_home_rent.xml" value="0.1983695652173913" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_launcher.xml" value="0.19655797101449277" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_certification.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_upgrade.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.16983695652173914" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.16983695652173914" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_asset_coin.xml" value="0.1956521739130435" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_mill_fil.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_login.xml" value="0.25" />
       </map>

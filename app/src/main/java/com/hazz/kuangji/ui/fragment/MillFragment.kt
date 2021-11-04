@@ -132,7 +132,7 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
 
         tab?.newTab()?.setText("服务器")?.let { it -> tab?.addTab(it) }
         tab?.newTab()?.setText("集群")?.let { it -> tab?.addTab(it) }
-        tab?.newTab()?.setText("新方案")?.let { it -> tab?.addTab(it) }
+        tab?.newTab()?.setText("方案A")?.let { it -> tab?.addTab(it) }
 
         tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
