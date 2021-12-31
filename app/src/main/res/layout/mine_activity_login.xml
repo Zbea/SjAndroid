@@ -29,7 +29,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/dp_130"
                 android:layout_marginLeft="@dimen/space_dimen"
-                android:text="欢迎使用眼球存储"/>
+                android:text="欢迎使用"/>
 
             <LinearLayout
                 android:id="@+id/ll_content"

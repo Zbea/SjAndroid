@@ -7,22 +7,11 @@
     android:background="@color/color_bg"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_300"
-        android:background="@color/color_main" />
 
     <TextView
         android:id="@+id/tv_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="23dp"
-        android:paddingTop="@dimen/dp_15"
-        android:paddingBottom="@dimen/dp_15"
-        android:text="服务器"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/sp_20"
-        android:textStyle="bold" />
+        android:layout_height="@dimen/dp_20" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/sl_refresh_mill"
@@ -36,143 +25,107 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.androidkun.xtablayout.XTabLayout
+                android:id="@+id/tab"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                app:xTabDisplayNum="3"
+                app:xTabIndicatorColor="@color/color_main"
+                app:xTabIndicatorHeight="2dp"
+                app:xTabMode="scrollable"
+                app:xTabSelectedTextColor="@color/color_main"
+                app:xTabSelectedTextSize="16sp"
+                app:xTabTextAllCaps="true"
+                app:xTabTextColor="#bbbbbb"
+                app:xTabTextSize="16sp"
+                app:xTabTextSelectedBold="true"
+                app:xTabTextBold="true"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/space_dimen"
-                android:paddingRight="@dimen/space_dimen">
+                android:layout_height="120dp"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@drawable/bg_yellow_solid_5dp_coner"
+                android:gravity="center_vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_earnings_mill"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/ll_tab"
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="39dp"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:background="@drawable/bg_white_stroke_5dp_coner"
-                        android:gravity="center">
+                        android:layout_height="wrap_content"
+                        android:text="总量(T)"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_12" />
 
-                        <com.androidkun.xtablayout.XTabLayout
-                            android:id="@+id/tab"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_marginLeft="-2dp"
-                            android:background="@color/color_main"
-                            app:xTabDisplayNum="3"
-                            app:xTabSelectedBackgroundColor="@color/color_white"
-                            app:xTabSelectedTextColor="@color/color_main"
-                            app:xTabSelectedTextSize="15sp"
-                            app:xTabTextColor="@color/color_white"
-                            app:xTabBackgroundColor="@color/color_main"
-                            app:xTabTextSize="15sp"
-                            app:xTabDividerWidth="2dp"
-                            app:xTabDividerColor="@color/color_white"
-                            app:xTabDividerGravity="center"
-                            app:xTabTextAllCaps="true"/>
+                    <TextView
+                        android:id="@+id/tv_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="0"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_16" />
 
-                    </LinearLayout>
+                </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:gravity="center_vertical">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="总收益"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_12" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="总量(T)"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_12"
-                                />
+                    <TextView
+                        android:id="@+id/tv_earnings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="0"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_16" />
 
-                            <TextView
-                                android:id="@+id/tv_number"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
-                                android:text="0"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_16" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="总收益"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_12"
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_earnings"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
-                                android:text="0"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_16" />
-
-                        </LinearLayout>
+                </LinearLayout>
 
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginRight="@dimen/dp_10"
-                            android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="昨日总收益"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_12"
-                                />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="昨日总收益"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_12" />
 
-                            <TextView
-                                android:id="@+id/tv_yesterday"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dp_10"
-                                android:text="0"
-                                android:textColor="@color/color_white"
-                                android:textSize="@dimen/sp_16" />
-
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_yesterday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="0"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/sp_16" />
 
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
@@ -181,9 +134,7 @@
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_mill_list"
                 android:paddingLeft="@dimen/dp_15"
-                android:paddingTop="@dimen/dp_15"
                 android:paddingRight="@dimen/dp_15" />
 
 

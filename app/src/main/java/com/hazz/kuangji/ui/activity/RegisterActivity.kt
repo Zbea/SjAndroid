@@ -85,7 +85,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("注册眼球存储")
+            .setTitle("注册")
             .setOnLeftIconClickListener { view -> finish() }
     }
 

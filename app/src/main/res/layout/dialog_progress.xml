@@ -6,9 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.zyao89.view.zloading.ZLoadingView
-        android:layout_width="@dimen/dp_200"
-        android:layout_height="@dimen/dp_200"
-        app:z_type="StarBuilder"
+        android:layout_width="@dimen/dp_160"
+        android:layout_height="@dimen/dp_160"
+        app:z_type="LeafBuilder"
         android:layout_centerInParent="true"
         app:z_color="@color/color_main"/>
 

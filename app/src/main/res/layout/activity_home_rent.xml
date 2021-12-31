@@ -460,7 +460,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="《服务器租赁服务协议》"
-                android:textColor="@color/color_main"
+                android:textColor="@color/color_blue"
                 android:textSize="@dimen/sp_12" />
         </LinearLayout>
 

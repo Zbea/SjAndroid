@@ -84,10 +84,16 @@
                     android:textColorHint="@color/color_main_nor"
                     android:textSize="@dimen/sp_12" />
 
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/dp_15"
+                    android:background="@color/color_main_nor"/>
+
                 <TextView
                     android:id="@+id/tv_get_code"
-                    android:layout_width="@dimen/dp_80"
+                    android:layout_width="wrap_content"
                     android:layout_height="38dp"
+                    android:paddingLeft="@dimen/dp_10"
                     android:gravity="center|right"
                     android:text="获取验证码"
                     android:textColor="@color/color_main"

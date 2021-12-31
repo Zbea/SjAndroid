@@ -44,6 +44,7 @@ class  MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener,IContra
     }
 
     override fun getAccount(msg: Account) {
+        SPUtil.putString("user_register_url",msg.userRegisterUrl )
         SPUtil.putString("mobile",msg.mobile)
         SPUtil.putString("username",msg.userName)
         SPUtil.putString("image",msg.img)

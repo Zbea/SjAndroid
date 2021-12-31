@@ -20,7 +20,7 @@ class HomeAdapter(layoutResId: Int, data: List<Home.ProductBean.FilBean>?) : Bas
 
         helper.run {
             setText(R.id.tv_name, item.name)
-            setText(R.id.tv_type, "服务器类型：FIL服务器")
+            setText(R.id.tv_type, "类型：FIL存储服务器")
             setText(R.id.tv_time, "周期："+item.allTerm+"天")
 
             Glide.with(mContext).load(Constants.URL_BASE+item.img).apply(

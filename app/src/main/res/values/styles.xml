@@ -12,7 +12,7 @@
         <item name="windowNoTitle">true</item>
     </style>
     <style name="AppLaunchTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@color/color_launch</item>
+        <item name="android:windowBackground">@color/color_main</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
@@ -26,7 +26,7 @@
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/selector_main_color</item>
+        <item name="android:textColor">@color/selector_tab_color</item>
     </style>
     
     <style name="rb_style1">

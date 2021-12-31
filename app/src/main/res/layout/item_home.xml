@@ -4,78 +4,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dp_5"
-    app:cardBackgroundColor="@color/color_card_bg"
+    android:layout_margin="2dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp">
+    app:cardElevation="2dp"
+    app:cardMaxElevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/dp_15"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/dp_10"
         >
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:singleLine="true"
-            android:text="开启服务器"
-            android:textStyle="bold"
-            android:textColor="@color/color_333333"
-            android:textSize="16sp" />
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="110dp"
+            android:layout_height="107dp"
+            android:background="#f4f4f4"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_marginLeft="@dimen/dp_10"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:singleLine="true"
+                android:text="开启服务器"
+                android:textStyle="bold"
+                android:textColor="@color/color_333333"
+                android:textSize="13sp" />
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="类型：Fil服务器"
+                android:textColor="@color/color_main_nor"
+                android:textSize="@dimen/sp_10" />
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="周期：5年"
+                android:textColor="@color/color_main_nor"
+                android:textSize="@dimen/sp_10" />
+
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/dp_5"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_15"
+                android:gravity="right"
+                >
 
-                <TextView
-                    android:id="@+id/tv_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="服务器类型：Fil服务器"
-                    android:textColor="@color/color_main_nor"
-                    android:textSize="@dimen/sp_12" />
-                <TextView
-                    android:id="@+id/tv_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_5"
-                    android:text="合约周期：5年"
-                    android:textColor="@color/color_main_nor"
-                    android:textSize="@dimen/sp_12" />
-
-
-                <TextView
-                    android:id="@+id/tv_zu"
-                    android:layout_width="@dimen/dp_80"
-                    android:layout_height="@dimen/dp_25"
-                    android:background="@drawable/bg_yellow_stroke_arc"
-                    android:layout_marginTop="@dimen/dp_20"
-                    android:gravity="center"
-                    android:text="立即加入"
-                    android:textColor="@color/color_yellow"
-                    android:textSize="@dimen/sp_12" />
-
+            <TextView
+                android:id="@+id/tv_zu"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_20"
+                android:background="@drawable/bg_blue_solid_arc"
+                android:gravity="center"
+                android:text="立即加入"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/sp_10" />
             </LinearLayout>
-            <ImageView
-                android:id="@+id/iv"
-                android:layout_width="@dimen/dp_160"
-                android:layout_height="@dimen/dp_84"
-                />
-
-
         </LinearLayout>
     </LinearLayout>
 

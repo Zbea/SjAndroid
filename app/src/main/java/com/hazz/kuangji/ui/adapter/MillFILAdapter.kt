@@ -35,7 +35,7 @@ class MillFILAdapter(layoutResId: Int, data: List<Mill.ListBean>?) : BaseQuickAd
         helper.setText(R.id.tv_package_day, item.sealRemain)
         helper.setText(R.id.tv_line_release, item.lineRelease)
         helper.setVisible(R.id.ll_seal,item.minerType!="0")
-        helper.setVisible(R.id.iv_accelerate,item.stat=="0"&&item.minerType=="0")//倒期隐藏加速包
+//        helper.setVisible(R.id.iv_accelerate,item.stat=="0"&&item.minerType=="0")//倒期隐藏加速包
 
         helper.getView<ImageView>(R.id.iv_accelerate).setOnClickListener {
             mContext.startActivity(Intent(mContext, MillAccelerateActivity::class.java).putExtra("orderId",item.id))

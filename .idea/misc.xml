@@ -3,17 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/bg_blue_solid_arc.xml" value="0.33564814814814814" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/bg_blue_stroke_5dp_coner.xml" value="0.24351851851851852" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/bg_line_bottom.xml" value="0.2162037037037037" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/bg_yellow_solid_5dp_coner.xml" value="0.33564814814814814" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/bg_yellow_solid_5dp_coner1.xml" value="0.33564814814814814" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/drawable/shape_upgrade_bg.xml" value="0.2953125" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_charge.xml" value="0.22916666666666666" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_download.xml" value="0.2152777777777778" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_extract_coin.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_home_rent.xml" value="0.1983695652173913" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_launcher.xml" value="0.19655797101449277" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mill_accelerate_rent.xml" value="0.25905797101449274" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_certificated.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_certification.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_exchange_pwd.xml" value="0.1816123188405797" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_invitefriends.xml" value="0.25226449275362317" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_set.xml" value="0.25905797101449274" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_progress.xml" value="0.22327898550724637" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_upgrade.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.25" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.16983695652173914" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mine.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_new_home.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_asset_coin.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_extract_coin.xml" value="0.22916666666666666" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_home.xml" value="0.2694746376811594" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_mill_fil.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_login.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_register.xml" value="0.25" />
       </map>
     </option>
   </component>

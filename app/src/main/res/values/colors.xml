@@ -9,7 +9,7 @@
     <color name="color_yellow">#F0BC33</color>
     <color name="redF4">#FF6254</color>
     <color name="color_launch">#4F80FA</color>
-
+    <color name="color_blue">#4F80FA</color>
     <color name="color_card_bg">#ffffff</color>
     <color name="color_black">#0A0E29</color>
     <color name="color_333333">#333333</color>
@@ -20,8 +20,9 @@
 
     <color name="color_bg">#ffffff</color>
     <color name="color_gray_bg">#F6F5FA</color>
-    <color name="color_main">#4F80FA</color>
+    <color name="color_main">#FCA93F</color>
     <color name="color_main_nor">#BBC1DB</color>
-
+    <color name="color_tab">#282828</color>
+    <color name="color_tab_nor">#ACAAAB</color>
 
 </resources>

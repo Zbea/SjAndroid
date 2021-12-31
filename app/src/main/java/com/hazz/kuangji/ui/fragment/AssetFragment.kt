@@ -4,15 +4,20 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
 import com.hazz.kuangji.mvp.model.Asset
 import com.hazz.kuangji.mvp.model.AssetCoin
 import com.hazz.kuangji.mvp.presenter.AssetPresenter
+import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.asset.AssetCoinRecordActivity
+import com.hazz.kuangji.ui.activity.home.ChargeActivity
+import com.hazz.kuangji.ui.activity.home.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.mill.MillEargingsListActivity
 import com.hazz.kuangji.utils.DensityUtils
+import com.hazz.kuangji.utils.SToast
 import kotlinx.android.synthetic.main.fragment_asset.*
 
 
@@ -88,6 +93,14 @@ class AssetFragment : BaseFragment(), IContractView.IAssetView {
         }
         ll_usdt.setOnClickListener {
             startActivity(Intent(context, AssetCoinRecordActivity::class.java).putExtra("coin","USDT"))
+        }
+        ll_recharge.setOnClickListener {
+//            startActivity(Intent(activity, ChargeActivity::class.java))
+            SToast.showText("抱歉，暂不支持")
+        }
+        ll_extract.setOnClickListener {
+            if ((activity as MainActivity).isCertificated())
+                startActivity(Intent(activity, ExtractCoinActivity::class.java))
         }
 
     }

@@ -95,10 +95,6 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
             showPhotoDialog()
         }
 
-        layout_invite.setOnClickListener {
-            startActivity(Intent(activity, InviteActivity::class.java))
-        }
-
         layout_setting.setOnClickListener {
             startActivity(Intent(activity, SettingActivity::class.java))
         }
@@ -110,20 +106,6 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
         }
         layout_download.setOnClickListener {
             startActivity(Intent(activity, DownloadActivity::class.java))
-        }
-
-        layout_certification.setOnClickListener {
-            var mCertification= SPUtil.getObj("certification", Certification::class.java)
-            if (mCertification?.stat=="1"||mCertification?.stat=="0")
-            {
-                var intent = Intent(activity, MineCertificatedActivity::class.java)
-                intent.putExtra("certification", mCertification)
-                startActivity(intent)
-            }
-            else
-            {
-                startActivity(Intent(activity, MineCertificationActivity::class.java))
-            }
         }
 
         tv_logout.setOnClickListener {

@@ -117,7 +117,6 @@
             android:background="@drawable/bg_download_solid_5dp_corner"
             android:gravity="center"
             android:padding="@dimen/dp_5"
-            android:text="1111111111"
             android:textColor="@color/color_white"
             android:textSize="@dimen/sp_14"
             android:textStyle="bold" />

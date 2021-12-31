@@ -16,6 +16,7 @@ import com.hazz.kuangji.Constants
 import com.hazz.kuangji.R
 import com.hazz.kuangji.base.BaseFragment
 import com.hazz.kuangji.mvp.contract.IContractView
+import com.hazz.kuangji.mvp.model.Certification
 import com.hazz.kuangji.mvp.model.Home
 import com.hazz.kuangji.mvp.model.Msg
 import com.hazz.kuangji.mvp.presenter.HomePresenter
@@ -24,6 +25,9 @@ import com.hazz.kuangji.ui.activity.MainActivity
 import com.hazz.kuangji.ui.activity.home.ChargeActivity
 import com.hazz.kuangji.ui.activity.home.ExtractCoinActivity
 import com.hazz.kuangji.ui.activity.home.*
+import com.hazz.kuangji.ui.activity.mine.InviteActivity
+import com.hazz.kuangji.ui.activity.mine.MineCertificatedActivity
+import com.hazz.kuangji.ui.activity.mine.MineCertificationActivity
 import com.hazz.kuangji.ui.adapter.HomeAdapter
 import com.hazz.kuangji.utils.*
 import com.hazz.kuangji.widget.RewardItemDeco
@@ -121,12 +125,23 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             startActivity(Intent(activity, MsgListActivity::class.java))
         }
 
-        ll_recharge.setOnClickListener {
-            startActivity(Intent(activity, ChargeActivity::class.java))
+        layout_certification.setOnClickListener {
+            var mCertification= SPUtil.getObj("certification", Certification::class.java)
+            if (mCertification?.stat=="1"||mCertification?.stat=="0")
+            {
+                var intent = Intent(activity, MineCertificatedActivity::class.java)
+                intent.putExtra("certification", mCertification)
+                startActivity(intent)
+            }
+            else
+            {
+                startActivity(Intent(activity, MineCertificationActivity::class.java))
+            }
         }
-        ll_extract.setOnClickListener {
-            if ((activity as MainActivity).isCertificated())
-                startActivity(Intent(activity, ExtractCoinActivity::class.java))
+
+        layout_invite.setOnClickListener {
+//            startActivity(Intent(activity, InviteActivity::class.java))
+            SToast.showText("抱歉，暂不支持")
         }
 
     }
@@ -155,7 +170,12 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
             tab.addTab(tab.newTab().setText(i))
         }
 
-
+        if (home?.product?.fil?.size==0){
+            ll_content.visibility=View.GONE
+        }
+        else{
+            ll_content.visibility=View.VISIBLE
+        }
 
         tab.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
@@ -202,7 +222,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 //                }
 //            })
             setAdapter(home?.banner?.let { ImageAdapter(it) })
-            setBannerGalleryEffect(25,15)
+            setBannerGalleryEffect(0,5)
             setIndicatorMargins(IndicatorConfig.Margins(30))
             setIndicator(rIndicator,false)
             start()

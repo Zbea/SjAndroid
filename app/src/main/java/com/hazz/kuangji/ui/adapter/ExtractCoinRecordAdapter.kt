@@ -18,7 +18,7 @@ class ExtractCoinRecordAdapter(layoutResId: Int, data: List<ExtractRecord.ListBe
         helper.setText(R.id.tv_amount, "-"+item.amountAll+" "+item.coin)
         helper.setText(R.id.tv_state, item.statTxt)
         if (item.stat=="0"){
-            helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_yellow))
+            helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_main))
         }
         else{
             helper.setTextColor(R.id.tv_state, mContext.resources.getColor(R.color.color_333333))
