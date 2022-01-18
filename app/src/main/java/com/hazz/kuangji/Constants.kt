@@ -33,7 +33,7 @@ class Constants private constructor() {
 
 //        const val URL_BASE = "http://192.168.31.53/"
 //        const val URL_BASE = "http://sjyminer.com/"
-        const val URL_BASE = "http://app.kdnmz.com/"
+        const val URL_BASE = "http://www.kdnmz.com/"
 
         const val URL_DOWNLOAD = URL_BASE + "web/index.html#/download"
         const val URL_INVITE_ADDRESS = URL_BASE + "web/index.html#/home?code="
