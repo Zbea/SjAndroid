@@ -102,6 +102,7 @@
                 android:layout_below="@+id/ll_content"
                 android:layout_marginTop="@dimen/dp_60"
                 android:text="没有账户？立即注册"
+                android:visibility="gone"
                 android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_14" />
 

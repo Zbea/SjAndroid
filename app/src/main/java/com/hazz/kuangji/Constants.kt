@@ -32,8 +32,8 @@ class Constants private constructor() {
         const val BUGLY_ID = "9e1bc2b87d"
 
 //        const val URL_BASE = "http://192.168.31.53/"
-        const val URL_BASE = "http://app.sjyminer.com/"
-//        const val URL_BASE = "http://app.kdnmz.com/"
+//        const val URL_BASE = "http://sjyminer.com/"
+        const val URL_BASE = "http://app.kdnmz.com/"
 
         const val URL_DOWNLOAD = URL_BASE + "web/index.html#/download"
         const val URL_INVITE_ADDRESS = URL_BASE + "web/index.html#/home?code="
