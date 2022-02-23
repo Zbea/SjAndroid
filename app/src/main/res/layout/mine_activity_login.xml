@@ -29,7 +29,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/dp_130"
                 android:layout_marginLeft="@dimen/space_dimen"
-                android:text="欢迎使用"/>
+                android:text="歡迎使用"/>
 
             <LinearLayout
                 android:id="@+id/ll_content"
@@ -47,7 +47,7 @@
                     android:layout_height="@dimen/dp_50"
                     android:layout_centerVertical="true"
                     android:background="@drawable/bg_gray_solid_5dp_coner"
-                    android:hint="请输入用户名"
+                    android:hint="@string/mine_plz_input_zh"
                     android:inputType="text"
                     android:paddingLeft="@dimen/dp_10"
                     android:singleLine="true"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll_content"
                 android:layout_marginTop="@dimen/dp_60"
-                android:text="没有账户？立即注册"
+                android:text="@string/mine_register_str"
                 android:visibility="gone"
                 android:textColor="@color/color_main"
                 android:textSize="@dimen/sp_14" />

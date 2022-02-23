@@ -16,7 +16,7 @@ class AssetCoinRecordAdapter(layoutResId: Int, data: List<AssetCoin>?) : BaseQui
         helper.setText(R.id.tv_type, item.typeTxt)
         helper.setText(R.id.tv_time, item.createAt)
         helper.setText(R.id.tv_amount, item.amount+" "+item.coin)
-        helper.setText(R.id.tv_state, "已完成")
+        helper.setText(R.id.tv_state, mContext.resources.getString(R.string.stated))
 
     }
 }

@@ -95,14 +95,14 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
         tv_construction_day.text = item?.buildTerm
         tv_package_day.text = item?.sealTerm
         tv_day.text = item?.allTerm
-        et_num.hint = "请输入加速算力（最大$max T）"
+        et_num.hint = "請輸入加速算力（最大$max T）"
     }
 
     override fun onSuccess(msg: String) {
         EventBus.getDefault().post(Constants.CODE_BUY_BROAD)
         max = BigDecimalUtil.sub(max, et_num.text.toString(), 2)
         et_num.setText("")
-        et_num.hint = "请输入加速算力（最大$max T）"
+        et_num.hint = "請輸入加速算力（最大$max T）"
         SToast.showText("加速成功")
     }
 
@@ -116,7 +116,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
                     usableFIL = coin.amount
                 }
             }
-            tv_yue.text = "账户余额：$usableUSDT USDT  /  $usableFIL FIL"
+            tv_yue.text = "賬戶余額：$usableUSDT USDT  /  $usableFIL FIL"
         }
     }
 
@@ -135,7 +135,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
 
     override fun initData() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("加速服务器")
+            .setTitle("加速服務器")
             .setOnLeftIconClickListener { finish() }
 
         tv_all.setOnClickListener {
@@ -159,7 +159,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
         tv_accelerate.setOnClickListener {
 
             if (TextUtils.isEmpty(et_num.text.toString())) {
-                SToast.showText("请输入数量")
+                SToast.showText("請輸入數量")
                 return@setOnClickListener
             }
 
@@ -169,7 +169,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
             }
 
             if (totalUSDT.toFloat() > usableUSDT.toFloat()) {
-                SToast.showTextLong("账户USDT余额不足，请转入USDT")
+                SToast.showTextLong("賬戶USDT余額不足，請轉入USDT")
                 Handler().postDelayed(Runnable {
                     startActivity(Intent(this, ChargeActivity::class.java))
                 }, 500)
@@ -177,7 +177,7 @@ class MillAccelerateActivity : BaseActivity(), IContractView.IAccelerateView, IC
             }
 
             if (totalFIL.toFloat() > usableFIL.toFloat()) {
-                SToast.showTextLong("账户FIL余额不足，请转入FIL")
+                SToast.showTextLong("賬戶FIL余額不足，請轉入FIL")
                 Handler().postDelayed(Runnable {
                     startActivity(Intent(this, ChargeActivity::class.java))
                 }, 500)

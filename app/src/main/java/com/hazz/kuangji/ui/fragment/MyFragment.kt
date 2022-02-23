@@ -71,11 +71,11 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
             }
             "2" -> {
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
-                SToast.showText(data.reason + "请重新实名认证")
+                SToast.showText(data.reason + "請重新實名認證")
             }
             else -> {
                 iv_certification.setImageResource(R.mipmap.icon_mine_certification)
-                SToast.showText("尚未实名认证，请立即实名认证")
+                SToast.showText("尚未實名認證，請立即實名認證")
             }
         }
     }
@@ -110,7 +110,7 @@ class MyFragment : BaseFragment(), IContractView.IAccountView,IContractView.ICer
 
         tv_logout.setOnClickListener {
             CommonDialog(context).run {
-                setContent("确认要退出登录吗？")
+                setContent("確認要退出登錄嗎？")
                 setDialogClickListener(object : CommonDialog.DialogClickListener
                 {
                     override fun ok() {

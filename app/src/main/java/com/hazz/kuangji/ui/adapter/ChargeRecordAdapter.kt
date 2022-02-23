@@ -14,7 +14,7 @@ class ChargeRecordAdapter(layoutResId: Int, data: List<ChargeRecord.ListBean>?) 
 
     override fun convert(helper: BaseViewHolder, item: ChargeRecord.ListBean) {
 
-        helper.setText(R.id.tv_type,"转入" )
+        helper.setText(R.id.tv_type,mContext.getString(R.string.charge_record))
         helper.setText(R.id.tv_time, item.createAt)
         helper.setText(R.id.tv_amount, "+"+item.amount+item.coin)
 

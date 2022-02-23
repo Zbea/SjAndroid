@@ -31,7 +31,7 @@ class DownloadActivity : BaseActivity()
     override fun initView() {
 
         ToolBarCustom.newBuilder(toolbar as Toolbar)
-                .setTitle("下载地址")
+                .setTitle("下載地址")
                 .setOnLeftIconClickListener { finish() }
 
         tv_address.text=Constants.URL_DOWNLOAD
@@ -48,7 +48,7 @@ class DownloadActivity : BaseActivity()
 
             cm.primaryClip = clipData
 
-            SToast.showText("已成功复制下载地址")
+            SToast.showText("已成功復製下載地址")
 
         }
 

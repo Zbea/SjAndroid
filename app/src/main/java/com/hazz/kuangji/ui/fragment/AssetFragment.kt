@@ -96,7 +96,7 @@ class AssetFragment : BaseFragment(), IContractView.IAssetView {
         }
         ll_recharge.setOnClickListener {
 //            startActivity(Intent(activity, ChargeActivity::class.java))
-            SToast.showText("抱歉，暂不支持")
+            SToast.showText("抱歉，暫不支持")
         }
         ll_extract.setOnClickListener {
             if ((activity as MainActivity).isCertificated())

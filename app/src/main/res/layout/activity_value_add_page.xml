@@ -23,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="理财总额"
+            android:text="理財總額"
             android:textSize="@dimen/sp_14"
             android:textColor="@color/color_white"/>
 

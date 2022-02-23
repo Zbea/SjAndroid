@@ -7,7 +7,7 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂无数据"
+        android:text="@string/str_empty"
         android:textColor="@color/color_main_nor"
         />
 

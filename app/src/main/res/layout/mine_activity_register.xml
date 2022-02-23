@@ -46,7 +46,7 @@
                 android:paddingLeft="@dimen/dp_10"
                 android:layout_centerVertical="true"
                 android:background="@drawable/bg_gray_solid_5dp_coner"
-                android:hint="请输入用户名"
+                android:hint="請輸入用戶名"
                 android:singleLine="true"
                 android:textColor="@color/color_333333"
                 android:textColorHint="@color/color_main_nor"
@@ -144,7 +144,7 @@
                 android:layout_marginTop="@dimen/dp_25"
                 android:paddingLeft="@dimen/dp_10"
                 android:background="@drawable/bg_gray_solid_5dp_coner"
-                android:hint="请输入资金密码（6~18位英文数字组合）"
+                android:hint="請輸入資金密碼（6~18位英文數字組合）"
                 android:inputType="textPassword"
                 android:maxLength="18"
                 android:singleLine="true"
@@ -179,14 +179,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我已阅读同意"
+                    android:text="我已閱讀同意"
                     android:textColor="#666E8B"
                     android:textSize="@dimen/sp_12" />
                 <TextView
                     android:id="@+id/tv_agreement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="《用户注册协议》"
+                    android:text="《用戶註冊協議》"
                     android:textColor="@color/color_launch"
                     android:textSize="@dimen/sp_12" />
             </LinearLayout>

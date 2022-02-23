@@ -39,7 +39,7 @@ class MillEargingsListActivity : BaseActivity(), IContractView.IMillView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-                .setTitle("收益明细")
+                .setTitle("收益明細")
                 .setOnLeftIconClickListener {finish() }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理

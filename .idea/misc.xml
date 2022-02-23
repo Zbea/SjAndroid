@@ -13,26 +13,37 @@
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_contact.xml" value="0.17824074074074073" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_download.xml" value="0.2152777777777778" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_extract_coin.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_extract_record_details.xml" value="0.2033514492753623" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_home_rent.xml" value="0.1983695652173913" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_launcher.xml" value="0.19655797101449277" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_main.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mill_accelerate_rent.xml" value="0.25905797101449274" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_certificated.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_certification.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_exchange_pwd.xml" value="0.1816123188405797" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_exchange_pwd.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_mine_invitefriends.xml" value="0.25226449275362317" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_msg_desc.xml" value="0.2033514492753623" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_set.xml" value="0.25905797101449274" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/activity_value_add_page.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_progress.xml" value="0.22327898550724637" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_safe_check.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_upgrade.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_empty.xml" value="0.2056159420289855" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mine.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_new_home.xml" value="0.5" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_asset_coin.xml" value="0.1956521739130435" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_asset_coin.xml" value="0.33" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_extract_coin.xml" value="0.22916666666666666" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_home.xml" value="0.2694746376811594" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_invite_record.xml" value="0.2375" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_mill_eargings.xml" value="0.2033514492753623" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_mill_fil.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_msg.xml" value="0.2033514492753623" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/item_value_add.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_register.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_scan_coin_address.xml" value="0.2033514492753623" />
       </map>
     </option>
   </component>

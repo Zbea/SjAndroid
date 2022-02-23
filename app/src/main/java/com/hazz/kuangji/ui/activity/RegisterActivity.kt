@@ -85,7 +85,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("注册")
+            .setTitle("註冊")
             .setOnLeftIconClickListener { view -> finish() }
     }
 
@@ -136,7 +136,7 @@ class RegisterActivity : BaseActivity(), IContractView.LoginView, TextWatcher {
                 )
 
             }else{
-                SToast.showText("请阅读勾选用户注册协议")
+                SToast.showText("請閱讀勾選用戶註冊協議")
             }
 
         }

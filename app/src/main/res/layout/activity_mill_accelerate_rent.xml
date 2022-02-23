@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="加速T数"
+                    android:text="加速T數"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />
@@ -56,7 +56,7 @@
                         android:id="@+id/et_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="请输入加速算力"
+                        android:hint="請輸入加速算力"
                         android:background="@color/color_translucent"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
                     android:singleLine="true"
-                    android:text="账号余额：0.00000000 USDT / 0.00000000 FIL"
+                    android:text="賬戶余額：0.00000000 USDT / 0.00000000 FIL"
                     android:textColor="@color/color_yellow"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -116,7 +116,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总需补（USDT）"
+                            android:text="總需補（USDT）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -140,7 +140,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总需质押（FIL）"
+                            android:text="總需質押（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -164,7 +164,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总Gas维护费（FIL）"
+                            android:text="總Gas維護費（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -197,7 +197,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每T需补（USDT）"
+                            android:text="每T需補（USDT）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -221,7 +221,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每T需质押（FIL）"
+                            android:text="每T需質押（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -245,7 +245,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每TGas维护费（FIL）"
+                            android:text="每TGas維護費（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -278,7 +278,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="建设期（天）"
+                            android:text="建設期（天）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -302,7 +302,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="封装期（天）"
+                            android:text="封裝期（天）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -370,7 +370,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp_3"
-                        android:text="温馨提示"
+                        android:text="@string/str_tips_btn"
                         android:textStyle="bold"
                         android:textColor="@color/color_main_nor"
                         android:textSize="@dimen/sp_12"
@@ -384,7 +384,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:textColor="@color/color_main_nor"
-                    android:text="购买所需的FIL/USDT将从您账户余额中扣除，请确保您的账户余额充足"
+                    android:text="購買所需的FIL/USDT將從您賬戶余額中扣除，請確保您的賬戶余額充足"
                     android:textSize="@dimen/sp_10"
                      />
 
@@ -405,7 +405,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="服务器简介"
+                    android:text="服務器簡介"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />

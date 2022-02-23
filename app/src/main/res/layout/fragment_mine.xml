@@ -102,7 +102,7 @@
                 android:drawableLeft="@mipmap/icon_mine_logo_download"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center"
-                android:text="下载地址"
+                android:text="下載地址"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_14"
                 android:textStyle="bold" />
@@ -134,7 +134,7 @@
                 android:drawableLeft="@mipmap/icon_mine_logo_value_add"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center"
-                android:text="增值服务"
+                android:text="增值服務"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_14"
                 android:textStyle="bold"
@@ -166,11 +166,10 @@
                 android:drawableLeft="@mipmap/icon_mine_logo_contact"
                 android:drawablePadding="@dimen/dp_10"
                 android:gravity="center"
-                android:text="联系客服"
+                android:text="聯系客服"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_14"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
 
             <TextView
@@ -218,7 +217,7 @@
             android:layout_height="@dimen/btn_dimen"
             android:layout_alignParentBottom="true"
             android:gravity="center"
-            android:text="退出登录"
+            android:text="退出登錄"
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/dp_100"
             android:background="@drawable/bg_yellow_solid_5dp_coner1"

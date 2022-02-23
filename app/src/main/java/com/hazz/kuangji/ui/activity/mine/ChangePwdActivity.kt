@@ -56,13 +56,13 @@ class ChangePwdActivity : BaseActivity(), IContractView.LoginView {
         type=intent.flags
 
         if (type==1){
-            toolbar.setTitle("修改登录密码")
+            toolbar.setTitle("修改登錄密碼")
         }
         else if (type==2){
-            toolbar.setTitle("修改资金密码")
+            toolbar.setTitle("修改資金密碼")
         }
         else{
-            toolbar.setTitle("忘记密码")
+            toolbar.setTitle("忘記密碼")
             type=1
             et_username.visibility= View.VISIBLE
         }
@@ -89,35 +89,35 @@ class ChangePwdActivity : BaseActivity(), IContractView.LoginView {
             username=et_username.text.toString()
             if (username.isNullOrEmpty())
             {
-                SToast.showText("请输入用户名")
+                SToast.showText("請輸入用戶名")
                 return@setOnClickListener
             }
             mobile=et_phone.text.toString()
             if (mobile.isNullOrEmpty())
             {
-                SToast.showText("请输入手机号")
+                SToast.showText("請輸入手機號")
                 return@setOnClickListener
             }
             var code=et_code.text.toString()
             if (code.isNullOrEmpty())
             {
-                SToast.showText("请输入验证码")
+                SToast.showText("請輸入驗證碼")
                 return@setOnClickListener
             }
             var pwd=et_pwd.text.toString()
             if (pwd.isNullOrEmpty())
             {
-                SToast.showText("请输入密码")
+                SToast.showText("請輸入密碼")
                 return@setOnClickListener
             }
             var pwdAgain=et_pwd_again.text.toString()
             if (pwdAgain.isNullOrEmpty())
             {
-                SToast.showText("请再次输入密码")
+                SToast.showText("請再次輸入密碼")
                 return@setOnClickListener
             }
             if (pwd != pwdAgain) {
-                SToast.showText("两次输入密码不一致")
+                SToast.showText("兩次輸入密碼不一致")
                 return@setOnClickListener
             }
             mLoginPresenter.forgetPwd(username, mobile, code, pwd, type)

@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="购买T数"
+                    android:text="購買T數"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />
@@ -55,8 +55,8 @@
                         android:id="@+id/et_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="请输入购买T数"
                         android:background="@color/color_translucent"
+                        android:hint="請輸入購買T數"
                         android:inputType="numberDecimal"
                         android:singleLine="true"
                         android:textColor="@color/color_666666"
@@ -83,7 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
                     android:singleLine="true"
-                    android:text="账号余额：0.00000000 USDT / 0.00000000 FIL"
+                    android:text="賬號余額：0.00000000 USDT / 0.00000000 FIL"
                     android:textColor="@color/color_yellow"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -114,7 +114,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="购买总价（USDT）"
+                            android:text="購買總價（USDT）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -138,7 +138,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总需质押（FIL）"
+                            android:text="總需質押（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -162,7 +162,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="总需Gas（FIL）"
+                            android:text="總需Gas（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -195,7 +195,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每T单价（USDT）"
+                            android:text="每T單價（USDT）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -219,7 +219,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="每T需质押（FIL）"
+                            android:text="每T需質押（FIL）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -276,7 +276,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="建设期（天）"
+                            android:text="建設期（天）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -300,7 +300,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="封装期（天）"
+                            android:text="封裝期（天）"
                             android:textColor="@color/color_main_nor"
                             android:textSize="@dimen/sp_10" />
 
@@ -368,7 +368,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp_5"
-                        android:text="温馨提示"
+                        android:text="@string/str_tips_btn"
                         android:textColor="@color/color_main_nor"
                         android:textStyle="bold"
                         android:textSize="@dimen/sp_12"
@@ -382,7 +382,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:textColor="@color/color_main_nor"
-                    android:text="购买所需的FIL/USDT将从您账户余额中扣除，请确保您的账户余额充足"
+                    android:text="購買所需的FIL/USDT將從您賬戶余額中扣除，請確保您的賬戶余額充足"
                     android:textSize="@dimen/sp_10"
                     />
 
@@ -403,7 +403,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="服务器简介"
+                    android:text="服務器簡介"
                     android:textColor="@color/color_333333"
                     android:textSize="@dimen/sp_14"
                     android:textStyle="bold" />
@@ -459,7 +459,7 @@
                 android:id="@+id/tv_xieyi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="《服务器租赁服务协议》"
+                android:text="《服務器租賃服務協議》"
                 android:textColor="@color/color_blue"
                 android:textSize="@dimen/sp_12" />
         </LinearLayout>

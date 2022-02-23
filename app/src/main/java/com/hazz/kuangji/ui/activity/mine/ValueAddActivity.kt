@@ -51,7 +51,7 @@ class ValueAddActivity : BaseActivity(), IContractView.IValueAddView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("增值服务")
+            .setTitle("增值服務")
             .setOnLeftIconClickListener { finish() }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理

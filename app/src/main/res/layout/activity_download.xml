@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_30"
-            android:text="扫码下载"
+            android:text="掃碼下載"
             android:textColor="#D0FDFF"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -104,7 +104,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="下载链接"
+            android:text="下載鏈接"
             android:textColor="#D0FDFF"
             android:textSize="@dimen/sp_20" />
 
@@ -123,19 +123,17 @@
     </LinearLayout>
 
 
-
-
     <Button
         android:id="@+id/btnCopy"
         android:layout_width="match_parent"
         android:layout_height="@dimen/btn_dimen"
         android:layout_below="@+id/ll_address"
         android:layout_marginLeft="@dimen/dp_30"
-        android:layout_marginRight="@dimen/dp_30"
         android:layout_marginTop="70dp"
+        android:layout_marginRight="@dimen/dp_30"
         android:background="@drawable/bg_white_stroke_5dp_coner"
         android:gravity="center"
-        android:text="复制链接"
+        android:text="復製鏈接"
         android:textColor="@color/color_white"
         android:textSize="@dimen/sp_16"
         android:textStyle="bold" />

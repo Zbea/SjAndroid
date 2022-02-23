@@ -32,7 +32,7 @@ public class CommonDialog {
     private boolean is;
     private String content="";//提示文案
     private String cancle="取消";//取消文案
-    private String ok ="确认";//确认文案
+    private String ok ="確認";//确认文案
     public CommonDialog setTitle(String title) {
         this.title = title;
         return this;

@@ -36,10 +36,10 @@ class AgreementActivity : BaseActivity(), IContractView.IAgreementView {
          type= intent.flags
 
         if(type==0){
-            toolbar.setTitle("用户注册协议")
+            toolbar.setTitle("用戶註冊協議")
             mAgreementPresenter.agreementUser()
         }else{
-            toolbar.setTitle("服务器租赁协议")
+            toolbar.setTitle("服務器租賃協議")
             mAgreementPresenter.agreementRent()
         }
 

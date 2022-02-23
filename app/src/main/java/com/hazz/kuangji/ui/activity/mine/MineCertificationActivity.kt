@@ -40,7 +40,7 @@ class MineCertificationActivity : BaseActivity(), IContractView.ICertificationVi
     }
 
     override fun commit() {
-        SToast.showText("提交成功，待审核")
+        SToast.showText("提交成功，待審核")
         EventBus.getDefault().post(Constants.CODE_CERTIFICATION_BROAD)
         finish()
     }
@@ -51,7 +51,7 @@ class MineCertificationActivity : BaseActivity(), IContractView.ICertificationVi
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("实名认证")
+            .setTitle("實名認證")
             .setOnLeftIconClickListener { finish() }
 
         var mobile = SPUtil.getString("mobile")
@@ -65,7 +65,7 @@ class MineCertificationActivity : BaseActivity(), IContractView.ICertificationVi
         tv_get_code.setOnClickListener {
             val mobile = tv_phone.text.toString()
             if (mobile.isNullOrEmpty()) {
-                SToast.showText("请输入手机号")
+                SToast.showText("請輸入手機號")
                 return@setOnClickListener
             }
             mCertificationPresenter.sendSMs(mobile)
@@ -93,23 +93,23 @@ class MineCertificationActivity : BaseActivity(), IContractView.ICertificationVi
             var address = et_address.text.toString()
             var email = et_email.text.toString()
             if (mPhone.isNullOrEmpty()) {
-                SToast.showText("请输入验证码")
+                SToast.showText("請輸入驗證碼")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(name)) {
-                SToast.showText("姓名不能为空")
+                SToast.showText("姓名不能為空")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(idNumber)) {
-                SToast.showText("身份证号不能为空")
+                SToast.showText("身份證號不能為空")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(address)) {
-                SToast.showText("现居住地址不能为空")
+                SToast.showText("現居住地址不能為空")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(email)) {
-                SToast.showText("邮箱不能为空")
+                SToast.showText("郵箱不能為空")
                 return@setOnClickListener
             }
 

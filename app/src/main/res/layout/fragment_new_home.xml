@@ -83,7 +83,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="身份认证"
+                                android:text="身份認證"
                                 android:textColor="@color/color_black"
                                 android:textSize="@dimen/sp_14"
                                 android:textStyle="bold" />
@@ -92,7 +92,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
-                                android:text="认证后方可使用全部功能"
+                                android:text="認證後方可使用全部功能"
                                 android:textColor="#BBC1DB"
                                 android:textSize="8sp" />
 
@@ -125,7 +125,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="邀请好友"
+                                android:text="邀請好友"
                                 android:textColor="@color/color_black"
                                 android:textSize="@dimen/sp_14"
                                 android:textStyle="bold" />
@@ -134,7 +134,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
-                                android:text="邀请朋友享更多福利"
+                                android:text="邀請朋友享更多福利"
                                 android:textColor="#BBC1DB"
                                 android:textSize="8sp" />
 

@@ -50,7 +50,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
         for (coin in items) {
             if (coin.coin == currentName) {
                 avaiableAmount = coin.withdraw_max
-                tv_lest.text = "可转" + coin.withdraw_max + currentName
+                tv_lest.text = "可轉" + coin.withdraw_max + currentName
             }
         }
     }
@@ -206,7 +206,7 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                 max = extractRule?.FIL?.amountMax.toString()
             }
             et_num.hint = "最小:$min / 最大:$max"
-            tv_lest.text = if(currentName == "FIL2")"可转$avaiableAmount FIL(方案A)" else "可转$avaiableAmount $currentName"
+            tv_lest.text = if(currentName == "FIL2")"可轉$avaiableAmount FIL(方案A)" else "可轉$avaiableAmount $currentName"
             et_num.setText("")
             tv_money_fee.text = "0"
             tv_money.text = "0"
@@ -254,32 +254,32 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
         tv_bt.setOnClickListener {
             var amount = et_num.text.toString()
             if (TextUtils.isEmpty(amount)) {
-                SToast.showText("请输入转出数量")
+                SToast.showText("請輸入轉出數量")
                 return@setOnClickListener
             }
 
             if (!BigDecimalUtil.compare(max, amount)) {
-                SToast.showText("转出数量不能超过$max")
+                SToast.showText("轉出數量不能超過$max")
                 return@setOnClickListener
             }
             if (!BigDecimalUtil.compare(amount, min)) {
-                SToast.showText("转出数量不能低于$min")
+                SToast.showText("轉出數量不能低於$min")
                 return@setOnClickListener
             }
 
 
             if (TextUtils.isEmpty(et_pwd.text.toString())) {
-                SToast.showText("请输入资金密码")
+                SToast.showText("請輸入資金密碼")
                 return@setOnClickListener
             }
             if (TextUtils.isEmpty(et_address.text.toString())) {
-                SToast.showText("请输入转出地址")
+                SToast.showText("請輸入轉出地址")
                 return@setOnClickListener
             }
 
             if (!isTrc) {
                 if (!BigDecimalUtil.compare(amount, getCurrentRateAmount())) {
-                    SToast.showText("转出数量不能低于扣除费用")
+                    SToast.showText("轉出數量不能低於扣除費用")
                     return@setOnClickListener
                 }
             }

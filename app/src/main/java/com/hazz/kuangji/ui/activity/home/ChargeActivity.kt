@@ -117,7 +117,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
 
             cm.primaryClip = clipData
 
-            SToast.showText("已成功复制转入地址")
+            SToast.showText(getString(R.string.str_copy))
 
         }
 
@@ -128,7 +128,7 @@ class ChargeActivity : BaseActivity(), IContractView.ChargeView {
             ).subscribe { permission ->
                 if (permission!!) {
 
-                    SToast.showText("二维码保存成功")
+                    SToast.showText(getString(R.string.str_qrcode_save))
 
                     ImageUtils.saveBmp2Gallery(this, createQRCode, "charge_qrcode")
 

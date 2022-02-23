@@ -130,13 +130,13 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
      */
     private fun initTab() {
 
-        tab?.newTab()?.setText("服务器")?.let { it -> tab?.addTab(it) }
+        tab?.newTab()?.setText("服務器")?.let { it -> tab?.addTab(it) }
         tab?.newTab()?.setText("集群")?.let { it -> tab?.addTab(it) }
         tab?.newTab()?.setText("方案A")?.let { it -> tab?.addTab(it) }
 
         tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
-                if (tab?.text.toString() == "服务器") {
+                if (tab?.text.toString() == "服務器") {
                     if (mMill?.fil == null) return
                     type=0
                     mAdapterFIL?.setNewData(mMill?.fil?.list)

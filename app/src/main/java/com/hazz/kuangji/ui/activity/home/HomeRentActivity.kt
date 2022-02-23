@@ -68,7 +68,7 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
                     usableFIL = coin.amount
                 }
             }
-            tv_yue.text = "账户余额：$usableUSDT USDT  /  $usableFIL FIL"
+            tv_yue.text = "賬戶余額：$usableUSDT USDT  /  $usableFIL FIL"
         }
     }
 
@@ -103,7 +103,7 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
 
     override fun onSucceed(msg: String) {
         EventBus.getDefault().post(Constants.CODE_BUY_BROAD)
-        SToast.showText("购买成功")
+        SToast.showText("購買成功")
         if (mDialog != null) mDialog?.dismiss()
         finish()
     }
@@ -143,18 +143,18 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
             if (cb.isChecked) {
 
                 if (TextUtils.isEmpty(et_num.text.toString())) {
-                    SToast.showText("请输入数量")
+                    SToast.showText("請輸入數量")
                     return@setOnClickListener
                 }
 
 
                 if (et_num.text.toString().toFloat()<1) {
-                    SToast.showText("最少购买1T")
+                    SToast.showText("最少購買1T")
                     return@setOnClickListener
                 }
 
                 if (totalUSDT.toFloat() > usableUSDT.toFloat()) {
-                    SToast.showTextLong("账户USDT余额不足，请转入USDT")
+                    SToast.showTextLong("賬戶USDT余額不足，請轉入USDT")
                     Handler().postDelayed(Runnable {
                         startActivity(Intent(this, ChargeActivity::class.java))
                     }, 500)
@@ -162,7 +162,7 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
                 }
 
                 if (totalFIL.toFloat() > usableFIL.toFloat()) {
-                    SToast.showTextLong("账户FIL余额不足，请转入FIL")
+                    SToast.showTextLong("賬戶FIL余額不足，請轉入FIL")
                     Handler().postDelayed(Runnable {
                         startActivity(Intent(this, ChargeActivity::class.java))
                     }, 500)
@@ -184,7 +184,7 @@ class HomeRentActivity : BaseActivity(), IContractView.IMinerRentView, IContract
                 mPasswordDialog?.show()
 
             } else {
-                SToast.showText("请阅读租用服务协议")
+                SToast.showText("請閱讀租用服務協議")
             }
 
         }

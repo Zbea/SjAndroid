@@ -26,7 +26,7 @@ class MineContactActivity : BaseActivity() {
     override fun initView() {
 
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("联系我们")
+            .setTitle("聯系我們")
             .setOnLeftIconClickListener { finish() }
 
     }
@@ -39,7 +39,7 @@ class MineContactActivity : BaseActivity() {
             ).subscribe { permission ->
                 if (permission!!) {
 
-                    SToast.showText("图片保存成功")
+                    SToast.showText("圖片保存成功")
                     ImageUtils.saveBmp2Gallery(this, mCodeBitmap, "contactCode")
                 } else {
                     showMissingPermissionDialog()

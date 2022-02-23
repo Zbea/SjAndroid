@@ -20,7 +20,7 @@ class ValueAddAdapter(layoutResId: Int, data: List<ValueAdd.ListBean>?) : BaseQu
         helper.setText(R.id.tv_date, item.createAt)
         helper.setText(R.id.tv_day, item.remain)
         helper.setText(R.id.tv_earnings, item.currentProfit+" FIL")
-        helper.setText(R.id.tv_state, if(item.status=="0")"进行中" else "已完成,待提取")
+        helper.setText(R.id.tv_state, if(item.status=="0")"進行中" else "已完成,待提取")
         var isOpen=false
         helper.getView<LinearLayout>(R.id.ll_click).setOnClickListener {
             if (isOpen)

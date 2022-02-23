@@ -141,7 +141,7 @@ class HomeFragment : BaseFragment(), IContractView.HomeView, IContractView.MsgVi
 
         layout_invite.setOnClickListener {
 //            startActivity(Intent(activity, InviteActivity::class.java))
-            SToast.showText("抱歉，暂不支持")
+            SToast.showText("抱歉，暫不支持")
         }
 
     }

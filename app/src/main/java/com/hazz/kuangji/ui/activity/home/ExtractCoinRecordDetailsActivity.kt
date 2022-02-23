@@ -36,7 +36,7 @@ class ExtractCoinRecordDetailsActivity : BaseActivity(), IContractView.IExtractV
     }
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("转出详情")
+            .setTitle("轉出詳情")
             .setOnLeftIconClickListener { finish() }
 
         btn_cancel.setOnClickListener {

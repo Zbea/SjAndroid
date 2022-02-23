@@ -20,13 +20,13 @@
             style="@style/rb_style"
             android:checked="true"
             android:drawableTop="@drawable/tab_icon_main_select"
-            android:text="首页" />
+            android:text="首頁" />
 
         <RadioButton
             android:id="@+id/mRbMining"
             style="@style/rb_style"
             android:drawableTop="@drawable/tab_icon_mill_select"
-            android:text="服务器" />
+            android:text="服務器" />
 
         <RadioButton
             android:id="@+id/mRbAsset"

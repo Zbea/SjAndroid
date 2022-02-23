@@ -111,7 +111,7 @@
                 android:layout_marginTop="@dimen/dp_30"
                 android:layout_marginRight="@dimen/dp_30"
                 android:background="@drawable/bg_main_solid_5dp_coner"
-                android:text="保存二维码"
+                android:text="@string/str_qrcode_save_btn"
                 android:textColor="@color/color_white"
                 android:textSize="@dimen/sp_16"
                 android:textStyle="bold" />
@@ -133,7 +133,7 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@drawable/bg_blue_stroke_5dp_coner"
-                android:text="复制地址"
+                android:text="@string/str_copy_btn"
                 android:textColor="@color/color_blue"
                 android:textSize="@dimen/sp_16" />
 
@@ -162,7 +162,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp_5"
-                        android:text="温馨提示"
+                        android:text="@string/str_tips_btn"
                         android:textColor="@color/color_main_nor"
                         android:textSize="@dimen/sp_10"
                         android:textStyle="bold" />
@@ -174,7 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="请您仔细确认地址是否复制成功且正确，否则将会导致转入失败，且可能 造成资产不可找回。请务必仔细核对地址，否则造成资产损失且不可找回 由用户自行承担！"
+                    android:text="請您仔細確認地址是否復製成功且正確，否則將會導致轉入失敗，且可能 造成資產不可找回。請務必仔細核對地址，否則造成資產損失且不可找回 由用戶自行承擔！"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10"
                     android:textStyle="bold" />

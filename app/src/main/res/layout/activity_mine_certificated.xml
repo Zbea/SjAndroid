@@ -58,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="邮箱"
+                android:text="郵箱"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_12"
@@ -88,7 +88,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="身份证号码"
+                android:text="身份證號碼"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_12"
@@ -118,7 +118,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="现居住地"
+                android:text="現居住地"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:textColor="@color/color_333333"
                 android:textSize="@dimen/sp_12"

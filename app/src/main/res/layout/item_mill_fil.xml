@@ -66,7 +66,7 @@
                     android:id="@+id/tv_power_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="封装总量（T）"
+                    android:text="封裝總量（T）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -89,7 +89,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="未释放（FIL）"
+                    android:text="未釋放（FIL）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -112,7 +112,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="累计收益（FIL）"
+                    android:text="累計收益（FIL）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -147,7 +147,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="质押（FIL）"
+                    android:text="質押（FIL）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -170,7 +170,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gas（FIL）"
+                    android:text="GAS（FIL）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -236,7 +236,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="建设期（天）"
+                    android:text="建設期（天）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 
@@ -259,7 +259,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="封装期（天）"
+                    android:text="封裝期（天）"
                     android:textColor="@color/color_main_nor"
                     android:textSize="@dimen/sp_10" />
 

@@ -21,7 +21,7 @@ class MsgDescActivity : BaseActivity(), IContractView.MsgView {
     override fun getMsg(msg: Msg) {
     }
     override fun getMsgDetails(msg: Msg.MsgBean) {
-        tv_time.text = "发布时间："+msg.createAt
+        tv_time.text = "發布時間："+msg.createAt
         if (msg.detail!=null)
             tv_content.loadData(msg.detail, "text/html", "UTF-8")
     }

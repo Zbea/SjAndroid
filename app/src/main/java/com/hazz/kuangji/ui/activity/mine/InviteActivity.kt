@@ -49,7 +49,7 @@ class InviteActivity : BaseActivity(), IContractView.IInviteView {
         invitation_code = SPUtil.getString("invitation_code")
         invitation_code_url = Constants.URL_INVITE_ADDRESS+ invitation_code
 
-        tipsText.text = "您的专属邀请码:$invitation_code"
+        tipsText.text = "您的專屬邀請碼:$invitation_code"
 
         val dip2px = Utils.dip2px(this, 180F)
         createQRCode = QRCodeUtils.createQRCode(invitation_code_url, dip2px, dip2px, null)
@@ -59,7 +59,7 @@ class InviteActivity : BaseActivity(), IContractView.IInviteView {
             val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
             val clipData = ClipData.newPlainText("invitation_code_url", invitation_code_url)
             cm.primaryClip = clipData
-            SToast.showText("已成功复制邀请链接")
+            SToast.showText("已成功復製邀請鏈接")
         }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
@@ -74,7 +74,7 @@ class InviteActivity : BaseActivity(), IContractView.IInviteView {
             ).subscribe { permission ->
                 if (permission!!) {
 
-                    SToast.showText("图片保存成功")
+                    SToast.showText("圖片保存成功")
 
                     ImageUtils.saveBmp2Gallery(this, createQRCode, "qrcode")
 

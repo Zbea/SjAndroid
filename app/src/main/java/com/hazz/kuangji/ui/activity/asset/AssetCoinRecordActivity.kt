@@ -42,7 +42,7 @@ class AssetCoinRecordActivity : BaseActivity(), IContractView.IAssetView {
 
     override fun initView() {
         ToolBarCustom.newBuilder(mToolBar as Toolbar)
-            .setTitle("可用明细")
+            .setTitle(resources.getString(R.string.str_usable))
             .setOnLeftIconClickListener { finish() }
 
         rc_list.layoutManager = LinearLayoutManager(this)//创建布局管理
