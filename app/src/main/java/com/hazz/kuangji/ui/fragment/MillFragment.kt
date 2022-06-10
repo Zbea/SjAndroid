@@ -60,6 +60,12 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
                 tv_yesterday?.text = msg?.fil2?.yesterdayRevenue
                 mAdapterFIL?.setNewData(mMill?.fil2?.list)
             }
+            3->{
+                tv_number?.text = msg?.fil3?.power
+                tv_earnings?.text = msg?.fil3?.totalRevenue
+                tv_yesterday?.text = msg?.fil3?.yesterdayRevenue
+                mAdapterFIL?.setNewData(mMill?.fil3?.list)
+            }
         }
 
     }
@@ -111,6 +117,10 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
                         startActivity(Intent(activity, MillEargingsListActivity::class.java).putExtra("type",type)
                             .putExtra("orderId", mMill?.fil2?.list?.get(position)?.id))
                     }
+                    3->{
+                        startActivity(Intent(activity, MillEargingsListActivity::class.java).putExtra("type",type)
+                            .putExtra("orderId", mMill?.fil3?.list?.get(position)?.id))
+                    }
                 }
 
             }
@@ -133,6 +143,7 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
         tab?.newTab()?.setText("服務器")?.let { it -> tab?.addTab(it) }
         tab?.newTab()?.setText("集群")?.let { it -> tab?.addTab(it) }
         tab?.newTab()?.setText("方案A")?.let { it -> tab?.addTab(it) }
+        tab?.newTab()?.setText("方案B")?.let { it -> tab?.addTab(it) }
 
         tab?.addOnTabSelectedListener(object : XTabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: XTabLayout.Tab?) {
@@ -152,13 +163,20 @@ class MillFragment : BaseFragment(), IContractView.IMillView {
                     tv_earnings?.text = mMill?.cluster?.totalRevenue
                     tv_yesterday?.text = mMill?.cluster?.yesterdayRevenue
 
-                } else {
+                } else if (tab?.text.toString() == "方案A") {
                     if (mMill?.fil2 == null) return
                     type=2
                     mAdapterFIL?.setNewData(mMill?.fil2?.list)
                     tv_number?.text = mMill?.fil2?.power
                     tv_earnings?.text = mMill?.fil2?.totalRevenue
                     tv_yesterday?.text = mMill?.fil2?.yesterdayRevenue
+                } else {
+                    if (mMill?.fil3 == null) return
+                    type=3
+                    mAdapterFIL?.setNewData(mMill?.fil3?.list)
+                    tv_number?.text = mMill?.fil3?.power
+                    tv_earnings?.text = mMill?.fil3?.totalRevenue
+                    tv_yesterday?.text = mMill?.fil3?.yesterdayRevenue
                 }
             }
 

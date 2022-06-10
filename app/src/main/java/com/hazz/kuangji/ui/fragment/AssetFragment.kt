@@ -41,6 +41,11 @@ class AssetFragment : BaseFragment(), IContractView.IAssetView {
                 tv_fil2_frozen?.text = coin?.frozen
                 ll_fil2.visibility= View.VISIBLE
             }
+            if (coin.coin == "FIL3") {
+                tv_fil3_balance?.text = coin?.amount
+                tv_fil3_frozen?.text = coin?.frozen
+                ll_fil3.visibility= View.VISIBLE
+            }
             if (coin.coin == "BZZ") {
                 tv_bzz_balance?.text = coin?.amount
                 tv_bzz_frozen?.text = coin?.frozen
@@ -84,6 +89,9 @@ class AssetFragment : BaseFragment(), IContractView.IAssetView {
         }
         ll_fil2.setOnClickListener {
             startActivity(Intent(context, AssetCoinRecordActivity::class.java).putExtra("coin","FIL2"))
+        }
+        ll_fil3.setOnClickListener {
+            startActivity(Intent(context, AssetCoinRecordActivity::class.java).putExtra("coin","FIL3"))
         }
         ll_bzz.setOnClickListener {
             startActivity(Intent(context, AssetCoinRecordActivity::class.java).putExtra("coin","BZZ"))

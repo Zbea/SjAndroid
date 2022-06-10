@@ -29,7 +29,7 @@
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                app:xTabDisplayNum="3"
+                app:xTabDisplayNum="4"
                 app:xTabIndicatorColor="@color/color_main"
                 app:xTabIndicatorHeight="2dp"
                 app:xTabMode="scrollable"

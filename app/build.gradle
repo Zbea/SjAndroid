@@ -94,7 +94,6 @@ android {
     lintOptions {
         abortOnError false
     }
-    buildToolsVersion android.buildToolsVersion
 
 
 }
@@ -103,8 +102,10 @@ repositories {
     flatDir {
         dirs 'libs'
     }
-    maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+    maven { url "https://s01.oss.sonatype.org/content/groups/public"}
+
 }
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -157,7 +158,7 @@ dependencies {
 //运行时权限
     implementation 'pub.devrel:easypermissions:1.2.0'
 
-    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
 
 //图表控件
 // implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

@@ -36,6 +36,7 @@ class  MainActivity : BaseActivity(), RadioGroup.OnCheckedChangeListener,IContra
     private var mLastSelect = 0
     var mCertification:Certification?=null
 
+
     override fun getCertification(certification: Certification) {
         mCertification = certification
         if (certification.stat == "1") {

@@ -28,7 +28,7 @@
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_progress.xml" value="0.22327898550724637" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_safe_check.xml" value="0.2006340579710145" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/dialog_upgrade.xml" value="0.33" />
-        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_asset.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_empty.xml" value="0.2056159420289855" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/fragment_mine.xml" value="0.33" />
@@ -44,6 +44,13 @@
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_login.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_register.xml" value="0.25" />
         <entry key="..\:/AndroidStudioSpace/sj/SjAndroid/app/src/main/res/layout/mine_activity_scan_coin_address.xml" value="0.2033514492753623" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/drawable/bg_line_bottom.xml" value="0.166" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/drawable/bg_rb_line_selector.xml" value="0.261" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/drawable/bg_white_stroke_5dp_coner.xml" value="0.215" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/layout/dialog_com.xml" value="0.27037037037037037" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/layout/dialog_progress.xml" value="0.15648148148148147" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/layout/fragment_mill.xml" value="0.1337962962962963" />
+        <entry key="..\:/workspace/SjAndroid/app/src/main/res/layout/mine_activity_register.xml" value="0.32546296296296295" />
       </map>
     </option>
   </component>

@@ -145,6 +145,11 @@ interface AiPickService{
     @GET("/app/miner/coinage2")
     fun getMillEarnings2(@Query("order_id" )id:String): Observable<BaseResult<List<MillEarningsList>>>
     /**
+     * 服务器收益明细
+     */
+    @GET("/app/miner/coinage3")
+    fun getMillEarnings3(@Query("order_id" )id:String): Observable<BaseResult<List<MillEarningsList>>>
+    /**
      * 我的账户信息
      */
     @GET("/app/user/info")

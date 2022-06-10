@@ -12,6 +12,8 @@ public class Mill {
     public FilBean cluster;
     @SerializedName("fil2")
     public FilBean fil2;
+    @SerializedName("fil3")
+    public FilBean fil3;
     @SerializedName("bzz")
     public BzzBean bzz;
     @SerializedName("chia")

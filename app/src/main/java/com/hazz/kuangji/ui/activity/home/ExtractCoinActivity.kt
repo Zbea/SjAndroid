@@ -6,6 +6,7 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import androidx.appcompat.widget.Toolbar
 import com.hazz.kuangji.R
@@ -71,18 +72,24 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
             rateUsdt = ruleBean.feeRate
             rateAmountUsdt = ruleBean.feeMin
         }
-        val ruleFil = msg.FIL
-        if (ruleFil != null) {
-            rateAmountFil = ruleFil.feeMin
-            rateFil = ruleFil.feeRate
-            max_fil = ruleFil.amountMax
-        }
-        val ruleFil2 = msg.FIL2
-        if (ruleFil2 != null) {
-            rateAmountFil = ruleFil2.feeMin
-            rateFil = ruleFil2.feeRate
-            max_fil = ruleFil2.amountMax
-        }
+//        val ruleFil = msg.FIL
+//        if (ruleFil != null) {
+//            rateAmountFil = ruleFil.feeMin
+//            rateFil = ruleFil.feeRate
+//            max_fil = ruleFil.amountMax
+//        }
+//        val ruleFil2 = msg.FIL2
+//        if (ruleFil2 != null) {
+//            rateAmountFil = ruleFil2.feeMin
+//            rateFil = ruleFil2.feeRate
+//            max_fil = ruleFil2.amountMax
+//        }
+//        val ruleFil3 = msg.FIL3
+//        if (ruleFil3 != null) {
+//            rateAmountFil = ruleFil3.feeMin
+//            rateFil = ruleFil3.feeRate
+//            max_fil = ruleFil3.amountMax
+//        }
         val ruleTrc = msg.TRC
         if (ruleTrc != null) {
             rateAmountTrc = ruleTrc.feeMin
@@ -192,8 +199,24 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                         avaiableAmount = coin?.withdraw_max
                     }
                 }
+                rateAmountFil = extractRule?.FIL2?.feeMin.toString()
+                rateFil = extractRule?.FIL2?.feeRate.toString()
+                max_fil = extractRule?.FIL2?.amountMax.toString()
                 min = extractRule?.FIL2?.amountMin.toString()
                 max = extractRule?.FIL2?.amountMax.toString()
+            }
+            else if (checkedId == R.id.rb_fil3) {
+                currentName = "FIL3"
+                for (coin in assets!!) {
+                    if (coin.coin == "FIL3") {
+                        avaiableAmount = coin?.withdraw_max
+                    }
+                }
+                rateAmountFil = extractRule?.FIL3?.feeMin.toString()
+                rateFil = extractRule?.FIL3?.feeRate.toString()
+                max_fil = extractRule?.FIL3?.amountMax.toString()
+                min = extractRule?.FIL3?.amountMin.toString()
+                max = extractRule?.FIL3?.amountMax.toString()
             }
             else {
                 currentName = "FIL"
@@ -202,11 +225,14 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
                         avaiableAmount = coin?.withdraw_max
                     }
                 }
+                rateAmountFil = extractRule?.FIL?.feeMin.toString()
+                rateFil = extractRule?.FIL?.feeRate.toString()
+                max_fil = extractRule?.FIL?.amountMax.toString()
                 min = extractRule?.FIL?.amountMin.toString()
                 max = extractRule?.FIL?.amountMax.toString()
             }
             et_num.hint = "最小:$min / 最大:$max"
-            tv_lest.text = if(currentName == "FIL2")"可轉$avaiableAmount FIL(方案A)" else "可轉$avaiableAmount $currentName"
+            tv_lest.text = when(currentName){ "FIL2"->{"可轉$avaiableAmount FIL(方案A)"} "FIL3"->{"可轉$avaiableAmount FIL(方案B)"}else->{"可轉$avaiableAmount $currentName"} }
             et_num.setText("")
             tv_money_fee.text = "0"
             tv_money.text = "0"
@@ -302,6 +328,8 @@ class ExtractCoinActivity : BaseActivity(), IContractView.IExtractView, IContrac
      */
     private fun setCalculate() {
         val fee = BigDecimalUtil.mul(num, getCurrentRate(), 8)
+        Log.i("sj",fee)
+        Log.i("sj",getCurrentRateAmount())
         if (BigDecimalUtil.compare(getCurrentRateAmount(), fee)) {
             tv_money_fee.text = getCurrentRateAmount()
             var surplus = BigDecimalUtil.sub(num, getCurrentRateAmount(), 8)

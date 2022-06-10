@@ -36,6 +36,9 @@ class MillPresenter(view: IContractView.IMillView) : BasePresenter<IContractView
         val eargings = if (type==2){
             RetrofitManager.service.getMillEarnings2(id)
         }
+        else if (type==3){
+            RetrofitManager.service.getMillEarnings3(id)
+        }
         else{
             RetrofitManager.service.getMillEarnings(id)
         }
